@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -242423754, guid: 7feee62e6490d4c84fc0fb3e942a399b, type: 3}
+  m_Name: Shapes Assets
+  m_EditorClassIdentifier:
+  defaultFont: {fileID: 11400000, guid: 7c1d79635e70dc3419f5266b6b192d7a, type: 2}
+  meshQuad:
+  - {fileID: 4300000, guid: 03875b250bada08429d12bea1c72b011, type: 2}
+  meshTriangle:
+  - {fileID: 4300000, guid: 0d21d7556ba585b49a97167840f7c298, type: 2}
+  meshCube:
+  - {fileID: 4300000, guid: a36d02da762375548adce576c905a583, type: 2}
+  meshSphere:
+  - {fileID: 4300000, guid: 2d1a5e33178f2804790b27d6eb5740c7, type: 2}
+  - {fileID: 4300000, guid: 9491aa152d5b52644a26a3cee549f8a9, type: 2}
+  - {fileID: 4300000, guid: de4a2f731ec52dd449b463e4588aa1a9, type: 2}
+  - {fileID: 4300000, guid: 70674c40c7e63e1489a94fbeaca59292, type: 2}
+  - {fileID: 4300000, guid: bbec2cd549bdb7040b8f8b1ba9557910, type: 2}
+  meshTorus:
+  - {fileID: 4300000, guid: 7aac87bc36c23264bba7ceaed06bc5b2, type: 2}
+  - {fileID: 4300000, guid: 9aa6bb0113684a84180d37e3f6b04eaf, type: 2}
+  - {fileID: 4300000, guid: c8a256f4adcb7914bb64412a3df57693, type: 2}
+  - {fileID: 4300000, guid: 5e8a3020f7100db4e825812b23bfbbdc, type: 2}
+  - {fileID: 4300000, guid: db98cb172c5c6a347926eadc0cfcfd4d, type: 2}
+  meshCapsule:
+  - {fileID: 4300000, guid: 4f93b8a0b9b425149829b4867d26bb88, type: 2}
+  - {fileID: 4300000, guid: 13aec228b31fc44458497140a36ac060, type: 2}
+  - {fileID: 4300000, guid: 637861da8a6fa5d4da2cccc9797acbbc, type: 2}
+  - {fileID: 4300000, guid: 3bde069f2704bbf4ea806f077f7f1402, type: 2}
+  - {fileID: 4300000, guid: a4078aac32785a3409c9726335012954, type: 2}
+  meshCylinder:
+  - {fileID: 4300000, guid: 67de2f0fe1230c949a96aa9d2557326c, type: 2}
+  - {fileID: 4300000, guid: 97cf9d9605c2910409bbf8e237860812, type: 2}
+  - {fileID: 4300000, guid: 16ab5c05d1ba1494aab9cfdb9c883e04, type: 2}
+  - {fileID: 4300000, guid: fb420ae6e76aa274992cc3a44b5f6c08, type: 2}
+  - {fileID: 4300000, guid: 64e3f6a1fb2d5e548867d68421be8b16, type: 2}
+  meshCone:
+  - {fileID: 4300000, guid: 80eb9cc995873a946bdbfd72ed7b52a5, type: 2}
+  - {fileID: 4300000, guid: 01078157670282249abc7110ca4c8c6f, type: 2}
+  - {fileID: 4300000, guid: c567874817cd9cd44a6312e6c31bf596, type: 2}
+  - {fileID: 4300000, guid: f55e78ad2ee6d214a927751f4accbb66, type: 2}
+  - {fileID: 4300000, guid: 3302568c334863d4ca4685d73d0586db, type: 2}
+  meshConeUncapped:
+  - {fileID: 4300000, guid: 1eb88968ae094b6489df08dc2a47d996, type: 2}
+  - {fileID: 4300000, guid: d07c12ea51782e74bb35515da0bf6760, type: 2}
+  - {fileID: 4300000, guid: 2c4a484fcae312945ac76de22a24342f, type: 2}
+  - {fileID: 4300000, guid: f9fdaca227e8f8b4fbfc9518387feb33, type: 2}
+  - {fileID: 4300000, guid: cffc141a61af50441827587fe9f7559c, type: 2}
+  packageJson: {fileID: 4900000, guid: a2ece62bc657fac45bf7693e0a033be6, type: 3}

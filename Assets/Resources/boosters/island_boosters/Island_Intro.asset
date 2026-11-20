@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1258133611, guid: fff28ad2958f41e0cb020d3a193dcc60, type: 3}
+  m_Name: Island_Intro
+  m_EditorClassIdentifier:
+  BoosterId: island_intro
+  NameTerm: pack_island_intro_text
+  nameOverride:
+  MinAchievementCount: 0
+  IsIntroPack: 0
+  Cost: 3
+  Icon: {fileID: 21300000, guid: 71b728ef1e7f9f14a8b30a07d4c180f7, type: 2}
+  BoosterLocation: 1
+  CardBags:
+  - CardBagType: 1
+    CardsInPack: 3
+    ExpectedValue: 1
+    Chances: []
+    SetPackCards:
+    - blueprint_cathedral
+    - rumor_island
+    - blueprint_rowboat
+    SetCardBag: 16
+    UseFallbackBag: 0
+    EnemyCardBag: 0
+    StrengthLevel: 0
+    FallbackBag: 0
+    EnemiesIncluded:
+  BoosterAdditions: []
+  ExpectedValue: 3
+  references:
+    version: 2
+    RefIds: []

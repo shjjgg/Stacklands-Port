@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -162795539, guid: fff28ad2958f41e0cb020d3a193dcc60, type: 3}
+  m_Name: Cutscene_Cities_Time_Machine
+  m_EditorClassIdentifier:
+  CutsceneId: cities_time_machine
+  IsAdvisorCutscene: 0
+  AdvisorWarning: 0
+  CutsceneSteps:
+  - rid: 6538599230890311680
+  - rid: 7338100293676564482
+  - rid: 7338100293676564483
+  - rid: 6745391765343698945
+  - rid: 4745836387121496088
+  - rid: 6538599230890311681
+  - rid: 4745836387121496089
+  - rid: 4745836387121496090
+  - rid: 4745836387121496091
+  - rid: 4745836387121496092
+  - rid: 6538599230890311682
+  references:
+    version: 2
+    RefIds:
+    - rid: 4745836387121496088
+      type: {class: CutsceneStep_PanCamera, ns:, asm: GameScripts}
+      data:
+        Duration: 5
+        CameraDistance: 12
+    - rid: 4745836387121496089
+      type: {class: CutsceneStep_SetText, ns:, asm: GameScripts}
+      data:
+        TitleTerm: label_cities_time_ending_title
+        TextTerm: label_cities_time_ending_text_3
+        WaitForClick: 1
+        ButtonTerm: label_okay
+    - rid: 4745836387121496090
+      type: {class: CutsceneStep_SetText, ns:, asm: GameScripts}
+      data:
+        TitleTerm: label_cities_time_ending_title
+        TextTerm: label_cities_time_ending_text_4
+        WaitForClick: 1
+        ButtonTerm: label_okay
+    - rid: 4745836387121496091
+      type: {class: CutsceneStep_FocusCamera, ns:, asm: GameScripts}
+      data:
+        CardId: time_machine
+        FocusType: 0
+        Type: 0
+    - rid: 4745836387121496092
+      type: {class: CutsceneStep_SetText, ns:, asm: GameScripts}
+      data:
+        TitleTerm: label_cities_time_ending_title
+        TextTerm: label_cities_time_ending_text_5
+        WaitForClick: 1
+        ButtonTerm: label_okay
+    - rid: 6538599230890311680
+      type: {class: CutsceneStep_FocusCameraOnGenius, ns:, asm: GameScripts}
+      data: {}
+    - rid: 6538599230890311681
+      type: {class: CutsceneStep_FocusCameraOnGenius, ns:, asm: GameScripts}
+      data: {}
+    - rid: 6538599230890311682
+      type: {class: CutsceneStep_PlaceGeniusOnTimeMachine, ns:, asm: GameScripts}
+      data: {}
+    - rid: 6745391765343698945
+      type: {class: CutsceneStep_SetText, ns:, asm: GameScripts}
+      data:
+        TitleTerm: label_cities_time_ending_title
+        TextTerm: label_cities_time_ending_text_2
+        WaitForClick: 0
+        ButtonTerm: label_okay
+    - rid: 7338100293676564482
+      type: {class: CutsceneStep_SetText, ns:, asm: GameScripts}
+      data:
+        TitleTerm: label_cities_time_ending_title
+        TextTerm: label_cities_time_ending_text
+        WaitForClick: 1
+        ButtonTerm: label_nice
+    - rid: 7338100293676564483
+      type: {class: CutsceneStep_SetText, ns:, asm: GameScripts}
+      data:
+        TitleTerm: label_cities_time_ending_title
+        TextTerm: label_cities_time_ending_text_1
+        WaitForClick: 1
+        ButtonTerm: label_okay

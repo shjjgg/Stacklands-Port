@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -162795539, guid: fff28ad2958f41e0cb020d3a193dcc60, type: 3}
+  m_Name: Cutscene_Cities_Disaster
+  m_EditorClassIdentifier:
+  CutsceneId: cities_disaster
+  IsAdvisorCutscene: 0
+  AdvisorWarning: 0
+  CutsceneSteps:
+  - rid: 1114103528087355392
+  - rid: 7338100293676564482
+  - rid: 7338100293676564483
+  - rid: 1114103528087355393
+  references:
+    version: 2
+    RefIds:
+    - rid: 1114103528087355392
+      type: {class: CutsceneStep_FocusCamera, ns:, asm: GameScripts}
+      data:
+        CardId:
+        FocusType: 1
+        Type: 12
+    - rid: 1114103528087355393
+      type: {class: CutsceneStep_SetText, ns:, asm: GameScripts}
+      data:
+        TitleTerm: cutscene_cities_disaster_title
+        TextTerm: cutscene_cities_disaster_text_2
+        WaitForClick: 1
+        ButtonTerm: label_nice
+    - rid: 7338100293676564482
+      type: {class: CutsceneStep_SetText, ns:, asm: GameScripts}
+      data:
+        TitleTerm: cutscene_cities_disaster_title
+        TextTerm: cutscene_cities_disaster_text_0
+        WaitForClick: 1
+        ButtonTerm: label_uh_oh
+    - rid: 7338100293676564483
+      type: {class: CutsceneStep_SetText, ns:, asm: GameScripts}
+      data:
+        TitleTerm: cutscene_cities_disaster_title
+        TextTerm: cutscene_cities_disaster_text_1
+        WaitForClick: 1
+        ButtonTerm: label_okay

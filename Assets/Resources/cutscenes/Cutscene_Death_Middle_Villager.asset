@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -162795539, guid: fff28ad2958f41e0cb020d3a193dcc60, type: 3}
+  m_Name: Cutscene_Death_Middle_Villager
+  m_EditorClassIdentifier:
+  CutsceneId: death_middle_villager
+  IsAdvisorCutscene: 0
+  AdvisorWarning: 0
+  CutsceneSteps:
+  - rid: 3873350064055517186
+  - rid: 3873350064055517184
+  - rid: 0
+  - rid: 1
+  - rid: 4
+  - rid: 3873350064055517188
+  - rid: 5
+  references:
+    version: 2
+    RefIds:
+    - rid: 0
+      type: {class: CutsceneStep_CreateCard, ns:, asm: GameScripts}
+      data:
+        CardId: death_spirit
+        Location: 0
+        OtherCardId:
+        FindOrCreate: 1
+        SendCard: 0
+        MakeSmoke: 0
+    - rid: 1
+      type: {class: CutsceneStep_FocusCamera, ns:, asm: GameScripts}
+      data:
+        CardId: death_spirit
+        FocusType: 0
+        Type: 0
+    - rid: 4
+      type: {class: CutsceneStep_SetText, ns:, asm: GameScripts}
+      data:
+        TitleTerm: label_its_the_spirit
+        TextTerm: cutscene_death_middle_text_3
+        WaitForClick: 1
+        ButtonTerm: label_uh_oh
+    - rid: 5
+      type: {class: CutsceneStep_DestroyCard, ns:, asm: GameScripts}
+      data:
+        CardId: death_spirit
+    - rid: 3873350064055517184
+      type: {class: CutsceneStep_Pause, ns:, asm: GameScripts}
+      data:
+        Time: 2
+    - rid: 3873350064055517186
+      type: {class: CutsceneStep_SetText, ns:, asm: GameScripts}
+      data:
+        TitleTerm: label_its_the_spirit
+        TextTerm:
+        WaitForClick: 0
+        ButtonTerm:
+    - rid: 3873350064055517188
+      type: {class: CutsceneStep_SetText, ns:, asm: GameScripts}
+      data:
+        TitleTerm: label_its_the_spirit
+        TextTerm: cutscene_death_middle_text_4
+        WaitForClick: 1
+        ButtonTerm: label_okay

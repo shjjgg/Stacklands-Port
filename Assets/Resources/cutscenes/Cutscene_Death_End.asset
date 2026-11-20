@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -162795539, guid: fff28ad2958f41e0cb020d3a193dcc60, type: 3}
+  m_Name: Cutscene_Death_End
+  m_EditorClassIdentifier:
+  CutsceneId: death_end
+  IsAdvisorCutscene: 0
+  AdvisorWarning: 0
+  CutsceneSteps:
+  - rid: 0
+  - rid: 1
+  - rid: 2
+  - rid: 3
+  - rid: 4
+  references:
+    version: 2
+    RefIds:
+    - rid: 0
+      type: {class: CutsceneStep_CreateCard, ns:, asm: GameScripts}
+      data:
+        CardId: death_spirit
+        Location: 0
+        OtherCardId:
+        FindOrCreate: 1
+        SendCard: 0
+        MakeSmoke: 0
+    - rid: 1
+      type: {class: CutsceneStep_FocusCamera, ns:, asm: GameScripts}
+      data:
+        CardId: death_spirit
+        FocusType: 0
+        Type: 0
+    - rid: 2
+      type: {class: CutsceneStep_SetText, ns:, asm: GameScripts}
+      data:
+        TitleTerm: label_its_the_spirit
+        TextTerm: cutscene_death_end_text_0
+        WaitForClick: 1
+        ButtonTerm: label_okay
+    - rid: 3
+      type: {class: CutsceneStep_SetText, ns:, asm: GameScripts}
+      data:
+        TitleTerm: label_its_the_spirit
+        TextTerm: cutscene_death_end_text_1
+        WaitForClick: 1
+        ButtonTerm: label_nice
+    - rid: 4
+      type: {class: CutsceneStep_DestroyCard, ns:, asm: GameScripts}
+      data:
+        CardId: death_spirit

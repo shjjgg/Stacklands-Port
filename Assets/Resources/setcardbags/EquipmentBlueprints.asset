@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -599522810, guid: fff28ad2958f41e0cb020d3a193dcc60, type: 3}
+  m_Name: EquipmentBlueprints
+  m_EditorClassIdentifier:
+  SetCardBagType: 29
+  Chances:
+  - CardId: rumor_dark_forest
+    Chance: 1
+  - CardId: blueprint_woodenweapons
+    Chance: 1
+  - CardId: blueprint_ironweapons
+    Chance: 1
+  - CardId: blueprint_chainmail_armor
+    Chance: 1
+  - CardId: blueprint_gold_chestplate
+    Chance: 1
+  - CardId: blueprint_iron_shield
+    Chance: 1
+  - CardId: blueprint_wizard_robe
+    Chance: 1
+  - CardId: blueprint_wooden_shield
+    Chance: 1
+  - CardId: blueprint_amulet_of_forest
+    Chance: 1
+  - CardId: blueprint_amulet_of_mountain
+    Chance: 1
+  - CardId: blueprint_axe
+    Chance: 1
+  - CardId: blueprint_blunderbuss
+    Chance: 1
+  - CardId: blueprint_bone_spear
+    Chance: 1
+  - CardId: blueprint_bone_staff
+    Chance: 1
+  - CardId: blueprint_boomerang
+    Chance: 1
+  - CardId: blueprint_bow
+    Chance: 1
+  - CardId: blueprint_broken_bottle
+    Chance: 1
+  - CardId: blueprint_club
+    Chance: 1
+  - CardId: blueprint_crossbow
+    Chance: 1
+  - CardId: blueprint_hammer
+    Chance: 1
+  - CardId: blueprint_magic_blade
+    Chance: 1
+  - CardId: blueprint_magic_ring
+    Chance: 1
+  - CardId: blueprint_magic_staff
+    Chance: 1
+  - CardId: blueprint_magic_tome
+    Chance: 1
+  - CardId: blueprint_magic_wand
+    Chance: 1
+  - CardId: blueprint_pickaxe
+    Chance: 1
+  - CardId: blueprint_slingshot
+    Chance: 1
+  - CardId: blueprint_spiked_plank
+    Chance: 1
+  - CardId: blueprint_throwing_star
+    Chance: 1
+  - CardId: blueprint_fishing_rod
+    Chance: 1
+  Filter:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class:, ns:, asm:}
+      data: {}

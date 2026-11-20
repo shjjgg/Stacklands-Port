@@ -1,0 +1,139 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1258133611, guid: fff28ad2958f41e0cb020d3a193dcc60, type: 3}
+  m_Name: Island2
+  m_EditorClassIdentifier:
+  BoosterId: island2
+  NameTerm: pack_island2_text
+  nameOverride:
+  MinAchievementCount: 1
+  IsIntroPack: 0
+  Cost: 3
+  Icon: {fileID: 21300000, guid: 27f552c9ae785c94483ade80f381af70, type: 2}
+  BoosterLocation: 1
+  CardBags:
+  - CardBagType: 0
+    CardsInPack: 3
+    ExpectedValue: 1.4505264
+    Chances:
+    - Id: driftwood
+      Chance: 4
+      PercentageChance: 0.16
+      HasMaxCount: 1
+      MaxCountToGive: 3
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: sand
+      Chance: 4
+      PercentageChance: 0.16
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: flint
+      Chance: 3
+      PercentageChance: 0.12
+      HasMaxCount: 1
+      MaxCountToGive: 2
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: banana_tree
+      Chance: 2
+      PercentageChance: 0.08
+      HasMaxCount: 1
+      MaxCountToGive: 3
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: fishing_spot
+      Chance: 4
+      PercentageChance: 0.16
+      HasMaxCount: 1
+      MaxCountToGive: 2
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: monkey
+      Chance: 1
+      PercentageChance: 0.04
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: seagull
+      Chance: 1
+      PercentageChance: 0.04
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: cotton_plant
+      Chance: 3
+      PercentageChance: 0.12
+      HasMaxCount: 1
+      MaxCountToGive: 2
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: banana
+      Chance: 2
+      PercentageChance: 0.08
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: seaweed
+      Chance: 1
+      PercentageChance: 0.04
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    SetPackCards: []
+    SetCardBag: 16
+    UseFallbackBag: 0
+    EnemyCardBag: 0
+    StrengthLevel: 0
+    FallbackBag: 0
+    EnemiesIncluded:
+  BoosterAdditions: []
+  ExpectedValue: 4.351579
+  references:
+    version: 2
+    RefIds: []

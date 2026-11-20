@@ -1,0 +1,166 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1258133611, guid: fff28ad2958f41e0cb020d3a193dcc60, type: 3}
+  m_Name: Locations
+  m_EditorClassIdentifier:
+  BoosterId: locations
+  NameTerm: pack_explorers_text
+  nameOverride:
+  MinAchievementCount: 30
+  IsIntroPack: 0
+  Cost: 20
+  Icon: {fileID: 21300000, guid: 0e11c82508639894b9044bab107e44b6, type: 2}
+  BoosterLocation: 0
+  CardBags:
+  - CardBagType: 2
+    CardsInPack: 1
+    ExpectedValue: 2.640099
+    Chances:
+    - Id: rock
+      Chance: 1
+      PercentageChance: 0
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: tree
+      Chance: 1
+      PercentageChance: 0
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: appletree
+      Chance: 1
+      PercentageChance: 0
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    SetPackCards: []
+    SetCardBag: 3
+    UseFallbackBag: 0
+    EnemyCardBag: 0
+    StrengthLevel: 0
+    FallbackBag: 0
+    EnemiesIncluded:
+  - CardBagType: 3
+    CardsInPack: 1
+    ExpectedValue: 0
+    Chances:
+    - Id: rat
+      Chance: 1
+      PercentageChance: 0
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: goblin
+      Chance: 1
+      PercentageChance: 0
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: bear
+      Chance: 1
+      PercentageChance: 0
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    SetPackCards: []
+    SetCardBag: 8
+    UseFallbackBag: 0
+    EnemyCardBag: 1
+    StrengthLevel: 30
+    FallbackBag: 0
+    EnemiesIncluded: giant_rat, bear, skeleton, wolf, slime, goblin_shaman, mimic, frog_man
+  - CardBagType: 0
+    CardsInPack: 1
+    ExpectedValue: 5.778373
+    Chances:
+    - Id: forest
+      Chance: 1
+      PercentageChance: 0.25
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: mountain
+      Chance: 1
+      PercentageChance: 0.25
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: plains
+      Chance: 1
+      PercentageChance: 0.25
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: old_village
+      Chance: 1
+      PercentageChance: 0.25
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    SetPackCards:
+    - villager
+    - berrybush
+    - rock
+    - wood
+    - gold
+    SetCardBag: 0
+    UseFallbackBag: 0
+    EnemyCardBag: 0
+    StrengthLevel: 0
+    FallbackBag: 0
+    EnemiesIncluded:
+  BoosterAdditions: []
+  ExpectedValue: 8.418472
+  references:
+    version: 2
+    RefIds: []

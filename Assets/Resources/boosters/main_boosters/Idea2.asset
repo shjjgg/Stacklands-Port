@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1258133611, guid: fff28ad2958f41e0cb020d3a193dcc60, type: 3}
+  m_Name: Idea2
+  m_EditorClassIdentifier:
+  BoosterId: idea2
+  NameTerm: pack_logic_reason_text
+  nameOverride:
+  MinAchievementCount: 24
+  IsIntroPack: 0
+  Cost: 15
+  Icon: {fileID: 21300000, guid: 22571241dd914b0419b05f891e1b6600, type: 2}
+  BoosterLocation: 0
+  CardBags:
+  - CardBagType: 2
+    CardsInPack: 1
+    ExpectedValue: 1
+    Chances: []
+    SetPackCards: []
+    SetCardBag: 10
+    UseFallbackBag: 0
+    EnemyCardBag: 0
+    StrengthLevel: 0
+    FallbackBag: 0
+    EnemiesIncluded:
+  - CardBagType: 2
+    CardsInPack: 1
+    ExpectedValue: 3
+    Chances: []
+    SetPackCards: []
+    SetCardBag: 1
+    UseFallbackBag: 0
+    EnemyCardBag: 0
+    StrengthLevel: 0
+    FallbackBag: 0
+    EnemiesIncluded:
+  - CardBagType: 2
+    CardsInPack: 1
+    ExpectedValue: 2.640099
+    Chances: []
+    SetPackCards: []
+    SetCardBag: 3
+    UseFallbackBag: 0
+    EnemyCardBag: 0
+    StrengthLevel: 0
+    FallbackBag: 0
+    EnemiesIncluded:
+  - CardBagType: 2
+    CardsInPack: 1
+    ExpectedValue: 1.0000001
+    Chances: []
+    SetPackCards: []
+    SetCardBag: 11
+    UseFallbackBag: 0
+    EnemyCardBag: 0
+    StrengthLevel: 0
+    FallbackBag: 0
+    EnemiesIncluded:
+  BoosterAdditions: []
+  ExpectedValue: 7.640099
+  references:
+    version: 2
+    RefIds: []

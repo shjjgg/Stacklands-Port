@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -162795539, guid: fff28ad2958f41e0cb020d3a193dcc60, type: 3}
+  m_Name: Cutscene_Cities_Villager_TimeMachine
+  m_EditorClassIdentifier:
+  CutsceneId: cities_villager_timemachine
+  IsAdvisorCutscene: 0
+  AdvisorWarning: 0
+  CutsceneSteps:
+  - rid: 4745836999628554240
+  - rid: 7338100293676564482
+  - rid: 7338100293676564483
+  - rid: 4745836999628554242
+  references:
+    version: 2
+    RefIds:
+    - rid: 4745836999628554240
+      type: {class: CutsceneStep_FocusCameraOnCardType, ns:, asm: GameScripts}
+      data:
+        ClassNames:
+        - BaseVillager
+    - rid: 4745836999628554242
+      type: {class: CutsceneStep_DestroyBaseVillager, ns:, asm: GameScripts}
+      data: {}
+    - rid: 7338100293676564482
+      type: {class: CutsceneStep_SetText, ns:, asm: GameScripts}
+      data:
+        TitleTerm: cutscene_cities_villager_timemachine_title
+        TextTerm: cutscene_cities_villager_timemachine_text_0
+        WaitForClick: 1
+        ButtonTerm: label_uh_oh
+    - rid: 7338100293676564483
+      type: {class: CutsceneStep_SetText, ns:, asm: GameScripts}
+      data:
+        TitleTerm: cutscene_cities_villager_timemachine_title
+        TextTerm: cutscene_cities_villager_timemachine_text_1
+        WaitForClick: 1
+        ButtonTerm: label_okay

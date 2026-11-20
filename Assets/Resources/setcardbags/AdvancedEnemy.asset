@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -599522810, guid: fff28ad2958f41e0cb020d3a193dcc60, type: 3}
+  m_Name: AdvancedEnemy
+  m_EditorClassIdentifier:
+  SetCardBagType: 8
+  Chances:
+  - CardId: giant_rat
+    Chance: 1
+  - CardId: bear
+    Chance: 1
+  - CardId: skeleton
+    Chance: 1
+  - CardId: wolf
+    Chance: 1
+  - CardId: slime
+    Chance: 1
+  - CardId: goblin_shaman
+    Chance: 1
+  - CardId: mimic
+    Chance: 1
+  - CardId: frog_man
+    Chance: 1
+  Filter:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class:, ns:, asm:}
+      data: {}

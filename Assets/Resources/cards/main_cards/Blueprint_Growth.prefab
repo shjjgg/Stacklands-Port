@@ -1,0 +1,1499 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1709254077376921
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4730242686860875}
+  - component: {fileID: 114724804207875695}
+  m_Layer: 0
+  m_Name: Blueprint_Growth
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4730242686860875
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.064956546, y: -0.18905544, z: 1.2862874}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114724804207875695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 603406662, guid: fff28ad2958f41e0cb020d3a193dcc60, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  Id: blueprint_growth
+  CustomName:
+  NameTerm: idea_growth_name
+  DescriptionTerm:
+  PickupSoundGroup: 0
+  PickupSound: {fileID: 0}
+  UniqueId:
+  ParentUniqueId:
+  EquipmentHolderUniqueId:
+  WorkerHolderUniqueId:
+  WorkerIndex: -1
+  Value: 1
+  Icon: {fileID: 0}
+  MyGameCard: {fileID: 0}
+  IsFoil: 0
+  IsShiny: 0
+  MyCardType: 3
+  IsBuilding: 0
+  IsCookedFood: 0
+  HideFromCardopedia: 0
+  CreationMonth: 0
+  CardUpdateType: 0
+  ExpectedValue: 1
+  HasUniquePalette: 0
+  MyPalette:
+    Color: {r: 0, g: 0, b: 0, a: 0}
+    Color2: {r: 0, g: 0, b: 0, a: 0}
+    Icon: {r: 0, g: 0, b: 0, a: 0}
+  LeftoverExtraData: []
+  CitiesValue: 10
+  WorkerAmount: 0
+  EducatedWorkers: 0
+  OutputDir: {x: 1, y: 0, z: 0}
+  RequirementHolders: []
+  IsDamaged: 0
+  DamageType: 0
+  IsOn: 1
+  EnergyConnectors: []
+  Subprints:
+  - SubprintIndex: 0
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - berry
+    - soil
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - berrybush
+    Time: 120
+    StatusTerm: idea_growth_status_0
+    statusOverride:
+  - SubprintIndex: 1
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - berry
+    - poop
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - berrybush
+    Time: 120
+    StatusTerm: idea_growth_status_0
+    statusOverride:
+  - SubprintIndex: 2
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - berry
+    - garden
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - berrybush
+    Time: 90
+    StatusTerm: idea_growth_status_0
+    statusOverride:
+  - SubprintIndex: 3
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - berry
+    - farm
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - berrybush
+    Time: 60
+    StatusTerm: idea_growth_status_0
+    statusOverride:
+  - SubprintIndex: 4
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - berry
+    - greenhouse
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - berrybush
+    Time: 60
+    StatusTerm: idea_growth_status_0
+    statusOverride:
+  - SubprintIndex: 5
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - apple
+    - soil
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - apple_tree
+    Time: 120
+    StatusTerm: idea_growth_status_1
+    statusOverride:
+  - SubprintIndex: 6
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - apple
+    - poop
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - apple_tree
+    Time: 120
+    StatusTerm: idea_growth_status_1
+    statusOverride:
+  - SubprintIndex: 7
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - apple
+    - garden
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - apple_tree
+    Time: 90
+    StatusTerm: idea_growth_status_1
+    statusOverride:
+  - SubprintIndex: 8
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - apple
+    - farm
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - apple_tree
+    Time: 60
+    StatusTerm: idea_growth_status_1
+    statusOverride:
+  - SubprintIndex: 9
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - apple
+    - greenhouse
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - apple_tree
+    Time: 60
+    StatusTerm: idea_growth_status_1
+    statusOverride:
+  - SubprintIndex: 10
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - carrot
+    - soil
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - carrot
+    - carrot
+    Time: 180
+    StatusTerm: idea_growth_status_2
+    statusOverride:
+  - SubprintIndex: 11
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - carrot
+    - poop
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - carrot
+    - carrot
+    Time: 180
+    StatusTerm: idea_growth_status_2
+    statusOverride:
+  - SubprintIndex: 12
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - carrot
+    - garden
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - carrot
+    - carrot
+    Time: 135
+    StatusTerm: idea_growth_status_2
+    statusOverride:
+  - SubprintIndex: 13
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - carrot
+    - farm
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - carrot
+    - carrot
+    Time: 90
+    StatusTerm: idea_growth_status_2
+    statusOverride:
+  - SubprintIndex: 14
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - carrot
+    - greenhouse
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - carrot
+    - carrot
+    Time: 90
+    StatusTerm: idea_growth_status_2
+    statusOverride:
+  - SubprintIndex: 15
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - onion
+    - soil
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - onion
+    - onion
+    Time: 120
+    StatusTerm: idea_growth_status_3
+    statusOverride:
+  - SubprintIndex: 16
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - onion
+    - poop
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - onion
+    - onion
+    Time: 120
+    StatusTerm: idea_growth_status_3
+    statusOverride:
+  - SubprintIndex: 17
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - onion
+    - garden
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - onion
+    - onion
+    Time: 90
+    StatusTerm: idea_growth_status_3
+    statusOverride:
+  - SubprintIndex: 18
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - onion
+    - farm
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - onion
+    - onion
+    Time: 60
+    StatusTerm: idea_growth_status_3
+    statusOverride:
+  - SubprintIndex: 19
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - onion
+    - greenhouse
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - onion
+    - onion
+    Time: 60
+    StatusTerm: idea_growth_status_3
+    statusOverride:
+  - SubprintIndex: 20
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - potato
+    - soil
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - potato
+    - potato
+    Time: 120
+    StatusTerm: idea_growth_status_4
+    statusOverride:
+  - SubprintIndex: 21
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - potato
+    - poop
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - potato
+    - potato
+    Time: 120
+    StatusTerm: idea_growth_status_4
+    statusOverride:
+  - SubprintIndex: 22
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - potato
+    - garden
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - potato
+    - potato
+    Time: 90
+    StatusTerm: idea_growth_status_4
+    statusOverride:
+  - SubprintIndex: 23
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - potato
+    - farm
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - potato
+    - potato
+    Time: 60
+    StatusTerm: idea_growth_status_4
+    statusOverride:
+  - SubprintIndex: 24
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - potato
+    - greenhouse
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - potato
+    - potato
+    Time: 60
+    StatusTerm: idea_growth_status_4
+    statusOverride:
+  - SubprintIndex: 25
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - mushroom
+    - soil
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - mushroom
+    - mushroom
+    Time: 120
+    StatusTerm: idea_growth_status_5
+    statusOverride:
+  - SubprintIndex: 26
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - mushroom
+    - poop
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - mushroom
+    - mushroom
+    Time: 120
+    StatusTerm: idea_growth_status_5
+    statusOverride:
+  - SubprintIndex: 27
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - mushroom
+    - garden
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - mushroom
+    - mushroom
+    Time: 90
+    StatusTerm: idea_growth_status_5
+    statusOverride:
+  - SubprintIndex: 28
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - mushroom
+    - farm
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - mushroom
+    - mushroom
+    Time: 60
+    StatusTerm: idea_growth_status_5
+    statusOverride:
+  - SubprintIndex: 29
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - mushroom
+    - greenhouse
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - mushroom
+    - mushroom
+    Time: 60
+    StatusTerm: idea_growth_status_5
+    statusOverride:
+  - SubprintIndex: 30
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - banana
+    - soil
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - banana_tree
+    Time: 120
+    StatusTerm: idea_growth_status_6
+    statusOverride:
+  - SubprintIndex: 31
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - banana
+    - poop
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - banana_tree
+    Time: 120
+    StatusTerm: idea_growth_status_6
+    statusOverride:
+  - SubprintIndex: 32
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - banana
+    - garden
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - banana_tree
+    Time: 90
+    StatusTerm: idea_growth_status_6
+    statusOverride:
+  - SubprintIndex: 33
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - banana
+    - farm
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - banana_tree
+    Time: 60
+    StatusTerm: idea_growth_status_6
+    statusOverride:
+  - SubprintIndex: 34
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - banana
+    - greenhouse
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - banana_tree
+    Time: 60
+    StatusTerm: idea_growth_status_6
+    statusOverride:
+  - SubprintIndex: 35
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - cotton
+    - soil
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - cotton_plant
+    Time: 120
+    StatusTerm: idea_growth_status_8
+    statusOverride:
+  - SubprintIndex: 36
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - cotton
+    - poop
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - cotton_plant
+    Time: 120
+    StatusTerm: idea_growth_status_8
+    statusOverride:
+  - SubprintIndex: 37
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - cotton
+    - garden
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - cotton_plant
+    Time: 90
+    StatusTerm: idea_growth_status_8
+    statusOverride:
+  - SubprintIndex: 38
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - cotton
+    - farm
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - cotton_plant
+    Time: 60
+    StatusTerm: idea_growth_status_8
+    statusOverride:
+  - SubprintIndex: 39
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - cotton
+    - greenhouse
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - cotton_plant
+    Time: 60
+    StatusTerm: idea_growth_status_8
+    statusOverride:
+  - SubprintIndex: 40
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - lime
+    - soil
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - lime
+    - lime
+    Time: 180
+    StatusTerm: idea_growth_name_status_9
+    statusOverride:
+  - SubprintIndex: 41
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - lime
+    - poop
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - lime
+    - lime
+    Time: 180
+    StatusTerm: idea_growth_name_status_9
+    statusOverride:
+  - SubprintIndex: 42
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - lime
+    - garden
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - lime
+    - lime
+    Time: 135
+    StatusTerm: idea_growth_name_status_9
+    statusOverride:
+  - SubprintIndex: 43
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - lime
+    - farm
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - lime
+    - lime
+    Time: 90
+    StatusTerm: idea_growth_name_status_9
+    statusOverride:
+  - SubprintIndex: 44
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - lime
+    - greenhouse
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - lime
+    - lime
+    Time: 90
+    StatusTerm: idea_growth_name_status_9
+    statusOverride:
+  - SubprintIndex: 45
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - chili_pepper
+    - soil
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - chili_pepper
+    - chili_pepper
+    Time: 120
+    StatusTerm: idea_growth_name_status_10
+    statusOverride:
+  - SubprintIndex: 46
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - chili_pepper
+    - poop
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - chili_pepper
+    - chili_pepper
+    Time: 120
+    StatusTerm: idea_growth_name_status_10
+    statusOverride:
+  - SubprintIndex: 47
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - chili_pepper
+    - garden
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - chili_pepper
+    - chili_pepper
+    Time: 90
+    StatusTerm: idea_growth_name_status_10
+    statusOverride:
+  - SubprintIndex: 48
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - chili_pepper
+    - farm
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - chili_pepper
+    - chili_pepper
+    Time: 60
+    StatusTerm: idea_growth_name_status_10
+    statusOverride:
+  - SubprintIndex: 49
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - chili_pepper
+    - greenhouse
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - chili_pepper
+    - chili_pepper
+    Time: 60
+    StatusTerm: idea_growth_name_status_10
+    statusOverride:
+  - SubprintIndex: 50
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - seaweed
+    - soil
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - seaweed
+    - seaweed
+    Time: 120
+    StatusTerm: idea_growth_status_11
+    statusOverride:
+  - SubprintIndex: 51
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - seaweed
+    - poop
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - seaweed
+    - seaweed
+    Time: 120
+    StatusTerm: idea_growth_status_11
+    statusOverride:
+  - SubprintIndex: 52
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - seaweed
+    - garden
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - seaweed
+    - seaweed
+    Time: 90
+    StatusTerm: idea_growth_status_11
+    statusOverride:
+  - SubprintIndex: 53
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - seaweed
+    - farm
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - seaweed
+    - seaweed
+    Time: 60
+    StatusTerm: idea_growth_status_11
+    statusOverride:
+  - SubprintIndex: 54
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - seaweed
+    - greenhouse
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - seaweed
+    - seaweed
+    Time: 60
+    StatusTerm: idea_growth_status_11
+    statusOverride:
+  - SubprintIndex: 55
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - sugar
+    - soil
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - sugar_cane
+    Time: 120
+    StatusTerm: idea_growth_status_12
+    statusOverride:
+  - SubprintIndex: 56
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - sugar
+    - poop
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - sugar_cane
+    Time: 120
+    StatusTerm: idea_growth_status_12
+    statusOverride:
+  - SubprintIndex: 57
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - sugar
+    - garden
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - sugar_cane
+    Time: 90
+    StatusTerm: idea_growth_status_12
+    statusOverride:
+  - SubprintIndex: 58
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - sugar
+    - farm
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - sugar_cane
+    Time: 60
+    StatusTerm: idea_growth_status_12
+    statusOverride:
+  - SubprintIndex: 59
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - sugar
+    - greenhouse
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - sugar_cane
+    Time: 60
+    StatusTerm: idea_growth_status_12
+    statusOverride:
+  - SubprintIndex: 60
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - wheat
+    - soil
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction: special:grow_wheat
+    ExtraResultCards:
+    - wheat
+    - wheat
+    - wheat
+    Time: 120
+    StatusTerm: idea_growth_status_13
+    statusOverride:
+  - SubprintIndex: 61
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - wheat
+    - poop
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction: special:grow_wheat
+    ExtraResultCards:
+    - wheat
+    - wheat
+    - wheat
+    Time: 120
+    StatusTerm: idea_growth_status_13
+    statusOverride:
+  - SubprintIndex: 62
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - wheat
+    - garden
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction: special:grow_wheat
+    ExtraResultCards:
+    - wheat
+    - wheat
+    - wheat
+    Time: 90
+    StatusTerm: idea_growth_status_13
+    statusOverride:
+  - SubprintIndex: 63
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - wheat
+    - farm
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction: special:grow_wheat
+    ExtraResultCards:
+    - wheat
+    - wheat
+    - wheat
+    Time: 60
+    StatusTerm: idea_growth_status_13
+    statusOverride:
+  - SubprintIndex: 64
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - wheat
+    - greenhouse
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction: special:grow_wheat
+    ExtraResultCards:
+    - wheat
+    - wheat
+    - wheat
+    Time: 60
+    StatusTerm: idea_growth_status_13
+    statusOverride:
+  - SubprintIndex: 65
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - grape
+    - soil
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - grape_vine
+    Time: 120
+    StatusTerm: idea_growth_status_14
+    statusOverride:
+  - SubprintIndex: 66
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - grape
+    - poop
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - grape_vine
+    Time: 120
+    StatusTerm: idea_growth_status_14
+    statusOverride:
+  - SubprintIndex: 67
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - grape
+    - garden
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - grape_vine
+    Time: 90
+    StatusTerm: idea_growth_status_14
+    statusOverride:
+  - SubprintIndex: 68
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - grape
+    - farm
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - grape_vine
+    Time: 60
+    StatusTerm: idea_growth_status_14
+    statusOverride:
+  - SubprintIndex: 69
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - grape
+    - greenhouse
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - grape_vine
+    Time: 60
+    StatusTerm: idea_growth_status_14
+    statusOverride:
+  - SubprintIndex: 70
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - olive
+    - soil
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - olive_tree
+    Time: 120
+    StatusTerm: idea_growth_status_15
+    statusOverride:
+  - SubprintIndex: 71
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - olive
+    - poop
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - olive_tree
+    Time: 120
+    StatusTerm: idea_growth_status_15
+    statusOverride:
+  - SubprintIndex: 72
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - olive
+    - garden
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - olive_tree
+    Time: 90
+    StatusTerm: idea_growth_status_15
+    statusOverride:
+  - SubprintIndex: 73
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - olive
+    - farm
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - olive_tree
+    Time: 60
+    StatusTerm: idea_growth_status_15
+    statusOverride:
+  - SubprintIndex: 74
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - olive
+    - greenhouse
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - olive_tree
+    Time: 60
+    StatusTerm: idea_growth_status_15
+    statusOverride:
+  - SubprintIndex: 75
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - tomato
+    - soil
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - tomato_plant
+    Time: 120
+    StatusTerm: idea_growth_status_16
+    statusOverride:
+  - SubprintIndex: 76
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - tomato
+    - poop
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - tomato_plant
+    Time: 120
+    StatusTerm: idea_growth_status_16
+    statusOverride:
+  - SubprintIndex: 77
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - tomato
+    - garden
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - tomato_plant
+    Time: 90
+    StatusTerm: idea_growth_status_16
+    statusOverride:
+  - SubprintIndex: 78
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - tomato
+    - farm
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - tomato_plant
+    Time: 60
+    StatusTerm: idea_growth_status_16
+    statusOverride:
+  - SubprintIndex: 79
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - tomato
+    - greenhouse
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - tomato_plant
+    Time: 60
+    StatusTerm: idea_growth_status_16
+    statusOverride:
+  - SubprintIndex: 80
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - stick
+    - soil
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - tree
+    Time: 120
+    StatusTerm: idea_growth_status_17
+    statusOverride:
+  - SubprintIndex: 81
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - stick
+    - poop
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - tree
+    Time: 120
+    StatusTerm: idea_growth_status_17
+    statusOverride:
+  - SubprintIndex: 82
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - stick
+    - garden
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - tree
+    Time: 90
+    StatusTerm: idea_growth_status_17
+    statusOverride:
+  - SubprintIndex: 83
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - stick
+    - farm
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - tree
+    Time: 60
+    StatusTerm: idea_growth_status_17
+    statusOverride:
+  - SubprintIndex: 84
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - stick
+    - greenhouse
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - tree
+    Time: 60
+    StatusTerm: idea_growth_status_17
+    statusOverride:
+  - SubprintIndex: 85
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - herbs
+    - soil
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - herbs
+    - herbs
+    Time: 120
+    StatusTerm: idea_growth_status_18
+    statusOverride:
+  - SubprintIndex: 86
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - herbs
+    - poop
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - herbs
+    - herbs
+    Time: 120
+    StatusTerm: idea_growth_status_18
+    statusOverride:
+  - SubprintIndex: 87
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - herbs
+    - garden
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - herbs
+    - herbs
+    Time: 90
+    StatusTerm: idea_growth_status_18
+    statusOverride:
+  - SubprintIndex: 88
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - herbs
+    - farm
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - herbs
+    - herbs
+    Time: 60
+    StatusTerm: idea_growth_status_18
+    statusOverride:
+  - SubprintIndex: 89
+    ParentBlueprint: {fileID: 114724804207875695}
+    RequiredCards:
+    - herbs
+    - greenhouse
+    CardsToRemove: []
+    ResultPolution: 0
+    ResultWellbeing: 0
+    ResultCard:
+    ResultAction:
+    ExtraResultCards:
+    - herbs
+    - herbs
+    Time: 60
+    StatusTerm: idea_growth_status_18
+    statusOverride:
+  BlueprintGroup: 0
+  HideFromIdeasTab: 0
+  IsInvention: 0
+  IsLandmark: 0
+  NeedsExactMatch: 1
+  OverrideResultDescription: 0
+  HasMaxAmountOnBoard: 0
+  CombineResultCards: 0
+  MaxAmountOnBoard: 1
+  ResultDescriptionTerm:
+  IgnoreEnergyWorkerDemand: 0
+  references:
+    version: 2
+    RefIds: []

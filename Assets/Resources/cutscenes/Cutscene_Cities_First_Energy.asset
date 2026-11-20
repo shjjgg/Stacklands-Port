@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -162795539, guid: fff28ad2958f41e0cb020d3a193dcc60, type: 3}
+  m_Name: Cutscene_Cities_First_Energy
+  m_EditorClassIdentifier:
+  CutsceneId: cities_first_energy
+  IsAdvisorCutscene: 0
+  AdvisorWarning: 0
+  CutsceneSteps:
+  - rid: 6745392284616622081
+  - rid: 7338100293676564482
+  - rid: 7338100293676564483
+  - rid: 6745392080247848966
+  - rid: 5504151161211191297
+  - rid: 8047244338656182276
+  - rid: 8047244338656182274
+  - rid: 8047244338656182277
+  - rid: 8047244338656182275
+  - rid: 8047244338656182280
+  - rid: 8047244338656182278
+  - rid: 8047244338656182281
+  - rid: 6745392080247848967
+  references:
+    version: 2
+    RefIds:
+    - rid: 5504151161211191297
+      type: {class: CutsceneStep_SetText, ns:, asm: GameScripts}
+      data:
+        TitleTerm: cutscene_cities_first_energy_title
+        TextTerm: cutscene_cities_first_energy_text_2
+        WaitForClick: 1
+        ButtonTerm: label_okay
+    - rid: 6745392080247848966
+      type: {class: CutsceneStep_SetView, ns:, asm: GameScripts}
+      data:
+        ViewType: 2
+    - rid: 6745392080247848967
+      type: {class: CutsceneStep_SetView, ns:, asm: GameScripts}
+      data:
+        ViewType: 1
+    - rid: 6745392284616622081
+      type: {class: CutsceneStep_FocusCameraOnenergyConsumer, ns:, asm: GameScripts}
+      data: {}
+    - rid: 7338100293676564482
+      type: {class: CutsceneStep_SetText, ns:, asm: GameScripts}
+      data:
+        TitleTerm: cutscene_cities_first_energy_title
+        TextTerm: cutscene_cities_first_energy_text_0
+        WaitForClick: 1
+        ButtonTerm: label_okay
+    - rid: 7338100293676564483
+      type: {class: CutsceneStep_SetText, ns:, asm: GameScripts}
+      data:
+        TitleTerm: cutscene_cities_first_energy_title
+        TextTerm: cutscene_cities_first_energy_text_1
+        WaitForClick: 1
+        ButtonTerm: label_nice
+    - rid: 8047244338656182274
+      type: {class: CutsceneStep_SetText, ns:, asm: GameScripts}
+      data:
+        TitleTerm: cutscene_cities_first_energy_title
+        TextTerm: cutscene_cities_first_energy_text_3
+        WaitForClick: 0
+        ButtonTerm: label_okay
+    - rid: 8047244338656182275
+      type: {class: CutsceneStep_SetText, ns:, asm: GameScripts}
+      data:
+        TitleTerm: cutscene_cities_first_energy_title
+        TextTerm: cutscene_cities_first_energy_text_4
+        WaitForClick: 1
+        ButtonTerm: label_okay
+    - rid: 8047244338656182276
+      type: {class: CutsceneStep_CreateCard, ns:, asm: GameScripts}
+      data:
+        CardId: treadmill
+        Location: 3
+        OtherCardId:
+        FindOrCreate: 0
+        SendCard: 0
+        MakeSmoke: 1
+    - rid: 8047244338656182277
+      type: {class: CutsceneStep_WaitForEnergyConnectionMade, ns:, asm: GameScripts}
+      data: {}
+    - rid: 8047244338656182278
+      type: {class: CutsceneStep_DestroyCard, ns:, asm: GameScripts}
+      data:
+        CardId: treadmill
+    - rid: 8047244338656182280
+      type: {class: CutsceneStep_WaitForSeconds, ns:, asm: GameScripts}
+      data:
+        Seconds: 0.2
+    - rid: 8047244338656182281
+      type: {class: CutsceneStep_WaitForSeconds, ns:, asm: GameScripts}
+      data:
+        Seconds: 0.2
