@@ -59,7 +59,7 @@ Unity.Licensing.Client --activate-all --include-personal \
 
 ## 3. 构建入口（Editor 脚本）
 
-`-executeMethod PortBuild.PerformAndroidBuild` 对应 `Assets/Editor/PortBuild.cs` 的静态方法，职责：
+`-executeMethod PortBuild.StrictBuild` 对应 `Assets/Editor/PortBuild.cs` 的静态方法，职责：
 
 1. 场景：优先取 `EditorBuildSettings.scenes`（启用项），不足两个时回落到原版固定列表
    `Assets/SokpopIntro/IntroScene.unity` → `Assets/Scenes/SampleScene.unity`；
@@ -69,8 +69,19 @@ Unity.Licensing.Client --activate-all --include-personal \
 3. 裁剪：`ManagedStrippingLevel.Low` + `stripEngineCode = false`（反射/Harmony 路径，见 docs/04）。
 4. IL2CPP 编译配置 Release（`BUILD_TYPE=Debug` 时转 Debug 并加 `BuildOptions.Development`）。
 5. 签名：`KEYSTORE_NAME` 存在才启用 `useCustomKeystore`，否则调试签名并告警（仅内部冒烟）。
-6. `BuildPipeline.BuildPlayer` 输出 `builds/android/Stacklands-Port.apk|aab`，
-   摘要含 result/size/errors/warnings 与全部生效配置，失败 `Exit(1)`、成功 `Exit(0)`。
+6. **严格模式（默认开启）**：`STRICT=1` 时按五道门逐级拦截，任何一道不过都不出包：
+
+| 门 | 检查内容 | 失败退出码 |
+|---|---|---|
+| 1 前置 | 引擎版本 == `2022.3.4f1`；`EditorBuildSettings` 内两个场景齐全且启动场景在首位（严格模式**不**回落固定列表）；`link.xml` 存在；`Packages/manifest.json` 非空 | 2 |
+| 2 配置 | 写入 IL2CPP / ARM64 / Vulkan+GLES3 / Linear / Low stripping / stripEngineCode=false / Release 编译 / INTERNET 权限 | — |
+| 3 回读 | 用 `GetGraphicsAPIs`、`GetScriptingBackend`、`targetArchitectures`、`colorSpace`、`stripEngineCode` **读回来比对**（写进去 ≠ 生效）；并全量扫工程内 Shader，`ShaderUtil.GetShaderMessageCount > 0` 即拒；`Assets/Shaders` 下自研 shader 少于 20 也拒 | 3 |
+| 4 构建 | `BuildOptions.StrictMode`（构建期任何 error 直接失败，含 shader 编译错误）+ `DetailedBuildReport` | — |
+| 5 结果 | `result != Succeeded`、`totalErrors > 0`、严格模式下 `totalWarnings > 0`、产物 < 1 MB、Release 却用调试签名 —— 任一命中都拒 | 4 |
+
+> `STRICT=0` 只是关闭门 1/3/5 的严格分支用于本地调试；CI 恒定 `STRICT=1` + `STRICT_WARNINGS=1`，不接受静默降级。
+
+7. 退出码语义固定：`0` 通过 / `2` 前置 / `3` 严格设置 / `4` 结果不合格；工作流把非 0 一律判红并附 `build.log`。
 
 可覆盖的运行参数（不改工作流，走仓库 Variables / 环境变量）：
 
@@ -82,8 +93,28 @@ Unity.Licensing.Client --activate-all --include-personal \
 | `TARGET_SDK` | `auto` | `auto` 跟随 Unity 默认；否则按数值，非法枚举回落 33 |
 | `BUILD_TYPE` | `Release` | `Debug` 出开发版 |
 | `BUNDLE_VERSION_CODE` | `github.run_number` | 版本号，随 CI 递增 |
+| `STRICT` | `1` | 严格模式总开关（CI 不关） |
+| `STRICT_WARNINGS` | `1` | 0 warning 才放行 |
+| `STRICT_MIN_CUSTOM_SHADERS` | `20` | 自研 shader 数量下限（保真链完整性） |
+| `STRICT_CLEAN` | `0` | `1` 时加 `BuildOptions.CleanBuildCache`，强制全量重编 |
 
 > 该脚本是移植工程的构建胶水，不改玩法逻辑；首版可先 `exportAndroidProject` 出工程再本地打包验证，稳定后直接出 AAB/APK。
+
+## 3.1 构建后审计（两道外部检查，不依赖 Unity 自述）
+
+Unity 退出码 0 只说明打包流程走完，不保证内容对 —— shader 错误、Managed 残留、多 ABI 混装都不会让它非 0。
+所以构建完再跑两个独立脚本，任一 FAIL 即 red：
+
+- `tools/strict_log_audit.py out/build.log`：按模式分级统计
+  `Shader error in` / `error CS` / `Exception:` / `Build completed with a result of 'Failed'` /
+  `il2cpp*error` / `Unloading broken assembly` 等；`STRICT_WARNINGS=1` 时连
+  `warning CS`、`deprecated` 也算失败（仅 `Packages/manifest.json` 相关已知告警在白名单）。
+- `tools/verify_apk.py <apk|aab>`：直接拆 zip 验证产物结构 ——
+  清单存在、`lib/arm64-v8a/libil2cpp.so` 存在且 > 512 KB、`global-metadata.dat` 存在且 > 100 KB、
+  **ABI 只能有 arm64-v8a**、无 `libmono*` 残留、`assets/bin/Data/Managed` 下无随包 dll、
+  资源 blob ≥ 2 且 `globalgamemanagers` 在、`classes*.dex` 在、二进制清单里能按 UTF-8/UTF-16 命中包名、
+  APK 有签名块；内容量（解压后）< 10 MB 直接判空包。
+- 另外 `keytool -printcert -jarfile` 拦截 `CN=Android Debug`：调试证书的包不允许当 Release 交付。
 
 ## 4. 缓存与性能
 

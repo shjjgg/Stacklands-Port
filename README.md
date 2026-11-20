@@ -69,6 +69,9 @@
 | [dependency_inventory/dependency_inventory.md](dependency_inventory/dependency_inventory.md) | 程序集引用闭包与内嵌资源台账 |
 | [interface_member_inventory/interface_member_inventory.md](interface_member_inventory/interface_member_inventory.md) | 接口实现与外部成员引用台账 |
 | [docs/metadata_overview.md](docs/metadata_overview.md) | 元数据总览主表与一致性断言（31 项） |
+| [tools/verify_apk.py](tools/verify_apk.py) | 严格产物审计：拆 APK/AAB 校验 IL2CPP 单 ABI、元数据、Mono 残留、包名 |
+| [tools/strict_log_audit.py](tools/strict_log_audit.py) | 严格日志审计：Unity 退出码 0 但日志有 error/warning 也判失败 |
+| [Assets/Editor/PortBuild.cs](Assets/Editor/PortBuild.cs) | 构建胶水（严格模式五道门 + 退出码语义） |
 | [Assets/Plugins/link.xml](Assets/Plugins/link.xml) | IL2CPP 裁剪保留清单 |
 | [Assets/Plugins/PlatformStubs/](Assets/Plugins/PlatformStubs/) | Steam/ImGui/在线服务桩接骨架 |
 

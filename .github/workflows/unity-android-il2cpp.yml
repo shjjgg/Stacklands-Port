@@ -33,6 +33,10 @@ env:
   SCREEN_ORIENTATION: ${{ vars.SCREEN_ORIENTATION || 'LandscapeLeft' }}
   MIN_SDK: ${{ vars.MIN_SDK || '26' }}
   TARGET_SDK: ${{ vars.TARGET_SDK || 'auto' }}
+  # 严格模式总开关: PortBuild.StrictBuild 无视它全门必过, 这里供日志审计/产物审计对齐口径。
+  STRICT: "1"
+  STRICT_WARNINGS: "1"
+  STRICT_MIN_CUSTOM_SHADERS: "20"
 
 jobs:
   static-analysis:
@@ -282,6 +286,7 @@ jobs:
             -e MIN_SDK \
             -e TARGET_SDK \
             -e BUILD_PATH=builds/android \
+            -e STRICT -e STRICT_WARNINGS -e STRICT_MIN_CUSTOM_SHADERS \
             -e HOME=/root \
             -w /project \
             --entrypoint bash \
@@ -297,7 +302,7 @@ jobs:
               set +e
               /opt/unity/Editor/Unity -batchmode -nographics -quit \
                 -projectPath /project \
-                -executeMethod PortBuild.PerformAndroidBuild \
+                -executeMethod PortBuild.StrictBuild \
                 -logFile /project/build.log
               echo $? > /project/unity.exit
               set -e
@@ -306,14 +311,45 @@ jobs:
             '
           code=$(cat unity.exit 2>/dev/null | tr -dc "0-9")
           cp -v build.log out/ 2>/dev/null || true
-          # shader 编译错误在 Unity 里只写日志、不让 exit code 非 0, 这里显式统计
-          errs=$(grep -c "Shader error in" build.log 2>/dev/null || true)
-          echo "shader compile errors: ${errs:-0}"
-          grep -m 20 "Shader error in" build.log 2>/dev/null || true
           sudo chown -R "$(id -u):$(id -g)" . || true
           echo "unity exit code: ${code:-missing}"
-          if [ "${code:-1}" != "0" ]; then exit 1; fi
-          if [ "${errs:-0}" != "0" ]; then echo "::error::shader compile errors present"; exit 1; fi
+          # Unity 退出码语义(见 PortBuild.cs 头注释): 0 通过 / 2 前置 / 3 严格设置 / 4 结果不合格
+          if [ "${code:-1}" != "0" ]; then
+            echo "::error::Unity 构建失败, 退出码 ${code:-missing} (缺日志时看 Upload Editor logs 产物)"
+            exit 1
+          fi
+
+      # ---- 严格审计 A: 日志 (Unity 退出码 0 不代表内容没错) ----
+      - name: Strict log audit
+        run: |
+          log=out/build.log
+          [ -f "$log" ] || log=build.log
+          if [ ! -f "$log" ]; then echo "::error::找不到构建日志"; exit 1; fi
+          python3 tools/strict_log_audit.py "$log" \
+            --json-out out/log_audit.json \
+            $( [ "${STRICT_WARNINGS}" = "1" ] || echo --allow-warnings )
+
+      # ---- 严格审计 B: 产物结构 (IL2CPP 单 ABI / 元数据 / 无 Mono残留) ----
+      - name: Strict artifact audit
+        run: |
+          art=$(find "${BUILD_PATH}" -maxdepth 2 -type f \( -name "*.apk" -o -name "*.aab" \) | head -1)
+          if [ -z "$art" ]; then echo "::error::没有产物可审计"; ls -R "${BUILD_PATH}" || true; exit 1; fi
+          echo "artifact: $art"
+          python3 tools/verify_apk.py "$art" \
+            --expect-bundle "${BUNDLE_IDENTIFIER}" \
+            --json-out out/verify_apk.json
+
+      # ---- 严格审计 C: Release 不允许用 Android 调试证书 ----
+      - name: Reject debug keystore on release
+        if: ${{ inputs.build_type != 'Debug' }}
+        run: |
+          art=$(find "${BUILD_PATH}" -maxdepth 2 -type f -name "*.apk" | head -1)
+          if [ -z "$art" ]; then echo "::error::Release 必须有 APK 才能验签"; exit 1; fi
+          if keytool -printcert -jarfile "$art" 2>/dev/null | grep -qi "CN=Android Debug"; then
+            echo "::error::$art 由 Android 调试证书签名, 不能作为 Release 交付"
+            exit 1
+          fi
+          echo "签名证书非调试证书, 通过"
 
       - name: Upload build artifact
         if: always()
@@ -323,6 +359,7 @@ jobs:
           path: |
             ${{ env.BUILD_PATH }}
             out/**
+            out/*.json
           retention-days: 14
           if-no-files-found: warn
 

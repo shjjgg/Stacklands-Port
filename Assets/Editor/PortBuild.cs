@@ -1,13 +1,21 @@
 // PortBuild.cs — 移植工程构建胶水 (放入 Assets/Editor/)
 // 仅负责出包配置, 不改玩法逻辑。
-// CI: 容器内 Unity -batchmode -executeMethod PortBuild.PerformAndroidBuild
+// CI: 容器内 Unity -batchmode -executeMethod PortBuild.StrictBuild (严格模式, 推荐)
+//     或 -executeMethod PortBuild.PerformAndroidBuild (旧入口, 行为受 STRICT 环境变量控制, 默认也是严格)
 //
 // 原版 PlayerSettings 实测(globalgamemanagers):
 //   companyName = sokpop, productName = Stacklands, activeColorSpace = Linear(1),
 //   MTRendering = true, 显示 Unity splash logo, 关闭独立 splash screen。
 // 包名/方向在二进制中未以明文保存, 默认值由环境变量覆盖 (见 docs/15 T19), 未覆盖时保持占位并告警。
+//
+// 退出码(CI 直接判读, 不要合并成 1):
+//   0  成功且全部严格门通过
+//   2  前置不满足(引擎版本漂移 / 场景缺失或未启用 / 场景顺序错 / 缺 link.xml / 依赖清单异常)
+//   3  严格设置校验失败(PlayerSettings 回读不一致 / Shader 编译错误 / 自研 shader 数量不足)
+//   4  构建结果不合格(结果非 Succeeded / error 计数 > 0 / warning 未放行 / 产物过小 / Release 用调试签名)
 #if UNITY_EDITOR
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEditor;
@@ -17,7 +25,8 @@ using UnityEngine.Rendering;
 
 public static class PortBuild
 {
-    // ---- 待编辑器核对后锁定的常量 ----
+    // ---- 基线常量 (禁止随手改) ----
+    private const string BaselineUnityVersion = "2022.3.4f1";
     private const string CompanyName = "sokpop";
     private const string ProductName = "Stacklands";
     // 移植包使用独立包名, 不冒充官方包; 可由 BUNDLE_IDENTIFIER 覆盖。
@@ -31,17 +40,232 @@ public static class PortBuild
         "Assets/Scenes/SampleScene.unity",
     };
 
+    private static readonly GraphicsDeviceType[] TargetGraphicsAPIs =
+    {
+        GraphicsDeviceType.Vulkan,
+        GraphicsDeviceType.OpenGLES3,
+    };
+
+    private static bool _keystoreApplied;
+
+    // ---- 入口 ----
+
+    /// 严格模式入口: 无视 STRICT 环境变量, 全部门必过。
+    public static void StrictBuild()
+    {
+        Environment.SetEnvironmentVariable("STRICT", "1");
+        PerformAndroidBuild();
+    }
+
     public static void PerformAndroidBuild()
     {
+        var strict = Env("STRICT", "1") == "1";
+        var warningsAreErrors = Env("STRICT_WARNINGS", strict ? "1" : "0") == "1";
         var isDevelopment = Env("BUILD_TYPE", "Release") == "Debug";
         var outputPath = GetOutputPath();
 
-        // 1. 场景列表: 优先用工程 EditorBuildSettings; 缺失时回落到原版固定列表。
-        //    无论哪种来源都必须两个场景齐全, 缺一个直接失败, 不允许出"能装但进不去游戏"的包。
-        var scenes = ResolveScenes();
-        ValidateScenesExist(scenes);
+        Debug.Log($"[PortBuild] mode={(strict ? "STRICT" : "normal")} " +
+                  $"warningsAsErrors={warningsAreErrors} output={outputPath}");
 
-        // 2. 基础 PlayerSettings
+        // ---- 门 1: 环境前置 (引擎版本 / 场景 / IL2CPP 保留配置 / 依赖清单) ----
+        RequireBaselineEngine(strict);
+        var scenes = ResolveScenes(strict);
+        ValidateScenesExist(scenes, strict);
+        ValidateLinkXml(strict);
+        ValidatePackageManifest(strict);
+
+        // ---- 门 2: PlayerSettings 配置 ----
+        ApplyPlayerSettings(isDevelopment);
+
+        // ---- 门 3: 设置回读 + Shader 全量检查 (写进去 ≠ 生效) ----
+        if (strict)
+        {
+            VerifyAppliedSettings();
+            ScanShaderMessages();
+        }
+
+        // ---- 门 4: 构建 ----
+        Directory.CreateDirectory(Path.GetDirectoryName(outputPath) ?? "builds/android");
+
+        var buildOptions = BuildOptions.DetailedBuildReport;
+        if (strict)
+        {
+            // StrictMode: 任何构建期 error(含 shader 编译错误)都让构建失败, 而不是只写日志。
+            buildOptions |= BuildOptions.StrictMode;
+            if (Env("STRICT_CLEAN", "0") == "1")
+            {
+                buildOptions |= BuildOptions.CleanBuildCache;
+            }
+        }
+        if (isDevelopment)
+        {
+            buildOptions |= BuildOptions.Development;
+        }
+
+        Debug.Log($"[PortBuild] target=Android backend=IL2CPP arch=ARM64 " +
+                  $"bundle={PlayerSettings.applicationIdentifier} ver={PlayerSettings.bundleVersion}" +
+                  $"({PlayerSettings.Android.bundleVersionCode}) " +
+                  $"minSdk={PlayerSettings.Android.minSdkVersion} " +
+                  $"targetSdk={PlayerSettings.Android.targetSdkVersion} " +
+                  $"orientation={PlayerSettings.defaultInterfaceOrientation} " +
+                  $"keystore={(_keystoreApplied ? "custom" : "debug")} " +
+                  $"dev={isDevelopment} options={buildOptions} " +
+                  $"scenes={string.Join(",", scenes)}");
+
+        var report = BuildPipeline.BuildPlayer(new BuildPlayerOptions
+        {
+            scenes = scenes,
+            locationPathName = outputPath,
+            target = BuildTarget.Android,
+            options = buildOptions,
+        });
+
+        var summary = report.summary;
+        Debug.Log($"[PortBuild] result={summary.result} scenes={scenes.Length} " +
+                  $"output={summary.outputPath} size={summary.totalSize}B " +
+                  $"errors={summary.totalErrors} warnings={summary.totalWarnings} " +
+                  $"time={summary.totalTime}");
+
+        // ---- 门 5: 结果与产物 ----
+        if (summary.result != BuildResult.Succeeded)
+        {
+            Debug.LogError($"[PortBuild] 构建失败: {summary.result} (退出码 4)");
+            EditorApplication.Exit(4);
+            return;
+        }
+        if (summary.totalErrors > 0)
+        {
+            Debug.LogError($"[PortBuild] 构建报错计数 {summary.totalErrors} > 0, " +
+                           "即使 result 为 Succeeded 也不接受 (退出码 4)");
+            EditorApplication.Exit(4);
+            return;
+        }
+        if (warningsAreErrors && summary.totalWarnings > 0)
+        {
+            Debug.LogError($"[PortBuild] 严格模式要求 0 warning, 实得 {summary.totalWarnings} " +
+                           "(如需放行请显式设 STRICT_WARNINGS=0, 不允许静默降级)");
+            EditorApplication.Exit(4);
+            return;
+        }
+        if (strict)
+        {
+            VerifyBuildArtifact(outputPath, isDevelopment);
+            return; // VerifyBuildArtifact 内部会 Exit
+        }
+
+        Debug.Log("[PortBuild] OK: 全部门通过");
+        EditorApplication.Exit(0);
+    }
+
+    // ---- 门 1: 前置 ----
+
+    private static void RequireBaselineEngine(bool strict)
+    {
+        var ver = Application.unityVersion;
+        if (ver == BaselineUnityVersion) return;
+
+        if (strict)
+        {
+            Debug.LogError($"[PortBuild] 引擎版本 {ver} 与基线 {BaselineUnityVersion} 不一致, " +
+                           "严格模式拒绝构建(IL2CPP 产物/API 面均按基线校准, 退出码 2)");
+            EditorApplication.Exit(2);
+        }
+        Debug.LogWarning($"[PortBuild] 引擎版本漂移: {ver} != {BaselineUnityVersion}");
+    }
+
+    // strict: 只用 EditorBuildSettings 里真实启用且齐全的场景, 不允许回落固定列表。
+    private static string[] ResolveScenes(bool strict)
+    {
+        var enabled = EditorBuildSettings.scenes
+            .Where(s => s.enabled)
+            .Select(s => s.path)
+            .ToArray();
+
+        if (!strict)
+        {
+            return enabled.Length >= RequiredScenes.Length ? enabled : RequiredScenes;
+        }
+
+        var missing = RequiredScenes.Where(r => !enabled.Contains(r)).ToList();
+        if (missing.Count > 0)
+        {
+            foreach (var p in missing)
+            {
+                Debug.LogError("[PortBuild] EditorBuildSettings 未启用必需场景: " + p +
+                               " (严格模式不接受回落固定列表, 退出码 2)");
+            }
+            EditorApplication.Exit(2);
+        }
+        // 顺序也要对: 启动场景必须是第一个, 否则进游戏先看到空场景。
+        if (enabled.Length > 0 && enabled[0] != RequiredScenes[0])
+        {
+            Debug.LogError($"[PortBuild] 构建场景顺序错误: 首位是 {enabled[0]}, " +
+                           $"应为 {RequiredScenes[0]} (退出码 2)");
+            EditorApplication.Exit(2);
+        }
+        return enabled;
+    }
+
+    private static void ValidateScenesExist(string[] scenes, bool strict)
+    {
+        var missing = scenes.Where(p => !File.Exists(p)).ToList();
+        if (missing.Count > 0)
+        {
+            foreach (var p in missing)
+            {
+                Debug.LogError("[PortBuild] 缺少场景文件: " + p);
+            }
+            Debug.LogError("[PortBuild] 场景未落地时不允许构建(AAB/APK 会装得上但进不去游戏)。" +
+                           "先按 docs/15 T1 完成 AssetRipper 导出。");
+            EditorApplication.Exit(2);
+        }
+        if (strict && scenes.Length == 0)
+        {
+            Debug.LogError("[PortBuild] 场景列表为空 (退出码 2)");
+            EditorApplication.Exit(2);
+        }
+    }
+
+    // link.xml 是 IL2CPP 裁剪的保留白名单: 丢了不会有编译错误, 只会在运行期 MissingMethod。
+    private static void ValidateLinkXml(bool strict)
+    {
+        if (File.Exists("Assets/Plugins/link.xml")) return;
+
+        if (strict)
+        {
+            Debug.LogError("[PortBuild] 缺少 Assets/Plugins/link.xml, IL2CPP 裁剪会误删反射入口 (退出码 2)");
+            EditorApplication.Exit(2);
+        }
+        Debug.LogWarning("[PortBuild] 缺少 Assets/Plugins/link.xml");
+    }
+
+    // 依赖清单存在性 + 非空 (IL2CPP/Android 模块缺失时构建会在链接阶段炸, 版本锁在 docs/12)。
+    private static void ValidatePackageManifest(bool strict)
+    {
+        var manifest = "Packages/manifest.json";
+        if (!File.Exists(manifest))
+        {
+            if (strict)
+            {
+                Debug.LogError("[PortBuild] 缺少 Packages/manifest.json, 依赖不可复现 (退出码 2)");
+                EditorApplication.Exit(2);
+            }
+            Debug.LogWarning("[PortBuild] 缺少 Packages/manifest.json");
+            return;
+        }
+
+        var text = File.ReadAllText(manifest);
+        if (strict && text.Trim().Length == 0)
+        {
+            Debug.LogError("[PortBuild] Packages/manifest.json 为空 (退出码 2)");
+            EditorApplication.Exit(2);
+        }
+    }
+
+    // ---- 门 2: 配置 ----
+
+    private static void ApplyPlayerSettings(bool isDevelopment)
+    {
         var bundleId = Env("BUNDLE_IDENTIFIER", DefaultBundleIdentifier);
         if (bundleId == DefaultBundleIdentifier)
         {
@@ -66,7 +290,6 @@ public static class PortBuild
         PlayerSettings.defaultInterfaceOrientation = ParseOrientation(
             Env("SCREEN_ORIENTATION", "LandscapeLeft"));
 
-        // 3. Android / IL2CPP 配置
         PlayerSettings.SetScriptingBackend(BuildTargetGroup.Android, ScriptingImplementation.IL2CPP);
         PlayerSettings.Android.targetArchitectures = AndroidArchitecture.ARM64;
         ApplyAndroidSdkLevel(Env("MIN_SDK", DefaultMinSdkVersion.ToString()),
@@ -81,11 +304,7 @@ public static class PortBuild
 
         // 图形 API: Vulkan 优先, GLES3 兜底。必须先关掉"默认 API"开关, 否则上面的设置会被忽略。
         PlayerSettings.SetUseDefaultGraphicsAPIs(BuildTarget.Android, false);
-        PlayerSettings.SetGraphicsAPIs(BuildTarget.Android, new[]
-        {
-            GraphicsDeviceType.Vulkan,
-            GraphicsDeviceType.OpenGLES3,
-        });
+        PlayerSettings.SetGraphicsAPIs(BuildTarget.Android, TargetGraphicsAPIs);
 
         // 裁剪: 首版保行为一致用 Low; 且关闭引擎代码裁剪 —— 本作有反射/Harmony 路径,
         // 引擎模块被裁会表现为运行期 MissingMethod, 见 docs/04。
@@ -99,78 +318,143 @@ public static class PortBuild
         // SokLoc 在线同步走 UnityWebRequest, 需要 INTERNET 权限。
         PlayerSettings.Android.forceInternetPermission = true;
 
-        // 4. 签名 (Release): 由 CI 环境变量注入; 未配置时走 Unity 调试签名, 只允许内部冒烟。
-        var keystoreApplied = ApplyKeystoreIfConfigured();
+        // 签名 (Release): 由 CI 环境变量注入; 未配置时走 Unity 调试签名, 只允许内部冒烟。
+        _keystoreApplied = ApplyKeystoreIfConfigured();
+    }
 
-        // 5. 构建选项
-        Directory.CreateDirectory(Path.GetDirectoryName(outputPath) ?? "builds/android");
-        var buildOptions = BuildOptions.None;
-        if (isDevelopment)
+    // ---- 门 3: 回读校验 ----
+
+    private static void VerifyAppliedSettings()
+    {
+        var failures = new List<string>();
+
+        var apis = PlayerSettings.GetGraphicsAPIs(BuildTarget.Android);
+        if (apis == null || apis.Length != TargetGraphicsAPIs.Length ||
+            apis.Zip(TargetGraphicsAPIs, (a, b) => a == b).Any(x => !x))
         {
-            buildOptions |= BuildOptions.Development;
+            failures.Add($"GraphicsAPIs 回读=[{string.Join(",", apis ?? new GraphicsDeviceType[0])}] " +
+                         $"期望=[{string.Join(",", TargetGraphicsAPIs)}]");
+        }
+        if (PlayerSettings.GetScriptingBackend(BuildTargetGroup.Android) != ScriptingImplementation.IL2CPP)
+        {
+            failures.Add("ScriptingBackend 回读非 IL2CPP");
+        }
+        if (PlayerSettings.Android.targetArchitectures != AndroidArchitecture.ARM64)
+        {
+            failures.Add($"targetArchitectures 回读={PlayerSettings.Android.targetArchitectures}, 期望 ARM64");
+        }
+        if (PlayerSettings.colorSpace != ColorSpace.Linear)
+        {
+            failures.Add($"colorSpace 回读={PlayerSettings.colorSpace}, 期望 Linear");
+        }
+        // stripEngineCode 必须为 false(不裁引擎): 本作有反射/Harmony 路径, 裁了会运行期 MissingMethod。
+        if (!PlayerSettings.stripEngineCode)
+        {
+            // 正常分支: 已经是 false, 什么都不做。
+        }
+        else
+        {
+            failures.Add("stripEngineCode 回读为 true, 期望 false(本作有反射路径)");
+        }
+        var bundle = PlayerSettings.applicationIdentifier;
+        if (string.IsNullOrEmpty(bundle) || !bundle.Contains("."))
+        {
+            failures.Add($"applicationIdentifier 非法: {bundle}");
         }
 
-        Debug.Log($"[PortBuild] target=Android backend=IL2CPP arch=ARM64 " +
-                  $"bundle={bundleId} ver={PlayerSettings.bundleVersion}" +
-                  $"({PlayerSettings.Android.bundleVersionCode}) " +
-                  $"minSdk={PlayerSettings.Android.minSdkVersion} " +
-                  $"targetSdk={PlayerSettings.Android.targetSdkVersion} " +
-                  $"orientation={PlayerSettings.defaultInterfaceOrientation} " +
-                  $"keystore={(keystoreApplied ? "custom" : "debug")} " +
-                  $"dev={isDevelopment} scenes={string.Join(",", scenes)}");
-
-        var report = BuildPipeline.BuildPlayer(new BuildPlayerOptions
+        if (failures.Count > 0)
         {
-            scenes = scenes,
-            locationPathName = outputPath,
-            target = BuildTarget.Android,
-            options = buildOptions,
-        });
+            foreach (var f in failures)
+            {
+                Debug.LogError("[PortBuild] 设置回读失败: " + f);
+            }
+            Debug.LogError("[PortBuild] 严格模式拒绝出包(退出码 3)");
+            EditorApplication.Exit(3);
+        }
+        Debug.Log("[PortBuild] 设置回读一致: GraphicsAPIs / IL2CPP / ARM64 / Linear / stripEngineCode=false");
+    }
 
-        var summary = report.summary;
-        Debug.Log($"[PortBuild] result={summary.result} scenes={scenes.Length} " +
-                  $"output={summary.outputPath} size={summary.totalSize}B " +
-                  $"errors={summary.totalErrors} warnings={summary.totalWarnings} " +
-                  $"time={summary.totalTime}");
+    // 工程内 Shader 全量编译检查: 任何一个 shader 有 error 就拒绝构建。
+    // 这条是"禁止占位/坏 shader 混入移植包"的硬门 —— shader 错误在 Android 上表现为白块/粉块, 不会崩。
+    private static void ScanShaderMessages()
+    {
+        var guids = AssetDatabase.FindAssets("t:Shader");
+        var customRoot = "Assets/Shaders/";
+        var customCount = 0;
+        var bad = 0;
+        var loaded = 0;
 
-        if (summary.result != BuildResult.Succeeded)
+        foreach (var guid in guids)
         {
-            Debug.LogError($"[PortBuild] 构建失败: {summary.result}, 详见上方日志与 build.log");
-            EditorApplication.Exit(1);
+            var path = AssetDatabase.GUIDToAssetPath(guid);
+            if (string.IsNullOrEmpty(path) || !path.StartsWith("Assets/", StringComparison.Ordinal)) continue;
+            if (path.StartsWith(customRoot, StringComparison.Ordinal)) customCount++;
+
+            var shader = AssetDatabase.LoadAssetAtPath<Shader>(path);
+            if (shader == null) continue;
+            loaded++;
+
+            var n = ShaderUtil.GetShaderMessageCount(shader);
+            if (n <= 0) continue;
+
+            bad++;
+            Debug.LogError($"[PortBuild] Shader 编译消息: {path} ({shader.name}) 共 {n} 条");
+            if (n <= 8)
+            {
+                foreach (var m in ShaderUtil.GetShaderMessages(shader))
+                {
+                    Debug.LogError("    " + m.message);
+                }
+            }
+        }
+
+        Debug.Log($"[PortBuild] shader 检查: 资产 {guids.Length} / 载入 {loaded} / " +
+                  $"Assets/Shaders 下 {customCount} / 有错误 {bad}");
+
+        if (loaded == 0)
+        {
+            Debug.LogError("[PortBuild] 工程内没有任何 Shader 资产, 资源未落地 (退出码 3)");
+            EditorApplication.Exit(3);
+        }
+        if (bad > 0)
+        {
+            Debug.LogError("[PortBuild] 存在编译不过的 Shader, 严格模式拒绝出包(退出码 3)");
+            EditorApplication.Exit(3);
+        }
+
+        // 自研 shader 数量下限: 20 个 Custom shader 是 baseline 事实, 少于它说明保真链断了一环。
+        var minCustom = ParseInt(Env("STRICT_MIN_CUSTOM_SHADERS", "20"), 20);
+        if (minCustom > 0 && customCount < minCustom)
+        {
+            Debug.LogError($"[PortBuild] Assets/Shaders 下只有 {customCount} 个 Shader, " +
+                           $"基线要求至少 {minCustom}。缺一个就是简化版, 严格模式拒绝出包(退出码 3)");
+            EditorApplication.Exit(3);
+        }
+    }
+
+    // ---- 门 5: 产物 ----
+
+    private static void VerifyBuildArtifact(string outputPath, bool isDevelopment)
+    {
+        var fi = new FileInfo(outputPath);
+        if (!fi.Exists || fi.Length < 1_000_000)
+        {
+            Debug.LogError($"[PortBuild] 产物不存在或过小: {outputPath} " +
+                           $"({(fi.Exists ? fi.Length : 0)} bytes, 退出码 4)");
+            EditorApplication.Exit(4);
             return;
         }
-
+        // 调试签名不允许以 Release 名义出货。
+        if (!isDevelopment && !_keystoreApplied)
+        {
+            Debug.LogError("[PortBuild] Release 构建未配置自定义 keystore(仅调试签名), " +
+                           "严格模式拒绝(退出码 4)。CI 需注入 KEYSTORE_* 四件套。");
+            EditorApplication.Exit(4);
+            return;
+        }
+        Debug.Log($"[PortBuild] 产物检查通过: {outputPath} = {fi.Length / 1024 / 1024} MB");
+        Debug.Log("[PortBuild] OK: 全部门通过");
         EditorApplication.Exit(0);
-    }
-
-    // ---- 场景 ----
-
-    private static string[] ResolveScenes()
-    {
-        var enabled = EditorBuildSettings.scenes
-            .Where(s => s.enabled)
-            .Select(s => s.path)
-            .ToArray();
-        if (enabled.Length >= RequiredScenes.Length)
-        {
-            return enabled;
-        }
-        return RequiredScenes;
-    }
-
-    private static void ValidateScenesExist(string[] scenes)
-    {
-        var missing = scenes.Where(p => !File.Exists(p)).ToList();
-        if (missing.Count > 0)
-        {
-            foreach (var p in missing)
-            {
-                Debug.LogError("[PortBuild] 缺少场景文件: " + p);
-            }
-            Debug.LogError("[PortBuild] 场景未落地时不允许构建(AAB/APK 会装得上但进不去游戏)。" +
-                           "先按 docs/15 T1 完成 AssetRipper 导出。");
-            EditorApplication.Exit(2);
-        }
     }
 
     // ---- 环境变量 ----
