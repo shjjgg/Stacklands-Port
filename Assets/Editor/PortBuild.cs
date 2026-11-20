@@ -129,7 +129,7 @@ public static class PortBuild
 
         var summary = report.summary;
         Debug.Log($"[PortBuild] result={summary.result} scenes={scenes.Length} " +
-                  $"output={summary.outputPath} size={summary.totalSizeBytes}B " +
+                  $"output={summary.outputPath} size={summary.totalSize}B " +
                   $"errors={summary.totalErrors} warnings={summary.totalWarnings} " +
                   $"time={summary.totalTime}");
 
