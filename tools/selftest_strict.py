@@ -107,6 +107,7 @@ def main() -> int:
             (proj / "Assets" / "Scripts" / f"C{i}.cs").write_text("class X{}", encoding="utf-8")
 
         # 子进程继承本进程 env: 给出密钥, 让前置检查只差 keystore(advisory)
+        os.environ.setdefault("UNITY_LICENSE", "<?xml version=\"1.0\"?><root/>")
         os.environ.setdefault("UNITY_EMAIL", "a@b.c")
         os.environ.setdefault("UNITY_PASSWORD", "x")
         (d / "empty").mkdir()
