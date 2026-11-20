@@ -31,50 +31,32 @@ jobs:
         with:
           lfs: false
 
-      - name: 安装 Unity 2022.3.4f1 + Android 模块（免 Unity Hub）
+      - name: 构建（GameCI 官方镜像 + 账号激活，无 ulf）
         env:
-          REVISION: 35713cd46cd7   # 2022.3.4f1 官方 revision
+          UNITY_USERNAME: ${{ secrets.UNITY_USERNAME || secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         run: |
           set -euo pipefail
-          BASE="https://download.unity3d.com/download_unity/${REVISION}"
-          DEST="$HOME/Unity/Hub/Editor/2022.3.4f1"
-          mkdir -p "$DEST/Editor"
-          echo "==> editor tarball"
-          curl -fL --retry 3 --retry-delay 5 -o /tmp/unity.tar.xz \
-            "$BASE/LinuxEditorInstaller/Unity-2022.3.4f1.tar.xz"
-          tar -xJf /tmp/unity.tar.xz -C "$DEST"
-          echo "==> android module"
-          curl -fL --retry 3 --retry-delay 5 -o /tmp/android.tar.xz \
-            "$BASE/LinuxEditorTargetInstaller/UnitySetup-Android-Support-for-Editor-2022.3.4f1.tar.xz"
-          mkdir -p /tmp/andmod "$DEST/Editor/Data/PlaybackEngines"
-          tar -xJf /tmp/android.tar.xz -C /tmp/andmod
-          if [ -d /tmp/andmod/AndroidPlayer ]; then
-            mv /tmp/andmod/AndroidPlayer "$DEST/Editor/Data/PlaybackEngines/AndroidPlayer"
-          else
-            mv /tmp/andmod "$DEST/Editor/Data/PlaybackEngines/AndroidPlayer"
-          fi
-          test -x "$DEST/Editor/Unity"
-          "$DEST/Editor/Unity" -version || true
-          echo "UNITY_EDITOR_PATH=$DEST/Editor/Unity" >> "$GITHUB_ENV"
-          echo "UNITY_PROJECT_PATH=$GITHUB_WORKSPACE" >> "$GITHUB_ENV"
-
-      - name: 激活 Personal 许可证（仅账号密码，不需要 ulf）
-        uses: buildalon/activate-unity-license@v3
-        with:
-          license: personal
-          username: ${{ secrets.UNITY_USERNAME || secrets.UNITY_EMAIL }}
-          password: ${{ secrets.UNITY_PASSWORD }}
-
-      - name: 构建 APK
-        uses: buildalon/unity-action@v4
-        with:
-          project-path: ${{ env.PROJECT_PATH }}
-          build-target: ${{ env.BUILD_TARGET }}
-          log-name: android-build
-          args: >-
-            -quit -batchmode -nographics
-            -executeMethod PortBuild.PerformAndroidBuild
-            -buildPath ${{ env.BUILD_PATH }}
+          IMG="unityci/editor:2022.3.4f1-android-3"
+          docker pull "$IMG"
+          docker run --rm --user root \
+            -e UNITY_USERNAME -e UNITY_PASSWORD \
+            -e STRICT -e BUILD_PATH \
+            -v "$GITHUB_WORKSPACE":/project \
+            -w /project \
+            "$IMG" bash -lc '
+              set -euo pipefail
+              LIC=/opt/unity/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client
+              echo "==> activate via credentials"
+              "$LIC" --update-license --username "$UNITY_USERNAME" --password "$UNITY_PASSWORD" || true
+              "$LIC" --showEntitlements || true
+              echo "==> build"
+              /opt/unity/Editor/Unity -batchmode -nographics -quit \
+                -buildTarget Android \
+                -executeMethod PortBuild.PerformAndroidBuild \
+                -buildPath "$BUILD_PATH" \
+                -logFile /dev/stdout
+            '
 
       - name: 校验产物
         if: always()
