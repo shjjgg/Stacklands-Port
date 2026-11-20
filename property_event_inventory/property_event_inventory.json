@@ -1,0 +1,4574 @@
+{
+  "scanned_at": "2026-11-20T20:20:03",
+  "assemblies": {
+    "GameScripts.dll": {
+      "property_count": 587,
+      "property_getter_count": 584,
+      "property_setter_count": 37,
+      "event_count": 6,
+      "event_add_count": 6,
+      "event_remove_count": 6,
+      "event_fire_count": 0,
+      "properties": [
+        {
+          "namespace": "",
+          "type": "AttackAnimation",
+          "name": "IsBlocking",
+          "getter": "get_IsBlocking",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "AttackAnimationMelee",
+          "name": "IsBlocking",
+          "getter": "get_IsBlocking",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "BoardMonths",
+          "name": "IsEmpty",
+          "getter": "get_IsEmpty",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Boosterpack",
+          "name": "Name",
+          "getter": "get_Name",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Boosterpack",
+          "name": "HasPhysics",
+          "getter": "get_HasPhysics",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Boosterpack",
+          "name": "BoosterId",
+          "getter": "get_BoosterId",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Boosterpack",
+          "name": "IsIntroPack",
+          "getter": "get_IsIntroPack",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Boosterpack",
+          "name": "Cost",
+          "getter": "get_Cost",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Boosterpack",
+          "name": "BoosterLocation",
+          "getter": "get_BoosterLocation",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Boosterpack",
+          "name": "CardBags",
+          "getter": "get_CardBags",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Boosterpack",
+          "name": "Mass",
+          "getter": "get_Mass",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "BoosterpackData",
+          "name": "Name",
+          "getter": "get_Name",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "BoosterpackData",
+          "name": "IsUnlocked",
+          "getter": "get_IsUnlocked",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "BoosterpackData",
+          "name": "RemainingAchievementCountToUnlock",
+          "getter": "get_RemainingAchievementCountToUnlock",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "BoosterpackData",
+          "name": "UndiscoveredCardCount",
+          "getter": "get_UndiscoveredCardCount",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "BuyBoosterBox",
+          "name": "Booster",
+          "getter": "get_Booster",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "CardConnector",
+          "name": "IsEnergyConnector",
+          "getter": "get_IsEnergyConnector",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "CardData",
+          "name": "Name",
+          "getter": "get_Name",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "CardData",
+          "name": "Position",
+          "getter": "get_Position",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "CardData",
+          "name": "FullName",
+          "getter": "get_FullName",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "CardData",
+          "name": "Description",
+          "getter": "get_Description",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "CardData",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "CardData",
+          "name": "HasInventory",
+          "getter": "get_HasInventory",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "CardData",
+          "name": "CanBeDragged",
+          "getter": "get_CanBeDragged",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "ICardReference",
+          "name": "ReferencedCardId",
+          "getter": "get_ReferencedCardId",
+          "setter": "set_ReferencedCardId"
+        },
+        {
+          "namespace": "",
+          "type": "CardReferenceCard",
+          "name": "ReferencedCardId",
+          "getter": "get_ReferencedCardId",
+          "setter": "set_ReferencedCardId"
+        },
+        {
+          "namespace": "",
+          "type": "CardReferenceCode",
+          "name": "ReferencedCardId",
+          "getter": "get_ReferencedCardId",
+          "setter": "set_ReferencedCardId"
+        },
+        {
+          "namespace": "",
+          "type": "CardReferenceBooster",
+          "name": "ReferencedCardId",
+          "getter": "get_ReferencedCardId",
+          "setter": "set_ReferencedCardId"
+        },
+        {
+          "namespace": "",
+          "type": "Animal",
+          "name": "CanBeDragged",
+          "getter": "get_CanBeDragged",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Animal",
+          "name": "CanMove",
+          "getter": "get_CanMove",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Animal",
+          "name": "RootPen",
+          "getter": "get_RootPen",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Animal",
+          "name": "RootBreedingPen",
+          "getter": "get_RootBreedingPen",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Animal",
+          "name": "RootMagnet",
+          "getter": "get_RootMagnet",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Animal",
+          "name": "RootSlaughterHouse",
+          "getter": "get_RootSlaughterHouse",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Animal",
+          "name": "RootPettingZoo",
+          "getter": "get_RootPettingZoo",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Animal",
+          "name": "rootStructure",
+          "getter": "get_rootStructure",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Animal",
+          "name": "InAnimalPen",
+          "getter": "get_InAnimalPen",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Animal",
+          "name": "CanCreate",
+          "getter": "get_CanCreate",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Animal",
+          "name": "TimeUntilCreate",
+          "getter": "get_TimeUntilCreate",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "AnimalPen",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Barrack",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Barrel",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "BaseVillager",
+          "name": "MyLifeStage",
+          "getter": "get_MyLifeStage",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "BaseVillager",
+          "name": "HasInventory",
+          "getter": "get_HasInventory",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Battery",
+          "name": "EnergyAmount",
+          "getter": "get_EnergyAmount",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Blueprint",
+          "name": "KnowledgeName",
+          "getter": "get_KnowledgeName",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Blueprint",
+          "name": "KnowledgeText",
+          "getter": "get_KnowledgeText",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Blueprint",
+          "name": "CardId",
+          "getter": "get_CardId",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Blueprint",
+          "name": "CanCurrentlyBeMade",
+          "getter": "get_CanCurrentlyBeMade",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Blueprint",
+          "name": "Group",
+          "getter": "get_Group",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Blueprint",
+          "name": "IsIslandKnowledge",
+          "getter": "get_IsIslandKnowledge",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "BlueprintAdmireCoin",
+          "name": "CanCurrentlyBeMade",
+          "getter": "get_CanCurrentlyBeMade",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "BlueprintAltar",
+          "name": "CanCurrentlyBeMade",
+          "getter": "get_CanCurrentlyBeMade",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "BlueprintHappiness",
+          "name": "CanCurrentlyBeMade",
+          "getter": "get_CanCurrentlyBeMade",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Boat",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Boat",
+          "name": "IsSailingOff",
+          "getter": "get_IsSailingOff",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Boat",
+          "name": "InSailOff",
+          "getter": "get_InSailOff",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Boat",
+          "name": "CanBeDragged",
+          "getter": "get_CanBeDragged",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "BreedingPen",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "CardRequirementResult_UsePollution",
+          "name": "WellbeingAmount",
+          "getter": "get_WellbeingAmount",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Cesspool",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Charity",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Chicken",
+          "name": "CanCreate",
+          "getter": "get_CanCreate",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Chicken",
+          "name": "IsBrooding",
+          "getter": "get_IsBrooding",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Chicken",
+          "name": "CanMove",
+          "getter": "get_CanMove",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "CitiesCombatable",
+          "name": "Housing",
+          "getter": "get_Housing",
+          "setter": "set_Housing"
+        },
+        {
+          "namespace": "",
+          "type": "CitiesCombatable",
+          "name": "HousingId",
+          "getter": "get_HousingId",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Combatable",
+          "name": "PossibleEquipables",
+          "getter": "get_PossibleEquipables",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Combatable",
+          "name": "ProcessedAttackType",
+          "getter": "get_ProcessedAttackType",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Combatable",
+          "name": "HasInventory",
+          "getter": "get_HasInventory",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Combatable",
+          "name": "RealBaseCombatStats",
+          "getter": "get_RealBaseCombatStats",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Combatable",
+          "name": "ProcessedCombatStats",
+          "getter": "get_ProcessedCombatStats",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Combatable",
+          "name": "InConflict",
+          "getter": "get_InConflict",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Combatable",
+          "name": "CanLeaveConflict",
+          "getter": "get_CanLeaveConflict",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Combatable",
+          "name": "TimeToAttackNormalized",
+          "getter": "get_TimeToAttackNormalized",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Combatable",
+          "name": "Team",
+          "getter": "get_Team",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Combatable",
+          "name": "CurrentAttackAnimation",
+          "getter": "get_CurrentAttackAnimation",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Combatable",
+          "name": "DamageMultiplier",
+          "getter": "get_DamageMultiplier",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "CombatableHarvestable",
+          "name": "StatusText",
+          "getter": "get_StatusText",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Composter",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Conveyor",
+          "name": "directionVector",
+          "getter": "get_directionVector",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Creditcard",
+          "name": "Card",
+          "getter": "get_Card",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Creditcard",
+          "name": "CurrencyValue",
+          "getter": "get_CurrencyValue",
+          "setter": "set_CurrencyValue"
+        },
+        {
+          "namespace": "",
+          "type": "Distillery",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Dollar",
+          "name": "Card",
+          "getter": "get_Card",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Dollar",
+          "name": "CurrencyValue",
+          "getter": "get_CurrencyValue",
+          "setter": "set_CurrencyValue"
+        },
+        {
+          "namespace": "",
+          "type": "Energy",
+          "name": "EnergyAmount",
+          "getter": "get_EnergyAmount",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "EnergyGenerator",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Factory",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "FishTrap",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "FlourMill",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Food",
+          "name": "IsSpoiling",
+          "getter": "get_IsSpoiling",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "FoodWarehouse",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Harvestable",
+          "name": "StatusText",
+          "getter": "get_StatusText",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Harvestable",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "HeavyFoundation",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Hotpot",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "ICurrency",
+          "name": "CurrencyValue",
+          "getter": "get_CurrencyValue",
+          "setter": "set_CurrencyValue"
+        },
+        {
+          "namespace": "",
+          "type": "ICurrency",
+          "name": "Card",
+          "getter": "get_Card",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "IEnergy",
+          "name": "EnergyAmount",
+          "getter": "get_EnergyAmount",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "IKnowledge",
+          "name": "CardId",
+          "getter": "get_CardId",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "IKnowledge",
+          "name": "IsIslandKnowledge",
+          "getter": "get_IsIslandKnowledge",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "IKnowledge",
+          "name": "KnowledgeName",
+          "getter": "get_KnowledgeName",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "IKnowledge",
+          "name": "KnowledgeText",
+          "getter": "get_KnowledgeText",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "IKnowledge",
+          "name": "Group",
+          "getter": "get_Group",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Market",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "MessHall",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Mimic",
+          "name": "CanBeDragged",
+          "getter": "get_CanBeDragged",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Mob",
+          "name": "CanMove",
+          "getter": "get_CanMove",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Mob",
+          "name": "CanBeDragged",
+          "getter": "get_CanBeDragged",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Museum",
+          "name": "givenCards",
+          "getter": "get_givenCards",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Museum",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Oven",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "ParticleCollider",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "PettingZoo",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "PirateBoat",
+          "name": "CanBeDragged",
+          "getter": "get_CanBeDragged",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Poop",
+          "name": "CanMakeSick",
+          "getter": "get_CanMakeSick",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Portal",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Portal",
+          "name": "IsTakingPortal",
+          "getter": "get_IsTakingPortal",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Portal",
+          "name": "CanBeDragged",
+          "getter": "get_CanBeDragged",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "ResourceMagnet",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Rumor",
+          "name": "Group",
+          "getter": "get_Group",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Rumor",
+          "name": "CardId",
+          "getter": "get_CardId",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Rumor",
+          "name": "KnowledgeName",
+          "getter": "get_KnowledgeName",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Rumor",
+          "name": "KnowledgeText",
+          "getter": "get_KnowledgeText",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Rumor",
+          "name": "IsIslandKnowledge",
+          "getter": "get_IsIslandKnowledge",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "SlaughterHouse",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Smelter",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Spirit",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Spirit",
+          "name": "IsReturning",
+          "getter": "get_IsReturning",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Spirit",
+          "name": "finishedSpiritRun",
+          "getter": "get_finishedSpiritRun",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Spring",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StompingVat",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StrangePortal",
+          "name": "CanBeDragged",
+          "getter": "get_CanBeDragged",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Subprint",
+          "name": "StatusName",
+          "getter": "get_StatusName",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Tavern",
+          "name": "givenCards",
+          "getter": "get_givenCards",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Tavern",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "TrashCan",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Weather",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Well",
+          "name": "DetermineCanHaveCardsWhenIsRoot",
+          "getter": "get_DetermineCanHaveCardsWhenIsRoot",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Worker",
+          "name": "Housing",
+          "getter": "get_Housing",
+          "setter": "set_Housing"
+        },
+        {
+          "namespace": "",
+          "type": "Worker",
+          "name": "HousingId",
+          "getter": "get_HousingId",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "HousingConsumer",
+          "name": "Housing",
+          "getter": "get_Housing",
+          "setter": "set_Housing"
+        },
+        {
+          "namespace": "",
+          "type": "HousingConsumer",
+          "name": "HousingId",
+          "getter": "get_HousingId",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "CardStringSplitter",
+          "name": "me",
+          "getter": "get_me",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "CardTarget",
+          "name": "Hovered",
+          "getter": "get_Hovered",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "CardValue",
+          "name": "TotalValue",
+          "getter": "get_TotalValue",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "CitiesCutscenes",
+          "name": "Title",
+          "getter": "get_Title",
+          "setter": "set_Title"
+        },
+        {
+          "namespace": "",
+          "type": "CitiesCutscenes",
+          "name": "Text",
+          "getter": "get_Text",
+          "setter": "set_Text"
+        },
+        {
+          "namespace": "",
+          "type": "CitiesCutscenes",
+          "name": "currentAnimation",
+          "getter": null,
+          "setter": "set_currentAnimation"
+        },
+        {
+          "namespace": "",
+          "type": "CombatStats",
+          "name": "CombatLevel",
+          "getter": "get_CombatLevel",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "CombatStats",
+          "name": "ItemLevel",
+          "getter": "get_ItemLevel",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Cutscenes",
+          "name": "Title",
+          "getter": "get_Title",
+          "setter": "set_Title"
+        },
+        {
+          "namespace": "",
+          "type": "Cutscenes",
+          "name": "Text",
+          "getter": "get_Text",
+          "setter": "set_Text"
+        },
+        {
+          "namespace": "",
+          "type": "Cutscenes",
+          "name": "currentAnimation",
+          "getter": null,
+          "setter": "set_currentAnimation"
+        },
+        {
+          "namespace": "",
+          "type": "DebugOptions",
+          "name": "Default",
+          "getter": "get_Default",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "DemandEvent",
+          "name": "Demand",
+          "getter": "get_Demand",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "DemandEvent",
+          "name": "MonthCompleted",
+          "getter": "get_MonthCompleted",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "DirectionCircleElement",
+          "name": "CanBeAutoMovedTo",
+          "getter": "get_CanBeAutoMovedTo",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Draggable",
+          "name": "IsHovered",
+          "getter": "get_IsHovered",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Draggable",
+          "name": "CanBeAutoMovedTo",
+          "getter": "get_CanBeAutoMovedTo",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Draggable",
+          "name": "AutoMoveSnapPosition",
+          "getter": "get_AutoMoveSnapPosition",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Draggable",
+          "name": "DraggableBounds",
+          "getter": "get_DraggableBounds",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Draggable",
+          "name": "HasPhysics",
+          "getter": "get_HasPhysics",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Draggable",
+          "name": "DragThresholdReached",
+          "getter": "get_DragThresholdReached",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Draggable",
+          "name": "Mass",
+          "getter": "get_Mass",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "EndOfMonthCutscenes",
+          "name": "CutsceneTitle",
+          "getter": "get_CutsceneTitle",
+          "setter": "set_CutsceneTitle"
+        },
+        {
+          "namespace": "",
+          "type": "EndOfMonthCutscenes",
+          "name": "CutsceneText",
+          "getter": "get_CutsceneText",
+          "setter": "set_CutsceneText"
+        },
+        {
+          "namespace": "",
+          "type": "EndOfMonthCutscenes",
+          "name": "CurrentMonth",
+          "getter": "get_CurrentMonth",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Equipable",
+          "name": "CanBeDragged",
+          "getter": "get_CanBeDragged",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "GameBoard",
+          "name": "Location",
+          "getter": "get_Location",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "GameBoard",
+          "name": "IsCurrent",
+          "getter": "get_IsCurrent",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "GameBoard",
+          "name": "WorldBounds",
+          "getter": "get_WorldBounds",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "GameBoard",
+          "name": "TightWorldBounds",
+          "getter": "get_TightWorldBounds",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "GameBoard",
+          "name": "BoardName",
+          "getter": "get_BoardName",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "GameCamera",
+          "name": "IsDragging",
+          "getter": "get_IsDragging",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "GameCamera",
+          "name": "TargetPositionOverride",
+          "getter": "get_TargetPositionOverride",
+          "setter": "set_TargetPositionOverride"
+        },
+        {
+          "namespace": "",
+          "type": "GameCamera",
+          "name": "TargetCardOverride",
+          "getter": "get_TargetCardOverride",
+          "setter": "set_TargetCardOverride"
+        },
+        {
+          "namespace": "",
+          "type": "GameCamera",
+          "name": "canControlCamera",
+          "getter": "get_canControlCamera",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "IGameCardOrCardData",
+          "name": "Position",
+          "getter": "get_Position",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "GameCard",
+          "name": "HasPhysics",
+          "getter": "get_HasPhysics",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "GameCard",
+          "name": "Position",
+          "getter": "get_Position",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "GameCard",
+          "name": "IsHovered",
+          "getter": "get_IsHovered",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "GameCard",
+          "name": "CardHeight",
+          "getter": "get_CardHeight",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "GameCard",
+          "name": "BeingHovered",
+          "getter": "get_BeingHovered",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "GameCard",
+          "name": "AutoMoveSnapPosition",
+          "getter": "get_AutoMoveSnapPosition",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "GameCard",
+          "name": "CanBeAutoMovedTo",
+          "getter": "get_CanBeAutoMovedTo",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "GameCard",
+          "name": "InventoryVisible",
+          "getter": "get_InventoryVisible",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "GameCard",
+          "name": "IsWorkerInventory",
+          "getter": "get_IsWorkerInventory",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "GameCard",
+          "name": "TimerRunningInStack",
+          "getter": "get_TimerRunningInStack",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "GameCard",
+          "name": "HasParent",
+          "getter": "get_HasParent",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "GameCard",
+          "name": "HasChild",
+          "getter": "get_HasChild",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "GameCard",
+          "name": "Mass",
+          "getter": "get_Mass",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "GameCard",
+          "name": "IsCollapsed",
+          "getter": "get_IsCollapsed",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "GameCard",
+          "name": "Combatable",
+          "getter": "get_Combatable",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "GameCard",
+          "name": "InConflict",
+          "getter": "get_InConflict",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "GameCard",
+          "name": "InAttack",
+          "getter": "get_InAttack",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "GreedCutscenes",
+          "name": "Title",
+          "getter": "get_Title",
+          "setter": "set_Title"
+        },
+        {
+          "namespace": "",
+          "type": "GreedCutscenes",
+          "name": "Text",
+          "getter": "get_Text",
+          "setter": "set_Text"
+        },
+        {
+          "namespace": "",
+          "type": "GreedCutscenes",
+          "name": "currentAnimation",
+          "getter": null,
+          "setter": "set_currentAnimation"
+        },
+        {
+          "namespace": "",
+          "type": "ICardId",
+          "name": "Id",
+          "getter": "get_Id",
+          "setter": "set_Id"
+        },
+        {
+          "namespace": "",
+          "type": "CardId",
+          "name": "Id",
+          "getter": "get_Id",
+          "setter": "set_Id"
+        },
+        {
+          "namespace": "",
+          "type": "CardIdWithEquipment",
+          "name": "Id",
+          "getter": "get_Id",
+          "setter": "set_Id"
+        },
+        {
+          "namespace": "",
+          "type": "AchievementElement",
+          "name": "IsNew",
+          "getter": "get_IsNew",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "CardopediaScreen",
+          "name": "IsSearching",
+          "getter": "get_IsSearching",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "ControlsScreen",
+          "name": "IsRebinding",
+          "getter": "get_IsRebinding",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "CustomButton",
+          "name": "RectTransform",
+          "getter": "get_RectTransform",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "CustomButton",
+          "name": "SelectableWithController",
+          "getter": "get_SelectableWithController",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "CustomButton",
+          "name": "IsSelected",
+          "getter": "get_IsSelected",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "CustomButton",
+          "name": "TextMeshPro",
+          "getter": "get_TextMeshPro",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "CustomButton",
+          "name": "canBeClicked",
+          "getter": "get_canBeClicked",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "CustomButton",
+          "name": "cam",
+          "getter": "get_cam",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "CustomButton",
+          "name": "WasRightClick",
+          "getter": "get_WasRightClick",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "CustomButton",
+          "name": "IsClicked",
+          "getter": "get_IsClicked",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "CutsceneScreen",
+          "name": "IsFrameRateUncapped",
+          "getter": "get_IsFrameRateUncapped",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "GameCanvas",
+          "name": "rectTransform",
+          "getter": "get_rectTransform",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "GameCanvas",
+          "name": "NothingSelected",
+          "getter": "get_NothingSelected",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "GameCanvas",
+          "name": "SelectedObject",
+          "getter": "get_SelectedObject",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "GameScreen",
+          "name": "IsFrameRateUncapped",
+          "getter": "get_IsFrameRateUncapped",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "OptionsScreen",
+          "name": "IsFrameRateUncapped",
+          "getter": "get_IsFrameRateUncapped",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "PauseScreen",
+          "name": "IsFrameRateUncapped",
+          "getter": "get_IsFrameRateUncapped",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "SokScreen",
+          "name": "Rect",
+          "getter": "get_Rect",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "SokScreen",
+          "name": "IsFrameRateUncapped",
+          "getter": "get_IsFrameRateUncapped",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "TransitionScreen",
+          "name": "IsLeaving",
+          "getter": "get_IsLeaving",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "TransitionScreen",
+          "name": "TransitionAmount",
+          "getter": "get_TransitionAmount",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "InventoryInteractable",
+          "name": "CanBeAutoMovedTo",
+          "getter": "get_CanBeAutoMovedTo",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "CitiesManager",
+          "name": "Wellbeing",
+          "getter": "get_Wellbeing",
+          "setter": "set_Wellbeing"
+        },
+        {
+          "namespace": "",
+          "type": "InputController",
+          "name": "InputString",
+          "getter": "get_InputString",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "InputController",
+          "name": "IsUsingMouse",
+          "getter": "get_IsUsingMouse",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "InputController",
+          "name": "MouseIsDragging",
+          "getter": "get_MouseIsDragging",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "InputController",
+          "name": "dragDistanceThreshold",
+          "getter": "get_dragDistanceThreshold",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "InputController",
+          "name": "dragTimeThreshold",
+          "getter": "get_dragTimeThreshold",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "InputController",
+          "name": "TouchesEnabled",
+          "getter": "get_TouchesEnabled",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "InputController",
+          "name": "InputCount",
+          "getter": "get_InputCount",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "InputController",
+          "name": "CurrentScheme",
+          "getter": "get_CurrentScheme",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "InputController",
+          "name": "CurrentSchemeIsController",
+          "getter": "get_CurrentSchemeIsController",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "InputController",
+          "name": "CurrentSchemeIsMouseKeyboard",
+          "getter": "get_CurrentSchemeIsMouseKeyboard",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "InputController",
+          "name": "CurrentSchemeIsTouch",
+          "getter": "get_CurrentSchemeIsTouch",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "WorldManager",
+          "name": "DraggingCard",
+          "getter": "get_DraggingCard",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "WorldManager",
+          "name": "HoveredCard",
+          "getter": "get_HoveredCard",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "WorldManager",
+          "name": "CardDataPrefabs",
+          "getter": "get_CardDataPrefabs",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "WorldManager",
+          "name": "BlueprintPrefabs",
+          "getter": "get_BlueprintPrefabs",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "WorldManager",
+          "name": "BoosterPackDatas",
+          "getter": "get_BoosterPackDatas",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "WorldManager",
+          "name": "CurrentSave",
+          "getter": "get_CurrentSave",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "WorldManager",
+          "name": "CurrentMonth",
+          "getter": "get_CurrentMonth",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "WorldManager",
+          "name": "MonthTime",
+          "getter": "get_MonthTime",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "WorldManager",
+          "name": "IsPlaying",
+          "getter": "get_IsPlaying",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "WorldManager",
+          "name": "InAnimation",
+          "getter": "get_InAnimation",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "WorldManager",
+          "name": "CanInteract",
+          "getter": "get_CanInteract",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "WorldManager",
+          "name": "SaveExtraKeyValues",
+          "getter": "get_SaveExtraKeyValues",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "WorldManager",
+          "name": "CurrentBoard",
+          "getter": "get_CurrentBoard",
+          "setter": "set_CurrentBoard"
+        },
+        {
+          "namespace": "",
+          "type": "WorldManager",
+          "name": "IntroPack",
+          "getter": "get_IntroPack",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "WorldManager",
+          "name": "TimeScale",
+          "getter": "get_TimeScale",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "WorldManager",
+          "name": "PhysicsTimeScale",
+          "getter": "get_PhysicsTimeScale",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "ConfigEntry`1",
+          "name": "Value",
+          "getter": "get_Value",
+          "setter": "set_Value"
+        },
+        {
+          "namespace": "",
+          "type": "ConfigEntry`1",
+          "name": "BoxedValue",
+          "getter": "get_BoxedValue",
+          "setter": "set_BoxedValue"
+        },
+        {
+          "namespace": "",
+          "type": "ConfigEntryBase",
+          "name": "BoxedValue",
+          "getter": "get_BoxedValue",
+          "setter": "set_BoxedValue"
+        },
+        {
+          "namespace": "",
+          "type": "OnOffInteractable",
+          "name": "CanBeAutoMovedTo",
+          "getter": "get_CanBeAutoMovedTo",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "PlatformHelper",
+          "name": "UseSteam",
+          "getter": "get_UseSteam",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "PlatformHelper",
+          "name": "HasModdingSupport",
+          "getter": "get_HasModdingSupport",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "PlatformHelper",
+          "name": "IsTestBuild",
+          "getter": "get_IsTestBuild",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "PlatformHelper",
+          "name": "CurrentSavesDirectory",
+          "getter": "get_CurrentSavesDirectory",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Quest",
+          "name": "DescriptionTerm",
+          "getter": "get_DescriptionTerm",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Quest",
+          "name": "Description",
+          "getter": "get_Description",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Quest",
+          "name": "QuestLocation",
+          "getter": "get_QuestLocation",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "Quest",
+          "name": "IsMainQuest",
+          "getter": "get_IsMainQuest",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "PlacedSprite",
+          "name": "Left",
+          "getter": "get_Left",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "PlacedSprite",
+          "name": "Right",
+          "getter": "get_Right",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "PlacedSprite",
+          "name": "Top",
+          "getter": "get_Top",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "PlacedSprite",
+          "name": "Bottom",
+          "getter": "get_Bottom",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "SaveGame",
+          "name": "LastSavedUtc",
+          "getter": "get_LastSavedUtc",
+          "setter": "set_LastSavedUtc"
+        },
+        {
+          "namespace": "",
+          "type": "ScriptableCutscene",
+          "name": "IsCitiesCutscene",
+          "getter": "get_IsCitiesCutscene",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "CutsceneStep",
+          "name": "Title",
+          "getter": "get_Title",
+          "setter": "set_Title"
+        },
+        {
+          "namespace": "",
+          "type": "CutsceneStep",
+          "name": "Text",
+          "getter": "get_Text",
+          "setter": "set_Text"
+        },
+        {
+          "namespace": "",
+          "type": "ShapeDrawer",
+          "name": "MyShape",
+          "getter": "get_MyShape",
+          "setter": "set_MyShape"
+        },
+        {
+          "namespace": "",
+          "type": "ShapeDrawer",
+          "name": "DrawingType",
+          "getter": "get_DrawingType",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "ConflictArrowDrawer",
+          "name": "Arrow",
+          "getter": "get_Arrow",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "ConflictArrowDrawer",
+          "name": "DrawingType",
+          "getter": "get_DrawingType",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "ConflictRectangleDrawer",
+          "name": "Rectangle",
+          "getter": "get_Rectangle",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "ConflictRectangleDrawer",
+          "name": "DrawingType",
+          "getter": "get_DrawingType",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "ConveyorArrowDrawer",
+          "name": "Arrow",
+          "getter": "get_Arrow",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "ConveyorArrowDrawer",
+          "name": "DrawingType",
+          "getter": "get_DrawingType",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "EnergyCableDrawer",
+          "name": "DrawingType",
+          "getter": "get_DrawingType",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "SewerPipeDrawer",
+          "name": "DrawingType",
+          "getter": "get_DrawingType",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "TransportArrowDrawer",
+          "name": "DrawingType",
+          "getter": "get_DrawingType",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "TransportArrowMainlandDrawer",
+          "name": "Cable",
+          "getter": "get_Cable",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "TransportArrowMainlandDrawer",
+          "name": "DrawingType",
+          "getter": "get_DrawingType",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect",
+          "name": "Name",
+          "getter": "get_Name",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect",
+          "name": "Description",
+          "getter": "get_Description",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect",
+          "name": "Lore",
+          "getter": "get_Lore",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect",
+          "name": "ColorA",
+          "getter": "get_ColorA",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect",
+          "name": "ColorB",
+          "getter": "get_ColorB",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect",
+          "name": "StatusNumber",
+          "getter": "get_StatusNumber",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect",
+          "name": "StatusNumberColor",
+          "getter": "get_StatusNumberColor",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect",
+          "name": "TermId",
+          "getter": "get_TermId",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect",
+          "name": "FadeInNonDefaultView",
+          "getter": "get_FadeInNonDefaultView",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect",
+          "name": "ParentCard",
+          "getter": "get_ParentCard",
+          "setter": "set_ParentCard"
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect",
+          "name": "Sprite",
+          "getter": "get_Sprite",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Poison",
+          "name": "TermId",
+          "getter": "get_TermId",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Poison",
+          "name": "Sprite",
+          "getter": "get_Sprite",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Bleeding",
+          "name": "TermId",
+          "getter": "get_TermId",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Bleeding",
+          "name": "Sprite",
+          "getter": "get_Sprite",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Frenzy",
+          "name": "TermId",
+          "getter": "get_TermId",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Frenzy",
+          "name": "Sprite",
+          "getter": "get_Sprite",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Invulnerable",
+          "name": "TermId",
+          "getter": "get_TermId",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Invulnerable",
+          "name": "Sprite",
+          "getter": "get_Sprite",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Drunk",
+          "name": "TermId",
+          "getter": "get_TermId",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Drunk",
+          "name": "Sprite",
+          "getter": "get_Sprite",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Stunned",
+          "name": "TermId",
+          "getter": "get_TermId",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Stunned",
+          "name": "Sprite",
+          "getter": "get_Sprite",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_WellFed",
+          "name": "TermId",
+          "getter": "get_TermId",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_WellFed",
+          "name": "Sprite",
+          "getter": "get_Sprite",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Spoiling",
+          "name": "TermId",
+          "getter": "get_TermId",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Spoiling",
+          "name": "Sprite",
+          "getter": "get_Sprite",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Demand",
+          "name": "TermId",
+          "getter": "get_TermId",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Demand",
+          "name": "Sprite",
+          "getter": "get_Sprite",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Sick",
+          "name": "TermId",
+          "getter": "get_TermId",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Sick",
+          "name": "Sprite",
+          "getter": "get_Sprite",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Sick",
+          "name": "Description",
+          "getter": "get_Description",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Anxious",
+          "name": "TermId",
+          "getter": "get_TermId",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Anxious",
+          "name": "Sprite",
+          "getter": "get_Sprite",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_NoEnergy",
+          "name": "TermId",
+          "getter": "get_TermId",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_NoEnergy",
+          "name": "Description",
+          "getter": "get_Description",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_NoEnergy",
+          "name": "FadeInNonDefaultView",
+          "getter": "get_FadeInNonDefaultView",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_NoEnergy",
+          "name": "Sprite",
+          "getter": "get_Sprite",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_NoSewer",
+          "name": "TermId",
+          "getter": "get_TermId",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_NoSewer",
+          "name": "FadeInNonDefaultView",
+          "getter": "get_FadeInNonDefaultView",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_NoSewer",
+          "name": "Sprite",
+          "getter": "get_Sprite",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_NoWorkers",
+          "name": "TermId",
+          "getter": "get_TermId",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_NoWorkers",
+          "name": "Sprite",
+          "getter": "get_Sprite",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_NoWorkers",
+          "name": "FadeInNonDefaultView",
+          "getter": "get_FadeInNonDefaultView",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_NoEducatedWorkers",
+          "name": "TermId",
+          "getter": "get_TermId",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_NoEducatedWorkers",
+          "name": "Sprite",
+          "getter": "get_Sprite",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_NoEducatedWorkers",
+          "name": "FadeInNonDefaultView",
+          "getter": "get_FadeInNonDefaultView",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Homeless",
+          "name": "TermId",
+          "getter": "get_TermId",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Homeless",
+          "name": "Sprite",
+          "getter": "get_Sprite",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_MaxOnBoard",
+          "name": "TermId",
+          "getter": "get_TermId",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_MaxOnBoard",
+          "name": "Sprite",
+          "getter": "get_Sprite",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Damaged",
+          "name": "TermId",
+          "getter": "get_TermId",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Damaged",
+          "name": "FadeInNonDefaultView",
+          "getter": "get_FadeInNonDefaultView",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Damaged",
+          "name": "Sprite",
+          "getter": "get_Sprite",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_CardOff",
+          "name": "TermId",
+          "getter": "get_TermId",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_CardOff",
+          "name": "Sprite",
+          "getter": "get_Sprite",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_OnFire",
+          "name": "TermId",
+          "getter": "get_TermId",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_OnFire",
+          "name": "FadeInNonDefaultView",
+          "getter": "get_FadeInNonDefaultView",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_OnFire",
+          "name": "Sprite",
+          "getter": "get_Sprite",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Drought",
+          "name": "TermId",
+          "getter": "get_TermId",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Drought",
+          "name": "FadeInNonDefaultView",
+          "getter": "get_FadeInNonDefaultView",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Drought",
+          "name": "Sprite",
+          "getter": "get_Sprite",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Depleted",
+          "name": "TermId",
+          "getter": "get_TermId",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Depleted",
+          "name": "FadeInNonDefaultView",
+          "getter": "get_FadeInNonDefaultView",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Depleted",
+          "name": "Sprite",
+          "getter": "get_Sprite",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Dissolving",
+          "name": "TermId",
+          "getter": "get_TermId",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Dissolving",
+          "name": "Sprite",
+          "getter": "get_Sprite",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Radar",
+          "name": "TermId",
+          "getter": "get_TermId",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Radar",
+          "name": "Sprite",
+          "getter": "get_Sprite",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Radar",
+          "name": "FadeInNonDefaultView",
+          "getter": "get_FadeInNonDefaultView",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Radar",
+          "name": "Description",
+          "getter": "get_Description",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Space",
+          "name": "TermId",
+          "getter": "get_TermId",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Space",
+          "name": "apartment",
+          "getter": "get_apartment",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Space",
+          "name": "Sprite",
+          "getter": "get_Sprite",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Space",
+          "name": "Description",
+          "getter": "get_Description",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Space",
+          "name": "StatusNumber",
+          "getter": "get_StatusNumber",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "StatusEffect_Space",
+          "name": "StatusNumberColor",
+          "getter": "get_StatusNumberColor",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "SteamManager",
+          "name": "Instance",
+          "getter": "get_Instance",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "SteamManager",
+          "name": "Initialized",
+          "getter": "get_Initialized",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "WeightedRandomBag`1",
+          "name": "Count",
+          "getter": "get_Count",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<WaitFor>d__34",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<WaitFor>d__34",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Perform>d__3",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Perform>d__3",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<CitiesDrought>d__12",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<CitiesDrought>d__12",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<CitiesEarthQuake>d__11",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<CitiesEarthQuake>d__11",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<CitiesFinancialCrisis>d__9",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<CitiesFinancialCrisis>d__9",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<CitiesGameOver>d__21",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<CitiesGameOver>d__21",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<CitiesParticleCollider>d__15",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<CitiesParticleCollider>d__15",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<CitiesStopDisaster>d__16",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<CitiesStopDisaster>d__16",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<CitiesTornado>d__8",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<CitiesTornado>d__8",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<CitiesWildFire>d__13",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<CitiesWildFire>d__13",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<DinoBoss>d__14",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<DinoBoss>d__14",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<WaitForAnswer>d__18",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<WaitForAnswer>d__18",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<WaitForContinueClicked>d__19",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<WaitForContinueClicked>d__19",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<AltarIntro>d__49",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<AltarIntro>d__49",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<BossFight2>d__29",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<BossFight2>d__29",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<BossFight2Complete>d__31",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<BossFight2Complete>d__31",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<BossFight>d__28",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<BossFight>d__28",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<BossFightComplete>d__30",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<BossFightComplete>d__30",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<CurseActivatedOnBoard>d__52",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<CurseActivatedOnBoard>d__52",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<DeathIntro>d__22",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<DeathIntro>d__22",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<DemonOfSadness>d__50",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<DemonOfSadness>d__50",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<EveryoneInForestDead>d__12",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<EveryoneInForestDead>d__12",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<EveryoneInSpiritWorldDead>d__14",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<EveryoneInSpiritWorldDead>d__14",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<EveryoneOnIslandDead>d__13",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<EveryoneOnIslandDead>d__13",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<ForestEndlessWaveEnd>d__26",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<ForestEndlessWaveEnd>d__26",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<ForestIntro>d__19",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<ForestIntro>d__19",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<ForestLastWaveEnd>d__25",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<ForestLastWaveEnd>d__25",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<ForestResumeIntro>d__23",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<ForestResumeIntro>d__23",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<ForestWaveEnd>d__24",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<ForestWaveEnd>d__24",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<ForestWaveLost>d__27",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<ForestWaveLost>d__27",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<GreedIntro>d__20",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<GreedIntro>d__20",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<HappinessIntro>d__21",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<HappinessIntro>d__21",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<IslandIntro>d__18",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<IslandIntro>d__18",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<IslandIntroPack>d__17",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<IslandIntroPack>d__17",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<JustUnlockedPack>d__11",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<JustUnlockedPack>d__11",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<MommaCrab>d__16",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<MommaCrab>d__16",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<ReturnToBoardCutscene>d__47",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<ReturnToBoardCutscene>d__47",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<RunScriptableCutscene>d__40",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<RunScriptableCutscene>d__40",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<RunScriptableCutsceneInCutscene>d__41",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<RunScriptableCutsceneInCutscene>d__41",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<ShamanLeaving>d__51",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<ShamanLeaving>d__51",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<SpawnKraken>d__10",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<SpawnKraken>d__10",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<SpawnTentacles>d__9",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<SpawnTentacles>d__9",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<SpiritOutro>d__46",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<SpiritOutro>d__46",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<WaitForAnswer>d__38",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<WaitForAnswer>d__38",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<WaitForContinueClicked>d__39",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<WaitForContinueClicked>d__39",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Wish10>d__35",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Wish10>d__35",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Wish1>d__32",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Wish1>d__32",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Wish20>d__36",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Wish20>d__36",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Wish2>d__33",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Wish2>d__33",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Wish50>d__37",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Wish50>d__37",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Wish5>d__34",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Wish5>d__34",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<AgeVillagers>d__14",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<AgeVillagers>d__14",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<CheckMakeSick>d__13",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<CheckMakeSick>d__13",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<FeedVillagers>d__17",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<FeedVillagers>d__17",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<HappinessWarning>d__20",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<HappinessWarning>d__20",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<IndustrialRevolutionEvent>d__23",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<IndustrialRevolutionEvent>d__23",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<KillAnimals>d__15",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<KillAnimals>d__15",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<MaxCardCount>d__28",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<MaxCardCount>d__28",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<NewVillagerBecauseOfHappiness>d__21",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<NewVillagerBecauseOfHappiness>d__21",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<NewVillagerSpawnsInDeath>d__22",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<NewVillagerSpawnsInDeath>d__22",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<SpecialEvents>d__29",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<SpecialEvents>d__29",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<UseHappiness>d__25",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<UseHappiness>d__25",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<WaitFor>d__252",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<WaitFor>d__252",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<FinalDemandEndSuccess>d__10",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<FinalDemandEndSuccess>d__10",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<FinalDemandLiftCurse>d__13",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<FinalDemandLiftCurse>d__13",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<FinalDemandStart>d__9",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<FinalDemandStart>d__9",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<FinishDemandFailed>d__18",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<FinishDemandFailed>d__18",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<FinishDemandSuccess>d__16",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<FinishDemandSuccess>d__16",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<FinishDemandSuccessPreMoon>d__17",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<FinishDemandSuccessPreMoon>d__17",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<GreedWearCrown>d__11",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<GreedWearCrown>d__11",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<KillRoyalLiftCurse>d__14",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<KillRoyalLiftCurse>d__14",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<NewVillager>d__12",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<NewVillager>d__12",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<StartDemand>d__15",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<StartDemand>d__15",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<TryAttackRoyal>d__21",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<TryAttackRoyal>d__21",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<WaitForAnswer>d__19",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<WaitForAnswer>d__19",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<WaitForContinueClicked>d__20",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<WaitForContinueClicked>d__20",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Permute>d__0`1",
+          "name": "System.Collections.Generic.IEnumerator<System.Collections.Generic.IEnumerable<T>>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Collections.Generic.IEnumerable<T>>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Permute>d__0`1",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<LoadAudioClipFromPath>d__2",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<LoadAudioClipFromPath>d__2",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<ScrollToQuestCoroutine>d__83",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<ScrollToQuestCoroutine>d__83",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<CheckDemands>d__11",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<CheckDemands>d__11",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<FinishDemand>d__20",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<FinishDemand>d__20",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<StartDemand>d__18",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<StartDemand>d__18",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<EndOfMonthCitiesRoutine>d__266",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<EndOfMonthCitiesRoutine>d__266",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<EndOfMonthRoutine>d__265",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<EndOfMonthRoutine>d__265",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<FinishDemand>d__256",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<FinishDemand>d__256",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<FinishDemandRoutine>d__268",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<FinishDemandRoutine>d__268",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<KillVillagerCoroutine>d__272",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<KillVillagerCoroutine>d__272",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<SpawnAndDestroyCards>d__169",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<SpawnAndDestroyCards>d__169",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<WaitForContinueClicked>d__262",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<WaitForContinueClicked>d__262",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<ResetAfter>d__7",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<ResetAfter>d__7",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "SpriteMetadata",
+          "name": "Area",
+          "getter": "get_Area",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<TakeAllScreenshots>d__6",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<TakeAllScreenshots>d__6",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<TakeScreenshot>d__7",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<TakeScreenshot>d__7",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__7",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__7",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__4",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__4",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__3",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__3",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__1",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__1",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__1",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__1",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__2",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__2",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__1",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__1",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__0",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__0",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__0",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__0",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__0",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__0",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__1",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__1",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__1",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__1",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__7",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__7",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__1",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__1",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__1",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__1",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__1",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__1",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__0",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Process>d__0",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "CardIdWithEquipmentCombat",
+          "name": "Id",
+          "getter": "get_Id",
+          "setter": "set_Id"
+        }
+      ],
+      "events": [
+        {
+          "namespace": "",
+          "type": "CustomButton",
+          "name": "Clicked",
+          "add": "add_Clicked",
+          "remove": "remove_Clicked",
+          "fire": null
+        },
+        {
+          "namespace": "",
+          "type": "CustomButton",
+          "name": "StartDragging",
+          "add": "add_StartDragging",
+          "remove": "remove_StartDragging",
+          "fire": null
+        },
+        {
+          "namespace": "",
+          "type": "CustomButton",
+          "name": "ExplicitNavigationChanged",
+          "add": "add_ExplicitNavigationChanged",
+          "remove": "remove_ExplicitNavigationChanged",
+          "fire": null
+        },
+        {
+          "namespace": "",
+          "type": "ExpandableLabel",
+          "name": "OnExpand",
+          "add": "add_OnExpand",
+          "remove": "remove_OnExpand",
+          "fire": null
+        },
+        {
+          "namespace": "",
+          "type": "ExpandableLabelCardopedia",
+          "name": "OnExpand",
+          "add": "add_OnExpand",
+          "remove": "remove_OnExpand",
+          "fire": null
+        },
+        {
+          "namespace": "",
+          "type": "InputController",
+          "name": "ControlSchemeChanged",
+          "add": "add_ControlSchemeChanged",
+          "remove": "remove_ControlSchemeChanged",
+          "fire": null
+        }
+      ]
+    },
+    "Assembly-CSharp.dll": {
+      "property_count": 0,
+      "property_getter_count": 0,
+      "property_setter_count": 0,
+      "event_count": 0,
+      "event_add_count": 0,
+      "event_remove_count": 0,
+      "event_fire_count": 0,
+      "properties": [],
+      "events": []
+    },
+    "Assembly-CSharp-firstpass.dll": {
+      "property_count": 37,
+      "property_getter_count": 37,
+      "property_setter_count": 5,
+      "event_count": 0,
+      "event_add_count": 0,
+      "event_remove_count": 0,
+      "event_fire_count": 0,
+      "properties": [
+        {
+          "namespace": "TMPro",
+          "type": "TMP_TextEventHandler",
+          "name": "onCharacterSelection",
+          "getter": "get_onCharacterSelection",
+          "setter": "set_onCharacterSelection"
+        },
+        {
+          "namespace": "TMPro",
+          "type": "TMP_TextEventHandler",
+          "name": "onSpriteSelection",
+          "getter": "get_onSpriteSelection",
+          "setter": "set_onSpriteSelection"
+        },
+        {
+          "namespace": "TMPro",
+          "type": "TMP_TextEventHandler",
+          "name": "onWordSelection",
+          "getter": "get_onWordSelection",
+          "setter": "set_onWordSelection"
+        },
+        {
+          "namespace": "TMPro",
+          "type": "TMP_TextEventHandler",
+          "name": "onLineSelection",
+          "getter": "get_onLineSelection",
+          "setter": "set_onLineSelection"
+        },
+        {
+          "namespace": "TMPro",
+          "type": "TMP_TextEventHandler",
+          "name": "onLinkSelection",
+          "getter": "get_onLinkSelection",
+          "setter": "set_onLinkSelection"
+        },
+        {
+          "namespace": "",
+          "type": "<Start>d__4",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Start>d__4",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Start>d__10",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Start>d__10",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Start>d__10",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Start>d__10",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<AnimateProperties>d__6",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<AnimateProperties>d__6",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<WarpText>d__7",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<WarpText>d__7",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Start>d__4",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<Start>d__4",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<RevealCharacters>d__7",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<RevealCharacters>d__7",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<RevealWords>d__8",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<RevealWords>d__8",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<DisplayTextMeshFloatingText>d__16",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<DisplayTextMeshFloatingText>d__16",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<DisplayTextMeshProFloatingText>d__15",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<DisplayTextMeshProFloatingText>d__15",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<AnimateVertexColors>d__3",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<AnimateVertexColors>d__3",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<AnimateVertexColors>d__11",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<AnimateVertexColors>d__11",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<AnimateVertexColors>d__11",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<AnimateVertexColors>d__11",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<AnimateVertexColors>d__10",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<AnimateVertexColors>d__10",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<AnimateVertexColors>d__10",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<AnimateVertexColors>d__10",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<WarpText>d__8",
+          "name": "System.Collections.Generic.IEnumerator<System.Object>.Current",
+          "getter": "System.Collections.Generic.IEnumerator<System.Object>.get_Current",
+          "setter": null
+        },
+        {
+          "namespace": "",
+          "type": "<WarpText>d__8",
+          "name": "System.Collections.IEnumerator.Current",
+          "getter": "System.Collections.IEnumerator.get_Current",
+          "setter": null
+        }
+      ],
+      "events": []
+    },
+    "csS.dll": {
+      "property_count": 15,
+      "property_getter_count": 15,
+      "property_setter_count": 13,
+      "event_count": 0,
+      "event_add_count": 0,
+      "event_remove_count": 0,
+      "event_fire_count": 0,
+      "properties": [
+        {
+          "namespace": "LBG",
+          "type": "SubclassPathAttribute",
+          "name": "SubClassPath",
+          "getter": "get_SubClassPath",
+          "setter": "set_SubClassPath"
+        },
+        {
+          "namespace": "LBG",
+          "type": "SubclassPathAttribute",
+          "name": "SubClassName",
+          "getter": "get_SubClassName",
+          "setter": "set_SubClassName"
+        },
+        {
+          "namespace": "LBG",
+          "type": "SubclassPathAttribute",
+          "name": "HasSubClassPath",
+          "getter": "get_HasSubClassPath",
+          "setter": "set_HasSubClassPath"
+        },
+        {
+          "namespace": "LBG",
+          "type": "SubclassPathAttribute",
+          "name": "HasSubClassName",
+          "getter": "get_HasSubClassName",
+          "setter": "set_HasSubClassName"
+        },
+        {
+          "namespace": "LBG",
+          "type": "SubclassSelectorAttribute",
+          "name": "AllowDuplicates",
+          "getter": "get_AllowDuplicates",
+          "setter": "set_AllowDuplicates"
+        },
+        {
+          "namespace": "LBG",
+          "type": "SubclassSelectorAttribute",
+          "name": "HideReferencePicker",
+          "getter": "get_HideReferencePicker",
+          "setter": "set_HideReferencePicker"
+        },
+        {
+          "namespace": "LBG",
+          "type": "SubclassSelectorAttribute",
+          "name": "DrawDropdownForListElements",
+          "getter": "get_DrawDropdownForListElements",
+          "setter": "set_DrawDropdownForListElements"
+        },
+        {
+          "namespace": "LBG",
+          "type": "SubclassSelectorAttribute",
+          "name": "DrawBoxForListElements",
+          "getter": "get_DrawBoxForListElements",
+          "setter": "set_DrawBoxForListElements"
+        },
+        {
+          "namespace": "LBG",
+          "type": "SubclassSelectorAttribute",
+          "name": "HideClassLabel",
+          "getter": "get_HideClassLabel",
+          "setter": "set_HideClassLabel"
+        },
+        {
+          "namespace": "LBG",
+          "type": "SubclassSelectorAttribute",
+          "name": "HideChildProperties",
+          "getter": "get_HideChildProperties",
+          "setter": "set_HideChildProperties"
+        },
+        {
+          "namespace": "LBG",
+          "type": "SubclassSelectorAttribute",
+          "name": "DrawClassFoldout",
+          "getter": "get_DrawClassFoldout",
+          "setter": "set_DrawClassFoldout"
+        },
+        {
+          "namespace": "LBG",
+          "type": "SubclassSelectorAttribute",
+          "name": "CustomTypeFilter",
+          "getter": "get_CustomTypeFilter",
+          "setter": "set_CustomTypeFilter"
+        },
+        {
+          "namespace": "LBG",
+          "type": "SubclassSelectorAttribute",
+          "name": "HasCustomTypeFilter",
+          "getter": "get_HasCustomTypeFilter",
+          "setter": null
+        },
+        {
+          "namespace": "LBG",
+          "type": "SubclassSelectorAttribute",
+          "name": "OnTypesSelected",
+          "getter": "get_OnTypesSelected",
+          "setter": "set_OnTypesSelected"
+        },
+        {
+          "namespace": "LBG",
+          "type": "SubclassSelectorAttribute",
+          "name": "HasOnTypesSelected",
+          "getter": "get_HasOnTypesSelected",
+          "setter": null
+        }
+      ],
+      "events": []
+    }
+  }
+}

@@ -1,0 +1,287 @@
+{
+  "generated_at": "2026-11-20T20:34:01",
+  "assemblies": [
+    {
+      "assembly": "GameScripts.dll",
+      "typedef": 931,
+      "monoscript": 353,
+      "methoddef": 5453,
+      "fielddef": 7737,
+      "propertydef": 587,
+      "eventdef": 6,
+      "customattr": 1596,
+      "assemblyref": 26,
+      "memberref": 2174,
+      "interfaceimpl": 366
+    },
+    {
+      "assembly": "Assembly-CSharp.dll",
+      "typedef": 7,
+      "monoscript": 1,
+      "methoddef": 15,
+      "fielddef": 41,
+      "propertydef": 0,
+      "eventdef": 0,
+      "customattr": 8,
+      "assemblyref": 5,
+      "memberref": 41,
+      "interfaceimpl": 0
+    },
+    {
+      "assembly": "Assembly-CSharp-firstpass.dll",
+      "typedef": 74,
+      "monoscript": 35,
+      "methoddef": 268,
+      "fielddef": 358,
+      "propertydef": 37,
+      "eventdef": 0,
+      "customattr": 128,
+      "assemblyref": 9,
+      "memberref": 312,
+      "interfaceimpl": 59
+    },
+    {
+      "assembly": "csS.dll",
+      "typedef": 7,
+      "monoscript": 3,
+      "methoddef": 34,
+      "fielddef": 22,
+      "propertydef": 15,
+      "eventdef": 0,
+      "customattr": 38,
+      "assemblyref": 1,
+      "memberref": 13,
+      "interfaceimpl": 0
+    }
+  ],
+  "closure": {
+    "managed_dll_count": 129,
+    "unresolved_assemblies": {},
+    "unresolved_count": 0,
+    "resource_assemblies": {
+      "Newtonsoft.Json.dll": [
+        "Newtonsoft.Json.xml"
+      ],
+      "System.ComponentModel.Composition.dll": [
+        "Microsoft.Internal.Strings.resources"
+      ],
+      "System.Data.dll": [
+        "System.Data.SqlClient.SqlMetaData.xml"
+      ],
+      "System.Drawing.dll": [
+        "Mono.ico",
+        "Information.ico",
+        "Error.ico",
+        "Warning.ico",
+        "Question.ico",
+        "Shield.ico"
+      ],
+      "System.dll": [
+        "Asterisk.wav",
+        "Beep.wav",
+        "Exclamation.wav",
+        "Hand.wav",
+        "Question.wav"
+      ],
+      "mscorlib.dll": [
+        "collation.core.bin",
+        "collation.tailoring.bin",
+        "collation.cjkCHS.bin",
+        "collation.cjkCHT.bin",
+        "collation.cjkJA.bin",
+        "collation.cjkKO.bin",
+        "collation.cjkKOlv2.bin",
+        "mscorlib.xml"
+      ]
+    }
+  },
+  "checks": [
+    {
+      "id": "C1-GameScripts.dll",
+      "description": "枚举类型数: 类型台账 = 字段台账",
+      "status": "PASS",
+      "detail": "44 vs 44"
+    },
+    {
+      "id": "C2-GameScripts.dll",
+      "description": "MethodDef 闭合: 总数 == 类型归属求和",
+      "status": "PASS",
+      "detail": "5453 vs 5453"
+    },
+    {
+      "id": "C3-GameScripts.dll",
+      "description": "FieldDef 闭合: 总数 == 类型+枚举归属求和",
+      "status": "PASS",
+      "detail": "7737 vs 7737"
+    },
+    {
+      "id": "C4a-GameScripts.dll",
+      "description": "PropertyDef 闭合: 总数 == 清单长度",
+      "status": "PASS",
+      "detail": "587 vs 587"
+    },
+    {
+      "id": "C4b-GameScripts.dll",
+      "description": "EventDef 闭合: 总数 == 清单长度",
+      "status": "PASS",
+      "detail": "6 vs 6"
+    },
+    {
+      "id": "C5-GameScripts.dll",
+      "description": "CustomAttribute 闭合: 分桶求和 == 总数",
+      "status": "PASS",
+      "detail": "1596 vs 1596"
+    },
+    {
+      "id": "C6-GameScripts.dll",
+      "description": "AssemblyRef 磁盘未解析 = 0",
+      "status": "PASS",
+      "detail": "未解析 0"
+    },
+    {
+      "id": "C7-GameScripts.dll",
+      "description": "MemberRef TypeSpec 计数 <= 总数",
+      "status": "PASS",
+      "detail": "1197/2174"
+    },
+    {
+      "id": "C2-Assembly-CSharp.dll",
+      "description": "MethodDef 闭合: 总数 == 类型归属求和",
+      "status": "PASS",
+      "detail": "15 vs 15"
+    },
+    {
+      "id": "C3-Assembly-CSharp.dll",
+      "description": "FieldDef 闭合: 总数 == 类型+枚举归属求和",
+      "status": "PASS",
+      "detail": "41 vs 41"
+    },
+    {
+      "id": "C4a-Assembly-CSharp.dll",
+      "description": "PropertyDef 闭合: 总数 == 清单长度",
+      "status": "PASS",
+      "detail": "0 vs 0"
+    },
+    {
+      "id": "C4b-Assembly-CSharp.dll",
+      "description": "EventDef 闭合: 总数 == 清单长度",
+      "status": "PASS",
+      "detail": "0 vs 0"
+    },
+    {
+      "id": "C5-Assembly-CSharp.dll",
+      "description": "CustomAttribute 闭合: 分桶求和 == 总数",
+      "status": "PASS",
+      "detail": "8 vs 8"
+    },
+    {
+      "id": "C6-Assembly-CSharp.dll",
+      "description": "AssemblyRef 磁盘未解析 = 0",
+      "status": "PASS",
+      "detail": "未解析 0"
+    },
+    {
+      "id": "C7-Assembly-CSharp.dll",
+      "description": "MemberRef TypeSpec 计数 <= 总数",
+      "status": "PASS",
+      "detail": "5/41"
+    },
+    {
+      "id": "C1-Assembly-CSharp-firstpass.dll",
+      "description": "枚举类型数: 类型台账 = 字段台账",
+      "status": "PASS",
+      "detail": "11 vs 11"
+    },
+    {
+      "id": "C2-Assembly-CSharp-firstpass.dll",
+      "description": "MethodDef 闭合: 总数 == 类型归属求和",
+      "status": "PASS",
+      "detail": "268 vs 268"
+    },
+    {
+      "id": "C3-Assembly-CSharp-firstpass.dll",
+      "description": "FieldDef 闭合: 总数 == 类型+枚举归属求和",
+      "status": "PASS",
+      "detail": "358 vs 358"
+    },
+    {
+      "id": "C4a-Assembly-CSharp-firstpass.dll",
+      "description": "PropertyDef 闭合: 总数 == 清单长度",
+      "status": "PASS",
+      "detail": "37 vs 37"
+    },
+    {
+      "id": "C4b-Assembly-CSharp-firstpass.dll",
+      "description": "EventDef 闭合: 总数 == 清单长度",
+      "status": "PASS",
+      "detail": "0 vs 0"
+    },
+    {
+      "id": "C5-Assembly-CSharp-firstpass.dll",
+      "description": "CustomAttribute 闭合: 分桶求和 == 总数",
+      "status": "PASS",
+      "detail": "128 vs 128"
+    },
+    {
+      "id": "C6-Assembly-CSharp-firstpass.dll",
+      "description": "AssemblyRef 磁盘未解析 = 0",
+      "status": "PASS",
+      "detail": "未解析 0"
+    },
+    {
+      "id": "C7-Assembly-CSharp-firstpass.dll",
+      "description": "MemberRef TypeSpec 计数 <= 总数",
+      "status": "PASS",
+      "detail": "32/312"
+    },
+    {
+      "id": "C2-csS.dll",
+      "description": "MethodDef 闭合: 总数 == 类型归属求和",
+      "status": "PASS",
+      "detail": "34 vs 34"
+    },
+    {
+      "id": "C3-csS.dll",
+      "description": "FieldDef 闭合: 总数 == 类型+枚举归属求和",
+      "status": "PASS",
+      "detail": "22 vs 22"
+    },
+    {
+      "id": "C4a-csS.dll",
+      "description": "PropertyDef 闭合: 总数 == 清单长度",
+      "status": "PASS",
+      "detail": "15 vs 15"
+    },
+    {
+      "id": "C4b-csS.dll",
+      "description": "EventDef 闭合: 总数 == 清单长度",
+      "status": "PASS",
+      "detail": "0 vs 0"
+    },
+    {
+      "id": "C5-csS.dll",
+      "description": "CustomAttribute 闭合: 分桶求和 == 总数",
+      "status": "PASS",
+      "detail": "38 vs 38"
+    },
+    {
+      "id": "C6-csS.dll",
+      "description": "AssemblyRef 磁盘未解析 = 0",
+      "status": "PASS",
+      "detail": "未解析 0"
+    },
+    {
+      "id": "C7-csS.dll",
+      "description": "MemberRef TypeSpec 计数 <= 总数",
+      "status": "PASS",
+      "detail": "0/13"
+    },
+    {
+      "id": "C8-closure",
+      "description": "全量托管闭包未解析 = 0",
+      "status": "PASS",
+      "detail": "未解析 0, DLL 129"
+    }
+  ],
+  "all_pass": true
+}

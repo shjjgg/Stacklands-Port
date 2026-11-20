@@ -1,0 +1,250 @@
+{
+  "scanned_at": "2026-11-20T20:07:17",
+  "steam": {
+    "GameScripts.dll": {
+      "type_refs": [
+        {
+          "namespace": "Steamworks",
+          "name": "AppId_t"
+        },
+        {
+          "namespace": "Steamworks",
+          "name": "CSteamID"
+        },
+        {
+          "namespace": "Steamworks",
+          "name": "CallResult`1"
+        },
+        {
+          "namespace": "Steamworks",
+          "name": "CreateItemResult_t"
+        },
+        {
+          "namespace": "Steamworks",
+          "name": "DllCheck"
+        },
+        {
+          "namespace": "Steamworks",
+          "name": "EActivateGameOverlayToWebPageMode"
+        },
+        {
+          "namespace": "Steamworks",
+          "name": "EItemUpdateStatus"
+        },
+        {
+          "namespace": "Steamworks",
+          "name": "EResult"
+        },
+        {
+          "namespace": "Steamworks",
+          "name": "EWorkshopFileType"
+        },
+        {
+          "namespace": "Steamworks",
+          "name": "Packsize"
+        },
+        {
+          "namespace": "Steamworks",
+          "name": "PublishedFileId_t"
+        },
+        {
+          "namespace": "Steamworks",
+          "name": "SteamAPI"
+        },
+        {
+          "namespace": "Steamworks",
+          "name": "SteamAPICall_t"
+        },
+        {
+          "namespace": "Steamworks",
+          "name": "SteamAPIWarningMessageHook_t"
+        },
+        {
+          "namespace": "Steamworks",
+          "name": "SteamApps"
+        },
+        {
+          "namespace": "Steamworks",
+          "name": "SteamClient"
+        },
+        {
+          "namespace": "Steamworks",
+          "name": "SteamFriends"
+        },
+        {
+          "namespace": "Steamworks",
+          "name": "SteamUGC"
+        },
+        {
+          "namespace": "Steamworks",
+          "name": "SteamUGCDetails_t"
+        },
+        {
+          "namespace": "Steamworks",
+          "name": "SteamUGCQueryCompleted_t"
+        },
+        {
+          "namespace": "Steamworks",
+          "name": "SteamUser"
+        },
+        {
+          "namespace": "Steamworks",
+          "name": "SteamUserStats"
+        },
+        {
+          "namespace": "Steamworks",
+          "name": "SubmitItemUpdateResult_t"
+        },
+        {
+          "namespace": "Steamworks",
+          "name": "UGCQueryHandle_t"
+        },
+        {
+          "namespace": "Steamworks",
+          "name": "UGCUpdateHandle_t"
+        }
+      ],
+      "member_refs": {
+        "AppId_t": [
+          ".ctor",
+          "Invalid"
+        ],
+        "CSteamID": [
+          "op_Explicit"
+        ],
+        "CreateItemResult_t": [
+          "m_bUserNeedsToAcceptWorkshopLegalAgreement",
+          "m_eResult",
+          "m_nPublishedFileId"
+        ],
+        "DllCheck": [
+          "Test"
+        ],
+        "Packsize": [
+          "Test"
+        ],
+        "PublishedFileId_t": [
+          ".ctor",
+          "op_Explicit"
+        ],
+        "SteamAPI": [
+          "Init",
+          "RestartAppIfNecessary",
+          "RunCallbacks",
+          "Shutdown"
+        ],
+        "SteamAPIWarningMessageHook_t": [
+          ".ctor"
+        ],
+        "SteamApps": [
+          "BIsDlcInstalled",
+          "GetCurrentBetaName"
+        ],
+        "SteamClient": [
+          "SetWarningMessageHook"
+        ],
+        "SteamFriends": [
+          "ActivateGameOverlayToWebPage"
+        ],
+        "SteamUGC": [
+          "CreateItem",
+          "CreateQueryUGCDetailsRequest",
+          "GetItemInstallInfo",
+          "GetItemUpdateProgress",
+          "GetNumSubscribedItems",
+          "GetQueryUGCResult",
+          "GetSubscribedItems",
+          "ReleaseQueryUGCRequest",
+          "SendQueryUGCRequest",
+          "SetItemContent",
+          "SetItemPreview",
+          "SetItemTags",
+          "SetItemTitle",
+          "StartItemUpdate",
+          "SubmitItemUpdate"
+        ],
+        "SteamUGCDetails_t": [
+          "m_ulSteamIDOwner"
+        ],
+        "SteamUGCQueryCompleted_t": [
+          "m_eResult"
+        ],
+        "SteamUser": [
+          "GetSteamID"
+        ],
+        "SteamUserStats": [
+          "SetAchievement",
+          "StoreStats"
+        ],
+        "SubmitItemUpdateResult_t": [
+          "m_eResult",
+          "m_nPublishedFileId"
+        ],
+        "UGCUpdateHandle_t": [
+          "Invalid",
+          "op_Equality",
+          "op_Inequality"
+        ]
+      },
+      "type_count": 25,
+      "member_count": 44
+    }
+  },
+  "google": {
+    "SokLoc.dll": {
+      "type_refs": [
+        {
+          "namespace": "Google.Apis.Auth.OAuth2",
+          "name": "GoogleCredential"
+        },
+        {
+          "namespace": "Google.Apis.Http",
+          "name": "IConfigurableHttpClientInitializer"
+        },
+        {
+          "namespace": "Google.Apis.Requests",
+          "name": "ClientServiceRequest`1"
+        },
+        {
+          "namespace": "Google.Apis.Services",
+          "name": "BaseClientService"
+        },
+        {
+          "namespace": "Google.Apis.Sheets.v4",
+          "name": "SheetsService"
+        },
+        {
+          "namespace": "Google.Apis.Sheets.v4",
+          "name": "SpreadsheetsResource"
+        },
+        {
+          "namespace": "Google.Apis.Sheets.v4.Data",
+          "name": "AppendValuesResponse"
+        },
+        {
+          "namespace": "Google.Apis.Sheets.v4.Data",
+          "name": "ValueRange"
+        }
+      ],
+      "member_refs": {
+        "GoogleCredential": [
+          "CreateScoped",
+          "FromStream"
+        ],
+        "SheetsService": [
+          ".ctor",
+          "get_Spreadsheets"
+        ],
+        "SpreadsheetsResource": [
+          "get_Values"
+        ],
+        "ValueRange": [
+          ".ctor",
+          "set_Values"
+        ]
+      },
+      "type_count": 8,
+      "member_count": 7
+    }
+  }
+}

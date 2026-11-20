@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  IL2CPP 裁剪保留清单 (放入 Assets/Plugins/link.xml)
+  原则: 首版保行为一致, 先 Minimal/Low 裁剪; 序列化/反射/配置/补间相关程序集整体保留。
+  测试/编辑器/补丁子系统不进 Player, 不在此保留。
+-->
+<linker>
+
+  <!-- ===== 游戏主逻辑 (反编译回填) ===== -->
+  <assembly fullname="GameScripts" preserve="all" />
+  <assembly fullname="Assembly-CSharp" preserve="all" />
+  <assembly fullname="Assembly-CSharp-firstpass" preserve="all" />
+  <assembly fullname="csS" preserve="all" />
+
+  <!-- ===== 序列化 / 配置 / 本地化 ===== -->
+  <assembly fullname="Sirenix.Serialization" preserve="all" />
+  <assembly fullname="Sirenix.Serialization.Config" preserve="all" />
+  <assembly fullname="Sirenix.Utilities" preserve="all" />
+  <assembly fullname="Sirenix.OdinInspector.Attributes" preserve="all" />
+  <assembly fullname="Newtonsoft.Json" preserve="all" />
+  <assembly fullname="SokLoc" preserve="all" />
+  <assembly fullname="SokSheet" preserve="all" />
+
+  <!-- ===== 运行时第三方 ===== -->
+  <assembly fullname="ShapesRuntime" preserve="all" />
+  <assembly fullname="DOTween" preserve="all" />
+  <assembly fullname="DOTween.Modules" preserve="all" />
+
+  <!-- ===== 平台包装层 (保留公开签名, 内部走桩) ===== -->
+  <assembly fullname="com.rlabrecque.steamworks.net" preserve="all" />
+  <assembly fullname="UImGui" preserve="all" />
+  <assembly fullname="ImGui.NET" preserve="all" />
+
+  <!-- ===== 在线服务 (离线降级, 保留类型避免反射缺失) ===== -->
+  <assembly fullname="Google.Apis" preserve="all" />
+  <assembly fullname="Google.Apis.Core" preserve="all" />
+  <assembly fullname="Google.Apis.Auth" preserve="all" />
+  <assembly fullname="Google.Apis.Sheets.v4" preserve="all" />
+
+  <!--
+    以下程序集明确不进 Player (不保留, 也不要打入构建):
+      UnityEngine.TestRunner            (测试)
+      ShapesEditor                      (编辑器扩展)
+      0Harmony / MonoMod.RuntimeDetour / MonoMod.Utils / Mono.Cecil  (补丁/动态编译, IL2CPP 不可用)
+      System.Reflection.Emit*           (AOT 不支持)
+  -->
+</linker>

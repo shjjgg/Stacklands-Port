@@ -1,0 +1,282 @@
+{
+  "scanned_at": "2026-11-20T19:44:47",
+  "text_assets": [
+    {
+      "name": "2000_BetaSave",
+      "source": "resources.assets",
+      "size": 44690,
+      "preview": "{\"LastPlayedRound\":{\"SavedCards\":[{\"UniqueId\":\"282c7acf-cfa\",\"ParentUniqueId\":\"\",\"BoardId\":\"main\",\"CardPrefabId\":\"villager\",\"CardPosition\":{\"x\":-1.5,\"y\":0.0,\"z\""
+    },
+    {
+      "name": "CharSet",
+      "source": "resources.assets",
+      "size": 10616,
+      "preview": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz0123456789,.[]()?!<>*& \r {\"}dçñê繁體中文简体日本語한국어_ òśą可容纳只动物以關住�"
+    },
+    {
+      "name": "CharSet-JP",
+      "source": "resources.assets",
+      "size": 3597,
+      "preview": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz0123456789,.[]()?!<>*& \r {\"}dçñê繁體中文简体日本語한국어動物を５匹飼育できるぞ家�"
+    },
+    {
+      "name": "CharSet-KR",
+      "source": "resources.assets",
+      "size": 2559,
+      "preview": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz0123456789,.[]()?!<>*& \r {\"}dçñê繁體中文简体日本語한국어마리의동물보유가능축우건�"
+    },
+    {
+      "name": "CharSet-SC",
+      "source": "resources.assets",
+      "size": 4665,
+      "preview": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz0123456789,.[]()?!<>*& \r {\"}dçñê繁體中文简体日本語한국어可容纳只动物围栏医生不找�"
+    },
+    {
+      "name": "CharSet-TC",
+      "source": "resources.assets",
+      "size": 4728,
+      "preview": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz0123456789,.[]()?!<>*& \r {\"}dçñê繁體中文简体日本語한국어可以關住隻動物畜欄讓醫生�"
+    },
+    {
+      "name": "CodeReferencedCards",
+      "source": "resources.assets",
+      "size": 1431,
+      "preview": "rare_portal\r demon\r small_slime\r travelling_cart\r goblet\r strange_portal\r ideas_base\r ideas_island\r pirate_boat\r empty_bottle\r demon_lord\r kraken\r momma_crab\r t"
+    },
+    {
+      "name": "CursedWorlds_BetaSave",
+      "source": "resources.assets",
+      "size": 57420,
+      "preview": "{\r   \"LastPlayedRound\": {\r     \"SavedCards\": [\r       {\r         \"UniqueId\": \"04a2ab92-8c4\",\r         \"ParentUniqueId\": \"\",\r         \"BoardId\": \"main\",\r        "
+    },
+    {
+      "name": "DefaultCharSet",
+      "source": "resources.assets",
+      "size": 469,
+      "preview": "ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz0123456789,.[]()?!<>*& \r \r { \"English\", \"English\" },\r { \"Dutch\" , \"Nederlands\" },\r { \"French\", \"Français\" },"
+    },
+    {
+      "name": "LineBreaking Following Characters",
+      "source": "resources.assets",
+      "size": 269,
+      "preview": "﻿)]｝〕〉》」』】〙〗〟’”｠»ヽヾーァィゥェォッャュョヮヵヶぁぃぅぇぉっゃゅょゎゕゖㇰㇱㇲㇳㇴㇵㇶㇷㇸㇹㇺ"
+    },
+    {
+      "name": "LineBreaking Leading Characters",
+      "source": "resources.assets",
+      "size": 95,
+      "preview": "﻿([｛〔〈《「『【〘〖〝‘“｟«$—…‥〳〴〵\\［（{£¥\"々〇＄￥￦ #"
+    },
+    {
+      "name": "VillagerNames",
+      "source": "resources.assets",
+      "size": 40103,
+      "preview": "Aran\r Wouter\r Aaren\r Aarika\r Abagael\r Abagail\r Abbe\r Abbey\r Abbi\r Abbie\r Abby\r Abbye\r Abigael\r Abigail\r Abigale\r Abra\r Ada\r Adah\r Adaline\r Adan\r Adara\r Adda\r Ad"
+    },
+    {
+      "name": "_LICENSE",
+      "source": "resources.assets",
+      "size": 35898,
+      "preview": "Original Source: https://github.com/yeyushengfan258/Lyra-Cursors\r Thanks to yeyushengfan258\r \r GNU GENERAL PUBLIC LICENSE\r                        Version 3, 29 "
+    },
+    {
+      "name": "package",
+      "source": "resources.assets",
+      "size": 931,
+      "preview": "{\r   \"name\": \"com.acegikmo.shapes\",\r   \"displayName\": \"Shapes\",\r   \"version\": \"4.1.0\",\r   \"unity\": \"2018.4\",\r   \"description\": \"A real-time vector graphics libr"
+    },
+    {
+      "name": "preset_death_06_02_1122_28",
+      "source": "sharedassets1.assets",
+      "size": 3219,
+      "preview": "{\"SaveId\":\"death_06_02_1122_28\",\"FullPath\":\"\",\"SavedCards\":[{\"UniqueId\":\"04fe8e74-a4b\",\"ParentUniqueId\":\"\",\"BoardId\":\"death\",\"CardPrefabId\":\"campfire\",\"CardPosi"
+    }
+  ],
+  "mixers": [
+    {
+      "type": "AudioMixerController",
+      "name": "AudioMixer",
+      "source": "sharedassets1.assets"
+    },
+    {
+      "type": "AudioMixerGroupController",
+      "name": "Sfx",
+      "source": "sharedassets1.assets"
+    },
+    {
+      "type": "AudioMixerGroupController",
+      "name": "Master",
+      "source": "sharedassets1.assets"
+    },
+    {
+      "type": "AudioMixerGroupController",
+      "name": "Music",
+      "source": "sharedassets1.assets"
+    },
+    {
+      "type": "AudioMixerSnapshotController",
+      "name": "Snapshot",
+      "source": "sharedassets1.assets"
+    }
+  ],
+  "dlc_bundles": [
+    {
+      "bundle": "cities_dlc",
+      "type_counts": {
+        "MonoBehaviour": 228,
+        "Transform": 201,
+        "GameObject": 201,
+        "Texture2D": 124,
+        "Sprite": 124,
+        "MonoScript": 58,
+        "AudioClip": 18,
+        "AssetBundle": 1
+      },
+      "samples": {
+        "Transform": [],
+        "GameObject": [
+          "Structure_WaterDeposit",
+          "Structure_IndustrialSmelter",
+          "Blueprint_Muesli",
+          "Blueprint_Zoo",
+          "Structure_RobotStation",
+          "Food_ReadyMeal",
+          "Landmark_Airport",
+          "Structure_ExportCenter"
+        ],
+        "MonoScript": [
+          "ExportCenter",
+          "Farmland",
+          "ArtGallery",
+          "Enemy",
+          "Academy",
+          "Landmark",
+          "SetCardBagData",
+          "PackSale"
+        ],
+        "Texture2D": [
+          "robot_soldier",
+          "electric_motor",
+          "hamster_wheel",
+          "pack_sale",
+          "oil_rig",
+          "IronDeposit",
+          "lumber",
+          "war_ship"
+        ],
+        "MonoBehaviour": [
+          "Cities_Ideas_Smeltables",
+          "Cities_BasicDeposits",
+          "3_Cities_Smeltables",
+          "0_Cities_Intro",
+          "Cities_Ideas",
+          "Cities_BasicEnemy",
+          "Cities_RecycleCenter",
+          "1_Cities_Basic"
+        ],
+        "Sprite": [
+          "robot_worker",
+          "automatic_resources",
+          "apartment",
+          "solar_panel",
+          "landfill_half_full",
+          "energy_combiner",
+          "copper_bar",
+          "gravel_deposit"
+        ],
+        "AudioClip": [
+          "Genius_Pickup_TK",
+          "Science_Pickup_TK",
+          "UnkownDevice_Pickup_TK",
+          "Currency_10_TK",
+          "PackSale_TK",
+          "Currency_20_TK",
+          "Card_Game_Alert_Your_Turn_01",
+          "Card_Game_Alert_Advance_Water_02"
+        ],
+        "AssetBundle": [
+          "cities_dlc"
+        ]
+      }
+    },
+    {
+      "bundle": "spirits_dlc",
+      "type_counts": {
+        "MonoBehaviour": 189,
+        "Transform": 147,
+        "GameObject": 147,
+        "Sprite": 98,
+        "Texture2D": 98,
+        "MonoScript": 47,
+        "AudioClip": 20,
+        "AssetBundle": 1
+      },
+      "samples": {
+        "MonoScript": [
+          "Tavern",
+          "Well",
+          "Enemy",
+          "Villager",
+          "SetCardBagData",
+          "Happiness",
+          "Equipable",
+          "Blueprint"
+        ],
+        "Transform": [],
+        "GameObject": [
+          "Misc_OldDog",
+          "Misc_SadEvent",
+          "Food_HerbalTea",
+          "Resource_Paper",
+          "Food_OlivePulp",
+          "Resource_HumanPoop",
+          "Blueprint_NamingStone",
+          "Blueprint_Altar"
+        ],
+        "MonoBehaviour": [
+          "3_Happiness_Creatures",
+          "0_Death_Basic",
+          "Greed_AdvancedIdea",
+          "5_Death_Locations",
+          "Happiness_AdvancedBuildingIdea",
+          "2_Death_Animals",
+          "Death_AdvancedResources",
+          "4_Happiness_Ideas2"
+        ],
+        "Sprite": [
+          "barrel",
+          "olive-oil",
+          "wine",
+          "roasted_meat",
+          "fountain_of_youth",
+          "well",
+          "book",
+          "old_villager"
+        ],
+        "Texture2D": [
+          "wine",
+          "tavern",
+          "fiend",
+          "royal_tunic",
+          "outhouse",
+          "sheep",
+          "royal_mage",
+          "poop_slime"
+        ],
+        "AudioClip": [
+          "Baby_Dragon_Appears_TK",
+          "Royal_Pickup_TK",
+          "Pooping_TK",
+          "Shaman_Pickup_TK",
+          "Teenager_Pickup_TK",
+          "Curse_Pickup_TK",
+          "Old_Villager_Pickup_TK",
+          "dog"
+        ],
+        "AssetBundle": [
+          "spirits_dlc"
+        ]
+      }
+    }
+  ]
+}

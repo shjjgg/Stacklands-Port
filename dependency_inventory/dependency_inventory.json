@@ -1,0 +1,410 @@
+{
+  "scanned_at": "2026-11-20T20:26:07",
+  "assemblies": {
+    "GameScripts.dll": {
+      "reference_count": 26,
+      "unresolved_count": 0,
+      "unresolved": [],
+      "resource_count": 0,
+      "references": [
+        {
+          "name": "netstandard",
+          "version": "2.1.0.0",
+          "culture": "",
+          "has_public_key": true,
+          "resolved_on_disk": true,
+          "resolved_file": "netstandard.dll"
+        },
+        {
+          "name": "UnityEngine.CoreModule",
+          "version": "0.0.0.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "UnityEngine.CoreModule.dll"
+        },
+        {
+          "name": "SokLoc",
+          "version": "0.0.0.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "SokLoc.dll"
+        },
+        {
+          "name": "Unity.Postprocessing.Runtime",
+          "version": "0.0.0.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "Unity.Postprocessing.Runtime.dll"
+        },
+        {
+          "name": "UnityEngine.AudioModule",
+          "version": "0.0.0.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "UnityEngine.AudioModule.dll"
+        },
+        {
+          "name": "Unity.TextMeshPro",
+          "version": "0.0.0.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "Unity.TextMeshPro.dll"
+        },
+        {
+          "name": "ShapesRuntime",
+          "version": "0.0.0.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "ShapesRuntime.dll"
+        },
+        {
+          "name": "UnityEngine.PhysicsModule",
+          "version": "0.0.0.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "UnityEngine.PhysicsModule.dll"
+        },
+        {
+          "name": "UnityEngine.ParticleSystemModule",
+          "version": "0.0.0.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "UnityEngine.ParticleSystemModule.dll"
+        },
+        {
+          "name": "Newtonsoft.Json",
+          "version": "13.0.0.0",
+          "culture": "",
+          "has_public_key": true,
+          "resolved_on_disk": true,
+          "resolved_file": "Newtonsoft.Json.dll"
+        },
+        {
+          "name": "UnityEngine.UI",
+          "version": "1.0.0.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "UnityEngine.UI.dll"
+        },
+        {
+          "name": "SokSheet",
+          "version": "0.0.0.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "SokSheet.dll"
+        },
+        {
+          "name": "UnityEngine.UnityWebRequestModule",
+          "version": "0.0.0.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "UnityEngine.UnityWebRequestModule.dll"
+        },
+        {
+          "name": "UnityEngine.UIModule",
+          "version": "0.0.0.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "UnityEngine.UIModule.dll"
+        },
+        {
+          "name": "Unity.InputSystem",
+          "version": "1.6.1.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "Unity.InputSystem.dll"
+        },
+        {
+          "name": "DOTween",
+          "version": "1.0.0.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "DOTween.dll"
+        },
+        {
+          "name": "com.rlabrecque.steamworks.net",
+          "version": "0.0.0.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "com.rlabrecque.steamworks.net.dll"
+        },
+        {
+          "name": "UImGui",
+          "version": "0.0.0.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "UImGui.dll"
+        },
+        {
+          "name": "ImGui.NET",
+          "version": "1.89.4.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "ImGui.NET.dll"
+        },
+        {
+          "name": "0Harmony",
+          "version": "2.10.1.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "0Harmony.dll"
+        },
+        {
+          "name": "UnityEngine.AssetBundleModule",
+          "version": "0.0.0.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "UnityEngine.AssetBundleModule.dll"
+        },
+        {
+          "name": "UnityEngine.ImageConversionModule",
+          "version": "0.0.0.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "UnityEngine.ImageConversionModule.dll"
+        },
+        {
+          "name": "UnityEngine.JSONSerializeModule",
+          "version": "0.0.0.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "UnityEngine.JSONSerializeModule.dll"
+        },
+        {
+          "name": "DOTween.Modules",
+          "version": "0.0.0.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "DOTween.Modules.dll"
+        },
+        {
+          "name": "UnityEngine.IMGUIModule",
+          "version": "0.0.0.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "UnityEngine.IMGUIModule.dll"
+        },
+        {
+          "name": "UnityEngine.UnityWebRequestAudioModule",
+          "version": "0.0.0.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "UnityEngine.UnityWebRequestAudioModule.dll"
+        }
+      ],
+      "resources": []
+    },
+    "Assembly-CSharp.dll": {
+      "reference_count": 5,
+      "unresolved_count": 0,
+      "unresolved": [],
+      "resource_count": 0,
+      "references": [
+        {
+          "name": "netstandard",
+          "version": "2.1.0.0",
+          "culture": "",
+          "has_public_key": true,
+          "resolved_on_disk": true,
+          "resolved_file": "netstandard.dll"
+        },
+        {
+          "name": "UnityEngine.CoreModule",
+          "version": "0.0.0.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "UnityEngine.CoreModule.dll"
+        },
+        {
+          "name": "UnityEngine.AudioModule",
+          "version": "0.0.0.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "UnityEngine.AudioModule.dll"
+        },
+        {
+          "name": "UnityEngine.UI",
+          "version": "1.0.0.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "UnityEngine.UI.dll"
+        },
+        {
+          "name": "Unity.InputSystem",
+          "version": "1.6.1.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "Unity.InputSystem.dll"
+        }
+      ],
+      "resources": []
+    },
+    "Assembly-CSharp-firstpass.dll": {
+      "reference_count": 9,
+      "unresolved_count": 0,
+      "unresolved": [],
+      "resource_count": 0,
+      "references": [
+        {
+          "name": "netstandard",
+          "version": "2.1.0.0",
+          "culture": "",
+          "has_public_key": true,
+          "resolved_on_disk": true,
+          "resolved_file": "netstandard.dll"
+        },
+        {
+          "name": "UnityEngine.CoreModule",
+          "version": "0.0.0.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "UnityEngine.CoreModule.dll"
+        },
+        {
+          "name": "Unity.TextMeshPro",
+          "version": "0.0.0.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "Unity.TextMeshPro.dll"
+        },
+        {
+          "name": "UnityEngine.UI",
+          "version": "1.0.0.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "UnityEngine.UI.dll"
+        },
+        {
+          "name": "UnityEngine.UIModule",
+          "version": "0.0.0.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "UnityEngine.UIModule.dll"
+        },
+        {
+          "name": "UnityEngine.TextRenderingModule",
+          "version": "0.0.0.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "UnityEngine.TextRenderingModule.dll"
+        },
+        {
+          "name": "UnityEngine.InputLegacyModule",
+          "version": "0.0.0.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "UnityEngine.InputLegacyModule.dll"
+        },
+        {
+          "name": "UnityEngine.PhysicsModule",
+          "version": "0.0.0.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "UnityEngine.PhysicsModule.dll"
+        },
+        {
+          "name": "UnityEngine.TextCoreFontEngineModule",
+          "version": "0.0.0.0",
+          "culture": "",
+          "has_public_key": false,
+          "resolved_on_disk": true,
+          "resolved_file": "UnityEngine.TextCoreFontEngineModule.dll"
+        }
+      ],
+      "resources": []
+    },
+    "csS.dll": {
+      "reference_count": 1,
+      "unresolved_count": 0,
+      "unresolved": [],
+      "resource_count": 0,
+      "references": [
+        {
+          "name": "netstandard",
+          "version": "2.1.0.0",
+          "culture": "",
+          "has_public_key": true,
+          "resolved_on_disk": true,
+          "resolved_file": "netstandard.dll"
+        }
+      ],
+      "resources": []
+    }
+  },
+  "closure": {
+    "managed_dll_count": 129,
+    "unresolved_assemblies": {},
+    "unresolved_count": 0,
+    "resource_assemblies": {
+      "Newtonsoft.Json.dll": [
+        "Newtonsoft.Json.xml"
+      ],
+      "System.ComponentModel.Composition.dll": [
+        "Microsoft.Internal.Strings.resources"
+      ],
+      "System.Data.dll": [
+        "System.Data.SqlClient.SqlMetaData.xml"
+      ],
+      "System.Drawing.dll": [
+        "Mono.ico",
+        "Information.ico",
+        "Error.ico",
+        "Warning.ico",
+        "Question.ico",
+        "Shield.ico"
+      ],
+      "System.dll": [
+        "Asterisk.wav",
+        "Beep.wav",
+        "Exclamation.wav",
+        "Hand.wav",
+        "Question.wav"
+      ],
+      "mscorlib.dll": [
+        "collation.core.bin",
+        "collation.tailoring.bin",
+        "collation.cjkCHS.bin",
+        "collation.cjkCHT.bin",
+        "collation.cjkJA.bin",
+        "collation.cjkKO.bin",
+        "collation.cjkKOlv2.bin",
+        "mscorlib.xml"
+      ]
+    }
+  }
+}

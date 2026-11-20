@@ -1,0 +1,273 @@
+name: unity-android-il2cpp
+
+# Stacklands 移植 · GitHub Actions + GameCI
+# 引擎锁定 2022.3.4f1, 目标 Android IL2CPP (arm64-v8a)
+# 说明: 带 <...> 的值需按仓库实际填写; 密钥走 GitHub Secrets, 不要入库。
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      build_type:
+        description: "Debug / Release"
+        default: "Release"
+        type: choice
+        options: [ Debug, Release ]
+
+env:
+  UNITY_VERSION: 2022.3.4f1
+  BUILD_TARGET: Android
+  IL2CPP: true
+  ARCH: arm64-v8a
+  PROJECT_PATH: .
+  BUILD_PATH: builds/android
+  # 源数据目录(原版 .assets / Managed / DLC bundle)。原版版权二进制不入库,
+  # 通过 CI artifact 或受保护目录注入; 留空则跳过依赖源数据的扫描。
+  SOURCE_DATA: source/Stacklands_Data
+  SOURCE_RAW: source/raw
+  DECOMPILED_SRC: Assets/Scripts
+
+jobs:
+  static-analysis:
+    name: 静态分析与台账提取
+    runs-on: ubuntu-latest
+    outputs:
+      ready: ${{ steps.recon.outputs.ready }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install scanner deps
+        run: pip install UnityPy dnfile
+
+      # 可选: 原始上传件分卷拼接/侧车归位。仅当 SOURCE_RAW 有原始压缩包时执行。
+      - name: Reconstruct source (optional)
+        id: recon
+        if: hashFiles(env.SOURCE_RAW) != ''
+        run: |
+          python3 PORT/tools/reconstruct_source.py \
+            --in "$SOURCE_RAW" --out source/recon
+          echo "ready=$(jq -r .ready source/recon/reconstruct_report.json)" >> "$GITHUB_OUTPUT"
+
+      - name: Static scan (assets metadata)
+        if: hashFiles(env.SOURCE_DATA) != ''
+        run: |
+          python3 PORT/tools/scan_static.py \
+            --data "$SOURCE_DATA" \
+            --managed "$SOURCE_DATA/Managed" \
+            --out PORT/docs/scan_report.md \
+            --json PORT/docs/scan_report.json
+
+      - name: Blocked subsystem / native PInvoke metadata scan
+        if: hashFiles(env.SOURCE_DATA) != ''
+        run: |
+          python3 PORT/tools/scan_blocked_metadata.py \
+            --managed "$SOURCE_DATA/Managed" \
+            --out PORT/blocked_metadata
+
+      - name: Platform service references (Steam / Google)
+        if: hashFiles(env.SOURCE_DATA) != ''
+        run: |
+          python3 PORT/tools/scan_platform_refs.py \
+            --managed "$SOURCE_DATA/Managed" \
+            --out PORT/platform_refs
+
+      - name: Game assembly type inventory
+        if: hashFiles(env.SOURCE_DATA) != ''
+        run: |
+          python3 PORT/tools/scan_type_inventory.py \
+            --managed "$SOURCE_DATA/Managed" \
+            --scan-report PORT/docs/scan_report.json \
+            --out PORT/type_inventory
+
+      - name: Game assembly method & lifecycle inventory
+        if: hashFiles(env.SOURCE_DATA) != ''
+        run: |
+          python3 PORT/tools/scan_method_inventory.py \
+            --managed "$SOURCE_DATA/Managed" \
+            --out PORT/method_inventory
+
+      - name: Game assembly field & enum inventory
+        if: hashFiles(env.SOURCE_DATA) != ''
+        run: |
+          python3 PORT/tools/scan_field_inventory.py \
+            --managed "$SOURCE_DATA/Managed" \
+            --out PORT/field_inventory
+
+      - name: Game assembly property & event inventory
+        if: hashFiles(env.SOURCE_DATA) != ''
+        run: |
+          python3 PORT/tools/scan_property_event_inventory.py \
+            --managed "$SOURCE_DATA/Managed" \
+            --out PORT/property_event_inventory
+
+      - name: Game assembly custom attribute inventory
+        if: hashFiles(env.SOURCE_DATA) != ''
+        run: |
+          python3 PORT/tools/scan_attribute_inventory.py \
+            --managed "$SOURCE_DATA/Managed" \
+            --out PORT/attribute_inventory
+
+      - name: Assembly reference closure & embedded resources
+        if: hashFiles(env.SOURCE_DATA) != ''
+        run: |
+          python3 PORT/tools/scan_dependency_inventory.py \
+            --managed "$SOURCE_DATA/Managed" \
+            --out PORT/dependency_inventory
+
+      - name: Interface impl & external member reference inventory
+        if: hashFiles(env.SOURCE_DATA) != ''
+        run: |
+          python3 PORT/tools/scan_interface_member.py \
+            --managed "$SOURCE_DATA/Managed" \
+            --out PORT/interface_member_inventory
+
+      - name: Metadata overview & cross-ledger consistency checks
+        if: hashFiles(env.SOURCE_DATA) != ''
+        run: |
+          python3 PORT/tools/scan_metadata_overview.py \
+            --root PORT --out PORT/docs
+
+      - name: Extract shader blobs & ledger
+        if: hashFiles(env.SOURCE_DATA) != ''
+        run: |
+          python3 PORT/tools/extract_shader_blobs.py \
+            --data "$SOURCE_DATA" \
+            --out PORT/shader_extract
+
+      - name: Inventory config / localization / DLC / audio
+        if: hashFiles(env.SOURCE_DATA) != ''
+        run: |
+          python3 PORT/tools/export_content_inventory.py \
+            --data "$SOURCE_DATA" \
+            --bundles "source/Cities_DLC/PC/cities_dlc,source/Spirits_DLC/PC/spirits_dlc" \
+            --out PORT/content_inventory
+
+      # 反编译源码落地后: IL2CPP 风险 API 扫描 (Emit/Roslyn/反射/Harmony)
+      - name: IL2CPP risk scan (decompiled source)
+        if: hashFiles(env.DECOMPILED_SRC) != ''
+        run: |
+          python3 PORT/tools/scan_il2cpp_risks.py \
+            --src "$DECOMPILED_SRC" \
+            --out PORT/docs/il2cpp_risks.md
+
+      - name: Upload analysis reports & blobs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: static-analysis-${{ github.sha }}
+          path: |
+            PORT/docs/scan_report.*
+            PORT/docs/il2cpp_risks.md
+            PORT/blocked_metadata/
+            PORT/platform_refs/
+            PORT/type_inventory/
+            PORT/method_inventory/
+            PORT/field_inventory/
+            PORT/property_event_inventory/
+            PORT/attribute_inventory/
+            PORT/dependency_inventory/
+            PORT/interface_member_inventory/
+            PORT/docs/metadata_overview.*
+            PORT/docs/15_反编译落地后待办清单.md
+            PORT/shader_extract/
+            PORT/content_inventory/
+          if-no-files-found: ignore
+
+  build-android:
+    name: IL2CPP Android 构建
+    needs: static-analysis
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        build_type: [ Release ]
+    steps:
+      - uses: actions/checkout@v4
+
+      # GameCI 授权: 推荐用已激活的 license file (UNITY_LICENSE),
+      # 或 UNITY_SERIAL / UNITY_EMAIL / UNITY_PASSWORD 环境变量激活。
+      - name: Unity activate license
+        uses: game-ci/unity-activate@v4
+        env:
+          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+
+      - name: Restore Library cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            Library
+            ${{ env.BUILD_PATH }}
+          key: ${{ runner.os }}-unity-${{ env.UNITY_VERSION }}-${{ hashFiles('Assets/**', 'ProjectSettings/**') }}
+          restore-keys: |
+            ${{ runner.os }}-unity-${{ env.UNITY_VERSION }}-
+
+      - name: Build Android (IL2CPP)
+        uses: game-ci/unity-builder@v4
+        env:
+          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          # Android 签名 (Release)
+          KEYSTORE_NAME: ${{ secrets.KEYSTORE_NAME }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEYALIAS_NAME: ${{ secrets.KEYALIAS_NAME }}
+          KEYALIAS_PASSWORD: ${{ secrets.KEYALIAS_PASSWORD }}
+          # 版本 / 产物形态 (PortBuild.cs 读取)
+          BUILD_VERSION: "0.1.0"
+          BUNDLE_VERSION_CODE: "1"
+          BUILD_AAB: "0"
+        with:
+          unityVersion: ${{ env.UNITY_VERSION }}
+          targetPlatform: ${{ env.BUILD_TARGET }}
+          projectPath: ${{ env.PROJECT_PATH }}
+          buildMethod: PortBuild.PerformAndroidBuild
+          il2cpp: ${{ env.IL2CPP }}
+          appVersion: "0.1.0"
+          buildPath: ${{ env.BUILD_PATH }}
+          # 输出 AAB (上架) 与 APK (冒烟调试) 按需二选一或都出
+          androidAppBundle: true
+          exportAndroidProject: false
+          # 仅 arm64-v8a; 如需 32 位兼容再追加 armeabi-v7a
+          architectures: ${{ env.ARCH }}
+          scriptingBackend: IL2CPP
+          stackLog: true
+          # 构建失败时上传完整日志
+          chownFilesToUid: true
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-${{ matrix.build_type }}-${{ github.sha }}
+          path: ${{ env.BUILD_PATH }}
+          retention-days: 14
+
+      - name: Upload IL2CPP symbols / metadata
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: il2cpp-symbols-${{ github.sha }}
+          path: |
+            ${{ env.BUILD_PATH }}/**/symbols.zip
+            ${{ env.BUILD_PATH }}/**/global-metadata.dat
+          retention-days: 30
+          if-no-files-found: ignore
+
+      - name: Upload Editor logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: editor-log-${{ github.sha }}
+          path: |
+            logs/**
+            /github/workspace/Logs/**
+          if-no-files-found: ignore

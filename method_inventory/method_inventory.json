@@ -1,0 +1,8125 @@
+{
+  "scanned_at": "2026-11-20T20:14:16",
+  "assemblies": {
+    "GameScripts.dll": {
+      "method_count": 5453,
+      "ctor_count": 972,
+      "accessor_count": 403,
+      "lifecycle_type_count": 122,
+      "lifecycle_method_count": 256,
+      "lifecycle_types": [
+        "AttackAnimation",
+        "AttackAnimationMelee",
+        "AttackAnimationRanged",
+        "AttackAnimationMagic",
+        "AttackAnimationBullet",
+        "BoardBackground",
+        "Boosterpack",
+        "BuyBoosterBox",
+        "CardAnimation",
+        "CardAnimation_FakeMeleeAttack",
+        "CardConnector",
+        "CardData",
+        "CityAdvisor",
+        "Combatable",
+        "FloatingStatus",
+        "Harvestable",
+        "PirateBoat",
+        "Spirit",
+        "CardTarget",
+        "DirectionCircleElement",
+        "Draggable",
+        "EquipmentPosition",
+        "GameBoard",
+        "GameCamera",
+        "GameCard",
+        "GridQuad",
+        "HitText",
+        "ImageEffect",
+        "AccessibilityScreen",
+        "AchievementElement",
+        "AdvancedSettingsScreen",
+        "CardopediaEntryElement",
+        "CardopediaScreen",
+        "Colorizer",
+        "ControlsScreen",
+        "CreditsScreen",
+        "CustomButton",
+        "CutsceneScreen",
+        "DebugScreen",
+        "ExpandableLabel",
+        "ExpandableLabelCardopedia",
+        "FontSetter",
+        "GameCanvas",
+        "GameOverScreen",
+        "GameScreen",
+        "IdeaElement",
+        "MainMenu",
+        "ModalScreen",
+        "ModDisablingScreen",
+        "ModOptionsScreen",
+        "ModsScreen",
+        "ModUploadScreen",
+        "MultilineScrollbarHider",
+        "NotificationElement",
+        "OptionsScreen",
+        "PauseScreen",
+        "RebindElement",
+        "RunOptionsScreen",
+        "ScrollbarFixer",
+        "ScrollText",
+        "ScrollTextHorizontal",
+        "SelectLanguageScreen",
+        "SelectResolutionScreen",
+        "SelectSaveScreen",
+        "ShowInfoBox",
+        "ShowTooltip",
+        "ShowTooltipInteractable",
+        "Tooltip",
+        "TransitionScreen",
+        "UpdatePopup",
+        "InventoryInteractable",
+        "MagicProjectile",
+        "AudioManager",
+        "CitiesManager",
+        "ColorManager",
+        "DemandManager",
+        "DrawManager",
+        "FontManager",
+        "ForestCombatManager",
+        "InputController",
+        "LoggingManager",
+        "ModManager",
+        "PrefabManager",
+        "QuestManager",
+        "SaveManager",
+        "SpriteManager",
+        "WorldManager",
+        "MaterialChanger",
+        "PackUI",
+        "SchemaUI",
+        "OnOffInteractable",
+        "Projectile",
+        "RangedProjectile",
+        "RectanglePacker",
+        "SceneBootstrapper",
+        "Screenshotter",
+        "SellBox",
+        "ConflictArrowDrawer",
+        "ConflictRectangleDrawer",
+        "ConveyorArrowDrawer",
+        "EnergyCableDrawer",
+        "SewerPipeDrawer",
+        "TransportArrowDrawer",
+        "TransportArrowMainlandDrawer",
+        "Statusbar",
+        "StatusEffect",
+        "StatusEffect_Poison",
+        "StatusEffect_Bleeding",
+        "StatusEffect_Frenzy",
+        "StatusEffect_Invulnerable",
+        "StatusEffect_Drunk",
+        "StatusEffect_Stunned",
+        "StatusEffect_WellFed",
+        "StatusEffect_Spoiling",
+        "StatusEffect_Sick",
+        "StatusEffect_Anxious",
+        "StatusEffect_NoWorkers",
+        "StatusEffect_Dissolving",
+        "StatusEffect_Radar",
+        "StatusEffectElement",
+        "SteamManager",
+        "WorkerTransformHolder"
+      ],
+      "lifecycle_methods": [
+        [
+          "AttackAnimation",
+          "Start"
+        ],
+        [
+          "AttackAnimation",
+          "Update"
+        ],
+        [
+          "AttackAnimationMelee",
+          "Update"
+        ],
+        [
+          "AttackAnimationRanged",
+          "Start"
+        ],
+        [
+          "AttackAnimationRanged",
+          "Update"
+        ],
+        [
+          "AttackAnimationMagic",
+          "Start"
+        ],
+        [
+          "AttackAnimationMagic",
+          "Update"
+        ],
+        [
+          "AttackAnimationBullet",
+          "Start"
+        ],
+        [
+          "AttackAnimationBullet",
+          "Update"
+        ],
+        [
+          "BoardBackground",
+          "Awake"
+        ],
+        [
+          "Boosterpack",
+          "Awake"
+        ],
+        [
+          "Boosterpack",
+          "Start"
+        ],
+        [
+          "Boosterpack",
+          "OnDestroy"
+        ],
+        [
+          "Boosterpack",
+          "Update"
+        ],
+        [
+          "BuyBoosterBox",
+          "Update"
+        ],
+        [
+          "CardAnimation",
+          "Start"
+        ],
+        [
+          "CardAnimation",
+          "Update"
+        ],
+        [
+          "CardAnimation_FakeMeleeAttack",
+          "Update"
+        ],
+        [
+          "CardConnector",
+          "Update"
+        ],
+        [
+          "CardData",
+          "OnValidate"
+        ],
+        [
+          "CardData",
+          "Awake"
+        ],
+        [
+          "CityAdvisor",
+          "Awake"
+        ],
+        [
+          "Combatable",
+          "OnDrawGizmos"
+        ],
+        [
+          "FloatingStatus",
+          "Start"
+        ],
+        [
+          "FloatingStatus",
+          "Update"
+        ],
+        [
+          "Harvestable",
+          "Awake"
+        ],
+        [
+          "Harvestable",
+          "OnDestroy"
+        ],
+        [
+          "PirateBoat",
+          "Awake"
+        ],
+        [
+          "PirateBoat",
+          "Start"
+        ],
+        [
+          "Spirit",
+          "Awake"
+        ],
+        [
+          "CardTarget",
+          "Start"
+        ],
+        [
+          "CardTarget",
+          "OnDestroy"
+        ],
+        [
+          "CardTarget",
+          "Update"
+        ],
+        [
+          "CardTarget",
+          "LateUpdate"
+        ],
+        [
+          "DirectionCircleElement",
+          "Start"
+        ],
+        [
+          "DirectionCircleElement",
+          "Update"
+        ],
+        [
+          "Draggable",
+          "Awake"
+        ],
+        [
+          "Draggable",
+          "OnDestroy"
+        ],
+        [
+          "Draggable",
+          "Start"
+        ],
+        [
+          "Draggable",
+          "Update"
+        ],
+        [
+          "Draggable",
+          "LateUpdate"
+        ],
+        [
+          "EquipmentPosition",
+          "Awake"
+        ],
+        [
+          "EquipmentPosition",
+          "Update"
+        ],
+        [
+          "GameBoard",
+          "Awake"
+        ],
+        [
+          "GameBoard",
+          "Start"
+        ],
+        [
+          "GameBoard",
+          "Update"
+        ],
+        [
+          "GameCamera",
+          "Awake"
+        ],
+        [
+          "GameCamera",
+          "Start"
+        ],
+        [
+          "GameCamera",
+          "Update"
+        ],
+        [
+          "GameCard",
+          "Awake"
+        ],
+        [
+          "GameCard",
+          "Start"
+        ],
+        [
+          "GameCard",
+          "OnDestroy"
+        ],
+        [
+          "GameCard",
+          "OnDrawGizmos"
+        ],
+        [
+          "GameCard",
+          "Update"
+        ],
+        [
+          "GameCard",
+          "LateUpdate"
+        ],
+        [
+          "GridQuad",
+          "Update"
+        ],
+        [
+          "HitText",
+          "Awake"
+        ],
+        [
+          "HitText",
+          "Start"
+        ],
+        [
+          "HitText",
+          "OnDestroy"
+        ],
+        [
+          "HitText",
+          "Update"
+        ],
+        [
+          "ImageEffect",
+          "Awake"
+        ],
+        [
+          "AccessibilityScreen",
+          "Awake"
+        ],
+        [
+          "AccessibilityScreen",
+          "OnApplicationQuit"
+        ],
+        [
+          "AccessibilityScreen",
+          "Update"
+        ],
+        [
+          "AchievementElement",
+          "Update"
+        ],
+        [
+          "AdvancedSettingsScreen",
+          "Awake"
+        ],
+        [
+          "AdvancedSettingsScreen",
+          "Update"
+        ],
+        [
+          "AdvancedSettingsScreen",
+          "OnApplicationQuit"
+        ],
+        [
+          "CardopediaEntryElement",
+          "Update"
+        ],
+        [
+          "CardopediaScreen",
+          "Awake"
+        ],
+        [
+          "CardopediaScreen",
+          "OnDestroy"
+        ],
+        [
+          "CardopediaScreen",
+          "OnEnable"
+        ],
+        [
+          "CardopediaScreen",
+          "OnDisable"
+        ],
+        [
+          "CardopediaScreen",
+          "Update"
+        ],
+        [
+          "Colorizer",
+          "OnValidate"
+        ],
+        [
+          "Colorizer",
+          "Start"
+        ],
+        [
+          "Colorizer",
+          "Update"
+        ],
+        [
+          "ControlsScreen",
+          "Awake"
+        ],
+        [
+          "ControlsScreen",
+          "OnEnable"
+        ],
+        [
+          "ControlsScreen",
+          "Update"
+        ],
+        [
+          "CreditsScreen",
+          "OnEnable"
+        ],
+        [
+          "CreditsScreen",
+          "Update"
+        ],
+        [
+          "CustomButton",
+          "Awake"
+        ],
+        [
+          "CustomButton",
+          "Start"
+        ],
+        [
+          "CustomButton",
+          "OnDisable"
+        ],
+        [
+          "CustomButton",
+          "OnEnable"
+        ],
+        [
+          "CustomButton",
+          "Update"
+        ],
+        [
+          "CustomButton",
+          "LateUpdate"
+        ],
+        [
+          "CutsceneScreen",
+          "Awake"
+        ],
+        [
+          "CutsceneScreen",
+          "OnEnable"
+        ],
+        [
+          "CutsceneScreen",
+          "Update"
+        ],
+        [
+          "CutsceneScreen",
+          "LateUpdate"
+        ],
+        [
+          "DebugScreen",
+          "Start"
+        ],
+        [
+          "DebugScreen",
+          "Update"
+        ],
+        [
+          "DebugScreen",
+          "Awake"
+        ],
+        [
+          "ExpandableLabel",
+          "Start"
+        ],
+        [
+          "ExpandableLabel",
+          "Update"
+        ],
+        [
+          "ExpandableLabelCardopedia",
+          "Start"
+        ],
+        [
+          "ExpandableLabelCardopedia",
+          "Update"
+        ],
+        [
+          "FontSetter",
+          "Start"
+        ],
+        [
+          "FontSetter",
+          "OnEnable"
+        ],
+        [
+          "FontSetter",
+          "OnDestroy"
+        ],
+        [
+          "FontSetter",
+          "Update"
+        ],
+        [
+          "GameCanvas",
+          "Awake"
+        ],
+        [
+          "GameCanvas",
+          "Update"
+        ],
+        [
+          "GameOverScreen",
+          "Awake"
+        ],
+        [
+          "GameOverScreen",
+          "OnEnable"
+        ],
+        [
+          "GameOverScreen",
+          "Update"
+        ],
+        [
+          "GameScreen",
+          "Awake"
+        ],
+        [
+          "GameScreen",
+          "OnDestroy"
+        ],
+        [
+          "GameScreen",
+          "OnEnable"
+        ],
+        [
+          "GameScreen",
+          "Update"
+        ],
+        [
+          "GameScreen",
+          "LateUpdate"
+        ],
+        [
+          "IdeaElement",
+          "Update"
+        ],
+        [
+          "MainMenu",
+          "Awake"
+        ],
+        [
+          "MainMenu",
+          "Update"
+        ],
+        [
+          "ModalScreen",
+          "Awake"
+        ],
+        [
+          "ModDisablingScreen",
+          "Awake"
+        ],
+        [
+          "ModOptionsScreen",
+          "Awake"
+        ],
+        [
+          "ModOptionsScreen",
+          "Update"
+        ],
+        [
+          "ModOptionsScreen",
+          "OnEnable"
+        ],
+        [
+          "ModsScreen",
+          "Awake"
+        ],
+        [
+          "ModsScreen",
+          "Update"
+        ],
+        [
+          "ModUploadScreen",
+          "Awake"
+        ],
+        [
+          "ModUploadScreen",
+          "OnEnable"
+        ],
+        [
+          "ModUploadScreen",
+          "Update"
+        ],
+        [
+          "MultilineScrollbarHider",
+          "Update"
+        ],
+        [
+          "NotificationElement",
+          "Start"
+        ],
+        [
+          "NotificationElement",
+          "Update"
+        ],
+        [
+          "OptionsScreen",
+          "Awake"
+        ],
+        [
+          "OptionsScreen",
+          "OnDestroy"
+        ],
+        [
+          "OptionsScreen",
+          "Start"
+        ],
+        [
+          "OptionsScreen",
+          "Update"
+        ],
+        [
+          "OptionsScreen",
+          "OnDisable"
+        ],
+        [
+          "PauseScreen",
+          "Awake"
+        ],
+        [
+          "PauseScreen",
+          "Update"
+        ],
+        [
+          "RebindElement",
+          "Start"
+        ],
+        [
+          "RebindElement",
+          "Update"
+        ],
+        [
+          "RunOptionsScreen",
+          "Start"
+        ],
+        [
+          "RunOptionsScreen",
+          "Update"
+        ],
+        [
+          "ScrollbarFixer",
+          "Start"
+        ],
+        [
+          "ScrollbarFixer",
+          "Update"
+        ],
+        [
+          "ScrollText",
+          "Start"
+        ],
+        [
+          "ScrollText",
+          "Update"
+        ],
+        [
+          "ScrollText",
+          "LateUpdate"
+        ],
+        [
+          "ScrollTextHorizontal",
+          "Start"
+        ],
+        [
+          "ScrollTextHorizontal",
+          "Update"
+        ],
+        [
+          "ScrollTextHorizontal",
+          "LateUpdate"
+        ],
+        [
+          "SelectLanguageScreen",
+          "Start"
+        ],
+        [
+          "SelectResolutionScreen",
+          "Start"
+        ],
+        [
+          "SelectResolutionScreen",
+          "Update"
+        ],
+        [
+          "SelectResolutionScreen",
+          "OnEnable"
+        ],
+        [
+          "SelectSaveScreen",
+          "Start"
+        ],
+        [
+          "SelectSaveScreen",
+          "OnEnable"
+        ],
+        [
+          "ShowInfoBox",
+          "Start"
+        ],
+        [
+          "ShowInfoBox",
+          "Update"
+        ],
+        [
+          "ShowTooltip",
+          "Update"
+        ],
+        [
+          "ShowTooltipInteractable",
+          "Update"
+        ],
+        [
+          "ShowTooltipInteractable",
+          "LateUpdate"
+        ],
+        [
+          "Tooltip",
+          "Awake"
+        ],
+        [
+          "Tooltip",
+          "LateUpdate"
+        ],
+        [
+          "TransitionScreen",
+          "Awake"
+        ],
+        [
+          "TransitionScreen",
+          "Update"
+        ],
+        [
+          "TransitionScreen",
+          "OnApplicationQuit"
+        ],
+        [
+          "UpdatePopup",
+          "Awake"
+        ],
+        [
+          "UpdatePopup",
+          "OnEnable"
+        ],
+        [
+          "UpdatePopup",
+          "Update"
+        ],
+        [
+          "InventoryInteractable",
+          "Start"
+        ],
+        [
+          "InventoryInteractable",
+          "Update"
+        ],
+        [
+          "MagicProjectile",
+          "Start"
+        ],
+        [
+          "MagicProjectile",
+          "Update"
+        ],
+        [
+          "AudioManager",
+          "Awake"
+        ],
+        [
+          "AudioManager",
+          "Start"
+        ],
+        [
+          "AudioManager",
+          "LateUpdate"
+        ],
+        [
+          "CitiesManager",
+          "Start"
+        ],
+        [
+          "CitiesManager",
+          "Update"
+        ],
+        [
+          "ColorManager",
+          "Awake"
+        ],
+        [
+          "ColorManager",
+          "OnValidate"
+        ],
+        [
+          "DemandManager",
+          "Awake"
+        ],
+        [
+          "DrawManager",
+          "Awake"
+        ],
+        [
+          "DrawManager",
+          "Update"
+        ],
+        [
+          "DrawManager",
+          "LateUpdate"
+        ],
+        [
+          "FontManager",
+          "Awake"
+        ],
+        [
+          "FontManager",
+          "Start"
+        ],
+        [
+          "FontManager",
+          "OnDestroy"
+        ],
+        [
+          "FontManager",
+          "Update"
+        ],
+        [
+          "ForestCombatManager",
+          "Awake"
+        ],
+        [
+          "ForestCombatManager",
+          "Update"
+        ],
+        [
+          "ForestCombatManager",
+          "OnDrawGizmos"
+        ],
+        [
+          "InputController",
+          "Awake"
+        ],
+        [
+          "InputController",
+          "OnApplicationFocus"
+        ],
+        [
+          "InputController",
+          "OnDestroy"
+        ],
+        [
+          "InputController",
+          "Update"
+        ],
+        [
+          "InputController",
+          "LateUpdate"
+        ],
+        [
+          "LoggingManager",
+          "Awake"
+        ],
+        [
+          "LoggingManager",
+          "Update"
+        ],
+        [
+          "ModManager",
+          "Awake"
+        ],
+        [
+          "PrefabManager",
+          "Awake"
+        ],
+        [
+          "QuestManager",
+          "Awake"
+        ],
+        [
+          "QuestManager",
+          "Start"
+        ],
+        [
+          "SaveManager",
+          "Awake"
+        ],
+        [
+          "SpriteManager",
+          "Awake"
+        ],
+        [
+          "SpriteManager",
+          "Update"
+        ],
+        [
+          "WorldManager",
+          "Awake"
+        ],
+        [
+          "WorldManager",
+          "Start"
+        ],
+        [
+          "WorldManager",
+          "OnApplicationQuit"
+        ],
+        [
+          "WorldManager",
+          "OnDestroy"
+        ],
+        [
+          "WorldManager",
+          "Update"
+        ],
+        [
+          "WorldManager",
+          "LateUpdate"
+        ],
+        [
+          "MaterialChanger",
+          "Awake"
+        ],
+        [
+          "PackUI",
+          "Start"
+        ],
+        [
+          "PackUI",
+          "Update"
+        ],
+        [
+          "SchemaUI",
+          "Start"
+        ],
+        [
+          "SchemaUI",
+          "Update"
+        ],
+        [
+          "OnOffInteractable",
+          "Start"
+        ],
+        [
+          "OnOffInteractable",
+          "Update"
+        ],
+        [
+          "Projectile",
+          "Start"
+        ],
+        [
+          "Projectile",
+          "Update"
+        ],
+        [
+          "RangedProjectile",
+          "Update"
+        ],
+        [
+          "RectanglePacker",
+          "OnDrawGizmos"
+        ],
+        [
+          "SceneBootstrapper",
+          "Awake"
+        ],
+        [
+          "Screenshotter",
+          "Awake"
+        ],
+        [
+          "Screenshotter",
+          "Start"
+        ],
+        [
+          "Screenshotter",
+          "LateUpdate"
+        ],
+        [
+          "SellBox",
+          "Update"
+        ],
+        [
+          "SellBox",
+          "LateUpdate"
+        ],
+        [
+          "ConflictArrowDrawer",
+          "Awake"
+        ],
+        [
+          "ConflictRectangleDrawer",
+          "Awake"
+        ],
+        [
+          "ConveyorArrowDrawer",
+          "Awake"
+        ],
+        [
+          "EnergyCableDrawer",
+          "Awake"
+        ],
+        [
+          "SewerPipeDrawer",
+          "Awake"
+        ],
+        [
+          "TransportArrowDrawer",
+          "Awake"
+        ],
+        [
+          "TransportArrowMainlandDrawer",
+          "Awake"
+        ],
+        [
+          "Statusbar",
+          "Start"
+        ],
+        [
+          "Statusbar",
+          "Update"
+        ],
+        [
+          "StatusEffect",
+          "Update"
+        ],
+        [
+          "StatusEffect_Poison",
+          "Update"
+        ],
+        [
+          "StatusEffect_Bleeding",
+          "Update"
+        ],
+        [
+          "StatusEffect_Frenzy",
+          "Update"
+        ],
+        [
+          "StatusEffect_Invulnerable",
+          "Update"
+        ],
+        [
+          "StatusEffect_Drunk",
+          "Update"
+        ],
+        [
+          "StatusEffect_Stunned",
+          "Update"
+        ],
+        [
+          "StatusEffect_WellFed",
+          "Update"
+        ],
+        [
+          "StatusEffect_Spoiling",
+          "Update"
+        ],
+        [
+          "StatusEffect_Sick",
+          "Update"
+        ],
+        [
+          "StatusEffect_Anxious",
+          "Update"
+        ],
+        [
+          "StatusEffect_NoWorkers",
+          "Update"
+        ],
+        [
+          "StatusEffect_Dissolving",
+          "Update"
+        ],
+        [
+          "StatusEffect_Radar",
+          "Update"
+        ],
+        [
+          "StatusEffectElement",
+          "Awake"
+        ],
+        [
+          "StatusEffectElement",
+          "Update"
+        ],
+        [
+          "SteamManager",
+          "Awake"
+        ],
+        [
+          "SteamManager",
+          "OnEnable"
+        ],
+        [
+          "SteamManager",
+          "OnDestroy"
+        ],
+        [
+          "SteamManager",
+          "Update"
+        ],
+        [
+          "WorkerTransformHolder",
+          "Update"
+        ]
+      ],
+      "types": [
+        {
+          "namespace": "Microsoft.CodeAnalysis",
+          "name": "EmbeddedAttribute",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "System.Runtime.CompilerServices",
+          "name": "NullableAttribute",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "System.Runtime.CompilerServices",
+          "name": "NullableContextAttribute",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ActionTimeModifier",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ActionTimeBase",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ActionTimeParams",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "AllQuests",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "AttackAnimation",
+          "method_count": 5,
+          "lifecycle": [
+            "Start",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "AttackAnimationMelee",
+          "method_count": 3,
+          "lifecycle": [
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "AttackAnimationRanged",
+          "method_count": 3,
+          "lifecycle": [
+            "Start",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "AttackAnimationMagic",
+          "method_count": 3,
+          "lifecycle": [
+            "Start",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "AttackAnimationBullet",
+          "method_count": 3,
+          "lifecycle": [
+            "Start",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "BoardBackground",
+          "method_count": 14,
+          "lifecycle": [
+            "Awake"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "BackgroundRegion",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SpriteArea",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "BoardCurrency",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "BoardMonths",
+          "method_count": 7,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "BoardOptions",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Boosterpack",
+          "method_count": 19,
+          "lifecycle": [
+            "Awake",
+            "Start",
+            "OnDestroy",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "BoosterpackData",
+          "method_count": 10,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "BoosterAddition",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "BuyBoosterBox",
+          "method_count": 10,
+          "lifecycle": [
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "CardAnimation",
+          "method_count": 3,
+          "lifecycle": [
+            "Start",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "CardAnimation_FakeMeleeAttack",
+          "method_count": 2,
+          "lifecycle": [
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "CardAttribute",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardBag",
+          "method_count": 18,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardBagType",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardChance",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardConnector",
+          "method_count": 24,
+          "lifecycle": [
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "CardDirection",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ConnectionType",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardData",
+          "method_count": 112,
+          "lifecycle": [
+            "OnValidate",
+            "Awake"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "ExtraDataAttribute",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "TimedActionAttribute",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "TimerAction",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardType",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "PickupSoundGroup",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardDamageType",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ICardReference",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardReferenceCard",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardReferenceCode",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardReferenceBooster",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Cards",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Academy",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Altar",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "AngryRoyal",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Animal",
+          "method_count": 22,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "AnimalPen",
+          "method_count": 10,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Apartment",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ArtGallery",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Artwork",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "BabyDragon",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Barrack",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Barrel",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "BaseVillager",
+          "method_count": 16,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "LifeStage",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "BasicSmelter",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Battery",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Blueprint",
+          "method_count": 15,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SubprintMatchInfo",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "BlueprintGroup",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "BlueprintAdmireCoin",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "BlueprintAltar",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "BlueprintDeathCurseOver",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "BlueprintFillBottle",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "BlueprintFountainOfYouth",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "BlueprintGreedCurseOver",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "BlueprintGrowth",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "BlueprintHappiness",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "BlueprintHappinessCurseOver",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "BlueprintOffspring",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "BlueprintRecipe",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Boat",
+          "method_count": 17,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Bone",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "BreedingPen",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Brickyard",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Building",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardRequirement",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardRequirement_CardsExists",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardRequirement_TakeDollarsOnTop",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardRequirement_TakeCard",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardRequirement_TakeDollars",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardRequirement_TakeFood",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardRequirement_HasHousing",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardRequirement_HasEnergy",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardRequirement_HasEnergyWorkers",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardRequirement_HasSewerConnected",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardRequirement_WorkerAmountMet",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardRequirement_HasPollutionLandfill",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardRequirement_HasPollution",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardRequirement_NeedsHealing",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardRequirement_OnActiveBoard",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardRequirement_InConflict",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardRequirement_LandMarkFirstTimeOnBoard",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardRequirementResult",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardRequirementResult_TakeCards",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardRequirementResult_TakeDollars",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardRequirementResult_TakeDollarsFromStack",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardRequirementResult_AddPollutionLandfill",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardRequirementResult_AddPollution",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardRequirementResult_ConsumeFood",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardRequirementResult_AddWellbeing",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardRequirementResult_AddWellbeingLandmark",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardRequirementResult_UsePollution",
+          "method_count": 7,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardRequirementResult_HealCombatable",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Cathedral",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Cesspool",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Charity",
+          "method_count": 8,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Chest",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Chicken",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CitiesCombatable",
+          "method_count": 13,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CityAdvisor",
+          "method_count": 6,
+          "lifecycle": [
+            "Awake"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "CityHall",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Combatable",
+          "method_count": 55,
+          "lifecycle": [
+            "OnDrawGizmos"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "AttackType",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Team",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CombatableHarvestable",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Composter",
+          "method_count": 7,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Conflict",
+          "method_count": 32,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ConsumingEnergyGenerator",
+          "method_count": 8,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Conveyor",
+          "method_count": 22,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Corpse",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Crab",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Creditcard",
+          "method_count": 10,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Curse",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CurseHappiness",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "DemoCard",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Demon",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Dino",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "DissolvingResource",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Distillery",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Dollar",
+          "method_count": 8,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "DragonEgg",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Drought",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "EarthQuake",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Egg",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Enemy",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Energy",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "EnergyConsumer",
+          "method_count": 7,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "EnergyGenerator",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "EnergyLogic",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardConnectorData",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Euphoria",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "EventCard",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardEventType",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ExportCenter",
+          "method_count": 7,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Factory",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "FactoryParts",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Farmland",
+          "method_count": 8,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Festival",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "FilteredJunction",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "FinancialCrisis",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "FishingSpot",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "FishTrap",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "BaitBag",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "FloatingStatus",
+          "method_count": 7,
+          "lifecycle": [
+            "Start",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "FlourMill",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Food",
+          "method_count": 8,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "FoodWarehouse",
+          "method_count": 8,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "FountainOfYouth",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Garden",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "GoblinAttack",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Gold",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Graveyard",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Greenhouse",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Happiness",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "HappinessSpirit",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Harvestable",
+          "method_count": 14,
+          "lifecycle": [
+            "Awake",
+            "OnDestroy"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "HeavyFoundation",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Hotpot",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "House",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ICurrency",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "IEnergy",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "IEnergyConsumer",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "IKnowledge",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "IndustrialSmelter",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Jester",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Junction",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Kid",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Kraken",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Landmark",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Market",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Merchant",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "MessageInABottle",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "MessHall",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Milk",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Mimic",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Mob",
+          "method_count": 13,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Monkey",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Museum",
+          "method_count": 10,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "NamingStone",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "OldVillager",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Oven",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "PackSale",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Parrot",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ParticleCollider",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "PassiveEnergyConsumer",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "PassiveEnergyGenerator",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "PettingZoo",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Pirate",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "PirateBoat",
+          "method_count": 10,
+          "lifecycle": [
+            "Awake",
+            "Start"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "Pollution",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Poop",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "PoopSlime",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Portal",
+          "method_count": 16,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "RadarStation",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Resource",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ResourceChest",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ResourceMagnet",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "RoadBuilder",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "RobotWorker",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Royal",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "RoyalBuilding",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Rumor",
+          "method_count": 7,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "RumorCities",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SacredChest",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SadEvent",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Sawmill",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SepticTank",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Shaman",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Shell",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SlaughterHouse",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Slime",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Smelter",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SpecialHit",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SpecialHitType",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SpecialHitTarget",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Spirit",
+          "method_count": 16,
+          "lifecycle": [
+            "Awake"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "Spring",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "StablePortal",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Stadium",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "StompingVat",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "StrangePortal",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "StringUtils",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Subprint",
+          "method_count": 12,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Tavern",
+          "method_count": 10,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "TeenageVillager",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Temple",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Tentacle",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "TimeMachine",
+          "method_count": 8,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Tornado",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ToyFactory",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "TransmissionTower",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Trash",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "TrashCan",
+          "method_count": 7,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "TravellingCart",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "TreasureChest",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Unhappiness",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "University",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Villager",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Weather",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Well",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "WickedWitch",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "WildFire",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Wind",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "WishingWell",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Worker",
+          "method_count": 17,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "HousingConsumer",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "WorkerType",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "WorkerBlueprint",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardStringSplitter",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardTarget",
+          "method_count": 10,
+          "lifecycle": [
+            "Start",
+            "OnDestroy",
+            "Update",
+            "LateUpdate"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "CardUpdateType",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardValue",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CitiesCutscenes",
+          "method_count": 19,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CombatCircleElement",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CombatStats",
+          "method_count": 22,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "HitChance",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "AttackDamage",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "AttackSpeed",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Defence",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CreatePackLine",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CurseType",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Cutscenes",
+          "method_count": 50,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "DebugOptions",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Demand",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardAmountPair",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "DemandDifficulty",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "DemandEvent",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "DirectionCircleElement",
+          "method_count": 10,
+          "lifecycle": [
+            "Start",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "Draggable",
+          "method_count": 27,
+          "lifecycle": [
+            "Awake",
+            "OnDestroy",
+            "Start",
+            "Update",
+            "LateUpdate"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "ValidationResult",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ValidationError",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ValidationCategory",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "EndOfMonthCutscenes",
+          "method_count": 27,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Equipable",
+          "method_count": 14,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "EquipableType",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "EquipmentPosition",
+          "method_count": 4,
+          "lifecycle": [
+            "Awake",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "FRILerp",
+          "method_count": 14,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "GameBoard",
+          "method_count": 12,
+          "lifecycle": [
+            "Awake",
+            "Start",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "Board",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "GameCamera",
+          "method_count": 23,
+          "lifecycle": [
+            "Awake",
+            "Start",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "IGameCardOrCardData",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "GameCard",
+          "method_count": 115,
+          "lifecycle": [
+            "Awake",
+            "Start",
+            "OnDestroy",
+            "OnDrawGizmos",
+            "Update",
+            "LateUpdate"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "IntToStringCacher",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "GameDataLoader",
+          "method_count": 19,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "GameDataValidator",
+          "method_count": 16,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Graph",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Node",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Link",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "GetComponentCacher`1",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "GreedAnimationState",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "GreedCutscenes",
+          "method_count": 20,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "GridQuad",
+          "method_count": 2,
+          "lifecycle": [
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "AchievementHelper",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "DependencyHelper",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "EasingFunction",
+          "method_count": 66,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "EnumHelper",
+          "method_count": 9,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Extensions",
+          "method_count": 16,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "FileHelper",
+          "method_count": 8,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "MathHelper",
+          "method_count": 19,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "PerformanceHelper",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "PhysicsExtensions",
+          "method_count": 28,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ProfanityChecker",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ReflectionHelper",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ResourceHelper",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "HitText",
+          "method_count": 7,
+          "lifecycle": [
+            "Awake",
+            "Start",
+            "OnDestroy",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "HotReloader",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Hoverable",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ICardId",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardId",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardIdWithEquipment",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Icons",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ImageEffect",
+          "method_count": 3,
+          "lifecycle": [
+            "Awake"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "IndustrialRevolution",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Interactable",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "AccessibilityScreen",
+          "method_count": 12,
+          "lifecycle": [
+            "Awake",
+            "OnApplicationQuit",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "AchievementElement",
+          "method_count": 5,
+          "lifecycle": [
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "AdvancedSettingsScreen",
+          "method_count": 7,
+          "lifecycle": [
+            "Awake",
+            "Update",
+            "OnApplicationQuit"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "CardopediaEntryElement",
+          "method_count": 7,
+          "lifecycle": [
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "CardopediaScreen",
+          "method_count": 31,
+          "lifecycle": [
+            "Awake",
+            "OnDestroy",
+            "OnEnable",
+            "OnDisable",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "Colorizer",
+          "method_count": 5,
+          "lifecycle": [
+            "OnValidate",
+            "Start",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "ControlsScreen",
+          "method_count": 11,
+          "lifecycle": [
+            "Awake",
+            "OnEnable",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "RebindInfo",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ExcludedControl",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CreditsScreen",
+          "method_count": 9,
+          "lifecycle": [
+            "OnEnable",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "CustomButton",
+          "method_count": 32,
+          "lifecycle": [
+            "Awake",
+            "Start",
+            "OnDisable",
+            "OnEnable",
+            "Update",
+            "LateUpdate"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "CutsceneScreen",
+          "method_count": 12,
+          "lifecycle": [
+            "Awake",
+            "OnEnable",
+            "Update",
+            "LateUpdate"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "DebugScreen",
+          "method_count": 65,
+          "lifecycle": [
+            "Start",
+            "Update",
+            "Awake"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "DebugTab",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "EmptyScreen",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ExpandableLabel",
+          "method_count": 9,
+          "lifecycle": [
+            "Start",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "ExpandableLabelCardopedia",
+          "method_count": 10,
+          "lifecycle": [
+            "Start",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "FontSetter",
+          "method_count": 6,
+          "lifecycle": [
+            "Start",
+            "OnEnable",
+            "OnDestroy",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "GameCanvas",
+          "method_count": 77,
+          "lifecycle": [
+            "Awake",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "GameOverScreen",
+          "method_count": 4,
+          "lifecycle": [
+            "Awake",
+            "OnEnable",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "GameScreen",
+          "method_count": 58,
+          "lifecycle": [
+            "Awake",
+            "OnDestroy",
+            "OnEnable",
+            "Update",
+            "LateUpdate"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "IdeaElement",
+          "method_count": 3,
+          "lifecycle": [
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "MainMenu",
+          "method_count": 7,
+          "lifecycle": [
+            "Awake",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "ModalScreen",
+          "method_count": 8,
+          "lifecycle": [
+            "Awake"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "ModDisablingScreen",
+          "method_count": 3,
+          "lifecycle": [
+            "Awake"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "ModOptionsScreen",
+          "method_count": 11,
+          "lifecycle": [
+            "Awake",
+            "Update",
+            "OnEnable"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "ModsScreen",
+          "method_count": 4,
+          "lifecycle": [
+            "Awake",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "ModUploadScreen",
+          "method_count": 16,
+          "lifecycle": [
+            "Awake",
+            "OnEnable",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "MultilineScrollbarHider",
+          "method_count": 2,
+          "lifecycle": [
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "NotificationElement",
+          "method_count": 4,
+          "lifecycle": [
+            "Start",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "OptionsScreen",
+          "method_count": 26,
+          "lifecycle": [
+            "Awake",
+            "OnDestroy",
+            "Start",
+            "Update",
+            "OnDisable"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "PauseScreen",
+          "method_count": 4,
+          "lifecycle": [
+            "Awake",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "RebindElement",
+          "method_count": 7,
+          "lifecycle": [
+            "Start",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "RunOptionsScreen",
+          "method_count": 14,
+          "lifecycle": [
+            "Start",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "ScrollbarFixer",
+          "method_count": 3,
+          "lifecycle": [
+            "Start",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "ScrollText",
+          "method_count": 5,
+          "lifecycle": [
+            "Start",
+            "Update",
+            "LateUpdate"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "ScrollTextHorizontal",
+          "method_count": 4,
+          "lifecycle": [
+            "Start",
+            "Update",
+            "LateUpdate"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "SelectLanguageScreen",
+          "method_count": 2,
+          "lifecycle": [
+            "Start"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "SelectResolutionScreen",
+          "method_count": 6,
+          "lifecycle": [
+            "Start",
+            "Update",
+            "OnEnable"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "SelectSaveScreen",
+          "method_count": 7,
+          "lifecycle": [
+            "Start",
+            "OnEnable"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "ShowInfoBox",
+          "method_count": 3,
+          "lifecycle": [
+            "Start",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "ShowTooltip",
+          "method_count": 2,
+          "lifecycle": [
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "ShowTooltipInteractable",
+          "method_count": 5,
+          "lifecycle": [
+            "Update",
+            "LateUpdate"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "SokScreen",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Tooltip",
+          "method_count": 6,
+          "lifecycle": [
+            "Awake",
+            "LateUpdate"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "TransitionScreen",
+          "method_count": 9,
+          "lifecycle": [
+            "Awake",
+            "Update",
+            "OnApplicationQuit"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "TransitionType",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "UpdatePopup",
+          "method_count": 8,
+          "lifecycle": [
+            "Awake",
+            "OnEnable",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "InventoryInteractable",
+          "method_count": 10,
+          "lifecycle": [
+            "Start",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "Landfill",
+          "method_count": 8,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "MagicProjectile",
+          "method_count": 3,
+          "lifecycle": [
+            "Start",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "AudioManager",
+          "method_count": 22,
+          "lifecycle": [
+            "Awake",
+            "Start",
+            "LateUpdate"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "AudioClipWithVolume",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CitiesManager",
+          "method_count": 29,
+          "lifecycle": [
+            "Start",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "CityState",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "EnergyDemand",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ColorManager",
+          "method_count": 10,
+          "lifecycle": [
+            "Awake",
+            "OnValidate"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "UIColor",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardPalette",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardColorRule",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ControllerVibrator",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "VibratePattern",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "DemandManager",
+          "method_count": 18,
+          "lifecycle": [
+            "Awake"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "DrawManager",
+          "method_count": 8,
+          "lifecycle": [
+            "Awake",
+            "Update",
+            "LateUpdate"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "ConflictArrow",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ConflictRectangle",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ConveyorArrow",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "EnergyCable",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SewerPipe",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "TransportArrow",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "TransportArrowMainland",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "IShape",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "EndOfMonthParameters",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "EnergyHarvestable",
+          "method_count": 10,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "FontManager",
+          "method_count": 8,
+          "lifecycle": [
+            "Awake",
+            "Start",
+            "OnDestroy",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "FontType",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ForestCombatManager",
+          "method_count": 29,
+          "lifecycle": [
+            "Awake",
+            "Update",
+            "OnDrawGizmos"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "ForestCombatState",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "InputController",
+          "method_count": 75,
+          "lifecycle": [
+            "Awake",
+            "OnApplicationFocus",
+            "OnDestroy",
+            "Update",
+            "LateUpdate"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "ControlScheme",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Laboratory",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "LoggingManager",
+          "method_count": 6,
+          "lifecycle": [
+            "Awake",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "ModManager",
+          "method_count": 9,
+          "lifecycle": [
+            "Awake"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "PrefabManager",
+          "method_count": 2,
+          "lifecycle": [
+            "Awake"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "QuestManager",
+          "method_count": 26,
+          "lifecycle": [
+            "Awake",
+            "Start"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "SaveManager",
+          "method_count": 17,
+          "lifecycle": [
+            "Awake"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "SpriteManager",
+          "method_count": 4,
+          "lifecycle": [
+            "Awake",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "WaterTreatmentPlant",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "WorldManager",
+          "method_count": 209,
+          "lifecycle": [
+            "Awake",
+            "Start",
+            "OnApplicationQuit",
+            "OnDestroy",
+            "Update",
+            "LateUpdate"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "MoonLength",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ViewType",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "MaterialChanger",
+          "method_count": 7,
+          "lifecycle": [
+            "Awake"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "ConfigEntry`1",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ConfigEntryBase",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ConfigUI",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ConfigFile",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "StringColorConverter",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "StringEnumConverter",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "StringSpriteConverter",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "DocGen",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Mod",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ModManifest",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ModCard",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ModBlueprint",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ModSubprint",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ModBoosterpack",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ModCardBag",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ModLogger",
+          "method_count": 7,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "PackUI",
+          "method_count": 9,
+          "lifecycle": [
+            "Start",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "SchemaGenerator",
+          "method_count": 22,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SchemaUI",
+          "method_count": 4,
+          "lifecycle": [
+            "Start",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "MonthlyRequirementResult",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "MonthlyResult",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "RequirementType",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "OnOffInteractable",
+          "method_count": 10,
+          "lifecycle": [
+            "Start",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "PlatformHelper",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Projectile",
+          "method_count": 3,
+          "lifecycle": [
+            "Start",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "Quest",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "QuestGroup",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Location",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "QueuedAnimation",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "RangedProjectile",
+          "method_count": 2,
+          "lifecycle": [
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "RectanglePacker",
+          "method_count": 21,
+          "lifecycle": [
+            "OnDrawGizmos"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "PlacedSprite",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "RecyclingCenter",
+          "method_count": 8,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "RequirementHolder",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SaveGame",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SavedStatusEffect",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SavedCardConnector",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SaveRound",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SavedMonth",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "RunOptions",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "RunVariables",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SavedCard",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SavedBooster",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SavedBoard",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SavedBoosterBox",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SavedConflict",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ExtraCardData",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SerializedKeyValuePair",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SavedPreset",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SerializedKeyValuePairHelper",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SceneBootstrapper",
+          "method_count": 2,
+          "lifecycle": [
+            "Awake"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "Screenshotter",
+          "method_count": 8,
+          "lifecycle": [
+            "Awake",
+            "Start",
+            "LateUpdate"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "ScreenshotDescription",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ScriptableCutscene",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CutsceneStep",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CutsceneStep_SetText",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CutsceneStep_FocusCamera",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CutsceneStep_FocusCameraOnGenius",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CutsceneStep_PlaceGeniusOnTimeMachine",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CutsceneStep_PanCamera",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CutsceneStep_FocusCameraOnCardType",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CutsceneStep_FocusCameraOnOverflowingLandfill",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CutsceneStep_FocusCameraOnenergyConsumer",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CutsceneStep_WaitForEnergyConnectionMade",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CutsceneStep_WaitForSeconds",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CutsceneStep_SetView",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CutsceneStep_CreateCard",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CutsceneStep_Pause",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CutsceneStep_WaitForContinueClick",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CutsceneStep_DestroyCard",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CutsceneStep_DestroyBaseVillager",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SellBox",
+          "method_count": 6,
+          "lifecycle": [
+            "Update",
+            "LateUpdate"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "SetCardBagData",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "VariableFilter",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "VariableFilterCurseActive",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "VariableFilterIsRunWithCurse",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SimpleCardChance",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SetCardBagType",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "EnemySetCardBag",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SewerCard",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ShapeDrawer",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ConflictArrowDrawer",
+          "method_count": 5,
+          "lifecycle": [
+            "Awake"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "ConflictRectangleDrawer",
+          "method_count": 5,
+          "lifecycle": [
+            "Awake"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "ConveyorArrowDrawer",
+          "method_count": 5,
+          "lifecycle": [
+            "Awake"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "EnergyCableDrawer",
+          "method_count": 5,
+          "lifecycle": [
+            "Awake"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "SewerPipeDrawer",
+          "method_count": 4,
+          "lifecycle": [
+            "Awake"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "TransportArrowDrawer",
+          "method_count": 4,
+          "lifecycle": [
+            "Awake"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "TransportArrowMainlandDrawer",
+          "method_count": 5,
+          "lifecycle": [
+            "Awake"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "ISokBundle",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "EditorSokBundle",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "RuntimeSokBundle",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SokTerms",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SpawnHelper",
+          "method_count": 9,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Statusbar",
+          "method_count": 3,
+          "lifecycle": [
+            "Start",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "StatusEffect",
+          "method_count": 19,
+          "lifecycle": [
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "StatusEffect_Poison",
+          "method_count": 4,
+          "lifecycle": [
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "StatusEffect_Bleeding",
+          "method_count": 4,
+          "lifecycle": [
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "StatusEffect_Frenzy",
+          "method_count": 4,
+          "lifecycle": [
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "StatusEffect_Invulnerable",
+          "method_count": 4,
+          "lifecycle": [
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "StatusEffect_Drunk",
+          "method_count": 4,
+          "lifecycle": [
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "StatusEffect_Stunned",
+          "method_count": 4,
+          "lifecycle": [
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "StatusEffect_WellFed",
+          "method_count": 4,
+          "lifecycle": [
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "StatusEffect_Spoiling",
+          "method_count": 4,
+          "lifecycle": [
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "StatusEffect_Demand",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "StatusEffect_Sick",
+          "method_count": 5,
+          "lifecycle": [
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "StatusEffect_Anxious",
+          "method_count": 4,
+          "lifecycle": [
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "StatusEffect_NoEnergy",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "StatusEffect_NoSewer",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "StatusEffect_NoWorkers",
+          "method_count": 5,
+          "lifecycle": [
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "StatusEffect_NoEducatedWorkers",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "StatusEffect_Homeless",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "StatusEffect_MaxOnBoard",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "StatusEffect_Damaged",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "StatusEffect_CardOff",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "StatusEffect_OnFire",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "StatusEffect_Drought",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "StatusEffect_Depleted",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "StatusEffect_Dissolving",
+          "method_count": 4,
+          "lifecycle": [
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "StatusEffect_Radar",
+          "method_count": 6,
+          "lifecycle": [
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "StatusEffect_Space",
+          "method_count": 7,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "StatusEffectElement",
+          "method_count": 6,
+          "lifecycle": [
+            "Awake",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "SteamManager",
+          "method_count": 9,
+          "lifecycle": [
+            "Awake",
+            "OnEnable",
+            "OnDestroy",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "WeightedRandomBag`1",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "WellbeingGenerator",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "WorkerTransformHolder",
+          "method_count": 4,
+          "lifecycle": [
+            "Update"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "UnitySourceGeneratedAssemblyMonoScriptTypes_v1",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<PrivateImplementationDetails>",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ActionTimeModifierFunc",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ActionTimeBaseSpeedFunc",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 245,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass217_0",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass32_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass33_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass33_1",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<WaitFor>d__34",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 14,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass15_0",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass17_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass19_0",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass20_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass22_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "VisualsState",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 18,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__129`1",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass103_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass112_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass128_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass130_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass134_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass156_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass32_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass32_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Growable",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass5_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass20_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass4_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<Perform>d__3",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 8,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass3_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 7,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass27_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass28_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass7_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass7_1",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 7,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass2_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass8_0",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 7,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass17_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "DropFilter",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass1_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass17_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass15_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass24_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass10_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 7,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<CitiesDrought>d__12",
+          "method_count": 7,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<CitiesEarthQuake>d__11",
+          "method_count": 7,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<CitiesFinancialCrisis>d__9",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<CitiesGameOver>d__21",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<CitiesParticleCollider>d__15",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<CitiesStopDisaster>d__16",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<CitiesTornado>d__8",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<CitiesWildFire>d__13",
+          "method_count": 7,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<DinoBoss>d__14",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<WaitForAnswer>d__18",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<WaitForContinueClicked>d__19",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass13_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass13_1",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass11_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass14_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass49_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<AltarIntro>d__49",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<BossFight2>d__29",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<BossFight2Complete>d__31",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<BossFight>d__28",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<BossFightComplete>d__30",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<CurseActivatedOnBoard>d__52",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<DeathIntro>d__22",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<DemonOfSadness>d__50",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<EveryoneInForestDead>d__12",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<EveryoneInSpiritWorldDead>d__14",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<EveryoneOnIslandDead>d__13",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<ForestEndlessWaveEnd>d__26",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<ForestIntro>d__19",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<ForestLastWaveEnd>d__25",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<ForestResumeIntro>d__23",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<ForestWaveEnd>d__24",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<ForestWaveLost>d__27",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<GreedIntro>d__20",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<HappinessIntro>d__21",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<IslandIntro>d__18",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<IslandIntroPack>d__17",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<JustUnlockedPack>d__11",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<MommaCrab>d__16",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<ReturnToBoardCutscene>d__47",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<RunScriptableCutscene>d__40",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<RunScriptableCutsceneInCutscene>d__41",
+          "method_count": 7,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<ShamanLeaving>d__51",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<SpawnKraken>d__10",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<SpawnTentacles>d__9",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<SpiritOutro>d__46",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<WaitForAnswer>d__38",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<WaitForContinueClicked>d__39",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<Wish10>d__35",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<Wish1>d__32",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<Wish20>d__36",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<Wish2>d__33",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<Wish50>d__37",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<Wish5>d__34",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 13,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass9_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<AgeVillagers>d__14",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<CheckMakeSick>d__13",
+          "method_count": 7,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<FeedVillagers>d__17",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<HappinessWarning>d__20",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<IndustrialRevolutionEvent>d__23",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<KillAnimals>d__15",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<MaxCardCount>d__28",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<NewVillagerBecauseOfHappiness>d__21",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<NewVillagerSpawnsInDeath>d__22",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<SpecialEvents>d__29",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<UseHappiness>d__25",
+          "method_count": 8,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "PositionType",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 11,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass250_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass250_1",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<WaitFor>d__252",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 7,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass22_0",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass24_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass26_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass28_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass35_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass6_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass18_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<FinalDemandEndSuccess>d__10",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<FinalDemandLiftCurse>d__13",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<FinalDemandStart>d__9",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<FinishDemandFailed>d__18",
+          "method_count": 8,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<FinishDemandSuccess>d__16",
+          "method_count": 7,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<FinishDemandSuccessPreMoon>d__17",
+          "method_count": 7,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<GreedWearCrown>d__11",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<KillRoyalLiftCurse>d__14",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<NewVillager>d__12",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<StartDemand>d__15",
+          "method_count": 7,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<TryAttackRoyal>d__21",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<WaitForAnswer>d__19",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<WaitForContinueClicked>d__20",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass1_0",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass1_1",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Ease",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Function",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass0_0`1",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<Permute>d__0`1",
+          "method_count": 10,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "AscendingDistanceComparer",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "LanguageProfanities",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<LoadAudioClipFromPath>d__2",
+          "method_count": 7,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 13,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass35_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass38_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass43_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass43_1",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass47_0",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass47_1",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass47_2",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass12_0",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass12_1",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass31_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 7,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass51_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass57_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass57_1",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass57_2",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass80_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ScreenPosition",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__32`1",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass48_0",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass53_0",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass58_0",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass59_0",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass60_0",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass61_0",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass62_0",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass68_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass71_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass72_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 43,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass102_0",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass103_0",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass103_1",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass83_0",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass94_0",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<ScrollToQuestCoroutine>d__83",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 11,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass11_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass3_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass19_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass20_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass21_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 7,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass4_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 11,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass12_0",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass12_1",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass15_0",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass18_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass20_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 11,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 8,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass5_0",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass8_0",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass2_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass9_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass6_0",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "TransitionState",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass20_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass89_0",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass89_1",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass94_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 18,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass46_0",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass47_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 38,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass111_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass17_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass23_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<CheckDemands>d__11",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<FinishDemand>d__20",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<StartDemand>d__18",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ShapeDrawerPrefab",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass6_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 9,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "UserInput",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass55_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass55_1",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass10_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass11_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass5_0",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass11_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "GameState",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 53,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass119_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass123_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass124_0",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass127_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass129_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass161_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass170_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass171_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass190_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass204_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass205_0",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass209_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass234_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass242_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass248_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass266_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass268_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass270_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass283_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass287_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass293_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass293_1",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass293_2",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass300_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass301_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<EndOfMonthCitiesRoutine>d__266",
+          "method_count": 14,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<EndOfMonthRoutine>d__265",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<FinishDemand>d__256",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<FinishDemandRoutine>d__268",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<KillVillagerCoroutine>d__272",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<SpawnAndDestroyCards>d__169",
+          "method_count": 7,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<WaitForContinueClicked>d__262",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<ResetAfter>d__7",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass5_0`1",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SpriteMetadata",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass0_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<TakeAllScreenshots>d__6",
+          "method_count": 7,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<TakeScreenshot>d__7",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<Process>d__7",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<Process>d__4",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<Process>d__3",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<Process>d__1",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<Process>d__1",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<Process>d__2",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<Process>d__1",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<Process>d__0",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<Process>d__0",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<Process>d__0",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<Process>d__1",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<Process>d__1",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SpawnLocation",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<Process>d__7",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<Process>d__1",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<Process>d__1",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<Process>d__1",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<Process>d__0",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CardIdWithEquipmentCombat",
+          "method_count": 5,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 9,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass0_0",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass3_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass3_1",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass4_0",
+          "method_count": 4,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass8_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass41_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass42_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Entry",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "MonoScriptData",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "__StaticArrayInitTypeSize=16",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "__StaticArrayInitTypeSize=20",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "__StaticArrayInitTypeSize=10565",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "__StaticArrayInitTypeSize=15683",
+          "method_count": 0,
+          "lifecycle": []
+        }
+      ]
+    },
+    "Assembly-CSharp.dll": {
+      "method_count": 15,
+      "ctor_count": 4,
+      "accessor_count": 0,
+      "lifecycle_type_count": 1,
+      "lifecycle_method_count": 4,
+      "lifecycle_types": [
+        "Sokpop.SokIntro"
+      ],
+      "lifecycle_methods": [
+        [
+          "Sokpop.SokIntro",
+          "Awake"
+        ],
+        [
+          "Sokpop.SokIntro",
+          "Start"
+        ],
+        [
+          "Sokpop.SokIntro",
+          "Update"
+        ],
+        [
+          "Sokpop.SokIntro",
+          "FixedUpdate"
+        ]
+      ],
+      "types": [
+        {
+          "namespace": "",
+          "name": "UnitySourceGeneratedAssemblyMonoScriptTypes_v1",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "Sokpop",
+          "name": "SokIntro",
+          "method_count": 10,
+          "lifecycle": [
+            "Awake",
+            "Start",
+            "Update",
+            "FixedUpdate"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "<PrivateImplementationDetails>",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "MonoScriptData",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c",
+          "method_count": 3,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "__StaticArrayInitTypeSize=20",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "__StaticArrayInitTypeSize=39",
+          "method_count": 0,
+          "lifecycle": []
+        }
+      ]
+    },
+    "Assembly-CSharp-firstpass.dll": {
+      "method_count": 268,
+      "ctor_count": 59,
+      "accessor_count": 10,
+      "lifecycle_type_count": 30,
+      "lifecycle_method_count": 70,
+      "lifecycle_types": [
+        "ChatController",
+        "EnvMapAnimator",
+        "TMPro.TMP_TextEventHandler",
+        "TMPro.Examples.Benchmark01",
+        "TMPro.Examples.Benchmark01_UGUI",
+        "TMPro.Examples.Benchmark02",
+        "TMPro.Examples.Benchmark03",
+        "TMPro.Examples.Benchmark04",
+        "TMPro.Examples.CameraController",
+        "TMPro.Examples.ObjectSpin",
+        "TMPro.Examples.ShaderPropAnimator",
+        "TMPro.Examples.SimpleScript",
+        "TMPro.Examples.SkewTextExample",
+        "TMPro.Examples.TeleType",
+        "TMPro.Examples.TextConsoleSimulator",
+        "TMPro.Examples.TextMeshProFloatingText",
+        "TMPro.Examples.TextMeshSpawner",
+        "TMPro.Examples.TMPro_InstructionOverlay",
+        "TMPro.Examples.TMP_ExampleScript_01",
+        "TMPro.Examples.TMP_FrameRateCounter",
+        "TMPro.Examples.TMP_TextEventCheck",
+        "TMPro.Examples.TMP_TextSelector_A",
+        "TMPro.Examples.TMP_TextSelector_B",
+        "TMPro.Examples.TMP_UiFrameRateCounter",
+        "TMPro.Examples.VertexColorCycler",
+        "TMPro.Examples.VertexJitter",
+        "TMPro.Examples.VertexShakeA",
+        "TMPro.Examples.VertexShakeB",
+        "TMPro.Examples.VertexZoom",
+        "TMPro.Examples.WarpTextExample"
+      ],
+      "lifecycle_methods": [
+        [
+          "ChatController",
+          "OnEnable"
+        ],
+        [
+          "ChatController",
+          "OnDisable"
+        ],
+        [
+          "EnvMapAnimator",
+          "Awake"
+        ],
+        [
+          "EnvMapAnimator",
+          "Start"
+        ],
+        [
+          "TMPro.TMP_TextEventHandler",
+          "Awake"
+        ],
+        [
+          "TMPro.TMP_TextEventHandler",
+          "LateUpdate"
+        ],
+        [
+          "TMPro.Examples.Benchmark01",
+          "Start"
+        ],
+        [
+          "TMPro.Examples.Benchmark01_UGUI",
+          "Start"
+        ],
+        [
+          "TMPro.Examples.Benchmark02",
+          "Start"
+        ],
+        [
+          "TMPro.Examples.Benchmark03",
+          "Awake"
+        ],
+        [
+          "TMPro.Examples.Benchmark03",
+          "Start"
+        ],
+        [
+          "TMPro.Examples.Benchmark04",
+          "Start"
+        ],
+        [
+          "TMPro.Examples.CameraController",
+          "Awake"
+        ],
+        [
+          "TMPro.Examples.CameraController",
+          "Start"
+        ],
+        [
+          "TMPro.Examples.CameraController",
+          "LateUpdate"
+        ],
+        [
+          "TMPro.Examples.ObjectSpin",
+          "Awake"
+        ],
+        [
+          "TMPro.Examples.ObjectSpin",
+          "Update"
+        ],
+        [
+          "TMPro.Examples.ShaderPropAnimator",
+          "Awake"
+        ],
+        [
+          "TMPro.Examples.ShaderPropAnimator",
+          "Start"
+        ],
+        [
+          "TMPro.Examples.SimpleScript",
+          "Start"
+        ],
+        [
+          "TMPro.Examples.SimpleScript",
+          "Update"
+        ],
+        [
+          "TMPro.Examples.SkewTextExample",
+          "Awake"
+        ],
+        [
+          "TMPro.Examples.SkewTextExample",
+          "Start"
+        ],
+        [
+          "TMPro.Examples.TeleType",
+          "Awake"
+        ],
+        [
+          "TMPro.Examples.TeleType",
+          "Start"
+        ],
+        [
+          "TMPro.Examples.TextConsoleSimulator",
+          "Awake"
+        ],
+        [
+          "TMPro.Examples.TextConsoleSimulator",
+          "Start"
+        ],
+        [
+          "TMPro.Examples.TextConsoleSimulator",
+          "OnEnable"
+        ],
+        [
+          "TMPro.Examples.TextConsoleSimulator",
+          "OnDisable"
+        ],
+        [
+          "TMPro.Examples.TextMeshProFloatingText",
+          "Awake"
+        ],
+        [
+          "TMPro.Examples.TextMeshProFloatingText",
+          "Start"
+        ],
+        [
+          "TMPro.Examples.TextMeshSpawner",
+          "Awake"
+        ],
+        [
+          "TMPro.Examples.TextMeshSpawner",
+          "Start"
+        ],
+        [
+          "TMPro.Examples.TMPro_InstructionOverlay",
+          "Awake"
+        ],
+        [
+          "TMPro.Examples.TMP_ExampleScript_01",
+          "Awake"
+        ],
+        [
+          "TMPro.Examples.TMP_ExampleScript_01",
+          "Update"
+        ],
+        [
+          "TMPro.Examples.TMP_FrameRateCounter",
+          "Awake"
+        ],
+        [
+          "TMPro.Examples.TMP_FrameRateCounter",
+          "Start"
+        ],
+        [
+          "TMPro.Examples.TMP_FrameRateCounter",
+          "Update"
+        ],
+        [
+          "TMPro.Examples.TMP_TextEventCheck",
+          "OnEnable"
+        ],
+        [
+          "TMPro.Examples.TMP_TextEventCheck",
+          "OnDisable"
+        ],
+        [
+          "TMPro.Examples.TMP_TextSelector_A",
+          "Awake"
+        ],
+        [
+          "TMPro.Examples.TMP_TextSelector_A",
+          "LateUpdate"
+        ],
+        [
+          "TMPro.Examples.TMP_TextSelector_B",
+          "Awake"
+        ],
+        [
+          "TMPro.Examples.TMP_TextSelector_B",
+          "OnEnable"
+        ],
+        [
+          "TMPro.Examples.TMP_TextSelector_B",
+          "OnDisable"
+        ],
+        [
+          "TMPro.Examples.TMP_TextSelector_B",
+          "LateUpdate"
+        ],
+        [
+          "TMPro.Examples.TMP_UiFrameRateCounter",
+          "Awake"
+        ],
+        [
+          "TMPro.Examples.TMP_UiFrameRateCounter",
+          "Start"
+        ],
+        [
+          "TMPro.Examples.TMP_UiFrameRateCounter",
+          "Update"
+        ],
+        [
+          "TMPro.Examples.VertexColorCycler",
+          "Awake"
+        ],
+        [
+          "TMPro.Examples.VertexColorCycler",
+          "Start"
+        ],
+        [
+          "TMPro.Examples.VertexJitter",
+          "Awake"
+        ],
+        [
+          "TMPro.Examples.VertexJitter",
+          "OnEnable"
+        ],
+        [
+          "TMPro.Examples.VertexJitter",
+          "OnDisable"
+        ],
+        [
+          "TMPro.Examples.VertexJitter",
+          "Start"
+        ],
+        [
+          "TMPro.Examples.VertexShakeA",
+          "Awake"
+        ],
+        [
+          "TMPro.Examples.VertexShakeA",
+          "OnEnable"
+        ],
+        [
+          "TMPro.Examples.VertexShakeA",
+          "OnDisable"
+        ],
+        [
+          "TMPro.Examples.VertexShakeA",
+          "Start"
+        ],
+        [
+          "TMPro.Examples.VertexShakeB",
+          "Awake"
+        ],
+        [
+          "TMPro.Examples.VertexShakeB",
+          "OnEnable"
+        ],
+        [
+          "TMPro.Examples.VertexShakeB",
+          "OnDisable"
+        ],
+        [
+          "TMPro.Examples.VertexShakeB",
+          "Start"
+        ],
+        [
+          "TMPro.Examples.VertexZoom",
+          "Awake"
+        ],
+        [
+          "TMPro.Examples.VertexZoom",
+          "OnEnable"
+        ],
+        [
+          "TMPro.Examples.VertexZoom",
+          "OnDisable"
+        ],
+        [
+          "TMPro.Examples.VertexZoom",
+          "Start"
+        ],
+        [
+          "TMPro.Examples.WarpTextExample",
+          "Awake"
+        ],
+        [
+          "TMPro.Examples.WarpTextExample",
+          "Start"
+        ]
+      ],
+      "types": [
+        {
+          "namespace": "",
+          "name": "BuildConstants",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ChatController",
+          "method_count": 4,
+          "lifecycle": [
+            "OnEnable",
+            "OnDisable"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "DropdownSample",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "EnvMapAnimator",
+          "method_count": 3,
+          "lifecycle": [
+            "Awake",
+            "Start"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "UnitySourceGeneratedAssemblyMonoScriptTypes_v1",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "TMPro",
+          "name": "TMP_DigitValidator",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "TMPro",
+          "name": "TMP_PhoneNumberValidator",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "TMPro",
+          "name": "TMP_TextEventHandler",
+          "method_count": 20,
+          "lifecycle": [
+            "Awake",
+            "LateUpdate"
+          ]
+        },
+        {
+          "namespace": "TMPro.Examples",
+          "name": "Benchmark01",
+          "method_count": 2,
+          "lifecycle": [
+            "Start"
+          ]
+        },
+        {
+          "namespace": "TMPro.Examples",
+          "name": "Benchmark01_UGUI",
+          "method_count": 2,
+          "lifecycle": [
+            "Start"
+          ]
+        },
+        {
+          "namespace": "TMPro.Examples",
+          "name": "Benchmark02",
+          "method_count": 2,
+          "lifecycle": [
+            "Start"
+          ]
+        },
+        {
+          "namespace": "TMPro.Examples",
+          "name": "Benchmark03",
+          "method_count": 3,
+          "lifecycle": [
+            "Awake",
+            "Start"
+          ]
+        },
+        {
+          "namespace": "TMPro.Examples",
+          "name": "Benchmark04",
+          "method_count": 2,
+          "lifecycle": [
+            "Start"
+          ]
+        },
+        {
+          "namespace": "TMPro.Examples",
+          "name": "CameraController",
+          "method_count": 5,
+          "lifecycle": [
+            "Awake",
+            "Start",
+            "LateUpdate"
+          ]
+        },
+        {
+          "namespace": "TMPro.Examples",
+          "name": "ObjectSpin",
+          "method_count": 3,
+          "lifecycle": [
+            "Awake",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "TMPro.Examples",
+          "name": "ShaderPropAnimator",
+          "method_count": 4,
+          "lifecycle": [
+            "Awake",
+            "Start"
+          ]
+        },
+        {
+          "namespace": "TMPro.Examples",
+          "name": "SimpleScript",
+          "method_count": 3,
+          "lifecycle": [
+            "Start",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "TMPro.Examples",
+          "name": "SkewTextExample",
+          "method_count": 5,
+          "lifecycle": [
+            "Awake",
+            "Start"
+          ]
+        },
+        {
+          "namespace": "TMPro.Examples",
+          "name": "TeleType",
+          "method_count": 3,
+          "lifecycle": [
+            "Awake",
+            "Start"
+          ]
+        },
+        {
+          "namespace": "TMPro.Examples",
+          "name": "TextConsoleSimulator",
+          "method_count": 8,
+          "lifecycle": [
+            "Awake",
+            "Start",
+            "OnEnable",
+            "OnDisable"
+          ]
+        },
+        {
+          "namespace": "TMPro.Examples",
+          "name": "TextMeshProFloatingText",
+          "method_count": 6,
+          "lifecycle": [
+            "Awake",
+            "Start"
+          ]
+        },
+        {
+          "namespace": "TMPro.Examples",
+          "name": "TextMeshSpawner",
+          "method_count": 3,
+          "lifecycle": [
+            "Awake",
+            "Start"
+          ]
+        },
+        {
+          "namespace": "TMPro.Examples",
+          "name": "TMPro_InstructionOverlay",
+          "method_count": 3,
+          "lifecycle": [
+            "Awake"
+          ]
+        },
+        {
+          "namespace": "TMPro.Examples",
+          "name": "TMP_ExampleScript_01",
+          "method_count": 3,
+          "lifecycle": [
+            "Awake",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "TMPro.Examples",
+          "name": "TMP_FrameRateCounter",
+          "method_count": 5,
+          "lifecycle": [
+            "Awake",
+            "Start",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "TMPro.Examples",
+          "name": "TMP_TextEventCheck",
+          "method_count": 8,
+          "lifecycle": [
+            "OnEnable",
+            "OnDisable"
+          ]
+        },
+        {
+          "namespace": "TMPro.Examples",
+          "name": "TMP_TextInfoDebugTool",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "TMPro.Examples",
+          "name": "TMP_TextSelector_A",
+          "method_count": 5,
+          "lifecycle": [
+            "Awake",
+            "LateUpdate"
+          ]
+        },
+        {
+          "namespace": "TMPro.Examples",
+          "name": "TMP_TextSelector_B",
+          "method_count": 11,
+          "lifecycle": [
+            "Awake",
+            "OnEnable",
+            "OnDisable",
+            "LateUpdate"
+          ]
+        },
+        {
+          "namespace": "TMPro.Examples",
+          "name": "TMP_UiFrameRateCounter",
+          "method_count": 5,
+          "lifecycle": [
+            "Awake",
+            "Start",
+            "Update"
+          ]
+        },
+        {
+          "namespace": "TMPro.Examples",
+          "name": "VertexColorCycler",
+          "method_count": 4,
+          "lifecycle": [
+            "Awake",
+            "Start"
+          ]
+        },
+        {
+          "namespace": "TMPro.Examples",
+          "name": "VertexJitter",
+          "method_count": 7,
+          "lifecycle": [
+            "Awake",
+            "OnEnable",
+            "OnDisable",
+            "Start"
+          ]
+        },
+        {
+          "namespace": "TMPro.Examples",
+          "name": "VertexShakeA",
+          "method_count": 7,
+          "lifecycle": [
+            "Awake",
+            "OnEnable",
+            "OnDisable",
+            "Start"
+          ]
+        },
+        {
+          "namespace": "TMPro.Examples",
+          "name": "VertexShakeB",
+          "method_count": 7,
+          "lifecycle": [
+            "Awake",
+            "OnEnable",
+            "OnDisable",
+            "Start"
+          ]
+        },
+        {
+          "namespace": "TMPro.Examples",
+          "name": "VertexZoom",
+          "method_count": 7,
+          "lifecycle": [
+            "Awake",
+            "OnEnable",
+            "OnDisable",
+            "Start"
+          ]
+        },
+        {
+          "namespace": "TMPro.Examples",
+          "name": "WarpTextExample",
+          "method_count": 5,
+          "lifecycle": [
+            "Awake",
+            "Start"
+          ]
+        },
+        {
+          "namespace": "",
+          "name": "<PrivateImplementationDetails>",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "ReleaseType",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Platform",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Architecture",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "Distribution",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<Start>d__4",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "MonoScriptData",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CharacterSelectionEvent",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "SpriteSelectionEvent",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "WordSelectionEvent",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "LineSelectionEvent",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "LinkSelectionEvent",
+          "method_count": 1,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<Start>d__10",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<Start>d__10",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "BenchmarkType",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "CameraModes",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "MotionType",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<AnimateProperties>d__6",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<WarpText>d__7",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<Start>d__4",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<RevealCharacters>d__7",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<RevealWords>d__8",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<DisplayTextMeshFloatingText>d__16",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<DisplayTextMeshProFloatingText>d__15",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "FpsCounterAnchorPositions",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "objectType",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "FpsCounterAnchorPositions",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "FpsCounterAnchorPositions",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<AnimateVertexColors>d__3",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "VertexAnim",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<AnimateVertexColors>d__11",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<AnimateVertexColors>d__11",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<AnimateVertexColors>d__10",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<>c__DisplayClass10_0",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<AnimateVertexColors>d__10",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<WarpText>d__8",
+          "method_count": 6,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "__StaticArrayInitTypeSize=1471",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "__StaticArrayInitTypeSize=2841",
+          "method_count": 0,
+          "lifecycle": []
+        }
+      ]
+    },
+    "csS.dll": {
+      "method_count": 34,
+      "ctor_count": 5,
+      "accessor_count": 28,
+      "lifecycle_type_count": 0,
+      "lifecycle_method_count": 0,
+      "lifecycle_types": [],
+      "lifecycle_methods": [],
+      "types": [
+        {
+          "namespace": "",
+          "name": "UnitySourceGeneratedAssemblyMonoScriptTypes_v1",
+          "method_count": 2,
+          "lifecycle": []
+        },
+        {
+          "namespace": "LBG",
+          "name": "SubclassPathAttribute",
+          "method_count": 11,
+          "lifecycle": []
+        },
+        {
+          "namespace": "LBG",
+          "name": "SubclassSelectorAttribute",
+          "method_count": 21,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "<PrivateImplementationDetails>",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "MonoScriptData",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "__StaticArrayInitTypeSize=64",
+          "method_count": 0,
+          "lifecycle": []
+        },
+        {
+          "namespace": "",
+          "name": "__StaticArrayInitTypeSize=158",
+          "method_count": 0,
+          "lifecycle": []
+        }
+      ]
+    }
+  }
+}
