@@ -195,7 +195,7 @@ jobs:
       # GameCI 授权: 推荐用已激活的 license file (UNITY_LICENSE),
       # 或 UNITY_SERIAL / UNITY_EMAIL / UNITY_PASSWORD 环境变量激活。
       - name: Unity activate license
-        uses: game-ci/unity-activate@v4
+        uses: game-ci/unity-activate@v2
         env:
           UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
