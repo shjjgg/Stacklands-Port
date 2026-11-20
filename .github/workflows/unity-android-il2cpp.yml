@@ -200,6 +200,15 @@ jobs:
 
       # ISGN/OSGN 签名: 原版顶点输入布局 + VS输出↔PS输入链接, 是重建时"不能少一个通道"的判据
       # Pass 渲染状态(ZTest/ZWrite/Blend/Cull/Stencil/ColorMask) 决定画面而非 HLSL, 必须单独导出
+      # 关键字矩阵: 关键字全集 / 互斥组 / 理论上界 ↔ 实际段数(重建不得少 keyword 名)
+      - name: Shader keyword matrix
+        if: hashFiles(env.SOURCE_DATA) != ''
+        run: |
+          python3 tools/extract_keyword_matrix.py \
+            --data "$SOURCE_DATA,$(dirname "$SOURCE_DATA")/../game/Stacklands_Data" \
+            --dxbc-ledger shader_extract/dxbc_ledger.json \
+            --out shader_extract
+
       # 阶段语义自证: 用 OSGN 输出语义(VS 必写 SV_Position / PS 必写 SV_Target)独立证伪阶段判定,
       # 避免"文件名由 SHDR token 解码而来"的自证循环
       - name: Shader stage semantics
@@ -279,6 +288,7 @@ jobs:
             shader_extract/pass_state.*
             shader_extract/variant_ledger.*
             shader_extract/stage_semantics.*
+            shader_extract/keyword_matrix.*
             content_inventory/
           if-no-files-found: ignore
 
