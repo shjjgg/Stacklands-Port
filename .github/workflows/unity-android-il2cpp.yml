@@ -35,8 +35,27 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       ready: ${{ steps.recon.outputs.ready }}
+      project_ready: ${{ steps.preflight.outputs.project_ready }}
+      license_ready: ${{ steps.preflight.outputs.license_ready }}
     steps:
       - uses: actions/checkout@v4
+
+      # 构建前置探测: 工程是否已落地 (ProjectSettings/ProjectVersion.txt)、
+      # Unity PERSONAL 账号密钥是否已配置 (UNITY_EMAIL / UNITY_PASSWORD)。
+      # 未就绪则 build-android 自动跳过, 不产生无意义的红叉。
+      - name: Preflight (project & license readiness)
+        id: preflight
+        continue-on-error: true
+        env:
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        run: |
+          pr=false; [ -f ProjectSettings/ProjectVersion.txt ] && pr=true
+          lr=false; [ -n "$UNITY_EMAIL" ] && [ -n "$UNITY_PASSWORD" ] && lr=true
+          echo "project_ready=$pr" >> "$GITHUB_OUTPUT"
+          echo "license_ready=$lr" >> "$GITHUB_OUTPUT"
+          echo "engine=$(cat ProjectSettings/ProjectVersion.txt 2>/dev/null | head -1)"
+          echo "project_ready=$pr license_ready=$lr"
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -184,22 +203,39 @@ jobs:
     name: IL2CPP Android 构建
     needs: static-analysis
     runs-on: ubuntu-latest
-    timeout-minutes: 120
-    strategy:
-      fail-fast: false
-      matrix:
-        build_type: [ Release ]
+    timeout-minutes: 300
+    # 仅当工程已落地 且 Personal 账号密钥已配置时才构建; 手动触发时由首步守卫给出明确原因。
+    if: >-
+      always() && needs.static-analysis.result == 'success' &&
+      ( github.event_name == 'workflow_dispatch' ||
+        ( needs.static-analysis.outputs.project_ready == 'true' &&
+          needs.static-analysis.outputs.license_ready == 'true' ) )
     steps:
       - uses: actions/checkout@v4
 
-      # GameCI 授权: 推荐用已激活的 license file (UNITY_LICENSE),
-      # 或 UNITY_SERIAL / UNITY_EMAIL / UNITY_PASSWORD 环境变量激活。
-      - name: Unity activate license
-        uses: game-ci/unity-activate@v2
+      # Unity PERSONAL 版授权只能账号在线激活: 不用 game-ci/unity-activate@v4
+      # (该 action 只支持 UNITY_LICENSE 文件 / UNITY_SERIAL 序列号策略), 改为在
+      # GameCI 编辑器镜像内直接调用 Unity.Licensing.Client 激活, 与仓库既有的
+      # 个人版构建流程一致。密钥: Settings → Secrets → UNITY_EMAIL / UNITY_PASSWORD。
+      - name: Preflight guard
         env:
-          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        run: |
+          if [ ! -f ProjectSettings/ProjectVersion.txt ]; then
+            echo "::error::工程尚未落地 (缺 ProjectSettings/ProjectVersion.txt), 无法构建; 先按 docs/15 T1 完成 AssetRipper 导出。"
+            exit 1
+          fi
+          eng=$(sed -n 's/^m_EditorVersion: *//p' ProjectSettings/ProjectVersion.txt | head -1)
+          echo "project engine: $eng / baseline: $UNITY_VERSION"
+          if [ "$eng" != "$UNITY_VERSION" ]; then
+            echo "::error::引擎版本漂移: 工程 $eng, 基线 $UNITY_VERSION (禁止跨大版本)。"
+            exit 1
+          fi
+          if [ -z "$UNITY_EMAIL" ] || [ -z "$UNITY_PASSWORD" ]; then
+            echo "::error::缺少 UNITY_EMAIL / UNITY_PASSWORD, Personal 版无法在线激活。"
+            exit 1
+          fi
 
       - name: Restore Library cache
         uses: actions/cache@v4
@@ -207,49 +243,74 @@ jobs:
           path: |
             Library
             ${{ env.BUILD_PATH }}
-          key: ${{ runner.os }}-unity-${{ env.UNITY_VERSION }}-${{ hashFiles('Assets/**', 'ProjectSettings/**') }}
+          key: ${{ runner.os }}-unity-${{ env.UNITY_VERSION }}-${{ hashFiles('Assets/**', 'ProjectSettings/**', 'Packages/**') }}
           restore-keys: |
             ${{ runner.os }}-unity-${{ env.UNITY_VERSION }}-
 
-      - name: Build Android (IL2CPP)
-        uses: game-ci/unity-builder@v4
+      - name: Build Android in GameCI image (Personal license)
         env:
-          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-          # Android 签名 (Release)
           KEYSTORE_NAME: ${{ secrets.KEYSTORE_NAME }}
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEYALIAS_NAME: ${{ secrets.KEYALIAS_NAME }}
           KEYALIAS_PASSWORD: ${{ secrets.KEYALIAS_PASSWORD }}
-          # 版本 / 产物形态 (PortBuild.cs 读取)
-          BUILD_VERSION: "0.1.0"
-          BUNDLE_VERSION_CODE: "1"
-          BUILD_AAB: "0"
-        with:
-          unityVersion: ${{ env.UNITY_VERSION }}
-          targetPlatform: ${{ env.BUILD_TARGET }}
-          projectPath: ${{ env.PROJECT_PATH }}
-          buildMethod: PortBuild.PerformAndroidBuild
-          il2cpp: ${{ env.IL2CPP }}
-          appVersion: "0.1.0"
-          buildPath: ${{ env.BUILD_PATH }}
-          # 输出 AAB (上架) 与 APK (冒烟调试) 按需二选一或都出
-          androidAppBundle: true
-          exportAndroidProject: false
-          # 仅 arm64-v8a; 如需 32 位兼容再追加 armeabi-v7a
-          architectures: ${{ env.ARCH }}
-          scriptingBackend: IL2CPP
-          stackLog: true
-          # 构建失败时上传完整日志
-          chownFilesToUid: true
+        run: |
+          mkdir -p out
+          set +e
+          docker run --rm \
+            -v "$PWD":/project \
+            -v "$PWD/out":/out \
+            -e UNITY_EMAIL -e UNITY_PASSWORD \
+            -e KEYSTORE_NAME -e KEYSTORE_PASSWORD \
+            -e KEYALIAS_NAME -e KEYALIAS_PASSWORD \
+            -e BUILD_VERSION=0.1.0 \
+            -e BUNDLE_VERSION_CODE=1 \
+            -e BUILD_AAB=0 \
+            -e BUILD_PATH=builds/android \
+            -e HOME=/root \
+            -w /project \
+            --entrypoint bash \
+            unityci/editor:ubuntu-2022.3.4f1-android-3 \
+            -c '
+              set -euo pipefail
+              LC=/opt/unity/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client
+              "$LC" --activate-all --include-personal \
+                --username "$UNITY_EMAIL" --password "$UNITY_PASSWORD"
+              echo "=== license files ==="
+              ls -la /root/.config/unity3d/Unity/licenses 2>/dev/null || true
+              echo "=== build (IL2CPP arm64-v8a) ==="
+              set +e
+              /opt/unity/Editor/Unity -batchmode -nographics -quit \
+                -projectPath /project \
+                -executeMethod PortBuild.PerformAndroidBuild \
+                -logFile /project/build.log
+              echo $? > /project/unity.exit
+              set -e
+              echo "=== outputs ==="
+              find /project/$BUILD_PATH -type f \( -name "*.apk" -o -name "*.aab" -o -name "*.obb" \) 2>/dev/null || true
+            '
+          code=$(cat unity.exit 2>/dev/null | tr -dc "0-9")
+          cp -v build.log out/ 2>/dev/null || true
+          # shader 编译错误在 Unity 里只写日志、不让 exit code 非 0, 这里显式统计
+          errs=$(grep -c "Shader error in" build.log 2>/dev/null || true)
+          echo "shader compile errors: ${errs:-0}"
+          grep -m 20 "Shader error in" build.log 2>/dev/null || true
+          sudo chown -R "$(id -u):$(id -g)" . || true
+          echo "unity exit code: ${code:-missing}"
+          if [ "${code:-1}" != "0" ]; then exit 1; fi
+          if [ "${errs:-0}" != "0" ]; then echo "::error::shader compile errors present"; exit 1; fi
 
       - name: Upload build artifact
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: android-${{ matrix.build_type }}-${{ github.sha }}
-          path: ${{ env.BUILD_PATH }}
+          name: android-release-${{ github.sha }}
+          path: |
+            ${{ env.BUILD_PATH }}
+            out/**
           retention-days: 14
+          if-no-files-found: warn
 
       - name: Upload IL2CPP symbols / metadata
         if: always()
@@ -268,6 +329,7 @@ jobs:
         with:
           name: editor-log-${{ github.sha }}
           path: |
-            logs/**
-            /github/workspace/Logs/**
+            build.log
+            out/build.log
+            Logs/**
           if-no-files-found: ignore
