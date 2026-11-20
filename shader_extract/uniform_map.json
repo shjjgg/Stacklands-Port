@@ -1,0 +1,2181 @@
+{
+ "Custom__ArrowSdfShader": {
+  "per_material_cb": "1",
+  "members": [
+   [
+    "vec4",
+    "m"
+   ]
+  ],
+  "map": {
+   "cb1[0]": "_Color",
+   "cb1[1]": "_Start",
+   "cb1[2]": "_End",
+   "cb1[3].x": "_SideLength",
+   "cb1[3].y": "_Noise",
+   "cb1[3]": "_OutlineColor",
+   "cb1[4].z": "_LineThickness",
+   "cb1[4].w": "_OutlineThickness"
+  },
+  "props": [
+   [
+    "_Color",
+    "Color"
+   ],
+   [
+    "_Start",
+    "Vector"
+   ],
+   [
+    "_End",
+    "Vector"
+   ],
+   [
+    "_SideLength",
+    "Float"
+   ],
+   [
+    "_Noise",
+    "Float"
+   ],
+   [
+    "_OutlineColor",
+    "Color"
+   ],
+   [
+    "_LineThickness",
+    "Float"
+   ],
+   [
+    "_OutlineThickness",
+    "Float"
+   ]
+  ],
+  "member_count": 1,
+  "slot_count": 5
+ },
+ "Custom__BoosterShader": {
+  "per_material_cb": "1",
+  "members": [
+   [
+    "vec4",
+    "_m0"
+   ],
+   [
+    "vec4",
+    "_m1"
+   ],
+   [
+    "vec4",
+    "_m2"
+   ],
+   [
+    "vec4",
+    "_m3"
+   ],
+   [
+    "vec3",
+    "_m4"
+   ],
+   [
+    "vec3",
+    "_m6"
+   ],
+   [
+    "vec3",
+    "_m8"
+   ]
+  ],
+  "map": {
+   "cb1[0]": "_Color",
+   "cb1[1]": "_Color2",
+   "cb1[2]": "_IconColor",
+   "_textures": [
+    "_MainTex",
+    "_IconTex",
+    "_RainbowTex"
+   ],
+   "cb1[3].x": "_Glossiness",
+   "cb1[3].y": "_Metallic",
+   "cb1[3].z": "_SparkleIntensity",
+   "cb1[3]": "_SmallCirclePosition",
+   "cb1[4].w": "_SmallCircleSize",
+   "cb1[5]": "_BorderColor"
+  },
+  "props": [
+   [
+    "_Color",
+    "Color"
+   ],
+   [
+    "_Color2",
+    "Color"
+   ],
+   [
+    "_IconColor",
+    "Color"
+   ],
+   [
+    "_MainTex",
+    "Texture"
+   ],
+   [
+    "_IconTex",
+    "Texture"
+   ],
+   [
+    "_RainbowTex",
+    "Texture"
+   ],
+   [
+    "_Glossiness",
+    "Range"
+   ],
+   [
+    "_Metallic",
+    "Range"
+   ],
+   [
+    "_SparkleIntensity",
+    "Float"
+   ],
+   [
+    "_SmallCirclePosition",
+    "Vector"
+   ],
+   [
+    "_SmallCircleSize",
+    "Float"
+   ],
+   [
+    "_BorderColor",
+    "Color"
+   ]
+  ],
+  "member_count": 7,
+  "slot_count": 6
+ },
+ "Custom__BoosterShaderTop": {
+  "per_material_cb": "1",
+  "members": [
+   [
+    "vec4",
+    "_m0"
+   ],
+   [
+    "vec4",
+    "_m1"
+   ],
+   [
+    "vec4",
+    "_m2"
+   ],
+   [
+    "vec4",
+    "_m3"
+   ],
+   [
+    "vec3",
+    "_m4"
+   ],
+   [
+    "vec3",
+    "_m6"
+   ],
+   [
+    "vec3",
+    "_m8"
+   ]
+  ],
+  "map": {
+   "cb1[0]": "_Color",
+   "cb1[1]": "_Color2",
+   "cb1[2].x": "_Foil",
+   "cb1[2]": "_IconColor",
+   "_textures": [
+    "_MainTex",
+    "_IconTex",
+    "_RainbowTex"
+   ],
+   "cb1[3].y": "_Glossiness",
+   "cb1[3].z": "_Metallic",
+   "cb1[3].w": "_SparkleIntensity",
+   "cb1[4]": "_SmallCirclePosition",
+   "cb1[5].x": "_SmallCircleSize",
+   "cb1[5]": "_BorderColor"
+  },
+  "props": [
+   [
+    "_Color",
+    "Color"
+   ],
+   [
+    "_Color2",
+    "Color"
+   ],
+   [
+    "_Foil",
+    "Float"
+   ],
+   [
+    "_IconColor",
+    "Color"
+   ],
+   [
+    "_MainTex",
+    "Texture"
+   ],
+   [
+    "_IconTex",
+    "Texture"
+   ],
+   [
+    "_RainbowTex",
+    "Texture"
+   ],
+   [
+    "_Glossiness",
+    "Range"
+   ],
+   [
+    "_Metallic",
+    "Range"
+   ],
+   [
+    "_SparkleIntensity",
+    "Float"
+   ],
+   [
+    "_SmallCirclePosition",
+    "Vector"
+   ],
+   [
+    "_SmallCircleSize",
+    "Float"
+   ],
+   [
+    "_BorderColor",
+    "Color"
+   ]
+  ],
+  "member_count": 7,
+  "slot_count": 6
+ },
+ "Custom__CardBackShader": {
+  "per_material_cb": "1",
+  "members": [
+   [
+    "vec4",
+    "_m0"
+   ],
+   [
+    "vec4",
+    "_m1"
+   ],
+   [
+    "vec4",
+    "_m2"
+   ],
+   [
+    "vec4",
+    "_m3"
+   ],
+   [
+    "vec3",
+    "_m4"
+   ],
+   [
+    "vec3",
+    "_m6"
+   ],
+   [
+    "vec3",
+    "_m8"
+   ]
+  ],
+  "map": {
+   "cb1[0]": "_Color",
+   "_textures": [
+    "_MainTex"
+   ],
+   "cb1[1].x": "_Glossiness",
+   "cb1[1].y": "_Metallic"
+  },
+  "props": [
+   [
+    "_Color",
+    "Color"
+   ],
+   [
+    "_MainTex",
+    "Texture"
+   ],
+   [
+    "_Glossiness",
+    "Range"
+   ],
+   [
+    "_Metallic",
+    "Range"
+   ]
+  ],
+  "member_count": 7,
+  "slot_count": 1
+ },
+ "Custom__CardShaderTest": {
+  "per_material_cb": "1",
+  "members": [
+   [
+    "vec4",
+    "_m0"
+   ],
+   [
+    "vec4",
+    "_m1"
+   ],
+   [
+    "vec4",
+    "_m2"
+   ],
+   [
+    "vec4",
+    "_m3"
+   ],
+   [
+    "vec3",
+    "_m4"
+   ],
+   [
+    "vec3",
+    "_m6"
+   ],
+   [
+    "vec3",
+    "_m8"
+   ]
+  ],
+  "map": {
+   "cb1[0]": "_Color",
+   "cb1[1]": "_Color2",
+   "cb1[2].x": "_Foil",
+   "cb1[2].y": "_Damaged",
+   "cb1[2]": "_IconColor",
+   "cb1[3].z": "_ShineStrength",
+   "cb1[3].w": "_BigShineStrength",
+   "cb1[4].x": "_HasSecondaryIcon",
+   "cb1[4].y": "_HasOutputDir",
+   "_textures": [
+    "_MainTex",
+    "_IconTex",
+    "_SecondaryTex",
+    "_RainbowTex",
+    "_DamagedTex"
+   ],
+   "cb1[4].z": "_Glossiness",
+   "cb1[4].w": "_Metallic",
+   "cb1[5].x": "_SparkleIntensity",
+   "cb1[5]": "_BorderColor",
+   "cb1[6]": "_DamagedBorderColor"
+  },
+  "props": [
+   [
+    "_Color",
+    "Color"
+   ],
+   [
+    "_Color2",
+    "Color"
+   ],
+   [
+    "_Foil",
+    "Float"
+   ],
+   [
+    "_Damaged",
+    "Float"
+   ],
+   [
+    "_IconColor",
+    "Color"
+   ],
+   [
+    "_ShineStrength",
+    "Float"
+   ],
+   [
+    "_BigShineStrength",
+    "Float"
+   ],
+   [
+    "_HasSecondaryIcon",
+    "Float"
+   ],
+   [
+    "_HasOutputDir",
+    "Float"
+   ],
+   [
+    "_MainTex",
+    "Texture"
+   ],
+   [
+    "_IconTex",
+    "Texture"
+   ],
+   [
+    "_SecondaryTex",
+    "Texture"
+   ],
+   [
+    "_RainbowTex",
+    "Texture"
+   ],
+   [
+    "_DamagedTex",
+    "Texture"
+   ],
+   [
+    "_Glossiness",
+    "Range"
+   ],
+   [
+    "_Metallic",
+    "Range"
+   ],
+   [
+    "_SparkleIntensity",
+    "Float"
+   ],
+   [
+    "_BorderColor",
+    "Color"
+   ],
+   [
+    "_DamagedBorderColor",
+    "Color"
+   ]
+  ],
+  "member_count": 7,
+  "slot_count": 7
+ },
+ "Custom__ConflictOutlineSdfShader": {
+  "per_material_cb": "1",
+  "members": [
+   [
+    "vec4",
+    "m"
+   ]
+  ],
+  "map": {
+   "cb1[0]": "_Color",
+   "cb1[1]": "_Size",
+   "cb1[2]": "_OutlineColor",
+   "cb1[3].x": "_OutlineThickness"
+  },
+  "props": [
+   [
+    "_Color",
+    "Color"
+   ],
+   [
+    "_Size",
+    "Vector"
+   ],
+   [
+    "_OutlineColor",
+    "Color"
+   ],
+   [
+    "_OutlineThickness",
+    "Float"
+   ]
+  ],
+  "member_count": 1,
+  "slot_count": 3
+ },
+ "Custom__ConveyorArrowShader": {
+  "per_material_cb": "1",
+  "members": [
+   [
+    "vec4",
+    "m"
+   ]
+  ],
+  "map": {
+   "cb1[0]": "_Color",
+   "cb1[1]": "_Start",
+   "cb1[2]": "_End",
+   "cb1[3].x": "_SideLength",
+   "cb1[3].y": "_Noise",
+   "cb1[3]": "_OutlineColor",
+   "cb1[4].z": "_LineThickness",
+   "cb1[4].w": "_OutlineThickness",
+   "cb1[5].x": "_Filled",
+   "cb1[5].y": "_Gap"
+  },
+  "props": [
+   [
+    "_Color",
+    "Color"
+   ],
+   [
+    "_Start",
+    "Vector"
+   ],
+   [
+    "_End",
+    "Vector"
+   ],
+   [
+    "_SideLength",
+    "Float"
+   ],
+   [
+    "_Noise",
+    "Float"
+   ],
+   [
+    "_OutlineColor",
+    "Color"
+   ],
+   [
+    "_LineThickness",
+    "Float"
+   ],
+   [
+    "_OutlineThickness",
+    "Float"
+   ],
+   [
+    "_Filled",
+    "Float"
+   ],
+   [
+    "_Gap",
+    "Float"
+   ]
+  ],
+  "member_count": 1,
+  "slot_count": 5
+ },
+ "Custom__EnergyCableShader": {
+  "per_material_cb": "1",
+  "members": [
+   [
+    "vec4",
+    "m"
+   ]
+  ],
+  "map": {
+   "cb1[0]": "_Color",
+   "cb1[1]": "_Start",
+   "cb1[2]": "_End",
+   "cb1[3]": "_Middle",
+   "cb1[4].x": "_SideLength",
+   "cb1[4].y": "_Noise",
+   "cb1[4]": "_OutlineColor",
+   "cb1[5].z": "_LineThickness",
+   "cb1[5].w": "_OutlineThickness",
+   "cb1[6]": "_SecondColor",
+   "cb1[7].x": "_DrawCircle",
+   "cb1[7].y": "_ZTestCable",
+   "cb1[7].z": "_IsBehind"
+  },
+  "props": [
+   [
+    "_Color",
+    "Color"
+   ],
+   [
+    "_Start",
+    "Vector"
+   ],
+   [
+    "_End",
+    "Vector"
+   ],
+   [
+    "_Middle",
+    "Vector"
+   ],
+   [
+    "_SideLength",
+    "Float"
+   ],
+   [
+    "_Noise",
+    "Float"
+   ],
+   [
+    "_OutlineColor",
+    "Color"
+   ],
+   [
+    "_LineThickness",
+    "Float"
+   ],
+   [
+    "_OutlineThickness",
+    "Float"
+   ],
+   [
+    "_SecondColor",
+    "Color"
+   ],
+   [
+    "_DrawCircle",
+    "Float"
+   ],
+   [
+    "_ZTestCable",
+    "Float"
+   ],
+   [
+    "_IsBehind",
+    "Float"
+   ]
+  ],
+  "member_count": 1,
+  "slot_count": 7
+ },
+ "Custom__FloorShader": {
+  "per_material_cb": "0",
+  "members": [
+   [
+    "vec4",
+    "_m0"
+   ],
+   [
+    "vec4",
+    "_m1"
+   ],
+   [
+    "vec4",
+    "_m2"
+   ],
+   [
+    "vec4",
+    "_m3"
+   ],
+   [
+    "vec3",
+    "_m4"
+   ],
+   [
+    "vec3",
+    "_m6"
+   ],
+   [
+    "vec3",
+    "_m8"
+   ]
+  ],
+  "map": {
+   "cb0[0]": "_Color",
+   "cb0[1]": "_Color2",
+   "_textures": [
+    "_OffsetTex",
+    "_MainTex"
+   ],
+   "cb0[2]": "_StoneColor",
+   "cb0[3]": "_StoneEdge",
+   "cb0[4]": "_EdgeColor",
+   "cb0[5].x": "_EdgeThickness",
+   "cb0[5].y": "_Glossiness",
+   "cb0[5].z": "_Metallic",
+   "cb0[5]": "_Rect"
+  },
+  "props": [
+   [
+    "_Color",
+    "Color"
+   ],
+   [
+    "_Color2",
+    "Color"
+   ],
+   [
+    "_OffsetTex",
+    "Texture"
+   ],
+   [
+    "_StoneColor",
+    "Color"
+   ],
+   [
+    "_StoneEdge",
+    "Color"
+   ],
+   [
+    "_EdgeColor",
+    "Color"
+   ],
+   [
+    "_EdgeThickness",
+    "Float"
+   ],
+   [
+    "_MainTex",
+    "Texture"
+   ],
+   [
+    "_Glossiness",
+    "Range"
+   ],
+   [
+    "_Metallic",
+    "Range"
+   ],
+   [
+    "_Rect",
+    "Vector"
+   ]
+  ],
+  "member_count": 7,
+  "slot_count": 6
+ },
+ "Custom__FloorShaderForest": {
+  "per_material_cb": "0",
+  "members": [
+   [
+    "vec4",
+    "_m0"
+   ],
+   [
+    "vec4",
+    "_m1"
+   ],
+   [
+    "vec4",
+    "_m2"
+   ],
+   [
+    "vec4",
+    "_m3"
+   ],
+   [
+    "vec3",
+    "_m4"
+   ],
+   [
+    "vec3",
+    "_m6"
+   ],
+   [
+    "vec3",
+    "_m8"
+   ]
+  ],
+  "map": {
+   "cb0[0]": "_Color",
+   "cb0[1]": "_Color2",
+   "_textures": [
+    "_OffsetTex",
+    "_MainTex"
+   ],
+   "cb0[2]": "_StoneColor",
+   "cb0[3]": "_StoneEdge",
+   "cb0[4]": "_EdgeColor",
+   "cb0[5].x": "_EdgeThickness",
+   "cb0[5].y": "_Glossiness",
+   "cb0[5].z": "_Metallic",
+   "cb0[5]": "_Rect"
+  },
+  "props": [
+   [
+    "_Color",
+    "Color"
+   ],
+   [
+    "_Color2",
+    "Color"
+   ],
+   [
+    "_OffsetTex",
+    "Texture"
+   ],
+   [
+    "_StoneColor",
+    "Color"
+   ],
+   [
+    "_StoneEdge",
+    "Color"
+   ],
+   [
+    "_EdgeColor",
+    "Color"
+   ],
+   [
+    "_EdgeThickness",
+    "Float"
+   ],
+   [
+    "_MainTex",
+    "Texture"
+   ],
+   [
+    "_Glossiness",
+    "Range"
+   ],
+   [
+    "_Metallic",
+    "Range"
+   ],
+   [
+    "_Rect",
+    "Vector"
+   ]
+  ],
+  "member_count": 7,
+  "slot_count": 6
+ },
+ "Custom__FloorShaderIsland": {
+  "per_material_cb": "0",
+  "members": [
+   [
+    "vec4",
+    "_m0"
+   ],
+   [
+    "vec4",
+    "_m1"
+   ],
+   [
+    "vec4",
+    "_m2"
+   ],
+   [
+    "vec4",
+    "_m3"
+   ],
+   [
+    "vec3",
+    "_m4"
+   ],
+   [
+    "vec3",
+    "_m6"
+   ],
+   [
+    "vec3",
+    "_m8"
+   ]
+  ],
+  "map": {
+   "cb0[0]": "_Color",
+   "cb0[1]": "_Color2",
+   "_textures": [
+    "_OffsetTex",
+    "_MainTex",
+    "_SdfTex"
+   ],
+   "cb0[2]": "_StoneColor",
+   "cb0[3]": "_StoneEdge",
+   "cb0[4]": "_EdgeColor",
+   "cb0[5].x": "_EdgeThickness",
+   "cb0[5].y": "_Glossiness",
+   "cb0[5].z": "_Metallic",
+   "cb0[5]": "_WaterColor",
+   "cb0[6].w": "_OutlineWidth",
+   "cb0[7]": "_OutlineColor",
+   "cb0[8]": "_FaceColor",
+   "cb0[9]": "_Rect",
+   "cb0[10].x": "_IslandDownsize"
+  },
+  "props": [
+   [
+    "_Color",
+    "Color"
+   ],
+   [
+    "_Color2",
+    "Color"
+   ],
+   [
+    "_OffsetTex",
+    "Texture"
+   ],
+   [
+    "_StoneColor",
+    "Color"
+   ],
+   [
+    "_StoneEdge",
+    "Color"
+   ],
+   [
+    "_EdgeColor",
+    "Color"
+   ],
+   [
+    "_EdgeThickness",
+    "Float"
+   ],
+   [
+    "_MainTex",
+    "Texture"
+   ],
+   [
+    "_SdfTex",
+    "Texture"
+   ],
+   [
+    "_Glossiness",
+    "Range"
+   ],
+   [
+    "_Metallic",
+    "Range"
+   ],
+   [
+    "_WaterColor",
+    "Color"
+   ],
+   [
+    "_OutlineWidth",
+    "Float"
+   ],
+   [
+    "_OutlineColor",
+    "Color"
+   ],
+   [
+    "_FaceColor",
+    "Color"
+   ],
+   [
+    "_Rect",
+    "Vector"
+   ],
+   [
+    "_IslandDownsize",
+    "Float"
+   ]
+  ],
+  "member_count": 7,
+  "slot_count": 10
+ },
+ "Custom__GenericCardShader": {
+  "per_material_cb": "1",
+  "members": [
+   [
+    "vec4",
+    "_m0"
+   ],
+   [
+    "vec4",
+    "_m1"
+   ],
+   [
+    "vec4",
+    "_m2"
+   ],
+   [
+    "vec4",
+    "_m3"
+   ],
+   [
+    "vec3",
+    "_m4"
+   ],
+   [
+    "vec3",
+    "_m6"
+   ],
+   [
+    "vec3",
+    "_m8"
+   ]
+  ],
+  "map": {
+   "cb1[0]": "_Color",
+   "cb1[1]": "_Size",
+   "cb1[2].x": "_BorderThickness"
+  },
+  "props": [
+   [
+    "_Color",
+    "Color"
+   ],
+   [
+    "_Size",
+    "Vector"
+   ],
+   [
+    "_BorderThickness",
+    "Float"
+   ]
+  ],
+  "member_count": 7,
+  "slot_count": 2
+ },
+ "Custom__GridShader": {
+  "per_material_cb": "1",
+  "members": [
+   [
+    "uvec4",
+    "_m0"
+   ],
+   [
+    "uvec4",
+    "_m1"
+   ],
+   [
+    "uvec4",
+    "_m2"
+   ],
+   [
+    "uvec4",
+    "_m3"
+   ],
+   [
+    "vec3",
+    "_m4"
+   ]
+  ],
+  "map": {
+   "cb1[0]": "_Color",
+   "cb1[1].x": "_Glossiness",
+   "cb1[1].y": "_Metallic",
+   "cb1[1].z": "_LineWidth"
+  },
+  "props": [
+   [
+    "_Color",
+    "Color"
+   ],
+   [
+    "_Glossiness",
+    "Range"
+   ],
+   [
+    "_Metallic",
+    "Range"
+   ],
+   [
+    "_LineWidth",
+    "Float"
+   ]
+  ],
+  "member_count": 5,
+  "slot_count": 1
+ },
+ "Custom__SewerPipeShader": {
+  "per_material_cb": "2",
+  "members": [
+   [
+    "vec4",
+    "_m0"
+   ],
+   [
+    "vec3",
+    "_m1"
+   ],
+   [
+    "vec3",
+    "_m3"
+   ],
+   [
+    "vec3",
+    "_m5"
+   ],
+   [
+    "vec3",
+    "_m7"
+   ],
+   [
+    "vec3",
+    "_m9"
+   ],
+   [
+    "vec3",
+    "_m11"
+   ]
+  ],
+  "map": {
+   "cb2[0]": "_Color",
+   "cb2[1]": "_Start",
+   "cb2[2]": "_End",
+   "cb2[3]": "_Middle",
+   "cb2[4].x": "_SideLength",
+   "cb2[4].y": "_Noise",
+   "cb2[4]": "_OutlineColor",
+   "cb2[5]": "_ThickColor",
+   "cb2[6].z": "_LineThickness",
+   "cb2[6].w": "_OutlineThickness",
+   "cb2[7].x": "_HighlightAmount",
+   "cb2[7].y": "_ZTestCable",
+   "cb2[7].z": "_IsBehind"
+  },
+  "props": [
+   [
+    "_Color",
+    "Color"
+   ],
+   [
+    "_Start",
+    "Vector"
+   ],
+   [
+    "_End",
+    "Vector"
+   ],
+   [
+    "_Middle",
+    "Vector"
+   ],
+   [
+    "_SideLength",
+    "Float"
+   ],
+   [
+    "_Noise",
+    "Float"
+   ],
+   [
+    "_OutlineColor",
+    "Color"
+   ],
+   [
+    "_ThickColor",
+    "Color"
+   ],
+   [
+    "_LineThickness",
+    "Float"
+   ],
+   [
+    "_OutlineThickness",
+    "Float"
+   ],
+   [
+    "_HighlightAmount",
+    "Float"
+   ],
+   [
+    "_ZTestCable",
+    "Float"
+   ],
+   [
+    "_IsBehind",
+    "Float"
+   ]
+  ],
+  "member_count": 7,
+  "slot_count": 7
+ },
+ "Custom__SpiritImageEffect": {
+  "per_material_cb": "0",
+  "members": [
+   [
+    "vec4",
+    "_m0"
+   ],
+   [
+    "vec4",
+    "_m1"
+   ],
+   [
+    "vec4",
+    "_m2"
+   ],
+   [
+    "vec4",
+    "_m3"
+   ]
+  ],
+  "map": {
+   "_textures": [
+    "_MainTex"
+   ],
+   "cb0[0].x": "_Weight"
+  },
+  "props": [
+   [
+    "_MainTex",
+    "Texture"
+   ],
+   [
+    "_Weight",
+    "Float"
+   ]
+  ],
+  "member_count": 4,
+  "slot_count": 0
+ },
+ "Custom__SpiritTransitionEffect": {
+  "per_material_cb": "0",
+  "members": [
+   [
+    "vec4",
+    "_m0"
+   ],
+   [
+    "vec4",
+    "_m1"
+   ],
+   [
+    "vec4",
+    "_m2"
+   ],
+   [
+    "vec4",
+    "_m3"
+   ]
+  ],
+  "map": {
+   "_textures": [
+    "_MainTex"
+   ],
+   "cb0[0].x": "_Weight"
+  },
+  "props": [
+   [
+    "_MainTex",
+    "Texture"
+   ],
+   [
+    "_Weight",
+    "Float"
+   ]
+  ],
+  "member_count": 4,
+  "slot_count": 0
+ },
+ "Custom__StatusBar": {
+  "per_material_cb": "1",
+  "members": [
+   [
+    "vec4",
+    "_m0"
+   ],
+   [
+    "vec4",
+    "_m1"
+   ],
+   [
+    "vec4",
+    "_m2"
+   ],
+   [
+    "vec4",
+    "_m3"
+   ],
+   [
+    "vec3",
+    "_m4"
+   ],
+   [
+    "vec3",
+    "_m6"
+   ],
+   [
+    "vec3",
+    "_m8"
+   ]
+  ],
+  "map": {
+   "cb1[0]": "_Color",
+   "cb1[1]": "_Color2",
+   "cb1[2]": "_Color3",
+   "cb1[3]": "_PauseColor",
+   "cb1[4].x": "_FillAmount",
+   "cb1[4].y": "_Pause",
+   "_textures": [
+    "_MainTex"
+   ],
+   "cb1[4].z": "_Glossiness",
+   "cb1[4].w": "_Metallic"
+  },
+  "props": [
+   [
+    "_Color",
+    "Color"
+   ],
+   [
+    "_Color2",
+    "Color"
+   ],
+   [
+    "_Color3",
+    "Color"
+   ],
+   [
+    "_PauseColor",
+    "Color"
+   ],
+   [
+    "_FillAmount",
+    "Float"
+   ],
+   [
+    "_Pause",
+    "Float"
+   ],
+   [
+    "_MainTex",
+    "Texture"
+   ],
+   [
+    "_Glossiness",
+    "Range"
+   ],
+   [
+    "_Metallic",
+    "Range"
+   ]
+  ],
+  "member_count": 7,
+  "slot_count": 5
+ },
+ "Custom__SuperSampled_Texture": {
+  "per_material_cb": "0",
+  "members": [
+   [
+    "uvec4",
+    "_m0"
+   ],
+   [
+    "uvec4",
+    "_m1"
+   ],
+   [
+    "vec4",
+    "_m2"
+   ],
+   [
+    "vec4",
+    "_m3"
+   ]
+  ],
+  "map": {
+   "_textures": [
+    "_MainTex"
+   ],
+   "cb0[0]": "_Color",
+   "cb0[1].x": "_Bias",
+   "cb0[1].y": "_SuperSampling",
+   "cb0[1].z": "_AAScale",
+   "cb0[1].w": "_StencilComp",
+   "cb0[2].x": "_Stencil",
+   "cb0[2].y": "_StencilOp",
+   "cb0[2].z": "_StencilWriteMask",
+   "cb0[2].w": "_StencilReadMask",
+   "cb0[3].x": "_ColorMask"
+  },
+  "props": [
+   [
+    "_MainTex",
+    "Texture"
+   ],
+   [
+    "_Color",
+    "Color"
+   ],
+   [
+    "_Bias",
+    "Range"
+   ],
+   [
+    "_SuperSampling",
+    "Float"
+   ],
+   [
+    "_AAScale",
+    "Range"
+   ],
+   [
+    "_StencilComp",
+    "Float"
+   ],
+   [
+    "_Stencil",
+    "Float"
+   ],
+   [
+    "_StencilOp",
+    "Float"
+   ],
+   [
+    "_StencilWriteMask",
+    "Float"
+   ],
+   [
+    "_StencilReadMask",
+    "Float"
+   ],
+   [
+    "_ColorMask",
+    "Float"
+   ]
+  ],
+  "member_count": 4,
+  "slot_count": 3
+ },
+ "Custom__TransportArrowMainlandShader": {
+  "per_material_cb": "2",
+  "members": [
+   [
+    "vec4",
+    "_m0"
+   ],
+   [
+    "vec3",
+    "_m1"
+   ],
+   [
+    "vec3",
+    "_m3"
+   ],
+   [
+    "vec3",
+    "_m5"
+   ],
+   [
+    "vec3",
+    "_m7"
+   ],
+   [
+    "vec3",
+    "_m9"
+   ],
+   [
+    "vec3",
+    "_m11"
+   ]
+  ],
+  "map": {
+   "cb2[0]": "_Color",
+   "cb2[1]": "_Start",
+   "cb2[2]": "_End",
+   "cb2[3]": "_Middle",
+   "cb2[4].x": "_SideLength",
+   "cb2[4].y": "_Noise",
+   "cb2[4]": "_OutlineColor",
+   "cb2[5].z": "_LineThickness",
+   "cb2[5].w": "_OutlineThickness",
+   "cb2[6]": "_CircleColor",
+   "cb2[7].x": "_CircleNoise",
+   "cb2[7].y": "_HighlightAmount",
+   "cb2[7].z": "_ZTestCable",
+   "cb2[7].w": "_IsBehind"
+  },
+  "props": [
+   [
+    "_Color",
+    "Color"
+   ],
+   [
+    "_Start",
+    "Vector"
+   ],
+   [
+    "_End",
+    "Vector"
+   ],
+   [
+    "_Middle",
+    "Vector"
+   ],
+   [
+    "_SideLength",
+    "Float"
+   ],
+   [
+    "_Noise",
+    "Float"
+   ],
+   [
+    "_OutlineColor",
+    "Color"
+   ],
+   [
+    "_LineThickness",
+    "Float"
+   ],
+   [
+    "_OutlineThickness",
+    "Float"
+   ],
+   [
+    "_CircleColor",
+    "Color"
+   ],
+   [
+    "_CircleNoise",
+    "Float"
+   ],
+   [
+    "_HighlightAmount",
+    "Float"
+   ],
+   [
+    "_ZTestCable",
+    "Float"
+   ],
+   [
+    "_IsBehind",
+    "Float"
+   ]
+  ],
+  "member_count": 7,
+  "slot_count": 8
+ },
+ "Custom__TransportArrowShader": {
+  "per_material_cb": "2",
+  "members": [
+   [
+    "vec4",
+    "_m0"
+   ],
+   [
+    "vec3",
+    "_m1"
+   ],
+   [
+    "vec3",
+    "_m3"
+   ],
+   [
+    "vec3",
+    "_m5"
+   ],
+   [
+    "vec3",
+    "_m7"
+   ],
+   [
+    "vec3",
+    "_m9"
+   ],
+   [
+    "vec3",
+    "_m11"
+   ]
+  ],
+  "map": {
+   "cb2[0]": "_Color",
+   "cb2[1]": "_Start",
+   "cb2[2]": "_End",
+   "cb2[3]": "_Middle",
+   "cb2[4].x": "_SideLength",
+   "cb2[4].y": "_Noise",
+   "cb2[4]": "_OutlineColor",
+   "cb2[5]": "_LineColor",
+   "cb2[6].z": "_LineThickness",
+   "cb2[6].w": "_OutlineThickness",
+   "cb2[7]": "_CarColor",
+   "cb2[8].x": "_HighlightAmount",
+   "cb2[8].y": "_ZTestCable",
+   "cb2[8].z": "_IsBehind"
+  },
+  "props": [
+   [
+    "_Color",
+    "Color"
+   ],
+   [
+    "_Start",
+    "Vector"
+   ],
+   [
+    "_End",
+    "Vector"
+   ],
+   [
+    "_Middle",
+    "Vector"
+   ],
+   [
+    "_SideLength",
+    "Float"
+   ],
+   [
+    "_Noise",
+    "Float"
+   ],
+   [
+    "_OutlineColor",
+    "Color"
+   ],
+   [
+    "_LineColor",
+    "Color"
+   ],
+   [
+    "_LineThickness",
+    "Float"
+   ],
+   [
+    "_OutlineThickness",
+    "Float"
+   ],
+   [
+    "_CarColor",
+    "Color"
+   ],
+   [
+    "_HighlightAmount",
+    "Float"
+   ],
+   [
+    "_ZTestCable",
+    "Float"
+   ],
+   [
+    "_IsBehind",
+    "Float"
+   ]
+  ],
+  "member_count": 7,
+  "slot_count": 8
+ },
+ "Postprocess__SokpopIntro": {
+  "per_material_cb": "0",
+  "members": [
+   [
+    "vec4",
+    "_m0"
+   ],
+   [
+    "vec4",
+    "_m1"
+   ],
+   [
+    "vec4",
+    "_m2"
+   ],
+   [
+    "vec4",
+    "_m3"
+   ]
+  ],
+  "map": {
+   "_textures": [
+    "_MainTex"
+   ],
+   "cb0[0].x": "_CircleSize",
+   "cb0[0].y": "_CircleDelta",
+   "cb0[0].z": "_XOffset",
+   "cb0[0].w": "_YOffset",
+   "cb0[1].x": "_Darkness"
+  },
+  "props": [
+   [
+    "_MainTex",
+    "Texture"
+   ],
+   [
+    "_CircleSize",
+    "Float"
+   ],
+   [
+    "_CircleDelta",
+    "Float"
+   ],
+   [
+    "_XOffset",
+    "Float"
+   ],
+   [
+    "_YOffset",
+    "Float"
+   ],
+   [
+    "_Darkness",
+    "Float"
+   ]
+  ],
+  "member_count": 4,
+  "slot_count": 1
+ },
+ "Sprites__BackgroundShader": {
+  "per_material_cb": "0",
+  "members": [
+   [
+    "uvec4",
+    "_m0"
+   ],
+   [
+    "uvec4",
+    "_m1"
+   ],
+   [
+    "vec4",
+    "_m2"
+   ]
+  ],
+  "map": {
+   "_textures": [
+    "_MainTex"
+   ],
+   "cb0[0]": "_Color",
+   "cb0[1].x": "PixelSnap"
+  },
+  "props": [
+   [
+    "_MainTex",
+    "Texture"
+   ],
+   [
+    "_Color",
+    "Color"
+   ],
+   [
+    "PixelSnap",
+    "Float"
+   ]
+  ],
+  "member_count": 3,
+  "slot_count": 1
+ },
+ "Sprites__CombatCircleSpriteShader2": {
+  "per_material_cb": "0",
+  "members": [
+   [
+    "uvec4",
+    "_m0"
+   ],
+   [
+    "uvec4",
+    "_m1"
+   ],
+   [
+    "uvec4",
+    "_m2"
+   ],
+   [
+    "uvec4",
+    "_m3"
+   ],
+   [
+    "vec4",
+    "_m4"
+   ]
+  ],
+  "map": {
+   "_textures": [
+    "_MainTex"
+   ],
+   "cb0[0]": "_Color",
+   "cb0[1].x": "_FillAmount",
+   "cb0[1].y": "PixelSnap"
+  },
+  "props": [
+   [
+    "_MainTex",
+    "Texture"
+   ],
+   [
+    "_Color",
+    "Color"
+   ],
+   [
+    "_FillAmount",
+    "Float"
+   ],
+   [
+    "PixelSnap",
+    "Float"
+   ]
+  ],
+  "member_count": 5,
+  "slot_count": 1
+ },
+ "Sprites__SpriteOnTop": {
+  "error": "cannot unpack non-iterable NoneType object"
+ },
+ "Sprites__StatusEffectSpriteShader": {
+  "per_material_cb": "1",
+  "members": [
+   [
+    "vec4",
+    "m"
+   ]
+  ],
+  "map": {
+   "_textures": [
+    "_MainTex"
+   ],
+   "cb1[0]": "_Color",
+   "cb1[1].x": "_FillAmount",
+   "cb1[1].y": "PixelSnap",
+   "cb1[1]": "_ColorA",
+   "cb1[2]": "_ColorB"
+  },
+  "props": [
+   [
+    "_MainTex",
+    "Texture"
+   ],
+   [
+    "_Color",
+    "Color"
+   ],
+   [
+    "_FillAmount",
+    "Float"
+   ],
+   [
+    "PixelSnap",
+    "Float"
+   ],
+   [
+    "_ColorA",
+    "Color"
+   ],
+   [
+    "_ColorB",
+    "Color"
+   ]
+  ],
+  "member_count": 1,
+  "slot_count": 3
+ },
+ "Transition__Cities": {
+  "per_material_cb": "0",
+  "members": [
+   [
+    "vec4",
+    "_m0"
+   ],
+   [
+    "vec4",
+    "_m1"
+   ],
+   [
+    "vec4",
+    "_m2"
+   ],
+   [
+    "vec4",
+    "_m3"
+   ]
+  ],
+  "map": {
+   "_textures": [
+    "_MainTex",
+    "_TransitionTex",
+    "_NoiseTex"
+   ],
+   "cb0[0].x": "_TransitionAmount",
+   "cb0[0]": "_Color2",
+   "cb0[1].y": "_StencilComp",
+   "cb0[1].z": "_Stencil",
+   "cb0[1].w": "_StencilOp",
+   "cb0[2].x": "_StencilWriteMask",
+   "cb0[2].y": "_StencilReadMask",
+   "cb0[2].z": "_ColorMask"
+  },
+  "props": [
+   [
+    "_MainTex",
+    "Texture"
+   ],
+   [
+    "_TransitionTex",
+    "Texture"
+   ],
+   [
+    "_TransitionAmount",
+    "Float"
+   ],
+   [
+    "_Color2",
+    "Color"
+   ],
+   [
+    "_NoiseTex",
+    "Texture"
+   ],
+   [
+    "_StencilComp",
+    "Float"
+   ],
+   [
+    "_Stencil",
+    "Float"
+   ],
+   [
+    "_StencilOp",
+    "Float"
+   ],
+   [
+    "_StencilWriteMask",
+    "Float"
+   ],
+   [
+    "_StencilReadMask",
+    "Float"
+   ],
+   [
+    "_ColorMask",
+    "Float"
+   ]
+  ],
+  "member_count": 4,
+  "slot_count": 2
+ },
+ "Transition__Default": {
+  "per_material_cb": "0",
+  "members": [
+   [
+    "vec4",
+    "_m0"
+   ],
+   [
+    "vec4",
+    "_m1"
+   ],
+   [
+    "vec4",
+    "_m2"
+   ],
+   [
+    "vec4",
+    "_m3"
+   ]
+  ],
+  "map": {
+   "_textures": [
+    "_MainTex",
+    "_TransitionTex"
+   ],
+   "cb0[0].x": "_TransitionAmount",
+   "cb0[0].y": "_StencilComp",
+   "cb0[0].z": "_Stencil",
+   "cb0[0].w": "_StencilOp",
+   "cb0[1].x": "_StencilWriteMask",
+   "cb0[1].y": "_StencilReadMask",
+   "cb0[1].z": "_ColorMask"
+  },
+  "props": [
+   [
+    "_MainTex",
+    "Texture"
+   ],
+   [
+    "_TransitionTex",
+    "Texture"
+   ],
+   [
+    "_TransitionAmount",
+    "Float"
+   ],
+   [
+    "_StencilComp",
+    "Float"
+   ],
+   [
+    "_Stencil",
+    "Float"
+   ],
+   [
+    "_StencilOp",
+    "Float"
+   ],
+   [
+    "_StencilWriteMask",
+    "Float"
+   ],
+   [
+    "_StencilReadMask",
+    "Float"
+   ],
+   [
+    "_ColorMask",
+    "Float"
+   ]
+  ],
+  "member_count": 4,
+  "slot_count": 1
+ },
+ "Transition__Energy": {
+  "per_material_cb": "0",
+  "members": [
+   [
+    "vec4",
+    "_m0"
+   ],
+   [
+    "vec4",
+    "_m1"
+   ],
+   [
+    "vec4",
+    "_m2"
+   ],
+   [
+    "vec4",
+    "_m3"
+   ]
+  ],
+  "map": {
+   "_textures": [
+    "_MainTex",
+    "_TransitionTex"
+   ],
+   "cb0[0].x": "_TransitionAmount",
+   "cb0[0]": "_TransitionColor",
+   "cb0[1].y": "_StencilComp",
+   "cb0[1].z": "_Stencil",
+   "cb0[1].w": "_StencilOp",
+   "cb0[2].x": "_StencilWriteMask",
+   "cb0[2].y": "_StencilReadMask",
+   "cb0[2].z": "_ColorMask"
+  },
+  "props": [
+   [
+    "_MainTex",
+    "Texture"
+   ],
+   [
+    "_TransitionTex",
+    "Texture"
+   ],
+   [
+    "_TransitionAmount",
+    "Float"
+   ],
+   [
+    "_TransitionColor",
+    "Color"
+   ],
+   [
+    "_StencilComp",
+    "Float"
+   ],
+   [
+    "_Stencil",
+    "Float"
+   ],
+   [
+    "_StencilOp",
+    "Float"
+   ],
+   [
+    "_StencilWriteMask",
+    "Float"
+   ],
+   [
+    "_StencilReadMask",
+    "Float"
+   ],
+   [
+    "_ColorMask",
+    "Float"
+   ]
+  ],
+  "member_count": 4,
+  "slot_count": 2
+ },
+ "Transition__Spirit": {
+  "per_material_cb": "0",
+  "members": [
+   [
+    "vec4",
+    "_m0"
+   ],
+   [
+    "vec4",
+    "_m1"
+   ],
+   [
+    "vec4",
+    "_m2"
+   ],
+   [
+    "vec4",
+    "_m3"
+   ]
+  ],
+  "map": {
+   "_textures": [
+    "_MainTex",
+    "_TransitionTex"
+   ],
+   "cb0[0].x": "_TransitionAmount",
+   "cb0[0].y": "_StencilComp",
+   "cb0[0].z": "_Stencil",
+   "cb0[0].w": "_StencilOp",
+   "cb0[1].x": "_StencilWriteMask",
+   "cb0[1].y": "_StencilReadMask",
+   "cb0[1].z": "_ColorMask"
+  },
+  "props": [
+   [
+    "_MainTex",
+    "Texture"
+   ],
+   [
+    "_TransitionTex",
+    "Texture"
+   ],
+   [
+    "_TransitionAmount",
+    "Float"
+   ],
+   [
+    "_StencilComp",
+    "Float"
+   ],
+   [
+    "_Stencil",
+    "Float"
+   ],
+   [
+    "_StencilOp",
+    "Float"
+   ],
+   [
+    "_StencilWriteMask",
+    "Float"
+   ],
+   [
+    "_StencilReadMask",
+    "Float"
+   ],
+   [
+    "_ColorMask",
+    "Float"
+   ]
+  ],
+  "member_count": 4,
+  "slot_count": 1
+ },
+ "Unlit__CardopediaBackgroundShader": {
+  "per_material_cb": "0",
+  "members": [
+   [
+    "uvec4",
+    "_m0"
+   ],
+   [
+    "uvec4",
+    "_m1"
+   ],
+   [
+    "vec2",
+    "_m2"
+   ],
+   [
+    "vec2",
+    "_m3"
+   ]
+  ],
+  "map": {
+   "_textures": [
+    "_MainTex"
+   ]
+  },
+  "props": [
+   [
+    "_MainTex",
+    "Texture"
+   ]
+  ],
+  "member_count": 4,
+  "slot_count": 0
+ }
+}
