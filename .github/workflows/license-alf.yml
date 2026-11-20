@@ -1,22 +1,19 @@
-name: License ALF (manual activation probe)
-on: workflow_dispatch:
+name: License ALF
+on:
+  workflow_dispatch: {}
 jobs:
   alf:
     runs-on: ubuntu-latest
     container:
       image: unityci/editor:ubuntu-2022.3.4f1-android-3
     steps:
-      - name: Generate .alf
+      - name: Generate alf
         run: |
-          set -x
-          mkdir -p /root/.config/unity3d/Unity/licenses /root/.local/share/unity3d/Unity
-          rm -f /root/.local/share/unity3d/Unity/Unity_lic.alf
-          /opt/unity/Editor/Unity -quit -batchmode -nographics -createManualActivationFile \
-            -logFile /tmp/alf.log || true
-          ls -la /root/.local/share/unity3d/Unity/ || true
-          find / -name "*.alf" -mmin -10 2>/dev/null | head
-          cp $(find / -name "*.alf" -mmin -10 2>/dev/null | head -1) /tmp/Unity_v2022.alf 2>/dev/null || true
-          tail -60 /tmp/alf.log || true
+          mkdir -p /root/.local/share/unity3d/Unity
+          /opt/unity/Editor/Unity -quit -batchmode -nographics -createManualActivationFile -logFile /tmp/alf.log || true
+          find / -name "*.alf" -mmin -15 2>/dev/null | head
+          cp "$(find / -name '*.alf' -mmin -15 2>/dev/null | head -1)" /tmp/Unity_v2022.alf || true
+          tail -40 /tmp/alf.log || true
       - uses: actions/upload-artifact@v4
         with:
           name: unity-alf
