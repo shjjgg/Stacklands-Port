@@ -198,6 +198,14 @@ jobs:
             --data "$SOURCE_DATA,$(dirname "$SOURCE_DATA")/../game/Stacklands_Data" \
             --out shader_extract
 
+      # ISGN/OSGN 签名: 原版顶点输入布局 + VS输出↔PS输入链接, 是重建时"不能少一个通道"的判据
+      - name: Shader I/O signatures (ISGN/OSGN)
+        if: hashFiles(env.SOURCE_DATA) != ''
+        run: |
+          python3 tools/extract_signatures.py \
+            --dxbc shader_extract/dxbc \
+            --out shader_extract
+
       - name: Shader fidelity worklist (families & diffs)
         if: hashFiles(env.SOURCE_DATA) != ''
         run: |
@@ -244,6 +252,7 @@ jobs:
             shader_extract/
             shader_extract/dxbc/
             shader_extract/dxbc_ledger.*
+            shader_extract/signature_ledger.*
             content_inventory/
           if-no-files-found: ignore
 

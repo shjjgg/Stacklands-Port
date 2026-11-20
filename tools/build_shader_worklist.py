@@ -91,6 +91,8 @@ def risk_flags(s: dict) -> list[str]:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
+    ap.add_argument("--signature-ledger", default="shader_extract/signature_ledger.json",
+                    help="ISGN/OSGN 签名台账(可选); 有则标注顶点输入与插值通道")
     ap.add_argument("--dxbc-ledger", default="shader_extract/dxbc_ledger.json",
                     help="DXBC 切片台账(可选); 有则给每个 shader 标注原版程序数/阶段")
     ap.add_argument("--ledger", default="shader_extract/shader_ledger.json")
@@ -99,6 +101,11 @@ def main() -> int:
     args = ap.parse_args()
 
     data = json.loads(Path(args.ledger).read_text(encoding="utf-8"))
+    sig = {}
+    sp = Path(args.signature_ledger)
+    if sp.exists():
+        for r in json.loads(sp.read_text(encoding="utf-8")).get("rows", []):
+            sig[r["shader"]] = r
     dxbc = {}
     dp = Path(args.dxbc_ledger)
     if dp.exists():
@@ -134,19 +141,22 @@ def main() -> int:
             md.append(f"- 族内差集属性 {len(union_props - common)} 个：{', '.join(sorted(union_props - common))}")
         md.append(f"- 关键字并集 {len(kws)} 条")
         md.append("")
-        md.append("| Shader | 分类 | 压缩(B) | 解压(B) | 程序(VS/PS) | 属性数 | 关键字 | SubShader | 独有属性 | 风险 |")
-        md.append("|---|---|---:|---:|---|---:|---:|---:|---|---|")
+        md.append("| Shader | 分类 | 压缩(B) | 程序(VS/PS) | 顶点输入 | 插值 | 属性数 | 关键字 | 独有属性 | 风险 |")
+        md.append("|---|---|---:|---|---|---:|---:|---:|---|---|")
         for m in members:
             own = sorted(set(m["properties"]) - common)
             flags = risk_flags(m)
             d = dxbc.get(m["name"], {})
-            dtxt = (f"{d.get('decompressed_bytes', '-')} | "
-                    f"{d.get('programs', '-')} ({d.get('stages', {}).get('VS', 0)}/"
-                    f"{d.get('stages', {}).get('PS', 0)})") if d else "- | -"
+            # 表头只有"程序(VS/PS)"一列: 解压体积已挪到 dxbc_ledger.md, 这里不再重复输出(否则挤坏列)
+            dtxt = (f"{d.get('programs', '-')} ({d.get('stages', {}).get('VS', 0)}/"
+                    f"{d.get('stages', {}).get('PS', 0)})") if d else "-"
             if dxbc and not d:
                 flags = flags + ["缺 DXBC 切片(先跑 extract_dxbc_programs.py)"]
-            md.append(f"| {m['name']} | {m['category']} | {m['blob_size']} | {dtxt} | "
-                      f"{len(m['properties'])} | {len(m['keywords'])} | {m.get('subshader_count', 1)} | "
+            sg = sig.get(m["name"], {})
+            vin = (sg.get("vertex_inputs", "—") or "—").replace(" | ", "、")
+            md.append(f"| {m['name']} | {m['category']} | {m['blob_size']} | {dtxt} | {vin} | "
+                      f"{sg.get('interp_channels', '—')} | "
+                      f"{len(m['properties'])} | {len(m['keywords'])} | "
                       f"{', '.join(own) if own else '—'} | {'；'.join(flags) if flags else '—'} |")
             rows.append({
                 "family": f"F{gi}",
@@ -158,6 +168,9 @@ def main() -> int:
                 "dxbc_programs": dxbc.get(m["name"], {}).get("programs", ""),
                 "dxbc_vs": dxbc.get(m["name"], {}).get("stages", {}).get("VS", ""),
                 "dxbc_ps": dxbc.get(m["name"], {}).get("stages", {}).get("PS", ""),
+                "vertex_inputs": sig.get(m["name"], {}).get("vertex_inputs", ""),
+                "interp_channels": sig.get(m["name"], {}).get("interp_channels", ""),
+                "instancing": sig.get(m["name"], {}).get("instancing_variant", ""),
                 "properties": "|".join(m["properties"]),
                 "own_properties": "|".join(own),
                 "keywords": "|".join(m["keywords"]),
@@ -176,7 +189,9 @@ def main() -> int:
     md.append("2. 族内先做 blob 最大、关键字最多的那个（信息最全，反编译成功率最高），再往下做小变体。")
     md.append("3. `blob<1.5KB` 的条目先确认是否为真实空壳；若是，按原版视觉重建而不是硬还原字节。")
     md.append("4. 每完成一个 shader，把 `shader_worklist.csv` 的 `status` 从 `pending` 改 `done` 并记抓帧结论。")
-    md.append("5. **验收硬指标**：`shader_extract/dxbc/` 里该 shader 的原版程序数（如 `Custom/BoosterShader` 34 段 = VS 19 / PS 15）")
+    md.append("5. **顶点输入必须逐字对齐**：下表 `顶点输入` 来自原版 ISGN（语义/索引/寄存器），重建的 `struct appdata` 少一个")
+    md.append("   或错一个寄存器都会导致顶点错位且不报编译错误；`插值` 列是 VS 输出↔PS 输入的对数，重建后不得减少。")
+    md.append("6. **验收硬指标**：`shader_extract/dxbc/` 里该 shader 的原版程序数（如 `Custom/BoosterShader` 34 段 = VS 19 / PS 15）")
     md.append("   是重建的下限参照 —— 重建后编译出的程序段数明显少于原版，说明关键字/变体被吃掉了，不算复刻。")
     md.append("")
 
