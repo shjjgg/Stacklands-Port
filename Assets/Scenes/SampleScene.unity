@@ -264,7 +264,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
+  - {fileID: 2100000, guid: 4c02238997a13d94b9d7c9d8dfc625c2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -397,34 +397,34 @@ MonoBehaviour:
   m_Name:
   m_EditorClassIdentifier:
   Boards:
-  - {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
-  - {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
-  - {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
-  - {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
-  - {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
-  - {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
-  - {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   ObjectsToInstantiate:
-  - {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
-  - {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
-  - {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
-  - {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
-  - {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
-  - {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
-  - {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
-  - {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
-  - {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
-  - {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
-  - {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
-  - {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
-  - {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
-  - {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
-  - {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
-  - {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
-  - {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
-  - {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
-  - {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
-  - {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,15 +441,15 @@ MonoBehaviour:
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
-  m_ActionsAsset: {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
-  m_PointAction: {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
-  m_MoveAction: {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
-  m_SubmitAction: {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
-  m_CancelAction: {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
-  m_LeftClickAction: {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
-  m_MiddleClickAction: {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
-  m_RightClickAction: {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
-  m_ScrollWheelAction: {fileID: 0, guid: ab8d4fadcd4a8564f83f5efef2f962fa, type: 2}
+  m_ActionsAsset: {fileID: 0}
+  m_PointAction: {fileID: 0}
+  m_MoveAction: {fileID: 0}
+  m_SubmitAction: {fileID: 0}
+  m_CancelAction: {fileID: 0}
+  m_LeftClickAction: {fileID: 0}
+  m_MiddleClickAction: {fileID: 0}
+  m_RightClickAction: {fileID: 0}
+  m_ScrollWheelAction: {fileID: 0}
   m_TrackedDevicePositionAction: {fileID: 0}
   m_TrackedDeviceOrientationAction: {fileID: 0}
   m_DeselectOnBackgroundClick: 1
