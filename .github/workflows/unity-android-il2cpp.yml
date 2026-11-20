@@ -200,6 +200,12 @@ jobs:
 
       # ISGN/OSGN 签名: 原版顶点输入布局 + VS输出↔PS输入链接, 是重建时"不能少一个通道"的判据
       # Pass 渲染状态(ZTest/ZWrite/Blend/Cull/Stencil/ColorMask) 决定画面而非 HLSL, 必须单独导出
+      # 阶段语义自证: 用 OSGN 输出语义(VS 必写 SV_Position / PS 必写 SV_Target)独立证伪阶段判定,
+      # 避免"文件名由 SHDR token 解码而来"的自证循环
+      - name: Shader stage semantics
+        if: hashFiles('shader_extract/dxbc/*.dxbc') != ''
+        run: python3 tools/verify_stage_semantics.py --dxbc shader_extract/dxbc --out shader_extract
+
       # 变体预算对账: typetree 说应该有多少段 VS/PS, 与切出来的段数必须相等(否则链条有洞)
       - name: Shader variant reconciliation
         if: hashFiles(env.SOURCE_DATA) != ''
@@ -272,6 +278,7 @@ jobs:
             shader_extract/signature_ledger.*
             shader_extract/pass_state.*
             shader_extract/variant_ledger.*
+            shader_extract/stage_semantics.*
             content_inventory/
           if-no-files-found: ignore
 
