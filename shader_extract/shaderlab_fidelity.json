@@ -1,0 +1,51 @@
+{
+  "rows": [
+    {
+      "shader": "Custom/SpiritImageEffect",
+      "sub": 0,
+      "pass": 0,
+      "ok": true,
+      "pass_programs": 2
+    },
+    {
+      "shader": "Custom/SpiritImageEffect",
+      "sub": null,
+      "pass": null,
+      "ok": true,
+      "pass_programs": 2,
+      "keywords": 4
+    }
+  ],
+  "fails": [
+    "缺 shader 文件: Custom/ArrowSdfShader",
+    "缺 shader 文件: Custom/StatusBar",
+    "缺 shader 文件: Custom/SewerPipeShader",
+    "缺 shader 文件: Custom/CardBackShader",
+    "缺 shader 文件: Custom/ConveyorArrowShader",
+    "缺 shader 文件: Transition/Default",
+    "缺 shader 文件: Custom/ConflictOutlineSdfShader",
+    "缺 shader 文件: Transition/Spirit",
+    "缺 shader 文件: Custom/GenericCardShader",
+    "缺 shader 文件: Custom/SpiritTransitionEffect",
+    "缺 shader 文件: Custom/CardShaderTest",
+    "缺 shader 文件: Custom/TransportArrowShader",
+    "缺 shader 文件: Custom/BoosterShaderTop",
+    "缺 shader 文件: Custom/GridShader",
+    "缺 shader 文件: Custom/EnergyCableShader",
+    "缺 shader 文件: Custom/FloorShaderForest",
+    "缺 shader 文件: Custom/SuperSampled Texture",
+    "缺 shader 文件: Unlit/CardopediaBackgroundShader",
+    "缺 shader 文件: Custom/TransportArrowMainlandShader",
+    "缺 shader 文件: Sprites/BackgroundShader",
+    "缺 shader 文件: Sprites/StatusEffectSpriteShader",
+    "缺 shader 文件: Custom/FloorShader",
+    "缺 shader 文件: Sprites/CombatCircleSpriteShader2",
+    "缺 shader 文件: Transition/Energy",
+    "缺 shader 文件: Custom/FloorShaderIsland",
+    "缺 shader 文件: Custom/BoosterShader",
+    "缺 shader 文件: Transition/Cities",
+    "缺 shader 文件: Sprites/SpriteOnTop",
+    "缺 shader 文件: Postprocess/SokpopIntro"
+  ],
+  "warns": []
+}
