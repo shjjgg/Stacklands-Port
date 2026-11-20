@@ -199,6 +199,14 @@ jobs:
             --out shader_extract
 
       # ISGN/OSGN 签名: 原版顶点输入布局 + VS输出↔PS输入链接, 是重建时"不能少一个通道"的判据
+      # Pass 渲染状态(ZTest/ZWrite/Blend/Cull/Stencil/ColorMask) 决定画面而非 HLSL, 必须单独导出
+      - name: Shader pass render state
+        if: hashFiles(env.SOURCE_DATA) != ''
+        run: |
+          python3 tools/extract_pass_state.py \
+            --data "$SOURCE_DATA,$(dirname "$SOURCE_DATA")/../game/Stacklands_Data" \
+            --out shader_extract
+
       - name: Shader I/O signatures (ISGN/OSGN)
         if: hashFiles(env.SOURCE_DATA) != ''
         run: |
@@ -253,6 +261,7 @@ jobs:
             shader_extract/dxbc/
             shader_extract/dxbc_ledger.*
             shader_extract/signature_ledger.*
+            shader_extract/pass_state.*
             content_inventory/
           if-no-files-found: ignore
 

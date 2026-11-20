@@ -1,0 +1,186 @@
+shader,subshader,pass,pass_name,cull,ztest,zwrite,zclip,blend_src,blend_dst,blend_src_a,blend_dst_a,blend_op,blend_op_a,color_mask,alpha_to_mask,offset,stencil_comp,stencil_pass,stencil_fail,stencil_zfail,stencil_read,stencil_write,stencil_ref,lod,queue,render_type,lightmode,lighting,shaderlab
+Custom/ArrowSdfShader,0,0,,Back,LessEqual,Off,True,SrcAlpha,OneMinusSrcAlpha,SrcAlpha,OneMinusSrcAlpha,Add,Add,14,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,Transparent,Transparent,FORWARDBASE,False,"ZTest LessEqual
+        ZWrite Off
+        Blend SrcAlpha OneMinusSrcAlpha
+        ColorMask GBA"
+Custom/ArrowSdfShader,0,1,,Back,LessEqual,Off,True,SrcAlpha,One,SrcAlpha,One,Add,Add,14,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,Transparent,Transparent,FORWARDADD,False,"ZTest LessEqual
+        ZWrite Off
+        Blend SrcAlpha One
+        ColorMask GBA"
+Custom/StatusBar,0,0,,Back,LessEqual,On,True,One,Zero,One,Zero,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,,Opaque,FORWARDBASE,False,"ZTest LessEqual
+        ZWrite On"
+Custom/StatusBar,0,1,,Back,LessEqual,Off,True,One,One,One,One,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,,Opaque,FORWARDADD,False,"ZTest LessEqual
+        ZWrite Off
+        Blend One One"
+Custom/StatusBar,0,2,,Back,LessEqual,On,True,One,Zero,One,Zero,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,,Opaque,DEFERRED,False,"ZTest LessEqual
+        ZWrite On"
+Custom/StatusBar,0,3,,Back,LessEqual,On,True,One,Zero,One,Zero,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,,Opaque,SHADOWCASTER,False,"ZTest LessEqual
+        ZWrite On"
+Custom/SewerPipeShader,0,0,,Back,Disabled,Off,True,SrcAlpha,OneMinusSrcAlpha,SrcAlpha,OneMinusSrcAlpha,Add,Add,14,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,Transparent,Transparent,FORWARDBASE,False,"ZTest Disabled
+        ZWrite Off
+        Blend SrcAlpha OneMinusSrcAlpha
+        ColorMask GBA"
+Custom/SewerPipeShader,0,1,,Back,Disabled,Off,True,SrcAlpha,One,SrcAlpha,One,Add,Add,14,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,Transparent,Transparent,FORWARDADD,False,"ZTest Disabled
+        ZWrite Off
+        Blend SrcAlpha One
+        ColorMask GBA"
+Custom/CardBackShader,0,0,,Back,LessEqual,On,True,One,Zero,One,Zero,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,,Opaque,FORWARDBASE,False,"ZTest LessEqual
+        ZWrite On"
+Custom/CardBackShader,0,1,,Back,LessEqual,Off,True,One,One,One,One,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,,Opaque,FORWARDADD,False,"ZTest LessEqual
+        ZWrite Off
+        Blend One One"
+Custom/CardBackShader,0,2,,Back,LessEqual,On,True,One,Zero,One,Zero,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,,Opaque,DEFERRED,False,"ZTest LessEqual
+        ZWrite On"
+Custom/ConveyorArrowShader,0,0,,Back,LessEqual,Off,True,SrcAlpha,OneMinusSrcAlpha,SrcAlpha,OneMinusSrcAlpha,Add,Add,14,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,Transparent,Transparent,FORWARDBASE,False,"ZTest LessEqual
+        ZWrite Off
+        Blend SrcAlpha OneMinusSrcAlpha
+        ColorMask GBA"
+Custom/ConveyorArrowShader,0,1,,Back,LessEqual,Off,True,SrcAlpha,One,SrcAlpha,One,Add,Add,14,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,Transparent,Transparent,FORWARDADD,False,"ZTest LessEqual
+        ZWrite Off
+        Blend SrcAlpha One
+        ColorMask GBA"
+Transition/Default,0,0,,Off,Disabled,On,True,SrcAlpha,OneMinusSrcAlpha,SrcAlpha,OneMinusSrcAlpha,Add,Add,0,False,"0,0",Always,Keep,Keep,Keep,255,255,0,100,Transparent,,,False,"Cull Off
+        ZTest Disabled
+        ZWrite On
+        Blend SrcAlpha OneMinusSrcAlpha
+        ColorMask 0"
+Custom/ConflictOutlineSdfShader,0,0,,Back,LessEqual,Off,True,SrcAlpha,OneMinusSrcAlpha,SrcAlpha,OneMinusSrcAlpha,Add,Add,14,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,Transparent,Transparent,FORWARDBASE,False,"ZTest LessEqual
+        ZWrite Off
+        Blend SrcAlpha OneMinusSrcAlpha
+        ColorMask GBA"
+Custom/ConflictOutlineSdfShader,0,1,,Back,LessEqual,Off,True,SrcAlpha,One,SrcAlpha,One,Add,Add,14,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,Transparent,Transparent,FORWARDADD,False,"ZTest LessEqual
+        ZWrite Off
+        Blend SrcAlpha One
+        ColorMask GBA"
+Transition/Spirit,0,0,,Off,Disabled,On,True,SrcAlpha,OneMinusSrcAlpha,SrcAlpha,OneMinusSrcAlpha,Add,Add,0,False,"0,0",Always,Keep,Keep,Keep,255,255,0,100,Transparent,,,False,"Cull Off
+        ZTest Disabled
+        ZWrite On
+        Blend SrcAlpha OneMinusSrcAlpha
+        ColorMask 0"
+Custom/GenericCardShader,0,0,,Back,LessEqual,On,True,One,Zero,One,Zero,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,,Opaque,FORWARDBASE,False,"ZTest LessEqual
+        ZWrite On"
+Custom/GenericCardShader,0,1,,Back,LessEqual,Off,True,One,One,One,One,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,,Opaque,FORWARDADD,False,"ZTest LessEqual
+        ZWrite Off
+        Blend One One"
+Custom/GenericCardShader,0,2,,Back,LessEqual,On,True,One,Zero,One,Zero,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,,Opaque,DEFERRED,False,"ZTest LessEqual
+        ZWrite On"
+Custom/GenericCardShader,0,3,,Back,LessEqual,On,True,One,Zero,One,Zero,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,,Opaque,SHADOWCASTER,False,"ZTest LessEqual
+        ZWrite On"
+Custom/SpiritTransitionEffect,0,0,,Off,Always,Off,True,One,Zero,One,Zero,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,0,,,,False,"Cull Off
+        ZTest Always
+        ZWrite Off"
+Custom/CardShaderTest,0,0,,Back,LessEqual,On,True,One,Zero,One,Zero,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,,Opaque,FORWARDBASE,False,"ZTest LessEqual
+        ZWrite On"
+Custom/CardShaderTest,0,1,,Back,LessEqual,Off,True,One,One,One,One,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,,Opaque,FORWARDADD,False,"ZTest LessEqual
+        ZWrite Off
+        Blend One One"
+Custom/CardShaderTest,0,2,,Back,LessEqual,On,True,One,Zero,One,Zero,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,,Opaque,DEFERRED,False,"ZTest LessEqual
+        ZWrite On"
+Custom/CardShaderTest,0,3,,Back,LessEqual,On,True,One,Zero,One,Zero,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,,Opaque,SHADOWCASTER,False,"ZTest LessEqual
+        ZWrite On"
+Custom/TransportArrowShader,0,0,,Back,Disabled,Off,True,SrcAlpha,OneMinusSrcAlpha,SrcAlpha,OneMinusSrcAlpha,Add,Add,14,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,Transparent,Transparent,FORWARDBASE,False,"ZTest Disabled
+        ZWrite Off
+        Blend SrcAlpha OneMinusSrcAlpha
+        ColorMask GBA"
+Custom/TransportArrowShader,0,1,,Back,Disabled,Off,True,SrcAlpha,One,SrcAlpha,One,Add,Add,14,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,Transparent,Transparent,FORWARDADD,False,"ZTest Disabled
+        ZWrite Off
+        Blend SrcAlpha One
+        ColorMask GBA"
+Custom/BoosterShaderTop,0,0,,Back,LessEqual,On,True,One,Zero,One,Zero,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,,Opaque,FORWARDBASE,False,"ZTest LessEqual
+        ZWrite On"
+Custom/BoosterShaderTop,0,1,,Back,LessEqual,Off,True,One,One,One,One,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,,Opaque,FORWARDADD,False,"ZTest LessEqual
+        ZWrite Off
+        Blend One One"
+Custom/BoosterShaderTop,0,2,,Back,LessEqual,On,True,One,Zero,One,Zero,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,,Opaque,DEFERRED,False,"ZTest LessEqual
+        ZWrite On"
+Custom/BoosterShaderTop,0,3,,Back,LessEqual,On,True,One,Zero,One,Zero,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,,Opaque,SHADOWCASTER,False,"ZTest LessEqual
+        ZWrite On"
+Custom/GridShader,0,0,,Back,LessEqual,Off,True,One,OneMinusSrcAlpha,One,OneMinusSrcAlpha,Add,Add,14,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,Transparent,Opaque,FORWARDBASE,False,"ZTest LessEqual
+        ZWrite Off
+        Blend One OneMinusSrcAlpha
+        ColorMask GBA"
+Custom/GridShader,0,1,,Back,LessEqual,Off,True,One,One,One,One,Add,Add,14,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,Transparent,Opaque,FORWARDADD,False,"ZTest LessEqual
+        ZWrite Off
+        Blend One One
+        ColorMask GBA"
+Custom/SpiritImageEffect,0,0,,Off,Always,Off,True,One,Zero,One,Zero,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,0,,,,False,"Cull Off
+        ZTest Always
+        ZWrite Off"
+Custom/EnergyCableShader,0,0,,Back,Disabled,Off,True,SrcAlpha,OneMinusSrcAlpha,SrcAlpha,OneMinusSrcAlpha,Add,Add,14,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,Transparent,Transparent,FORWARDBASE,False,"ZTest Disabled
+        ZWrite Off
+        Blend SrcAlpha OneMinusSrcAlpha
+        ColorMask GBA"
+Custom/EnergyCableShader,0,1,,Back,Disabled,Off,True,SrcAlpha,One,SrcAlpha,One,Add,Add,14,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,Transparent,Transparent,FORWARDADD,False,"ZTest Disabled
+        ZWrite Off
+        Blend SrcAlpha One
+        ColorMask GBA"
+Custom/FloorShaderForest,0,0,,Back,LessEqual,On,True,One,Zero,One,Zero,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,,Opaque,FORWARDBASE,False,"ZTest LessEqual
+        ZWrite On"
+Custom/FloorShaderForest,0,1,,Back,LessEqual,Off,True,One,One,One,One,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,,Opaque,FORWARDADD,False,"ZTest LessEqual
+        ZWrite Off
+        Blend One One"
+Custom/SuperSampled Texture,0,0,,Back,LessEqual,Off,True,SrcAlpha,OneMinusSrcAlpha,SrcAlpha,OneMinusSrcAlpha,Add,Add,0,False,"0,0",Disabled,Keep,Keep,Keep,0,0,0,0,Transparent,Transparent,,False,"ZTest LessEqual
+        ZWrite Off
+        Blend SrcAlpha OneMinusSrcAlpha
+        ColorMask 0
+        Stencil { Ref 0 Comp Disabled Pass Keep Fail Keep ZFail Keep }
+        Stencil ReadMask 0 WriteMask 0"
+Unlit/CardopediaBackgroundShader,0,0,,Back,LessEqual,On,True,SrcAlpha,OneMinusSrcAlpha,SrcAlpha,OneMinusSrcAlpha,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,100,Transparent,Opaque,,False,"ZTest LessEqual
+        ZWrite On
+        Blend SrcAlpha OneMinusSrcAlpha"
+Custom/TransportArrowMainlandShader,0,0,,Back,Disabled,Off,True,SrcAlpha,OneMinusSrcAlpha,SrcAlpha,OneMinusSrcAlpha,Add,Add,14,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,Transparent,Transparent,FORWARDBASE,False,"ZTest Disabled
+        ZWrite Off
+        Blend SrcAlpha OneMinusSrcAlpha
+        ColorMask GBA"
+Custom/TransportArrowMainlandShader,0,1,,Back,Disabled,Off,True,SrcAlpha,One,SrcAlpha,One,Add,Add,14,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,Transparent,Transparent,FORWARDADD,False,"ZTest Disabled
+        ZWrite Off
+        Blend SrcAlpha One
+        ColorMask GBA"
+Sprites/BackgroundShader,0,0,,Off,LessEqual,Off,True,One,OneMinusSrcAlpha,One,OneMinusSrcAlpha,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,0,Transparent,Transparent,,False,"Cull Off
+        ZTest LessEqual
+        ZWrite Off
+        Blend One OneMinusSrcAlpha"
+Sprites/StatusEffectSpriteShader,0,0,,Off,LessEqual,Off,True,One,OneMinusSrcAlpha,One,OneMinusSrcAlpha,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,0,Transparent,Transparent,,False,"Cull Off
+        ZTest LessEqual
+        ZWrite Off
+        Blend One OneMinusSrcAlpha"
+Custom/FloorShader,0,0,,Back,LessEqual,On,True,One,Zero,One,Zero,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,,Opaque,FORWARDBASE,False,"ZTest LessEqual
+        ZWrite On"
+Custom/FloorShader,0,1,,Back,LessEqual,Off,True,One,One,One,One,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,,Opaque,FORWARDADD,False,"ZTest LessEqual
+        ZWrite Off
+        Blend One One"
+Sprites/CombatCircleSpriteShader2,0,0,,Off,LessEqual,Off,True,One,OneMinusSrcAlpha,One,OneMinusSrcAlpha,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,0,Transparent,Transparent,,False,"Cull Off
+        ZTest LessEqual
+        ZWrite Off
+        Blend One OneMinusSrcAlpha"
+Transition/Energy,0,0,,Off,Disabled,On,True,SrcAlpha,OneMinusSrcAlpha,SrcAlpha,OneMinusSrcAlpha,Add,Add,0,False,"0,0",Always,Keep,Keep,Keep,255,255,0,100,Transparent,,,False,"Cull Off
+        ZTest Disabled
+        ZWrite On
+        Blend SrcAlpha OneMinusSrcAlpha
+        ColorMask 0"
+Custom/FloorShaderIsland,0,0,,Back,LessEqual,On,True,One,Zero,One,Zero,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,,Opaque,FORWARDBASE,False,"ZTest LessEqual
+        ZWrite On"
+Custom/FloorShaderIsland,0,1,,Back,LessEqual,Off,True,One,One,One,One,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,,Opaque,FORWARDADD,False,"ZTest LessEqual
+        ZWrite Off
+        Blend One One"
+Custom/BoosterShader,0,0,,Back,LessEqual,On,True,One,Zero,One,Zero,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,,Opaque,FORWARDBASE,False,"ZTest LessEqual
+        ZWrite On"
+Custom/BoosterShader,0,1,,Back,LessEqual,Off,True,One,One,One,One,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,,Opaque,FORWARDADD,False,"ZTest LessEqual
+        ZWrite Off
+        Blend One One"
+Custom/BoosterShader,0,2,,Back,LessEqual,On,True,One,Zero,One,Zero,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,,Opaque,DEFERRED,False,"ZTest LessEqual
+        ZWrite On"
+Custom/BoosterShader,0,3,,Back,LessEqual,On,True,One,Zero,One,Zero,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,200,,Opaque,SHADOWCASTER,False,"ZTest LessEqual
+        ZWrite On"
+Transition/Cities,0,0,,Off,Disabled,On,True,SrcAlpha,OneMinusSrcAlpha,SrcAlpha,OneMinusSrcAlpha,Add,Add,0,False,"0,0",Always,Keep,Keep,Keep,255,255,0,100,Transparent,,,False,"Cull Off
+        ZTest Disabled
+        ZWrite On
+        Blend SrcAlpha OneMinusSrcAlpha
+        ColorMask 0"
+Sprites/SpriteOnTop,0,0,,Off,Always,Off,True,One,OneMinusSrcAlpha,One,OneMinusSrcAlpha,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,0,Transparent,Transparent,,False,"Cull Off
+        ZTest Always
+        ZWrite Off
+        Blend One OneMinusSrcAlpha"
+Postprocess/SokpopIntro,0,0,,Off,Always,Off,True,One,Zero,One,Zero,Add,Add,15,False,"0,0",Always,Keep,Keep,Keep,255,255,0,0,,,,False,"Cull Off
+        ZTest Always
+        ZWrite Off"
