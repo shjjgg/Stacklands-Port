@@ -418,7 +418,9 @@ jobs:
             -c '
               set -euo pipefail
               LC=/opt/unity/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client
-              "$LC" --activate-all --include-personal \
+              # 这个版本的 Licensing Client 只认 --activate-all + --username/--password,
+              # --include-personal 不是合法选项(实测 UnknownOptionError, 直接导致构建失败)
+              "$LC" --activate-all \
                 --username "$UNITY_EMAIL" --password "$UNITY_PASSWORD"
               echo "=== license files ==="
               ls -la /root/.config/unity3d/Unity/licenses 2>/dev/null || true
