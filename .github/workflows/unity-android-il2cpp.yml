@@ -214,6 +214,14 @@ jobs:
         if: hashFiles('shader_extract/dxbc/*.dxbc') != ''
         run: python3 tools/disassemble_dxbc.py --dxbc shader_extract/dxbc --out shader_extract
 
+      # cbuffer 槽位映射: dcl 槽位可信, 名字只在三条前提同时成立时才落映射(否则只告警)
+      - name: Cbuffer slot mapping
+        if: hashFiles('shader_extract/dxbc/*.dxbc') != ''
+        run: |
+          python3 tools/map_cbuffer_slots.py \
+            --data "$SOURCE_DATA,$(dirname "$SOURCE_DATA")/../game/Stacklands_Data" \
+            --out shader_extract
+
       # 重建规格书: 每个 shader 一份 spec(属性/Fallback/Tags/Pass 状态/程序数/顶点布局)
       - name: Shader rebuild spec
         if: hashFiles(env.SOURCE_DATA) != ''
@@ -318,6 +326,7 @@ jobs:
             shader_extract/fidelity_table.*
             shader_extract/spec/*.json
             shader_extract/asm_profile.*
+            shader_extract/cbuffer_slots.*
             shader_extract/asm/*.asm
             shader_extract/spec_index.json
             content_inventory/

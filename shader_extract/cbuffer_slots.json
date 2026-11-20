@@ -1,0 +1,360 @@
+{
+  "rows": [
+    {
+      "shader": "Custom/ArrowSdfShader",
+      "stage": "VS",
+      "slots": "0 1 2",
+      "cbuffers": "UnityPerDraw | UnityPerFrame",
+      "mapped": false
+    },
+    {
+      "shader": "Custom/ArrowSdfShader",
+      "stage": "PS",
+      "slots": "0 1 2 3",
+      "cbuffers": "$Globals | UnityPerCamera | UnityLighting | UnityProbeVolume",
+      "mapped": true
+    },
+    {
+      "shader": "Custom/SewerPipeShader",
+      "stage": "VS",
+      "slots": "0 1 2",
+      "cbuffers": "UnityPerDraw | UnityPerFrame",
+      "mapped": false
+    },
+    {
+      "shader": "Custom/SewerPipeShader",
+      "stage": "PS",
+      "slots": "0 1 2",
+      "cbuffers": "$Globals | UnityLighting | UnityProbeVolume",
+      "mapped": true
+    },
+    {
+      "shader": "Custom/ConveyorArrowShader",
+      "stage": "VS",
+      "slots": "0 1 2",
+      "cbuffers": "UnityPerDraw | UnityPerFrame",
+      "mapped": false
+    },
+    {
+      "shader": "Custom/ConveyorArrowShader",
+      "stage": "PS",
+      "slots": "0 1 2 3",
+      "cbuffers": "$Globals | UnityPerCamera | UnityLighting | UnityProbeVolume",
+      "mapped": true
+    },
+    {
+      "shader": "Transition/Default",
+      "stage": "VS",
+      "slots": "0 1",
+      "cbuffers": "UnityPerDraw | UnityPerFrame",
+      "mapped": true
+    },
+    {
+      "shader": "Transition/Default",
+      "stage": "PS",
+      "slots": "0",
+      "cbuffers": "$Globals",
+      "mapped": true
+    },
+    {
+      "shader": "Custom/ConflictOutlineSdfShader",
+      "stage": "VS",
+      "slots": "0 1 2",
+      "cbuffers": "UnityPerDraw | UnityPerFrame",
+      "mapped": false
+    },
+    {
+      "shader": "Custom/ConflictOutlineSdfShader",
+      "stage": "PS",
+      "slots": "0 1 2 3 4",
+      "cbuffers": "$Globals | UnityPerCamera | UnityLighting | UnityPerDraw | UnityProbeVolume",
+      "mapped": true
+    },
+    {
+      "shader": "Transition/Spirit",
+      "stage": "VS",
+      "slots": "0 1",
+      "cbuffers": "UnityPerDraw | UnityPerFrame",
+      "mapped": true
+    },
+    {
+      "shader": "Transition/Spirit",
+      "stage": "PS",
+      "slots": "0 1",
+      "cbuffers": "$Globals | UnityPerCamera",
+      "mapped": true
+    },
+    {
+      "shader": "Custom/SpiritTransitionEffect",
+      "stage": "VS",
+      "slots": "0 1",
+      "cbuffers": "UnityPerDraw | UnityPerFrame",
+      "mapped": true
+    },
+    {
+      "shader": "Custom/SpiritTransitionEffect",
+      "stage": "PS",
+      "slots": "0",
+      "cbuffers": "$Globals",
+      "mapped": true
+    },
+    {
+      "shader": "Custom/TransportArrowShader",
+      "stage": "VS",
+      "slots": "0 1 2",
+      "cbuffers": "UnityPerDraw | UnityPerFrame",
+      "mapped": false
+    },
+    {
+      "shader": "Custom/TransportArrowShader",
+      "stage": "PS",
+      "slots": "0 1 2",
+      "cbuffers": "$Globals | UnityLighting | UnityProbeVolume",
+      "mapped": true
+    },
+    {
+      "shader": "Custom/GridShader",
+      "stage": "VS",
+      "slots": "0 1 2",
+      "cbuffers": "UnityPerDraw | UnityPerFrame",
+      "mapped": false
+    },
+    {
+      "shader": "Custom/SpiritImageEffect",
+      "stage": "VS",
+      "slots": "0 1",
+      "cbuffers": "UnityPerDraw | UnityPerFrame",
+      "mapped": true
+    },
+    {
+      "shader": "Custom/SpiritImageEffect",
+      "stage": "PS",
+      "slots": "0 1",
+      "cbuffers": "$Globals | UnityPerCamera",
+      "mapped": true
+    },
+    {
+      "shader": "Custom/EnergyCableShader",
+      "stage": "VS",
+      "slots": "0 1 2",
+      "cbuffers": "UnityPerDraw | UnityPerFrame",
+      "mapped": false
+    },
+    {
+      "shader": "Custom/EnergyCableShader",
+      "stage": "PS",
+      "slots": "0 1 2 3",
+      "cbuffers": "$Globals | UnityPerCamera | UnityLighting | UnityProbeVolume",
+      "mapped": true
+    },
+    {
+      "shader": "Custom/FloorShaderForest",
+      "stage": "VS",
+      "slots": "0 1 2 3",
+      "cbuffers": "UnityPerDraw | UnityPerFrame",
+      "mapped": false
+    },
+    {
+      "shader": "Custom/FloorShaderForest",
+      "stage": "PS",
+      "slots": "0 1 2 3 4 5 6",
+      "cbuffers": "$Globals | UnityLighting | UnityPerDraw | UnityProbeVolume",
+      "mapped": false
+    },
+    {
+      "shader": "Custom/SuperSampled Texture",
+      "stage": "VS",
+      "slots": "",
+      "cbuffers": "UnityPerDraw | UnityPerFrame",
+      "mapped": false
+    },
+    {
+      "shader": "Custom/SuperSampled Texture",
+      "stage": "PS",
+      "slots": "",
+      "cbuffers": "$Globals",
+      "mapped": false
+    },
+    {
+      "shader": "Unlit/CardopediaBackgroundShader",
+      "stage": "VS",
+      "slots": "0 1 2 3",
+      "cbuffers": "$Globals | UnityPerCamera | UnityPerDraw | UnityPerFrame",
+      "mapped": true
+    },
+    {
+      "shader": "Unlit/CardopediaBackgroundShader",
+      "stage": "PS",
+      "slots": "0",
+      "cbuffers": "UnityPerCamera",
+      "mapped": true
+    },
+    {
+      "shader": "Custom/TransportArrowMainlandShader",
+      "stage": "VS",
+      "slots": "0 1 2",
+      "cbuffers": "UnityPerDraw | UnityPerFrame",
+      "mapped": false
+    },
+    {
+      "shader": "Custom/TransportArrowMainlandShader",
+      "stage": "PS",
+      "slots": "0 1 2",
+      "cbuffers": "$Globals | UnityLighting | UnityProbeVolume",
+      "mapped": true
+    },
+    {
+      "shader": "Sprites/BackgroundShader",
+      "stage": "VS",
+      "slots": "0 1 2",
+      "cbuffers": "$Globals | UnityPerDraw | UnityPerFrame",
+      "mapped": true
+    },
+    {
+      "shader": "Sprites/BackgroundShader",
+      "stage": "PS",
+      "slots": "0",
+      "cbuffers": "UnityPerCamera",
+      "mapped": true
+    },
+    {
+      "shader": "Sprites/StatusEffectSpriteShader",
+      "stage": "VS",
+      "slots": "0 1 2 3",
+      "cbuffers": "$Globals | UnityPerDraw | UnityPerFrame",
+      "mapped": false
+    },
+    {
+      "shader": "Sprites/StatusEffectSpriteShader",
+      "stage": "PS",
+      "slots": "0 1",
+      "cbuffers": "$Globals | UnityPerCamera",
+      "mapped": true
+    },
+    {
+      "shader": "Custom/FloorShader",
+      "stage": "VS",
+      "slots": "0 1 2 3",
+      "cbuffers": "UnityPerDraw | UnityPerFrame",
+      "mapped": false
+    },
+    {
+      "shader": "Custom/FloorShader",
+      "stage": "PS",
+      "slots": "0 1 2 3 4 5 6",
+      "cbuffers": "$Globals | UnityLighting | UnityPerDraw | UnityProbeVolume",
+      "mapped": false
+    },
+    {
+      "shader": "Sprites/CombatCircleSpriteShader2",
+      "stage": "VS",
+      "slots": "0 1 2 3",
+      "cbuffers": "$Globals | UnityPerDraw | UnityPerFrame",
+      "mapped": false
+    },
+    {
+      "shader": "Sprites/CombatCircleSpriteShader2",
+      "stage": "PS",
+      "slots": "0",
+      "cbuffers": "$Globals",
+      "mapped": true
+    },
+    {
+      "shader": "Transition/Energy",
+      "stage": "VS",
+      "slots": "0 1",
+      "cbuffers": "UnityPerDraw | UnityPerFrame",
+      "mapped": true
+    },
+    {
+      "shader": "Transition/Energy",
+      "stage": "PS",
+      "slots": "0",
+      "cbuffers": "$Globals",
+      "mapped": true
+    },
+    {
+      "shader": "Custom/FloorShaderIsland",
+      "stage": "VS",
+      "slots": "0 1 2 3",
+      "cbuffers": "UnityPerDraw | UnityPerFrame",
+      "mapped": false
+    },
+    {
+      "shader": "Custom/FloorShaderIsland",
+      "stage": "PS",
+      "slots": "0 1 2 3 4 5 6",
+      "cbuffers": "$Globals | UnityPerCamera | UnityLighting | UnityPerDraw | UnityProbeVolume",
+      "mapped": false
+    },
+    {
+      "shader": "Transition/Cities",
+      "stage": "VS",
+      "slots": "0 1",
+      "cbuffers": "UnityPerDraw | UnityPerFrame",
+      "mapped": true
+    },
+    {
+      "shader": "Transition/Cities",
+      "stage": "PS",
+      "slots": "0 1",
+      "cbuffers": "$Globals | UnityPerCamera",
+      "mapped": true
+    },
+    {
+      "shader": "Sprites/SpriteOnTop",
+      "stage": "VS",
+      "slots": "0 1 2 3",
+      "cbuffers": "$Globals | UnityPerDraw | UnityPerFrame",
+      "mapped": false
+    },
+    {
+      "shader": "Postprocess/SokpopIntro",
+      "stage": "VS",
+      "slots": "0 1",
+      "cbuffers": "UnityPerDraw | UnityPerFrame",
+      "mapped": true
+    },
+    {
+      "shader": "Postprocess/SokpopIntro",
+      "stage": "PS",
+      "slots": "0 1",
+      "cbuffers": "$Globals | UnityPerCamera",
+      "mapped": true
+    }
+  ],
+  "problems": [
+    "Custom/ArrowSdfShader VS: 名字列表 2 != dcl 槽位 3",
+    "Custom/StatusBar VS: cbuffer 名字列表在 3 种变体间不一致",
+    "Custom/StatusBar PS: cbuffer 名字列表在 3 种变体间不一致",
+    "Custom/SewerPipeShader VS: 名字列表 2 != dcl 槽位 3",
+    "Custom/CardBackShader VS: cbuffer 名字列表在 2 种变体间不一致",
+    "Custom/CardBackShader PS: cbuffer 名字列表在 3 种变体间不一致",
+    "Custom/ConveyorArrowShader VS: 名字列表 2 != dcl 槽位 3",
+    "Custom/ConflictOutlineSdfShader VS: 名字列表 2 != dcl 槽位 3",
+    "Custom/GenericCardShader VS: cbuffer 名字列表在 3 种变体间不一致",
+    "Custom/GenericCardShader PS: cbuffer 名字列表在 3 种变体间不一致",
+    "Custom/CardShaderTest VS: cbuffer 名字列表在 3 种变体间不一致",
+    "Custom/CardShaderTest PS: cbuffer 名字列表在 4 种变体间不一致",
+    "Custom/TransportArrowShader VS: 名字列表 2 != dcl 槽位 3",
+    "Custom/BoosterShaderTop VS: cbuffer 名字列表在 3 种变体间不一致",
+    "Custom/BoosterShaderTop PS: cbuffer 名字列表在 3 种变体间不一致",
+    "Custom/GridShader VS: 名字列表 2 != dcl 槽位 3",
+    "Custom/GridShader PS: cbuffer 名字列表在 2 种变体间不一致",
+    "Custom/EnergyCableShader VS: 名字列表 2 != dcl 槽位 3",
+    "Custom/FloorShaderForest VS: 名字列表 2 != dcl 槽位 4",
+    "Custom/FloorShaderForest PS: 名字列表 4 != dcl 槽位 7",
+    "Custom/SuperSampled Texture VS: 名字列表 2 != dcl 槽位 0",
+    "Custom/SuperSampled Texture PS: 名字列表 1 != dcl 槽位 0",
+    "Custom/TransportArrowMainlandShader VS: 名字列表 2 != dcl 槽位 3",
+    "Sprites/StatusEffectSpriteShader VS: 名字列表 3 != dcl 槽位 4",
+    "Custom/FloorShader VS: 名字列表 2 != dcl 槽位 4",
+    "Custom/FloorShader PS: 名字列表 4 != dcl 槽位 7",
+    "Sprites/CombatCircleSpriteShader2 VS: 名字列表 3 != dcl 槽位 4",
+    "Custom/FloorShaderIsland VS: 名字列表 2 != dcl 槽位 4",
+    "Custom/FloorShaderIsland PS: 名字列表 5 != dcl 槽位 7",
+    "Custom/BoosterShader VS: cbuffer 名字列表在 3 种变体间不一致",
+    "Custom/BoosterShader PS: cbuffer 名字列表在 3 种变体间不一致",
+    "Sprites/SpriteOnTop VS: 名字列表 3 != dcl 槽位 4"
+  ]
+}
