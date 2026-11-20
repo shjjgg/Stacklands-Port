@@ -9,6 +9,7 @@ CI 永远绿、永远发现不了 —— 那就等于没有审计。这里构造
 """
 from __future__ import annotations
 
+import os
 import subprocess
 import sys
 import tempfile
@@ -63,6 +64,42 @@ def main() -> int:
             "error CS0103: The name 'Foo' does not exist\n"
             "Build completed with a result of 'Failed'\n", encoding="utf-8")
 
+        # ---- 前置检查脚本的自测: 造一个"该过就过"的工程树 ----
+        proj = d / "proj"
+        (proj / "ProjectSettings").mkdir(parents=True)
+        (proj / "Packages").mkdir()
+        (proj / "Assets" / "Editor").mkdir(parents=True)
+        (proj / "Assets" / "Plugins").mkdir(parents=True)
+        (proj / "Assets" / "Shaders" / "Custom").mkdir(parents=True)
+        (proj / "Assets" / "Scripts").mkdir(parents=True)
+        for sc in ("Assets/SokpopIntro/IntroScene.unity", "Assets/Scenes/SampleScene.unity"):
+            (proj / sc).parent.mkdir(parents=True, exist_ok=True)
+            (proj / sc).write_text("%YAML 1.1\n", encoding="utf-8")
+        (proj / "ProjectSettings" / "ProjectVersion.txt").write_text(
+            "m_EditorVersion: 2022.3.4f1\n", encoding="utf-8")
+        (proj / "ProjectSettings" / "EditorBuildSettings.asset").write_text(
+            "  m_Scenes:\n  - enabled: 1\n    path: Assets/SokpopIntro/IntroScene.unity\n"
+            "  - enabled: 1\n    path: Assets/Scenes/SampleScene.unity\n", encoding="utf-8")
+        (proj / "Packages" / "manifest.json").write_text('{"dependencies":{}}', encoding="utf-8")
+        (proj / "Assets" / "Editor" / "PortBuild.cs").write_text(
+            "StrictBuild BuildOptions.StrictMode GetGraphicsAPIs totalSize\n", encoding="utf-8")
+        asm = "".join(f'<assembly fullname="Asm{i}" preserve="all" />' for i in range(21))
+        (proj / "Assets" / "Plugins" / "link.xml").write_text(
+            f"<linker>{asm}</linker>", encoding="utf-8")
+        for i in range(22):
+            (proj / "Assets" / "Shaders" / "Custom" / f"S{i}.shader").write_text("Shader{}", encoding="utf-8")
+        for i in range(11):
+            (proj / "Assets" / "Scripts" / f"C{i}.cs").write_text("class X{}", encoding="utf-8")
+
+        # 子进程继承本进程 env: 给出密钥, 让前置检查只差 keystore(advisory)
+        os.environ.setdefault("UNITY_EMAIL", "a@b.c")
+        os.environ.setdefault("UNITY_PASSWORD", "x")
+        (d / "empty").mkdir()
+        broken = d / "broken"
+        broken.mkdir()
+        (broken / "Assets" / "Plugins").mkdir(parents=True)
+        (broken / "Assets" / "Plugins" / "link.xml").write_text("<linker><assembly", encoding="utf-8")
+
         checks = [
             ("合格 APK 判 PASS", [sys.executable, str(ROOT / "verify_apk.py"), str(good_apk),
                                   "--expect-bundle", BUNDLE, "--min-size-mb", "1"], 0,
@@ -77,6 +114,15 @@ def main() -> int:
              ["结论: PASS"]),
             ("脏日志判 FAIL", [sys.executable, str(ROOT / "strict_log_audit.py"), str(dirty_log)], 1,
              ["shader 编译错误", "C# 编译错误", "构建结果为 Failed"]),
+            ("前置检查: 合格工程树判 READY", [sys.executable, str(ROOT / "preflight_project.py"),
+                                          "--root", str(proj), "--strict"], 0,
+             ["READY_WITH_WARNINGS", "link.xml", "21 个程序集全部 preserve=all"]),
+            ("前置检查: 坏 link.xml 判 XML 非法",
+             [sys.executable, str(ROOT / "preflight_project.py"), "--root", str(broken), "--strict"], 1,
+             ["XML 非法"]),
+            ("前置检查: 空仓库判 NOT_READY",
+             [sys.executable, str(ROOT / "preflight_project.py"), "--root", str(d / "empty"), "--strict"], 1,
+             ["NOT_READY", "工程未落地"]),
             ("--allow-warnings 不能放过 error",
              [sys.executable, str(ROOT / "strict_log_audit.py"), str(dirty_log), "--allow-warnings"], 1,
              ["结论: FAIL"]),

@@ -59,11 +59,14 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         run: |
-          pr=false; [ -f ProjectSettings/ProjectVersion.txt ] && pr=true
+          # 逐项检查首跑前提(引擎版本/场景/场景顺序/link.xml/依赖清单/PortBuild/shader/脚本/密钥/签名),
+          # 并把明细写进 Step Summary —— 让"为什么不能构建"在 CI 首页就能看到, 而不是只看一个 false。
+          python3 tools/preflight_project.py --root . --json-out preflight.json || true
+          pr=true; [ -f ProjectSettings/ProjectVersion.txt ] || pr=false
           lr=false; [ -n "$UNITY_EMAIL" ] && [ -n "$UNITY_PASSWORD" ] && lr=true
           echo "project_ready=$pr" >> "$GITHUB_OUTPUT"
           echo "license_ready=$lr" >> "$GITHUB_OUTPUT"
-          echo "engine=$(cat ProjectSettings/ProjectVersion.txt 2>/dev/null | head -1)"
+          echo "verdict=$(jq -r .verdict preflight.json)" >> "$GITHUB_OUTPUT"
           echo "project_ready=$pr license_ready=$lr"
 
       # 审计脚本自测: 构建 job 在工程未落地时会被跳过, 若审计逻辑本身写错(例如 ABI 解析恒为空)
@@ -209,6 +212,7 @@ jobs:
             interface_member_inventory/
             docs/metadata_overview.*
             docs/15_反编译落地后待办清单.md
+            preflight.json
             shader_extract/
             content_inventory/
           if-no-files-found: ignore

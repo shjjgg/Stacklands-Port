@@ -45,17 +45,27 @@ Unity.Licensing.Client --activate-all --include-personal \
 随后 `Unity -batchmode -nographics -quit -executeMethod PortBuild.PerformAndroidBuild` 出包。
 该路径与本仓库此前个人版构建流程一致，只需 `UNITY_EMAIL` / `UNITY_PASSWORD` 两个密钥。
 
-### 2.2 构建前置守卫
+### 2.2 构建前置守卫### 2.2 构建前置守卫
 
-`static-analysis` 先探测两个条件并输出给 `build-android`：
+`tools/preflight_project.py` 把"能不能构建"拆成 11 项逐条判定，输出 `READY` / `READY_WITH_WARNINGS` / `NOT_READY`，
+并写进 GitHub Step Summary（CI 首页直接看缺什么），同时产出 `preflight.json` 归档：
 
-| 输出 | 判定 | 作用 |
+| 项 | 挡哪道门 | 不合格后果 |
 |---|---|---|
-| `project_ready` | 存在 `ProjectSettings/ProjectVersion.txt` | 工程未落地（AssetRipper 未导出）则跳过构建 |
-| `license_ready` | `UNITY_EMAIL`、`UNITY_PASSWORD` 均非空 | 缺密钥则跳过构建 |
+| `ProjectVersion.txt` 且引擎 == `2022.3.4f1` | 1 | 版本漂移 → 退出码 2 |
+| 两个必需场景文件 | 1 | 退出码 2 |
+| `EditorBuildSettings.asset` 里两场景启用且 IntroScene 在首位 | 1 | 严格模式不回落，退出码 2 |
+| `Assets/Plugins/link.xml`（XML 合法 + ≥15 程序集 `preserve="all"`） | 1 | 缺/坏 XML 会被 Unity 忽略 = 没有白名单 |
+| `Packages/manifest.json` 非空 | 1 | 依赖不可复现 |
+| `PortBuild.cs` 含 `StrictBuild`/`StrictMode`/`GetGraphicsAPIs`/`totalSize` | — | 旧版脚本会被识别为"版本旧" |
+| `Assets/Shaders` ≥ 20（Custom/ 基线 20，总 30） | 3 | 退出码 3 |
+| `Assets/Scripts` 回填 `.cs` 数量 | — | 玩法逻辑未落地 |
+| `PlatformStubs/*.cs` | — | advisory：Steam/ImGui 无兜底 |
+| `UNITY_EMAIL`/`UNITY_PASSWORD` | — | Personal 版无法在线激活 |
+| `KEYSTORE_NAME` 四件套 | 5 | advisory：Release 用调试签名 → 退出码 4 |
 
-手动 `workflow_dispatch` 触发时跳过上述门禁，但首步 `Preflight guard` 会**显式报错**并给出原因：
-工程缺失、缺 `Assets/Editor/PortBuild.cs`、引擎版本与基线 `2022.3.4f1` 不一致（禁止跨大版本）、密钥缺失。
+工作流里 `project_ready` 只取 `ProjectVersion.txt` 是否存在（决定 build job 跑不跑），
+其余明细交给表格；`--strict` 模式下有任何 blocking 未满足则退出 1，供本地自检用。
 
 ## 3. 构建入口（Editor 脚本）
 
