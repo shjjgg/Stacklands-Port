@@ -34,6 +34,7 @@ jobs:
       - name: 安装 Unity 2022.3.4f1 + Android 模块
         uses: buildalon/unity-setup@v1
         with:
+          version-file: None   # 跳过 ProjectVersion.txt 解析(缺 revision 行会 'No version match found')
           unity-version: ${{ env.UNITY_VERSION }}
           build-targets: Android
           modules: android
