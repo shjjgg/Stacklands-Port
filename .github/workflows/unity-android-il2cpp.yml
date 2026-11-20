@@ -209,6 +209,14 @@ jobs:
             --dxbc-ledger shader_extract/dxbc_ledger.json \
             --out shader_extract
 
+      # ShaderLab 保真校验: 自测(用台账合成正确样本+4 个变异) → 若已有重建 .shader 则逐 pass 对账
+      - name: ShaderLab fidelity selftest
+        run: python3 tools/verify_shaderlab_fidelity.py --selftest
+
+      - name: ShaderLab fidelity (rebuilt shaders)
+        if: hashFiles('Assets/Shaders/*.shader') != ''
+        run: python3 tools/verify_shaderlab_fidelity.py --shaders Assets/Shaders --expect-shaders 20
+
       # 阶段语义自证: 用 OSGN 输出语义(VS 必写 SV_Position / PS 必写 SV_Target)独立证伪阶段判定,
       # 避免"文件名由 SHDR token 解码而来"的自证循环
       - name: Shader stage semantics
@@ -289,6 +297,7 @@ jobs:
             shader_extract/variant_ledger.*
             shader_extract/stage_semantics.*
             shader_extract/keyword_matrix.*
+            shader_extract/shaderlab_fidelity.*
             content_inventory/
           if-no-files-found: ignore
 

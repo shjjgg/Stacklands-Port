@@ -58,6 +58,7 @@
 | [tools/reconstruct_source.py](tools/reconstruct_source.py) | 源包分卷拼接/侧车归位/版本与大小校验 |
 | [tools/extract_shader_blobs.py](tools/extract_shader_blobs.py) | Shader/ComputeShader blob 与元数据提取 |
 | [tools/extract_keyword_matrix.py](tools/extract_keyword_matrix.py) | 关键字全集 / 互斥组 / 理论上界 ↔ 实际段数 |
+| [tools/verify_shaderlab_fidelity.py](tools/verify_shaderlab_fidelity.py) | ShaderLab 保真校验：pass 数 + 渲染状态 + keyword 集合（含 4 类变异自测） |
 | [tools/verify_stage_semantics.py](tools/verify_stage_semantics.py) | 阶段语义自证：OSGN 输出语义 ↔ 阶段标注（504/504） |
 | [tools/extract_variants.py](tools/extract_variants.py) | 变体预算：typetree 变体数 ↔ DXBC 段数对账 |
 | [tools/extract_pass_state.py](tools/extract_pass_state.py) | 导出 pass 渲染状态（ZTest/ZWrite/Blend/Stencil/ColorMask）并去重成组合 |
