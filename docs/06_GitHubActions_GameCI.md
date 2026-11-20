@@ -114,6 +114,8 @@ Unity 退出码 0 只说明打包流程走完，不保证内容对 —— shader
   **ABI 只能有 arm64-v8a**、无 `libmono*` 残留、`assets/bin/Data/Managed` 下无随包 dll、
   资源 blob ≥ 2 且 `globalgamemanagers` 在、`classes*.dex` 在、二进制清单里能按 UTF-8/UTF-16 命中包名、
   APK 有签名块；内容量（解压后）< 10 MB 直接判空包。
+- `tools/selftest_strict.py`：造合格包/坏包/AAB/干净日志/脏日志五个样本，断言两个脚本的退出码；
+  在 static-analysis job 里跑，保证审计逻辑本身不会悄悄失效。
 - 另外 `keytool -printcert -jarfile` 拦截 `CN=Android Debug`：调试证书的包不允许当 Release 交付。
 
 ## 4. 缓存与性能

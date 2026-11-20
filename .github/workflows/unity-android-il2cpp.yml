@@ -66,6 +66,11 @@ jobs:
           echo "engine=$(cat ProjectSettings/ProjectVersion.txt 2>/dev/null | head -1)"
           echo "project_ready=$pr license_ready=$lr"
 
+      # 审计脚本自测: 构建 job 在工程未落地时会被跳过, 若审计逻辑本身写错(例如 ABI 解析恒为空)
+      # 就会永远绿 —— 所以把 verify_apk / strict_log_audit 的判定用合成样本钉死在 CI 里。
+      - name: Strict audit self-test
+        run: python3 tools/selftest_strict.py
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
