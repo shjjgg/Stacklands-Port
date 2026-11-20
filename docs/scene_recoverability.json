@@ -1,0 +1,513 @@
+{
+  "verdict": "不可恢复(字段值不可读)",
+  "objects": 58,
+  "monobehaviour": {
+    "total": 14,
+    "readable": 0
+  },
+  "scenes": [
+    {
+      "file": "level0",
+      "objects": 40,
+      "by_type": {
+        "Cubemap": 1,
+        "LightProbes": 1,
+        "GameObject": 8,
+        "Transform": 2,
+        "Camera": 1,
+        "AudioListener": 1,
+        "AudioSource": 1,
+        "RenderSettings": 1,
+        "LightmapSettings": 1,
+        "NavMeshSettings": 1,
+        "CanvasRenderer": 5,
+        "Canvas": 1,
+        "RectTransform": 6,
+        "MonoBehaviour": 10
+      },
+      "detail": [
+        {
+          "path_id": 1,
+          "type": "Cubemap",
+          "tree_readable": true,
+          "error": "",
+          "head": "00 00 00 00 04 00 00 00 00 00 00 00 80 00 00 00",
+          "raw_size": 204
+        },
+        {
+          "path_id": 2,
+          "type": "LightProbes",
+          "tree_readable": true,
+          "error": "",
+          "head": "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "raw_size": 32
+        },
+        {
+          "path_id": 3,
+          "type": "GameObject",
+          "tree_readable": true,
+          "error": "",
+          "head": "05 00 00 00 00 00 00 00 0b 00 00 00 00 00 00 00",
+          "raw_size": 87
+        },
+        {
+          "path_id": 4,
+          "type": "GameObject",
+          "tree_readable": true,
+          "error": "",
+          "head": "03 00 00 00 00 00 00 00 19 00 00 00 00 00 00 00",
+          "raw_size": 59
+        },
+        {
+          "path_id": 5,
+          "type": "GameObject",
+          "tree_readable": true,
+          "error": "",
+          "head": "03 00 00 00 00 00 00 00 0c 00 00 00 00 00 00 00",
+          "raw_size": 63
+        },
+        {
+          "path_id": 6,
+          "type": "GameObject",
+          "tree_readable": true,
+          "error": "",
+          "head": "03 00 00 00 00 00 00 00 1a 00 00 00 00 00 00 00",
+          "raw_size": 63
+        },
+        {
+          "path_id": 7,
+          "type": "GameObject",
+          "tree_readable": true,
+          "error": "",
+          "head": "03 00 00 00 00 00 00 00 1b 00 00 00 00 00 00 00",
+          "raw_size": 59
+        },
+        {
+          "path_id": 8,
+          "type": "GameObject",
+          "tree_readable": true,
+          "error": "",
+          "head": "04 00 00 00 00 00 00 00 1c 00 00 00 00 00 00 00",
+          "raw_size": 71
+        },
+        {
+          "path_id": 9,
+          "type": "GameObject",
+          "tree_readable": true,
+          "error": "",
+          "head": "03 00 00 00 00 00 00 00 1d 00 00 00 00 00 00 00",
+          "raw_size": 63
+        },
+        {
+          "path_id": 10,
+          "type": "GameObject",
+          "tree_readable": true,
+          "error": "",
+          "head": "03 00 00 00 00 00 00 00 1e 00 00 00 00 00 00 00",
+          "raw_size": 59
+        },
+        {
+          "path_id": 11,
+          "type": "Transform",
+          "tree_readable": true,
+          "error": "",
+          "head": "00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00",
+          "raw_size": 68
+        },
+        {
+          "path_id": 12,
+          "type": "Transform",
+          "tree_readable": true,
+          "error": "",
+          "head": "00 00 00 00 05 00 00 00 00 00 00 00 00 00 00 00",
+          "raw_size": 68
+        },
+        {
+          "path_id": 13,
+          "type": "Camera",
+          "tree_readable": true,
+          "error": "",
+          "head": "00 00 00 00 03 00 00 00 00 00 00 00 01 00 00 00",
+          "raw_size": 184
+        },
+        {
+          "path_id": 14,
+          "type": "AudioListener",
+          "tree_readable": true,
+          "error": "",
+          "head": "00 00 00 00 03 00 00 00 00 00 00 00 01 00 00 00",
+          "raw_size": 16
+        },
+        {
+          "path_id": 15,
+          "type": "AudioSource",
+          "tree_readable": true,
+          "error": "",
+          "head": "00 00 00 00 03 00 00 00 00 00 00 00 01 00 00 00",
+          "raw_size": 288
+        },
+        {
+          "path_id": 16,
+          "type": "RenderSettings",
+          "tree_readable": true,
+          "error": "",
+          "head": "00 00 00 00 00 00 00 3f 00 00 00 3f 00 00 00 3f",
+          "raw_size": 333
+        },
+        {
+          "path_id": 17,
+          "type": "LightmapSettings",
+          "tree_readable": true,
+          "error": "",
+          "head": "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "raw_size": 72
+        },
+        {
+          "path_id": 18,
+          "type": "NavMeshSettings",
+          "tree_readable": true,
+          "error": "",
+          "head": "00 00 00 00 00 00 00 00 00 00 00 00",
+          "raw_size": 12
+        },
+        {
+          "path_id": 19,
+          "type": "CanvasRenderer",
+          "tree_readable": true,
+          "error": "",
+          "head": "00 00 00 00 04 00 00 00 00 00 00 00 00",
+          "raw_size": 13
+        },
+        {
+          "path_id": 20,
+          "type": "CanvasRenderer",
+          "tree_readable": true,
+          "error": "",
+          "head": "00 00 00 00 06 00 00 00 00 00 00 00 00",
+          "raw_size": 13
+        },
+        {
+          "path_id": 21,
+          "type": "CanvasRenderer",
+          "tree_readable": true,
+          "error": "",
+          "head": "00 00 00 00 07 00 00 00 00 00 00 00 00",
+          "raw_size": 13
+        },
+        {
+          "path_id": 22,
+          "type": "CanvasRenderer",
+          "tree_readable": true,
+          "error": "",
+          "head": "00 00 00 00 09 00 00 00 00 00 00 00 00",
+          "raw_size": 13
+        },
+        {
+          "path_id": 23,
+          "type": "CanvasRenderer",
+          "tree_readable": true,
+          "error": "",
+          "head": "00 00 00 00 0a 00 00 00 00 00 00 00 00",
+          "raw_size": 13
+        },
+        {
+          "path_id": 24,
+          "type": "Canvas",
+          "tree_readable": true,
+          "error": "",
+          "head": "00 00 00 00 08 00 00 00 00 00 00 00 01 00 00 00",
+          "raw_size": 63
+        },
+        {
+          "path_id": 25,
+          "type": "RectTransform",
+          "tree_readable": true,
+          "error": "",
+          "head": "00 00 00 00 04 00 00 00 00 00 00 00 00 00 00 00",
+          "raw_size": 108
+        },
+        {
+          "path_id": 26,
+          "type": "RectTransform",
+          "tree_readable": true,
+          "error": "",
+          "head": "00 00 00 00 06 00 00 00 00 00 00 00 00 00 00 00",
+          "raw_size": 108
+        },
+        {
+          "path_id": 27,
+          "type": "RectTransform",
+          "tree_readable": true,
+          "error": "",
+          "head": "00 00 00 00 07 00 00 00 00 00 00 00 00 00 00 00",
+          "raw_size": 108
+        },
+        {
+          "path_id": 28,
+          "type": "RectTransform",
+          "tree_readable": true,
+          "error": "",
+          "head": "00 00 00 00 08 00 00 00 00 00 00 00 00 00 00 00",
+          "raw_size": 168
+        },
+        {
+          "path_id": 29,
+          "type": "RectTransform",
+          "tree_readable": true,
+          "error": "",
+          "head": "00 00 00 00 09 00 00 00 00 00 00 00 00 00 00 80",
+          "raw_size": 108
+        },
+        {
+          "path_id": 30,
+          "type": "RectTransform",
+          "tree_readable": true,
+          "error": "",
+          "head": "00 00 00 00 0a 00 00 00 00 00 00 00 00 00 00 80",
+          "raw_size": 108
+        },
+        {
+          "path_id": 31,
+          "type": "MonoBehaviour",
+          "tree_readable": false,
+          "error": "Expected to read 52 bytes, but only read 32 bytes",
+          "head": "00 00 00 00 05 00 00 00 00 00 00 00 01 00 00 00",
+          "raw_size": 52
+        },
+        {
+          "path_id": 32,
+          "type": "MonoBehaviour",
+          "tree_readable": false,
+          "error": "Expected to read 372 bytes, but only read 32 bytes",
+          "head": "00 00 00 00 03 00 00 00 00 00 00 00 01 00 00 00",
+          "raw_size": 372
+        },
+        {
+          "path_id": 33,
+          "type": "MonoBehaviour",
+          "tree_readable": false,
+          "error": "Expected to read 152 bytes, but only read 32 bytes",
+          "head": "00 00 00 00 04 00 00 00 00 00 00 00 01 00 00 00",
+          "raw_size": 152
+        },
+        {
+          "path_id": 34,
+          "type": "MonoBehaviour",
+          "tree_readable": false,
+          "error": "Expected to read 200 bytes, but only read 32 bytes",
+          "head": "00 00 00 00 05 00 00 00 00 00 00 00 01 00 00 00",
+          "raw_size": 200
+        },
+        {
+          "path_id": 35,
+          "type": "MonoBehaviour",
+          "tree_readable": false,
+          "error": "Expected to read 136 bytes, but only read 32 bytes",
+          "head": "00 00 00 00 06 00 00 00 00 00 00 00 01 00 00 00",
+          "raw_size": 136
+        },
+        {
+          "path_id": 36,
+          "type": "MonoBehaviour",
+          "tree_readable": false,
+          "error": "Expected to read 136 bytes, but only read 32 bytes",
+          "head": "00 00 00 00 07 00 00 00 00 00 00 00 01 00 00 00",
+          "raw_size": 136
+        },
+        {
+          "path_id": 37,
+          "type": "MonoBehaviour",
+          "tree_readable": false,
+          "error": "Expected to read 44 bytes, but only read 32 bytes",
+          "head": "00 00 00 00 08 00 00 00 00 00 00 00 01 00 00 00",
+          "raw_size": 44
+        },
+        {
+          "path_id": 38,
+          "type": "MonoBehaviour",
+          "tree_readable": false,
+          "error": "Expected to read 80 bytes, but only read 32 bytes",
+          "head": "00 00 00 00 08 00 00 00 00 00 00 00 01 00 00 00",
+          "raw_size": 80
+        },
+        {
+          "path_id": 39,
+          "type": "MonoBehaviour",
+          "tree_readable": false,
+          "error": "Expected to read 136 bytes, but only read 32 bytes",
+          "head": "00 00 00 00 09 00 00 00 00 00 00 00 01 00 00 00",
+          "raw_size": 136
+        },
+        {
+          "path_id": 40,
+          "type": "MonoBehaviour",
+          "tree_readable": false,
+          "error": "Expected to read 152 bytes, but only read 32 bytes",
+          "head": "00 00 00 00 0a 00 00 00 00 00 00 00 01 00 00 00",
+          "raw_size": 152
+        }
+      ]
+    },
+    {
+      "file": "level1",
+      "objects": 18,
+      "by_type": {
+        "GameObject": 4,
+        "Transform": 4,
+        "MeshRenderer": 1,
+        "MeshFilter": 1,
+        "RenderSettings": 1,
+        "Light": 1,
+        "LightmapSettings": 1,
+        "NavMeshSettings": 1,
+        "MonoBehaviour": 4
+      },
+      "detail": [
+        {
+          "path_id": 1,
+          "type": "GameObject",
+          "tree_readable": true,
+          "error": "",
+          "head": "02 00 00 00 00 00 00 00 05 00 00 00 00 00 00 00",
+          "raw_size": 47
+        },
+        {
+          "path_id": 2,
+          "type": "GameObject",
+          "tree_readable": true,
+          "error": "",
+          "head": "04 00 00 00 00 00 00 00 06 00 00 00 00 00 00 00",
+          "raw_size": 71
+        },
+        {
+          "path_id": 3,
+          "type": "GameObject",
+          "tree_readable": true,
+          "error": "",
+          "head": "02 00 00 00 00 00 00 00 07 00 00 00 00 00 00 00",
+          "raw_size": 59
+        },
+        {
+          "path_id": 4,
+          "type": "GameObject",
+          "tree_readable": true,
+          "error": "",
+          "head": "03 00 00 00 00 00 00 00 08 00 00 00 00 00 00 00",
+          "raw_size": 63
+        },
+        {
+          "path_id": 5,
+          "type": "Transform",
+          "tree_readable": true,
+          "error": "",
+          "head": "00 00 00 00 01 00 00 00 00 00 00 00 dc 77 01 3e",
+          "raw_size": 68
+        },
+        {
+          "path_id": 6,
+          "type": "Transform",
+          "tree_readable": true,
+          "error": "",
+          "head": "00 00 00 00 02 00 00 00 00 00 00 00 f4 04 35 3f",
+          "raw_size": 68
+        },
+        {
+          "path_id": 7,
+          "type": "Transform",
+          "tree_readable": true,
+          "error": "",
+          "head": "00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00",
+          "raw_size": 68
+        },
+        {
+          "path_id": 8,
+          "type": "Transform",
+          "tree_readable": true,
+          "error": "",
+          "head": "00 00 00 00 04 00 00 00 00 00 00 00 00 00 00 00",
+          "raw_size": 68
+        },
+        {
+          "path_id": 9,
+          "type": "MeshRenderer",
+          "tree_readable": true,
+          "error": "",
+          "head": "00 00 00 00 02 00 00 00 00 00 00 00 01 00 00 01",
+          "raw_size": 156
+        },
+        {
+          "path_id": 10,
+          "type": "MeshFilter",
+          "tree_readable": true,
+          "error": "",
+          "head": "00 00 00 00 02 00 00 00 00 00 00 00 03 00 00 00",
+          "raw_size": 24
+        },
+        {
+          "path_id": 11,
+          "type": "RenderSettings",
+          "tree_readable": true,
+          "error": "",
+          "head": "00 00 00 00 00 00 00 3f 00 00 00 3f 00 00 00 3f",
+          "raw_size": 333
+        },
+        {
+          "path_id": 12,
+          "type": "Light",
+          "tree_readable": true,
+          "error": "",
+          "head": "00 00 00 00 01 00 00 00 00 00 00 00 01 00 00 00",
+          "raw_size": 264
+        },
+        {
+          "path_id": 13,
+          "type": "LightmapSettings",
+          "tree_readable": true,
+          "error": "",
+          "head": "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00",
+          "raw_size": 72
+        },
+        {
+          "path_id": 14,
+          "type": "NavMeshSettings",
+          "tree_readable": true,
+          "error": "",
+          "head": "00 00 00 00 00 00 00 00 00 00 00 00",
+          "raw_size": 12
+        },
+        {
+          "path_id": 15,
+          "type": "MonoBehaviour",
+          "tree_readable": false,
+          "error": "Expected to read 52 bytes, but only read 32 bytes",
+          "head": "00 00 00 00 04 00 00 00 00 00 00 00 01 00 00 00",
+          "raw_size": 52
+        },
+        {
+          "path_id": 16,
+          "type": "MonoBehaviour",
+          "tree_readable": false,
+          "error": "Expected to read 44 bytes, but only read 32 bytes",
+          "head": "00 00 00 00 02 00 00 00 00 00 00 00 01 00 00 00",
+          "raw_size": 44
+        },
+        {
+          "path_id": 17,
+          "type": "MonoBehaviour",
+          "tree_readable": false,
+          "error": "Expected to read 364 bytes, but only read 32 bytes",
+          "head": "00 00 00 00 03 00 00 00 00 00 00 00 01 00 00 00",
+          "raw_size": 364
+        },
+        {
+          "path_id": 18,
+          "type": "MonoBehaviour",
+          "tree_readable": false,
+          "error": "Expected to read 200 bytes, but only read 32 bytes",
+          "head": "00 00 00 00 04 00 00 00 00 00 00 00 01 00 00 00",
+          "raw_size": 200
+        }
+      ]
+    }
+  ]
+}
