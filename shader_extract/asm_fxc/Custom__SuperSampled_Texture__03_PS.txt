@@ -1,0 +1,48 @@
+ISGN:
+| Stream | Semantic                   | Reg | Mask | Used | Type         | Sysval                           |
+|--------|----------------------------|-----|------|------|--------------|----------------------------------|
+|      0 | SV_Position                |   0 | xyzw |      | f32x4        | Position                         | 
+|      0 | TEXCOORD                   |   1 | xy   | xy   | f32x2        | None                             | 
+|      0 | COLOR                      |   2 | xyzw | xyzw | f32x4        | None                             | 
+
+OSGN:
+| Stream | Semantic                   | Reg | Mask | Used | Type         | Sysval                           |
+|--------|----------------------------|-----|------|------|--------------|----------------------------------|
+|      0 | SV_Target                  |   0 | xyzw |      | f32x4        | None                             | 
+
+ps_4_0 (190 tok):
+     1: dcl_constant_buffer cb0[4].xyzw
+     2: dcl_sampler s0
+     3: dcl_resource t0, texture2d(float,float,float,float)
+     4: dcl_input (linear) v1.xy
+     5: dcl_input (linear) v2.xyzw
+     6: dcl_output o0.xyzw
+     7: dcl_temps 6
+     8: mul r0.xy, v1.xyxx, cb0[2].yyyy
+     9: deriv_rtx r0.zw, r0.xxxy
+    10: deriv_rty r0.xy, r0.xyxx
+    11: mov r1.xyzw, (0, 0, 0, 0)
+    12: mov r2.x, 0
+    13: loop
+    14:   ge r2.z, r2.x, 16.000000f
+    15:   breakc_nz r2.z
+    16:   add r2.xy, r2.xxxx, (1.000000f, -7.500000f, 0.000000f, 0.000000f)
+    17:   mul r2.y, r2.y, 0.062500f
+    18:   mad r2.yz, r2.yyyy, r0.zzwz, v1.xxyx
+    19:   mov r3.xyzw, r1.xyzw
+    20:   mov r4.x, 0
+    21:   loop
+    22:     ge r2.w, r4.x, 16.000000f
+    23:     breakc_nz r2.w
+    24:     add r4.xy, r4.xxxx, (1.000000f, -7.500000f, 0.000000f, 0.000000f)
+    25:     mul r2.w, r4.y, 0.062500f
+    26:     mad r4.yz, r2.wwww, r0.xxyx, r2.yyzy
+    27:     sample_l r5.xyzw, r4.yzyy, t0.xyzw, s0, 0.000000f
+    28:     add r3.xyzw, r3.xyzw, r5.xyzw
+    29:   endloop
+    30:   mov r1.xyzw, r3.xyzw
+    31: endloop
+    32: mul r0.xyzw, r1.xyzw, (0.003906f, 0.003906f, 0.003906f, 0.003906f)
+    33: mul r0.xyzw, r0.xyzw, cb0[3].xyzw
+    34: mul o0.xyzw, r0.xyzw, v2.xyzw
+    35: ret

@@ -1,0 +1,71 @@
+ISGN:
+| Stream | Semantic                   | Reg | Mask | Used | Type         | Sysval                           |
+|--------|----------------------------|-----|------|------|--------------|----------------------------------|
+|      0 | POSITION                   |   0 | xyzw | xyzw | f32x4        | None                             | 
+|      0 | TANGENT                    |   1 | xyzw |      | f32x4        | None                             | 
+|      0 | NORMAL                     |   2 | xyz  | xyz  | f32x3        | None                             | 
+|      0 | TEXCOORD                   |   3 | xyzw |      | f32x4        | None                             | 
+|      0 | TEXCOORD1                  |   4 | xyzw |      | f32x4        | None                             | 
+|      0 | TEXCOORD2                  |   5 | xyzw |      | f32x4        | None                             | 
+|      0 | TEXCOORD3                  |   6 | xyzw |      | f32x4        | None                             | 
+|      0 | COLOR                      |   7 | xyzw |      | f32x4        | None                             | 
+
+OSGN:
+| Stream | Semantic                   | Reg | Mask | Used | Type         | Sysval                           |
+|--------|----------------------------|-----|------|------|--------------|----------------------------------|
+|      0 | SV_POSITION                |   0 | xyzw |      | f32x4        | Position                         | 
+|      0 | TEXCOORD                   |   1 | xyz  |    w | f32x3        | None                             | 
+|      0 | TEXCOORD1                  |   2 | xyz  |    w | f32x3        | None                             | 
+|      0 | TEXCOORD2                  |   3 | xyz  |    w | f32x3        | None                             | 
+|      0 | TEXCOORD4                  |   4 | xyzw |      | f32x4        | None                             | 
+|      0 | TEXCOORD5                  |   5 | xyzw |      | f32x4        | None                             | 
+
+vs_4_0 (315 tok):
+     1: dcl_constant_buffer cb0[6].xyzw
+     2: dcl_constant_buffer cb1[46].xyzw
+     3: dcl_constant_buffer cb2[7].xyzw
+     4: dcl_constant_buffer cb3[21].xyzw
+     5: dcl_input v0.xyzw
+     6: dcl_input v2.xyz
+     7: dcl_output_siv o0.xyzw, position
+     8: dcl_output o1.xyz
+     9: dcl_output o2.xyz
+    10: dcl_output o3.xyz
+    11: dcl_output o4.xyzw
+    12: dcl_output o5.xyzw
+    13: dcl_temps 5
+    14: mul r0.xyzw, v0.yyyy, cb2[1].xyzw
+    15: mad r0.xyzw, cb2[0].xyzw, v0.xxxx, r0.xyzw
+    16: mad r0.xyzw, cb2[2].xyzw, v0.zzzz, r0.xyzw
+    17: add r1.xyzw, r0.xyzw, cb2[3].xyzw
+    18: mad o2.xyz, cb2[3].xyzx, v0.wwww, r0.xyzx
+    19: mul r0.xyzw, r1.yyyy, cb3[18].xyzw
+    20: mad r0.xyzw, cb3[17].xyzw, r1.xxxx, r0.xyzw
+    21: mad r0.xyzw, cb3[19].xyzw, r1.zzzz, r0.xyzw
+    22: mad r0.xyzw, cb3[20].xyzw, r1.wwww, r0.xyzw
+    23: mov o0.xyzw, r0.xyzw
+    24: dp3 r1.x, v2.xyzx, cb2[4].xyzx
+    25: dp3 r1.y, v2.xyzx, cb2[5].xyzx
+    26: dp3 r1.z, v2.xyzx, cb2[6].xyzx
+    27: dp3 r1.w, r1.xyzx, r1.xyzx
+    28: rsq r1.w, r1.w
+    29: mul r1.xyz, r1.wwww, r1.xyzx
+    30: mov o1.xyz, r1.xyzx
+    31: mul r2.x, r1.y, r1.y
+    32: mad r2.x, r1.x, r1.x, -r2.x
+    33: mul r3.xyzw, r1.yzzx, r1.xyzz
+    34: dp4 r4.x, cb1[42].xyzw, r3.xyzw
+    35: dp4 r4.y, cb1[43].xyzw, r3.xyzw
+    36: dp4 r4.z, cb1[44].xyzw, r3.xyzw
+    37: mad r2.xyz, cb1[45].xyzx, r2.xxxx, r4.xyzx
+    38: mov r1.w, 1.000000f
+    39: dp4 r3.x, cb1[39].xyzw, r1.xyzw
+    40: dp4 r3.y, cb1[40].xyzw, r1.xyzw
+    41: dp4 r3.z, cb1[41].xyzw, r1.xyzw
+    42: add o3.xyz, r2.xyzx, r3.xyzx
+    43: mul r0.y, r0.y, cb0[5].x
+    44: mul r1.xzw, r0.xxwy, (0.500000f, 0.000000f, 0.500000f, 0.500000f)
+    45: mov o4.zw, r0.zzzw
+    46: add o4.xy, r1.zzzz, r1.xwxx
+    47: mov o5.xyzw, (0, 0, 0, 0)
+    48: ret

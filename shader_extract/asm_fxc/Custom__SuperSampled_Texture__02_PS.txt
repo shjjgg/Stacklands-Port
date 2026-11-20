@@ -1,0 +1,24 @@
+ISGN:
+| Stream | Semantic                   | Reg | Mask | Used | Type         | Sysval                           |
+|--------|----------------------------|-----|------|------|--------------|----------------------------------|
+|      0 | SV_Position                |   0 | xyzw |      | f32x4        | Position                         | 
+|      0 | TEXCOORD                   |   1 | xy   | xy   | f32x2        | None                             | 
+|      0 | COLOR                      |   2 | xyzw | xyzw | f32x4        | None                             | 
+
+OSGN:
+| Stream | Semantic                   | Reg | Mask | Used | Type         | Sysval                           |
+|--------|----------------------------|-----|------|------|--------------|----------------------------------|
+|      0 | SV_Target                  |   0 | xyzw |      | f32x4        | None                             | 
+
+ps_4_0 (52 tok):
+     1: dcl_constant_buffer cb0[4].xyzw
+     2: dcl_sampler s0
+     3: dcl_resource t0, texture2d(float,float,float,float)
+     4: dcl_input (linear) v1.xy
+     5: dcl_input (linear) v2.xyzw
+     6: dcl_output o0.xyzw
+     7: dcl_temps 1
+     8: sample_b r0.xyzw, v1.xyxx, t0.xyzw, s0, cb0[2].x
+     9: mul r0.xyzw, r0.xyzw, cb0[3].xyzw
+    10: mul o0.xyzw, r0.xyzw, v2.xyzw
+    11: ret

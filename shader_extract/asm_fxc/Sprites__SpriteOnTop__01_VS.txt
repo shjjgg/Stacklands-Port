@@ -1,0 +1,44 @@
+ISGN:
+| Stream | Semantic                   | Reg | Mask | Used | Type         | Sysval                           |
+|--------|----------------------------|-----|------|------|--------------|----------------------------------|
+|      0 | POSITION                   |   0 | xyzw | xyz  | f32x4        | None                             | 
+|      0 | COLOR                      |   1 | xyzw | xyzw | f32x4        | None                             | 
+|      0 | TEXCOORD                   |   2 | xy   | xy   | f32x2        | None                             | 
+
+OSGN:
+| Stream | Semantic                   | Reg | Mask | Used | Type         | Sysval                           |
+|--------|----------------------------|-----|------|------|--------------|----------------------------------|
+|      0 | SV_POSITION                |   0 | xyzw |      | f32x4        | Position                         | 
+|      0 | COLOR                      |   1 | xyzw |      | f32x4        | None                             | 
+|      0 | TEXCOORD                   |   2 | xy   |   zw | f32x2        | None                             | 
+
+vs_4_0 (176 tok):
+     1: dcl_constant_buffer cb0[3].xyzw
+     2: dcl_constant_buffer cb1[7].xyzw
+     3: dcl_constant_buffer cb2[4].xyzw
+     4: dcl_constant_buffer cb3[21].xyzw
+     5: dcl_input v0.xyz
+     6: dcl_input v1.xyzw
+     7: dcl_input v2.xy
+     8: dcl_output_siv o0.xyzw, position
+     9: dcl_output o1.xyzw
+    10: dcl_output o2.xy
+    11: dcl_temps 2
+    12: mul r0.xyzw, v0.yyyy, cb2[1].xyzw
+    13: mad r0.xyzw, cb2[0].xyzw, v0.xxxx, r0.xyzw
+    14: mad r0.xyzw, cb2[2].xyzw, v0.zzzz, r0.xyzw
+    15: add r0.xyzw, r0.xyzw, cb2[3].xyzw
+    16: mul r1.xyzw, r0.yyyy, cb3[18].xyzw
+    17: mad r1.xyzw, cb3[17].xyzw, r0.xxxx, r1.xyzw
+    18: mad r1.xyzw, cb3[19].xyzw, r0.zzzz, r1.xyzw
+    19: mad r0.xyzw, cb3[20].xyzw, r0.wwww, r1.xyzw
+    20: div r0.xy, r0.xyxx, r0.wwww
+    21: mul r1.xy, cb1[6].xyxx, (0.500000f, 0.500000f, 0.000000f, 0.000000f)
+    22: mul r0.xy, r0.xyxx, r1.xyxx
+    23: round_ne r0.xy, r0.xyxx
+    24: div r0.xy, r0.xyxx, r1.xyxx
+    25: mul o0.xy, r0.wwww, r0.xyxx
+    26: mov o0.zw, r0.zzzw
+    27: mul o1.xyzw, v1.xyzw, cb0[2].xyzw
+    28: mov o2.xy, v2.xyxx
+    29: ret

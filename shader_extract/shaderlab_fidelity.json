@@ -14,6 +14,21 @@
       "ok": true,
       "pass_programs": 2,
       "keywords": 4
+    },
+    {
+      "shader": "Custom/SpiritTransitionEffect",
+      "sub": 0,
+      "pass": 0,
+      "ok": true,
+      "pass_programs": 2
+    },
+    {
+      "shader": "Custom/SpiritTransitionEffect",
+      "sub": null,
+      "pass": null,
+      "ok": true,
+      "pass_programs": 2,
+      "keywords": 4
     }
   ],
   "fails": [
@@ -26,7 +41,6 @@
     "缺 shader 文件: Custom/ConflictOutlineSdfShader",
     "缺 shader 文件: Transition/Spirit",
     "缺 shader 文件: Custom/GenericCardShader",
-    "缺 shader 文件: Custom/SpiritTransitionEffect",
     "缺 shader 文件: Custom/CardShaderTest",
     "缺 shader 文件: Custom/TransportArrowShader",
     "缺 shader 文件: Custom/BoosterShaderTop",

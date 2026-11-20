@@ -1,0 +1,104 @@
+ISGN:
+| Stream | Semantic                   | Reg | Mask | Used | Type         | Sysval                           |
+|--------|----------------------------|-----|------|------|--------------|----------------------------------|
+|      0 | POSITION                   |   0 | xyzw | xyzw | f32x4        | None                             | 
+|      0 | TANGENT                    |   1 | xyzw |      | f32x4        | None                             | 
+|      0 | NORMAL                     |   2 | xyz  | xyz  | f32x3        | None                             | 
+|      0 | TEXCOORD                   |   3 | xyzw | xy   | f32x4        | None                             | 
+|      0 | TEXCOORD1                  |   4 | xyzw |      | f32x4        | None                             | 
+|      0 | TEXCOORD2                  |   5 | xyzw |      | f32x4        | None                             | 
+|      0 | TEXCOORD3                  |   6 | xyzw |      | f32x4        | None                             | 
+|      0 | COLOR                      |   7 | xyzw |      | f32x4        | None                             | 
+|      0 | SV_InstanceID              |   8 | x    | x    | u32          | InstanceId                       | 
+
+OSGN:
+| Stream | Semantic                   | Reg | Mask | Used | Type         | Sysval                           |
+|--------|----------------------------|-----|------|------|--------------|----------------------------------|
+|      0 | SV_POSITION                |   0 | xyzw |      | f32x4        | Position                         | 
+|      0 | TEXCOORD                   |   1 | xy   |   zw | f32x2        | None                             | 
+|      0 | TEXCOORD1                  |   2 | xyz  |    w | f32x3        | None                             | 
+|      0 | TEXCOORD2                  |   3 | xyz  |    w | f32x3        | None                             | 
+|      0 | TEXCOORD3                  |   4 | xyz  |    w | f32x3        | None                             | 
+|      0 | TEXCOORD5                  |   5 | xyzw |      | f32x4        | None                             | 
+|      0 | TEXCOORD6                  |   6 | xyzw |      | f32x4        | None                             | 
+|      0 | SV_InstanceID              |   7 | x    |  yzw | u32          | None                             | 
+
+vs_4_0 (562 tok):
+     1: dcl_constant_buffer cb0[9].xyzw
+     2: dcl_constant_buffer cb1[6].xyzw
+     3: dcl_constant_buffer cb2[11].xyzw
+     4: dcl_constant_buffer cb3[21].xyzw
+     5: dcl_constant_buffer cb4[1].xyzw
+     6: dcl_constant_buffer (dynamicallyindexed) cb5[15].xyzw
+     7: dcl_constant_buffer (dynamicallyindexed) cb6[14].xyzw
+     8: dcl_input v0.xyzw
+     9: dcl_input v2.xyz
+    10: dcl_input v3.xy
+    11: dcl_input_sv v8.x, instance_id
+    12: dcl_output_siv o0.xyzw, position
+    13: dcl_output o1.xy
+    14: dcl_output o2.xyz
+    15: dcl_output o3.xyz
+    16: dcl_output o4.xyz
+    17: dcl_output o5.xyzw
+    18: dcl_output o6.xyzw
+    19: dcl_output o7.x
+    20: dcl_temps 7
+    21: iadd r0.x, v8.x, cb4[0].x
+    22: ishl r0.y, r0.x, 3
+    23: imul null, r0.x, r0.x, 7
+    24: mul r1.xyzw, v0.yyyy, cb5[1+r0.y].xyzw
+    25: mad r1.xyzw, cb5[r0.y].xyzw, v0.xxxx, r1.xyzw
+    26: mad r1.xyzw, cb5[2+r0.y].xyzw, v0.zzzz, r1.xyzw
+    27: add r2.xyzw, r1.xyzw, cb5[3+r0.y].xyzw
+    28: mad r1.xyz, cb5[3+r0.y].xyzx, v0.wwww, r1.xyzx
+    29: mul r3.xyzw, r2.yyyy, cb3[18].xyzw
+    30: mad r3.xyzw, cb3[17].xyzw, r2.xxxx, r3.xyzw
+    31: mad r3.xyzw, cb3[19].xyzw, r2.zzzz, r3.xyzw
+    32: mad r2.xyzw, cb3[20].xyzw, r2.wwww, r3.xyzw
+    33: mov o0.xyzw, r2.xyzw
+    34: mad o1.xy, v3.xyxx, cb0[8].xyxx, cb0[8].zwzz
+    35: dp3 r3.x, v2.xyzx, cb5[4+r0.y].xyzx
+    36: dp3 r3.y, v2.xyzx, cb5[5+r0.y].xyzx
+    37: dp3 r3.z, v2.xyzx, cb5[6+r0.y].xyzx
+    38: dp3 r0.y, r3.xyzx, r3.xyzx
+    39: rsq r0.y, r0.y
+    40: mul r0.yzw, r0.yyyy, r3.xxyz
+    41: mov o2.xyz, r0.yzwy
+    42: mov o3.xyz, r1.xyzx
+    43: mul r1.w, r0.z, r0.z
+    44: mad r1.w, r0.y, r0.y, -r1.w
+    45: mul r3.xyzw, r0.zwwy, r0.yzww
+    46: dp4 r4.x, cb6[3+r0.x].xyzw, r3.xyzw
+    47: dp4 r4.y, cb6[4+r0.x].xyzw, r3.xyzw
+    48: dp4 r4.z, cb6[5+r0.x].xyzw, r3.xyzw
+    49: mad r3.xyz, cb6[6+r0.x].xyzx, r1.wwww, r4.xyzx
+    50: add r4.xyzw, -r1.yyyy, cb2[4].xyzw
+    51: mul r5.xyzw, r0.zzzz, r4.xyzw
+    52: mul r4.xyzw, r4.xyzw, r4.xyzw
+    53: add r6.xyzw, -r1.xxxx, cb2[3].xyzw
+    54: add r1.xyzw, -r1.zzzz, cb2[5].xyzw
+    55: mad r5.xyzw, r6.xyzw, r0.yyyy, r5.xyzw
+    56: mad r0.xyzw, r1.xyzw, r0.wwww, r5.xyzw
+    57: mad r4.xyzw, r6.xyzw, r6.xyzw, r4.xyzw
+    58: mad r1.xyzw, r1.xyzw, r1.xyzw, r4.xyzw
+    59: max r1.xyzw, r1.xyzw, (0.000001f, 0.000001f, 0.000001f, 0.000001f)
+    60: rsq r4.xyzw, r1.xyzw
+    61: mad r1.xyzw, r1.xyzw, cb2[6].xyzw, (1.000000f, 1.000000f, 1.000000f, 1.000000f)
+    62: div r1.xyzw, (1.000000f, 1.000000f, 1.000000f, 1.000000f), r1.xyzw
+    63: mul r0.xyzw, r0.xyzw, r4.xyzw
+    64: max r0.xyzw, r0.xyzw, (0.000000f, 0.000000f, 0.000000f, 0.000000f)
+    65: mul r0.xyzw, r1.xyzw, r0.xyzw
+    66: mul r1.xyz, r0.yyyy, cb2[8].xyzx
+    67: mad r1.xyz, cb2[7].xyzx, r0.xxxx, r1.xyzx
+    68: mad r0.xyz, cb2[9].xyzx, r0.zzzz, r1.xyzx
+    69: mad r0.xyz, cb2[10].xyzx, r0.wwww, r0.xyzx
+    70: add o4.xyz, r3.xyzx, r0.xyzx
+    71: mul r0.x, r2.y, cb1[5].x
+    72: mul r0.w, r0.x, 0.500000f
+    73: mul r0.xz, r2.xxwx, (0.500000f, 0.000000f, 0.500000f, 0.000000f)
+    74: mov o5.zw, r2.zzzw
+    75: add o5.xy, r0.zzzz, r0.xwxx
+    76: mov o6.xyzw, (0, 0, 0, 0)
+    77: mov o7.x, v8.x
+    78: ret

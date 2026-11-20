@@ -1,0 +1,33 @@
+ISGN:
+| Stream | Semantic                   | Reg | Mask | Used | Type         | Sysval                           |
+|--------|----------------------------|-----|------|------|--------------|----------------------------------|
+|      0 | SV_POSITION                |   0 | xyzw |      | f32x4        | Position                         | 
+|      0 | COLOR                      |   1 | xyzw |      | f32x4        | None                             | 
+|      0 | TEXCOORD                   |   2 | xy   | xy   | f32x2        | None                             | 
+|      0 | TEXCOORD1                  |   3 | xyzw |      | f32x4        | None                             | 
+
+OSGN:
+| Stream | Semantic                   | Reg | Mask | Used | Type         | Sysval                           |
+|--------|----------------------------|-----|------|------|--------------|----------------------------------|
+|      0 | SV_Target                  |   0 | xyzw |      | f32x4        | None                             | 
+
+ps_4_0 (114 tok):
+     1: dcl_constant_buffer cb0[6].xyzw
+     2: dcl_input (linear) v2.xy
+     3: dcl_output o0.xyzw
+     4: dcl_temps 1
+     5: add r0.x, -v2.x, v2.y
+     6: mul r0.x, r0.x, 30.000000f
+     7: frc r0.x, r0.x
+     8: add r0.x, r0.x, -0.500000f
+     9: dp2 r0.x, r0.xxxx, r0.xxxx
+    10: sqrt r0.x, r0.x
+    11: add r0.y, -cb0[5].x, 0.920000f
+    12: add r0.x, -r0.y, r0.x
+    13: mul_sat r0.x, r0.x, 12.500000f
+    14: mad r0.y, r0.x, -2.000000f, 3.000000f
+    15: mul r0.x, r0.x, r0.x
+    16: mul r0.x, r0.x, r0.y
+    17: min o0.w, r0.x, 0.900000f
+    18: mov o0.xyz, cb0[4].xyzx
+    19: ret

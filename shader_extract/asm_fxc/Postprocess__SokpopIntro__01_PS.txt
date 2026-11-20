@@ -1,0 +1,38 @@
+ISGN:
+| Stream | Semantic                   | Reg | Mask | Used | Type         | Sysval                           |
+|--------|----------------------------|-----|------|------|--------------|----------------------------------|
+|      0 | TEXCOORD                   |   0 | xyz  | xy   | f32x3        | None                             | 
+|      0 | SV_POSITION                |   1 | xyzw |      | f32x4        | Position                         | 
+
+OSGN:
+| Stream | Semantic                   | Reg | Mask | Used | Type         | Sysval                           |
+|--------|----------------------------|-----|------|------|--------------|----------------------------------|
+|      0 | SV_Target                  |   0 | xyzw |      | f32x4        | None                             | 
+
+ps_4_0 (171 tok):
+     1: dcl_constant_buffer cb0[2].xyzw
+     2: dcl_constant_buffer cb1[7].xyzw
+     3: dcl_sampler s0
+     4: dcl_resource t0, texture2d(float,float,float,float)
+     5: dcl_input (linear) v0.xy
+     6: dcl_output o0.xyzw
+     7: dcl_temps 2
+     8: mov r0.x, 0.500000f
+     9: div r0.z, cb1[6].y, cb1[6].x
+    10: mul r0.y, r0.z, 0.500000f
+    11: add r1.xy, v0.xyxx, cb0[0].zwzz
+    12: mul r1.z, r0.z, r1.y
+    13: add r0.xy, -r0.xyxx, r1.xzxx
+    14: sample r1.xyzw, r1.xyxx, t0.xyzw, s0
+    15: dp2 r0.x, r0.xyxx, r0.xyxx
+    16: sqrt r0.x, r0.x
+    17: mad r0.x, -cb0[0].x, r0.z, r0.x
+    18: mul r0.y, r0.z, cb0[0].y
+    19: div r0.y, (1.000000f, 1.000000f, 1.000000f, 1.000000f), r0.y
+    20: mul_sat r0.x, r0.y, r0.x
+    21: mad r0.y, r0.x, -2.000000f, 3.000000f
+    22: mul r0.x, r0.x, r0.x
+    23: mad r0.x, -r0.y, r0.x, 1.000000f
+    24: mul r0.xyzw, r0.xxxx, r1.xyzw
+    25: mad o0.xyzw, cb0[1].xxxx, -r0.xyzw, r0.xyzw
+    26: ret

@@ -1,0 +1,36 @@
+ISGN:
+| Stream | Semantic                   | Reg | Mask | Used | Type         | Sysval                           |
+|--------|----------------------------|-----|------|------|--------------|----------------------------------|
+|      0 | POSITION                   |   0 | xyzw | xyz  | f32x4        | None                             | 
+|      0 | COLOR                      |   1 | xyzw | xyzw | f32x4        | None                             | 
+|      0 | TEXCOORD                   |   2 | xy   | xy   | f32x2        | None                             | 
+
+OSGN:
+| Stream | Semantic                   | Reg | Mask | Used | Type         | Sysval                           |
+|--------|----------------------------|-----|------|------|--------------|----------------------------------|
+|      0 | SV_POSITION                |   0 | xyzw |      | f32x4        | Position                         | 
+|      0 | COLOR                      |   1 | xyzw |      | f32x4        | None                             | 
+|      0 | TEXCOORD                   |   2 | xy   |   zw | f32x2        | None                             | 
+
+vs_4_0 (123 tok):
+     1: dcl_constant_buffer cb0[3].xyzw
+     2: dcl_constant_buffer cb1[4].xyzw
+     3: dcl_constant_buffer cb2[21].xyzw
+     4: dcl_input v0.xyz
+     5: dcl_input v1.xyzw
+     6: dcl_input v2.xy
+     7: dcl_output_siv o0.xyzw, position
+     8: dcl_output o1.xyzw
+     9: dcl_output o2.xy
+    10: dcl_temps 2
+    11: mul r0.xyzw, v0.yyyy, cb1[1].xyzw
+    12: mad r0.xyzw, cb1[0].xyzw, v0.xxxx, r0.xyzw
+    13: mad r0.xyzw, cb1[2].xyzw, v0.zzzz, r0.xyzw
+    14: add r0.xyzw, r0.xyzw, cb1[3].xyzw
+    15: mul r1.xyzw, r0.yyyy, cb2[18].xyzw
+    16: mad r1.xyzw, cb2[17].xyzw, r0.xxxx, r1.xyzw
+    17: mad r1.xyzw, cb2[19].xyzw, r0.zzzz, r1.xyzw
+    18: mad o0.xyzw, cb2[20].xyzw, r0.wwww, r1.xyzw
+    19: mul o1.xyzw, v1.xyzw, cb0[2].xyzw
+    20: mov o2.xy, v2.xyxx
+    21: ret

@@ -1,0 +1,55 @@
+ISGN:
+| Stream | Semantic                   | Reg | Mask | Used | Type         | Sysval                           |
+|--------|----------------------------|-----|------|------|--------------|----------------------------------|
+|      0 | TEXCOORD                   |   0 | xy   |      | f32x2        | None                             | 
+|      0 | SV_POSITION                |   1 | xyzw |      | f32x4        | Position                         | 
+|      0 | TEXCOORD1                  |   2 | xyzw | xy w | f32x4        | None                             | 
+
+OSGN:
+| Stream | Semantic                   | Reg | Mask | Used | Type         | Sysval                           |
+|--------|----------------------------|-----|------|------|--------------|----------------------------------|
+|      0 | SV_Target                  |   0 | xyzw |      | f32x4        | None                             | 
+
+ps_4_0 (319 tok):
+     1: dcl_constant_buffer cb0[1].xyzw
+     2: dcl_input (linear) v2.xyw
+     3: dcl_output o0.xyzw
+     4: dcl_temps 2
+     5: div r0.xy, v2.yxyy, v2.wwww
+     6: add r0.xy, r0.xyxx, (-0.500000f, -0.500000f, 0.000000f, 0.000000f)
+     7: max r0.z, |r0.y|, |r0.x|
+     8: div r0.z, (1.000000f, 1.000000f, 1.000000f, 1.000000f), r0.z
+     9: min r0.w, |r0.y|, |r0.x|
+    10: mul r0.z, r0.z, r0.w
+    11: mul r0.w, r0.z, r0.z
+    12: mad r1.x, r0.w, 0.020835f, -0.085133f
+    13: mad r1.x, r0.w, r1.x, 0.180141f
+    14: mad r1.x, r0.w, r1.x, -0.330299f
+    15: mad r0.w, r0.w, r1.x, 0.999866f
+    16: mul r1.x, r0.w, r0.z
+    17: mad r1.x, r1.x, -2.000000f, 1.570796f
+    18: lt r1.y, |r0.y|, |r0.x|
+    19: and r1.x, r1.y, r1.x
+    20: mad r0.z, r0.z, r0.w, r1.x
+    21: lt r0.w, r0.y, -r0.y
+    22: and r0.w, r0.w, 0xc0490fdb
+    23: add r0.z, r0.w, r0.z
+    24: min r0.w, r0.y, r0.x
+    25: max r0.x, r0.y, r0.x
+    26: ge r0.x, r0.x, -r0.x
+    27: lt r0.y, r0.w, -r0.w
+    28: and r0.x, r0.x, r0.y
+    29: movc r0.x, r0.x, -r0.z, r0.z
+    30: mul r0.x, r0.x, 0.161812f
+    31: ge r0.y, r0.x, -r0.x
+    32: frc r0.x, |r0.x|
+    33: movc r0.x, r0.y, r0.x, -r0.x
+    34: mul r0.y, cb0[0].y, 0.500000f
+    35: mad r0.x, r0.x, 74.159996f, r0.y
+    36: sincos r0.x, null, r0.x
+    37: mul_sat r0.x, r0.x, 100.000000f
+    38: mad r0.y, r0.x, -2.000000f, 3.000000f
+    39: mul r0.x, r0.x, r0.x
+    40: mul r0.x, r0.x, r0.y
+    41: mad o0.xyzw, r0.xxxx, (0.100000f, 0.100000f, 0.100000f, 0.050000f), (0.000000f, 0.000000f, 0.000000f, 0.500000f)
+    42: ret

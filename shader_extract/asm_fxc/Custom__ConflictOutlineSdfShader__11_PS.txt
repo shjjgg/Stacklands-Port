@@ -1,0 +1,97 @@
+ISGN:
+| Stream | Semantic                   | Reg | Mask | Used | Type         | Sysval                           |
+|--------|----------------------------|-----|------|------|--------------|----------------------------------|
+|      0 | SV_POSITION                |   0 | xyzw |      | f32x4        | Position                         | 
+|      0 | TEXCOORD                   |   1 | xyz  |      | f32x3        | None                             | 
+|      0 | TEXCOORD1                  |   2 | xyz  | xyz  | f32x3        | None                             | 
+
+OSGN:
+| Stream | Semantic                   | Reg | Mask | Used | Type         | Sysval                           |
+|--------|----------------------------|-----|------|------|--------------|----------------------------------|
+|      0 | SV_Target                  |   0 | xyzw |      | f32x4        | None                             | 
+
+ps_4_0 (584 tok):
+     1: dcl_constant_buffer cb0[8].xyzw
+     2: dcl_constant_buffer cb1[1].xyzw
+     3: dcl_constant_buffer cb2[47].xyzw
+     4: dcl_constant_buffer cb3[4].xyzw
+     5: dcl_constant_buffer cb4[7].xyzw
+     6: dcl_sampler s0
+     7: dcl_resource t0, texture3d(float,float,float,float)
+     8: dcl_input (linear) v2.xyz
+     9: dcl_output o0.xyzw
+    10: dcl_temps 3
+    11: mul r0.x, v2.x, 800.000000f
+    12: round_ne r0.x, r0.x
+    13: sincos r0.x, null, r0.x
+    14: mul r0.x, r0.x, 43758.546875f
+    15: frc r0.x, r0.x
+    16: add r0.x, r0.x, -0.500000f
+    17: mad r0.x, r0.x, 0.007000f, v2.z
+    18: mul r0.yz, r0.xxxx, (0.000000f, 400.000000f, 10.000000f, 0.000000f)
+    19: round_ne r0.yz, r0.yyzy
+    20: sincos r0.y, null, r0.y
+    21: mul r0.y, r0.y, 43758.546875f
+    22: frc r0.y, r0.y
+    23: add r0.y, r0.y, -0.500000f
+    24: mad r0.y, r0.y, 0.007000f, v2.x
+    25: add r0.z, r0.z, cb1[0].x
+    26: mul r0.z, r0.z, 200.000000f
+    27: round_ne r0.z, r0.z
+    28: sincos r0.z, null, r0.z
+    29: mul r0.z, r0.z, 43758.546875f
+    30: frc r0.z, r0.z
+    31: add r0.z, r0.z, -0.500000f
+    32: mad r1.x, r0.z, 0.010000f, r0.y
+    33: mul r0.y, r1.x, 10.000000f
+    34: round_ne r0.y, r0.y
+    35: add r0.y, r0.y, cb1[0].x
+    36: mul r0.y, r0.y, 200.000000f
+    37: round_ne r0.y, r0.y
+    38: sincos r0.y, null, r0.y
+    39: mul r0.y, r0.y, 43758.546875f
+    40: frc r0.y, r0.y
+    41: add r0.y, r0.y, -0.500000f
+    42: mad r1.y, r0.y, 0.010000f, r0.x
+    43: add r0.xy, r1.xyxx, -cb3[3].xzxx
+    44: mad r0.xy, -cb0[6].xyxx, (0.500000f, 0.500000f, 0.000000f, 0.000000f), |r0.xyxx|
+    45: max r0.xy, r0.xyxx, (0.000000f, 0.000000f, 0.000000f, 0.000000f)
+    46: dp2 r0.x, r0.xyxx, r0.xyxx
+    47: sqrt r0.x, r0.x
+    48: deriv_rtx r0.y, r0.x
+    49: deriv_rty r0.z, r0.x
+    50: add r0.y, |r0.z|, |r0.y|
+    51: mad r0.z, -r0.y, 0.500000f, cb0[7].x
+    52: add r0.w, -r0.z, r0.x
+    53: mad r1.x, r0.y, 0.500000f, cb0[7].x
+    54: add r0.z, -r0.z, r1.x
+    55: div_sat r0.z, r0.w, r0.z
+    56: add r1.xyzw, -cb0[4].xyzw, cb0[5].xyzw
+    57: mad r1.xyzw, r0.zzzz, r1.xyzw, cb0[4].xyzw
+    58: add r0.z, cb0[7].x, cb0[7].x
+    59: mad r0.w, -r0.y, 0.500000f, r0.z
+    60: mad r0.y, r0.y, 0.500000f, r0.z
+    61: add r0.xy, -r0.wwww, r0.xyxx
+    62: div_sat r0.x, r0.x, r0.y
+    63: mad r0.xyzw, r0.xxxx, -r1.xyzw, r1.xyzw
+    64: eq r1.x, cb4[0].x, 1.000000f
+    65: if_nz r1.x
+    66:   eq r1.x, cb4[0].y, 1.000000f
+    67:   mul r1.yzw, v2.yyyy, cb4[2].xxyz
+    68:   mad r1.yzw, cb4[1].xxyz, v2.xxxx, r1.yyzw
+    69:   mad r1.yzw, cb4[3].xxyz, v2.zzzz, r1.yyzw
+    70:   add r1.yzw, r1.yyzw, cb4[4].xxyz
+    71:   movc r1.xyz, r1.xxxx, r1.yzwy, v2.xyzx
+    72:   add r1.xyz, r1.xyzx, -cb4[6].xyzx
+    73:   mul r1.yzw, r1.xxyz, cb4[5].xxyz
+    74:   mad r1.y, r1.y, 0.250000f, 0.750000f
+    75:   mad r2.x, cb4[0].z, 0.500000f, 0.750000f
+    76:   max r1.x, r1.y, r2.x
+    77:   sample r1.xyzw, r1.xzwx, t0.xyzw, s0
+    78: else
+    79:   mov r1.xyzw, (1.000000f, 1.000000f, 1.000000f, 1.000000f)
+    80: endif
+    81: dp4_sat r1.x, r1.xyzw, cb2[46].xyzw
+    82: mul r0.xyz, r0.xyzx, r1.xxxx
+    83: mul o0.xyzw, r0.xyzw, cb0[2].xyzw
+    84: ret

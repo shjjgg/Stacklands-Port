@@ -1,0 +1,40 @@
+ISGN:
+| Stream | Semantic                   | Reg | Mask | Used | Type         | Sysval                           |
+|--------|----------------------------|-----|------|------|--------------|----------------------------------|
+|      0 | POSITION                   |   0 | xyzw | xyz  | f32x4        | None                             | 
+|      0 | TANGENT                    |   1 | xyzw |      | f32x4        | None                             | 
+|      0 | NORMAL                     |   2 | xyz  |      | f32x3        | None                             | 
+|      0 | TEXCOORD                   |   3 | xyzw | xy   | f32x4        | None                             | 
+|      0 | TEXCOORD1                  |   4 | xyzw |      | f32x4        | None                             | 
+|      0 | TEXCOORD2                  |   5 | xyzw |      | f32x4        | None                             | 
+|      0 | TEXCOORD3                  |   6 | xyzw |      | f32x4        | None                             | 
+|      0 | COLOR                      |   7 | xyzw | xyzw | f32x4        | None                             | 
+
+OSGN:
+| Stream | Semantic                   | Reg | Mask | Used | Type         | Sysval                           |
+|--------|----------------------------|-----|------|------|--------------|----------------------------------|
+|      0 | SV_Position                |   0 | xyzw |      | f32x4        | Position                         | 
+|      0 | TEXCOORD                   |   1 | xy   |   zw | f32x2        | None                             | 
+|      0 | COLOR                      |   2 | xyzw |      | f32x4        | None                             | 
+
+vs_4_0 (116 tok):
+     1: dcl_constant_buffer cb0[4].xyzw
+     2: dcl_constant_buffer cb1[21].xyzw
+     3: dcl_input v0.xyz
+     4: dcl_input v3.xy
+     5: dcl_input v7.xyzw
+     6: dcl_output_siv o0.xyzw, position
+     7: dcl_output o1.xy
+     8: dcl_output o2.xyzw
+     9: dcl_temps 2
+    10: mul r0.xyzw, v0.yyyy, cb0[1].xyzw
+    11: mad r0.xyzw, cb0[0].xyzw, v0.xxxx, r0.xyzw
+    12: mad r0.xyzw, cb0[2].xyzw, v0.zzzz, r0.xyzw
+    13: add r0.xyzw, r0.xyzw, cb0[3].xyzw
+    14: mul r1.xyzw, r0.yyyy, cb1[18].xyzw
+    15: mad r1.xyzw, cb1[17].xyzw, r0.xxxx, r1.xyzw
+    16: mad r1.xyzw, cb1[19].xyzw, r0.zzzz, r1.xyzw
+    17: mad o0.xyzw, cb1[20].xyzw, r0.wwww, r1.xyzw
+    18: mov o1.xy, v3.xyxx
+    19: mov o2.xyzw, v7.xyzw
+    20: ret
