@@ -58,10 +58,12 @@ jobs:
             "$IMG" bash -lc '
               set -euo pipefail
               LIC=/opt/unity/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client
-              echo "==> activate via credentials (--activate-all --include-personal)"
-              "$LIC" --activate-all --include-personal \
-                --username "$UNITY_USERNAME" --password "$UNITY_PASSWORD" --debug || {
-                  echo "activate-all FAILED"; exit 5; }
+              echo "==> 镜像内 Unity.Licensing.Client 版本"
+              "$LIC" --help 2>&1 | grep -m1 "Unity.Licensing.Client" || true
+              echo "==> 1) --activate-ulf (Personal 不带 --serial)"
+              "$LIC" --activate-ulf --username "$UNITY_USERNAME" --password "$UNITY_PASSWORD" || true
+              echo "==> 2) 回退 --update-license"
+              "$LIC" --update-license --username "$UNITY_USERNAME" --password "$UNITY_PASSWORD" || true
               echo "==> entitlements"
               "$LIC" --showEntitlements || true
               ls -l "$HOME/.local/share/unity3d/Unity/" || true
