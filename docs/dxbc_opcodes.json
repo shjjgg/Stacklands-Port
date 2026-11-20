@@ -1,0 +1,643 @@
+{
+ "source": "wine-6.0 dlls/wined3d/shader_sm4.c",
+ "opcodes": {
+  "0": "ADD",
+  "1": "AND",
+  "2": "BREAK",
+  "3": "BREAKC",
+  "6": "CASE",
+  "7": "CONTINUE",
+  "8": "CONTINUEC",
+  "9": "CUT",
+  "10": "DEFAULT",
+  "11": "DERIV_RTX",
+  "12": "DERIV_RTY",
+  "13": "DISCARD",
+  "14": "DIV",
+  "15": "DP2",
+  "16": "DP3",
+  "17": "DP4",
+  "18": "ELSE",
+  "19": "EMIT",
+  "21": "ENDIF",
+  "22": "ENDLOOP",
+  "23": "ENDSWITCH",
+  "24": "EQ",
+  "25": "EXP",
+  "26": "FRC",
+  "27": "FTOI",
+  "28": "FTOU",
+  "29": "GE",
+  "30": "IADD",
+  "31": "IF",
+  "32": "IEQ",
+  "33": "IGE",
+  "34": "ILT",
+  "35": "IMAD",
+  "36": "IMAX",
+  "37": "IMIN",
+  "38": "IMUL",
+  "39": "INE",
+  "40": "INEG",
+  "41": "ISHL",
+  "42": "ISHR",
+  "43": "ITOF",
+  "44": "LABEL",
+  "45": "LD",
+  "46": "LD2DMS",
+  "47": "LOG",
+  "48": "LOOP",
+  "49": "LT",
+  "50": "MAD",
+  "51": "MIN",
+  "52": "MAX",
+  "53": "SHADER_DATA",
+  "54": "MOV",
+  "55": "MOVC",
+  "56": "MUL",
+  "57": "NE",
+  "58": "NOP",
+  "59": "NOT",
+  "60": "OR",
+  "61": "RESINFO",
+  "62": "RET",
+  "63": "RETC",
+  "64": "ROUND_NE",
+  "65": "ROUND_NI",
+  "66": "ROUND_PI",
+  "67": "ROUND_Z",
+  "68": "RSQ",
+  "69": "SAMPLE",
+  "70": "SAMPLE_C",
+  "71": "SAMPLE_C_LZ",
+  "72": "SAMPLE_LOD",
+  "73": "SAMPLE_GRAD",
+  "74": "SAMPLE_B",
+  "75": "SQRT",
+  "76": "SWITCH",
+  "77": "SINCOS",
+  "78": "UDIV",
+  "79": "ULT",
+  "80": "UGE",
+  "81": "UMUL",
+  "83": "UMAX",
+  "84": "UMIN",
+  "85": "USHR",
+  "86": "UTOF",
+  "87": "XOR",
+  "88": "DCL_RESOURCE",
+  "89": "DCL_CONSTANT_BUFFER",
+  "90": "DCL_SAMPLER",
+  "91": "DCL_INDEX_RANGE",
+  "92": "DCL_OUTPUT_TOPOLOGY",
+  "93": "DCL_INPUT_PRIMITIVE",
+  "94": "DCL_VERTICES_OUT",
+  "95": "DCL_INPUT",
+  "96": "DCL_INPUT_SGV",
+  "97": "DCL_INPUT_SIV",
+  "98": "DCL_INPUT_PS",
+  "99": "DCL_INPUT_PS_SGV",
+  "100": "DCL_INPUT_PS_SIV",
+  "101": "DCL_OUTPUT",
+  "103": "DCL_OUTPUT_SIV",
+  "104": "DCL_TEMPS",
+  "105": "DCL_INDEXABLE_TEMP",
+  "106": "DCL_GLOBAL_FLAGS",
+  "108": "LOD",
+  "109": "GATHER4",
+  "110": "SAMPLE_POS",
+  "111": "SAMPLE_INFO"
+ },
+ "handlers": {
+  "ADD": {
+   "sih": "ADD",
+   "dst": "f",
+   "src": "ff"
+  },
+  "AND": {
+   "sih": "AND",
+   "dst": "u",
+   "src": "uu"
+  },
+  "BREAK": {
+   "sih": "BREAK",
+   "dst": "",
+   "src": ""
+  },
+  "BREAKC": {
+   "sih": "BREAKP",
+   "dst": "",
+   "src": "u"
+  },
+  "CASE": {
+   "sih": "CASE",
+   "dst": "",
+   "src": "u"
+  },
+  "CONTINUE": {
+   "sih": "CONTINUE",
+   "dst": "",
+   "src": ""
+  },
+  "CONTINUEC": {
+   "sih": "CONTINUEP",
+   "dst": "",
+   "src": "u"
+  },
+  "CUT": {
+   "sih": "CUT",
+   "dst": "",
+   "src": ""
+  },
+  "DEFAULT": {
+   "sih": "DEFAULT",
+   "dst": "",
+   "src": ""
+  },
+  "DERIV_RTX": {
+   "sih": "DSX",
+   "dst": "f",
+   "src": "f"
+  },
+  "DERIV_RTY": {
+   "sih": "DSY",
+   "dst": "f",
+   "src": "f"
+  },
+  "DISCARD": {
+   "sih": "TEXKILL",
+   "dst": "",
+   "src": "u"
+  },
+  "DIV": {
+   "sih": "DIV",
+   "dst": "f",
+   "src": "ff"
+  },
+  "DP2": {
+   "sih": "DP2",
+   "dst": "f",
+   "src": "ff"
+  },
+  "DP3": {
+   "sih": "DP3",
+   "dst": "f",
+   "src": "ff"
+  },
+  "DP4": {
+   "sih": "DP4",
+   "dst": "f",
+   "src": "ff"
+  },
+  "ELSE": {
+   "sih": "ELSE",
+   "dst": "",
+   "src": ""
+  },
+  "EMIT": {
+   "sih": "EMIT",
+   "dst": "",
+   "src": ""
+  },
+  "ENDIF": {
+   "sih": "ENDIF",
+   "dst": "",
+   "src": ""
+  },
+  "ENDLOOP": {
+   "sih": "ENDLOOP",
+   "dst": "",
+   "src": ""
+  },
+  "ENDSWITCH": {
+   "sih": "ENDSWITCH",
+   "dst": "",
+   "src": ""
+  },
+  "EQ": {
+   "sih": "EQ",
+   "dst": "u",
+   "src": "ff"
+  },
+  "EXP": {
+   "sih": "EXP",
+   "dst": "f",
+   "src": "f"
+  },
+  "FRC": {
+   "sih": "FRC",
+   "dst": "f",
+   "src": "f"
+  },
+  "FTOI": {
+   "sih": "FTOI",
+   "dst": "i",
+   "src": "f"
+  },
+  "FTOU": {
+   "sih": "FTOU",
+   "dst": "u",
+   "src": "f"
+  },
+  "GE": {
+   "sih": "GE",
+   "dst": "u",
+   "src": "ff"
+  },
+  "IADD": {
+   "sih": "IADD",
+   "dst": "i",
+   "src": "ii"
+  },
+  "IF": {
+   "sih": "IF",
+   "dst": "",
+   "src": "u"
+  },
+  "IEQ": {
+   "sih": "IEQ",
+   "dst": "u",
+   "src": "ii"
+  },
+  "IGE": {
+   "sih": "IGE",
+   "dst": "u",
+   "src": "ii"
+  },
+  "ILT": {
+   "sih": "ILT",
+   "dst": "u",
+   "src": "ii"
+  },
+  "IMAD": {
+   "sih": "IMAD",
+   "dst": "i",
+   "src": "iii"
+  },
+  "IMAX": {
+   "sih": "IMAX",
+   "dst": "i",
+   "src": "ii"
+  },
+  "IMIN": {
+   "sih": "IMIN",
+   "dst": "i",
+   "src": "ii"
+  },
+  "IMUL": {
+   "sih": "IMUL",
+   "dst": "ii",
+   "src": "ii"
+  },
+  "INE": {
+   "sih": "INE",
+   "dst": "u",
+   "src": "ii"
+  },
+  "INEG": {
+   "sih": "INEG",
+   "dst": "i",
+   "src": "i"
+  },
+  "ISHL": {
+   "sih": "ISHL",
+   "dst": "i",
+   "src": "ii"
+  },
+  "ISHR": {
+   "sih": "ISHR",
+   "dst": "i",
+   "src": "ii"
+  },
+  "ITOF": {
+   "sih": "ITOF",
+   "dst": "f",
+   "src": "i"
+  },
+  "LABEL": {
+   "sih": "LABEL",
+   "dst": "",
+   "src": "O"
+  },
+  "LD": {
+   "sih": "LD",
+   "dst": "u",
+   "src": "iR"
+  },
+  "LD2DMS": {
+   "sih": "LD2DMS",
+   "dst": "u",
+   "src": "iRi"
+  },
+  "LOG": {
+   "sih": "LOG",
+   "dst": "f",
+   "src": "f"
+  },
+  "LOOP": {
+   "sih": "LOOP",
+   "dst": "",
+   "src": ""
+  },
+  "LT": {
+   "sih": "LT",
+   "dst": "u",
+   "src": "ff"
+  },
+  "MAD": {
+   "sih": "MAD",
+   "dst": "f",
+   "src": "fff"
+  },
+  "MIN": {
+   "sih": "MIN",
+   "dst": "f",
+   "src": "ff"
+  },
+  "MAX": {
+   "sih": "MAX",
+   "dst": "f",
+   "src": "ff"
+  },
+  "SHADER_DATA": {
+   "sih": "DCL_IMMEDIATE_CONSTANT_BUFFER",
+   "dst": "",
+   "src": ""
+  },
+  "MOV": {
+   "sih": "MOV",
+   "dst": "f",
+   "src": "f"
+  },
+  "MOVC": {
+   "sih": "MOVC",
+   "dst": "f",
+   "src": "uff"
+  },
+  "MUL": {
+   "sih": "MUL",
+   "dst": "f",
+   "src": "ff"
+  },
+  "NE": {
+   "sih": "NE",
+   "dst": "u",
+   "src": "ff"
+  },
+  "NOP": {
+   "sih": "NOP",
+   "dst": "",
+   "src": ""
+  },
+  "NOT": {
+   "sih": "NOT",
+   "dst": "u",
+   "src": "u"
+  },
+  "OR": {
+   "sih": "OR",
+   "dst": "u",
+   "src": "uu"
+  },
+  "RESINFO": {
+   "sih": "RESINFO",
+   "dst": "f",
+   "src": "iR"
+  },
+  "RET": {
+   "sih": "RET",
+   "dst": "",
+   "src": ""
+  },
+  "RETC": {
+   "sih": "RETP",
+   "dst": "",
+   "src": "u"
+  },
+  "ROUND_NE": {
+   "sih": "ROUND_NE",
+   "dst": "f",
+   "src": "f"
+  },
+  "ROUND_NI": {
+   "sih": "ROUND_NI",
+   "dst": "f",
+   "src": "f"
+  },
+  "ROUND_PI": {
+   "sih": "ROUND_PI",
+   "dst": "f",
+   "src": "f"
+  },
+  "ROUND_Z": {
+   "sih": "ROUND_Z",
+   "dst": "f",
+   "src": "f"
+  },
+  "RSQ": {
+   "sih": "RSQ",
+   "dst": "f",
+   "src": "f"
+  },
+  "SAMPLE": {
+   "sih": "SAMPLE",
+   "dst": "u",
+   "src": "fRS"
+  },
+  "SAMPLE_C": {
+   "sih": "SAMPLE_C",
+   "dst": "f",
+   "src": "fRSf"
+  },
+  "SAMPLE_C_LZ": {
+   "sih": "SAMPLE_C_LZ",
+   "dst": "f",
+   "src": "fRSf"
+  },
+  "SAMPLE_LOD": {
+   "sih": "SAMPLE_LOD",
+   "dst": "u",
+   "src": "fRSf"
+  },
+  "SAMPLE_GRAD": {
+   "sih": "SAMPLE_GRAD",
+   "dst": "u",
+   "src": "fRSff"
+  },
+  "SAMPLE_B": {
+   "sih": "SAMPLE_B",
+   "dst": "u",
+   "src": "fRSf"
+  },
+  "SQRT": {
+   "sih": "SQRT",
+   "dst": "f",
+   "src": "f"
+  },
+  "SWITCH": {
+   "sih": "SWITCH",
+   "dst": "",
+   "src": "u"
+  },
+  "SINCOS": {
+   "sih": "SINCOS",
+   "dst": "ff",
+   "src": "f"
+  },
+  "UDIV": {
+   "sih": "UDIV",
+   "dst": "uu",
+   "src": "uu"
+  },
+  "ULT": {
+   "sih": "ULT",
+   "dst": "u",
+   "src": "uu"
+  },
+  "UGE": {
+   "sih": "UGE",
+   "dst": "u",
+   "src": "uu"
+  },
+  "UMUL": {
+   "sih": "UMUL",
+   "dst": "uu",
+   "src": "uu"
+  },
+  "UMAX": {
+   "sih": "UMAX",
+   "dst": "u",
+   "src": "uu"
+  },
+  "UMIN": {
+   "sih": "UMIN",
+   "dst": "u",
+   "src": "uu"
+  },
+  "USHR": {
+   "sih": "USHR",
+   "dst": "u",
+   "src": "uu"
+  },
+  "UTOF": {
+   "sih": "UTOF",
+   "dst": "f",
+   "src": "u"
+  },
+  "XOR": {
+   "sih": "XOR",
+   "dst": "u",
+   "src": "uu"
+  },
+  "DCL_RESOURCE": {
+   "sih": "DCL",
+   "dst": "R",
+   "src": ""
+  },
+  "DCL_CONSTANT_BUFFER": {
+   "sih": "DCL_CONSTANT_BUFFER",
+   "dst": "",
+   "src": ""
+  },
+  "DCL_SAMPLER": {
+   "sih": "DCL_SAMPLER",
+   "dst": "",
+   "src": ""
+  },
+  "DCL_INDEX_RANGE": {
+   "sih": "DCL_INDEX_RANGE",
+   "dst": "",
+   "src": ""
+  },
+  "DCL_OUTPUT_TOPOLOGY": {
+   "sih": "DCL_OUTPUT_TOPOLOGY",
+   "dst": "",
+   "src": ""
+  },
+  "DCL_INPUT_PRIMITIVE": {
+   "sih": "DCL_INPUT_PRIMITIVE",
+   "dst": "",
+   "src": ""
+  },
+  "DCL_VERTICES_OUT": {
+   "sih": "DCL_VERTICES_OUT",
+   "dst": "",
+   "src": ""
+  },
+  "DCL_INPUT": {
+   "sih": "DCL_INPUT",
+   "dst": "",
+   "src": ""
+  },
+  "DCL_INPUT_SGV": {
+   "sih": "DCL_INPUT_SGV",
+   "dst": "",
+   "src": ""
+  },
+  "DCL_INPUT_SIV": {
+   "sih": "DCL_INPUT_SIV",
+   "dst": "",
+   "src": ""
+  },
+  "DCL_INPUT_PS": {
+   "sih": "DCL_INPUT_PS",
+   "dst": "",
+   "src": ""
+  },
+  "DCL_INPUT_PS_SGV": {
+   "sih": "DCL_INPUT_PS_SGV",
+   "dst": "",
+   "src": ""
+  },
+  "DCL_INPUT_PS_SIV": {
+   "sih": "DCL_INPUT_PS_SIV",
+   "dst": "",
+   "src": ""
+  },
+  "DCL_OUTPUT": {
+   "sih": "DCL_OUTPUT",
+   "dst": "",
+   "src": ""
+  },
+  "DCL_OUTPUT_SIV": {
+   "sih": "DCL_OUTPUT_SIV",
+   "dst": "",
+   "src": ""
+  },
+  "DCL_TEMPS": {
+   "sih": "DCL_TEMPS",
+   "dst": "",
+   "src": ""
+  },
+  "DCL_INDEXABLE_TEMP": {
+   "sih": "DCL_INDEXABLE_TEMP",
+   "dst": "",
+   "src": ""
+  },
+  "DCL_GLOBAL_FLAGS": {
+   "sih": "DCL_GLOBAL_FLAGS",
+   "dst": "",
+   "src": ""
+  },
+  "LOD": {
+   "sih": "LOD",
+   "dst": "f",
+   "src": "fRS"
+  },
+  "GATHER4": {
+   "sih": "GATHER4",
+   "dst": "u",
+   "src": "fRS"
+  },
+  "SAMPLE_POS": {
+   "sih": "SAMPLE_POS",
+   "dst": "f",
+   "src": "Ru"
+  },
+  "SAMPLE_INFO": {
+   "sih": "SAMPLE_INFO",
+   "dst": "f",
+   "src": "R"
+  }
+ }
+}

@@ -209,6 +209,11 @@ jobs:
             --dxbc-ledger shader_extract/dxbc_ledger.json \
             --out shader_extract
 
+      # DXBC 指令级反汇编: opcode 直方图 + dcl 绑定的 cbuffer/texture/sampler; 长度不符/未知 opcode 直接失败
+      - name: DXBC disassembly profile
+        if: hashFiles('shader_extract/dxbc/*.dxbc') != ''
+        run: python3 tools/disassemble_dxbc.py --dxbc shader_extract/dxbc --out shader_extract
+
       # 重建规格书: 每个 shader 一份 spec(属性/Fallback/Tags/Pass 状态/程序数/顶点布局)
       - name: Shader rebuild spec
         if: hashFiles(env.SOURCE_DATA) != ''
@@ -312,6 +317,8 @@ jobs:
             shader_extract/shaderlab_fidelity.*
             shader_extract/fidelity_table.*
             shader_extract/spec/*.json
+            shader_extract/asm_profile.*
+            shader_extract/asm/*.asm
             shader_extract/spec_index.json
             content_inventory/
           if-no-files-found: ignore

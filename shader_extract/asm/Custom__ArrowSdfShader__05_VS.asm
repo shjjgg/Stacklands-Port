@@ -1,0 +1,34 @@
+; Custom__ArrowSdfShader__05_VS.dxbc
+; version=0x00010040 stage=0x0001
+; instructions=31
+   0  DCL_CONSTANT_BUFFER      len=3  [CONSTBUFFER#0]
+   1  DCL_CONSTANT_BUFFER      len=3  [CONSTBUFFER#1]
+   2  DCL_CONSTANT_BUFFER      len=3  [CONSTBUFFER#2]
+   3  DCL_INPUT                len=2  [INPUT#0]
+   4  DCL_INPUT                len=2  [INPUT#2]
+   5  DCL_OUTPUT_SIV           len=3  [OUTPUT#0]
+   6  DCL_OUTPUT               len=2  [OUTPUT#1]
+   7  DCL_OUTPUT               len=2  [OUTPUT#2]
+   8  DCL_OUTPUT               len=2  [OUTPUT#3]
+   9  DCL_TEMPS                len=1
+  10  MUL                      len=7
+  11  MAD                      len=9
+  12  MAD                      len=9
+  13  ADD                      len=7
+  14  MUL                      len=7
+  15  MAD                      len=9
+  16  MAD                      len=9
+  17  MAD                      len=9
+  18  DP3                      len=7
+  19  DP3                      len=7
+  20  DP3                      len=7
+  21  DP3                      len=6
+  22  RSQ                      len=4
+  23  MUL                      len=6
+  24  MAD                      len=9
+  25  MAD                      len=9
+  26  MUL                      len=7
+  27  MAD                      len=9
+  28  MAD                      len=9
+  29  MAD                      len=9
+  30  RET                      len=0
