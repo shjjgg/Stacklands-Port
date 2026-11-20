@@ -189,6 +189,15 @@ jobs:
             --data "$SOURCE_DATA" \
             --out shader_extract
 
+      # blobs/*.blob 是 LZ4 压缩容器, 保真链要的是解压后的 DXBC 程序段; 这一步负责解码+切片,
+      # 并产出 dxbc_ledger.json(每个 shader 的原版程序数/阶段, 作为重建验收下限)。
+      - name: Shader DXBC decode & program split
+        if: hashFiles(env.SOURCE_DATA) != ''
+        run: |
+          python3 tools/extract_dxbc_programs.py \
+            --data "$SOURCE_DATA,$(dirname "$SOURCE_DATA")/../game/Stacklands_Data" \
+            --out shader_extract
+
       - name: Shader fidelity worklist (families & diffs)
         if: hashFiles(env.SOURCE_DATA) != ''
         run: |
@@ -233,6 +242,8 @@ jobs:
             docs/15_反编译落地后待办清单.md
             preflight.json
             shader_extract/
+            shader_extract/dxbc/
+            shader_extract/dxbc_ledger.*
             content_inventory/
           if-no-files-found: ignore
 

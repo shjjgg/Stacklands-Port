@@ -65,3 +65,6 @@ keystore.properties
 # 操作系统
 .DS_Store
 Thumbs.db
+
+# Shader DXBC 原始解压容器(可重算, 不入库; dxbc/*.dxbc 是保真链输入, 入库)
+shader_extract/raw/

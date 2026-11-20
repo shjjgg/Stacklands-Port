@@ -1,0 +1,1392 @@
+{
+  "generated_at": "2026-11-20T21:29:00",
+  "summary": {
+    "shaders": 30,
+    "programs_total": 502,
+    "compressed_bytes_total": 174277,
+    "decompressed_bytes_total": 1607780,
+    "zero_program": [],
+    "no_vertex_stage": [],
+    "no_pixel_stage": [],
+    "has_rdef_any": false,
+    "chunks_union": [
+      "ISGN",
+      "OSGN",
+      "SHDR"
+    ]
+  },
+  "shaders": [
+    {
+      "name": "Custom/ArrowSdfShader",
+      "category": "Custom",
+      "source_file": "sharedassets1.assets",
+      "path_id": 506,
+      "compressed_bytes": 4889,
+      "decompressed_bytes": 42628,
+      "segments": {
+        "segments": 1,
+        "lz4": 1,
+        "plain": 0,
+        "failed": 0
+      },
+      "programs": 15,
+      "stages": {
+        "VS": 8,
+        "PS": 7
+      },
+      "has_rdef": false,
+      "chunks_union": [
+        "ISGN",
+        "OSGN",
+        "SHDR"
+      ],
+      "sha1_manifest": [
+        "8354b3ee16ea9e8f127ff16f4f1b2ea3c56f70db",
+        "a8f0e52d04924105ca18276dda7e76a6fb769e71",
+        "3df7181cbeb3e215b00c43e5b21282b3bfbb7383",
+        "9dbf0d68d2d30c0cc116bf65f796912d7e62be54",
+        "9dbf0d68d2d30c0cc116bf65f796912d7e62be54",
+        "8178e9d5d12ee855cd25816d21858041196babc2",
+        "5b2c2a1f759a72b8ded6fbfdf309dbaf25ce2967",
+        "e98ca5709a6839a138ca03f8eee83728f0c736fc",
+        "8178e9d5d12ee855cd25816d21858041196babc2",
+        "ae1f06390ff2214353e8c510044602f924e0e0b5",
+        "9895fbb029e43aa07c6ee4a8fa301fddf09f78e0",
+        "b96a54ba86407e9f45327fa2c22dc0967f1ab27c",
+        "dbb71fec7487f8d41a948adcd4a726eaae2de0e0",
+        "9fbec99513db67a5227716c8807fbb5f40aea221",
+        "4e3b7c677e05b6f51ef698f3e187572c83d6aa5f"
+      ],
+      "problems": [],
+      "raw_file": "raw/Custom__ArrowSdfShader.bin"
+    },
+    {
+      "name": "Custom/StatusBar",
+      "category": "Custom",
+      "source_file": "sharedassets1.assets",
+      "path_id": 507,
+      "compressed_bytes": 12051,
+      "decompressed_bytes": 108332,
+      "segments": {
+        "segments": 1,
+        "lz4": 1,
+        "plain": 0,
+        "failed": 0
+      },
+      "programs": 34,
+      "stages": {
+        "VS": 19,
+        "PS": 15
+      },
+      "has_rdef": false,
+      "chunks_union": [
+        "ISGN",
+        "OSGN",
+        "SHDR"
+      ],
+      "sha1_manifest": [
+        "ed4888577594d315d414375f373f05ffebb8f6e0",
+        "5f859f911dc992b68526452c02e37f6fcade3b70",
+        "9868082aed48b75acc8190944f21b9e1dab93cd5",
+        "dfa1acb2c139c31eb4ed3a76997e3f6a68595aa9",
+        "ed4888577594d315d414375f373f05ffebb8f6e0",
+        "4c834494016e740daa1a7a3dbfd6ce55e47698bb",
+        "9868082aed48b75acc8190944f21b9e1dab93cd5",
+        "2774a0acc77a3e0afd8fa5aed799fa84761be12e",
+        "ddafd593eaf0e5e03895124aed78cc7ce11df2af",
+        "52311f6b91ccca806149d69053c78766c4c1d319",
+        "60391ea67820c7e016af463a2b66bf91e12110a5",
+        "ba6a47656beeba2b44905aa16612677b51f7faba",
+        "07e61ddc47e8ebdee28e59dcfbc4242e7c3df46f",
+        "a5a52ca492cec62f69a74d00a2eef8f7b59ec874",
+        "ea9542379f799f94f186f30f68e61d3d94f05677",
+        "07e61ddc47e8ebdee28e59dcfbc4242e7c3df46f",
+        "e768d89f4eef30acfb929143b2195cd81716d154",
+        "dbd5680ffbf628ccf81f7060bbb0dd0cafb3ab48",
+        "c6c75036d6f86eefe98c5e290620007d025e55d5",
+        "59aac57660b0fcc5c88d863a587f617f5169874f",
+        "9fe6902e4e72601fbaa11aa5fdc235ec8da51d2a",
+        "b69cbb9179b6ebb61a7e86d19ac2fae7f751bd34",
+        "a5a52ca492cec62f69a74d00a2eef8f7b59ec874",
+        "d7ed97f568c690d5d8e92adca04861341c7716fc",
+        "a5a52ca492cec62f69a74d00a2eef8f7b59ec874",
+        "d7ed97f568c690d5d8e92adca04861341c7716fc",
+        "241b5312d48d0acf42d53ef6cd8fdfd37524cf41",
+        "26ea20e24c37a8320cde2761ed9beee238c96158",
+        "e2fb51c9465b15ad15e00a4b792412c2ba9c80c1",
+        "955eb065f3d826c64aeb1af5bf50d767285496fc",
+        "ddc3e3f25c6a1c99f6399d36267e1349ee8203e0",
+        "5c3d97427ac648d41c3596940e3af7158b4a24d8",
+        "eb79aece59835d99ae27473fcc6482ff1fcf3517",
+        "eb79aece59835d99ae27473fcc6482ff1fcf3517"
+      ],
+      "problems": [],
+      "raw_file": "raw/Custom__StatusBar.bin"
+    },
+    {
+      "name": "Custom/SewerPipeShader",
+      "category": "Custom",
+      "source_file": "sharedassets1.assets",
+      "path_id": 510,
+      "compressed_bytes": 5091,
+      "decompressed_bytes": 43540,
+      "segments": {
+        "segments": 1,
+        "lz4": 1,
+        "plain": 0,
+        "failed": 0
+      },
+      "programs": 15,
+      "stages": {
+        "VS": 8,
+        "PS": 7
+      },
+      "has_rdef": false,
+      "chunks_union": [
+        "ISGN",
+        "OSGN",
+        "SHDR"
+      ],
+      "sha1_manifest": [
+        "8354b3ee16ea9e8f127ff16f4f1b2ea3c56f70db",
+        "a8f0e52d04924105ca18276dda7e76a6fb769e71",
+        "3df7181cbeb3e215b00c43e5b21282b3bfbb7383",
+        "aec08b50a8052f0c5fcb1de62ed8aae35cacf394",
+        "aec08b50a8052f0c5fcb1de62ed8aae35cacf394",
+        "8178e9d5d12ee855cd25816d21858041196babc2",
+        "5b2c2a1f759a72b8ded6fbfdf309dbaf25ce2967",
+        "e98ca5709a6839a138ca03f8eee83728f0c736fc",
+        "8178e9d5d12ee855cd25816d21858041196babc2",
+        "ae1f06390ff2214353e8c510044602f924e0e0b5",
+        "e64030cedf3fdb4165f285b68c06d5b04a61fe47",
+        "c6b4c56baaf048e58d287987a1d1337f4d9bf264",
+        "586d17664073f40ccd4f41ffb1391161c9e1581a",
+        "59d2d328e7534f9cbe53ebcfcf47eeffa08b4b43",
+        "496d1ab340dd45a60d63f3e00c54d361a6dfc9a7"
+      ],
+      "problems": [],
+      "raw_file": "raw/Custom__SewerPipeShader.bin"
+    },
+    {
+      "name": "Custom/CardBackShader",
+      "category": "Custom",
+      "source_file": "sharedassets1.assets",
+      "path_id": 511,
+      "compressed_bytes": 20676,
+      "decompressed_bytes": 222092,
+      "segments": {
+        "segments": 1,
+        "lz4": 1,
+        "plain": 0,
+        "failed": 0
+      },
+      "programs": 64,
+      "stages": {
+        "VS": 37,
+        "PS": 27
+      },
+      "has_rdef": false,
+      "chunks_union": [
+        "ISGN",
+        "OSGN",
+        "SHDR"
+      ],
+      "sha1_manifest": [
+        "215973fa1c1d823a2bb13236e773bcc266ed8968",
+        "0c59f8ddb10c06ffe04e04ae9851b299db926f05",
+        "8259c3521dadc6657966f78b6f81cacf1a103c77",
+        "d8840f076d353e17f38d87a44fbf0b54420dcd23",
+        "215973fa1c1d823a2bb13236e773bcc266ed8968",
+        "552797c854b4db410a3966b7a43b7eda5f557a94",
+        "8259c3521dadc6657966f78b6f81cacf1a103c77",
+        "1f70254fa25f99702e6455a47937a8a72b5c823f",
+        "533aff348cc76aa3a7a8a4a2c95a3b523b6afb65",
+        "cd5bcc721c841a9a5d441fab25878c0d8f53b536",
+        "0ca4b364f6f7067327a5a933e642a4b9957f89fe",
+        "2f81a2b66e7f9da44e9143aca59053e251306ea1",
+        "533aff348cc76aa3a7a8a4a2c95a3b523b6afb65",
+        "89f70b10d3c0e3fcc37c19e407e14ea37a9d9877",
+        "0ca4b364f6f7067327a5a933e642a4b9957f89fe",
+        "f7fe117f221f59b82d88a42b2978202fbbdc6ea8",
+        "ab2fa8778c7406287dbc5adc209b3c47733c8356",
+        "363680825dbfa8be0c7f28ad3118da46f9c6d165",
+        "20ebb6f23ec87c26bdae276fc2445aa4014e76ae",
+        "41bbd4cdce5a1e30395e8d8be04826c9203e5cb6",
+        "4d733a65e669b3b6b60b5d39433d68c096854327",
+        "b685aff3737bee2cb793e9b4c00fb92c33b046db",
+        "438b3c25dbcc81716e50b7073f8c2a3d71d144ea",
+        "a8b587096872f4ed63cacdd103e073855d1c4650",
+        "ccf5c8060db971090532c8c04343c051a6c3a5e7",
+        "c922763c910afd9af5e853d41cfb05c8ec9518ca",
+        "a33ee5913b2e529cbb53c11169da82eda270dd3e",
+        "ccf5c8060db971090532c8c04343c051a6c3a5e7",
+        "9517ec9cc8a3bfa3cfb0eab9e36ad67d95a5d77a",
+        "a33ee5913b2e529cbb53c11169da82eda270dd3e",
+        "18dbd6c580e6992c1e928f1a8adf5e4798c07282",
+        "1f9490b1ae10ec65589de40efbd4ae134a639f62",
+        "c45017e7163364d3ab3bf4917476089be6cd4a50",
+        "ccf5c8060db971090532c8c04343c051a6c3a5e7",
+        "ccf5c8060db971090532c8c04343c051a6c3a5e7",
+        "ccf5c8060db971090532c8c04343c051a6c3a5e7",
+        "ccf5c8060db971090532c8c04343c051a6c3a5e7",
+        "ff34c984f47e883eea03f8e66b90623567525ecb",
+        "309f8c850216b2ba46c4f46eedd16c6cf20cd173",
+        "ba905a0aa20902875107e8f2b599c07e110a6626",
+        "2cf68b6ddc9e6d987e5f57c25cebac0680ec6018",
+        "39dfe01a329434a4fca2e629d65fe0ba2f537155",
+        "a80badab408ccf9654f095b8b74b16f291a31dd7",
+        "149e420e451ce41688bea6fa1905d09ccaf7cc55",
+        "2952b4f8735fb0b7b981aa8236cd6061de03e70e",
+        "65fb2cbc819f7cb5b0218cac8274fdab4d68beb9",
+        "013d421a54cfd74923f691bef6bfe10ad7615356",
+        "73c8a748f769ae7c0313984ac09a8aa9d1de13b3",
+        "e302e4eebc14e9b707bbe841e33f2651af03c121",
+        "b91ad47041da9453d82d60cea7ab6c3d9fb463df",
+        "c922763c910afd9af5e853d41cfb05c8ec9518ca",
+        "c5c2a4149e47b07a55754e42d5c691cdb3530dc3",
+        "c922763c910afd9af5e853d41cfb05c8ec9518ca",
+        "c5c2a4149e47b07a55754e42d5c691cdb3530dc3",
+        "5f378fb37243dd6295f2b2b6954313dc657c67b9",
+        "869d67d7dbe2532f958f14f5ecef72d58e6cf4f6",
+        "5f378fb37243dd6295f2b2b6954313dc657c67b9",
+        "869d67d7dbe2532f958f14f5ecef72d58e6cf4f6",
+        "afe28f11f23f39008ff0c91fe612a95da8da8aad",
+        "1d4308f397275394de4da9214f3337488c1da2e3",
+        "a7a6e1fe976b0f1ab03f03c200090a7009dad555",
+        "9969f24bc62c67af6e5a37429657b1171eda4878",
+        "60bf2136324902d1d53c5acbbd1e659c04bd2baa",
+        "873cfe2b4209ea2ce0b624e3b3548b1409cf2035"
+      ],
+      "problems": [],
+      "raw_file": "raw/Custom__CardBackShader.bin"
+    },
+    {
+      "name": "Custom/ConveyorArrowShader",
+      "category": "Custom",
+      "source_file": "sharedassets1.assets",
+      "path_id": 512,
+      "compressed_bytes": 4801,
+      "decompressed_bytes": 40756,
+      "segments": {
+        "segments": 1,
+        "lz4": 1,
+        "plain": 0,
+        "failed": 0
+      },
+      "programs": 15,
+      "stages": {
+        "VS": 8,
+        "PS": 7
+      },
+      "has_rdef": false,
+      "chunks_union": [
+        "ISGN",
+        "OSGN",
+        "SHDR"
+      ],
+      "sha1_manifest": [
+        "8354b3ee16ea9e8f127ff16f4f1b2ea3c56f70db",
+        "a8f0e52d04924105ca18276dda7e76a6fb769e71",
+        "3df7181cbeb3e215b00c43e5b21282b3bfbb7383",
+        "8d9b7221c11c8a076e7db83acd8d2e82b51d2b81",
+        "8d9b7221c11c8a076e7db83acd8d2e82b51d2b81",
+        "8178e9d5d12ee855cd25816d21858041196babc2",
+        "5b2c2a1f759a72b8ded6fbfdf309dbaf25ce2967",
+        "e98ca5709a6839a138ca03f8eee83728f0c736fc",
+        "8178e9d5d12ee855cd25816d21858041196babc2",
+        "ae1f06390ff2214353e8c510044602f924e0e0b5",
+        "984844e2b655e6747cf8bf3a240a02c52bb9dd6e",
+        "141a697688757e55abd6e30e962b4af1d6c76438",
+        "1ecdf2680b0b1226b59996cbb3cefccd125ab333",
+        "c95b4decbaf9162509fa60716d48a6619a3768ee",
+        "24cef344d59b0d59198ba10393a4715a6060b573"
+      ],
+      "problems": [],
+      "raw_file": "raw/Custom__ConveyorArrowShader.bin"
+    },
+    {
+      "name": "Transition/Default",
+      "category": "Game",
+      "source_file": "sharedassets1.assets",
+      "path_id": 513,
+      "compressed_bytes": 900,
+      "decompressed_bytes": 1960,
+      "segments": {
+        "segments": 1,
+        "lz4": 1,
+        "plain": 0,
+        "failed": 0
+      },
+      "programs": 2,
+      "stages": {
+        "VS": 1,
+        "PS": 1
+      },
+      "has_rdef": false,
+      "chunks_union": [
+        "ISGN",
+        "OSGN",
+        "SHDR"
+      ],
+      "sha1_manifest": [
+        "a41cc19b90bf2c6dfe39b3a5e1ddb4fa129f1c8e",
+        "229bae136af4661b15002583ea91ff490211549a"
+      ],
+      "problems": [],
+      "raw_file": "raw/Transition__Default.bin"
+    },
+    {
+      "name": "Custom/ConflictOutlineSdfShader",
+      "category": "Custom",
+      "source_file": "sharedassets1.assets",
+      "path_id": 514,
+      "compressed_bytes": 4514,
+      "decompressed_bytes": 36308,
+      "segments": {
+        "segments": 1,
+        "lz4": 1,
+        "plain": 0,
+        "failed": 0
+      },
+      "programs": 15,
+      "stages": {
+        "VS": 8,
+        "PS": 7
+      },
+      "has_rdef": false,
+      "chunks_union": [
+        "ISGN",
+        "OSGN",
+        "SHDR"
+      ],
+      "sha1_manifest": [
+        "8354b3ee16ea9e8f127ff16f4f1b2ea3c56f70db",
+        "a8f0e52d04924105ca18276dda7e76a6fb769e71",
+        "3df7181cbeb3e215b00c43e5b21282b3bfbb7383",
+        "8cd2319d8f66669a25d80ab6f586dd8e1eafc83a",
+        "8cd2319d8f66669a25d80ab6f586dd8e1eafc83a",
+        "8178e9d5d12ee855cd25816d21858041196babc2",
+        "5b2c2a1f759a72b8ded6fbfdf309dbaf25ce2967",
+        "e98ca5709a6839a138ca03f8eee83728f0c736fc",
+        "8178e9d5d12ee855cd25816d21858041196babc2",
+        "ae1f06390ff2214353e8c510044602f924e0e0b5",
+        "11a907535f1598cbce5bf0983f966d87781e88d4",
+        "70ebcbe75fa3d3edea61f8dbc121f0bb7bef6ae9",
+        "9b4134a5f40841925921f9ccd39fe5270e788c45",
+        "427e34651157ced2cfc937a764700513ce3934c0",
+        "1f41fff92d12e5ff967de9f5221ecf30b75f3188"
+      ],
+      "problems": [],
+      "raw_file": "raw/Custom__ConflictOutlineSdfShader.bin"
+    },
+    {
+      "name": "Transition/Spirit",
+      "category": "Game",
+      "source_file": "sharedassets1.assets",
+      "path_id": 515,
+      "compressed_bytes": 1035,
+      "decompressed_bytes": 2288,
+      "segments": {
+        "segments": 1,
+        "lz4": 1,
+        "plain": 0,
+        "failed": 0
+      },
+      "programs": 2,
+      "stages": {
+        "VS": 1,
+        "PS": 1
+      },
+      "has_rdef": false,
+      "chunks_union": [
+        "ISGN",
+        "OSGN",
+        "SHDR"
+      ],
+      "sha1_manifest": [
+        "a41cc19b90bf2c6dfe39b3a5e1ddb4fa129f1c8e",
+        "871e063cac16dc7cebc247358f71f76e5bcf7064"
+      ],
+      "problems": [],
+      "raw_file": "raw/Transition__Spirit.bin"
+    },
+    {
+      "name": "Custom/GenericCardShader",
+      "category": "Custom",
+      "source_file": "sharedassets1.assets",
+      "path_id": 520,
+      "compressed_bytes": 17710,
+      "decompressed_bytes": 177732,
+      "segments": {
+        "segments": 1,
+        "lz4": 1,
+        "plain": 0,
+        "failed": 0
+      },
+      "programs": 58,
+      "stages": {
+        "VS": 33,
+        "PS": 25
+      },
+      "has_rdef": false,
+      "chunks_union": [
+        "ISGN",
+        "OSGN",
+        "SHDR"
+      ],
+      "sha1_manifest": [
+        "d7aa45f4fb669b709f2ead6422a473b971ba1e05",
+        "bbca921fbf57230a26b8903b28e9d5abd4b98972",
+        "4355f67554ae387a2cd154fc9f087ddd764626cf",
+        "a82a517aab3ab043cdc6b4c7b0cd5aae0ff0253b",
+        "d7aa45f4fb669b709f2ead6422a473b971ba1e05",
+        "f05e89c4faf49c3784bdf2ad868fea696fccabde",
+        "4355f67554ae387a2cd154fc9f087ddd764626cf",
+        "ae4210a10bfe641169a7fb112d09d2fb34623e8e",
+        "b1663b46c891f0e9c028a0f90489c448c7757df3",
+        "199cc87ee8f6c837e5aec04047a59beec5fd5ca1",
+        "b0a7c8739d0cbaf535386ff094bca46d192932b7",
+        "8413a49f12eebaef6ab683f45be208acf8194a14",
+        "b1663b46c891f0e9c028a0f90489c448c7757df3",
+        "840414f7bc15abf9089a9f2323b23a22684ff77c",
+        "b0a7c8739d0cbaf535386ff094bca46d192932b7",
+        "e91bec32e75bc60150ab374e855aa5236d74b818",
+        "5ecb7a2cedda8b950e0fb586b18c10728f2df8e5",
+        "5ff1e7ac2b50074b676d4cc59efbddf7a276de09",
+        "c7545646e4d20d420d4599f2f1127671e8c66230",
+        "748cae51ea022e52fb157b45b1b1e48cf2301485",
+        "dce18a2c3cacc54a51d57f3e012f156efaba68ed",
+        "a129d115304b621dbe19a8745663358fc8a9cbf1",
+        "9242a2b60f1640703a78af116179596a78109c9b",
+        "6b481b5b4f467a39767350c777e34b3a1bb0d60c",
+        "0db4c031592362bf2b7f453d68e5b69dfeca7a1f",
+        "ec1ed0ff7b0aa274945aa8992d9b7efe3e8cfb13",
+        "13d1506d66ff7df17e60df851a853ebd8e2568b9",
+        "0db4c031592362bf2b7f453d68e5b69dfeca7a1f",
+        "bba8250748c26e78813853f8f7dda878771e0b6a",
+        "abddbce646cd146ee59f75f0f151837b9cb2d804",
+        "e01368ace0c7968f97d6202de82c1f0b740c83ef",
+        "d34d526085f5d17366c26892e85e36040930fcb5",
+        "ad2f522052f7615dbc94c0074aaf26dd9017d8e2",
+        "f062c3d0979dfeb285292aea364a15d689c710cf",
+        "ec1ed0ff7b0aa274945aa8992d9b7efe3e8cfb13",
+        "c429833ab91283b8fd51a8ac7707942d50066bf0",
+        "ec1ed0ff7b0aa274945aa8992d9b7efe3e8cfb13",
+        "c429833ab91283b8fd51a8ac7707942d50066bf0",
+        "a1878c273640bcf1a88909ee29348b31e6b60f1b",
+        "4c5c9cbfbd34d9ccffa373aa54c13a6a6d839cae",
+        "a1878c273640bcf1a88909ee29348b31e6b60f1b",
+        "4c5c9cbfbd34d9ccffa373aa54c13a6a6d839cae",
+        "988df1936ef265e5b67e302835dcac828c2c05f7",
+        "a9c2fe933a1bb21a78cc9d9af0109fcf47970126",
+        "a2b10cb8c21b444c95cbe6912c6f996f858ff641",
+        "74b7846b262ea2b2603b64fcdfc3ddffd5e7cd14",
+        "0902f9b9ecfeb95438eba9b276079a948db3e305",
+        "0a9880a0277e33daabf9e4238cfbe27797dee02d",
+        "aa9e109ff84d1caf91d0affc07f4636623880968",
+        "4282cae704b81160743a678ca7d41ad89009a605",
+        "ddc3e3f25c6a1c99f6399d36267e1349ee8203e0",
+        "5c3d97427ac648d41c3596940e3af7158b4a24d8",
+        "b07e476109cfc61d1849aa29d60c1660dc9f24ca",
+        "a24987d0f289700a8174c4ba62f947cb9515cf9f",
+        "eb79aece59835d99ae27473fcc6482ff1fcf3517",
+        "eb79aece59835d99ae27473fcc6482ff1fcf3517",
+        "fae61705010797498f81d7f99da08b34e566b3ed",
+        "fae61705010797498f81d7f99da08b34e566b3ed"
+      ],
+      "problems": [],
+      "raw_file": "raw/Custom__GenericCardShader.bin"
+    },
+    {
+      "name": "Custom/SpiritTransitionEffect",
+      "category": "Custom",
+      "source_file": "sharedassets1.assets",
+      "path_id": 521,
+      "compressed_bytes": 769,
+      "decompressed_bytes": 1620,
+      "segments": {
+        "segments": 1,
+        "lz4": 1,
+        "plain": 0,
+        "failed": 0
+      },
+      "programs": 2,
+      "stages": {
+        "VS": 1,
+        "PS": 1
+      },
+      "has_rdef": false,
+      "chunks_union": [
+        "ISGN",
+        "OSGN",
+        "SHDR"
+      ],
+      "sha1_manifest": [
+        "109231ba2beeb7fb52520bdac5c42b3feaa83537",
+        "adcc5f9913ab697c50ab8dd15c600211705b8ae6"
+      ],
+      "problems": [],
+      "raw_file": "raw/Custom__SpiritTransitionEffect.bin"
+    },
+    {
+      "name": "Custom/CardShaderTest",
+      "category": "Custom",
+      "source_file": "sharedassets1.assets",
+      "path_id": 523,
+      "compressed_bytes": 22496,
+      "decompressed_bytes": 263784,
+      "segments": {
+        "segments": 1,
+        "lz4": 1,
+        "plain": 0,
+        "failed": 0
+      },
+      "programs": 58,
+      "stages": {
+        "VS": 33,
+        "PS": 25
+      },
+      "has_rdef": false,
+      "chunks_union": [
+        "ISGN",
+        "OSGN",
+        "SHDR"
+      ],
+      "sha1_manifest": [
+        "7d2ffa3b7f3fb98f3fe5f6823164c9558f40b370",
+        "e87d6f5756ea7ceda93039100e1ba7ebbf7d0b39",
+        "01f585b0dc80cea0c020d01d6febb9b7d5894283",
+        "f3945f499c861c3a5322ad605f614c0c1737923f",
+        "7d2ffa3b7f3fb98f3fe5f6823164c9558f40b370",
+        "c0f3e4f607db03110e4bf95c07c38d1128c72c93",
+        "01f585b0dc80cea0c020d01d6febb9b7d5894283",
+        "db5c10bd31897d36152e1b542058f69ef05dd125",
+        "10aaca0aad8184e6f95f1f8ec595f1c714c2017c",
+        "e8f7bdf1876a1e81e777400bfd9ba67fbd217c83",
+        "b2d1ebe743beea9ec53669d1e1142375b003bbec",
+        "6c69df524f1cac5939bb077c7d1bf4df4d9c39b9",
+        "10aaca0aad8184e6f95f1f8ec595f1c714c2017c",
+        "4f89eedd50afba7a5483151227ad8316dae6bc49",
+        "b2d1ebe743beea9ec53669d1e1142375b003bbec",
+        "e717bbdb64be7f81d5e8c95ec39427f9a5117386",
+        "887e83902c3ede10218bf09031d7db02ede1746a",
+        "d602592310dd9604f61c575a3c271a15cc17e83e",
+        "7e08ef662f4cfe88ec563f52135e78dcde0c70c2",
+        "51930409128a989bc7dc3834811b39bb7ed0f2ab",
+        "8d51313df3c95f3508bc245c0722742df2c9c1ce",
+        "9897ac5531698cd884f0724f336bd7a438428ef5",
+        "cfeda2c9d3874d0cae6e55308736bbd63cb0fecd",
+        "c5a4fb9d8d340a2391475548a135b28f92b7691b",
+        "387ac8b7f163d0cb452723a14db1c40514ae9d50",
+        "3a26b998a2ec1c2f96f936f200398b2f80a9e646",
+        "88d8d54d889836363dd908d4b6994bd5e7c56918",
+        "387ac8b7f163d0cb452723a14db1c40514ae9d50",
+        "4c28980d72263a45c98b431d43d2d547e754080c",
+        "b48866171cbc808ef48301d292e40c8ca0d4643a",
+        "c0910b33c16329bec9c7061c3374f7605a509fef",
+        "cb826a5ea87773dd220ed60ea81147293426257a",
+        "6e8b454fd5c397cb697fb01f18f437440ff5516f",
+        "3ef53d8caa1e210e5e82d9e5055ecb28e7f69649",
+        "3a26b998a2ec1c2f96f936f200398b2f80a9e646",
+        "93e09e6bfe54daed50116fa04dc782e6cb2fcc50",
+        "3a26b998a2ec1c2f96f936f200398b2f80a9e646",
+        "93e09e6bfe54daed50116fa04dc782e6cb2fcc50",
+        "2e6dc21149a28f773bc5e57822c3f0d0864d8741",
+        "1414147bed29c45e52c0e52d694c30f406a7f374",
+        "2e6dc21149a28f773bc5e57822c3f0d0864d8741",
+        "1414147bed29c45e52c0e52d694c30f406a7f374",
+        "1006f4920270ae423dc2bd8caaeeb0a89736d019",
+        "8da77b760b714c2604515deb5c1c4236ceef145e",
+        "a9b938c1b20f573e34f75e5b3a923176b01360aa",
+        "9fbd02b44a3ad17cd1fe885d72a5fb30f3b59559",
+        "6c5fdfb031f7fbddb48457770575a3a0331fd6de",
+        "f09cfc3ddaa446f55d57d3ba041aadb07c60f9b1",
+        "40305a8bd2cb26172393e2d6ae6371fa95b3899e",
+        "b8f679fadd27affe6a2125d1f2123c90537d3642",
+        "397161c5d7dcf066d2caaeb54483894b5e36bf2a",
+        "39770c964398156112203ea8bc74d3e122e66dec",
+        "6961edccec2db8c5ce3eeb86ff60f4e3570524b1",
+        "487ea47230415b9404716a25a7ee4b4807f8a2be",
+        "a67111633aca3c9b6b0516a89f634612ed921a42",
+        "a67111633aca3c9b6b0516a89f634612ed921a42",
+        "c39e4ba5c839d0316114c9ac40ef9565b0365ea7",
+        "c39e4ba5c839d0316114c9ac40ef9565b0365ea7"
+      ],
+      "problems": [],
+      "raw_file": "raw/Custom__CardShaderTest.bin"
+    },
+    {
+      "name": "Custom/TransportArrowShader",
+      "category": "Custom",
+      "source_file": "sharedassets1.assets",
+      "path_id": 524,
+      "compressed_bytes": 5182,
+      "decompressed_bytes": 46784,
+      "segments": {
+        "segments": 1,
+        "lz4": 1,
+        "plain": 0,
+        "failed": 0
+      },
+      "programs": 15,
+      "stages": {
+        "VS": 8,
+        "PS": 7
+      },
+      "has_rdef": false,
+      "chunks_union": [
+        "ISGN",
+        "OSGN",
+        "SHDR"
+      ],
+      "sha1_manifest": [
+        "8354b3ee16ea9e8f127ff16f4f1b2ea3c56f70db",
+        "a8f0e52d04924105ca18276dda7e76a6fb769e71",
+        "3df7181cbeb3e215b00c43e5b21282b3bfbb7383",
+        "0d5218e45b723de09442523ca57d2ce7d17f45bf",
+        "0d5218e45b723de09442523ca57d2ce7d17f45bf",
+        "8178e9d5d12ee855cd25816d21858041196babc2",
+        "5b2c2a1f759a72b8ded6fbfdf309dbaf25ce2967",
+        "e98ca5709a6839a138ca03f8eee83728f0c736fc",
+        "8178e9d5d12ee855cd25816d21858041196babc2",
+        "ae1f06390ff2214353e8c510044602f924e0e0b5",
+        "a41b9f27dafb6b90df6de6228add74209d9f1d7f",
+        "f1ecd197ae02406a9fc3a387816eceb77456bced",
+        "4d38fa7735fdb8bc9cf53060c9529e0b84df98a9",
+        "b5b73a264b5fe7748d41be1f3ec35b76dbbd8cce",
+        "350fd5ebcb1b7da7f3cac59fcee8f160854ecff3"
+      ],
+      "problems": [],
+      "raw_file": "raw/Custom__TransportArrowShader.bin"
+    },
+    {
+      "name": "Custom/BoosterShaderTop",
+      "category": "Custom",
+      "source_file": "sharedassets1.assets",
+      "path_id": 525,
+      "compressed_bytes": 12441,
+      "decompressed_bytes": 112052,
+      "segments": {
+        "segments": 1,
+        "lz4": 1,
+        "plain": 0,
+        "failed": 0
+      },
+      "programs": 34,
+      "stages": {
+        "VS": 19,
+        "PS": 15
+      },
+      "has_rdef": false,
+      "chunks_union": [
+        "ISGN",
+        "OSGN",
+        "SHDR"
+      ],
+      "sha1_manifest": [
+        "64f5c078dad651e182d458413b47934d0c3349d1",
+        "d6f7f7c527857450aec31c049b7b490f7d44b135",
+        "eaada47d27c77b522939f753cc021081de8679d6",
+        "d9bbcf6c261667d9724c725b222af19016b94055",
+        "64f5c078dad651e182d458413b47934d0c3349d1",
+        "0c3305c5bc51d0960352918f007f469490de0ed4",
+        "eaada47d27c77b522939f753cc021081de8679d6",
+        "eb87de1432e2ab22d8f1760838105d0b2ab25234",
+        "ec8808fc08590689df4f71802ebdaf72584970b2",
+        "b876ca497b65946f5664cda827e3e07e6691e1ae",
+        "4b19b7b230036866fbe8a6cf39efcee4fd7057f3",
+        "d2b81c9d98dc7ce0169ef4fb8f6617ca58be22db",
+        "baf3d04128770feec368c0ffe4bee1117f0ad6f6",
+        "879d872589d20791ce72b70db6abfd333fa6a873",
+        "be16b3c4c396bfba1eb373b5af1e288b9518a80d",
+        "baf3d04128770feec368c0ffe4bee1117f0ad6f6",
+        "284c619458f271c864de7a7694d604bef169d163",
+        "633aae298967736fba9190aa3aa7787e6abd23a9",
+        "1ed1e7c2a8bf4405dec09ea72f28cecb2472c853",
+        "1d03870e1fa4358dc5571f6fc3a5d8de7209c338",
+        "4be5e855ed9364e08ce4c263e802b38097629a15",
+        "07897d9b5c88fa6be8a3e77f40f636e36a9f01c3",
+        "879d872589d20791ce72b70db6abfd333fa6a873",
+        "7bbc309d722fb566ac35ad93d2f6c8ea69783763",
+        "879d872589d20791ce72b70db6abfd333fa6a873",
+        "7bbc309d722fb566ac35ad93d2f6c8ea69783763",
+        "957d78c359a7203b6ad6b8382ed40d79cb9e5db9",
+        "74636c73148f68f7d458ce327274c3d0d52a482a",
+        "94a4bfa33b5c1d9171ddb31223cf136f8a49af63",
+        "e57ac3730d636f477021654beb225a29e8302354",
+        "ddc3e3f25c6a1c99f6399d36267e1349ee8203e0",
+        "5c3d97427ac648d41c3596940e3af7158b4a24d8",
+        "eb79aece59835d99ae27473fcc6482ff1fcf3517",
+        "eb79aece59835d99ae27473fcc6482ff1fcf3517"
+      ],
+      "problems": [],
+      "raw_file": "raw/Custom__BoosterShaderTop.bin"
+    },
+    {
+      "name": "Custom/GridShader",
+      "category": "Custom",
+      "source_file": "sharedassets1.assets",
+      "path_id": 528,
+      "compressed_bytes": 7266,
+      "decompressed_bytes": 51196,
+      "segments": {
+        "segments": 1,
+        "lz4": 1,
+        "plain": 0,
+        "failed": 0
+      },
+      "programs": 15,
+      "stages": {
+        "VS": 8,
+        "PS": 7
+      },
+      "has_rdef": false,
+      "chunks_union": [
+        "ISGN",
+        "OSGN",
+        "SHDR"
+      ],
+      "sha1_manifest": [
+        "2b1d58a19ebdabda4b12d0c195684e99977a05c3",
+        "8c3d72e5668205ef55f5cac59a3714017f0c5258",
+        "2b2b6555254bdb484d1bcebdb25c03289813f631",
+        "9ffd5260469146f18947a60c24ae40b837837ad0",
+        "d7bfdac9f2eaa067fcf36a064c632b06e86ee371",
+        "8178e9d5d12ee855cd25816d21858041196babc2",
+        "5b2c2a1f759a72b8ded6fbfdf309dbaf25ce2967",
+        "e98ca5709a6839a138ca03f8eee83728f0c736fc",
+        "8178e9d5d12ee855cd25816d21858041196babc2",
+        "ae1f06390ff2214353e8c510044602f924e0e0b5",
+        "d2056c83fbb5f9d6fceb778b17f355b2cb384349",
+        "a6eaf061f23daa6adeaefd5efb320ee12f38129e",
+        "6dbade8cabe80b924bf2fe1cd9a2433e65147ccc",
+        "87d0ee6e45884d2b826458d2a4b56ae195ec2aaa",
+        "d18ffb09cd7ab6acb439b1c933e7150c1db2871b"
+      ],
+      "problems": [],
+      "raw_file": "raw/Custom__GridShader.bin"
+    },
+    {
+      "name": "Custom/SpiritImageEffect",
+      "category": "Custom",
+      "source_file": "sharedassets1.assets",
+      "path_id": 531,
+      "compressed_bytes": 786,
+      "decompressed_bytes": 1640,
+      "segments": {
+        "segments": 1,
+        "lz4": 1,
+        "plain": 0,
+        "failed": 0
+      },
+      "programs": 2,
+      "stages": {
+        "VS": 1,
+        "PS": 1
+      },
+      "has_rdef": false,
+      "chunks_union": [
+        "ISGN",
+        "OSGN",
+        "SHDR"
+      ],
+      "sha1_manifest": [
+        "109231ba2beeb7fb52520bdac5c42b3feaa83537",
+        "373149eaf274394c1afda9a0069a269c83bfb236"
+      ],
+      "problems": [],
+      "raw_file": "raw/Custom__SpiritImageEffect.bin"
+    },
+    {
+      "name": "Custom/EnergyCableShader",
+      "category": "Custom",
+      "source_file": "sharedassets1.assets",
+      "path_id": 532,
+      "compressed_bytes": 5389,
+      "decompressed_bytes": 52004,
+      "segments": {
+        "segments": 1,
+        "lz4": 1,
+        "plain": 0,
+        "failed": 0
+      },
+      "programs": 15,
+      "stages": {
+        "VS": 8,
+        "PS": 7
+      },
+      "has_rdef": false,
+      "chunks_union": [
+        "ISGN",
+        "OSGN",
+        "SHDR"
+      ],
+      "sha1_manifest": [
+        "8354b3ee16ea9e8f127ff16f4f1b2ea3c56f70db",
+        "a8f0e52d04924105ca18276dda7e76a6fb769e71",
+        "3df7181cbeb3e215b00c43e5b21282b3bfbb7383",
+        "ed668814a94f1253fd8398019080cdc1a8894281",
+        "ed668814a94f1253fd8398019080cdc1a8894281",
+        "8178e9d5d12ee855cd25816d21858041196babc2",
+        "5b2c2a1f759a72b8ded6fbfdf309dbaf25ce2967",
+        "e98ca5709a6839a138ca03f8eee83728f0c736fc",
+        "8178e9d5d12ee855cd25816d21858041196babc2",
+        "ae1f06390ff2214353e8c510044602f924e0e0b5",
+        "902c04ace8f04f7fe029dcb6a972f42e61e3a5e1",
+        "f095662b9d820f943a1e5eeb465fc7f314015a94",
+        "001b0606a8702825094564be0d3c53f58b37079f",
+        "f98f35553788fd026e073a69cfaabca8c7ca326d",
+        "d2e6d34c95eb78756cb06e638247a5d18d6660ca"
+      ],
+      "problems": [],
+      "raw_file": "raw/Custom__EnergyCableShader.bin"
+    },
+    {
+      "name": "Custom/FloorShaderForest",
+      "category": "Custom",
+      "source_file": "sharedassets1.assets",
+      "path_id": 535,
+      "compressed_bytes": 6459,
+      "decompressed_bytes": 61732,
+      "segments": {
+        "segments": 1,
+        "lz4": 1,
+        "plain": 0,
+        "failed": 0
+      },
+      "programs": 22,
+      "stages": {
+        "VS": 13,
+        "PS": 9
+      },
+      "has_rdef": false,
+      "chunks_union": [
+        "ISGN",
+        "OSGN",
+        "SHDR"
+      ],
+      "sha1_manifest": [
+        "132ca4229b5fc3c5d11f65c1778db15777a15be7",
+        "189c3e64fddcb59ada57b61f3ec54ba00392ca36",
+        "b4f932b5a94b53447cae84d43fcd1d9f6e520ad2",
+        "e0f9ed0c29777ef8f36707574cea6606250ce796",
+        "d91b27c2ac036a4deb985b029a114b7205ae1bdc",
+        "9658249896b8a990fa0d1d80435adedb77f94e28",
+        "810655e431117e97c1673f31a413049d7b1c4e47",
+        "07c0c96a97621b5ec79e39b35f3ad7c2281713a8",
+        "e859e3ea7956fff1c62b615643bc2b19492686a8",
+        "e859e3ea7956fff1c62b615643bc2b19492686a8",
+        "422ac194df978a1d5723ec551d93e8d436c3c278",
+        "422ac194df978a1d5723ec551d93e8d436c3c278",
+        "cdf548181389bbff33f313ed61102e4c67edb648",
+        "d8476daa495343bceb10bd5c803add2fdc543366",
+        "a08078d54812f39541f92a5af70cab35abec553c",
+        "cdf548181389bbff33f313ed61102e4c67edb648",
+        "8560f5ca494e24263358a7a402ade330adb76d98",
+        "187c9d5bd1a6859cab5b9f641263b80e262f06c2",
+        "e3313b15460ddde48240562952d045933b92add2",
+        "d1a005cb356620f5e7b377d4d10bd9b81028f97e",
+        "8688224807cc899378767b02935fc03b27550d97",
+        "375a4efe08f386dae3b0cd6bb56af128a80c7ba9"
+      ],
+      "problems": [],
+      "raw_file": "raw/Custom__FloorShaderForest.bin"
+    },
+    {
+      "name": "Custom/SuperSampled Texture",
+      "category": "Custom",
+      "source_file": "sharedassets1.assets",
+      "path_id": 536,
+      "compressed_bytes": 1225,
+      "decompressed_bytes": 3952,
+      "segments": {
+        "segments": 1,
+        "lz4": 1,
+        "plain": 0,
+        "failed": 0
+      },
+      "programs": 4,
+      "stages": {
+        "VS": 2,
+        "PS": 2
+      },
+      "has_rdef": false,
+      "chunks_union": [
+        "ISGN",
+        "OSGN",
+        "SHDR"
+      ],
+      "sha1_manifest": [
+        "a5467f72d9763dbd2444383bee336e659663fb34",
+        "a5467f72d9763dbd2444383bee336e659663fb34",
+        "de52b47ce262a544e38287d4eb2fea3b3ab0628b",
+        "ad1c6679b147aafba00fb5ba49351e0610fdbef7"
+      ],
+      "problems": [],
+      "raw_file": "raw/Custom__SuperSampled_Texture.bin"
+    },
+    {
+      "name": "Unlit/CardopediaBackgroundShader",
+      "category": "Game",
+      "source_file": "sharedassets1.assets",
+      "path_id": 537,
+      "compressed_bytes": 1206,
+      "decompressed_bytes": 2800,
+      "segments": {
+        "segments": 1,
+        "lz4": 1,
+        "plain": 0,
+        "failed": 0
+      },
+      "programs": 2,
+      "stages": {
+        "VS": 1,
+        "PS": 1
+      },
+      "has_rdef": false,
+      "chunks_union": [
+        "ISGN",
+        "OSGN",
+        "SHDR"
+      ],
+      "sha1_manifest": [
+        "170d49981766acfe970b1927a2435b53e3300d2f",
+        "ece1700ab264c833829f68ad481b0fb76a8ca18a"
+      ],
+      "problems": [],
+      "raw_file": "raw/Unlit__CardopediaBackgroundShader.bin"
+    },
+    {
+      "name": "Custom/TransportArrowMainlandShader",
+      "category": "Custom",
+      "source_file": "sharedassets1.assets",
+      "path_id": 538,
+      "compressed_bytes": 5127,
+      "decompressed_bytes": 46788,
+      "segments": {
+        "segments": 1,
+        "lz4": 1,
+        "plain": 0,
+        "failed": 0
+      },
+      "programs": 15,
+      "stages": {
+        "VS": 8,
+        "PS": 7
+      },
+      "has_rdef": false,
+      "chunks_union": [
+        "ISGN",
+        "OSGN",
+        "SHDR"
+      ],
+      "sha1_manifest": [
+        "8354b3ee16ea9e8f127ff16f4f1b2ea3c56f70db",
+        "a8f0e52d04924105ca18276dda7e76a6fb769e71",
+        "3df7181cbeb3e215b00c43e5b21282b3bfbb7383",
+        "884cf9a6d272a88daaebef649a3d852d3cb973f9",
+        "884cf9a6d272a88daaebef649a3d852d3cb973f9",
+        "8178e9d5d12ee855cd25816d21858041196babc2",
+        "5b2c2a1f759a72b8ded6fbfdf309dbaf25ce2967",
+        "e98ca5709a6839a138ca03f8eee83728f0c736fc",
+        "8178e9d5d12ee855cd25816d21858041196babc2",
+        "ae1f06390ff2214353e8c510044602f924e0e0b5",
+        "5d7111a7ec31146af5744b25e4a4185280093c91",
+        "93404e231f5addc8f8010e1a0db79356f19eeedd",
+        "a35669f4cd31ca8141349cf49b37403265e99bcd",
+        "bab48209eb90fdcef68386aed0d46dfbee289f94",
+        "8fcf54fec1a1d31dbeebe00cec39aa7d5540a864"
+      ],
+      "problems": [],
+      "raw_file": "raw/Custom__TransportArrowMainlandShader.bin"
+    },
+    {
+      "name": "Sprites/BackgroundShader",
+      "category": "Game",
+      "source_file": "sharedassets1.assets",
+      "path_id": 540,
+      "compressed_bytes": 888,
+      "decompressed_bytes": 1856,
+      "segments": {
+        "segments": 1,
+        "lz4": 1,
+        "plain": 0,
+        "failed": 0
+      },
+      "programs": 2,
+      "stages": {
+        "VS": 1,
+        "PS": 1
+      },
+      "has_rdef": false,
+      "chunks_union": [
+        "ISGN",
+        "OSGN",
+        "SHDR"
+      ],
+      "sha1_manifest": [
+        "3e98eae2434619a78e358159d38b186c283fb58d",
+        "490af21146e05b6ff601d3a1a9b59575f21986e0"
+      ],
+      "problems": [],
+      "raw_file": "raw/Sprites__BackgroundShader.bin"
+    },
+    {
+      "name": "Sprites/StatusEffectSpriteShader",
+      "category": "Game",
+      "source_file": "sharedassets1.assets",
+      "path_id": 541,
+      "compressed_bytes": 1251,
+      "decompressed_bytes": 4388,
+      "segments": {
+        "segments": 1,
+        "lz4": 1,
+        "plain": 0,
+        "failed": 0
+      },
+      "programs": 4,
+      "stages": {
+        "VS": 2,
+        "PS": 2
+      },
+      "has_rdef": false,
+      "chunks_union": [
+        "ISGN",
+        "OSGN",
+        "SHDR"
+      ],
+      "sha1_manifest": [
+        "3e98eae2434619a78e358159d38b186c283fb58d",
+        "f1f81c940a99fa37755ab6555e024b5649efb71a",
+        "a220bf257f4ace27b82f96db4ae11175771e9857",
+        "a220bf257f4ace27b82f96db4ae11175771e9857"
+      ],
+      "problems": [],
+      "raw_file": "raw/Sprites__StatusEffectSpriteShader.bin"
+    },
+    {
+      "name": "Custom/FloorShader",
+      "category": "Custom",
+      "source_file": "sharedassets1.assets",
+      "path_id": 543,
+      "compressed_bytes": 6725,
+      "decompressed_bytes": 68408,
+      "segments": {
+        "segments": 1,
+        "lz4": 1,
+        "plain": 0,
+        "failed": 0
+      },
+      "programs": 22,
+      "stages": {
+        "VS": 13,
+        "PS": 9
+      },
+      "has_rdef": false,
+      "chunks_union": [
+        "ISGN",
+        "OSGN",
+        "SHDR"
+      ],
+      "sha1_manifest": [
+        "132ca4229b5fc3c5d11f65c1778db15777a15be7",
+        "189c3e64fddcb59ada57b61f3ec54ba00392ca36",
+        "b4f932b5a94b53447cae84d43fcd1d9f6e520ad2",
+        "e0f9ed0c29777ef8f36707574cea6606250ce796",
+        "d91b27c2ac036a4deb985b029a114b7205ae1bdc",
+        "9658249896b8a990fa0d1d80435adedb77f94e28",
+        "810655e431117e97c1673f31a413049d7b1c4e47",
+        "07c0c96a97621b5ec79e39b35f3ad7c2281713a8",
+        "41378080466e5c69807c6e818ffac60807b85133",
+        "41378080466e5c69807c6e818ffac60807b85133",
+        "28774128f941b9097f89ce3401f9d9513bb19842",
+        "28774128f941b9097f89ce3401f9d9513bb19842",
+        "cdf548181389bbff33f313ed61102e4c67edb648",
+        "d8476daa495343bceb10bd5c803add2fdc543366",
+        "a08078d54812f39541f92a5af70cab35abec553c",
+        "cdf548181389bbff33f313ed61102e4c67edb648",
+        "8560f5ca494e24263358a7a402ade330adb76d98",
+        "3e7a7a7a1f4148f74494317bfb67f5ef45024de1",
+        "1a17d47122595410f3be7b6dfffb4e0d0556a902",
+        "0231a8494204179ffb902cb7516e63c68f8a53d3",
+        "566cbb5177933a22583ff22a3d62c2b08b1b9676",
+        "6da3f89a8db83ce48db10be19f71c833522dc6f7"
+      ],
+      "problems": [],
+      "raw_file": "raw/Custom__FloorShader.bin"
+    },
+    {
+      "name": "Sprites/CombatCircleSpriteShader2",
+      "category": "Game",
+      "source_file": "sharedassets1.assets",
+      "path_id": 547,
+      "compressed_bytes": 1137,
+      "decompressed_bytes": 3852,
+      "segments": {
+        "segments": 1,
+        "lz4": 1,
+        "plain": 0,
+        "failed": 0
+      },
+      "programs": 4,
+      "stages": {
+        "VS": 2,
+        "PS": 2
+      },
+      "has_rdef": false,
+      "chunks_union": [
+        "ISGN",
+        "OSGN",
+        "SHDR"
+      ],
+      "sha1_manifest": [
+        "3e98eae2434619a78e358159d38b186c283fb58d",
+        "f1f81c940a99fa37755ab6555e024b5649efb71a",
+        "60d26c03b6c794a174f987381f402395c9d45e89",
+        "60d26c03b6c794a174f987381f402395c9d45e89"
+      ],
+      "problems": [],
+      "raw_file": "raw/Sprites__CombatCircleSpriteShader2.bin"
+    },
+    {
+      "name": "Transition/Energy",
+      "category": "Game",
+      "source_file": "sharedassets1.assets",
+      "path_id": 548,
+      "compressed_bytes": 908,
+      "decompressed_bytes": 1980,
+      "segments": {
+        "segments": 1,
+        "lz4": 1,
+        "plain": 0,
+        "failed": 0
+      },
+      "programs": 2,
+      "stages": {
+        "VS": 1,
+        "PS": 1
+      },
+      "has_rdef": false,
+      "chunks_union": [
+        "ISGN",
+        "OSGN",
+        "SHDR"
+      ],
+      "sha1_manifest": [
+        "a41cc19b90bf2c6dfe39b3a5e1ddb4fa129f1c8e",
+        "bb5364624ba952af19f3129875e4cfa43b606637"
+      ],
+      "problems": [],
+      "raw_file": "raw/Transition__Energy.bin"
+    },
+    {
+      "name": "Custom/FloorShaderIsland",
+      "category": "Custom",
+      "source_file": "sharedassets1.assets",
+      "path_id": 549,
+      "compressed_bytes": 7110,
+      "decompressed_bytes": 79116,
+      "segments": {
+        "segments": 1,
+        "lz4": 1,
+        "plain": 0,
+        "failed": 0
+      },
+      "programs": 22,
+      "stages": {
+        "VS": 13,
+        "PS": 9
+      },
+      "has_rdef": false,
+      "chunks_union": [
+        "ISGN",
+        "OSGN",
+        "SHDR"
+      ],
+      "sha1_manifest": [
+        "132ca4229b5fc3c5d11f65c1778db15777a15be7",
+        "189c3e64fddcb59ada57b61f3ec54ba00392ca36",
+        "b4f932b5a94b53447cae84d43fcd1d9f6e520ad2",
+        "e0f9ed0c29777ef8f36707574cea6606250ce796",
+        "d91b27c2ac036a4deb985b029a114b7205ae1bdc",
+        "9658249896b8a990fa0d1d80435adedb77f94e28",
+        "810655e431117e97c1673f31a413049d7b1c4e47",
+        "07c0c96a97621b5ec79e39b35f3ad7c2281713a8",
+        "c6c5de0a8fbc325c42107ca25ffec1ebc110dd64",
+        "c6c5de0a8fbc325c42107ca25ffec1ebc110dd64",
+        "621d5eceb81f4e3cd5fe9f7516e670e921abcccd",
+        "621d5eceb81f4e3cd5fe9f7516e670e921abcccd",
+        "cdf548181389bbff33f313ed61102e4c67edb648",
+        "d8476daa495343bceb10bd5c803add2fdc543366",
+        "a08078d54812f39541f92a5af70cab35abec553c",
+        "cdf548181389bbff33f313ed61102e4c67edb648",
+        "8560f5ca494e24263358a7a402ade330adb76d98",
+        "e839823ad700326c40f5e284168cccfeb6833edc",
+        "057a0deb50c650c70b7d2112dee91218b74ac160",
+        "c2fc8748a648f62a6e5b62781d68f374e5af3759",
+        "45141ba5b677e194d36bda340fdeb2b36a62347e",
+        "d3cdf72a206d265ea7d91d260e17bc5f172e9dd7"
+      ],
+      "problems": [],
+      "raw_file": "raw/Custom__FloorShaderIsland.bin"
+    },
+    {
+      "name": "Custom/BoosterShader",
+      "category": "Custom",
+      "source_file": "sharedassets1.assets",
+      "path_id": 553,
+      "compressed_bytes": 12694,
+      "decompressed_bytes": 117460,
+      "segments": {
+        "segments": 1,
+        "lz4": 1,
+        "plain": 0,
+        "failed": 0
+      },
+      "programs": 34,
+      "stages": {
+        "VS": 19,
+        "PS": 15
+      },
+      "has_rdef": false,
+      "chunks_union": [
+        "ISGN",
+        "OSGN",
+        "SHDR"
+      ],
+      "sha1_manifest": [
+        "64f5c078dad651e182d458413b47934d0c3349d1",
+        "d6f7f7c527857450aec31c049b7b490f7d44b135",
+        "eaada47d27c77b522939f753cc021081de8679d6",
+        "d9bbcf6c261667d9724c725b222af19016b94055",
+        "64f5c078dad651e182d458413b47934d0c3349d1",
+        "0c3305c5bc51d0960352918f007f469490de0ed4",
+        "eaada47d27c77b522939f753cc021081de8679d6",
+        "eb87de1432e2ab22d8f1760838105d0b2ab25234",
+        "98761b646b28309b8a3b932bac7ab4aaee944ad0",
+        "185a503c09e96d73c6ec7389f0f434c2a2878fbc",
+        "7530e75694a65bc51fca1fffa8b017e443cfc1bb",
+        "049cfc62ee0800626e56bb3bb2c4f5a49274ee4b",
+        "baf3d04128770feec368c0ffe4bee1117f0ad6f6",
+        "879d872589d20791ce72b70db6abfd333fa6a873",
+        "be16b3c4c396bfba1eb373b5af1e288b9518a80d",
+        "baf3d04128770feec368c0ffe4bee1117f0ad6f6",
+        "284c619458f271c864de7a7694d604bef169d163",
+        "d72e4ea90dff4402d482341f3a90912a4d22ee09",
+        "668b54c1d2a729f54d0080000512e7edd6d778a4",
+        "102112de1b37e96f870f57708a72e3fa6678416b",
+        "84143ab01d0d376c7e448272deef810bef7922eb",
+        "5a504c32ab007278784652b1ffeff7f3545d84e9",
+        "879d872589d20791ce72b70db6abfd333fa6a873",
+        "7bbc309d722fb566ac35ad93d2f6c8ea69783763",
+        "879d872589d20791ce72b70db6abfd333fa6a873",
+        "7bbc309d722fb566ac35ad93d2f6c8ea69783763",
+        "a7e721efda204abe479bd35f02ef86611394bd94",
+        "e33e7476ef334060c952fefbfa2828ad753efc0b",
+        "e041a852c93ef2d80983099703e4b1a3bf910e4b",
+        "e194fcfe676fa66c4ac5dc8c1b7cb8b7329cff8a",
+        "ddc3e3f25c6a1c99f6399d36267e1349ee8203e0",
+        "5c3d97427ac648d41c3596940e3af7158b4a24d8",
+        "eb79aece59835d99ae27473fcc6482ff1fcf3517",
+        "eb79aece59835d99ae27473fcc6482ff1fcf3517"
+      ],
+      "problems": [],
+      "raw_file": "raw/Custom__BoosterShader.bin"
+    },
+    {
+      "name": "Transition/Cities",
+      "category": "Game",
+      "source_file": "sharedassets1.assets",
+      "path_id": 554,
+      "compressed_bytes": 1575,
+      "decompressed_bytes": 5256,
+      "segments": {
+        "segments": 1,
+        "lz4": 1,
+        "plain": 0,
+        "failed": 0
+      },
+      "programs": 2,
+      "stages": {
+        "VS": 1,
+        "PS": 1
+      },
+      "has_rdef": false,
+      "chunks_union": [
+        "ISGN",
+        "OSGN",
+        "SHDR"
+      ],
+      "sha1_manifest": [
+        "a41cc19b90bf2c6dfe39b3a5e1ddb4fa129f1c8e",
+        "60204c8151a98f6e5d40a6fa785b6f67ee05d34d"
+      ],
+      "problems": [],
+      "raw_file": "raw/Transition__Cities.bin"
+    },
+    {
+      "name": "Sprites/SpriteOnTop",
+      "category": "Game",
+      "source_file": "sharedassets1.assets",
+      "path_id": 557,
+      "compressed_bytes": 1075,
+      "decompressed_bytes": 3556,
+      "segments": {
+        "segments": 1,
+        "lz4": 1,
+        "plain": 0,
+        "failed": 0
+      },
+      "programs": 4,
+      "stages": {
+        "VS": 2,
+        "PS": 2
+      },
+      "has_rdef": false,
+      "chunks_union": [
+        "ISGN",
+        "OSGN",
+        "SHDR"
+      ],
+      "sha1_manifest": [
+        "3e98eae2434619a78e358159d38b186c283fb58d",
+        "f1f81c940a99fa37755ab6555e024b5649efb71a",
+        "3aa3dabc65f18eee9ad990bca141f119c542c243",
+        "3aa3dabc65f18eee9ad990bca141f119c542c243"
+      ],
+      "problems": [],
+      "raw_file": "raw/Sprites__SpriteOnTop.bin"
+    },
+    {
+      "name": "Postprocess/SokpopIntro",
+      "category": "Game",
+      "source_file": "sharedassets0.assets",
+      "path_id": 14,
+      "compressed_bytes": 901,
+      "decompressed_bytes": 1920,
+      "segments": {
+        "segments": 1,
+        "lz4": 1,
+        "plain": 0,
+        "failed": 0
+      },
+      "programs": 2,
+      "stages": {
+        "VS": 1,
+        "PS": 1
+      },
+      "has_rdef": false,
+      "chunks_union": [
+        "ISGN",
+        "OSGN",
+        "SHDR"
+      ],
+      "sha1_manifest": [
+        "d16f2f7d5b2c686c1b4a43de7f11fc9fe290799b",
+        "43dbae8a20a5e2381974cc8b6ad1ab74e532de6f"
+      ],
+      "problems": [],
+      "raw_file": "raw/Postprocess__SokpopIntro.bin"
+    }
+  ]
+}

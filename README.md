@@ -57,9 +57,11 @@
 | [tools/scan_metadata_overview.py](tools/scan_metadata_overview.py) | 七份台账汇总主表与跨台账一致性断言 |
 | [tools/reconstruct_source.py](tools/reconstruct_source.py) | 源包分卷拼接/侧车归位/版本与大小校验 |
 | [tools/extract_shader_blobs.py](tools/extract_shader_blobs.py) | Shader/ComputeShader blob 与元数据提取 |
+| [tools/extract_dxbc_programs.py](tools/extract_dxbc_programs.py) | LZ4 解码 shader blob + 切出 DXBC 程序段（VS/PS 分阶段） |
 | [tools/build_shader_worklist.py](tools/build_shader_worklist.py) | 30 个自研 shader 分族 + 差集 + 风险，生成保真链工作单 |
 | [tools/export_content_inventory.py](tools/export_content_inventory.py) | TextAsset/DLC bundle/混音器链路盘点 |
 | [shader_extract/shader_ledger.md](shader_extract/shader_ledger.md) | Shader 台账（属性/关键字/blob 大小） |
+| [shader_extract/dxbc_ledger.md](shader_extract/dxbc_ledger.md) | 30 shader / 502 段 DXBC 程序台账（含阶段与体积） |
 | [shader_extract/shader_worklist.md](shader_extract/shader_worklist.md) | Shader 保真链工作单（15 族/差集/风险/验收） |
 | [blocked_metadata/blocked_metadata.md](blocked_metadata/blocked_metadata.md) | 阻断子系统引用与原生 PInvoke 元数据台账 |
 | [platform_refs/platform_refs.md](platform_refs/platform_refs.md) | Steamworks / Google.Apis 类型与成员引用台账 |

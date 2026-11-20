@@ -91,12 +91,19 @@ def risk_flags(s: dict) -> list[str]:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
+    ap.add_argument("--dxbc-ledger", default="shader_extract/dxbc_ledger.json",
+                    help="DXBC 切片台账(可选); 有则给每个 shader 标注原版程序数/阶段")
     ap.add_argument("--ledger", default="shader_extract/shader_ledger.json")
     ap.add_argument("--out", default="shader_extract")
     ap.add_argument("--threshold", type=float, default=0.55)
     args = ap.parse_args()
 
     data = json.loads(Path(args.ledger).read_text(encoding="utf-8"))
+    dxbc = {}
+    dp = Path(args.dxbc_ledger)
+    if dp.exists():
+        for r in json.loads(dp.read_text(encoding="utf-8")).get("shaders", []):
+            dxbc[r["name"]] = r
     by_name = {s["name"]: s for s in data["shaders"]}
     targets = [by_name[n] for n in data["game_shaders"] if n in by_name]
     if not targets:
@@ -127,13 +134,19 @@ def main() -> int:
             md.append(f"- 族内差集属性 {len(union_props - common)} 个：{', '.join(sorted(union_props - common))}")
         md.append(f"- 关键字并集 {len(kws)} 条")
         md.append("")
-        md.append("| Shader | 分类 | blob(B) | 属性数 | 关键字 | SubShader | 独有属性 | 风险 |")
-        md.append("|---|---|---:|---:|---:|---:|---|---|")
+        md.append("| Shader | 分类 | 压缩(B) | 解压(B) | 程序(VS/PS) | 属性数 | 关键字 | SubShader | 独有属性 | 风险 |")
+        md.append("|---|---|---:|---:|---|---:|---:|---:|---|---|")
         for m in members:
             own = sorted(set(m["properties"]) - common)
             flags = risk_flags(m)
-            md.append(f"| {m['name']} | {m['category']} | {m['blob_size']} | {len(m['properties'])} | "
-                      f"{len(m['keywords'])} | {m.get('subshader_count', 1)} | "
+            d = dxbc.get(m["name"], {})
+            dtxt = (f"{d.get('decompressed_bytes', '-')} | "
+                    f"{d.get('programs', '-')} ({d.get('stages', {}).get('VS', 0)}/"
+                    f"{d.get('stages', {}).get('PS', 0)})") if d else "- | -"
+            if dxbc and not d:
+                flags = flags + ["缺 DXBC 切片(先跑 extract_dxbc_programs.py)"]
+            md.append(f"| {m['name']} | {m['category']} | {m['blob_size']} | {dtxt} | "
+                      f"{len(m['properties'])} | {len(m['keywords'])} | {m.get('subshader_count', 1)} | "
                       f"{', '.join(own) if own else '—'} | {'；'.join(flags) if flags else '—'} |")
             rows.append({
                 "family": f"F{gi}",
@@ -141,6 +154,10 @@ def main() -> int:
                 "category": m["category"],
                 "blob_file": m["blob_file"],
                 "blob_size": m["blob_size"],
+                "decompressed_bytes": dxbc.get(m["name"], {}).get("decompressed_bytes", ""),
+                "dxbc_programs": dxbc.get(m["name"], {}).get("programs", ""),
+                "dxbc_vs": dxbc.get(m["name"], {}).get("stages", {}).get("VS", ""),
+                "dxbc_ps": dxbc.get(m["name"], {}).get("stages", {}).get("PS", ""),
                 "properties": "|".join(m["properties"]),
                 "own_properties": "|".join(own),
                 "keywords": "|".join(m["keywords"]),
@@ -159,6 +176,8 @@ def main() -> int:
     md.append("2. 族内先做 blob 最大、关键字最多的那个（信息最全，反编译成功率最高），再往下做小变体。")
     md.append("3. `blob<1.5KB` 的条目先确认是否为真实空壳；若是，按原版视觉重建而不是硬还原字节。")
     md.append("4. 每完成一个 shader，把 `shader_worklist.csv` 的 `status` 从 `pending` 改 `done` 并记抓帧结论。")
+    md.append("5. **验收硬指标**：`shader_extract/dxbc/` 里该 shader 的原版程序数（如 `Custom/BoosterShader` 34 段 = VS 19 / PS 15）")
+    md.append("   是重建的下限参照 —— 重建后编译出的程序段数明显少于原版，说明关键字/变体被吃掉了，不算复刻。")
     md.append("")
 
     (outdir / "shader_worklist.md").write_text("\n".join(md), encoding="utf-8")
