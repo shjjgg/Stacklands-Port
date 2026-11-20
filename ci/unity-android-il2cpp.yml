@@ -51,111 +51,111 @@ jobs:
         id: recon
         if: hashFiles(env.SOURCE_RAW) != ''
         run: |
-          python3 PORT/tools/reconstruct_source.py \
+          python3 tools/reconstruct_source.py \
             --in "$SOURCE_RAW" --out source/recon
           echo "ready=$(jq -r .ready source/recon/reconstruct_report.json)" >> "$GITHUB_OUTPUT"
 
       - name: Static scan (assets metadata)
         if: hashFiles(env.SOURCE_DATA) != ''
         run: |
-          python3 PORT/tools/scan_static.py \
+          python3 tools/scan_static.py \
             --data "$SOURCE_DATA" \
             --managed "$SOURCE_DATA/Managed" \
-            --out PORT/docs/scan_report.md \
-            --json PORT/docs/scan_report.json
+            --out docs/scan_report.md \
+            --json docs/scan_report.json
 
       - name: Blocked subsystem / native PInvoke metadata scan
         if: hashFiles(env.SOURCE_DATA) != ''
         run: |
-          python3 PORT/tools/scan_blocked_metadata.py \
+          python3 tools/scan_blocked_metadata.py \
             --managed "$SOURCE_DATA/Managed" \
-            --out PORT/blocked_metadata
+            --out blocked_metadata
 
       - name: Platform service references (Steam / Google)
         if: hashFiles(env.SOURCE_DATA) != ''
         run: |
-          python3 PORT/tools/scan_platform_refs.py \
+          python3 tools/scan_platform_refs.py \
             --managed "$SOURCE_DATA/Managed" \
-            --out PORT/platform_refs
+            --out platform_refs
 
       - name: Game assembly type inventory
         if: hashFiles(env.SOURCE_DATA) != ''
         run: |
-          python3 PORT/tools/scan_type_inventory.py \
+          python3 tools/scan_type_inventory.py \
             --managed "$SOURCE_DATA/Managed" \
-            --scan-report PORT/docs/scan_report.json \
-            --out PORT/type_inventory
+            --scan-report docs/scan_report.json \
+            --out type_inventory
 
       - name: Game assembly method & lifecycle inventory
         if: hashFiles(env.SOURCE_DATA) != ''
         run: |
-          python3 PORT/tools/scan_method_inventory.py \
+          python3 tools/scan_method_inventory.py \
             --managed "$SOURCE_DATA/Managed" \
-            --out PORT/method_inventory
+            --out method_inventory
 
       - name: Game assembly field & enum inventory
         if: hashFiles(env.SOURCE_DATA) != ''
         run: |
-          python3 PORT/tools/scan_field_inventory.py \
+          python3 tools/scan_field_inventory.py \
             --managed "$SOURCE_DATA/Managed" \
-            --out PORT/field_inventory
+            --out field_inventory
 
       - name: Game assembly property & event inventory
         if: hashFiles(env.SOURCE_DATA) != ''
         run: |
-          python3 PORT/tools/scan_property_event_inventory.py \
+          python3 tools/scan_property_event_inventory.py \
             --managed "$SOURCE_DATA/Managed" \
-            --out PORT/property_event_inventory
+            --out property_event_inventory
 
       - name: Game assembly custom attribute inventory
         if: hashFiles(env.SOURCE_DATA) != ''
         run: |
-          python3 PORT/tools/scan_attribute_inventory.py \
+          python3 tools/scan_attribute_inventory.py \
             --managed "$SOURCE_DATA/Managed" \
-            --out PORT/attribute_inventory
+            --out attribute_inventory
 
       - name: Assembly reference closure & embedded resources
         if: hashFiles(env.SOURCE_DATA) != ''
         run: |
-          python3 PORT/tools/scan_dependency_inventory.py \
+          python3 tools/scan_dependency_inventory.py \
             --managed "$SOURCE_DATA/Managed" \
-            --out PORT/dependency_inventory
+            --out dependency_inventory
 
       - name: Interface impl & external member reference inventory
         if: hashFiles(env.SOURCE_DATA) != ''
         run: |
-          python3 PORT/tools/scan_interface_member.py \
+          python3 tools/scan_interface_member.py \
             --managed "$SOURCE_DATA/Managed" \
-            --out PORT/interface_member_inventory
+            --out interface_member_inventory
 
       - name: Metadata overview & cross-ledger consistency checks
         if: hashFiles(env.SOURCE_DATA) != ''
         run: |
-          python3 PORT/tools/scan_metadata_overview.py \
-            --root PORT --out PORT/docs
+          python3 tools/scan_metadata_overview.py \
+            --root . --out docs
 
       - name: Extract shader blobs & ledger
         if: hashFiles(env.SOURCE_DATA) != ''
         run: |
-          python3 PORT/tools/extract_shader_blobs.py \
+          python3 tools/extract_shader_blobs.py \
             --data "$SOURCE_DATA" \
-            --out PORT/shader_extract
+            --out shader_extract
 
       - name: Inventory config / localization / DLC / audio
         if: hashFiles(env.SOURCE_DATA) != ''
         run: |
-          python3 PORT/tools/export_content_inventory.py \
+          python3 tools/export_content_inventory.py \
             --data "$SOURCE_DATA" \
             --bundles "source/Cities_DLC/PC/cities_dlc,source/Spirits_DLC/PC/spirits_dlc" \
-            --out PORT/content_inventory
+            --out content_inventory
 
       # 反编译源码落地后: IL2CPP 风险 API 扫描 (Emit/Roslyn/反射/Harmony)
       - name: IL2CPP risk scan (decompiled source)
         if: hashFiles(env.DECOMPILED_SRC) != ''
         run: |
-          python3 PORT/tools/scan_il2cpp_risks.py \
+          python3 tools/scan_il2cpp_risks.py \
             --src "$DECOMPILED_SRC" \
-            --out PORT/docs/il2cpp_risks.md
+            --out docs/il2cpp_risks.md
 
       - name: Upload analysis reports & blobs
         if: always()
@@ -163,21 +163,21 @@ jobs:
         with:
           name: static-analysis-${{ github.sha }}
           path: |
-            PORT/docs/scan_report.*
-            PORT/docs/il2cpp_risks.md
-            PORT/blocked_metadata/
-            PORT/platform_refs/
-            PORT/type_inventory/
-            PORT/method_inventory/
-            PORT/field_inventory/
-            PORT/property_event_inventory/
-            PORT/attribute_inventory/
-            PORT/dependency_inventory/
-            PORT/interface_member_inventory/
-            PORT/docs/metadata_overview.*
-            PORT/docs/15_反编译落地后待办清单.md
-            PORT/shader_extract/
-            PORT/content_inventory/
+            docs/scan_report.*
+            docs/il2cpp_risks.md
+            blocked_metadata/
+            platform_refs/
+            type_inventory/
+            method_inventory/
+            field_inventory/
+            property_event_inventory/
+            attribute_inventory/
+            dependency_inventory/
+            interface_member_inventory/
+            docs/metadata_overview.*
+            docs/15_反编译落地后待办清单.md
+            shader_extract/
+            content_inventory/
           if-no-files-found: ignore
 
   build-android:
