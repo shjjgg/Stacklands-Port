@@ -351,6 +351,17 @@ jobs:
       #   game-ci/unity-builder@v4 负责 激活 + 导入 + -executeMethod + 产物收集
       # 授权优先级: UNITY_LICENSE(.ulf 全文) > UNITY_SERIAL + 邮箱密码(Plus/Pro)
       #   Personal 版官方明确不支持命令行/序列号激活, 只能用 .ulf 文件
+      - name: 许可注入自检 (只打印长度, 不打印内容)
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        run: |
+          echo "UNITY_LICENSE 长度=${#UNITY_LICENSE}"
+          case "$UNITY_LICENSE" in
+            *"<LicenseFile"*|*"<?xml"*) echo "形态: 原始 ulf XML" ;;
+            "") echo "::error::UNITY_LICENSE 为空"; exit 1 ;;
+            *) echo "形态: 可能是 base64/其它" | head -c 60; echo ;;
+          esac
+
       - name: Build Android (GameCI unity-builder)
         uses: game-ci/unity-builder@v4
         env:
