@@ -33,15 +33,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
       _FaceTex:
-        m_Texture: {fileID: 2800000, guid: 3b5f7ca9237225c4bb5093257483dd6d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0265f27642a471443b2cf36baa143066, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
       _MainTex:
-        m_Texture: {fileID: 2800000, guid: d315050ef0511024d8a0fdb2ff37bf5e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0265f27642a471443b2cf36baa143066, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
       _OutlineTex:
-        m_Texture: {fileID: 2800000, guid: e2ac1f8d392025942985eda37142402f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0265f27642a471443b2cf36baa143066, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: {}

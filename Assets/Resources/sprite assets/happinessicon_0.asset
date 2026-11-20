@@ -38,7 +38,7 @@ MonoBehaviour:
     m_StrikethroughOffset: 0
     m_StrikethroughThickness: 0
     m_TabWidth: 0
-  spriteSheet: {fileID: 2800000, guid: 0921c6a7dddd7f64486657058ab041ea, type: 3}
+  spriteSheet: {fileID: 2800000, guid: e93d430a718cdbf4f8fc5694e9f52555, type: 3}
   m_SpriteCharacterTable:
   - m_ElementType: 2
     m_Unicode: 65534

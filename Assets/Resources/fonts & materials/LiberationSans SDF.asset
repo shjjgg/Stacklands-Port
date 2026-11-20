@@ -4794,7 +4794,7 @@ MonoBehaviour:
     m_GlyphIndex: 2179
     m_Scale: 1
   m_AtlasTextures:
-  - {fileID: 2800000, guid: a27bd688993820d499c2590613c7b49f, type: 3}
+  - {fileID: 2800000, guid: 8838dfa15d0995e4da95d490a89143c0, type: 3}
   m_AtlasTextureIndex: 0
   m_IsMultiAtlasTexturesEnabled: 0
   m_ClearDynamicDataOnBuild: 0
