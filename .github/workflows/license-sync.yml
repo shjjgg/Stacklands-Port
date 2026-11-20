@@ -1,0 +1,23 @@
+name: License Sync Probe
+on:
+  workflow_dispatch: {}
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    container:
+      image: unityci/editor:ubuntu-2022.3.4f1-android-3
+    steps:
+      - name: Sync entitlements with account
+        env:
+          U: ${{ secrets.UNITY_EMAIL }}
+          P: ${{ secrets.UNITY_PASSWORD }}
+        run: |
+          LC=/opt/unity/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client
+          echo "=== showContext ==="; "$LC" --showContext 2>&1 | head -20 || true
+          echo "=== syncEntitlements ==="; "$LC" --syncEntitlements --username "$U" --password "$P" 2>&1 | head -20 || true
+          echo "=== showEntitlements ==="; "$LC" --showEntitlements 2>&1 | head -30 || true
+          echo "=== showAllEntitlements ==="; "$LC" --showAllEntitlements 2>&1 | head -30 || true
+          echo "=== files ==="; find /root/.config/unity3d /root/.local/share/unity3d -type f 2>/dev/null | head -20
+          echo "=== editor after sync ==="
+          /opt/unity/Editor/Unity -quit -batchmode -nographics -logFile /tmp/e.log || true
+          grep -iE "licen|ulf|entitle|error" /tmp/e.log | head -15 || true
