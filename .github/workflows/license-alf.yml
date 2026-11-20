@@ -7,15 +7,12 @@ jobs:
     container:
       image: unityci/editor:ubuntu-2022.3.4f1-android-3
     steps:
-      - name: Generate alf
+      - name: Probe licensing client capabilities
         run: |
-          mkdir -p /root/.local/share/unity3d/Unity
-          /opt/unity/Editor/Unity -quit -batchmode -nographics -createManualActivationFile -logFile /tmp/alf.log || true
-          find / -name "*.alf" -mmin -15 2>/dev/null | head
-          cp "$(find / -name '*.alf' -mmin -15 2>/dev/null | head -1)" /tmp/Unity_v2022.alf || true
-          tail -40 /tmp/alf.log || true
-      - uses: actions/upload-artifact@v4
-        with:
-          name: unity-alf
-          path: /tmp/Unity_v2022.alf
-          if-no-files-found: warn
+          LC=/opt/unity/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client
+          echo "=== --help ==="; "$LC" --help 2>&1 | head -60 || true
+          echo "=== version ==="; "$LC" --version 2>&1 | head -5 || true
+          echo "=== activate-license? ==="; "$LC" --activate-license --help 2>&1 | head -20 || true
+          echo "=== editor -force-free ==="
+          /opt/unity/Editor/Unity -quit -batchmode -nographics -force-free -logFile /tmp/ff.log || true
+          grep -iE "licen|ulf|entitle" /tmp/ff.log | head -10 || true
