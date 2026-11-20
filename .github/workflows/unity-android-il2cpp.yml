@@ -63,7 +63,7 @@ jobs:
           # 并把明细写进 Step Summary —— 让"为什么不能构建"在 CI 首页就能看到, 而不是只看一个 false。
           python3 tools/preflight_project.py --root . --json-out preflight.json || true
           pr=true; [ -f ProjectSettings/ProjectVersion.txt ] || pr=false
-          lr=false; [ -n "$UNITY_EMAIL" ] && [ -n "$UNITY_PASSWORD" ] && lr=true
+          lr=false; if [ -n "$UNITY_LICENSE" ] || { [ -n "$UNITY_SERIAL" ] && [ -n "$UNITY_EMAIL" ] && [ -n "$UNITY_PASSWORD" ]; }; then lr=true; fi
           echo "project_ready=$pr" >> "$GITHUB_OUTPUT"
           echo "license_ready=$lr" >> "$GITHUB_OUTPUT"
           echo "verdict=$(jq -r .verdict preflight.json)" >> "$GITHUB_OUTPUT"
@@ -346,105 +346,35 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Unity PERSONAL 版授权只能账号在线激活: 不用 game-ci/unity-activate@v4
-      # (该 action 只支持 UNITY_LICENSE 文件 / UNITY_SERIAL 序列号策略), 改为在
-      # GameCI 编辑器镜像内直接调用 Unity.Licensing.Client 激活, 与仓库既有的
-      # 个人版构建流程一致。密钥: Settings → Secrets → UNITY_EMAIL / UNITY_PASSWORD。
-      - name: Preflight guard
+      # 用 GameCI 官方 action 构建(用户规定的构建方式):
+      #   game-ci/unity-builder@v4 负责 激活 + 导入 + -executeMethod + 产物收集
+      # 授权优先级: UNITY_LICENSE(.ulf 全文) > UNITY_SERIAL + 邮箱密码(Plus/Pro)
+      #   Personal 版官方明确不支持命令行/序列号激活, 只能用 .ulf 文件
+      - name: Build Android (GameCI unity-builder)
+        uses: game-ci/unity-builder@v4
         env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-        run: |
-          if [ ! -f ProjectSettings/ProjectVersion.txt ]; then
-            echo "::error::工程尚未落地 (缺 ProjectSettings/ProjectVersion.txt), 无法构建; 先按 docs/15 T1 完成 AssetRipper 导出。"
-            exit 1
-          fi
-          eng=$(sed -n 's/^m_EditorVersion: *//p' ProjectSettings/ProjectVersion.txt | head -1)
-          echo "project engine: $eng / baseline: $UNITY_VERSION"
-          if [ "$eng" != "$UNITY_VERSION" ]; then
-            echo "::error::引擎版本漂移: 工程 $eng, 基线 $UNITY_VERSION (禁止跨大版本)。"
-            exit 1
-          fi
-          if [ ! -f Assets/Editor/PortBuild.cs ]; then
-            echo "::error::缺少 Assets/Editor/PortBuild.cs, -executeMethod 会直接失败。"
-            exit 1
-          fi
-          if [ -z "$UNITY_EMAIL" ] || [ -z "$UNITY_PASSWORD" ]; then
-            echo "::error::缺少 UNITY_EMAIL / UNITY_PASSWORD, Personal 版无法在线激活。"
-            exit 1
-          fi
-
-      - name: Restore Library cache
-        uses: actions/cache@v4
         with:
-          path: |
-            Library
-            ${{ env.BUILD_PATH }}
-          key: ${{ runner.os }}-unity-${{ env.UNITY_VERSION }}-${{ hashFiles('Assets/**', 'ProjectSettings/**', 'Packages/**') }}
-          restore-keys: |
-            ${{ runner.os }}-unity-${{ env.UNITY_VERSION }}-
-
-      - name: Build Android in GameCI image (Personal license)
-        env:
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-          KEYSTORE_NAME: ${{ secrets.KEYSTORE_NAME }}
-          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-          KEYALIAS_NAME: ${{ secrets.KEYALIAS_NAME }}
-          KEYALIAS_PASSWORD: ${{ secrets.KEYALIAS_PASSWORD }}
-        run: |
-          mkdir -p out
-          set +e
-          docker run --rm \
-            -v "$PWD":/project \
-            -v "$PWD/out":/out \
-            -e UNITY_EMAIL -e UNITY_PASSWORD \
-            -e KEYSTORE_NAME -e KEYSTORE_PASSWORD \
-            -e KEYALIAS_NAME -e KEYALIAS_PASSWORD \
-            -e BUILD_VERSION=0.1.0 \
-            -e BUNDLE_VERSION_CODE="${{ github.run_number }}" \
-            -e BUILD_AAB=0 \
-            -e BUILD_TYPE=Release \
-            -e BUNDLE_IDENTIFIER \
-            -e SCREEN_ORIENTATION \
-            -e MIN_SDK \
-            -e TARGET_SDK \
-            -e BUILD_PATH=builds/android \
-            -e STRICT -e STRICT_WARNINGS -e STRICT_MIN_CUSTOM_SHADERS \
-            -e HOME=/root \
-            -w /project \
-            --entrypoint bash \
-            unityci/editor:ubuntu-2022.3.4f1-android-3 \
-            -c '
-              set -euo pipefail
-              LC=/opt/unity/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client
-              # 这个版本的 Licensing Client 只认 --activate-all + --username/--password,
-              # --include-personal 不是合法选项(实测 UnknownOptionError, 直接导致构建失败)
-              "$LC" --activate-all \
-                --username "$UNITY_EMAIL" --password "$UNITY_PASSWORD"
-              echo "=== license files ==="
-              ls -la /root/.config/unity3d/Unity/licenses 2>/dev/null || true
-              echo "=== build (IL2CPP arm64-v8a) ==="
-              set +e
-              /opt/unity/Editor/Unity -batchmode -nographics -quit \
-                -projectPath /project \
-                -executeMethod PortBuild.StrictBuild \
-                -logFile /project/build.log
-              echo $? > /project/unity.exit
-              set -e
-              echo "=== outputs ==="
-              find /project/$BUILD_PATH -type f \( -name "*.apk" -o -name "*.aab" -o -name "*.obb" \) 2>/dev/null || true
-            '
-          code=$(cat unity.exit 2>/dev/null | tr -dc "0-9")
-          cp -v build.log out/ 2>/dev/null || true
-          sudo chown -R "$(id -u):$(id -g)" . || true
-          echo "unity exit code: ${code:-missing}"
-          # Unity 退出码语义(见 PortBuild.cs 头注释): 0 通过 / 2 前置 / 3 严格设置 / 4 结果不合格
-          if [ "${code:-1}" != "0" ]; then
-            echo "::error::Unity 构建失败, 退出码 ${code:-missing} (缺日志时看 Upload Editor logs 产物)"
-            exit 1
-          fi
-
+          projectPath: .
+          unityVersion: ${{ env.UNITY_VERSION }}
+          targetPlatform: Android
+          buildMethod: PortBuild.StrictBuild
+          allowDirtyBuild: true
+          versioning: None
+          androidExportType: androidPackage
+          androidTargetSdkVersion: ${{ env.TARGET_SDK }}
+          androidMinSdkVersion: ${{ env.MIN_SDK }}
+          androidKeystoreName: ${{ secrets.KEYSTORE_NAME }}
+          androidKeystoreBase64: ${{ secrets.KEYSTORE_BASE64 }}
+          androidKeystorePass: ${{ secrets.KEYSTORE_PASSWORD }}
+          androidKeyaliasName: ${{ secrets.KEYALIAS_NAME }}
+          androidKeyaliasPass: ${{ secrets.KEYALIAS_PASSWORD }}
+          customParameters: >-
+            -buildPath builds/android
+            -strictBuild
       # ---- 严格审计 A: 日志 (Unity 退出码 0 不代表内容没错) ----
       - name: Strict log audit
         run: |

@@ -176,14 +176,24 @@ def check_platform_stubs(root: Path) -> None:
 
 
 def check_license() -> None:
+    lic = os.environ.get("UNITY_LICENSE", "")
+    ser = os.environ.get("UNITY_SERIAL", "")
     e = os.environ.get("UNITY_EMAIL", "")
     p = os.environ.get("UNITY_PASSWORD", "")
-    if e and p:
-        add("blocking", "Unity Personal 账号密钥", "-", "OK", "UNITY_EMAIL/UNITY_PASSWORD 已配置", "-")
+    if lic:
+        ok = "ULF" in lic or "<" in lic
+        add("blocking", "Unity 许可证 (GameCI)", "-",
+            "OK" if ok else "格式异常",
+            "UNITY_LICENSE(.ulf 全文) 已配置" if ok else "UNITY_LICENSE 不是 .ulf XML 文本",
+            "-" if ok else "Personal 版只能用自己的 .ulf; 从 Unity Hub 导出 Unity_lic.ulf 全文")
+    elif ser and e and p:
+        add("blocking", "Unity 许可证 (GameCI)", "-", "OK",
+            "UNITY_SERIAL + 邮箱密码 已配置 (Plus/Pro)", "-")
     else:
-        add("blocking", "Unity Personal 账号密钥", "-", "缺失",
-            "Personal 版只能在线激活, 无序列号",
-            "在仓库 Secrets 配 UNITY_EMAIL / UNITY_PASSWORD")
+        add("blocking", "Unity 许可证 (GameCI)", "-", "缺失",
+            "缺 UNITY_LICENSE(ulf) 或 UNITY_SERIAL(Plus/Pro)",
+            "Personal: 从 Unity Hub 导出 .ulf 全文存 UNITY_LICENSE; "
+            "Plus/Pro: 配 UNITY_SERIAL + UNITY_EMAIL + UNITY_PASSWORD")
 
 
 def check_keystore() -> None:
