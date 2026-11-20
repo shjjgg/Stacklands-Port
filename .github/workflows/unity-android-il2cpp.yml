@@ -189,6 +189,13 @@ jobs:
             --data "$SOURCE_DATA" \
             --out shader_extract
 
+      - name: Shader fidelity worklist (families & diffs)
+        if: hashFiles(env.SOURCE_DATA) != ''
+        run: |
+          python3 tools/build_shader_worklist.py \
+            --ledger shader_extract/shader_ledger.json \
+            --out shader_extract
+
       - name: Inventory config / localization / DLC / audio
         if: hashFiles(env.SOURCE_DATA) != ''
         run: |

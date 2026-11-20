@@ -72,6 +72,9 @@ def main() -> int:
         mut_wrong_member.write_text(
             real_src.replace("PlayerSettings.Android.keystorePass =", "PlayerSettings.Android.keystorePassword ="),
             encoding="utf-8")
+        mut_instring = d / "instring.cs"
+        mut_instring.write_text(
+            real_src.replace("summary.totalSize}B", "summary.totalSizeBytes}B"), encoding="utf-8")
         mut_unbalanced = d / "unbalanced.cs"
         mut_unbalanced.write_text(real_src.replace("        return true;\n    }\n}", "        return true;\n    }\n", 1),
                                   encoding="utf-8")
@@ -139,6 +142,10 @@ def main() -> int:
                                       "--file", str(ROOT.parent / "Assets" / "Editor" / "PortBuild.cs"),
                                       "--whitelist", str(ROOT.parent / "docs" / "api_verified.json")], 0,
              ["结论: PASS"]),
+            ("静态门: 插值字符串内的错误成员判 FAIL",
+             [sys.executable, str(ROOT / "lint_unity_api_usage.py"), "--file", str(mut_instring),
+              "--whitelist", str(ROOT.parent / "docs" / "api_verified.json")], 1,
+             ["BuildSummary.totalSizeBytes"]),
             ("静态门: 括号不配对判 FAIL", [sys.executable, str(ROOT / "lint_unity_api_usage.py"),
                                         "--file", str(mut_unbalanced),
                                         "--whitelist", str(ROOT.parent / "docs" / "api_verified.json")], 1,

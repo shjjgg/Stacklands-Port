@@ -1,0 +1,594 @@
+{
+  "scanned_at": "2026-11-20T19:51:39",
+  "threshold": 0.55,
+  "targets": 30,
+  "families": [
+    {
+      "id": "F1",
+      "members": [
+        "Custom/ArrowSdfShader",
+        "Custom/SewerPipeShader",
+        "Custom/ConveyorArrowShader",
+        "Custom/TransportArrowShader",
+        "Custom/EnergyCableShader",
+        "Custom/TransportArrowMainlandShader"
+      ]
+    },
+    {
+      "id": "F2",
+      "members": [
+        "Transition/Default",
+        "Transition/Spirit",
+        "Transition/Energy",
+        "Transition/Cities"
+      ]
+    },
+    {
+      "id": "F3",
+      "members": [
+        "Custom/FloorShaderForest",
+        "Custom/FloorShader",
+        "Custom/FloorShaderIsland"
+      ]
+    },
+    {
+      "id": "F4",
+      "members": [
+        "Sprites/StatusEffectSpriteShader",
+        "Sprites/CombatCircleSpriteShader2",
+        "Sprites/SpriteOnTop"
+      ]
+    },
+    {
+      "id": "F5",
+      "members": [
+        "Custom/CardBackShader",
+        "Custom/GridShader"
+      ]
+    },
+    {
+      "id": "F6",
+      "members": [
+        "Custom/SpiritTransitionEffect",
+        "Custom/SpiritImageEffect"
+      ]
+    },
+    {
+      "id": "F7",
+      "members": [
+        "Custom/BoosterShaderTop",
+        "Custom/BoosterShader"
+      ]
+    },
+    {
+      "id": "F8",
+      "members": [
+        "Custom/StatusBar"
+      ]
+    },
+    {
+      "id": "F9",
+      "members": [
+        "Custom/ConflictOutlineSdfShader"
+      ]
+    },
+    {
+      "id": "F10",
+      "members": [
+        "Custom/GenericCardShader"
+      ]
+    },
+    {
+      "id": "F11",
+      "members": [
+        "Custom/CardShaderTest"
+      ]
+    },
+    {
+      "id": "F12",
+      "members": [
+        "Custom/SuperSampled Texture"
+      ]
+    },
+    {
+      "id": "F13",
+      "members": [
+        "Unlit/CardopediaBackgroundShader"
+      ]
+    },
+    {
+      "id": "F14",
+      "members": [
+        "Sprites/BackgroundShader"
+      ]
+    },
+    {
+      "id": "F15",
+      "members": [
+        "Postprocess/SokpopIntro"
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "family": "F1",
+      "shader": "Custom/ArrowSdfShader",
+      "category": "Custom",
+      "blob_file": "blobs/Custom__ArrowSdfShader.blob",
+      "blob_size": 4889,
+      "properties": "_Color|_Start|_End|_SideLength|_Noise|_OutlineColor|_LineThickness|_OutlineThickness",
+      "own_properties": "",
+      "keywords": "STEREO_INSTANCING_ON|UNITY_SINGLE_PASS_STEREO|STEREO_MULTIVIEW_ON|STEREO_CUBEMAP_RENDER_ON|INSTANCING_ON|FOG_LINEAR|FOG_EXP|FOG_EXP2|DIRECTIONAL|LIGHTPROBE_SH|DYNAMICLIGHTMAP_ON|LIGHTMAP_ON|LIGHTMAP_SHADOW_MIXING|DIRLIGHTMAP_COMBINED|VERTEXLIGHT_ON|POINT|SPOT|POINT_COOKIE|DIRECTIONAL_COOKIE|EDITOR_VISUALIZATION|SHADOWS_SHADOWMASK|SHADOWS_SCREEN|SHADOWS_DEPTH|SHADOWS_CUBE|UNITY_HDR_ON",
+      "subshaders": 1,
+      "fallback": "Diffuse",
+      "risks": "关键字 25 条(变体爆炸, 需按需剔除无用 multi_compile)；非可改贴图 2 个；fallback=Diffuse(需决定是否保留)",
+      "chain_steps": "ripper→HLSLDecompiler→spirv-cross→手工补 Pass/Tags/宏/绑定",
+      "status": "pending",
+      "acceptance": "真机抓帧对比原版；Vulkan 与 GLES3 双 API 无粉块/白块；无占位 shader"
+    },
+    {
+      "family": "F1",
+      "shader": "Custom/SewerPipeShader",
+      "category": "Custom",
+      "blob_file": "blobs/Custom__SewerPipeShader.blob",
+      "blob_size": 5091,
+      "properties": "_Color|_Start|_End|_Middle|_SideLength|_Noise|_OutlineColor|_ThickColor|_LineThickness|_OutlineThickness|_HighlightAmount|_ZTestCable|_IsBehind",
+      "own_properties": "_HighlightAmount|_IsBehind|_Middle|_ThickColor|_ZTestCable",
+      "keywords": "STEREO_INSTANCING_ON|UNITY_SINGLE_PASS_STEREO|STEREO_MULTIVIEW_ON|STEREO_CUBEMAP_RENDER_ON|INSTANCING_ON|FOG_LINEAR|FOG_EXP|FOG_EXP2|DIRECTIONAL|LIGHTPROBE_SH|DYNAMICLIGHTMAP_ON|LIGHTMAP_ON|LIGHTMAP_SHADOW_MIXING|DIRLIGHTMAP_COMBINED|VERTEXLIGHT_ON|POINT|SPOT|POINT_COOKIE|DIRECTIONAL_COOKIE|EDITOR_VISUALIZATION|SHADOWS_SHADOWMASK|SHADOWS_SCREEN|SHADOWS_DEPTH|SHADOWS_CUBE|UNITY_HDR_ON",
+      "subshaders": 1,
+      "fallback": "Diffuse",
+      "risks": "关键字 25 条(变体爆炸, 需按需剔除无用 multi_compile)；非可改贴图 2 个；fallback=Diffuse(需决定是否保留)",
+      "chain_steps": "ripper→HLSLDecompiler→spirv-cross→手工补 Pass/Tags/宏/绑定",
+      "status": "pending",
+      "acceptance": "真机抓帧对比原版；Vulkan 与 GLES3 双 API 无粉块/白块；无占位 shader"
+    },
+    {
+      "family": "F1",
+      "shader": "Custom/ConveyorArrowShader",
+      "category": "Custom",
+      "blob_file": "blobs/Custom__ConveyorArrowShader.blob",
+      "blob_size": 4801,
+      "properties": "_Color|_Start|_End|_SideLength|_Noise|_OutlineColor|_LineThickness|_OutlineThickness|_Filled|_Gap",
+      "own_properties": "_Filled|_Gap",
+      "keywords": "STEREO_INSTANCING_ON|UNITY_SINGLE_PASS_STEREO|STEREO_MULTIVIEW_ON|STEREO_CUBEMAP_RENDER_ON|INSTANCING_ON|FOG_LINEAR|FOG_EXP|FOG_EXP2|DIRECTIONAL|LIGHTPROBE_SH|DYNAMICLIGHTMAP_ON|LIGHTMAP_ON|LIGHTMAP_SHADOW_MIXING|DIRLIGHTMAP_COMBINED|VERTEXLIGHT_ON|POINT|SPOT|POINT_COOKIE|DIRECTIONAL_COOKIE|EDITOR_VISUALIZATION|SHADOWS_SHADOWMASK|SHADOWS_SCREEN|SHADOWS_DEPTH|SHADOWS_CUBE|UNITY_HDR_ON",
+      "subshaders": 1,
+      "fallback": "Diffuse",
+      "risks": "关键字 25 条(变体爆炸, 需按需剔除无用 multi_compile)；非可改贴图 2 个；fallback=Diffuse(需决定是否保留)",
+      "chain_steps": "ripper→HLSLDecompiler→spirv-cross→手工补 Pass/Tags/宏/绑定",
+      "status": "pending",
+      "acceptance": "真机抓帧对比原版；Vulkan 与 GLES3 双 API 无粉块/白块；无占位 shader"
+    },
+    {
+      "family": "F1",
+      "shader": "Custom/TransportArrowShader",
+      "category": "Custom",
+      "blob_file": "blobs/Custom__TransportArrowShader.blob",
+      "blob_size": 5182,
+      "properties": "_Color|_Start|_End|_Middle|_SideLength|_Noise|_OutlineColor|_LineColor|_LineThickness|_OutlineThickness|_CarColor|_HighlightAmount|_ZTestCable|_IsBehind",
+      "own_properties": "_CarColor|_HighlightAmount|_IsBehind|_LineColor|_Middle|_ZTestCable",
+      "keywords": "STEREO_INSTANCING_ON|UNITY_SINGLE_PASS_STEREO|STEREO_MULTIVIEW_ON|STEREO_CUBEMAP_RENDER_ON|INSTANCING_ON|FOG_LINEAR|FOG_EXP|FOG_EXP2|DIRECTIONAL|LIGHTPROBE_SH|DYNAMICLIGHTMAP_ON|LIGHTMAP_ON|LIGHTMAP_SHADOW_MIXING|DIRLIGHTMAP_COMBINED|VERTEXLIGHT_ON|POINT|SPOT|POINT_COOKIE|DIRECTIONAL_COOKIE|EDITOR_VISUALIZATION|SHADOWS_SHADOWMASK|SHADOWS_SCREEN|SHADOWS_DEPTH|SHADOWS_CUBE|UNITY_HDR_ON",
+      "subshaders": 1,
+      "fallback": "Diffuse",
+      "risks": "关键字 25 条(变体爆炸, 需按需剔除无用 multi_compile)；非可改贴图 2 个；fallback=Diffuse(需决定是否保留)",
+      "chain_steps": "ripper→HLSLDecompiler→spirv-cross→手工补 Pass/Tags/宏/绑定",
+      "status": "pending",
+      "acceptance": "真机抓帧对比原版；Vulkan 与 GLES3 双 API 无粉块/白块；无占位 shader"
+    },
+    {
+      "family": "F1",
+      "shader": "Custom/EnergyCableShader",
+      "category": "Custom",
+      "blob_file": "blobs/Custom__EnergyCableShader.blob",
+      "blob_size": 5389,
+      "properties": "_Color|_Start|_End|_Middle|_SideLength|_Noise|_OutlineColor|_LineThickness|_OutlineThickness|_SecondColor|_DrawCircle|_ZTestCable|_IsBehind",
+      "own_properties": "_DrawCircle|_IsBehind|_Middle|_SecondColor|_ZTestCable",
+      "keywords": "STEREO_INSTANCING_ON|UNITY_SINGLE_PASS_STEREO|STEREO_MULTIVIEW_ON|STEREO_CUBEMAP_RENDER_ON|INSTANCING_ON|FOG_LINEAR|FOG_EXP|FOG_EXP2|DIRECTIONAL|LIGHTPROBE_SH|DYNAMICLIGHTMAP_ON|LIGHTMAP_ON|LIGHTMAP_SHADOW_MIXING|DIRLIGHTMAP_COMBINED|VERTEXLIGHT_ON|POINT|SPOT|POINT_COOKIE|DIRECTIONAL_COOKIE|EDITOR_VISUALIZATION|SHADOWS_SHADOWMASK|SHADOWS_SCREEN|SHADOWS_DEPTH|SHADOWS_CUBE|UNITY_HDR_ON",
+      "subshaders": 1,
+      "fallback": "Diffuse",
+      "risks": "关键字 25 条(变体爆炸, 需按需剔除无用 multi_compile)；非可改贴图 2 个；fallback=Diffuse(需决定是否保留)",
+      "chain_steps": "ripper→HLSLDecompiler→spirv-cross→手工补 Pass/Tags/宏/绑定",
+      "status": "pending",
+      "acceptance": "真机抓帧对比原版；Vulkan 与 GLES3 双 API 无粉块/白块；无占位 shader"
+    },
+    {
+      "family": "F1",
+      "shader": "Custom/TransportArrowMainlandShader",
+      "category": "Custom",
+      "blob_file": "blobs/Custom__TransportArrowMainlandShader.blob",
+      "blob_size": 5127,
+      "properties": "_Color|_Start|_End|_Middle|_SideLength|_Noise|_OutlineColor|_LineThickness|_OutlineThickness|_CircleColor|_CircleNoise|_HighlightAmount|_ZTestCable|_IsBehind",
+      "own_properties": "_CircleColor|_CircleNoise|_HighlightAmount|_IsBehind|_Middle|_ZTestCable",
+      "keywords": "STEREO_INSTANCING_ON|UNITY_SINGLE_PASS_STEREO|STEREO_MULTIVIEW_ON|STEREO_CUBEMAP_RENDER_ON|INSTANCING_ON|FOG_LINEAR|FOG_EXP|FOG_EXP2|DIRECTIONAL|LIGHTPROBE_SH|DYNAMICLIGHTMAP_ON|LIGHTMAP_ON|LIGHTMAP_SHADOW_MIXING|DIRLIGHTMAP_COMBINED|VERTEXLIGHT_ON|POINT|SPOT|POINT_COOKIE|DIRECTIONAL_COOKIE|EDITOR_VISUALIZATION|SHADOWS_SHADOWMASK|SHADOWS_SCREEN|SHADOWS_DEPTH|SHADOWS_CUBE|UNITY_HDR_ON",
+      "subshaders": 1,
+      "fallback": "Diffuse",
+      "risks": "关键字 25 条(变体爆炸, 需按需剔除无用 multi_compile)；非可改贴图 2 个；fallback=Diffuse(需决定是否保留)",
+      "chain_steps": "ripper→HLSLDecompiler→spirv-cross→手工补 Pass/Tags/宏/绑定",
+      "status": "pending",
+      "acceptance": "真机抓帧对比原版；Vulkan 与 GLES3 双 API 无粉块/白块；无占位 shader"
+    },
+    {
+      "family": "F2",
+      "shader": "Transition/Default",
+      "category": "Game",
+      "blob_file": "blobs/Transition__Default.blob",
+      "blob_size": 900,
+      "properties": "_MainTex|_TransitionTex|_TransitionAmount|_StencilComp|_Stencil|_StencilOp|_StencilWriteMask|_StencilReadMask|_ColorMask",
+      "own_properties": "",
+      "keywords": "STEREO_INSTANCING_ON|UNITY_SINGLE_PASS_STEREO|STEREO_MULTIVIEW_ON|STEREO_CUBEMAP_RENDER_ON",
+      "subshaders": 1,
+      "fallback": "",
+      "risks": "blob<1.5KB(疑似已剥/极简实现, 需确认不是空壳)；非可改贴图 2 个",
+      "chain_steps": "ripper→HLSLDecompiler→spirv-cross→手工补 Pass/Tags/宏/绑定",
+      "status": "pending",
+      "acceptance": "真机抓帧对比原版；Vulkan 与 GLES3 双 API 无粉块/白块；无占位 shader"
+    },
+    {
+      "family": "F2",
+      "shader": "Transition/Spirit",
+      "category": "Game",
+      "blob_file": "blobs/Transition__Spirit.blob",
+      "blob_size": 1035,
+      "properties": "_MainTex|_TransitionTex|_TransitionAmount|_StencilComp|_Stencil|_StencilOp|_StencilWriteMask|_StencilReadMask|_ColorMask",
+      "own_properties": "",
+      "keywords": "STEREO_INSTANCING_ON|UNITY_SINGLE_PASS_STEREO|STEREO_MULTIVIEW_ON|STEREO_CUBEMAP_RENDER_ON",
+      "subshaders": 1,
+      "fallback": "",
+      "risks": "blob<1.5KB(疑似已剥/极简实现, 需确认不是空壳)；非可改贴图 2 个",
+      "chain_steps": "ripper→HLSLDecompiler→spirv-cross→手工补 Pass/Tags/宏/绑定",
+      "status": "pending",
+      "acceptance": "真机抓帧对比原版；Vulkan 与 GLES3 双 API 无粉块/白块；无占位 shader"
+    },
+    {
+      "family": "F2",
+      "shader": "Transition/Energy",
+      "category": "Game",
+      "blob_file": "blobs/Transition__Energy.blob",
+      "blob_size": 908,
+      "properties": "_MainTex|_TransitionTex|_TransitionAmount|_TransitionColor|_StencilComp|_Stencil|_StencilOp|_StencilWriteMask|_StencilReadMask|_ColorMask",
+      "own_properties": "_TransitionColor",
+      "keywords": "STEREO_INSTANCING_ON|UNITY_SINGLE_PASS_STEREO|STEREO_MULTIVIEW_ON|STEREO_CUBEMAP_RENDER_ON",
+      "subshaders": 1,
+      "fallback": "",
+      "risks": "blob<1.5KB(疑似已剥/极简实现, 需确认不是空壳)；非可改贴图 2 个",
+      "chain_steps": "ripper→HLSLDecompiler→spirv-cross→手工补 Pass/Tags/宏/绑定",
+      "status": "pending",
+      "acceptance": "真机抓帧对比原版；Vulkan 与 GLES3 双 API 无粉块/白块；无占位 shader"
+    },
+    {
+      "family": "F2",
+      "shader": "Transition/Cities",
+      "category": "Game",
+      "blob_file": "blobs/Transition__Cities.blob",
+      "blob_size": 1575,
+      "properties": "_MainTex|_TransitionTex|_TransitionAmount|_Color2|_NoiseTex|_StencilComp|_Stencil|_StencilOp|_StencilWriteMask|_StencilReadMask|_ColorMask",
+      "own_properties": "_Color2|_NoiseTex",
+      "keywords": "STEREO_INSTANCING_ON|UNITY_SINGLE_PASS_STEREO|STEREO_MULTIVIEW_ON|STEREO_CUBEMAP_RENDER_ON",
+      "subshaders": 1,
+      "fallback": "",
+      "risks": "非可改贴图 2 个",
+      "chain_steps": "ripper→HLSLDecompiler→spirv-cross→手工补 Pass/Tags/宏/绑定",
+      "status": "pending",
+      "acceptance": "真机抓帧对比原版；Vulkan 与 GLES3 双 API 无粉块/白块；无占位 shader"
+    },
+    {
+      "family": "F3",
+      "shader": "Custom/FloorShaderForest",
+      "category": "Custom",
+      "blob_file": "blobs/Custom__FloorShaderForest.blob",
+      "blob_size": 6459,
+      "properties": "_Color|_Color2|_OffsetTex|_StoneColor|_StoneEdge|_EdgeColor|_EdgeThickness|_MainTex|_Glossiness|_Metallic|_Rect",
+      "own_properties": "",
+      "keywords": "STEREO_INSTANCING_ON|UNITY_SINGLE_PASS_STEREO|STEREO_MULTIVIEW_ON|STEREO_CUBEMAP_RENDER_ON|INSTANCING_ON|FOG_LINEAR|FOG_EXP|FOG_EXP2|DIRECTIONAL|LIGHTPROBE_SH|SHADOWS_SHADOWMASK|DYNAMICLIGHTMAP_ON|LIGHTMAP_ON|LIGHTMAP_SHADOW_MIXING|DIRLIGHTMAP_COMBINED|SHADOWS_SCREEN|VERTEXLIGHT_ON|POINT|SPOT|POINT_COOKIE|DIRECTIONAL_COOKIE|EDITOR_VISUALIZATION|SHADOWS_DEPTH|SHADOWS_CUBE|UNITY_HDR_ON",
+      "subshaders": 1,
+      "fallback": "Diffuse",
+      "risks": "关键字 25 条(变体爆炸, 需按需剔除无用 multi_compile)；非可改贴图 2 个；fallback=Diffuse(需决定是否保留)",
+      "chain_steps": "ripper→HLSLDecompiler→spirv-cross→手工补 Pass/Tags/宏/绑定",
+      "status": "pending",
+      "acceptance": "真机抓帧对比原版；Vulkan 与 GLES3 双 API 无粉块/白块；无占位 shader"
+    },
+    {
+      "family": "F3",
+      "shader": "Custom/FloorShader",
+      "category": "Custom",
+      "blob_file": "blobs/Custom__FloorShader.blob",
+      "blob_size": 6725,
+      "properties": "_Color|_Color2|_OffsetTex|_StoneColor|_StoneEdge|_EdgeColor|_EdgeThickness|_MainTex|_Glossiness|_Metallic|_Rect",
+      "own_properties": "",
+      "keywords": "STEREO_INSTANCING_ON|UNITY_SINGLE_PASS_STEREO|STEREO_MULTIVIEW_ON|STEREO_CUBEMAP_RENDER_ON|INSTANCING_ON|FOG_LINEAR|FOG_EXP|FOG_EXP2|DIRECTIONAL|LIGHTPROBE_SH|SHADOWS_SHADOWMASK|DYNAMICLIGHTMAP_ON|LIGHTMAP_ON|LIGHTMAP_SHADOW_MIXING|DIRLIGHTMAP_COMBINED|SHADOWS_SCREEN|VERTEXLIGHT_ON|POINT|SPOT|POINT_COOKIE|DIRECTIONAL_COOKIE|EDITOR_VISUALIZATION|SHADOWS_DEPTH|SHADOWS_CUBE|UNITY_HDR_ON",
+      "subshaders": 1,
+      "fallback": "Diffuse",
+      "risks": "关键字 25 条(变体爆炸, 需按需剔除无用 multi_compile)；非可改贴图 2 个；fallback=Diffuse(需决定是否保留)",
+      "chain_steps": "ripper→HLSLDecompiler→spirv-cross→手工补 Pass/Tags/宏/绑定",
+      "status": "pending",
+      "acceptance": "真机抓帧对比原版；Vulkan 与 GLES3 双 API 无粉块/白块；无占位 shader"
+    },
+    {
+      "family": "F3",
+      "shader": "Custom/FloorShaderIsland",
+      "category": "Custom",
+      "blob_file": "blobs/Custom__FloorShaderIsland.blob",
+      "blob_size": 7110,
+      "properties": "_Color|_Color2|_OffsetTex|_StoneColor|_StoneEdge|_EdgeColor|_EdgeThickness|_MainTex|_SdfTex|_Glossiness|_Metallic|_WaterColor|_OutlineWidth|_OutlineColor|_FaceColor|_Rect|_IslandDownsize",
+      "own_properties": "_FaceColor|_IslandDownsize|_OutlineColor|_OutlineWidth|_SdfTex|_WaterColor",
+      "keywords": "STEREO_INSTANCING_ON|UNITY_SINGLE_PASS_STEREO|STEREO_MULTIVIEW_ON|STEREO_CUBEMAP_RENDER_ON|INSTANCING_ON|FOG_LINEAR|FOG_EXP|FOG_EXP2|DIRECTIONAL|LIGHTPROBE_SH|SHADOWS_SHADOWMASK|DYNAMICLIGHTMAP_ON|LIGHTMAP_ON|LIGHTMAP_SHADOW_MIXING|DIRLIGHTMAP_COMBINED|SHADOWS_SCREEN|VERTEXLIGHT_ON|POINT|SPOT|POINT_COOKIE|DIRECTIONAL_COOKIE|EDITOR_VISUALIZATION|SHADOWS_DEPTH|SHADOWS_CUBE|UNITY_HDR_ON",
+      "subshaders": 1,
+      "fallback": "Diffuse",
+      "risks": "关键字 25 条(变体爆炸, 需按需剔除无用 multi_compile)；非可改贴图 2 个；fallback=Diffuse(需决定是否保留)",
+      "chain_steps": "ripper→HLSLDecompiler→spirv-cross→手工补 Pass/Tags/宏/绑定",
+      "status": "pending",
+      "acceptance": "真机抓帧对比原版；Vulkan 与 GLES3 双 API 无粉块/白块；无占位 shader"
+    },
+    {
+      "family": "F4",
+      "shader": "Sprites/StatusEffectSpriteShader",
+      "category": "Game",
+      "blob_file": "blobs/Sprites__StatusEffectSpriteShader.blob",
+      "blob_size": 1251,
+      "properties": "_MainTex|_Color|_FillAmount|PixelSnap|_ColorA|_ColorB",
+      "own_properties": "_ColorA|_ColorB|_FillAmount",
+      "keywords": "STEREO_INSTANCING_ON|UNITY_SINGLE_PASS_STEREO|STEREO_MULTIVIEW_ON|STEREO_CUBEMAP_RENDER_ON|PIXELSNAP_ON",
+      "subshaders": 1,
+      "fallback": "",
+      "risks": "blob<1.5KB(疑似已剥/极简实现, 需确认不是空壳)；非可改贴图 2 个",
+      "chain_steps": "ripper→HLSLDecompiler→spirv-cross→手工补 Pass/Tags/宏/绑定",
+      "status": "pending",
+      "acceptance": "真机抓帧对比原版；Vulkan 与 GLES3 双 API 无粉块/白块；无占位 shader"
+    },
+    {
+      "family": "F4",
+      "shader": "Sprites/CombatCircleSpriteShader2",
+      "category": "Game",
+      "blob_file": "blobs/Sprites__CombatCircleSpriteShader2.blob",
+      "blob_size": 1137,
+      "properties": "_MainTex|_Color|_FillAmount|PixelSnap",
+      "own_properties": "_FillAmount",
+      "keywords": "STEREO_INSTANCING_ON|UNITY_SINGLE_PASS_STEREO|STEREO_MULTIVIEW_ON|STEREO_CUBEMAP_RENDER_ON|PIXELSNAP_ON",
+      "subshaders": 1,
+      "fallback": "",
+      "risks": "blob<1.5KB(疑似已剥/极简实现, 需确认不是空壳)；非可改贴图 2 个",
+      "chain_steps": "ripper→HLSLDecompiler→spirv-cross→手工补 Pass/Tags/宏/绑定",
+      "status": "pending",
+      "acceptance": "真机抓帧对比原版；Vulkan 与 GLES3 双 API 无粉块/白块；无占位 shader"
+    },
+    {
+      "family": "F4",
+      "shader": "Sprites/SpriteOnTop",
+      "category": "Game",
+      "blob_file": "blobs/Sprites__SpriteOnTop.blob",
+      "blob_size": 1075,
+      "properties": "_MainTex|_Color|PixelSnap",
+      "own_properties": "",
+      "keywords": "STEREO_INSTANCING_ON|UNITY_SINGLE_PASS_STEREO|STEREO_MULTIVIEW_ON|STEREO_CUBEMAP_RENDER_ON|PIXELSNAP_ON",
+      "subshaders": 1,
+      "fallback": "",
+      "risks": "blob<1.5KB(疑似已剥/极简实现, 需确认不是空壳)；非可改贴图 2 个",
+      "chain_steps": "ripper→HLSLDecompiler→spirv-cross→手工补 Pass/Tags/宏/绑定",
+      "status": "pending",
+      "acceptance": "真机抓帧对比原版；Vulkan 与 GLES3 双 API 无粉块/白块；无占位 shader"
+    },
+    {
+      "family": "F5",
+      "shader": "Custom/CardBackShader",
+      "category": "Custom",
+      "blob_file": "blobs/Custom__CardBackShader.blob",
+      "blob_size": 20676,
+      "properties": "_Color|_MainTex|_Glossiness|_Metallic",
+      "own_properties": "_MainTex",
+      "keywords": "STEREO_INSTANCING_ON|UNITY_SINGLE_PASS_STEREO|STEREO_MULTIVIEW_ON|STEREO_CUBEMAP_RENDER_ON|INSTANCING_ON|FOG_LINEAR|FOG_EXP|FOG_EXP2|DIRECTIONAL|LIGHTPROBE_SH|SHADOWS_SHADOWMASK|DYNAMICLIGHTMAP_ON|LIGHTMAP_ON|LIGHTMAP_SHADOW_MIXING|DIRLIGHTMAP_COMBINED|SHADOWS_SCREEN|VERTEXLIGHT_ON|POINT|SPOT|POINT_COOKIE|DIRECTIONAL_COOKIE|SHADOWS_DEPTH|SHADOWS_SOFT|SHADOWS_CUBE|UNITY_HDR_ON|EDITOR_VISUALIZATION",
+      "subshaders": 1,
+      "fallback": "Diffuse",
+      "risks": "关键字 26 条(变体爆炸, 需按需剔除无用 multi_compile)；非可改贴图 2 个；fallback=Diffuse(需决定是否保留)",
+      "chain_steps": "ripper→HLSLDecompiler→spirv-cross→手工补 Pass/Tags/宏/绑定",
+      "status": "pending",
+      "acceptance": "真机抓帧对比原版；Vulkan 与 GLES3 双 API 无粉块/白块；无占位 shader"
+    },
+    {
+      "family": "F5",
+      "shader": "Custom/GridShader",
+      "category": "Custom",
+      "blob_file": "blobs/Custom__GridShader.blob",
+      "blob_size": 7266,
+      "properties": "_Color|_Glossiness|_Metallic|_LineWidth",
+      "own_properties": "_LineWidth",
+      "keywords": "STEREO_INSTANCING_ON|UNITY_SINGLE_PASS_STEREO|STEREO_MULTIVIEW_ON|STEREO_CUBEMAP_RENDER_ON|INSTANCING_ON|FOG_LINEAR|FOG_EXP|FOG_EXP2|DIRECTIONAL|LIGHTPROBE_SH|DYNAMICLIGHTMAP_ON|LIGHTMAP_ON|LIGHTMAP_SHADOW_MIXING|DIRLIGHTMAP_COMBINED|VERTEXLIGHT_ON|POINT|SPOT|POINT_COOKIE|DIRECTIONAL_COOKIE|EDITOR_VISUALIZATION|SHADOWS_SHADOWMASK|SHADOWS_SCREEN|SHADOWS_DEPTH|SHADOWS_CUBE|UNITY_HDR_ON",
+      "subshaders": 1,
+      "fallback": "Diffuse",
+      "risks": "关键字 25 条(变体爆炸, 需按需剔除无用 multi_compile)；非可改贴图 2 个；fallback=Diffuse(需决定是否保留)",
+      "chain_steps": "ripper→HLSLDecompiler→spirv-cross→手工补 Pass/Tags/宏/绑定",
+      "status": "pending",
+      "acceptance": "真机抓帧对比原版；Vulkan 与 GLES3 双 API 无粉块/白块；无占位 shader"
+    },
+    {
+      "family": "F6",
+      "shader": "Custom/SpiritTransitionEffect",
+      "category": "Custom",
+      "blob_file": "blobs/Custom__SpiritTransitionEffect.blob",
+      "blob_size": 769,
+      "properties": "_MainTex|_Weight",
+      "own_properties": "",
+      "keywords": "STEREO_INSTANCING_ON|UNITY_SINGLE_PASS_STEREO|STEREO_MULTIVIEW_ON|STEREO_CUBEMAP_RENDER_ON",
+      "subshaders": 1,
+      "fallback": "",
+      "risks": "blob<1.5KB(疑似已剥/极简实现, 需确认不是空壳)；非可改贴图 2 个",
+      "chain_steps": "ripper→HLSLDecompiler→spirv-cross→手工补 Pass/Tags/宏/绑定",
+      "status": "pending",
+      "acceptance": "真机抓帧对比原版；Vulkan 与 GLES3 双 API 无粉块/白块；无占位 shader"
+    },
+    {
+      "family": "F6",
+      "shader": "Custom/SpiritImageEffect",
+      "category": "Custom",
+      "blob_file": "blobs/Custom__SpiritImageEffect.blob",
+      "blob_size": 786,
+      "properties": "_MainTex|_Weight",
+      "own_properties": "",
+      "keywords": "STEREO_INSTANCING_ON|UNITY_SINGLE_PASS_STEREO|STEREO_MULTIVIEW_ON|STEREO_CUBEMAP_RENDER_ON",
+      "subshaders": 1,
+      "fallback": "",
+      "risks": "blob<1.5KB(疑似已剥/极简实现, 需确认不是空壳)；非可改贴图 2 个",
+      "chain_steps": "ripper→HLSLDecompiler→spirv-cross→手工补 Pass/Tags/宏/绑定",
+      "status": "pending",
+      "acceptance": "真机抓帧对比原版；Vulkan 与 GLES3 双 API 无粉块/白块；无占位 shader"
+    },
+    {
+      "family": "F7",
+      "shader": "Custom/BoosterShaderTop",
+      "category": "Custom",
+      "blob_file": "blobs/Custom__BoosterShaderTop.blob",
+      "blob_size": 12441,
+      "properties": "_Color|_Color2|_Foil|_IconColor|_MainTex|_IconTex|_RainbowTex|_Glossiness|_Metallic|_SparkleIntensity|_SmallCirclePosition|_SmallCircleSize|_BorderColor",
+      "own_properties": "_Foil",
+      "keywords": "STEREO_INSTANCING_ON|UNITY_SINGLE_PASS_STEREO|STEREO_MULTIVIEW_ON|STEREO_CUBEMAP_RENDER_ON|INSTANCING_ON|FOG_LINEAR|FOG_EXP|FOG_EXP2|DIRECTIONAL|LIGHTPROBE_SH|SHADOWS_SHADOWMASK|DYNAMICLIGHTMAP_ON|LIGHTMAP_ON|LIGHTMAP_SHADOW_MIXING|DIRLIGHTMAP_COMBINED|SHADOWS_SCREEN|VERTEXLIGHT_ON|POINT|SPOT|POINT_COOKIE|DIRECTIONAL_COOKIE|UNITY_HDR_ON|SHADOWS_DEPTH|SHADOWS_CUBE|EDITOR_VISUALIZATION",
+      "subshaders": 1,
+      "fallback": "Diffuse",
+      "risks": "关键字 25 条(变体爆炸, 需按需剔除无用 multi_compile)；非可改贴图 2 个；fallback=Diffuse(需决定是否保留)",
+      "chain_steps": "ripper→HLSLDecompiler→spirv-cross→手工补 Pass/Tags/宏/绑定",
+      "status": "pending",
+      "acceptance": "真机抓帧对比原版；Vulkan 与 GLES3 双 API 无粉块/白块；无占位 shader"
+    },
+    {
+      "family": "F7",
+      "shader": "Custom/BoosterShader",
+      "category": "Custom",
+      "blob_file": "blobs/Custom__BoosterShader.blob",
+      "blob_size": 12694,
+      "properties": "_Color|_Color2|_IconColor|_MainTex|_IconTex|_RainbowTex|_Glossiness|_Metallic|_SparkleIntensity|_SmallCirclePosition|_SmallCircleSize|_BorderColor",
+      "own_properties": "",
+      "keywords": "STEREO_INSTANCING_ON|UNITY_SINGLE_PASS_STEREO|STEREO_MULTIVIEW_ON|STEREO_CUBEMAP_RENDER_ON|INSTANCING_ON|FOG_LINEAR|FOG_EXP|FOG_EXP2|DIRECTIONAL|LIGHTPROBE_SH|SHADOWS_SHADOWMASK|DYNAMICLIGHTMAP_ON|LIGHTMAP_ON|LIGHTMAP_SHADOW_MIXING|DIRLIGHTMAP_COMBINED|SHADOWS_SCREEN|VERTEXLIGHT_ON|POINT|SPOT|POINT_COOKIE|DIRECTIONAL_COOKIE|UNITY_HDR_ON|SHADOWS_DEPTH|SHADOWS_CUBE|EDITOR_VISUALIZATION",
+      "subshaders": 1,
+      "fallback": "Diffuse",
+      "risks": "关键字 25 条(变体爆炸, 需按需剔除无用 multi_compile)；非可改贴图 2 个；fallback=Diffuse(需决定是否保留)",
+      "chain_steps": "ripper→HLSLDecompiler→spirv-cross→手工补 Pass/Tags/宏/绑定",
+      "status": "pending",
+      "acceptance": "真机抓帧对比原版；Vulkan 与 GLES3 双 API 无粉块/白块；无占位 shader"
+    },
+    {
+      "family": "F8",
+      "shader": "Custom/StatusBar",
+      "category": "Custom",
+      "blob_file": "blobs/Custom__StatusBar.blob",
+      "blob_size": 12051,
+      "properties": "_Color|_Color2|_Color3|_PauseColor|_FillAmount|_Pause|_MainTex|_Glossiness|_Metallic",
+      "own_properties": "",
+      "keywords": "STEREO_INSTANCING_ON|UNITY_SINGLE_PASS_STEREO|STEREO_MULTIVIEW_ON|STEREO_CUBEMAP_RENDER_ON|INSTANCING_ON|FOG_LINEAR|FOG_EXP|FOG_EXP2|DIRECTIONAL|LIGHTPROBE_SH|SHADOWS_SHADOWMASK|DYNAMICLIGHTMAP_ON|LIGHTMAP_ON|LIGHTMAP_SHADOW_MIXING|DIRLIGHTMAP_COMBINED|SHADOWS_SCREEN|VERTEXLIGHT_ON|POINT|SPOT|POINT_COOKIE|DIRECTIONAL_COOKIE|UNITY_HDR_ON|SHADOWS_DEPTH|SHADOWS_CUBE|EDITOR_VISUALIZATION",
+      "subshaders": 1,
+      "fallback": "Diffuse",
+      "risks": "关键字 25 条(变体爆炸, 需按需剔除无用 multi_compile)；非可改贴图 2 个；fallback=Diffuse(需决定是否保留)",
+      "chain_steps": "ripper→HLSLDecompiler→spirv-cross→手工补 Pass/Tags/宏/绑定",
+      "status": "pending",
+      "acceptance": "真机抓帧对比原版；Vulkan 与 GLES3 双 API 无粉块/白块；无占位 shader"
+    },
+    {
+      "family": "F9",
+      "shader": "Custom/ConflictOutlineSdfShader",
+      "category": "Custom",
+      "blob_file": "blobs/Custom__ConflictOutlineSdfShader.blob",
+      "blob_size": 4514,
+      "properties": "_Color|_Size|_OutlineColor|_OutlineThickness",
+      "own_properties": "",
+      "keywords": "STEREO_INSTANCING_ON|UNITY_SINGLE_PASS_STEREO|STEREO_MULTIVIEW_ON|STEREO_CUBEMAP_RENDER_ON|INSTANCING_ON|FOG_LINEAR|FOG_EXP|FOG_EXP2|DIRECTIONAL|LIGHTPROBE_SH|DYNAMICLIGHTMAP_ON|LIGHTMAP_ON|LIGHTMAP_SHADOW_MIXING|DIRLIGHTMAP_COMBINED|VERTEXLIGHT_ON|POINT|SPOT|POINT_COOKIE|DIRECTIONAL_COOKIE|EDITOR_VISUALIZATION|SHADOWS_SHADOWMASK|SHADOWS_SCREEN|SHADOWS_DEPTH|SHADOWS_CUBE|UNITY_HDR_ON",
+      "subshaders": 1,
+      "fallback": "Diffuse",
+      "risks": "关键字 25 条(变体爆炸, 需按需剔除无用 multi_compile)；非可改贴图 2 个；fallback=Diffuse(需决定是否保留)",
+      "chain_steps": "ripper→HLSLDecompiler→spirv-cross→手工补 Pass/Tags/宏/绑定",
+      "status": "pending",
+      "acceptance": "真机抓帧对比原版；Vulkan 与 GLES3 双 API 无粉块/白块；无占位 shader"
+    },
+    {
+      "family": "F10",
+      "shader": "Custom/GenericCardShader",
+      "category": "Custom",
+      "blob_file": "blobs/Custom__GenericCardShader.blob",
+      "blob_size": 17710,
+      "properties": "_Color|_Size|_BorderThickness",
+      "own_properties": "",
+      "keywords": "STEREO_INSTANCING_ON|UNITY_SINGLE_PASS_STEREO|STEREO_MULTIVIEW_ON|STEREO_CUBEMAP_RENDER_ON|INSTANCING_ON|FOG_LINEAR|FOG_EXP|FOG_EXP2|DIRECTIONAL|LIGHTPROBE_SH|SHADOWS_SHADOWMASK|DYNAMICLIGHTMAP_ON|LIGHTMAP_ON|LIGHTMAP_SHADOW_MIXING|DIRLIGHTMAP_COMBINED|SHADOWS_SCREEN|VERTEXLIGHT_ON|POINT|SPOT|POINT_COOKIE|DIRECTIONAL_COOKIE|UNITY_HDR_ON|SHADOWS_DEPTH|SHADOWS_CUBE|EDITOR_VISUALIZATION",
+      "subshaders": 1,
+      "fallback": "Diffuse",
+      "risks": "关键字 25 条(变体爆炸, 需按需剔除无用 multi_compile)；非可改贴图 2 个；fallback=Diffuse(需决定是否保留)",
+      "chain_steps": "ripper→HLSLDecompiler→spirv-cross→手工补 Pass/Tags/宏/绑定",
+      "status": "pending",
+      "acceptance": "真机抓帧对比原版；Vulkan 与 GLES3 双 API 无粉块/白块；无占位 shader"
+    },
+    {
+      "family": "F11",
+      "shader": "Custom/CardShaderTest",
+      "category": "Custom",
+      "blob_file": "blobs/Custom__CardShaderTest.blob",
+      "blob_size": 22496,
+      "properties": "_Color|_Color2|_Foil|_Damaged|_IconColor|_ShineStrength|_BigShineStrength|_HasSecondaryIcon|_HasOutputDir|_MainTex|_IconTex|_SecondaryTex|_RainbowTex|_DamagedTex|_Glossiness|_Metallic|_SparkleIntensity|_BorderColor|_DamagedBorderColor",
+      "own_properties": "",
+      "keywords": "STEREO_INSTANCING_ON|UNITY_SINGLE_PASS_STEREO|STEREO_MULTIVIEW_ON|STEREO_CUBEMAP_RENDER_ON|INSTANCING_ON|FOG_LINEAR|FOG_EXP|FOG_EXP2|DIRECTIONAL|LIGHTPROBE_SH|SHADOWS_SHADOWMASK|DYNAMICLIGHTMAP_ON|LIGHTMAP_ON|LIGHTMAP_SHADOW_MIXING|DIRLIGHTMAP_COMBINED|SHADOWS_SCREEN|VERTEXLIGHT_ON|POINT|SPOT|POINT_COOKIE|DIRECTIONAL_COOKIE|UNITY_HDR_ON|SHADOWS_DEPTH|SHADOWS_CUBE|EDITOR_VISUALIZATION",
+      "subshaders": 1,
+      "fallback": "Diffuse",
+      "risks": "关键字 25 条(变体爆炸, 需按需剔除无用 multi_compile)；非可改贴图 2 个；fallback=Diffuse(需决定是否保留)",
+      "chain_steps": "ripper→HLSLDecompiler→spirv-cross→手工补 Pass/Tags/宏/绑定",
+      "status": "pending",
+      "acceptance": "真机抓帧对比原版；Vulkan 与 GLES3 双 API 无粉块/白块；无占位 shader"
+    },
+    {
+      "family": "F12",
+      "shader": "Custom/SuperSampled Texture",
+      "category": "Custom",
+      "blob_file": "blobs/Custom__SuperSampled_Texture.blob",
+      "blob_size": 1225,
+      "properties": "_MainTex|_Color|_Bias|_SuperSampling|_AAScale|_StencilComp|_Stencil|_StencilOp|_StencilWriteMask|_StencilReadMask|_ColorMask",
+      "own_properties": "",
+      "keywords": "STEREO_INSTANCING_ON|UNITY_SINGLE_PASS_STEREO|STEREO_MULTIVIEW_ON|STEREO_CUBEMAP_RENDER_ON|_SUPERSAMPLING_2X2_RGSS|_SUPERSAMPLING_8X_HALTON|_SUPERSAMPLING_16X16_OGSS",
+      "subshaders": 1,
+      "fallback": "",
+      "risks": "blob<1.5KB(疑似已剥/极简实现, 需确认不是空壳)；非可改贴图 2 个",
+      "chain_steps": "ripper→HLSLDecompiler→spirv-cross→手工补 Pass/Tags/宏/绑定",
+      "status": "pending",
+      "acceptance": "真机抓帧对比原版；Vulkan 与 GLES3 双 API 无粉块/白块；无占位 shader"
+    },
+    {
+      "family": "F13",
+      "shader": "Unlit/CardopediaBackgroundShader",
+      "category": "Game",
+      "blob_file": "blobs/Unlit__CardopediaBackgroundShader.blob",
+      "blob_size": 1206,
+      "properties": "_MainTex",
+      "own_properties": "",
+      "keywords": "STEREO_INSTANCING_ON|UNITY_SINGLE_PASS_STEREO|STEREO_MULTIVIEW_ON|STEREO_CUBEMAP_RENDER_ON|FOG_LINEAR|FOG_EXP|FOG_EXP2",
+      "subshaders": 1,
+      "fallback": "",
+      "risks": "blob<1.5KB(疑似已剥/极简实现, 需确认不是空壳)；非可改贴图 2 个",
+      "chain_steps": "ripper→HLSLDecompiler→spirv-cross→手工补 Pass/Tags/宏/绑定",
+      "status": "pending",
+      "acceptance": "真机抓帧对比原版；Vulkan 与 GLES3 双 API 无粉块/白块；无占位 shader"
+    },
+    {
+      "family": "F14",
+      "shader": "Sprites/BackgroundShader",
+      "category": "Game",
+      "blob_file": "blobs/Sprites__BackgroundShader.blob",
+      "blob_size": 888,
+      "properties": "_MainTex|_Color|PixelSnap",
+      "own_properties": "",
+      "keywords": "STEREO_INSTANCING_ON|UNITY_SINGLE_PASS_STEREO|STEREO_MULTIVIEW_ON|STEREO_CUBEMAP_RENDER_ON|INSTANCING_ON",
+      "subshaders": 1,
+      "fallback": "",
+      "risks": "blob<1.5KB(疑似已剥/极简实现, 需确认不是空壳)；非可改贴图 2 个",
+      "chain_steps": "ripper→HLSLDecompiler→spirv-cross→手工补 Pass/Tags/宏/绑定",
+      "status": "pending",
+      "acceptance": "真机抓帧对比原版；Vulkan 与 GLES3 双 API 无粉块/白块；无占位 shader"
+    },
+    {
+      "family": "F15",
+      "shader": "Postprocess/SokpopIntro",
+      "category": "Game",
+      "blob_file": "blobs/Postprocess__SokpopIntro.blob",
+      "blob_size": 901,
+      "properties": "_MainTex|_CircleSize|_CircleDelta|_XOffset|_YOffset|_Darkness",
+      "own_properties": "",
+      "keywords": "STEREO_INSTANCING_ON|UNITY_SINGLE_PASS_STEREO|STEREO_MULTIVIEW_ON|STEREO_CUBEMAP_RENDER_ON",
+      "subshaders": 1,
+      "fallback": "",
+      "risks": "blob<1.5KB(疑似已剥/极简实现, 需确认不是空壳)；非可改贴图 2 个",
+      "chain_steps": "ripper→HLSLDecompiler→spirv-cross→手工补 Pass/Tags/宏/绑定",
+      "status": "pending",
+      "acceptance": "真机抓帧对比原版；Vulkan 与 GLES3 双 API 无粉块/白块；无占位 shader"
+    }
+  ]
+}
