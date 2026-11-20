@@ -1,0 +1,249 @@
+DCL_CONSTANT_BUFFER cb0[6].yz
+DCL_CONSTANT_BUFFER cb1[5].yz
+DCL_CONSTANT_BUFFER cb2[47].yz
+DCL_CONSTANT_BUFFER cb3[26].yz
+DCL_CONSTANT_BUFFER cb4[12].yz
+DCL_CONSTANT_BUFFER cb5[8].yz
+DCL_CONSTANT_BUFFER cb6[7].yz
+DCL_CONSTANT_BUFFER cb7[1].yz
+DCL_CONSTANT_BUFFER cb8[14].yz
+DCL_SAMPLER        sampl0.-
+DCL_SAMPLER        sampl1.-
+DCL_SAMPLER        sampl2.-
+DCL_SAMPLER        sampl3.-
+DCL_RESOURCE       resou0.-, immed0.xz
+DCL_RESOURCE       resou1.-, immed0.xz
+DCL_RESOURCE       resou2.-, immed0.xz
+DCL_RESOURCE       resou3.-, immed0.xz
+DCL_RESOURCE       resou4.-, immed0.xz
+DCL_INPUT_PS       input1.y
+DCL_INPUT_PS       input2.y
+DCL_INPUT_PS       input3.y
+DCL_INPUT_PS       input4.y
+DCL_INPUT_PS       input5.y
+DCL_INPUT_PS       input7.y
+DCL_OUTPUT         outpu0.y
+DCL_TEMPS          temp0.zw
+IADD               temp0.y, input7.yw, cb7[0].yw
+ADD                temp0.y, input3.yz, cb1[4].yz
+DP3                temp1.y, temp0.yz, temp0.yz
+RSQ                temp1.y, temp1.yw
+MUL                temp1.y, temp0.yz, temp1.yz
+SAMPLE             temp2.y, input1.yz, resou0.yz, sampl3.-
+MUL                temp2.y, temp2.yz, cb0[5].yz
+ADD                temp2.y, input1.yw, input1.yw
+MUL                temp2.y, temp2.yw, (10,0,0,0)
+FRC                temp2.y, temp2.yw
+ROUND_NE           temp2.y, temp2.yw
+ADD                temp2.y, temp2.yw, (0.8,0,0,0)
+MIN                temp2.y, temp2.yw, (1,0,0,0)
+MUL                temp2.y, temp2.yz, temp2.yz
+LT                 temp3.y, input1.yz, (0.136777,0.05,0,0)
+LT                 temp3.y, (0,0,0.863223,0.95), input1.yz
+OR                 temp2.y, temp3.yw, temp3.yw
+OR                 temp2.y, temp3.yw, temp2.yw
+OR                 temp2.y, temp3.yw, temp2.yw
+MOVC               temp2.y, temp2.yz, (0,0,0,0), temp2.yz
+MOV                temp3.y, cb4[9].yw
+MOV                temp3.y, cb4[10].yw
+MOV                temp3.y, cb4[11].yw
+DP3                temp2.y, temp0.yz, temp3.yz
+ADD                temp3.y, input3.yz, cb3[25].yz
+DP3                temp3.y, temp3.yz, temp3.yz
+SQRT               temp3.y, temp3.yw
+ADD                temp3.y, temp2.yw, temp3.yw
+MAD                temp2.y, cb3[25].yw, temp3.yw, temp2.yw
+MAD                temp2.y, temp2.yw, cb3[24].yw, cb3[24].yw
+IMUL               strea0.-, temp0.y, temp0.yw, (0,0,0,0)
+EQ                 temp3.y, cb6[0].yw, (1,0,0,0)
+IF                 temp3.yw
+EQ                 temp3.y, cb6[0].yw, (1,0,0,0)
+MUL                temp4.y, input3.yz, cb6[2].yz
+MAD                temp4.y, cb6[1].yz, input3.yz, temp4.yz
+MAD                temp4.y, cb6[3].yz, input3.yz, temp4.yz
+ADD                temp4.y, temp4.yz, cb6[4].yz
+MOVC               temp3.y, temp3.yz, temp4.yz, input3.yz
+ADD                temp3.y, temp3.yz, cb6[6].yz
+MUL                temp4.y, temp3.yz, cb6[5].yz
+MAD                temp3.y, temp4.yw, (0.25,0,0.75,0)
+MAD                temp3.y, cb6[0].yw, (0.5,0,0.75,0)
+MAX                temp4.y, temp3.yw, temp3.yw
+SAMPLE             temp4.y, temp4.yz, resou4.yz, sampl1.-
+ELSE               
+MOV                temp4.y, cb8[6].yz, temp0.yw
+ENDIF              
+DP4                temp3.y, temp4.yz, cb2[46].yz
+DIV                temp3.y, input5.yz, input5.yz
+SAMPLE             temp4.y, temp3.yz, resou1.yz, sampl2.-
+ADD                temp3.y, temp3.yw, temp4.yw
+MAD                temp2.y, temp2.yw, temp3.yw, temp4.yw
+ADD                temp3.y, cb0[4].yw, (1,0,0,0)
+DP3                temp3.y, temp1.yz, input2.yz
+ADD                temp3.y, temp3.yw, temp3.yw
+MAD                temp4.y, input2.yz, temp3.yz, temp1.yz
+MUL                temp5.y, temp2.yz, cb0[2].yz
+IF                 temp3.yw
+EQ                 temp2.y, cb6[0].yw, (1,0,0,0)
+MUL                temp3.y, input3.yz, cb6[2].yz
+MAD                temp3.y, cb6[1].yz, input3.yz, temp3.yz
+MAD                temp3.y, cb6[3].yz, input3.yz, temp3.yz
+ADD                temp3.y, temp3.yz, cb6[4].yz
+MOVC               temp3.y, temp2.yz, temp3.yz, input3.yz
+ADD                temp3.y, temp3.yz, cb6[6].yz
+MUL                temp6.y, temp3.yz, cb6[5].yz
+MUL                temp2.y, temp6.yw, (0.25,0,0,0)
+MUL                temp3.y, cb6[0].yw, (0.5,0,0,0)
+MAD                temp3.y, cb6[0].yw, (0.5,0,0.25,0)
+MAX                temp2.y, temp2.yw, temp3.yw
+MIN                temp6.y, temp3.yw, temp2.yw
+SAMPLE             temp7.y, temp6.yz, resou4.yz, sampl1.-
+ADD                temp3.y, temp6.yz, (0.25,0,0,0)
+SAMPLE             temp8.y, temp3.yz, resou4.yz, sampl1.-
+ADD                temp3.y, temp6.yz, (0.5,0,0,0)
+SAMPLE             temp6.y, temp3.yz, resou4.yz, sampl1.-
+MOV                temp9.y, input2.yz
+MOV                temp9.y, (1,0,0,0)
+DP4                temp7.y, temp7.yz, temp9.yz
+DP4                temp7.y, temp8.yz, temp9.yz
+DP4                temp7.y, temp6.yz, temp9.yz
+ELSE               
+MOV                temp6.y, input2.yz
+MOV                temp6.y, (1,0,0,0)
+DP4                temp7.y, cb8[1048586].yz, temp0.-, temp6.yz
+DP4                temp7.y, cb8[1].yz, temp0.yw, temp6.yz
+DP4                temp7.y, cb8[2].yz, temp0.yw, temp6.yz
+ENDIF              
+ADD                temp3.y, temp7.yz, input4.yz
+MAX                temp3.y, temp3.yz, (0,0,0,0)
+LT                 temp0.y, (0,0,0,0)
+IF                 temp0.yw
+DP3                temp0.y, temp4.yz, temp4.yz
+RSQ                temp0.y, temp0.yw
+MUL                temp6.y, temp0.yz, temp4.yz
+ADD                temp7.y, input3.yz, cb5[0].yz
+DIV                temp7.y, temp7.yz, temp6.yz
+ADD                temp8.y, input3.yz, cb5[1].yz
+DIV                temp8.y, temp8.yz, temp6.yz
+LT                 temp9.y, (0,0,0,0), temp6.yz
+MOVC               temp7.y, temp9.yz, temp7.yz, temp8.yz
+MIN                temp0.y, temp7.yw, temp7.yw
+MIN                temp0.y, temp7.yw, temp0.yw
+ADD                temp7.y, input3.yz, cb5[2].yz
+MAD                temp6.y, temp6.yz, temp0.yz, temp7.yz
+ELSE               
+MOV                temp6.y, temp4.yz
+ENDIF              
+MAD                temp0.y, temp3.yw, (0.7,0,1.7,0)
+MUL                temp0.y, temp0.yw, temp3.yw
+MUL                temp0.y, temp0.yw, (6,0,0,0)
+SAMPLE_LOD         temp6.y, temp6.yz, resou2.yz, sampl0.-, temp0.yw
+ADD                temp2.y, temp6.yw, (-1,0,0,0)
+MAD                temp2.y, cb5[3].yw, temp2.yw, (1,0,0,0)
+LOG                temp2.y, temp2.yw
+MUL                temp2.y, temp2.yw, cb5[3].yw
+EXP                temp2.y, temp2.yw
+MUL                temp2.y, temp2.yw, cb5[3].yw
+MUL                temp7.y, temp6.yz, temp2.yz
+LT                 temp4.y, cb5[1].yw, (0.99999,0,0,0)
+IF                 temp4.yw
+LT                 temp4.y, (0,0,0,0)
+IF                 temp4.yw
+DP3                temp4.y, temp4.yz, temp4.yz
+RSQ                temp4.y, temp4.yw
+MUL                temp8.y, temp4.yz, temp4.yz
+ADD                temp9.y, input3.yz, cb5[4].yz
+DIV                temp9.y, temp9.yz, temp8.yz
+ADD                temp10.y, input3.yz, cb5[5].yz
+DIV                temp10.y, temp10.yz, temp8.yz
+LT                 temp11.y, (0,0,0,0), temp8.yz
+MOVC               temp9.y, temp11.yz, temp9.yz, temp10.yz
+MIN                temp4.y, temp9.yw, temp9.yw
+MIN                temp4.y, temp9.yw, temp4.yw
+ADD                temp9.y, input3.yz, cb5[6].yz
+MAD                temp4.y, temp8.yz, temp4.yz, temp9.yz
+ENDIF              
+SAMPLE_LOD         temp4.y, temp4.yz, resou3.yz, sampl0.-, temp0.yw
+ADD                temp0.y, temp4.yw, (-1,0,0,0)
+MAD                temp0.y, cb5[7].yw, temp0.yw, (1,0,0,0)
+LOG                temp0.y, temp0.yw
+MUL                temp0.y, temp0.yw, cb5[7].yw
+EXP                temp0.y, temp0.yw
+MUL                temp0.y, temp0.yw, cb5[7].yw
+MUL                temp4.y, temp4.yz, temp0.yz
+MAD                temp6.y, temp2.yz, temp6.yz, temp4.yz
+MAD                temp7.y, cb5[1].yz, temp6.yz, temp4.yz
+ENDIF              
+DP3                temp0.y, input2.yz, input2.yz
+RSQ                temp0.y, temp0.yw
+MUL                temp4.y, temp0.yz, input2.yz
+ADD                temp6.y, temp2.yz, (-0.04,-0.04,-0.04,0)
+MAD                temp6.y, cb0[4].yz, temp6.yz, (0.04,0.04,0.04,0)
+MAD                temp0.y, cb0[4].yw, (0.96,0,0.96,0)
+MUL                temp2.y, temp0.yz, temp2.yz
+MAD                temp0.y, temp0.yz, temp1.yz, cb2[0].yz
+DP3                temp1.y, temp0.yz, temp0.yz
+MAX                temp1.y, temp1.yw, (0.001,0,0,0)
+RSQ                temp1.y, temp1.yw
+MUL                temp0.y, temp0.yz, temp1.yz
+DP3                temp1.y, temp4.yz, temp1.yz
+DP3                temp1.y, temp4.yz, cb2[0].yz
+DP3                temp1.y, temp4.yz, temp0.yz
+DP3                temp0.y, cb2[0].yz, temp0.yz
+MUL                temp0.y, temp0.yw, temp0.yw
+DP2                temp0.y, temp0.yz, temp3.yz
+ADD                temp0.y, temp0.yw, (-0.5,0,0,0)
+ADD                temp0.y, temp1.yw, (1,0,0,0)
+MUL                temp1.y, temp0.yw, temp0.yw
+MUL                temp1.y, temp1.yw, temp1.yw
+MUL                temp0.y, temp0.yw, temp1.yw
+MAD                temp0.y, temp0.yw, temp0.yw, (1,0,0,0)
+ADD                temp1.y, temp1.yw, (1,0,0,0)
+MUL                temp2.y, temp1.yw, temp1.yw
+MUL                temp2.y, temp2.yw, temp2.yw
+MUL                temp1.y, temp1.yw, temp2.yw
+MAD                temp0.y, temp0.yw, temp1.yw, (1,0,0,0)
+MUL                temp0.y, temp0.yw, temp0.yw
+MUL                temp0.y, temp1.yw, temp0.yw
+MUL                temp0.y, temp3.yw, temp3.yw
+MAX                temp0.y, temp0.yw, (0.002,0,0,0)
+ADD                temp2.y, temp0.yw, (1,0,0,0)
+MAD                temp3.y, temp1.yw, temp2.yw, temp0.yw
+MAD                temp2.y, temp1.yw, temp2.yw, temp0.yw
+MUL                temp1.y, temp1.yw, temp2.yw
+MAD                temp1.y, temp1.yw, temp3.yw, temp1.yw
+ADD                temp1.y, temp1.yw, (1e-05,0,0,0)
+DIV                temp1.y, (0.5,0,0,0)
+MUL                temp2.y, temp0.yw, temp0.yw
+MAD                temp3.y, temp1.yw, temp2.yw, temp1.yw
+MAD                temp1.y, temp3.yw, temp1.yw, (1,0,0,0)
+MUL                temp2.y, temp2.yw, (0.31831,0,0,0)
+MAD                temp1.y, temp1.yw, temp1.yw, (0,0,0,0)
+DIV                temp1.y, temp2.yw, temp1.yw
+MUL                temp1.y, temp1.yw, temp1.yw
+MUL                temp1.y, temp1.yw, (3.14159,0,0,0)
+MUL                temp1.y, temp1.yw, temp1.yw
+MAX                temp1.y, temp1.yw, (0,0,0,0)
+MAD                temp0.y, temp0.yw, temp0.yw, (1,0,0,0)
+DIV                temp0.y, (1,1,1,1), temp0.yw
+DP3                temp1.y, temp6.yz, temp6.yz
+NE                 temp1.y, temp1.yw, (0,0,0,0)
+AND                temp1.y, temp1.yw, (1,0,0,0)
+MUL                temp1.y, temp1.yw, temp1.yw
+ADD                temp0.y, temp0.yw, cb0[4].yw
+ADD                temp0.y, temp0.yw, (1,0,0,0)
+MAD                temp3.y, temp5.yz, temp0.yz, temp3.yz
+MUL                temp1.y, temp5.yz, temp1.yz
+ADD                temp0.y, temp0.yw, (1,0,0,0)
+MUL                temp0.y, temp0.yw, temp0.yw
+MUL                temp0.y, temp0.yw, temp0.yw
+MUL                temp0.y, temp0.yw, temp0.yw
+ADD                temp4.y, temp6.yz, (1,1,1,0)
+MAD                temp4.y, temp4.yz, temp0.yz, temp6.yz
+MUL                temp1.y, temp1.yz, temp4.yz
+MAD                temp1.y, temp2.yz, temp3.yz, temp1.yz
+MUL                temp0.y, temp7.yz, temp0.yz
+ADD                temp2.y, temp6.yz, temp0.yz
+MAD                temp2.y, temp1.yz, temp2.yz, temp6.yz
+MAD                outpu0.y, temp0.yz, temp2.yz, temp1.yz
+MOV                outpu0.y, ()
+RET                
