@@ -2,7 +2,7 @@
 
 ## 1. 流水线概览
 
-工作流文件：[`../ci/unity-android-il2cpp.yml`](../ci/unity-android-il2cpp.yml)
+工作流文件：[`../.github/workflows/unity-android-il2cpp.yml`](../.github/workflows/unity-android-il2cpp.yml)
 
 ```
 push / PR / manual

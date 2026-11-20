@@ -41,7 +41,7 @@
 | [docs/13_仓库结构与版本管理.md](docs/13_仓库结构与版本管理.md) | 仓库布局/入库排除清单/分支策略/版本对齐 |
 | [docs/14_交付清单与环境限制.md](docs/14_交付清单与环境限制.md) | 归档内容、锁定基线、环境限制与待补全占位项 |
 | [docs/15_反编译落地后待办清单.md](docs/15_反编译落地后待办清单.md) | 反编译/编辑器/真机落地后的待办事项、前置条件与验收标准 |
-| [ci/unity-android-il2cpp.yml](ci/unity-android-il2cpp.yml) | GameCI 工作流模板（待按仓库实际参数填值） |
+| [.github/workflows/unity-android-il2cpp.yml](.github/workflows/unity-android-il2cpp.yml) | GameCI 工作流模板（待按仓库实际参数填值） |
 | [.gitignore](.gitignore) | Unity + 移植工程忽略清单 |
 | [tools/scan_static.py](tools/scan_static.py) | 前置静态扫描脚本（只读，输出 md+json） |
 | [tools/scan_il2cpp_risks.py](tools/scan_il2cpp_risks.py) | 反编译源码 IL2CPP 风险 API 扫描 |
