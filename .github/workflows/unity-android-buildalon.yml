@@ -31,13 +31,32 @@ jobs:
         with:
           lfs: false
 
-      - name: 安装 Unity 2022.3.4f1 + Android 模块
-        uses: buildalon/unity-setup@v1
-        with:
-          version-file: None   # 跳过 ProjectVersion.txt 解析(缺 revision 行会 'No version match found')
-          unity-version: ${{ env.UNITY_VERSION }}
-          build-targets: Android
-          modules: android
+      - name: 安装 Unity 2022.3.4f1 + Android 模块（免 Unity Hub）
+        env:
+          REVISION: 35713cd46cd7   # 2022.3.4f1 官方 revision
+        run: |
+          set -euo pipefail
+          BASE="https://download.unity3d.com/download_unity/${REVISION}"
+          DEST="$HOME/Unity/Hub/Editor/2022.3.4f1"
+          mkdir -p "$DEST/Editor"
+          echo "==> editor tarball"
+          curl -fL --retry 3 --retry-delay 5 -o /tmp/unity.tar.xz \
+            "$BASE/LinuxEditorInstaller/Unity-2022.3.4f1.tar.xz"
+          tar -xJf /tmp/unity.tar.xz -C "$DEST"
+          echo "==> android module"
+          curl -fL --retry 3 --retry-delay 5 -o /tmp/android.tar.xz \
+            "$BASE/LinuxEditorTargetInstaller/UnitySetup-Android-Support-for-Editor-2022.3.4f1.tar.xz"
+          mkdir -p /tmp/andmod "$DEST/Editor/Data/PlaybackEngines"
+          tar -xJf /tmp/android.tar.xz -C /tmp/andmod
+          if [ -d /tmp/andmod/AndroidPlayer ]; then
+            mv /tmp/andmod/AndroidPlayer "$DEST/Editor/Data/PlaybackEngines/AndroidPlayer"
+          else
+            mv /tmp/andmod "$DEST/Editor/Data/PlaybackEngines/AndroidPlayer"
+          fi
+          test -x "$DEST/Editor/Unity"
+          "$DEST/Editor/Unity" -version || true
+          echo "UNITY_EDITOR_PATH=$DEST/Editor/Unity" >> "$GITHUB_ENV"
+          echo "UNITY_PROJECT_PATH=$GITHUB_WORKSPACE" >> "$GITHUB_ENV"
 
       - name: 激活 Personal 许可证（仅账号密码，不需要 ulf）
         uses: buildalon/activate-unity-license@v3
