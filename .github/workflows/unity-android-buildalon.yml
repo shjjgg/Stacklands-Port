@@ -1,0 +1,73 @@
+name: unity-android-buildalon
+
+# Stacklands 移植 · Buildalon 路线（Personal 许可证, 无需 .ulf）
+# 与 GameCI 的区别: 激活走 Unity 官方 CLI / Licensing Client 的账号认证,
+# 只要 UNITY_USERNAME(=邮箱) + UNITY_PASSWORD 两个 secret, 不需要 UNITY_LICENSE。
+# 引擎 2022.3.4f1 / Android / IL2CPP / arm64-v8a 由工程 ProjectSettings 决定。
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - 'Assets/**'
+      - 'ProjectSettings/**'
+      - '.github/workflows/unity-android-buildalon.yml'
+
+env:
+  UNITY_VERSION: 2022.3.4f1
+  BUILD_TARGET: Android
+  PROJECT_PATH: .
+  BUILD_PATH: builds/android
+  STRICT: "0"          # 首次冒烟构建走非严格; 稳定后改 "1" 并切 PortBuild.StrictBuild
+
+jobs:
+  build-android:
+    name: Android IL2CPP (arm64-v8a)
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+
+      - name: 安装 Unity 2022.3.4f1 + Android 模块
+        uses: buildalon/unity-setup@v1
+        with:
+          unity-version: ${{ env.UNITY_VERSION }}
+          build-targets: Android
+          modules: android
+
+      - name: 激活 Personal 许可证（仅账号密码，不需要 ulf）
+        uses: buildalon/activate-unity-license@v3
+        with:
+          license: personal
+          username: ${{ secrets.UNITY_USERNAME || secrets.UNITY_EMAIL }}
+          password: ${{ secrets.UNITY_PASSWORD }}
+
+      - name: 构建 APK
+        uses: buildalon/unity-action@v4
+        with:
+          project-path: ${{ env.PROJECT_PATH }}
+          build-target: ${{ env.BUILD_TARGET }}
+          log-name: android-build
+          args: >-
+            -quit -batchmode -nographics
+            -executeMethod PortBuild.PerformAndroidBuild
+            -buildPath ${{ env.BUILD_PATH }}
+
+      - name: 校验产物
+        if: always()
+        run: |
+          ls -lh "$BUILD_PATH" 2>/dev/null || echo "no build dir"
+          test -f "$BUILD_PATH"/*.apk && echo "APK OK" || echo "APK MISSING"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Stacklands-android-apk
+          path: |
+            ${{ env.BUILD_PATH }}
+            Logs
+          if-no-files-found: warn
+          retention-days: 14
