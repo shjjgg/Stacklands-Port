@@ -231,3 +231,41 @@ GameCI = "镜像选择 + 容器激活 + batchmode 导入 + buildMethod 构建 + 
 产生，`UNITY_LICENSE` 只是一份可被在线重激活的种子。因此本工程的收口只有两种形态：
 **(a) 拿到任意一种凭证跑云端 builder；(b) 许可证常驻某台机器 + 自托管 runner/本地脚本。**
 除此之外没有第三条路——这也是为什么在凭证补齐之前，任何"配置层"的改动都不会产出 APK。
+
+---
+
+## 13. GitHub 上构建 Unity 的四条路线对比（2026-11 核查）
+
+| 路线 | 代表 | 许可证要求 | 结论 |
+|---|---|---|---|
+| A. GameCI v4/v6 | `game-ci/unity-builder` | Personal: `ULF + 邮箱密码`；Pro: `SERIAL + 邮箱密码`；或 license server | 官方文档明确 `.ulf` 必须来自 Unity Hub 图形激活 |
+| B. Buildalon v3 | `buildalon/unity-setup` + `buildalon/activate-unity-license` + `buildalon/unity-action` | **Personal 只需 `username + password`**，文档原文 "Unity Hub is no longer required"，激活先走官方 Unity CLI、再走 Licensing Client | 唯一"不需要 ULF"的托管 CI 路线 |
+| C. 自托管 runner | `runs-on: [self-hosted]` + `skipActivation: true` | 许可证常驻机器（Hub 登录一次） | 托管与本地都可，零 secret |
+| D. Unity 官方 Build Automation | `cloud.unity.com` | 平台内置 | 实测本组织被区域政策关闭 |
+
+### 13.1 关于 Personal 能否"只给账号密码"
+
+Unity 官方手册（ManagingYourUnityLicense，2026 版）写的是：命令行激活只适用于 Pro，
+"To activate a license for Unity Personal, log in to the Unity Hub"。
+但实测说明底层能力仍在，限制在"官方没有为 Personal 暴露 CLI 流程"：
+
+- `Unity.Licensing.Client --update-license --username <x> --password <y>` **确实会发起账号认证**，
+  用错误密码时返回 `Status: 401 / "message": "Invalid Credential", "code": "143.002"`。
+  也就是说这条通道是活的，只是缺少有效凭证时会 401。
+- Editor CLI `-quit -batchmode -serial -username <x> -password <y>`（serial 为空 = 具名用户）
+  会依次尝试两条：`Failed to activate entitlement license` → `Failed to activate ULF license`。
+  说明 2022.3 的引擎本身接受 entitlement（账号授权）模型。
+- Buildalon v3 正是基于这两条通道把 Personal 做成"仅账号密码"。
+
+因此对本仓库：**不需要 `.ulf`，需要的是 `UNITY_USERNAME`(邮箱) + `UNITY_PASSWORD` 两个 secret**。
+这条路线已在 `.github/workflows/unity-android-buildalon.yml` 里按最小实现落地。
+
+### 13.2 托管 runner 上 Personal 的一个副作用（Buildalon 文档明写）
+
+GitHub 托管的 macOS / Linux runner **共享同一个机器身份**，所以 Personal 许可证在 job 结束时
+"不归还"（归还会把其它人/其它仓库在该身份上的许可证一起吊销）。含义：
+- 同一仓库短时间内反复重跑，可能撞上"该身份已激活"的状态，表现为激活偶发失败；
+- Windows runner 是独立身份，会正常归还；
+- 自托管 runner 正常归还。
+
+对应到 Buildalon 参数：`return-license: auto`（默认）即上述行为。
