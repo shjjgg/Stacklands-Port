@@ -58,9 +58,13 @@ jobs:
             "$IMG" bash -lc '
               set -euo pipefail
               LIC=/opt/unity/Editor/Data/Resources/Licensing/Client/Unity.Licensing.Client
-              echo "==> activate via credentials"
-              "$LIC" --update-license --username "$UNITY_USERNAME" --password "$UNITY_PASSWORD" || true
+              echo "==> activate via credentials (--activate-all --include-personal)"
+              "$LIC" --activate-all --include-personal \
+                --username "$UNITY_USERNAME" --password "$UNITY_PASSWORD" --debug || {
+                  echo "activate-all FAILED"; exit 5; }
+              echo "==> entitlements"
               "$LIC" --showEntitlements || true
+              ls -l "$HOME/.local/share/unity3d/Unity/" || true
               echo "==> build"
               /opt/unity/Editor/Unity -batchmode -nographics -quit \
                 -buildTarget Android \
