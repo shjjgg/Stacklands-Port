@@ -1,0 +1,31 @@
+name: License CLI probe
+on:
+  workflow_dispatch: {}
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    container:
+      image: unityci/editor:ubuntu-2022.3.4f1-android-3
+    steps:
+      - name: Licensing client help and capabilities
+        run: |
+          LC=$(find / -name "Unity.Licensing.Client" -type f 2>/dev/null | head -1)
+          echo "LC=$LC"
+          "$LC" --help 2>&1 | head -60
+      - name: Try CLI activation variants
+        env:
+          U: ${{ secrets.UNITY_EMAIL }}
+          P: ${{ secrets.UNITY_PASSWORD }}
+        run: |
+          LC=$(find / -name "Unity.Licensing.Client" -type f 2>/dev/null | head -1)
+          set +e
+          for args in "--activate-license --username $U --password $P" "--activate-all --username $U --password $P" "--acquire-license --type personal --username $U --password $P"; do
+            echo "=== $args"; timeout 120 "$LC" $args 2>&1 | tail -12; echo "rc=$?"
+          done
+          echo "=== files"; ls -la /root/.config/unity3d/Unity/licenses 2>/dev/null
+      - name: Editor force-free attempt
+        run: |
+          mkdir -p /tmp/emptyproj/Assets
+          printf 'm_EditorVersion: 2022.3.4f1\n' > /tmp/emptyproj/ProjectSettings/ProjectVersion.txt 2>/dev/null || { mkdir -p /tmp/emptyproj/ProjectSettings; printf 'm_EditorVersion: 2022.3.4f1\n' > /tmp/emptyproj/ProjectSettings/ProjectVersion.txt; }
+          /opt/unity/Editor/Unity -quit -batchmode -nographics -force-free -projectPath /tmp/emptyproj -logFile /tmp/ff.log || true
+          grep -iE "license|personal|entitle" /tmp/ff.log | head -20; tail -5 /tmp/ff.log
