@@ -209,6 +209,10 @@ jobs:
             --dxbc-ledger shader_extract/dxbc_ledger.json \
             --out shader_extract
 
+      # 保真总表: 把六张台账压成"一个 shader 一行"的验收闭包, risk 非空即不可开工
+      - name: Shader fidelity table
+        run: python3 tools/build_fidelity_table.py --ledger shader_extract --out shader_extract
+
       # ShaderLab 保真校验: 自测(用台账合成正确样本+4 个变异) → 若已有重建 .shader 则逐 pass 对账
       - name: ShaderLab fidelity selftest
         run: python3 tools/verify_shaderlab_fidelity.py --selftest
@@ -298,6 +302,7 @@ jobs:
             shader_extract/stage_semantics.*
             shader_extract/keyword_matrix.*
             shader_extract/shaderlab_fidelity.*
+            shader_extract/fidelity_table.*
             content_inventory/
           if-no-files-found: ignore
 
