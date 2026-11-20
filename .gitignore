@@ -1,70 +1,15 @@
-# ---- Unity 标准忽略 ----
-[Ll]ibrary/
-[Tt]emp/
-[Oo]bj/
-[Bb]uild/
-[Bb]uilds/
-[Ll]ogs/
-[Uu]ser[Ss]ettings/
-[Mm]emoryCaptures/
-[Aa]ssets/[Aa]ssetStoreTools/
-
-# Visual Studio / Rider / VSCode
-.vs/
-.idea/
-.vscode/
+# Unity 生成物
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
 *.csproj
-*.unityproj
 *.sln
-*.suo
-*.tmp
 *.user
-*.userprefs
-*.pidb
-*.booproj
-*.svd
-*.pdb
-*.mdb
-*.opendb
-*.VC.db
-
-# Unity 着色器缓存 / 崩溃报告
-sysinfo.txt
-*.stackdump
-crashlytics-build.properties
-
-# ---- 本移植工程特定 ----
-# 原始版权游戏数据(不入库, 经 CI artifact / 本地受保护目录注入)
-source/raw/
-source/recon/
-source/ext/
-**/Stacklands_Data/
-**/*.resS
-**/*.resource
-**/cities_dlc
-**/spirits_dlc
-
-# 派生的 shader blob(由 extract_shader_blobs.py 重新生成, 不入库)
-shader_extract/blobs/
-PORT/shader_extract/blobs/
-
-# 构建产物与符号
-builds/
-*.apk
-*.aab
-*.unitypackage
-**/symbols.zip
-**/global-metadata.dat
-
-# 本地密钥/签名(走 Secrets, 不入库)
-*.keystore
-*.keystore.password
-*.jks
-keystore.properties
-
-# 操作系统
-.DS_Store
-Thumbs.db
-
-# Shader DXBC 原始解压容器(可重算, 不入库; dxbc/*.dxbc 是保真链输入, 入库)
+# 反汇编中间产物
 shader_extract/raw/
+__pycache__/
+*.pyc
