@@ -68,14 +68,16 @@ def split_scopes(text: str) -> list[dict]:
     stack = []
     for i, ch in enumerate(text):
         if ch == "{":
-            head_start = stack[-1]["body_start"] if stack else 0
+            head_start = stack[-1]["open"] + 1 if stack else 0
             head = text[head_start:i]
+            # 只认"紧贴着 { 的那个词"是不是 Pass, 避免 Stencil/"Pass Keep" 及先前 pass 头误判
+            tail = head[max(head.rfind("}"), head.rfind("{")) + 1:].strip()
             stack.append({"head": head, "open": i, "depth": len(stack)})
             if len(stack) == 1:
                 scopes.append({"kind": "shader", "head": head, "open": i, "depth": 0})
             elif len(stack) == 2:
                 scopes.append({"kind": "subshader", "head": head, "open": i, "depth": 1})
-            elif len(stack) == 3 and re.search(r"\bPass\b", head[-40:]):
+            elif len(stack) == 3 and tail == "Pass":
                 scopes.append({"kind": "pass", "head": head, "open": i, "depth": 2})
         elif ch == "}":
             if stack:
@@ -96,7 +98,14 @@ def split_scopes(text: str) -> list[dict]:
 def top_level_scope(text: str, name: str) -> list[tuple[int, int]]:
     """找出某个顶层区块(Shader/SubShader/Pass)的体区间, 用括号配对。"""
     out = []
+    stencil_ops = ("Keep", "Replace", "IncrSat", "DecrSat", "Invert", "Zero")
     for m in re.finditer(rf"\b{name}\b", text):
+        if name == "Pass":
+            nxt = text[m.end():m.end() + 40].lstrip()
+            if nxt.startswith(stencil_ops):   # Stencil 的 Pass Keep / Pass Replace ...
+                continue
+            if not nxt.startswith("{"):        # Pass 后面必须紧跟 {, 否则不是 pass 声明
+                continue
         i = text.find("{", m.end())
         if i < 0:
             continue
@@ -379,7 +388,7 @@ def check_shaders(shader_dir: Path, expect: int | None, strict_coverage: bool = 
             if p["usepass"]:
                 warns.append(f"{name}: 使用 UsePass {p['usepass']}(pass 数不含 UsePass, 需人工确认)")
 
-        missing_set = expect_kw.get(name, set()) - dedupe_globals(p["keywords"])
+        missing_set = dedupe_globals(expect_kw.get(name, set())) - dedupe_globals(p["keywords"])  # "_" 前缀为 Unity 内部宏, 排除
         if p["instancing_pragma"]:
             missing_set.discard("INSTANCING_ON")
         missing = sorted(missing_set)
