@@ -64,7 +64,7 @@
 
 | Shader | 分类 | 压缩(B) | 程序(VS/PS) | 顶点输入 | 插值 | 属性数 | 关键字 | 独有属性 | 风险 |
 |---|---|---:|---|---|---:|---:|---:|---|---|
-| Custom/CardBackShader | Custom | 20676 | 64 (37/27) | POSITION@r0:float、TANGENT@r1:float、NORMAL@r2:float、TEXCOORD@r3:float、TEXCOORD1@r4:float、TEXCOORD2@r5:float、TEXCOORD3@r6:float、COLOR@r7:float、SV_InstanceID@r8:uint | 15 | 4 | 26 | _MainTex | 关键字 26 条(变体爆炸, 需按需剔除无用 multi_compile)；非可改贴图 2 个；fallback=Diffuse(需决定是否保留) |
+| Custom/CardBackShader | Custom | 20676 | 66 (37/29) | POSITION@r0:float、TANGENT@r1:float、NORMAL@r2:float、TEXCOORD@r3:float、TEXCOORD1@r4:float、TEXCOORD2@r5:float、TEXCOORD3@r6:float、COLOR@r7:float、SV_InstanceID@r8:uint | 15 | 4 | 26 | _MainTex | 关键字 26 条(变体爆炸, 需按需剔除无用 multi_compile)；非可改贴图 2 个；fallback=Diffuse(需决定是否保留) |
 | Custom/GridShader | Custom | 7266 | 15 (8/7) | POSITION@r0:float、TANGENT@r1:float、NORMAL@r2:float、TEXCOORD@r3:float、TEXCOORD1@r4:float、TEXCOORD2@r5:float、TEXCOORD3@r6:float、COLOR@r7:float | 6 | 4 | 25 | _LineWidth | 关键字 25 条(变体爆炸, 需按需剔除无用 multi_compile)；非可改贴图 2 个；fallback=Diffuse(需决定是否保留) |
 
 ## 族 F6: Custom/SpiritTransitionEffect, Custom/SpiritImageEffect

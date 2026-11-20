@@ -78,6 +78,7 @@ def split_dxbc(raw: bytes, max_programs: int = 64) -> tuple[list[dict], list[str
     progs: list[dict] = []
     problems: list[str] = []
     pos = 0
+    hit_cap = False
     while len(progs) < max_programs:
         i = raw.find(b"DXBC", pos)
         if i < 0:
@@ -122,6 +123,10 @@ def split_dxbc(raw: bytes, max_programs: int = 64) -> tuple[list[dict], list[str
             "data": body,
         })
         pos = i + total
+    else:
+        hit_cap = True
+    if hit_cap:
+        problems.append(f"达到 max-programs={max_programs} 上限, 可能有程序被截断")
     return progs, problems
 
 
@@ -131,7 +136,8 @@ def main() -> int:
     ap.add_argument("--out", default="shader_extract")
     ap.add_argument("--only-game", action="store_true", default=True)
     ap.add_argument("--all", action="store_true", help="连引擎内置 shader 一起切片")
-    ap.add_argument("--max-programs", type=int, default=64)
+    # 默认上限要足够大: CardBackShader 有 66 段, 原来的 64 会**静默截断**并导致阶段统计错位
+    ap.add_argument("--max-programs", type=int, default=4096)
     args = ap.parse_args()
 
     files = []

@@ -1,6 +1,6 @@
 # DXBC 程序切片台账
 
-- shader: 30，程序段 502
+- shader: 30，程序段 504
 - 压缩体积 170.2 KB → 解压后 1570.1 KB
 - chunk 并集: ISGN, OSGN, SHDR
 - 含 RDEF(反射/资源名): 否 —— 资源名只能从 Shader 资产属性表取
@@ -10,7 +10,7 @@
 | Custom/ArrowSdfShader | 4889 | 42628 | 1 | 15 | 8 | 7 | — | — |
 | Custom/StatusBar | 12051 | 108332 | 1 | 34 | 19 | 15 | — | — |
 | Custom/SewerPipeShader | 5091 | 43540 | 1 | 15 | 8 | 7 | — | — |
-| Custom/CardBackShader | 20676 | 222092 | 1 | 64 | 37 | 27 | — | — |
+| Custom/CardBackShader | 20676 | 222092 | 1 | 66 | 37 | 29 | — | — |
 | Custom/ConveyorArrowShader | 4801 | 40756 | 1 | 15 | 8 | 7 | — | — |
 | Transition/Default | 900 | 1960 | 1 | 2 | 1 | 1 | — | — |
 | Custom/ConflictOutlineSdfShader | 4514 | 36308 | 1 | 15 | 8 | 7 | — | — |

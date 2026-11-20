@@ -200,6 +200,15 @@ jobs:
 
       # ISGN/OSGN 签名: 原版顶点输入布局 + VS输出↔PS输入链接, 是重建时"不能少一个通道"的判据
       # Pass 渲染状态(ZTest/ZWrite/Blend/Cull/Stencil/ColorMask) 决定画面而非 HLSL, 必须单独导出
+      # 变体预算对账: typetree 说应该有多少段 VS/PS, 与切出来的段数必须相等(否则链条有洞)
+      - name: Shader variant reconciliation
+        if: hashFiles(env.SOURCE_DATA) != ''
+        run: |
+          python3 tools/extract_variants.py \
+            --data "$SOURCE_DATA,$(dirname "$SOURCE_DATA")/../game/Stacklands_Data" \
+            --dxbc-ledger shader_extract/dxbc_ledger.json \
+            --out shader_extract
+
       - name: Shader pass render state
         if: hashFiles(env.SOURCE_DATA) != ''
         run: |
@@ -262,6 +271,7 @@ jobs:
             shader_extract/dxbc_ledger.*
             shader_extract/signature_ledger.*
             shader_extract/pass_state.*
+            shader_extract/variant_ledger.*
             content_inventory/
           if-no-files-found: ignore
 

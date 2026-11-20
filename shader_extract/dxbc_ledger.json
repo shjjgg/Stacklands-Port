@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-11-20T21:29:00",
+  "generated_at": "2026-11-20T21:42:38",
   "summary": {
     "shaders": 30,
-    "programs_total": 502,
+    "programs_total": 504,
     "compressed_bytes_total": 174277,
     "decompressed_bytes_total": 1607780,
     "zero_program": [],
@@ -180,10 +180,10 @@
         "plain": 0,
         "failed": 0
       },
-      "programs": 64,
+      "programs": 66,
       "stages": {
         "VS": 37,
-        "PS": 27
+        "PS": 29
       },
       "has_rdef": false,
       "chunks_union": [
@@ -255,7 +255,9 @@
         "a7a6e1fe976b0f1ab03f03c200090a7009dad555",
         "9969f24bc62c67af6e5a37429657b1171eda4878",
         "60bf2136324902d1d53c5acbbd1e659c04bd2baa",
-        "873cfe2b4209ea2ce0b624e3b3548b1409cf2035"
+        "873cfe2b4209ea2ce0b624e3b3548b1409cf2035",
+        "7634572e595cf61d935ccede54e62964b2a02134",
+        "17ad22f67623afcd144938fd93364142a29e0323"
       ],
       "problems": [],
       "raw_file": "raw/Custom__CardBackShader.bin"

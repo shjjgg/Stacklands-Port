@@ -1,0 +1,863 @@
+{
+  "shaders": 30,
+  "passes": 58,
+  "consistent": 30,
+  "mismatch": [],
+  "missing_dxbc": [],
+  "checks": [
+    {
+      "shader": "Custom/ArrowSdfShader",
+      "passes": 2,
+      "vs_variants": 8,
+      "ps_variants": 7,
+      "dxbc_programs": 15,
+      "dxbc_vs": 8,
+      "dxbc_ps": 7,
+      "instancing_passes": 1,
+      "consistent": true
+    },
+    {
+      "shader": "Custom/BoosterShader",
+      "passes": 4,
+      "vs_variants": 19,
+      "ps_variants": 15,
+      "dxbc_programs": 34,
+      "dxbc_vs": 19,
+      "dxbc_ps": 15,
+      "instancing_passes": 3,
+      "consistent": true
+    },
+    {
+      "shader": "Custom/BoosterShaderTop",
+      "passes": 4,
+      "vs_variants": 19,
+      "ps_variants": 15,
+      "dxbc_programs": 34,
+      "dxbc_vs": 19,
+      "dxbc_ps": 15,
+      "instancing_passes": 3,
+      "consistent": true
+    },
+    {
+      "shader": "Custom/CardBackShader",
+      "passes": 3,
+      "vs_variants": 37,
+      "ps_variants": 29,
+      "dxbc_programs": 66,
+      "dxbc_vs": 37,
+      "dxbc_ps": 29,
+      "instancing_passes": 2,
+      "consistent": true
+    },
+    {
+      "shader": "Custom/CardShaderTest",
+      "passes": 4,
+      "vs_variants": 33,
+      "ps_variants": 25,
+      "dxbc_programs": 58,
+      "dxbc_vs": 33,
+      "dxbc_ps": 25,
+      "instancing_passes": 3,
+      "consistent": true
+    },
+    {
+      "shader": "Custom/ConflictOutlineSdfShader",
+      "passes": 2,
+      "vs_variants": 8,
+      "ps_variants": 7,
+      "dxbc_programs": 15,
+      "dxbc_vs": 8,
+      "dxbc_ps": 7,
+      "instancing_passes": 1,
+      "consistent": true
+    },
+    {
+      "shader": "Custom/ConveyorArrowShader",
+      "passes": 2,
+      "vs_variants": 8,
+      "ps_variants": 7,
+      "dxbc_programs": 15,
+      "dxbc_vs": 8,
+      "dxbc_ps": 7,
+      "instancing_passes": 1,
+      "consistent": true
+    },
+    {
+      "shader": "Custom/EnergyCableShader",
+      "passes": 2,
+      "vs_variants": 8,
+      "ps_variants": 7,
+      "dxbc_programs": 15,
+      "dxbc_vs": 8,
+      "dxbc_ps": 7,
+      "instancing_passes": 1,
+      "consistent": true
+    },
+    {
+      "shader": "Custom/FloorShader",
+      "passes": 2,
+      "vs_variants": 13,
+      "ps_variants": 9,
+      "dxbc_programs": 22,
+      "dxbc_vs": 13,
+      "dxbc_ps": 9,
+      "instancing_passes": 1,
+      "consistent": true
+    },
+    {
+      "shader": "Custom/FloorShaderForest",
+      "passes": 2,
+      "vs_variants": 13,
+      "ps_variants": 9,
+      "dxbc_programs": 22,
+      "dxbc_vs": 13,
+      "dxbc_ps": 9,
+      "instancing_passes": 1,
+      "consistent": true
+    },
+    {
+      "shader": "Custom/FloorShaderIsland",
+      "passes": 2,
+      "vs_variants": 13,
+      "ps_variants": 9,
+      "dxbc_programs": 22,
+      "dxbc_vs": 13,
+      "dxbc_ps": 9,
+      "instancing_passes": 1,
+      "consistent": true
+    },
+    {
+      "shader": "Custom/GenericCardShader",
+      "passes": 4,
+      "vs_variants": 33,
+      "ps_variants": 25,
+      "dxbc_programs": 58,
+      "dxbc_vs": 33,
+      "dxbc_ps": 25,
+      "instancing_passes": 3,
+      "consistent": true
+    },
+    {
+      "shader": "Custom/GridShader",
+      "passes": 2,
+      "vs_variants": 8,
+      "ps_variants": 7,
+      "dxbc_programs": 15,
+      "dxbc_vs": 8,
+      "dxbc_ps": 7,
+      "instancing_passes": 1,
+      "consistent": true
+    },
+    {
+      "shader": "Custom/SewerPipeShader",
+      "passes": 2,
+      "vs_variants": 8,
+      "ps_variants": 7,
+      "dxbc_programs": 15,
+      "dxbc_vs": 8,
+      "dxbc_ps": 7,
+      "instancing_passes": 1,
+      "consistent": true
+    },
+    {
+      "shader": "Custom/SpiritImageEffect",
+      "passes": 1,
+      "vs_variants": 1,
+      "ps_variants": 1,
+      "dxbc_programs": 2,
+      "dxbc_vs": 1,
+      "dxbc_ps": 1,
+      "instancing_passes": 0,
+      "consistent": true
+    },
+    {
+      "shader": "Custom/SpiritTransitionEffect",
+      "passes": 1,
+      "vs_variants": 1,
+      "ps_variants": 1,
+      "dxbc_programs": 2,
+      "dxbc_vs": 1,
+      "dxbc_ps": 1,
+      "instancing_passes": 0,
+      "consistent": true
+    },
+    {
+      "shader": "Custom/StatusBar",
+      "passes": 4,
+      "vs_variants": 19,
+      "ps_variants": 15,
+      "dxbc_programs": 34,
+      "dxbc_vs": 19,
+      "dxbc_ps": 15,
+      "instancing_passes": 3,
+      "consistent": true
+    },
+    {
+      "shader": "Custom/SuperSampled Texture",
+      "passes": 1,
+      "vs_variants": 2,
+      "ps_variants": 2,
+      "dxbc_programs": 4,
+      "dxbc_vs": 2,
+      "dxbc_ps": 2,
+      "instancing_passes": 0,
+      "consistent": true
+    },
+    {
+      "shader": "Custom/TransportArrowMainlandShader",
+      "passes": 2,
+      "vs_variants": 8,
+      "ps_variants": 7,
+      "dxbc_programs": 15,
+      "dxbc_vs": 8,
+      "dxbc_ps": 7,
+      "instancing_passes": 1,
+      "consistent": true
+    },
+    {
+      "shader": "Custom/TransportArrowShader",
+      "passes": 2,
+      "vs_variants": 8,
+      "ps_variants": 7,
+      "dxbc_programs": 15,
+      "dxbc_vs": 8,
+      "dxbc_ps": 7,
+      "instancing_passes": 1,
+      "consistent": true
+    },
+    {
+      "shader": "Postprocess/SokpopIntro",
+      "passes": 1,
+      "vs_variants": 1,
+      "ps_variants": 1,
+      "dxbc_programs": 2,
+      "dxbc_vs": 1,
+      "dxbc_ps": 1,
+      "instancing_passes": 0,
+      "consistent": true
+    },
+    {
+      "shader": "Sprites/BackgroundShader",
+      "passes": 1,
+      "vs_variants": 1,
+      "ps_variants": 1,
+      "dxbc_programs": 2,
+      "dxbc_vs": 1,
+      "dxbc_ps": 1,
+      "instancing_passes": 1,
+      "consistent": true
+    },
+    {
+      "shader": "Sprites/CombatCircleSpriteShader2",
+      "passes": 1,
+      "vs_variants": 2,
+      "ps_variants": 2,
+      "dxbc_programs": 4,
+      "dxbc_vs": 2,
+      "dxbc_ps": 2,
+      "instancing_passes": 0,
+      "consistent": true
+    },
+    {
+      "shader": "Sprites/SpriteOnTop",
+      "passes": 1,
+      "vs_variants": 2,
+      "ps_variants": 2,
+      "dxbc_programs": 4,
+      "dxbc_vs": 2,
+      "dxbc_ps": 2,
+      "instancing_passes": 0,
+      "consistent": true
+    },
+    {
+      "shader": "Sprites/StatusEffectSpriteShader",
+      "passes": 1,
+      "vs_variants": 2,
+      "ps_variants": 2,
+      "dxbc_programs": 4,
+      "dxbc_vs": 2,
+      "dxbc_ps": 2,
+      "instancing_passes": 0,
+      "consistent": true
+    },
+    {
+      "shader": "Transition/Cities",
+      "passes": 1,
+      "vs_variants": 1,
+      "ps_variants": 1,
+      "dxbc_programs": 2,
+      "dxbc_vs": 1,
+      "dxbc_ps": 1,
+      "instancing_passes": 0,
+      "consistent": true
+    },
+    {
+      "shader": "Transition/Default",
+      "passes": 1,
+      "vs_variants": 1,
+      "ps_variants": 1,
+      "dxbc_programs": 2,
+      "dxbc_vs": 1,
+      "dxbc_ps": 1,
+      "instancing_passes": 0,
+      "consistent": true
+    },
+    {
+      "shader": "Transition/Energy",
+      "passes": 1,
+      "vs_variants": 1,
+      "ps_variants": 1,
+      "dxbc_programs": 2,
+      "dxbc_vs": 1,
+      "dxbc_ps": 1,
+      "instancing_passes": 0,
+      "consistent": true
+    },
+    {
+      "shader": "Transition/Spirit",
+      "passes": 1,
+      "vs_variants": 1,
+      "ps_variants": 1,
+      "dxbc_programs": 2,
+      "dxbc_vs": 1,
+      "dxbc_ps": 1,
+      "instancing_passes": 0,
+      "consistent": true
+    },
+    {
+      "shader": "Unlit/CardopediaBackgroundShader",
+      "passes": 1,
+      "vs_variants": 1,
+      "ps_variants": 1,
+      "dxbc_programs": 2,
+      "dxbc_vs": 1,
+      "dxbc_ps": 1,
+      "instancing_passes": 0,
+      "consistent": true
+    }
+  ],
+  "passes_detail": [
+    {
+      "shader": "Custom/ArrowSdfShader",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": true,
+      "vs_variants": 3,
+      "ps_variants": 2,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/ArrowSdfShader",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": false,
+      "vs_variants": 5,
+      "ps_variants": 5,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/StatusBar",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": true,
+      "vs_variants": 8,
+      "ps_variants": 4,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/StatusBar",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": false,
+      "vs_variants": 5,
+      "ps_variants": 5,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/StatusBar",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": true,
+      "vs_variants": 4,
+      "ps_variants": 4,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/StatusBar",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": true,
+      "vs_variants": 2,
+      "ps_variants": 2,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/SewerPipeShader",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": true,
+      "vs_variants": 3,
+      "ps_variants": 2,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/SewerPipeShader",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": false,
+      "vs_variants": 5,
+      "ps_variants": 5,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/CardBackShader",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": true,
+      "vs_variants": 16,
+      "ps_variants": 8,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/CardBackShader",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": false,
+      "vs_variants": 13,
+      "ps_variants": 13,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/CardBackShader",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": true,
+      "vs_variants": 8,
+      "ps_variants": 8,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/ConveyorArrowShader",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": true,
+      "vs_variants": 3,
+      "ps_variants": 2,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/ConveyorArrowShader",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": false,
+      "vs_variants": 5,
+      "ps_variants": 5,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Transition/Default",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": false,
+      "vs_variants": 1,
+      "ps_variants": 1,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/ConflictOutlineSdfShader",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": true,
+      "vs_variants": 3,
+      "ps_variants": 2,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/ConflictOutlineSdfShader",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": false,
+      "vs_variants": 5,
+      "ps_variants": 5,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Transition/Spirit",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": false,
+      "vs_variants": 1,
+      "ps_variants": 1,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/GenericCardShader",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": true,
+      "vs_variants": 16,
+      "ps_variants": 8,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/GenericCardShader",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": false,
+      "vs_variants": 5,
+      "ps_variants": 5,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/GenericCardShader",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": true,
+      "vs_variants": 8,
+      "ps_variants": 8,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/GenericCardShader",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": true,
+      "vs_variants": 4,
+      "ps_variants": 4,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/SpiritTransitionEffect",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": false,
+      "vs_variants": 1,
+      "ps_variants": 1,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/CardShaderTest",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": true,
+      "vs_variants": 16,
+      "ps_variants": 8,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/CardShaderTest",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": false,
+      "vs_variants": 5,
+      "ps_variants": 5,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/CardShaderTest",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": true,
+      "vs_variants": 8,
+      "ps_variants": 8,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/CardShaderTest",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": true,
+      "vs_variants": 4,
+      "ps_variants": 4,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/TransportArrowShader",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": true,
+      "vs_variants": 3,
+      "ps_variants": 2,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/TransportArrowShader",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": false,
+      "vs_variants": 5,
+      "ps_variants": 5,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/BoosterShaderTop",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": true,
+      "vs_variants": 8,
+      "ps_variants": 4,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/BoosterShaderTop",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": false,
+      "vs_variants": 5,
+      "ps_variants": 5,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/BoosterShaderTop",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": true,
+      "vs_variants": 4,
+      "ps_variants": 4,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/BoosterShaderTop",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": true,
+      "vs_variants": 2,
+      "ps_variants": 2,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/GridShader",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": true,
+      "vs_variants": 3,
+      "ps_variants": 2,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/GridShader",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": false,
+      "vs_variants": 5,
+      "ps_variants": 5,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/SpiritImageEffect",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": false,
+      "vs_variants": 1,
+      "ps_variants": 1,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/EnergyCableShader",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": true,
+      "vs_variants": 3,
+      "ps_variants": 2,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/EnergyCableShader",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": false,
+      "vs_variants": 5,
+      "ps_variants": 5,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/FloorShaderForest",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": true,
+      "vs_variants": 8,
+      "ps_variants": 4,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/FloorShaderForest",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": false,
+      "vs_variants": 5,
+      "ps_variants": 5,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/SuperSampled Texture",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": false,
+      "vs_variants": 2,
+      "ps_variants": 2,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Unlit/CardopediaBackgroundShader",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": false,
+      "vs_variants": 1,
+      "ps_variants": 1,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/TransportArrowMainlandShader",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": true,
+      "vs_variants": 3,
+      "ps_variants": 2,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/TransportArrowMainlandShader",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": false,
+      "vs_variants": 5,
+      "ps_variants": 5,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Sprites/BackgroundShader",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": true,
+      "vs_variants": 1,
+      "ps_variants": 1,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Sprites/StatusEffectSpriteShader",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": false,
+      "vs_variants": 2,
+      "ps_variants": 2,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/FloorShader",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": true,
+      "vs_variants": 8,
+      "ps_variants": 4,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/FloorShader",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": false,
+      "vs_variants": 5,
+      "ps_variants": 5,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Sprites/CombatCircleSpriteShader2",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": false,
+      "vs_variants": 2,
+      "ps_variants": 2,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Transition/Energy",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": false,
+      "vs_variants": 1,
+      "ps_variants": 1,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/FloorShaderIsland",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": true,
+      "vs_variants": 8,
+      "ps_variants": 4,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/FloorShaderIsland",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": false,
+      "vs_variants": 5,
+      "ps_variants": 5,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/BoosterShader",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": true,
+      "vs_variants": 8,
+      "ps_variants": 4,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/BoosterShader",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": false,
+      "vs_variants": 5,
+      "ps_variants": 5,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/BoosterShader",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": true,
+      "vs_variants": 4,
+      "ps_variants": 4,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Custom/BoosterShader",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": true,
+      "vs_variants": 2,
+      "ps_variants": 2,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Transition/Cities",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": false,
+      "vs_variants": 1,
+      "ps_variants": 1,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Sprites/SpriteOnTop",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": false,
+      "vs_variants": 2,
+      "ps_variants": 2,
+      "other_stages": "{}"
+    },
+    {
+      "shader": "Postprocess/SokpopIntro",
+      "pass": "",
+      "program_mask": 6,
+      "instancing_variant": false,
+      "vs_variants": 1,
+      "ps_variants": 1,
+      "other_stages": "{}"
+    }
+  ]
+}
