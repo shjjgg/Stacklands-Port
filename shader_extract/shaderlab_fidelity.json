@@ -31,6 +31,36 @@
       "keywords": 4
     },
     {
+      "shader": "Sprites/BackgroundShader",
+      "sub": 0,
+      "pass": 0,
+      "ok": true,
+      "pass_programs": 2
+    },
+    {
+      "shader": "Sprites/BackgroundShader",
+      "sub": null,
+      "pass": null,
+      "ok": true,
+      "pass_programs": 2,
+      "keywords": 5
+    },
+    {
+      "shader": "Sprites/SpriteOnTop",
+      "sub": 0,
+      "pass": 0,
+      "ok": true,
+      "pass_programs": 4
+    },
+    {
+      "shader": "Sprites/SpriteOnTop",
+      "sub": null,
+      "pass": null,
+      "ok": true,
+      "pass_programs": 4,
+      "keywords": 5
+    },
+    {
       "shader": "Transition/Default",
       "sub": 0,
       "pass": 0,
@@ -54,6 +84,21 @@
     },
     {
       "shader": "Transition/Energy",
+      "sub": null,
+      "pass": null,
+      "ok": true,
+      "pass_programs": 2,
+      "keywords": 4
+    },
+    {
+      "shader": "Transition/Spirit",
+      "sub": 0,
+      "pass": 0,
+      "ok": true,
+      "pass_programs": 2
+    },
+    {
+      "shader": "Transition/Spirit",
       "sub": null,
       "pass": null,
       "ok": true,
@@ -68,7 +113,6 @@
     "缺 shader 文件: Custom/CardBackShader",
     "缺 shader 文件: Custom/ConveyorArrowShader",
     "缺 shader 文件: Custom/ConflictOutlineSdfShader",
-    "缺 shader 文件: Transition/Spirit",
     "缺 shader 文件: Custom/GenericCardShader",
     "缺 shader 文件: Custom/CardShaderTest",
     "缺 shader 文件: Custom/TransportArrowShader",
@@ -79,14 +123,12 @@
     "缺 shader 文件: Custom/SuperSampled Texture",
     "缺 shader 文件: Unlit/CardopediaBackgroundShader",
     "缺 shader 文件: Custom/TransportArrowMainlandShader",
-    "缺 shader 文件: Sprites/BackgroundShader",
     "缺 shader 文件: Sprites/StatusEffectSpriteShader",
     "缺 shader 文件: Custom/FloorShader",
     "缺 shader 文件: Sprites/CombatCircleSpriteShader2",
     "缺 shader 文件: Custom/FloorShaderIsland",
     "缺 shader 文件: Custom/BoosterShader",
     "缺 shader 文件: Transition/Cities",
-    "缺 shader 文件: Sprites/SpriteOnTop",
     "缺 shader 文件: Postprocess/SokpopIntro"
   ],
   "warns": []
