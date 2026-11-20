@@ -1,0 +1,184 @@
+{
+  "shaders": [
+    {
+      "shader": "Custom/ArrowSdfShader",
+      "file": "spec/Custom__ArrowSdfShader.json",
+      "properties": 8,
+      "passes": 2
+    },
+    {
+      "shader": "Custom/StatusBar",
+      "file": "spec/Custom__StatusBar.json",
+      "properties": 9,
+      "passes": 4
+    },
+    {
+      "shader": "Custom/SewerPipeShader",
+      "file": "spec/Custom__SewerPipeShader.json",
+      "properties": 13,
+      "passes": 2
+    },
+    {
+      "shader": "Custom/CardBackShader",
+      "file": "spec/Custom__CardBackShader.json",
+      "properties": 4,
+      "passes": 3
+    },
+    {
+      "shader": "Custom/ConveyorArrowShader",
+      "file": "spec/Custom__ConveyorArrowShader.json",
+      "properties": 10,
+      "passes": 2
+    },
+    {
+      "shader": "Transition/Default",
+      "file": "spec/Transition__Default.json",
+      "properties": 9,
+      "passes": 1
+    },
+    {
+      "shader": "Custom/ConflictOutlineSdfShader",
+      "file": "spec/Custom__ConflictOutlineSdfShader.json",
+      "properties": 4,
+      "passes": 2
+    },
+    {
+      "shader": "Transition/Spirit",
+      "file": "spec/Transition__Spirit.json",
+      "properties": 9,
+      "passes": 1
+    },
+    {
+      "shader": "Custom/GenericCardShader",
+      "file": "spec/Custom__GenericCardShader.json",
+      "properties": 3,
+      "passes": 4
+    },
+    {
+      "shader": "Custom/SpiritTransitionEffect",
+      "file": "spec/Custom__SpiritTransitionEffect.json",
+      "properties": 2,
+      "passes": 1
+    },
+    {
+      "shader": "Custom/CardShaderTest",
+      "file": "spec/Custom__CardShaderTest.json",
+      "properties": 19,
+      "passes": 4
+    },
+    {
+      "shader": "Custom/TransportArrowShader",
+      "file": "spec/Custom__TransportArrowShader.json",
+      "properties": 14,
+      "passes": 2
+    },
+    {
+      "shader": "Custom/BoosterShaderTop",
+      "file": "spec/Custom__BoosterShaderTop.json",
+      "properties": 13,
+      "passes": 4
+    },
+    {
+      "shader": "Custom/GridShader",
+      "file": "spec/Custom__GridShader.json",
+      "properties": 4,
+      "passes": 2
+    },
+    {
+      "shader": "Custom/SpiritImageEffect",
+      "file": "spec/Custom__SpiritImageEffect.json",
+      "properties": 2,
+      "passes": 1
+    },
+    {
+      "shader": "Custom/EnergyCableShader",
+      "file": "spec/Custom__EnergyCableShader.json",
+      "properties": 13,
+      "passes": 2
+    },
+    {
+      "shader": "Custom/FloorShaderForest",
+      "file": "spec/Custom__FloorShaderForest.json",
+      "properties": 11,
+      "passes": 2
+    },
+    {
+      "shader": "Custom/SuperSampled Texture",
+      "file": "spec/Custom__SuperSampled_Texture.json",
+      "properties": 11,
+      "passes": 1
+    },
+    {
+      "shader": "Unlit/CardopediaBackgroundShader",
+      "file": "spec/Unlit__CardopediaBackgroundShader.json",
+      "properties": 1,
+      "passes": 1
+    },
+    {
+      "shader": "Custom/TransportArrowMainlandShader",
+      "file": "spec/Custom__TransportArrowMainlandShader.json",
+      "properties": 14,
+      "passes": 2
+    },
+    {
+      "shader": "Sprites/BackgroundShader",
+      "file": "spec/Sprites__BackgroundShader.json",
+      "properties": 3,
+      "passes": 1
+    },
+    {
+      "shader": "Sprites/StatusEffectSpriteShader",
+      "file": "spec/Sprites__StatusEffectSpriteShader.json",
+      "properties": 6,
+      "passes": 1
+    },
+    {
+      "shader": "Custom/FloorShader",
+      "file": "spec/Custom__FloorShader.json",
+      "properties": 11,
+      "passes": 2
+    },
+    {
+      "shader": "Sprites/CombatCircleSpriteShader2",
+      "file": "spec/Sprites__CombatCircleSpriteShader2.json",
+      "properties": 4,
+      "passes": 1
+    },
+    {
+      "shader": "Transition/Energy",
+      "file": "spec/Transition__Energy.json",
+      "properties": 10,
+      "passes": 1
+    },
+    {
+      "shader": "Custom/FloorShaderIsland",
+      "file": "spec/Custom__FloorShaderIsland.json",
+      "properties": 17,
+      "passes": 2
+    },
+    {
+      "shader": "Custom/BoosterShader",
+      "file": "spec/Custom__BoosterShader.json",
+      "properties": 12,
+      "passes": 4
+    },
+    {
+      "shader": "Transition/Cities",
+      "file": "spec/Transition__Cities.json",
+      "properties": 11,
+      "passes": 1
+    },
+    {
+      "shader": "Sprites/SpriteOnTop",
+      "file": "spec/Sprites__SpriteOnTop.json",
+      "properties": 3,
+      "passes": 1
+    },
+    {
+      "shader": "Postprocess/SokpopIntro",
+      "file": "spec/Postprocess__SokpopIntro.json",
+      "properties": 6,
+      "passes": 1
+    }
+  ]
+}

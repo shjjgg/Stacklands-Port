@@ -209,6 +209,14 @@ jobs:
             --dxbc-ledger shader_extract/dxbc_ledger.json \
             --out shader_extract
 
+      # 重建规格书: 每个 shader 一份 spec(属性/Fallback/Tags/Pass 状态/程序数/顶点布局)
+      - name: Shader rebuild spec
+        if: hashFiles(env.SOURCE_DATA) != ''
+        run: |
+          python3 tools/extract_shader_spec.py \
+            --data "$SOURCE_DATA,$(dirname "$SOURCE_DATA")/../game/Stacklands_Data" \
+            --ledger shader_extract --out shader_extract
+
       # 保真总表: 把六张台账压成"一个 shader 一行"的验收闭包, risk 非空即不可开工
       - name: Shader fidelity table
         run: python3 tools/build_fidelity_table.py --ledger shader_extract --out shader_extract
@@ -303,6 +311,8 @@ jobs:
             shader_extract/keyword_matrix.*
             shader_extract/shaderlab_fidelity.*
             shader_extract/fidelity_table.*
+            shader_extract/spec/*.json
+            shader_extract/spec_index.json
             content_inventory/
           if-no-files-found: ignore
 

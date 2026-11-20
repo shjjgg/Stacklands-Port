@@ -1,0 +1,203 @@
+{
+  "name": "Custom/SuperSampled Texture",
+  "source": {
+    "file": "sharedassets1.assets",
+    "path_id": 536
+  },
+  "fallback": "",
+  "dependencies": [],
+  "properties": [
+    {
+      "name": "_MainTex",
+      "display": "Texture",
+      "type": "Texture",
+      "flags": 4,
+      "default": null,
+      "default_texture": {
+        "name": "white",
+        "dim": "3D"
+      }
+    },
+    {
+      "name": "_Color",
+      "display": "Tint",
+      "type": "Color",
+      "flags": 16,
+      "default": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "_Bias",
+      "display": "Mip Bias",
+      "type": "Range",
+      "flags": 0,
+      "default": [
+        -0.75,
+        -4.0,
+        4.0,
+        0.0
+      ]
+    },
+    {
+      "name": "_SuperSampling",
+      "display": "Super Sampling Technique",
+      "type": "Float",
+      "flags": 0,
+      "default": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "_AAScale",
+      "display": "AA Pixel Width",
+      "type": "Range",
+      "flags": 0,
+      "default": [
+        1.25,
+        0.0,
+        10.0,
+        0.0
+      ]
+    },
+    {
+      "name": "_StencilComp",
+      "display": "Stencil Comparison",
+      "type": "Float",
+      "flags": 0,
+      "default": [
+        8.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "_Stencil",
+      "display": "Stencil ID",
+      "type": "Float",
+      "flags": 0,
+      "default": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "_StencilOp",
+      "display": "Stencil Operation",
+      "type": "Float",
+      "flags": 0,
+      "default": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "_StencilWriteMask",
+      "display": "Stencil Write Mask",
+      "type": "Float",
+      "flags": 0,
+      "default": [
+        255.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "_StencilReadMask",
+      "display": "Stencil Read Mask",
+      "type": "Float",
+      "flags": 0,
+      "default": [
+        255.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "_ColorMask",
+      "display": "Color Mask",
+      "type": "Float",
+      "flags": 0,
+      "default": [
+        15.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "subshaders": [
+    {
+      "index": 0,
+      "tags": {
+        "QUEUE": "Transparent",
+        "RenderType": "Transparent"
+      },
+      "lod": 0,
+      "passes": [
+        ""
+      ]
+    }
+  ],
+  "keywords": [
+    "STEREO_INSTANCING_ON",
+    "UNITY_SINGLE_PASS_STEREO",
+    "STEREO_MULTIVIEW_ON",
+    "STEREO_CUBEMAP_RENDER_ON",
+    "_SUPERSAMPLING_2X2_RGSS",
+    "_SUPERSAMPLING_8X_HALTON",
+    "_SUPERSAMPLING_16X16_OGSS"
+  ],
+  "platform_forced": [
+    "STEREO_INSTANCING_ON",
+    "UNITY_SINGLE_PASS_STEREO",
+    "STEREO_MULTIVIEW_ON",
+    "STEREO_CUBEMAP_RENDER_ON"
+  ],
+  "programs": {
+    "total": 4,
+    "vs": 2,
+    "ps": 2
+  },
+  "vertex": {
+    "inputs": "",
+    "input_count": null,
+    "interp_channels": null,
+    "instancing_variant": null
+  },
+  "passes": [
+    {
+      "subshader": 0,
+      "pass": 0,
+      "lightmode": "",
+      "shaderlab": "ZTest LessEqual\n        ZWrite Off\n        Blend SrcAlpha OneMinusSrcAlpha\n        ColorMask 0\n        Stencil { Ref 0 Comp Disabled Pass Keep Fail Keep ZFail Keep }\n        Stencil ReadMask 0 WriteMask 0",
+      "queue": "Transparent",
+      "render_type": "Transparent",
+      "cull": "Back",
+      "ztest": "LessEqual",
+      "zwrite": "Off",
+      "blend": [
+        "SrcAlpha",
+        "OneMinusSrcAlpha",
+        "SrcAlpha",
+        "OneMinusSrcAlpha",
+        "Add"
+      ],
+      "color_mask": 0,
+      "offset": "0,0"
+    }
+  ]
+}

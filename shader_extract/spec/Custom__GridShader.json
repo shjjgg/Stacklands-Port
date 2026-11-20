@@ -1,0 +1,160 @@
+{
+  "name": "Custom/GridShader",
+  "source": {
+    "file": "sharedassets1.assets",
+    "path_id": 528
+  },
+  "fallback": "Diffuse",
+  "dependencies": [],
+  "properties": [
+    {
+      "name": "_Color",
+      "display": "Color",
+      "type": "Color",
+      "flags": 0,
+      "default": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "_Glossiness",
+      "display": "Smoothness",
+      "type": "Range",
+      "flags": 0,
+      "default": [
+        0.5,
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "name": "_Metallic",
+      "display": "Metallic",
+      "type": "Range",
+      "flags": 0,
+      "default": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "name": "_LineWidth",
+      "display": "Line Width",
+      "type": "Float",
+      "flags": 0,
+      "default": [
+        0.10000000149011612,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "subshaders": [
+    {
+      "index": 0,
+      "tags": {
+        "QUEUE": "Transparent",
+        "RenderType": "Opaque"
+      },
+      "lod": 200,
+      "passes": [
+        "",
+        ""
+      ]
+    }
+  ],
+  "keywords": [
+    "STEREO_INSTANCING_ON",
+    "UNITY_SINGLE_PASS_STEREO",
+    "STEREO_MULTIVIEW_ON",
+    "STEREO_CUBEMAP_RENDER_ON",
+    "INSTANCING_ON",
+    "FOG_LINEAR",
+    "FOG_EXP",
+    "FOG_EXP2",
+    "DIRECTIONAL",
+    "LIGHTPROBE_SH",
+    "DYNAMICLIGHTMAP_ON",
+    "LIGHTMAP_ON",
+    "LIGHTMAP_SHADOW_MIXING",
+    "DIRLIGHTMAP_COMBINED",
+    "VERTEXLIGHT_ON",
+    "POINT",
+    "SPOT",
+    "POINT_COOKIE",
+    "DIRECTIONAL_COOKIE",
+    "EDITOR_VISUALIZATION",
+    "SHADOWS_SHADOWMASK",
+    "SHADOWS_SCREEN",
+    "SHADOWS_DEPTH",
+    "SHADOWS_CUBE",
+    "UNITY_HDR_ON"
+  ],
+  "platform_forced": [
+    "STEREO_INSTANCING_ON",
+    "UNITY_SINGLE_PASS_STEREO",
+    "STEREO_MULTIVIEW_ON",
+    "STEREO_CUBEMAP_RENDER_ON",
+    "INSTANCING_ON"
+  ],
+  "programs": {
+    "total": 15,
+    "vs": 8,
+    "ps": 7
+  },
+  "vertex": {
+    "inputs": "POSITION@r0:float | TANGENT@r1:float | NORMAL@r2:float | TEXCOORD@r3:float | TEXCOORD1@r4:float | TEXCOORD2@r5:float | TEXCOORD3@r6:float | COLOR@r7:float",
+    "input_count": 8,
+    "interp_channels": 6,
+    "instancing_variant": "no"
+  },
+  "passes": [
+    {
+      "subshader": 0,
+      "pass": 0,
+      "lightmode": "FORWARDBASE",
+      "shaderlab": "ZTest LessEqual\n        ZWrite Off\n        Blend One OneMinusSrcAlpha\n        ColorMask GBA",
+      "queue": "Transparent",
+      "render_type": "Opaque",
+      "cull": "Back",
+      "ztest": "LessEqual",
+      "zwrite": "Off",
+      "blend": [
+        "One",
+        "OneMinusSrcAlpha",
+        "One",
+        "OneMinusSrcAlpha",
+        "Add"
+      ],
+      "color_mask": 14,
+      "offset": "0,0"
+    },
+    {
+      "subshader": 0,
+      "pass": 1,
+      "lightmode": "FORWARDADD",
+      "shaderlab": "ZTest LessEqual\n        ZWrite Off\n        Blend One One\n        ColorMask GBA",
+      "queue": "Transparent",
+      "render_type": "Opaque",
+      "cull": "Back",
+      "ztest": "LessEqual",
+      "zwrite": "Off",
+      "blend": [
+        "One",
+        "One",
+        "One",
+        "One",
+        "Add"
+      ],
+      "color_mask": 14,
+      "offset": "0,0"
+    }
+  ]
+}

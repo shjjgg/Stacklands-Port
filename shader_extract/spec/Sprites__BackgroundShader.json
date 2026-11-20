@@ -1,0 +1,109 @@
+{
+  "name": "Sprites/BackgroundShader",
+  "source": {
+    "file": "sharedassets1.assets",
+    "path_id": 540
+  },
+  "fallback": "",
+  "dependencies": [],
+  "properties": [
+    {
+      "name": "_MainTex",
+      "display": "Sprite Texture",
+      "type": "Texture",
+      "flags": 2,
+      "default": null,
+      "default_texture": {
+        "name": "white",
+        "dim": "3D"
+      }
+    },
+    {
+      "name": "_Color",
+      "display": "Tint",
+      "type": "Color",
+      "flags": 0,
+      "default": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "PixelSnap",
+      "display": "Pixel snap",
+      "type": "Float",
+      "flags": 0,
+      "default": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "subshaders": [
+    {
+      "index": 0,
+      "tags": {
+        "CanUseSpriteAtlas": "true",
+        "IGNOREPROJECTOR": "true",
+        "PreviewType": "Plane",
+        "QUEUE": "Transparent",
+        "RenderType": "Transparent"
+      },
+      "lod": 0,
+      "passes": [
+        ""
+      ]
+    }
+  ],
+  "keywords": [
+    "STEREO_INSTANCING_ON",
+    "UNITY_SINGLE_PASS_STEREO",
+    "STEREO_MULTIVIEW_ON",
+    "STEREO_CUBEMAP_RENDER_ON",
+    "INSTANCING_ON"
+  ],
+  "platform_forced": [
+    "STEREO_INSTANCING_ON",
+    "UNITY_SINGLE_PASS_STEREO",
+    "STEREO_MULTIVIEW_ON",
+    "STEREO_CUBEMAP_RENDER_ON",
+    "INSTANCING_ON"
+  ],
+  "programs": {
+    "total": 2,
+    "vs": 1,
+    "ps": 1
+  },
+  "vertex": {
+    "inputs": "POSITION@r0:float | COLOR@r1:float | TEXCOORD@r2:float",
+    "input_count": 3,
+    "interp_channels": 3,
+    "instancing_variant": "no"
+  },
+  "passes": [
+    {
+      "subshader": 0,
+      "pass": 0,
+      "lightmode": "",
+      "shaderlab": "Cull Off\n        ZTest LessEqual\n        ZWrite Off\n        Blend One OneMinusSrcAlpha",
+      "queue": "Transparent",
+      "render_type": "Transparent",
+      "cull": "Off",
+      "ztest": "LessEqual",
+      "zwrite": "Off",
+      "blend": [
+        "One",
+        "OneMinusSrcAlpha",
+        "One",
+        "OneMinusSrcAlpha",
+        "Add"
+      ],
+      "color_mask": 15,
+      "offset": "0,0"
+    }
+  ]
+}

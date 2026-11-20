@@ -139,8 +139,28 @@ def parse_shader_file(path: Path) -> dict:
         subs.append({"queue": queue, "render_type": render_type, "passes": passes})
 
     pragmas, instancing = collect_keywords(text)
+    fb = re.search(r'\bFallback\s+"?([^"\n\s]+)"?', text)
+    prop_names = []
+    pm = re.search(r"\bProperties\s*\{", text)
+    if pm:
+        # 括号配对取 Properties 体, 再按 "name (" 抽属性名
+        i = text.find("{", pm.end() - 1)
+        depth, j = 0, i
+        while j < len(text):
+            if text[j] == "{":
+                depth += 1
+            elif text[j] == "}":
+                depth -= 1
+                if depth == 0:
+                    break
+            j += 1
+        pbody = text[i + 1:j]
+        prop_names = re.findall(r"([_A-Za-z][\w]*)\s*\(", pbody)
+    uses = re.findall(r'\bUsePass\s+"([^"]+)"', text)
     return {"file": path.name, "name": name, "subshaders": subs,
-            "keywords": pragmas, "instancing_pragma": instancing}
+            "keywords": pragmas, "instancing_pragma": instancing,
+            "fallback": fb.group(1) if fb else "", "properties": prop_names,
+            "usepass": uses}
 
 
 PRAGMA = re.compile(r"#pragma\s+(?:multi_compile|multi_compile_local|shader_feature|"
@@ -303,6 +323,11 @@ def check_shaders(shader_dir: Path, expect: int | None, strict_coverage: bool = 
         expect_passes.setdefault(r["shader"], []).append(r)
     expect_kw = {r["shader"]: set(r["keyword_list"].split()) for r in kw_ledger["rows"]}
     expect_programs = {r["name"]: r["programs"] for r in dxbc_ledger["shaders"]}
+    spec_index = {}
+    si_path = LEDGER_DIR / "spec_index.json"
+    if si_path.exists():
+        for r in json.loads(si_path.read_text(encoding="utf-8")).get("shaders", []):
+            spec_index[r["shader"]] = LEDGER_DIR / r["file"]
 
     if expect and len(parsed) < expect:
         fails.append(f"shader 文件只有 {len(parsed)} 个, 少于预期 {expect} 个")
@@ -341,6 +366,19 @@ def check_shaders(shader_dir: Path, expect: int | None, strict_coverage: bool = 
                 rows.append({"shader": name, "sub": si, "pass": pi, "ok": ok,
                              "pass_programs": expect_programs.get(name)})
 
+        # spec 比对: 属性名集合、Fallback、UsePass 只能作为补充(不计入 pass 数)
+        spec_path = spec_index.get(name)
+        if spec_path and spec_path.exists():
+            spec = json.loads(spec_path.read_text(encoding="utf-8"))
+            want_props = [x["name"] for x in spec.get("properties", [])]
+            miss_props = [x for x in want_props if x not in p["properties"]]
+            if miss_props:
+                fails.append(f"{name}: 缺属性 {miss_props}")
+            if (spec.get("fallback") or "") != (p["fallback"] or ""):
+                fails.append(f"{name}: Fallback '{p['fallback']}' != 台账 '{spec.get('fallback')}'")
+            if p["usepass"]:
+                warns.append(f"{name}: 使用 UsePass {p['usepass']}(pass 数不含 UsePass, 需人工确认)")
+
         missing_set = expect_kw.get(name, set()) - dedupe_globals(p["keywords"])
         if p["instancing_pragma"]:
             missing_set.discard("INSTANCING_ON")
@@ -353,9 +391,14 @@ def check_shaders(shader_dir: Path, expect: int | None, strict_coverage: bool = 
     return fails, warns, rows
 
 
-def synth_shader(name: str, sub_passes: dict[int, list[dict]], keywords: list[str]) -> str:
+def synth_shader(name: str, sub_passes: dict[int, list[dict]], keywords: list[str],
+                 spec_props: list[dict] | None = None) -> str:
     """按台账合成一份"必然正确"的 .shader, 作为自测基准。"""
-    lines = [f'Shader "{name}"', "{", "    Properties { _MainTex (\"Main\", 2D) = \"white\" {} }"]
+    props = [x["name"] for x in (spec_props or [])]
+    lines = [f'Shader "{name}"', "{", "    Properties {", '        _MainTex ("Main", 2D) = "white" {}']
+    for nm in props:
+        lines.append(f'        {nm} ("{nm}", Float) = 0')
+    lines += ["    }"]
     for si in sorted(sub_passes):
         lines += ["    SubShader", "    {",
                   '        Tags { "Queue"="Transparent" "RenderType"="Transparent" }']
@@ -371,7 +414,7 @@ def synth_shader(name: str, sub_passes: dict[int, list[dict]], keywords: list[st
                 lines.append(f"            #pragma multi_compile {k}")
             lines += ["            ENDHLSL", "        }"]
         lines += ["    }"]
-    lines += ["}"]
+    lines += ["}", 'Fallback "Diffuse"']
     return "\n".join(lines)
 
 
@@ -383,6 +426,13 @@ def selftest() -> int:
         by_shader.setdefault(r["shader"], {}).setdefault(r["subshader"], []).append(r)
     kws = {r["shader"]: r["keyword_list"].split() for r in kw["rows"]}
 
+    specs = {}
+    si = LEDGER_DIR / "spec_index.json"
+    if si.exists():
+        for r in json.loads(si.read_text(encoding="utf-8")).get("shaders", []):
+            sp = LEDGER_DIR / r["file"]
+            if sp.exists():
+                specs[r["shader"]] = json.loads(sp.read_text(encoding="utf-8")).get("properties", [])
     sample = sorted(by_shader)[:3]
     results = []
     with tempfile.TemporaryDirectory() as td:
@@ -390,7 +440,7 @@ def selftest() -> int:
         base.mkdir()
         for name in sample:
             fn = base / (name.replace("/", "__") + ".shader")
-            fn.write_text(synth_shader(name, by_shader[name], kws[name]), encoding="utf-8")
+            fn.write_text(synth_shader(name, by_shader[name], kws[name], specs.get(name)), encoding="utf-8")
 
         # 1) 正确样本必须全过
         fails, warns, _ = check_shaders(base, None, strict_coverage=False)
@@ -400,7 +450,7 @@ def selftest() -> int:
         mut = Path(td) / "m1"
         mut.mkdir()
         for name in sample:
-            txt = synth_shader(name, by_shader[name], kws[name])
+            txt = synth_shader(name, by_shader[name], kws[name], specs.get(name))
             txt = txt.replace("Blend One One", "Blend SrcAlpha One", 1)
             (mut / (name.replace("/", "__") + ".shader")).write_text(txt, encoding="utf-8")
         fails, _, _ = check_shaders(mut, None, strict_coverage=False)
@@ -410,7 +460,7 @@ def selftest() -> int:
         mut = Path(td) / "m2"
         mut.mkdir()
         for name in sample:
-            txt = synth_shader(name, by_shader[name], kws[name])
+            txt = synth_shader(name, by_shader[name], kws[name], specs.get(name))
             txt = txt.replace("        Pass\n        {", "", 1)
             (mut / (name.replace("/", "__") + ".shader")).write_text(txt, encoding="utf-8")
         fails, _, _ = check_shaders(mut, None, strict_coverage=False)
@@ -420,7 +470,7 @@ def selftest() -> int:
         mut = Path(td) / "m3"
         mut.mkdir()
         for name in sample:
-            txt = synth_shader(name, by_shader[name], kws[name])
+            txt = synth_shader(name, by_shader[name], kws[name], specs.get(name))
             txt = txt.replace(f"#pragma multi_compile {kws[name][0]}", "")
             (mut / (name.replace("/", "__") + ".shader")).write_text(txt, encoding="utf-8")
         fails, _, _ = check_shaders(mut, None, strict_coverage=False)
@@ -430,11 +480,33 @@ def selftest() -> int:
         mut = Path(td) / "m4"
         mut.mkdir()
         for name in sample:
-            txt = synth_shader(name, by_shader[name], kws[name])
+            txt = synth_shader(name, by_shader[name], kws[name], specs.get(name))
             txt = txt.replace("ColorMask GBA", "ColorMask RGBA", 1)
             (mut / (name.replace("/", "__") + ".shader")).write_text(txt, encoding="utf-8")
         fails, _, _ = check_shaders(mut, None, strict_coverage=False)
         results.append(("ColorMask 变异被抓", any("状态不一致" in f for f in fails), fails[:2]))
+
+        # 6) 变异: 少一个属性
+        mut = Path(td) / "m5"
+        mut.mkdir()
+        for name in sample:
+            txt = synth_shader(name, by_shader[name], kws[name], specs.get(name))
+            props = specs.get(name) or []
+            if props:
+                txt = txt.replace(f'        {props[0]["name"]} ("{props[0]["name"]}", Float) = 0', "", 1)
+            (mut / (name.replace("/", "__") + ".shader")).write_text(txt, encoding="utf-8")
+        fails, _, _ = check_shaders(mut, None, strict_coverage=False)
+        results.append(("少属性被抓", any("缺属性" in f for f in fails), fails[:2]))
+
+        # 7) 变异: Fallback 写错
+        mut = Path(td) / "m6"
+        mut.mkdir()
+        for name in sample:
+            txt = synth_shader(name, by_shader[name], kws[name], specs.get(name))
+            txt = txt.replace('Fallback "Diffuse"', 'Fallback "Standard"', 1)
+            (mut / (name.replace("/", "__") + ".shader")).write_text(txt, encoding="utf-8")
+        fails, _, _ = check_shaders(mut, None, strict_coverage=False)
+        results.append(("Fallback 变异被抓", any("Fallback" in f for f in fails), fails[:2]))
 
     ok = all(r[1] for r in results)
     for label, passed, detail in results:

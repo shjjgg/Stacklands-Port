@@ -1,0 +1,175 @@
+{
+  "name": "Transition/Default",
+  "source": {
+    "file": "sharedassets1.assets",
+    "path_id": 513
+  },
+  "fallback": "",
+  "dependencies": [],
+  "properties": [
+    {
+      "name": "_MainTex",
+      "display": "Main Tex",
+      "type": "Texture",
+      "flags": 0,
+      "default": null,
+      "default_texture": {
+        "name": "black",
+        "dim": "3D"
+      }
+    },
+    {
+      "name": "_TransitionTex",
+      "display": "Transition Texture",
+      "type": "Texture",
+      "flags": 0,
+      "default": null,
+      "default_texture": {
+        "name": "black",
+        "dim": "3D"
+      }
+    },
+    {
+      "name": "_TransitionAmount",
+      "display": "Transition amount",
+      "type": "Float",
+      "flags": 0,
+      "default": [
+        0.5,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "_StencilComp",
+      "display": "Stencil Comparison",
+      "type": "Float",
+      "flags": 0,
+      "default": [
+        8.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "_Stencil",
+      "display": "Stencil ID",
+      "type": "Float",
+      "flags": 0,
+      "default": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "_StencilOp",
+      "display": "Stencil Operation",
+      "type": "Float",
+      "flags": 0,
+      "default": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "_StencilWriteMask",
+      "display": "Stencil Write Mask",
+      "type": "Float",
+      "flags": 0,
+      "default": [
+        255.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "_StencilReadMask",
+      "display": "Stencil Read Mask",
+      "type": "Float",
+      "flags": 0,
+      "default": [
+        255.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "_ColorMask",
+      "display": "Color Mask",
+      "type": "Float",
+      "flags": 0,
+      "default": [
+        15.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "subshaders": [
+    {
+      "index": 0,
+      "tags": {
+        "IGNOREPROJECTOR": "true",
+        "QUEUE": "Transparent"
+      },
+      "lod": 100,
+      "passes": [
+        ""
+      ]
+    }
+  ],
+  "keywords": [
+    "STEREO_INSTANCING_ON",
+    "UNITY_SINGLE_PASS_STEREO",
+    "STEREO_MULTIVIEW_ON",
+    "STEREO_CUBEMAP_RENDER_ON"
+  ],
+  "platform_forced": [
+    "STEREO_INSTANCING_ON",
+    "UNITY_SINGLE_PASS_STEREO",
+    "STEREO_MULTIVIEW_ON",
+    "STEREO_CUBEMAP_RENDER_ON"
+  ],
+  "programs": {
+    "total": 2,
+    "vs": 1,
+    "ps": 1
+  },
+  "vertex": {
+    "inputs": "POSITION@r0:float | TANGENT@r1:float | NORMAL@r2:float | TEXCOORD@r3:float | TEXCOORD1@r4:float | TEXCOORD2@r5:float | TEXCOORD3@r6:float | COLOR@r7:float",
+    "input_count": 8,
+    "interp_channels": 4,
+    "instancing_variant": "no"
+  },
+  "passes": [
+    {
+      "subshader": 0,
+      "pass": 0,
+      "lightmode": "",
+      "shaderlab": "Cull Off\n        ZTest Disabled\n        ZWrite On\n        Blend SrcAlpha OneMinusSrcAlpha\n        ColorMask 0",
+      "queue": "Transparent",
+      "render_type": "",
+      "cull": "Off",
+      "ztest": "Disabled",
+      "zwrite": "On",
+      "blend": [
+        "SrcAlpha",
+        "OneMinusSrcAlpha",
+        "SrcAlpha",
+        "OneMinusSrcAlpha",
+        "Add"
+      ],
+      "color_mask": 0,
+      "offset": "0,0"
+    }
+  ]
+}

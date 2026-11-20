@@ -1,0 +1,376 @@
+{
+  "name": "Custom/CardShaderTest",
+  "source": {
+    "file": "sharedassets1.assets",
+    "path_id": 523
+  },
+  "fallback": "Diffuse",
+  "dependencies": [],
+  "properties": [
+    {
+      "name": "_Color",
+      "display": "Color",
+      "type": "Color",
+      "flags": 2,
+      "default": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "_Color2",
+      "display": "Color2",
+      "type": "Color",
+      "flags": 2,
+      "default": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "_Foil",
+      "display": "Foil",
+      "type": "Float",
+      "flags": 2,
+      "default": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "_Damaged",
+      "display": "Damaged",
+      "type": "Float",
+      "flags": 2,
+      "default": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "_IconColor",
+      "display": "Icon Color",
+      "type": "Color",
+      "flags": 2,
+      "default": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "_ShineStrength",
+      "display": "Shine Strength",
+      "type": "Float",
+      "flags": 2,
+      "default": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "_BigShineStrength",
+      "display": "Big Shine Strength",
+      "type": "Float",
+      "flags": 2,
+      "default": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "_HasSecondaryIcon",
+      "display": "_HasSecondaryIcon",
+      "type": "Float",
+      "flags": 2,
+      "default": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "_HasOutputDir",
+      "display": "_HasOutputDir",
+      "type": "Float",
+      "flags": 2,
+      "default": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "_MainTex",
+      "display": "Albedo (RGB)",
+      "type": "Texture",
+      "flags": 0,
+      "default": null,
+      "default_texture": {
+        "name": "white",
+        "dim": "3D"
+      }
+    },
+    {
+      "name": "_IconTex",
+      "display": "Icon Texture",
+      "type": "Texture",
+      "flags": 2,
+      "default": null,
+      "default_texture": {
+        "name": "white",
+        "dim": "3D"
+      }
+    },
+    {
+      "name": "_SecondaryTex",
+      "display": "SecondaryIcon",
+      "type": "Texture",
+      "flags": 2,
+      "default": null,
+      "default_texture": {
+        "name": "white",
+        "dim": "3D"
+      }
+    },
+    {
+      "name": "_RainbowTex",
+      "display": "Rainbow Tex",
+      "type": "Texture",
+      "flags": 0,
+      "default": null,
+      "default_texture": {
+        "name": "white",
+        "dim": "3D"
+      }
+    },
+    {
+      "name": "_DamagedTex",
+      "display": "Damaged Tex",
+      "type": "Texture",
+      "flags": 0,
+      "default": null,
+      "default_texture": {
+        "name": "white",
+        "dim": "3D"
+      }
+    },
+    {
+      "name": "_Glossiness",
+      "display": "Smoothness",
+      "type": "Range",
+      "flags": 0,
+      "default": [
+        0.5,
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "name": "_Metallic",
+      "display": "Metallic",
+      "type": "Range",
+      "flags": 0,
+      "default": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "name": "_SparkleIntensity",
+      "display": "Sparkle Intensity",
+      "type": "Float",
+      "flags": 0,
+      "default": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "_BorderColor",
+      "display": "Border Color",
+      "type": "Color",
+      "flags": 0,
+      "default": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "_DamagedBorderColor",
+      "display": "Damaged Border Color",
+      "type": "Color",
+      "flags": 0,
+      "default": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    }
+  ],
+  "subshaders": [
+    {
+      "index": 0,
+      "tags": {
+        "RenderType": "Opaque"
+      },
+      "lod": 200,
+      "passes": [
+        "",
+        "",
+        "",
+        ""
+      ]
+    }
+  ],
+  "keywords": [
+    "STEREO_INSTANCING_ON",
+    "UNITY_SINGLE_PASS_STEREO",
+    "STEREO_MULTIVIEW_ON",
+    "STEREO_CUBEMAP_RENDER_ON",
+    "INSTANCING_ON",
+    "FOG_LINEAR",
+    "FOG_EXP",
+    "FOG_EXP2",
+    "DIRECTIONAL",
+    "LIGHTPROBE_SH",
+    "SHADOWS_SHADOWMASK",
+    "DYNAMICLIGHTMAP_ON",
+    "LIGHTMAP_ON",
+    "LIGHTMAP_SHADOW_MIXING",
+    "DIRLIGHTMAP_COMBINED",
+    "SHADOWS_SCREEN",
+    "VERTEXLIGHT_ON",
+    "POINT",
+    "SPOT",
+    "POINT_COOKIE",
+    "DIRECTIONAL_COOKIE",
+    "UNITY_HDR_ON",
+    "SHADOWS_DEPTH",
+    "SHADOWS_CUBE",
+    "EDITOR_VISUALIZATION"
+  ],
+  "platform_forced": [
+    "STEREO_INSTANCING_ON",
+    "UNITY_SINGLE_PASS_STEREO",
+    "STEREO_MULTIVIEW_ON",
+    "STEREO_CUBEMAP_RENDER_ON",
+    "INSTANCING_ON"
+  ],
+  "programs": {
+    "total": 58,
+    "vs": 33,
+    "ps": 25
+  },
+  "vertex": {
+    "inputs": "POSITION@r0:float | TANGENT@r1:float | NORMAL@r2:float | TEXCOORD@r3:float | TEXCOORD1@r4:float | TEXCOORD2@r5:float | TEXCOORD3@r6:float | COLOR@r7:float | SV_InstanceID@r8:uint",
+    "input_count": 9,
+    "interp_channels": 18,
+    "instancing_variant": "yes"
+  },
+  "passes": [
+    {
+      "subshader": 0,
+      "pass": 0,
+      "lightmode": "FORWARDBASE",
+      "shaderlab": "ZTest LessEqual\n        ZWrite On",
+      "queue": "",
+      "render_type": "Opaque",
+      "cull": "Back",
+      "ztest": "LessEqual",
+      "zwrite": "On",
+      "blend": [
+        "One",
+        "Zero",
+        "One",
+        "Zero",
+        "Add"
+      ],
+      "color_mask": 15,
+      "offset": "0,0"
+    },
+    {
+      "subshader": 0,
+      "pass": 1,
+      "lightmode": "FORWARDADD",
+      "shaderlab": "ZTest LessEqual\n        ZWrite Off\n        Blend One One",
+      "queue": "",
+      "render_type": "Opaque",
+      "cull": "Back",
+      "ztest": "LessEqual",
+      "zwrite": "Off",
+      "blend": [
+        "One",
+        "One",
+        "One",
+        "One",
+        "Add"
+      ],
+      "color_mask": 15,
+      "offset": "0,0"
+    },
+    {
+      "subshader": 0,
+      "pass": 2,
+      "lightmode": "DEFERRED",
+      "shaderlab": "ZTest LessEqual\n        ZWrite On",
+      "queue": "",
+      "render_type": "Opaque",
+      "cull": "Back",
+      "ztest": "LessEqual",
+      "zwrite": "On",
+      "blend": [
+        "One",
+        "Zero",
+        "One",
+        "Zero",
+        "Add"
+      ],
+      "color_mask": 15,
+      "offset": "0,0"
+    },
+    {
+      "subshader": 0,
+      "pass": 3,
+      "lightmode": "SHADOWCASTER",
+      "shaderlab": "ZTest LessEqual\n        ZWrite On",
+      "queue": "",
+      "render_type": "Opaque",
+      "cull": "Back",
+      "ztest": "LessEqual",
+      "zwrite": "On",
+      "blend": [
+        "One",
+        "Zero",
+        "One",
+        "Zero",
+        "Add"
+      ],
+      "color_mask": 15,
+      "offset": "0,0"
+    }
+  ]
+}

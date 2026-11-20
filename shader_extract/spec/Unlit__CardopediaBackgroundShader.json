@@ -1,0 +1,83 @@
+{
+  "name": "Unlit/CardopediaBackgroundShader",
+  "source": {
+    "file": "sharedassets1.assets",
+    "path_id": 537
+  },
+  "fallback": "",
+  "dependencies": [],
+  "properties": [
+    {
+      "name": "_MainTex",
+      "display": "Texture",
+      "type": "Texture",
+      "flags": 0,
+      "default": null,
+      "default_texture": {
+        "name": "white",
+        "dim": "3D"
+      }
+    }
+  ],
+  "subshaders": [
+    {
+      "index": 0,
+      "tags": {
+        "QUEUE": "Transparent",
+        "RenderType": "Opaque"
+      },
+      "lod": 100,
+      "passes": [
+        ""
+      ]
+    }
+  ],
+  "keywords": [
+    "STEREO_INSTANCING_ON",
+    "UNITY_SINGLE_PASS_STEREO",
+    "STEREO_MULTIVIEW_ON",
+    "STEREO_CUBEMAP_RENDER_ON",
+    "FOG_LINEAR",
+    "FOG_EXP",
+    "FOG_EXP2"
+  ],
+  "platform_forced": [
+    "STEREO_INSTANCING_ON",
+    "UNITY_SINGLE_PASS_STEREO",
+    "STEREO_MULTIVIEW_ON",
+    "STEREO_CUBEMAP_RENDER_ON"
+  ],
+  "programs": {
+    "total": 2,
+    "vs": 1,
+    "ps": 1
+  },
+  "vertex": {
+    "inputs": "POSITION@r0:float | TEXCOORD@r1:float",
+    "input_count": 2,
+    "interp_channels": 3,
+    "instancing_variant": "no"
+  },
+  "passes": [
+    {
+      "subshader": 0,
+      "pass": 0,
+      "lightmode": "",
+      "shaderlab": "ZTest LessEqual\n        ZWrite On\n        Blend SrcAlpha OneMinusSrcAlpha",
+      "queue": "Transparent",
+      "render_type": "Opaque",
+      "cull": "Back",
+      "ztest": "LessEqual",
+      "zwrite": "On",
+      "blend": [
+        "SrcAlpha",
+        "OneMinusSrcAlpha",
+        "SrcAlpha",
+        "OneMinusSrcAlpha",
+        "Add"
+      ],
+      "color_mask": 15,
+      "offset": "0,0"
+    }
+  ]
+}

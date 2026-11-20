@@ -1,0 +1,241 @@
+{
+  "name": "Custom/FloorShader",
+  "source": {
+    "file": "sharedassets1.assets",
+    "path_id": 543
+  },
+  "fallback": "Diffuse",
+  "dependencies": [],
+  "properties": [
+    {
+      "name": "_Color",
+      "display": "Color",
+      "type": "Color",
+      "flags": 0,
+      "default": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "_Color2",
+      "display": "Color2",
+      "type": "Color",
+      "flags": 0,
+      "default": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "_OffsetTex",
+      "display": "Offset Tex",
+      "type": "Texture",
+      "flags": 0,
+      "default": null,
+      "default_texture": {
+        "name": "white",
+        "dim": "3D"
+      }
+    },
+    {
+      "name": "_StoneColor",
+      "display": "Stone Color",
+      "type": "Color",
+      "flags": 0,
+      "default": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "_StoneEdge",
+      "display": "Stone Edge",
+      "type": "Color",
+      "flags": 0,
+      "default": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "_EdgeColor",
+      "display": "Edge Color",
+      "type": "Color",
+      "flags": 0,
+      "default": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    {
+      "name": "_EdgeThickness",
+      "display": "Edge Thickness",
+      "type": "Float",
+      "flags": 0,
+      "default": [
+        0.10000000149011612,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "_MainTex",
+      "display": "Albedo (RGB)",
+      "type": "Texture",
+      "flags": 0,
+      "default": null,
+      "default_texture": {
+        "name": "white",
+        "dim": "3D"
+      }
+    },
+    {
+      "name": "_Glossiness",
+      "display": "Smoothness",
+      "type": "Range",
+      "flags": 0,
+      "default": [
+        0.5,
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "name": "_Metallic",
+      "display": "Metallic",
+      "type": "Range",
+      "flags": 0,
+      "default": [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "name": "_Rect",
+      "display": "Rect",
+      "type": "Vector",
+      "flags": 0,
+      "default": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "subshaders": [
+    {
+      "index": 0,
+      "tags": {
+        "RenderType": "Opaque"
+      },
+      "lod": 200,
+      "passes": [
+        "",
+        ""
+      ]
+    }
+  ],
+  "keywords": [
+    "STEREO_INSTANCING_ON",
+    "UNITY_SINGLE_PASS_STEREO",
+    "STEREO_MULTIVIEW_ON",
+    "STEREO_CUBEMAP_RENDER_ON",
+    "INSTANCING_ON",
+    "FOG_LINEAR",
+    "FOG_EXP",
+    "FOG_EXP2",
+    "DIRECTIONAL",
+    "LIGHTPROBE_SH",
+    "SHADOWS_SHADOWMASK",
+    "DYNAMICLIGHTMAP_ON",
+    "LIGHTMAP_ON",
+    "LIGHTMAP_SHADOW_MIXING",
+    "DIRLIGHTMAP_COMBINED",
+    "SHADOWS_SCREEN",
+    "VERTEXLIGHT_ON",
+    "POINT",
+    "SPOT",
+    "POINT_COOKIE",
+    "DIRECTIONAL_COOKIE",
+    "EDITOR_VISUALIZATION",
+    "SHADOWS_DEPTH",
+    "SHADOWS_CUBE",
+    "UNITY_HDR_ON"
+  ],
+  "platform_forced": [
+    "STEREO_INSTANCING_ON",
+    "UNITY_SINGLE_PASS_STEREO",
+    "STEREO_MULTIVIEW_ON",
+    "STEREO_CUBEMAP_RENDER_ON",
+    "INSTANCING_ON"
+  ],
+  "programs": {
+    "total": 22,
+    "vs": 13,
+    "ps": 9
+  },
+  "vertex": {
+    "inputs": "POSITION@r0:float | TANGENT@r1:float | NORMAL@r2:float | TEXCOORD@r3:float | TEXCOORD1@r4:float | TEXCOORD2@r5:float | TEXCOORD3@r6:float | COLOR@r7:float",
+    "input_count": 8,
+    "interp_channels": 8,
+    "instancing_variant": "no"
+  },
+  "passes": [
+    {
+      "subshader": 0,
+      "pass": 0,
+      "lightmode": "FORWARDBASE",
+      "shaderlab": "ZTest LessEqual\n        ZWrite On",
+      "queue": "",
+      "render_type": "Opaque",
+      "cull": "Back",
+      "ztest": "LessEqual",
+      "zwrite": "On",
+      "blend": [
+        "One",
+        "Zero",
+        "One",
+        "Zero",
+        "Add"
+      ],
+      "color_mask": 15,
+      "offset": "0,0"
+    },
+    {
+      "subshader": 0,
+      "pass": 1,
+      "lightmode": "FORWARDADD",
+      "shaderlab": "ZTest LessEqual\n        ZWrite Off\n        Blend One One",
+      "queue": "",
+      "render_type": "Opaque",
+      "cull": "Back",
+      "ztest": "LessEqual",
+      "zwrite": "Off",
+      "blend": [
+        "One",
+        "One",
+        "One",
+        "One",
+        "Add"
+      ],
+      "color_mask": 15,
+      "offset": "0,0"
+    }
+  ]
+}

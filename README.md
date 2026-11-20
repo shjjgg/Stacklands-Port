@@ -58,6 +58,7 @@
 | [tools/reconstruct_source.py](tools/reconstruct_source.py) | 源包分卷拼接/侧车归位/版本与大小校验 |
 | [tools/extract_shader_blobs.py](tools/extract_shader_blobs.py) | Shader/ComputeShader blob 与元数据提取 |
 | [tools/extract_keyword_matrix.py](tools/extract_keyword_matrix.py) | 关键字全集 / 互斥组 / 理论上界 ↔ 实际段数 |
+| [tools/extract_shader_spec.py](tools/extract_shader_spec.py) | 重建规格书：属性/Fallback/Tags/Pass 状态/顶点布局（30 份） |
 | [tools/build_fidelity_table.py](tools/build_fidelity_table.py) | 保真总表：六台账压成一 shader 一行的验收闭包 |
 | [tools/verify_shaderlab_fidelity.py](tools/verify_shaderlab_fidelity.py) | ShaderLab 保真校验：pass 数 + 渲染状态 + keyword 集合（含 4 类变异自测） |
 | [tools/verify_stage_semantics.py](tools/verify_stage_semantics.py) | 阶段语义自证：OSGN 输出语义 ↔ 阶段标注（504/504） |
@@ -68,6 +69,7 @@
 | [tools/build_shader_worklist.py](tools/build_shader_worklist.py) | 30 个自研 shader 分族 + 差集 + 风险，生成保真链工作单 |
 | [tools/export_content_inventory.py](tools/export_content_inventory.py) | TextAsset/DLC bundle/混音器链路盘点 |
 | [shader_extract/shader_ledger.md](shader_extract/shader_ledger.md) | Shader 台账（属性/关键字/blob 大小） |
+| [shader_extract/spec_index.json](shader_extract/spec_index.json) | 30 份重建规格书索引（256 属性 / 58 pass） |
 | [shader_extract/fidelity_table.md](shader_extract/fidelity_table.md) | 30 shader 保真总表（风险列即开工闸门） |
 | [shader_extract/keyword_matrix.md](shader_extract/keyword_matrix.md) | 30 shader 关键字矩阵与覆盖比 |
 | [shader_extract/stage_semantics.md](shader_extract/stage_semantics.md) | 504 段阶段语义逐条自证 |
