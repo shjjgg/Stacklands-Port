@@ -13,7 +13,7 @@ GitHub Actions + game-ci 那条线 (`724862c` 起) 保持原样, 只等 `UNITY_L
 
 ## 控制台步骤(需账号登录, 我无法代点)
 1. cloud.unity.com → DevOps → Build Automation → 新建 project, 关联 GitHub 仓库
-   `shjjgg/Stacklands-Unity`, 分支 `main`
+   `shjjgg/Stacklands-Port`（私有）, 分支 `main`
 2. Target: Android; Build Target 选 **Custom**? 若无该项, 用 "Advanced options →
    Build method" 填 `PortBuild.StrictBuild`
 3. 版本/签名: Signing 上传 keystore(.keystore + alias + 两个口令), 勾 IL2CPP
@@ -26,3 +26,8 @@ GitHub Actions + game-ci 那条线 (`724862c` 起) 保持原样, 只等 `UNITY_L
 - Personal 账号的 Build Automation 并发与时长有额度上限, 首次 IL2CPP 构建可能排队
 - 云机构建机同样是"另一台机器", 如果 Personal 许可证按机器绑定, 云构建会自己处理,
   我们不需要也无法介入
+
+## 2026-11-20 更新
+- 旧仓库已按要求删除; 现仓库 `shjjgg/Stacklands-Port` 为私有, 供 Build Automation 关联
+- `ProjectSettings.asset` 已硬置: AndroidTargetArchitectures=2 (ARM64), scriptingBackend.Android=1 (IL2CPP),
+  AndroidBundleVersionCode=1 —— 即使云构建不能调用自定义方法, 也会按这三项产出正确的 IL2CPP arm64 包
