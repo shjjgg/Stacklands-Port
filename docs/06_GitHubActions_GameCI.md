@@ -55,17 +55,33 @@ Unity.Licensing.Client --activate-all --include-personal \
 | `license_ready` | `UNITY_EMAIL`、`UNITY_PASSWORD` 均非空 | 缺密钥则跳过构建 |
 
 手动 `workflow_dispatch` 触发时跳过上述门禁，但首步 `Preflight guard` 会**显式报错**并给出原因：
-工程缺失、引擎版本与基线 `2022.3.4f1` 不一致（禁止跨大版本）、密钥缺失。
+工程缺失、缺 `Assets/Editor/PortBuild.cs`、引擎版本与基线 `2022.3.4f1` 不一致（禁止跨大版本）、密钥缺失。
 
 ## 3. 构建入口（Editor 脚本）
 
-`buildMethod: PortBuild.PerformAndroidBuild` 对应一个放在 `Assets/Editor/PortBuild.cs` 的静态方法，职责：
+`-executeMethod PortBuild.PerformAndroidBuild` 对应 `Assets/Editor/PortBuild.cs` 的静态方法，职责：
 
-1. 切换 `EditorUserBuildSettings.activeBuildTarget = Android`。
-2. 配置 PlayerSettings：IL2CPP、arm64-v8a、图形 API（Vulkan 优先 + GLES3 兼容）、包名/版本、屏幕方向、最低 API。
-3. 场景列表取自原版 `EditorBuildSettings`（IntroScene → SampleScene）。
-4. 执行 `BuildPipeline.BuildPlayer`，输出到 `builds/android`。
-5. 输出构建摘要（场景、变体、被裁程序集）到日志，供 CI 解析。
+1. 场景：优先取 `EditorBuildSettings.scenes`（启用项），不足两个时回落到原版固定列表
+   `Assets/SokpopIntro/IntroScene.unity` → `Assets/Scenes/SampleScene.unity`；
+   **任一场景文件不存在直接 `Exit(2)`**，不出"装得上但进不去游戏"的包。
+2. PlayerSettings：IL2CPP + ARM64、`SetUseDefaultGraphicsAPIs(false)` 后再设 Vulkan/GLES3、
+   Linear 色彩空间、`SetMobileMTRendering(true)`、Unity splash 开启、包名/版本/版本号。
+3. 裁剪：`ManagedStrippingLevel.Low` + `stripEngineCode = false`（反射/Harmony 路径，见 docs/04）。
+4. IL2CPP 编译配置 Release（`BUILD_TYPE=Debug` 时转 Debug 并加 `BuildOptions.Development`）。
+5. 签名：`KEYSTORE_NAME` 存在才启用 `useCustomKeystore`，否则调试签名并告警（仅内部冒烟）。
+6. `BuildPipeline.BuildPlayer` 输出 `builds/android/Stacklands-Port.apk|aab`，
+   摘要含 result/size/errors/warnings 与全部生效配置，失败 `Exit(1)`、成功 `Exit(0)`。
+
+可覆盖的运行参数（不改工作流，走仓库 Variables / 环境变量）：
+
+| 变量 | 默认 | 作用 |
+|---|---|---|
+| `BUNDLE_IDENTIFIER` | `com.sokpop.stacklands.port` | 包名；用默认值时会告警（原版包名未解出） |
+| `SCREEN_ORIENTATION` | `LandscapeLeft` | `Portrait`/`PortraitUpsideDown`/`LandscapeRight`/`AutoRotation` |
+| `MIN_SDK` | `26` | 低于/非法值回落默认 |
+| `TARGET_SDK` | `auto` | `auto` 跟随 Unity 默认；否则按数值，非法枚举回落 33 |
+| `BUILD_TYPE` | `Release` | `Debug` 出开发版 |
+| `BUNDLE_VERSION_CODE` | `github.run_number` | 版本号，随 CI 递增 |
 
 > 该脚本是移植工程的构建胶水，不改玩法逻辑；首版可先 `exportAndroidProject` 出工程再本地打包验证，稳定后直接出 AAB/APK。
 

@@ -28,6 +28,11 @@ env:
   SOURCE_DATA: source/Stacklands_Data
   SOURCE_RAW: source/raw
   DECOMPILED_SRC: Assets/Scripts
+  # 移植包配置(原版值未解出前用占位/默认; 由仓库 Variables 覆盖, 不改工作流)
+  BUNDLE_IDENTIFIER: ${{ vars.BUNDLE_IDENTIFIER || 'com.sokpop.stacklands.port' }}
+  SCREEN_ORIENTATION: ${{ vars.SCREEN_ORIENTATION || 'LandscapeLeft' }}
+  MIN_SDK: ${{ vars.MIN_SDK || '26' }}
+  TARGET_SDK: ${{ vars.TARGET_SDK || 'auto' }}
 
 jobs:
   static-analysis:
@@ -232,6 +237,10 @@ jobs:
             echo "::error::引擎版本漂移: 工程 $eng, 基线 $UNITY_VERSION (禁止跨大版本)。"
             exit 1
           fi
+          if [ ! -f Assets/Editor/PortBuild.cs ]; then
+            echo "::error::缺少 Assets/Editor/PortBuild.cs, -executeMethod 会直接失败。"
+            exit 1
+          fi
           if [ -z "$UNITY_EMAIL" ] || [ -z "$UNITY_PASSWORD" ]; then
             echo "::error::缺少 UNITY_EMAIL / UNITY_PASSWORD, Personal 版无法在线激活。"
             exit 1
@@ -265,8 +274,13 @@ jobs:
             -e KEYSTORE_NAME -e KEYSTORE_PASSWORD \
             -e KEYALIAS_NAME -e KEYALIAS_PASSWORD \
             -e BUILD_VERSION=0.1.0 \
-            -e BUNDLE_VERSION_CODE=1 \
+            -e BUNDLE_VERSION_CODE="${{ github.run_number }}" \
             -e BUILD_AAB=0 \
+            -e BUILD_TYPE=Release \
+            -e BUNDLE_IDENTIFIER \
+            -e SCREEN_ORIENTATION \
+            -e MIN_SDK \
+            -e TARGET_SDK \
             -e BUILD_PATH=builds/android \
             -e HOME=/root \
             -w /project \
