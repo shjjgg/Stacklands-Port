@@ -34,7 +34,7 @@ RULES = {
         r"RuntimePatch", r"Detour\(",
     ],
     "原生互操作": [
-        r"DllImport", r"NativeLibrary", r"[DllImport",
+        r"DllImport", r"NativeLibrary", r"\[DllImport",
     ],
     "序列化反射": [
         r"JsonConvert", r"JObject", r"ISerializationCallbackReceiver",

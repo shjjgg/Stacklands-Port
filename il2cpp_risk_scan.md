@@ -1,0 +1,143 @@
+# IL2CPP 风险 API 扫描报告
+
+- 扫描时间: 2026-11-20T22:22:26
+- C# 文件数: 560
+
+## 反射按名取类型 (7)
+
+- `GameScripts/CardData.cs:995` ExtraDataAttribute[] array = (ExtraDataAttribute[])fieldInfo.GetCustomAttributes(typeof(ExtraDataAttribute), inherit: true);
+- `GameScripts/CardData.cs:1041` ExtraDataAttribute[] array = (ExtraDataAttribute[])fieldInfo.GetCustomAttributes(typeof(ExtraDataAttribute), inherit: true);
+- `GameScripts/CardData.cs:1089` TimedActionAttribute[] array = (TimedActionAttribute[])GetType().GetMethod(methodName).GetCustomAttributes(typeof(TimedActionAttribute), inherit: true);
+- `GameScripts/CardData.cs:1100` TimedActionAttribute[] array = (TimedActionAttribute[])methodInfo.GetCustomAttributes(typeof(TimedActionAttribute), inherit: true);
+- `GameScripts/DebugScreen.cs:319` foreach (Type statusEffect in (from type in typeof(StatusEffect).Assembly.GetTypes()
+- `GameScripts/DocGen.cs:19` Type[] types = typeof(CardData).Assembly.GetTypes();
+- `GameScripts/StatusEffect.cs:135` statusEffectTypes = (from type in typeof(StatusEffect).Assembly.GetTypes()
+
+## 序列化反射 (121)
+
+- `GameScripts/ConfigFile.cs:11` public JObject Data;
+- `GameScripts/ConfigFile.cs:25` Data = JObject.Parse(text);
+- `GameScripts/GameDataLoader.cs:83` JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+- `GameScripts/GameDataLoader.cs:85` Converters = new List<JsonConverter>
+- `GameScripts/GameDataLoader.cs:211` ModCard modCard = JsonConvert.DeserializeObject<ModCard>(value);
+- `GameScripts/GameDataLoader.cs:325` ModBlueprint modBlueprint = JsonConvert.DeserializeObject<ModBlueprint>(value);
+- `GameScripts/GameDataLoader.cs:419` ModBoosterpack modBoosterpack = JsonConvert.DeserializeObject<ModBoosterpack>(value);
+- `GameScripts/ModManager.cs:44` ModManifest manifest = JsonConvert.DeserializeObject<ModManifest>(File.ReadAllText(path));
+- `GameScripts/ModManager.cs:126` ModManifest modManifest = JsonConvert.DeserializeObject<ModManifest>(File.ReadAllText(path));
+- `GameScripts/SchemaGenerator.cs:11` private static JObject EnumDefs = new JObject();
+- `GameScripts/SchemaGenerator.cs:13` public static JObject CardBaseProps = new JObject
+- `GameScripts/SchemaGenerator.cs:18` new JObject
+- `GameScripts/SchemaGenerator.cs:76` public static JObject BlueprintBaseProps = new JObject
+- `GameScripts/SchemaGenerator.cs:81` new JObject
+- `GameScripts/SchemaGenerator.cs:133` new JObject
+- `GameScripts/SchemaGenerator.cs:161` public static Dictionary<string, JObject> PropOverride = new Dictionary<string, JObject>
+- `GameScripts/SchemaGenerator.cs:185` public static Dictionary<Type, JObject> TypeLookup = new Dictionary<Type, JObject>
+- `GameScripts/SchemaGenerator.cs:237` public static JObject Defs = new JObject
+- `GameScripts/SchemaGenerator.cs:245` new JObject
+- `GameScripts/SchemaGenerator.cs:250` new JObject
+- `GameScripts/SchemaGenerator.cs:274` new JObject
+- `GameScripts/SchemaGenerator.cs:279` new JObject {
+- `GameScripts/SchemaGenerator.cs:305` new JObject
+- `GameScripts/SchemaGenerator.cs:320` public static JObject TypeString()
+- `GameScripts/SchemaGenerator.cs:322` return new JObject { { "type", "string" } };
+- `GameScripts/SchemaGenerator.cs:325` public static JObject TypeString(string description)
+- `GameScripts/SchemaGenerator.cs:327` return new JObject
+- `GameScripts/SchemaGenerator.cs:334` public static JObject TypeInt()
+- `GameScripts/SchemaGenerator.cs:336` return new JObject { { "type", "integer" } };
+- `GameScripts/SchemaGenerator.cs:339` public static JObject TypeFloat()
+- `GameScripts/SchemaGenerator.cs:341` return new JObject { { "type", "number" } };
+- `GameScripts/SchemaGenerator.cs:344` public static JObject TypeBool()
+- `GameScripts/SchemaGenerator.cs:346` return new JObject { { "type", "boolean" } };
+- `GameScripts/SchemaGenerator.cs:349` public static JObject TypeColor()
+- `GameScripts/SchemaGenerator.cs:351` return new JObject
+- `GameScripts/SchemaGenerator.cs:372` JObject baseSchema = GetBaseSchema();
+- `GameScripts/SchemaGenerator.cs:377` JObject jObject = new JObject();
+- `GameScripts/SchemaGenerator.cs:393` JObject jObject2 = new JObject
+- `GameScripts/SchemaGenerator.cs:397` new JObject
+- `GameScripts/SchemaGenerator.cs:401` new JObject {
+- `GameScripts/SchemaGenerator.cs:404` new JObject {
+- `GameScripts/SchemaGenerator.cs:419` new JObject()
+- `GameScripts/SchemaGenerator.cs:423` JObject jObject3 = new JObject();
+- `GameScripts/SchemaGenerator.cs:438` jArray2.Add(new JObject());
+- `GameScripts/SchemaGenerator.cs:448` JObject baseSchema = GetBaseSchema();
+- `GameScripts/SchemaGenerator.cs:452` JObject jObject = new JObject();
+- `GameScripts/SchemaGenerator.cs:468` JObject jObject2 = new JObject
+- `GameScripts/SchemaGenerator.cs:472` new JObject
+- `GameScripts/SchemaGenerator.cs:476` new JObject {
+- `GameScripts/SchemaGenerator.cs:479` new JObject {
+- `GameScripts/SchemaGenerator.cs:494` new JObject()
+- `GameScripts/SchemaGenerator.cs:498` JObject jObject3 = new JObject();
+- `GameScripts/SchemaGenerator.cs:513` jArray2.Add(new JObject());
+- `GameScripts/SchemaGenerator.cs:523` JObject baseSchema = GetBaseSchema();
+- `GameScripts/SchemaGenerator.cs:525` obj.Add(new JObject
+- `GameScripts/SchemaGenerator.cs:530` new JObject
+- `GameScripts/SchemaGenerator.cs:566` new JObject
+- `GameScripts/SchemaGenerator.cs:589` public static bool FieldToJson(FieldInfo field, out JObject obj)
+- `GameScripts/SchemaGenerator.cs:591` obj = new JObject();
+- `GameScripts/SchemaGenerator.cs:609` obj = new JObject
+- `GameScripts/SchemaGenerator.cs:618` obj = new JObject
+- `GameScripts/SchemaGenerator.cs:634` public static JObject NamesFromEnum(Type enumType)
+- `GameScripts/SchemaGenerator.cs:648` public static JObject GetCombatStats()
+- `GameScripts/SchemaGenerator.cs:650` JObject jObject = new JObject
+- `GameScripts/SchemaGenerator.cs:655` new JObject()
+- `GameScripts/SchemaGenerator.cs:658` JObject jObject2 = jObject["properties"] as JObject;
+- `GameScripts/SchemaGenerator.cs:670` public static JObject GetSubprint()
+- `GameScripts/SchemaGenerator.cs:672` JObject jObject = new JObject
+- `GameScripts/SchemaGenerator.cs:677` new JObject()
+- `GameScripts/SchemaGenerator.cs:680` JObject jObject2 = jObject["properties"] as JObject;
+- `GameScripts/SchemaGenerator.cs:692` public static JObject GetCardBag()
+- `GameScripts/SchemaGenerator.cs:694` JObject jObject = new JObject
+- `GameScripts/SchemaGenerator.cs:701` new JObject {
+- `GameScripts/SchemaGenerator.cs:704` new JObject {
+- `GameScripts/SchemaGenerator.cs:737` JObject jObject2 = new JObject
+- `GameScripts/SchemaGenerator.cs:741` new JObject
+- `GameScripts/SchemaGenerator.cs:745` new JObject {
+- `GameScripts/SchemaGenerator.cs:748` new JObject {
+- `GameScripts/SchemaGenerator.cs:763` new JObject()
+- `GameScripts/SchemaGenerator.cs:766` JObject jObject3 = new JObject();
+- `GameScripts/SchemaGenerator.cs:780` public static JObject GetCardChance()
+- `GameScripts/SchemaGenerator.cs:782` return new JObject {
+- `GameScripts/SchemaGenerator.cs:787` new JObject {
+- `GameScripts/SchemaGenerator.cs:790` new JObject
+- `GameScripts/SchemaGenerator.cs:814` new JObject
+- `GameScripts/SchemaGenerator.cs:818` new JObject
+- `GameScripts/SchemaGenerator.cs:822` new JObject {
+- `GameScripts/SchemaGenerator.cs:825` new JObject { { "const", true } }
+- `GameScripts/SchemaGenerator.cs:836` new JObject {
+- `GameScripts/SchemaGenerator.cs:839` new JObject {
+- `GameScripts/SchemaGenerator.cs:847` new JObject
+- `GameScripts/SchemaGenerator.cs:851` new JObject {
+- `GameScripts/SchemaGenerator.cs:856` new JObject
+- `GameScripts/SchemaGenerator.cs:860` new JObject {
+- `GameScripts/SchemaGenerator.cs:863` new JObject { { "const", true } }
+- `GameScripts/SchemaGenerator.cs:871` new JObject {
+- `GameScripts/SchemaGenerator.cs:874` new JObject
+- `GameScripts/SchemaGenerator.cs:878` new JObject {
+- `GameScripts/SchemaGenerator.cs:881` new JObject { { "const", true } }
+- `GameScripts/SchemaGenerator.cs:895` new JObject {
+- `GameScripts/SchemaGenerator.cs:898` new JObject {
+- `GameScripts/SchemaGenerator.cs:906` new JObject
+- `GameScripts/SchemaGenerator.cs:910` new JObject
+- `GameScripts/SchemaGenerator.cs:914` new JObject {
+- `GameScripts/SchemaGenerator.cs:917` new JObject { { "const", true } }
+- `GameScripts/SchemaGenerator.cs:928` new JObject {
+- `GameScripts/SchemaGenerator.cs:931` new JObject
+- `GameScripts/SchemaGenerator.cs:949` public static JObject GetCardIds()
+- `GameScripts/SchemaGenerator.cs:953` return new JObject
+- `GameScripts/SchemaGenerator.cs:963` public static JObject GetTerms()
+- `GameScripts/SchemaGenerator.cs:965` return new JObject
+- `GameScripts/SchemaGenerator.cs:975` public static JObject GetBaseSchema()
+- `GameScripts/SchemaGenerator.cs:982` return new JObject
+- `GameScripts/SchemaGenerator.cs:993` public static JObject OneOfAny(params string[] props)
+- `GameScripts/SchemaGenerator.cs:995` JObject jObject = new JObject {
+- `GameScripts/SchemaGenerator.cs:1002` (jObject["oneOf"] as JArray).Add(new JObject {
+- `GameScripts/SchemaGenerator.cs:1011` public static JObject Ref(string str)
+- `GameScripts/SchemaGenerator.cs:1013` return new JObject {
+- `GameScripts/StringColorConverter.cs:5` internal class StringColorConverter : JsonConverter
+- `GameScripts/StringEnumConverter.cs:5` internal class StringEnumConverter : JsonConverter
+- `GameScripts/StringSpriteConverter.cs:6` internal class StringSpriteConverter : JsonConverter
+
+## Harmony / MonoMod 补丁 (2)
+
+- `GameScripts/Mod.cs:1` using HarmonyLib;
+- `GameScripts/ModManager.cs:6` using HarmonyLib;
