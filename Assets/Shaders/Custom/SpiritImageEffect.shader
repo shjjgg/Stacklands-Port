@@ -45,21 +45,25 @@ Shader "Custom/SpiritImageEffect"
                 return o;
             }
 
-            // PS asm (逐条对应):
-            //   MAD   t0, uv, 20, 0
-            //   SINCOS t0 = sin(t0)
-            //   MUL   t0 *= cb0[2]
-            //   MAD   t0 = t0*0.001
-            //   MAD   t0 = t0*15
-            //   SINCOS t0 = sin(t0)
-            //   MUL   t0 *= cb0[2]
-            //   MAD   t0 = t0*0.001
-            //   SAMPLE o, uv + t0, sampler0
+            // PS 逐条对应权威反汇编 (dxbc_disasm, doitsujin/dxbc-spirv):
+            //   mad   r0.x, v0.y, 20, cb1[0].z
+            //   sincos r0.x, null, r0.x
+            //   mul   r0.x, r0.x, cb0[2].x
+            //   mad   r0.x, r0.x, 0.001, v0.x
+            //   mad   r0.z, r0.x, 15, cb1[0].z
+            //   sincos null, r0.z, r0.z
+            //   mul   r0.z, r0.z, cb0[2].x
+            //   mad   r0.y, r0.z, 0.001, v0.y
+            //   sample o0, r0.xy, t0, s0
             float4 frag (v2f i) : SV_Target
             {
-                float2 d = sin(sin(i.uv * 20.0) * _Weight) * 0.001 * 15.0;
-                d = sin(d) * _Weight * 0.001;
-                return tex2D(_MainTex, i.uv + d);
+                float t = _Time.z;                 // cb1[0].z 相位
+                float w = _Weight;                 // cb0[2].x
+                float sx = sin(i.uv.y * 20.0 + t);
+                float x2 = sx * w * 0.001 + i.uv.x;
+                float sy = sin(x2 * 15.0 + t);
+                float y2 = sy * w * 0.001 + i.uv.y;
+                return tex2D(_MainTex, float2(x2, y2));
             }
             ENDCG
         }
