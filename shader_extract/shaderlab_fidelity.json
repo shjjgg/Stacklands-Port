@@ -29,6 +29,36 @@
       "ok": true,
       "pass_programs": 2,
       "keywords": 4
+    },
+    {
+      "shader": "Transition/Default",
+      "sub": 0,
+      "pass": 0,
+      "ok": true,
+      "pass_programs": 2
+    },
+    {
+      "shader": "Transition/Default",
+      "sub": null,
+      "pass": null,
+      "ok": true,
+      "pass_programs": 2,
+      "keywords": 4
+    },
+    {
+      "shader": "Transition/Energy",
+      "sub": 0,
+      "pass": 0,
+      "ok": true,
+      "pass_programs": 2
+    },
+    {
+      "shader": "Transition/Energy",
+      "sub": null,
+      "pass": null,
+      "ok": true,
+      "pass_programs": 2,
+      "keywords": 4
     }
   ],
   "fails": [
@@ -37,7 +67,6 @@
     "缺 shader 文件: Custom/SewerPipeShader",
     "缺 shader 文件: Custom/CardBackShader",
     "缺 shader 文件: Custom/ConveyorArrowShader",
-    "缺 shader 文件: Transition/Default",
     "缺 shader 文件: Custom/ConflictOutlineSdfShader",
     "缺 shader 文件: Transition/Spirit",
     "缺 shader 文件: Custom/GenericCardShader",
@@ -54,7 +83,6 @@
     "缺 shader 文件: Sprites/StatusEffectSpriteShader",
     "缺 shader 文件: Custom/FloorShader",
     "缺 shader 文件: Sprites/CombatCircleSpriteShader2",
-    "缺 shader 文件: Transition/Energy",
     "缺 shader 文件: Custom/FloorShaderIsland",
     "缺 shader 文件: Custom/BoosterShader",
     "缺 shader 文件: Transition/Cities",
