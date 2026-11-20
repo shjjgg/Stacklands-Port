@@ -527,7 +527,7 @@ public static class PortBuild
 
         PlayerSettings.Android.useCustomKeystore = true;
         PlayerSettings.Android.keystoreName = ksName;
-        PlayerSettings.Android.keystorePassword = Environment.GetEnvironmentVariable("KEYSTORE_PASSWORD");
+        PlayerSettings.Android.keystorePass = Environment.GetEnvironmentVariable("KEYSTORE_PASSWORD");
         PlayerSettings.Android.keyaliasName = Environment.GetEnvironmentVariable("KEYALIAS_NAME");
         PlayerSettings.Android.keyaliasPass = Environment.GetEnvironmentVariable("KEYALIAS_PASSWORD");
         return true;

@@ -69,6 +69,8 @@
 | [dependency_inventory/dependency_inventory.md](dependency_inventory/dependency_inventory.md) | 程序集引用闭包与内嵌资源台账 |
 | [interface_member_inventory/interface_member_inventory.md](interface_member_inventory/interface_member_inventory.md) | 接口实现与外部成员引用台账 |
 | [docs/metadata_overview.md](docs/metadata_overview.md) | 元数据总览主表与一致性断言（31 项） |
+| [tools/lint_unity_api_usage.py](tools/lint_unity_api_usage.py) | C# 静态门：括号/守卫/using/API 白名单 |
+| [docs/api_verified.json](docs/api_verified.json) | Unity 2022.3 API 使用白名单（逐条附文档页） |
 | [tools/preflight_project.py](tools/preflight_project.py) | 首跑前置检查（11 项逐条判定 + Step Summary 表格） |
 | [tools/verify_apk.py](tools/verify_apk.py) | 严格产物审计：拆 APK/AAB 校验 IL2CPP 单 ABI、元数据、Mono 残留、包名 |
 | [tools/selftest_strict.py](tools/selftest_strict.py) | 审计脚本自测（合成包/日志断言退出码，纳入 CI） |

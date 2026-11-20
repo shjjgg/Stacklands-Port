@@ -64,6 +64,18 @@ def main() -> int:
             "error CS0103: The name 'Foo' does not exist\n"
             "Build completed with a result of 'Failed'\n", encoding="utf-8")
 
+        # ---- C# 静态门的变异样本: 故意注入真实发生过的三类错误 ----
+        real_src = (ROOT.parent / "Assets" / "Editor" / "PortBuild.cs").read_text(encoding="utf-8")
+        mut_no_using = d / "no_using.cs"
+        mut_no_using.write_text(real_src.replace("using UnityEngine.Rendering;\n", ""), encoding="utf-8")
+        mut_wrong_member = d / "wrong_member.cs"
+        mut_wrong_member.write_text(
+            real_src.replace("PlayerSettings.Android.keystorePass =", "PlayerSettings.Android.keystorePassword ="),
+            encoding="utf-8")
+        mut_unbalanced = d / "unbalanced.cs"
+        mut_unbalanced.write_text(real_src.replace("        return true;\n    }\n}", "        return true;\n    }\n", 1),
+                                  encoding="utf-8")
+
         # ---- 前置检查脚本的自测: 造一个"该过就过"的工程树 ----
         proj = d / "proj"
         (proj / "ProjectSettings").mkdir(parents=True)
@@ -123,6 +135,22 @@ def main() -> int:
             ("前置检查: 空仓库判 NOT_READY",
              [sys.executable, str(ROOT / "preflight_project.py"), "--root", str(d / "empty"), "--strict"], 1,
              ["NOT_READY", "工程未落地"]),
+            ("静态门: 真文件判 PASS", [sys.executable, str(ROOT / "lint_unity_api_usage.py"),
+                                      "--file", str(ROOT.parent / "Assets" / "Editor" / "PortBuild.cs"),
+                                      "--whitelist", str(ROOT.parent / "docs" / "api_verified.json")], 0,
+             ["结论: PASS"]),
+            ("静态门: 括号不配对判 FAIL", [sys.executable, str(ROOT / "lint_unity_api_usage.py"),
+                                        "--file", str(mut_unbalanced),
+                                        "--whitelist", str(ROOT.parent / "docs" / "api_verified.json")], 1,
+             ["未闭合"]),
+            ("静态门: 缺 using 判 FAIL", [sys.executable, str(ROOT / "lint_unity_api_usage.py"),
+                                        "--file", str(mut_no_using),
+                                        "--whitelist", str(ROOT.parent / "docs" / "api_verified.json")], 1,
+             ["需要 `using UnityEngine.Rendering;`"]),
+            ("静态门: 未登记 API 判 FAIL", [sys.executable, str(ROOT / "lint_unity_api_usage.py"),
+                                          "--file", str(mut_wrong_member),
+                                          "--whitelist", str(ROOT.parent / "docs" / "api_verified.json")], 1,
+             ["未登记 API: PlayerSettings.Android.keystorePassword"]),
             ("--allow-warnings 不能放过 error",
              [sys.executable, str(ROOT / "strict_log_audit.py"), str(dirty_log), "--allow-warnings"], 1,
              ["结论: FAIL"]),

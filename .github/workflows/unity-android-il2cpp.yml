@@ -71,6 +71,18 @@ jobs:
 
       # 审计脚本自测: 构建 job 在工程未落地时会被跳过, 若审计逻辑本身写错(例如 ABI 解析恒为空)
       # 就会永远绿 —— 所以把 verify_apk / strict_log_audit 的判定用合成样本钉死在 CI 里。
+      # C# 编辑器脚本静态门: 没有编译器的环境里, 拦住"缺 using / 用了不存在的成员 / 括号不配对"这类
+      # 必编译不过的问题(三者都真实发生过)。API 白名单 = docs/api_verified.json(逐条附文档页)。
+      - name: C# editor script static gate
+        run: |
+          shopt -s nullglob
+          files=(Assets/Editor/*.cs)
+          if [ ${#files[@]} -eq 0 ]; then echo "::error::Assets/Editor 下没有构建脚本"; exit 1; fi
+          for f in "${files[@]}"; do
+            echo "--- lint $f"
+            python3 tools/lint_unity_api_usage.py --file "$f" --strict-unused
+          done
+
       - name: Strict audit self-test
         run: python3 tools/selftest_strict.py
 
