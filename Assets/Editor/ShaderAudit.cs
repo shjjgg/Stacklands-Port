@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using System.IO;
 using System.Text;
 using UnityEditor;
@@ -32,3 +33,4 @@ public static class ShaderAudit
         Debug.Log("[ShaderAudit] wrote /tmp/shader_audit.txt");
     }
 }
+#endif
