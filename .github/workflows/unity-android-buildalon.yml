@@ -31,6 +31,17 @@ jobs:
         with:
           lfs: false
 
+      - name: 腾出磁盘（镜像约 8GB，托管 runner 默认会不够）
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          docker-images: true
+          swap-storage: true
+
       - name: 构建（GameCI 官方镜像 + 账号激活，无 ulf）
         env:
           UNITY_USERNAME: ${{ secrets.UNITY_USERNAME || secrets.UNITY_EMAIL }}
