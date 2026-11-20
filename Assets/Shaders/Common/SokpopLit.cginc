@@ -6,6 +6,7 @@
 
 #include "UnityCG.cginc"
 #include "UnityStandardBRDF.cginc"
+#include "UnityStandardUtils.cginc"
 #include "UnityLightingCommon.cginc"
 #include "UnityShaderVariables.cginc"
 

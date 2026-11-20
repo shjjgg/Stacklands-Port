@@ -306,7 +306,9 @@ def shaderlab_snippet(s: dict) -> str:
         lines.append("AlphaToMask On")
     if s["offset"] != "0,0":
         lines.append(f"Offset {s['offset']}")
-    if s["stencil_comp"] != "Always" or s["stencil_pass"] != "Keep":
+    if (s["stencil_ref"] != 0 or s["stencil_read"] != 255 or s["stencil_write"] != 255
+            or s["stencil_comp"] != "Always" or s["stencil_pass"] != "Keep"
+            or s["stencil_fail"] != "Keep" or s["stencil_zfail"] != "Keep"):
         lines.append(f"Stencil {{ Ref {s['stencil_ref']} Comp {s['stencil_comp']} "
                      f"Pass {s['stencil_pass']} Fail {s['stencil_fail']} ZFail {s['stencil_zfail']} }}")
         if s["stencil_read"] != 255 or s["stencil_write"] != 255:
@@ -314,8 +316,24 @@ def shaderlab_snippet(s: dict) -> str:
     return "\n        ".join(lines)
 
 
+# ShaderLab 只接受 Unity 官方关键字拼写, DXBC 侧的名字必须等价改写后再比较:
+#   ZTest Disabled  -> Unity 无法关闭深度测试, 等价表达是 ZTest Always(配合 ZWrite Off)
+#   ZTest LessEqual -> LEqual / GreaterEqual -> GEqual
+#   模板 Comp Disabled -> Comp Always(Ref/ReadMask/WriteMask 已另做约束)
+UNITY_STATE_EQUIV = [
+    ("ZTest Disabled", "ZTest Always"),
+    ("ZTest LessEqual", "ZTest LEqual"),
+    ("ZTest GreaterEqual", "ZTest GEqual"),
+    ("Comp Disabled", "Comp Always"),
+    ("Pass Keep", "Pass Keep"),
+]
+
+
 def norm(s: str) -> str:
-    return re.sub(r"\s+", " ", s.replace("\n", " ")).strip()
+    s = s.replace("\n", " ")
+    for a, b in UNITY_STATE_EQUIV:
+        s = s.replace(a, b)
+    return re.sub(r"\s+", " ", s).strip()
 
 
 def check_shaders(shader_dir: Path, expect: int | None, strict_coverage: bool = True) -> tuple[list[str], list[str], list[dict]]:

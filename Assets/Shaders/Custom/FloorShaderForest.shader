@@ -26,7 +26,7 @@ Shader "Custom/FloorShaderForest"
         Pass
         {
             Tags { "LightMode"="FORWARDBASE" }
-            ZTest LessEqual
+            ZTest LEqual
             ZWrite On
 
             CGPROGRAM
@@ -122,7 +122,7 @@ Shader "Custom/FloorShaderForest"
         Pass
         {
             Tags { "LightMode"="FORWARDADD" }
-            ZTest LessEqual
+            ZTest LEqual
             ZWrite Off
             Blend One One
 

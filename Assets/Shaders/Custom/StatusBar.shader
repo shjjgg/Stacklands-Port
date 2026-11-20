@@ -23,7 +23,7 @@ Shader "Custom/StatusBar"
         Pass
         {
             Tags { "LightMode"="FORWARDBASE" }
-            ZTest LessEqual
+            ZTest LEqual
             ZWrite On
 
             CGPROGRAM
@@ -80,7 +80,7 @@ Shader "Custom/StatusBar"
         Pass
         {
             Tags { "LightMode"="FORWARDADD" }
-            ZTest LessEqual
+            ZTest LEqual
             ZWrite Off
             Blend One One
 
@@ -125,7 +125,7 @@ Shader "Custom/StatusBar"
         Pass
         {
             Tags { "LightMode"="DEFERRED" }
-            ZTest LessEqual
+            ZTest LEqual
             ZWrite On
             CGPROGRAM
             #pragma vertex vert
@@ -141,7 +141,7 @@ Shader "Custom/StatusBar"
         Pass
         {
             Tags { "LightMode"="SHADOWCASTER" }
-            ZTest LessEqual
+            ZTest LEqual
             ZWrite On
             CGPROGRAM
             #pragma vertex vert

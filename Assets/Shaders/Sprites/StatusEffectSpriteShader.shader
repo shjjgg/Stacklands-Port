@@ -1,5 +1,5 @@
 // 还原自 dxbc_disasm: Sprites__StatusEffectSpriteShader__03_PS (另有 02_PS 变体)
-// pass 状态: Cull Off / ZTest LessEqual / ZWrite Off / Blend One OneMinusSrcAlpha
+// pass 状态: Cull Off / ZTest LEqual / ZWrite Off / Blend One OneMinusSrcAlpha
 // PS 逐条: y波 = sin(uv.x*10 + t)*0.02 + uv.y; flag = (_FillAmount >= y波) ? 0 : 1;
 //         col = lerp(_ColorA,_ColorB, 1-tex.x) * 顶点色;  rgb = col.rgb*(1-0.7*flag)
 Shader "Sprites/StatusEffectSpriteShader"
@@ -18,7 +18,7 @@ Shader "Sprites/StatusEffectSpriteShader"
         Pass
         {
             Cull Off
-            ZTest LessEqual
+            ZTest LEqual
             ZWrite Off
             Blend One OneMinusSrcAlpha
 

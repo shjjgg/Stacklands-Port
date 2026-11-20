@@ -1,7 +1,7 @@
 // 还原自 shader_extract/glsl_exact/Custom__ArrowSdfShader__03_PS.glsl(数学精确等价的 SPIR-V GLSL)。
 // 线宽 + 描边双层覆盖: cb0._m10.x = _LineThickness, cb0._m10.y = _OutlineThickness,
 // _m10.z = 抖动法线宽度, _m10.w = _Noise; _m6/_m8 = _Start/_End.xy; _m4/_m5 = 描边色/内色。
-// pass 状态逐字取自 pass_state.json: ZTest LessEqual / ZWrite Off / ColorMask GBA。
+// pass 状态逐字取自 pass_state.json: ZTest LEqual / ZWrite Off / ColorMask GBA。
 Shader "Custom/ArrowSdfShader"
 {
     Properties
@@ -21,7 +21,7 @@ Shader "Custom/ArrowSdfShader"
 
         Pass
         {
-            ZTest LessEqual
+            ZTest LEqual
             ZWrite Off
             Blend SrcAlpha OneMinusSrcAlpha
             ColorMask GBA
@@ -91,7 +91,7 @@ Shader "Custom/ArrowSdfShader"
 
         Pass
         {
-            ZTest LessEqual
+            ZTest LEqual
             ZWrite Off
             Blend SrcAlpha One
             ColorMask GBA

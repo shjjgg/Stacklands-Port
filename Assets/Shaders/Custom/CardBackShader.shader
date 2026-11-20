@@ -16,7 +16,7 @@ Shader "Custom/CardBackShader"
         Pass
         {
             Tags { "LightMode"="FORWARDBASE" }
-            ZTest LessEqual
+            ZTest LEqual
             ZWrite On
 
             CGPROGRAM
@@ -57,7 +57,7 @@ Shader "Custom/CardBackShader"
         Pass
         {
             Tags { "LightMode"="FORWARDADD" }
-            ZTest LessEqual
+            ZTest LEqual
             ZWrite Off
             Blend One One
 
@@ -100,7 +100,7 @@ Shader "Custom/CardBackShader"
         Pass
         {
             Tags { "LightMode"="DEFERRED" }
-            ZTest LessEqual
+            ZTest LEqual
             ZWrite On
             CGPROGRAM
             #pragma vertex vert

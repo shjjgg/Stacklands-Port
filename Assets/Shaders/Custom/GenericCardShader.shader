@@ -16,7 +16,7 @@ Shader "Custom/GenericCardShader"
         Pass
         {
             Tags { "LightMode"="FORWARDBASE" }
-            ZTest LessEqual
+            ZTest LEqual
             ZWrite On
 
             CGPROGRAM
@@ -77,7 +77,7 @@ Shader "Custom/GenericCardShader"
         Pass
         {
             Tags { "LightMode"="FORWARDADD" }
-            ZTest LessEqual
+            ZTest LEqual
             ZWrite Off
             Blend One One
 
@@ -118,7 +118,7 @@ Shader "Custom/GenericCardShader"
         Pass
         {
             Tags { "LightMode"="DEFERRED" }
-            ZTest LessEqual
+            ZTest LEqual
             ZWrite On
             CGPROGRAM
             #pragma vertex vert
@@ -134,7 +134,7 @@ Shader "Custom/GenericCardShader"
         Pass
         {
             Tags { "LightMode"="SHADOWCASTER" }
-            ZTest LessEqual
+            ZTest LEqual
             ZWrite On
             CGPROGRAM
             #pragma vertex vert

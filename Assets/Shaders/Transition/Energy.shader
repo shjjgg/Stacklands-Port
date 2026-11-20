@@ -1,5 +1,5 @@
 // 还原自 dxbc_disasm: Transition__Energy__00_VS / __01_PS
-// pass 状态取自 pass_state.json: Cull Off / ZTest Disabled / ZWrite On / Blend SrcAlpha OneMinusSrcAlpha / ColorMask 0
+// pass 状态取自 pass_state.json: Cull Off / ZTest Always / ZWrite On / Blend SrcAlpha OneMinusSrcAlpha / ColorMask 0
 // PS 数学(逐条): d = frac((uv.y-uv.x)*30)-0.5; r = |d|*sqrt(2) - (0.92 - _TransitionAmount);
 //   a = saturate(r*12.5); shape = 3-2a; out = a^2*shape  -> 抖动边缘的过渡遮罩
 Shader "Transition/Energy"
@@ -23,7 +23,7 @@ Shader "Transition/Energy"
         Pass
         {
             Cull Off
-            ZTest Disabled
+            ZTest Always
             ZWrite On
             Blend SrcAlpha OneMinusSrcAlpha
             ColorMask 0

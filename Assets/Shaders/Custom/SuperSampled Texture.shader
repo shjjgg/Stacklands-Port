@@ -1,7 +1,7 @@
 // 还原自 shader_extract/glsl_exact/Custom__SuperSampled_Texture__02_PS.glsl(逐条等价):
 //   tex = texture(_MainTex, uv, bias=_Bias); out = tex * _Color * 顶点色。
-// pass 状态逐字取自 pass_state.json: ZTest LessEqual / ZWrite Off / Blend SrcAlpha OneMinusSrcAlpha /
-// ColorMask 0 / Stencil{Ref 0 Comp Disabled ...} / ReadMask 0 WriteMask 0。
+// pass 状态逐字取自 pass_state.json: ZTest LEqual / ZWrite Off / Blend SrcAlpha OneMinusSrcAlpha /
+// ColorMask 0 / Stencil{Ref 0 Comp Always ...} / ReadMask 0 WriteMask 0。
 Shader "Custom/SuperSampled Texture"
 {
     Properties
@@ -24,14 +24,14 @@ Shader "Custom/SuperSampled Texture"
 
         Pass
         {
-            ZTest LessEqual
+            ZTest LEqual
             ZWrite Off
             Blend SrcAlpha OneMinusSrcAlpha
             ColorMask 0
             Stencil
             {
                 Ref 0
-                Comp Disabled
+                Comp Always
                 Pass Keep
                 Fail Keep
                 ZFail Keep

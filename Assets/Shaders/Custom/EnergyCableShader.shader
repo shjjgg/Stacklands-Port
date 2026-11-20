@@ -2,7 +2,7 @@
 // 三点电缆(Start-Middle-End)按分段 SDF 取最小距离, 沿线参数做 _Color→_SecondColor 渐变;
 // _DrawCircle 时在 _Middle 处叠加圆头; _IsBehind 控制描边宽度方向。cb0 映射:
 //   _m2=_Color, _m4/_m5=描边色/内色, _m6/_m8=起点/终点, _m10=(线宽, 描边宽, 中点圆半径, 噪声)。
-// pass 状态逐字取自 pass_state.json: ZTest Disabled / ZWrite Off / ColorMask GBA。
+// pass 状态逐字取自 pass_state.json: ZTest Always / ZWrite Off / ColorMask GBA。
 Shader "Custom/EnergyCableShader"
 {
     Properties
@@ -27,7 +27,7 @@ Shader "Custom/EnergyCableShader"
 
         Pass
         {
-            ZTest Disabled
+            ZTest Always
             ZWrite Off
             Blend SrcAlpha OneMinusSrcAlpha
             ColorMask GBA
@@ -111,7 +111,7 @@ Shader "Custom/EnergyCableShader"
 
         Pass
         {
-            ZTest Disabled
+            ZTest Always
             ZWrite Off
             Blend SrcAlpha One
             ColorMask GBA

@@ -17,7 +17,7 @@ Shader "Custom/GridShader"
         Pass
         {
             Tags { "LightMode"="FORWARDBASE" }
-            ZTest LessEqual
+            ZTest LEqual
             ZWrite Off
             Blend One OneMinusSrcAlpha
             ColorMask GBA
@@ -85,7 +85,7 @@ Shader "Custom/GridShader"
         Pass
         {
             Tags { "LightMode"="FORWARDADD" }
-            ZTest LessEqual
+            ZTest LEqual
             ZWrite Off
             Blend One One
             ColorMask GBA

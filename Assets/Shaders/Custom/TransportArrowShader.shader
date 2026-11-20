@@ -27,7 +27,7 @@ Shader "Custom/TransportArrowShader"
 
         Pass
         {
-            ZTest Disabled
+            ZTest Always
             ZWrite Off
             Blend SrcAlpha OneMinusSrcAlpha
             ColorMask GBA
@@ -96,7 +96,7 @@ Shader "Custom/TransportArrowShader"
 
         Pass
         {
-            ZTest Disabled
+            ZTest Always
             ZWrite Off
             Blend SrcAlpha One
             ColorMask GBA

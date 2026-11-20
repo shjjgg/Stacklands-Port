@@ -2,7 +2,7 @@
 // 场景转场(城市): _MainTex 做两级域扭曲(0.2×2 步, 幅度 0.05/0.03), 
 // 以 _TransitionAmount 生成城市轮廓 SDF 链(每级用 h=clamp((a-b)*25+0.5) 的 0.02 平滑并集),
 // 轮廓内填 _Color2; 阈値 0.09 之外 α=0, |sdf|<0.1 处 α=1 形成描边带。
-// pass: Cull Off / ZTest Disabled / ZWrite On / Blend SrcAlpha OneMinusSrcAlpha / ColorMask 0
+// pass: Cull Off / ZTest Always / ZWrite On / Blend SrcAlpha OneMinusSrcAlpha / ColorMask 0
 //       / Stencil{Ref _Stencil Comp _StencilComp ...}
 Shader "Transition/Cities"
 {
@@ -27,7 +27,7 @@ Shader "Transition/Cities"
         Pass
         {
             Cull Off
-            ZTest Disabled
+            ZTest Always
             ZWrite On
             Blend SrcAlpha OneMinusSrcAlpha
             ColorMask 0

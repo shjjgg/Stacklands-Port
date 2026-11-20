@@ -1,6 +1,6 @@
 // 还原自 shader_extract/glsl_exact/Custom__SewerPipeShader__03_PS.glsl。
 // 下水道管道: 三点折线(_Start-_Middle-_End) 双段 SDF, _ThickColor 用于管壁加粗段,
-// _HighlightAmount 抬高亮度(1.2)。pass 状态: ZTest Disabled / 前者 SrcAlpha OneMinusSrcAlpha / 后者 SrcAlpha One。
+// _HighlightAmount 抬高亮度(1.2)。pass 状态: ZTest Always / 前者 SrcAlpha OneMinusSrcAlpha / 后者 SrcAlpha One。
 Shader "Custom/SewerPipeShader"
 {
     Properties
@@ -25,7 +25,7 @@ Shader "Custom/SewerPipeShader"
 
         Pass
         {
-            ZTest Disabled
+            ZTest Always
             ZWrite Off
             Blend SrcAlpha OneMinusSrcAlpha
             ColorMask GBA
@@ -84,7 +84,7 @@ Shader "Custom/SewerPipeShader"
 
         Pass
         {
-            ZTest Disabled
+            ZTest Always
             ZWrite Off
             Blend SrcAlpha One
             ColorMask GBA

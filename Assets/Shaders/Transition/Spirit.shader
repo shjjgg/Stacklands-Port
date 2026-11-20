@@ -1,5 +1,5 @@
 // 还原自 dxbc_disasm: Transition__Spirit__00_VS / __01_PS
-// pass 状态: Cull Off / ZTest Disabled / ZWrite On / Blend SrcAlpha OneMinusSrcAlpha / ColorMask 0
+// pass 状态: Cull Off / ZTest Always / ZWrite On / Blend SrcAlpha OneMinusSrcAlpha / ColorMask 0
 // PS 逐条: aspect=y 归一化 -> sin 扭曲 (40, 60 两段) -> 半径阈值 0.998-_TransitionAmount -> 500 倍软化
 Shader "Transition/Spirit"
 {
@@ -20,7 +20,7 @@ Shader "Transition/Spirit"
         Pass
         {
             Cull Off
-            ZTest Disabled
+            ZTest Always
             ZWrite On
             Blend SrcAlpha OneMinusSrcAlpha
             ColorMask 0

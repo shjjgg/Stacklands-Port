@@ -1,5 +1,5 @@
 // 还原自 dxbc_disasm: Sprites__BackgroundShader__00_VS/01_PS
-// pass 状态: Cull Off / ZTest LessEqual / ZWrite Off / Blend One OneMinusSrcAlpha
+// pass 状态: Cull Off / ZTest LEqual / ZWrite Off / Blend One OneMinusSrcAlpha
 // PS 逐条: x = sin(uv.y*0.318319 + time*0.3) * pow(uv.y,1.4) * 0.02 + uv.x; sample(x, uv.y); 预乘 alpha
 Shader "Sprites/BackgroundShader"
 {
@@ -14,7 +14,7 @@ Shader "Sprites/BackgroundShader"
         Pass
         {
             Cull Off
-            ZTest LessEqual
+            ZTest LEqual
             ZWrite Off
             Blend One OneMinusSrcAlpha
 

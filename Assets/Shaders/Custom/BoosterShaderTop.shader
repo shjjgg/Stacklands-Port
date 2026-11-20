@@ -30,7 +30,7 @@ Shader "Custom/BoosterShaderTop"
         Pass
         {
             Tags { "LightMode"="FORWARDBASE" }
-            ZTest LessEqual
+            ZTest LEqual
             ZWrite On
 
             CGPROGRAM
@@ -124,7 +124,7 @@ Shader "Custom/BoosterShaderTop"
         Pass
         {
             Tags { "LightMode"="FORWARDADD" }
-            ZTest LessEqual
+            ZTest LEqual
             ZWrite Off
             Blend One One
 
@@ -169,7 +169,7 @@ Shader "Custom/BoosterShaderTop"
         Pass
         {
             Tags { "LightMode"="DEFERRED" }
-            ZTest LessEqual
+            ZTest LEqual
             ZWrite On
 
             CGPROGRAM
@@ -186,7 +186,7 @@ Shader "Custom/BoosterShaderTop"
         Pass
         {
             Tags { "LightMode"="SHADOWCASTER" }
-            ZTest LessEqual
+            ZTest LEqual
             ZWrite On
 
             CGPROGRAM

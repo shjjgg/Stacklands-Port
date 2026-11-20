@@ -1,7 +1,7 @@
 // 还原自 shader_extract/glsl_exact/Unlit__CardopediaBackgroundShader__01_PS.glsl(逐条等价):
 // 以屏幕 uv 求极角(atan 多项式逼近 _54.._68), 角度 × 0.1618 后取 fract, 
 // 再 sin(angle*74.16 + _Time.y*0.5) 做放射条纹 -> smoothstep 平滑 (0.1 亮度, alpha 0.05 叠加 0.5)。
-// pass: ZTest LessEqual / ZWrite On / Blend SrcAlpha OneMinusSrcAlpha。
+// pass: ZTest LEqual / ZWrite On / Blend SrcAlpha OneMinusSrcAlpha。
 Shader "Unlit/CardopediaBackgroundShader"
 {
     Properties
@@ -14,7 +14,7 @@ Shader "Unlit/CardopediaBackgroundShader"
 
         Pass
         {
-            ZTest LessEqual
+            ZTest LEqual
             ZWrite On
             Blend SrcAlpha OneMinusSrcAlpha
 

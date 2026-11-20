@@ -16,7 +16,7 @@ Shader "Custom/ConflictOutlineSdfShader"
 
         Pass
         {
-            ZTest LessEqual
+            ZTest LEqual
             ZWrite Off
             Blend SrcAlpha OneMinusSrcAlpha
             ColorMask GBA
@@ -63,7 +63,7 @@ Shader "Custom/ConflictOutlineSdfShader"
 
         Pass
         {
-            ZTest LessEqual
+            ZTest LEqual
             ZWrite Off
             Blend SrcAlpha One
             ColorMask GBA

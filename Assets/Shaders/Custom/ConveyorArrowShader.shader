@@ -3,7 +3,7 @@
 // cb0 槽位(cb0._m2/_m4/_m5/_m6/_m8/_m10)按 GLSL 使用语义映射:
 //   _m2 = _Color 乘子, _m4/_m5 = 线内外两色(lerp), _m6/_m8 = _Start/_End.xy,
 //   _m10 = (_LineThickness, _Filled, _OutlineThickness, _Noise)
-// pass 状态逐字取自 pass_state.json: ZTest LessEqual / ZWrite Off / ColorMask GBA。
+// pass 状态逐字取自 pass_state.json: ZTest LEqual / ZWrite Off / ColorMask GBA。
 Shader "Custom/ConveyorArrowShader"
 {
     Properties
@@ -25,7 +25,7 @@ Shader "Custom/ConveyorArrowShader"
 
         Pass
         {
-            ZTest LessEqual
+            ZTest LEqual
             ZWrite Off
             Blend SrcAlpha OneMinusSrcAlpha
             ColorMask GBA
@@ -125,7 +125,7 @@ Shader "Custom/ConveyorArrowShader"
 
         Pass
         {
-            ZTest LessEqual
+            ZTest LEqual
             ZWrite Off
             Blend SrcAlpha One
             ColorMask GBA

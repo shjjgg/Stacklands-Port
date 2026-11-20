@@ -1,5 +1,5 @@
 // 还原自 dxbc_disasm: Sprites__CombatCircleSpriteShader2__03_PS
-// pass 状态: Cull Off / ZTest LessEqual / ZWrite Off / Blend One OneMinusSrcAlpha
+// pass 状态: Cull Off / ZTest LEqual / ZWrite Off / Blend One OneMinusSrcAlpha
 // PS: col = tex*顶点色; rgb *= (0.3 + 0.7*_FillAmount); 预乘 alpha
 Shader "Sprites/CombatCircleSpriteShader2"
 {
@@ -15,7 +15,7 @@ Shader "Sprites/CombatCircleSpriteShader2"
         Pass
         {
             Cull Off
-            ZTest LessEqual
+            ZTest LEqual
             ZWrite Off
             Blend One OneMinusSrcAlpha
 
