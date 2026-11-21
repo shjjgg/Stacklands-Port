@@ -1,4 +1,4 @@
-Shader "Shapes/Cuboid ColorBurn" {
+Shader "PortDummy/Shapes/Cuboid ColorBurn" {
 	Properties {
 		[Enum(UnityEngine.Rendering.CompareFunction)] _ZTest ("Z Test", Float) = 4
 		_ZOffsetFactor ("Z Offset Factor", Float) = 0

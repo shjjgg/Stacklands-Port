@@ -80,7 +80,7 @@ namespace StacklandsPort
                 foreach (var sr in srs)
                 {
                     if (sr == null || sc++ > 80) break;
-                    sb.AppendLine($"SR act={sr.gameObject.activeInHierarchy} path={Path(sr.transform)} sprite={(sr.sprite == null ? "NULL" : sr.sprite.name)} mat={(sr.sharedMaterial == null ? "NULL" : sr.sharedMaterial.name)} col={sr.color.r:F2},{sr.color.g:F2},{sr.color.b:F2},{sr.color.a:F2}");
+                    sb.AppendLine($"SR act={sr.gameObject.activeInHierarchy} path={Path(sr.transform)} sprite={(sr.sprite == null ? "NULL" : sr.sprite.name)} mat={(sr.sharedMaterial == null ? "NULL" : sr.sharedMaterial.name)} col={sr.color.r:F2},{sr.color.g:F2},{sr.color.b:F2},{sr.color.a:F2} ls={sr.transform.localScale.x:F2},{sr.transform.localScale.y:F2} rot={sr.transform.localEulerAngles.z:F0}");
                 }
                 sb.AppendLine("---- ui dump end ----");
                 PortLog.Write(sb.ToString());

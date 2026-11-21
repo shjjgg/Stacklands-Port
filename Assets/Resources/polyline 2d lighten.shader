@@ -1,4 +1,4 @@
-Shader "Shapes/Polyline 2D Lighten" {
+Shader "PortDummy/Shapes/Polyline 2D Lighten" {
 	Properties {
 		[Enum(UnityEngine.Rendering.CompareFunction)] _ZTest ("Z Test", Float) = 4
 		_ZOffsetFactor ("Z Offset Factor", Float) = 0

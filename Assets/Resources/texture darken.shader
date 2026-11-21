@@ -1,4 +1,4 @@
-Shader "Shapes/Texture Darken" {
+Shader "PortDummy/Shapes/Texture Darken" {
 	Properties {
 		[Enum(UnityEngine.Rendering.CompareFunction)] _ZTest ("Z Test", Float) = 4
 		_ZOffsetFactor ("Z Offset Factor", Float) = 0

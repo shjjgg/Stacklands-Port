@@ -1,4 +1,4 @@
-Shader "Shapes/Texture Opaque" {
+Shader "PortDummy/Shapes/Texture Opaque" {
 	Properties {
 		[Enum(UnityEngine.Rendering.CompareFunction)] _ZTest ("Z Test", Float) = 4
 		_ZOffsetFactor ("Z Offset Factor", Float) = 0

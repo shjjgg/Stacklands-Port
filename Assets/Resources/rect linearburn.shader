@@ -1,4 +1,4 @@
-Shader "Shapes/Rect LinearBurn" {
+Shader "PortDummy/Shapes/Rect LinearBurn" {
 	Properties {
 		[Enum(UnityEngine.Rendering.CompareFunction)] _ZTest ("Z Test", Float) = 4
 		_ZOffsetFactor ("Z Offset Factor", Float) = 0

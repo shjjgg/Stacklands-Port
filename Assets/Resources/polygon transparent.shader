@@ -1,4 +1,4 @@
-Shader "Shapes/Polygon Transparent" {
+Shader "PortDummy/Shapes/Polygon Transparent" {
 	Properties {
 		[Enum(UnityEngine.Rendering.CompareFunction)] _ZTest ("Z Test", Float) = 4
 		_ZOffsetFactor ("Z Offset Factor", Float) = 0

@@ -1,4 +1,4 @@
-Shader "Shapes/Line 3D Multiplicative" {
+Shader "PortDummy/Shapes/Line 3D Multiplicative" {
 	Properties {
 		[Enum(UnityEngine.Rendering.CompareFunction)] _ZTest ("Z Test", Float) = 4
 		_ZOffsetFactor ("Z Offset Factor", Float) = 0

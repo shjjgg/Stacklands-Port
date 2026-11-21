@@ -1,4 +1,4 @@
-Shader "Shapes/Triangle Screen" {
+Shader "PortDummy/Shapes/Triangle Screen" {
 	Properties {
 		[Enum(UnityEngine.Rendering.CompareFunction)] _ZTest ("Z Test", Float) = 4
 		_ZOffsetFactor ("Z Offset Factor", Float) = 0

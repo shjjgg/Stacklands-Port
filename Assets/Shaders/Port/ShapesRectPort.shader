@@ -3,7 +3,7 @@
 // 本 shader 用 SDF 还原 Shapes 矩形的语义: 圆角 + 描边环(BORDERED) + AA,
 // 尺寸从物体矩阵的世界缩放推出(Shapes 的 rect 网格是 [-1,1] 单位四边形),
 // 圆角/描边宽度优先取 Shapes 通过 MaterialPropertyBlock 下发的 _CornerRadii/_Thickness。
-Shader "Shapes/Rect Port"
+Shader "Shapes/Rect Opaque"
 {
     Properties
     {

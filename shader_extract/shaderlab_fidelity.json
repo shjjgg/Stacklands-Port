@@ -649,7 +649,8 @@
   ],
   "fails": [],
   "warns": [
-    "多出未被台账记录的 shader: Shapes/Rect Port",
+    "多出未被台账记录的 shader: Shapes/Rect Opaque",
+    "多出未被台账记录的 shader: Shapes/Rect Transparent",
     "多出未被台账记录的 shader: UI/Default Port"
   ]
 }

@@ -1,4 +1,4 @@
-Shader "Shapes/Cuboid Multiplicative" {
+Shader "PortDummy/Shapes/Cuboid Multiplicative" {
 	Properties {
 		[Enum(UnityEngine.Rendering.CompareFunction)] _ZTest ("Z Test", Float) = 4
 		_ZOffsetFactor ("Z Offset Factor", Float) = 0

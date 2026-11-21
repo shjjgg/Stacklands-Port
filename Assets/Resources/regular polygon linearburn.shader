@@ -1,4 +1,4 @@
-Shader "Shapes/Regular Polygon LinearBurn" {
+Shader "PortDummy/Shapes/Regular Polygon LinearBurn" {
 	Properties {
 		[Enum(UnityEngine.Rendering.CompareFunction)] _ZTest ("Z Test", Float) = 4
 		_ZOffsetFactor ("Z Offset Factor", Float) = 0
