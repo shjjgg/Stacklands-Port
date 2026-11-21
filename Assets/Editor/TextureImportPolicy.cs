@@ -25,7 +25,8 @@ public static class TextureImportPolicy
         foreach (var guid in AssetDatabase.FindAssets("t:Texture2D"))
         {
             var p = AssetDatabase.GUIDToAssetPath(guid);
-            if (p.StartsWith("Assets/Texture2D/") || p.StartsWith("Assets/SokpopIntro/"))
+            // 覆盖全工程纹理: 回填的 462 个依赖资源里也有 PNG, 漏掉会按默认导入(未压缩/可读)撑爆内存
+            if (p.StartsWith("Assets/") && !p.StartsWith("Assets/Plugins/"))
                 paths.Add(p);
         }
 

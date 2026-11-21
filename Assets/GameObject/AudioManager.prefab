@@ -1,0 +1,188 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1709254077376921
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4730242686860875}
+  - component: {fileID: 114724804207875695}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4730242686860875
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114724804207875695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1096071091, guid: fff28ad2958f41e0cb020d3a193dcc60, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  mixer: {fileID: 24100000, guid: 2caf39e1c1bbfab4aa4c0392df3673df, type: 2}
+  BattleLoop: {fileID: 8300000, guid: 9fd02408db27b2744893f56e82a77543, type: 3}
+  SpiritLoop: {fileID: 8300000, guid: bfa86fa525f608c4eb2074f47e8aa1ce, type: 3}
+  CancelSadness:
+  - {fileID: 8300000, guid: 2bc6cb03da7c17f46a98f9cbaac60e32, type: 3}
+  Click:
+  - {fileID: 8300000, guid: 72b6b795fe84bc947a762a0518c66a44, type: 3}
+  - {fileID: 8300000, guid: 4387aad2c9dbce145a77aae6dec4d2f5, type: 3}
+  - {fileID: 8300000, guid: dd5df03b25bc68643a1ced7292c2a568, type: 3}
+  SpiritTransitionExit:
+  - {fileID: 8300000, guid: 74c00df6e2569e34fa6520de65314124, type: 3}
+  SpiritTransitionEnter:
+  - {fileID: 8300000, guid: b5b287d461f84d8439aaefc4224ea21a, type: 3}
+  CitiesTransitionEnter:
+  - {fileID: 8300000, guid: e8d4185f005f6754ca053587023fca6d, type: 3}
+  CitiesTransitionExit:
+  - {fileID: 8300000, guid: 8cf2c575ab902d54fb6ddf1e3a9dafa8, type: 3}
+  Eat:
+  - {fileID: 8300000, guid: bdb2adfd5e2cec443882cff848e29230, type: 3}
+  GetSick:
+  - {fileID: 8300000, guid: b530299a42c811f40939e895c994981f, type: 3}
+  BecomeTeenager:
+  - {fileID: 8300000, guid: a0d97e169495769419b98a15aa4cd40e, type: 3}
+  BecomeAdult:
+  - {fileID: 8300000, guid: ba69a8ad29416754da24ff412fd28160, type: 3}
+  BecomeOld:
+  - {fileID: 8300000, guid: 08136f52f8bcee348b58757e7fefb9bd, type: 3}
+  ConsumeHappiness:
+  - {fileID: 8300000, guid: c19cb71969bbf9a4f93a62d626f850de, type: 3}
+  Unhappy:
+  - {fileID: 8300000, guid: f38532cd4e7d0db408682442617cab68, type: 3}
+  Angry:
+  - {fileID: 8300000, guid: f38532cd4e7d0db408682442617cab68, type: 3}
+  SfxGroup: {fileID: 24300000, guid: 2caf39e1c1bbfab4aa4c0392df3673df, type: 2}
+  MusicGroup: {fileID: 24300008, guid: 2caf39e1c1bbfab4aa4c0392df3673df, type: 2}
+  DropOnStack:
+  - {fileID: 8300000, guid: 56b239c610c170746a614f4dd025c724, type: 3}
+  - {fileID: 8300000, guid: df7448587363f974c9955f88a9b6aaeb, type: 3}
+  - {fileID: 8300000, guid: b4ef5dbca3fff8446b599562b58a4e1a, type: 3}
+  CardPickup:
+  - {fileID: 8300000, guid: d91be2d10b8d21d47b7b8df24f85d155, type: 3}
+  - {fileID: 8300000, guid: 729a8287c001cad45ad2e80d9e338422, type: 3}
+  CardDrop:
+  - {fileID: 8300000, guid: 2f1af55bda59d594db8ba58565d6c755, type: 3}
+  - {fileID: 8300000, guid: 8e12b696dd54f444c8533893cfd8192d, type: 3}
+  - {fileID: 8300000, guid: 48e9a6db82727004fb2e5bd6cf4d57fb, type: 3}
+  CardDestroy:
+  - {fileID: 8300000, guid: 7d87b9451fdb5d34db34446762d49ac9, type: 3}
+  - {fileID: 8300000, guid: f90dd7e4bebc58641a0ee99b8f4c0f33, type: 3}
+  - {fileID: 8300000, guid: 2b678c6d689c4df4db23c5d26eeb369b, type: 3}
+  - {fileID: 8300000, guid: 878d8e91eb02e5e4886a5a5bbea6c5c6, type: 3}
+  QuestComplete: {fileID: 8300000, guid: 30ba2ef79d639534685d5a312b963ad2, type: 3}
+  MediumPickup:
+  - {fileID: 8300000, guid: f3ecc5206f4929643bd4ee7babac3883, type: 3}
+  HeavyPickup:
+  - {fileID: 8300000, guid: 0094651c33e11934792ee4c49c191b34, type: 3}
+  EndOfMoon: {fileID: 8300000, guid: 3c6ad89ff6467a04e8ad4c30d24464c9, type: 3}
+  CardCreate:
+  - {fileID: 8300000, guid: e0cefdfe62e1240478f6535738fefff4, type: 3}
+  - {fileID: 8300000, guid: 2396edce77be9d94384b87d933e63685, type: 3}
+  - {fileID: 8300000, guid: 08fa023b1df7784468056615f2f2e985, type: 3}
+  - {fileID: 8300000, guid: e2c112cabbf919a46b55f8bda29c91cd, type: 3}
+  - {fileID: 8300000, guid: 38ba053c287f1f440aa944767a700cf1, type: 3}
+  OpenBooster:
+  - {fileID: 8300000, guid: b4ef5dbca3fff8446b599562b58a4e1a, type: 3}
+  - {fileID: 8300000, guid: df7448587363f974c9955f88a9b6aaeb, type: 3}
+  - {fileID: 8300000, guid: 56b239c610c170746a614f4dd025c724, type: 3}
+  Coin:
+  - {fileID: 8300000, guid: 4f63ec111544ccc469fbc2a0cf238373, type: 3}
+  Dollar:
+  - {fileID: 8300000, guid: 4f63ec111544ccc469fbc2a0cf238373, type: 3}
+  AnimalMove:
+  - {fileID: 8300000, guid: 2396edce77be9d94384b87d933e63685, type: 3}
+  - {fileID: 8300000, guid: e0cefdfe62e1240478f6535738fefff4, type: 3}
+  Miss:
+  - {fileID: 8300000, guid: 48e9a6db82727004fb2e5bd6cf4d57fb, type: 3}
+  - {fileID: 8300000, guid: 8e12b696dd54f444c8533893cfd8192d, type: 3}
+  - {fileID: 8300000, guid: 2f1af55bda59d594db8ba58565d6c755, type: 3}
+  Block:
+  - {fileID: 8300000, guid: e22fbf6935a7a5846b0852a4b83a2783, type: 3}
+  HitMelee:
+  - {fileID: 8300000, guid: 89d922c6ed28b4d41b641cbabb406b9e, type: 3}
+  HitRanged:
+  - {fileID: 8300000, guid: 89d922c6ed28b4d41b641cbabb406b9e, type: 3}
+  HitMagic:
+  - {fileID: 8300000, guid: 89d922c6ed28b4d41b641cbabb406b9e, type: 3}
+  HitFoot:
+  - {fileID: 8300000, guid: 89d922c6ed28b4d41b641cbabb406b9e, type: 3}
+  HitArmour:
+  - {fileID: 8300000, guid: 89d922c6ed28b4d41b641cbabb406b9e, type: 3}
+  HitAir:
+  - {fileID: 8300000, guid: 89d922c6ed28b4d41b641cbabb406b9e, type: 3}
+  MissCities:
+  - {fileID: 8300000, guid: 48e9a6db82727004fb2e5bd6cf4d57fb, type: 3}
+  - {fileID: 8300000, guid: 8e12b696dd54f444c8533893cfd8192d, type: 3}
+  - {fileID: 8300000, guid: 2f1af55bda59d594db8ba58565d6c755, type: 3}
+  Buff:
+  - {fileID: 8300000, guid: 67d5d6e8318b6f64a97cffb0764d46ed, type: 3}
+  MagicRelease:
+  - {fileID: 8300000, guid: 211b911b9ae9ccb49ba2c88b81d41d9c, type: 3}
+  MagicCharge:
+  - {fileID: 8300000, guid: fe112b87d7b72454f9c46e250b458274, type: 3}
+  RangedRelease:
+  - {fileID: 8300000, guid: 9196d6e966a63c04b8f82c29d2bfba41, type: 3}
+  Crit:
+  - {fileID: 8300000, guid: 75a65d53fd2b713479533b9b26578eca, type: 3}
+  ShamanSpawn:
+  - {fileID: 8300000, guid: f2d021781290e374abba08a0b8f18b27, type: 3}
+  Bleed:
+  - {fileID: 8300000, guid: 89d922c6ed28b4d41b641cbabb406b9e, type: 3}
+  Poison:
+  - {fileID: 8300000, guid: 89d922c6ed28b4d41b641cbabb406b9e, type: 3}
+  EnergyConnected: {fileID: 8300000, guid: 76b2cc2e455cd8d4a9c52600b00782e8, type: 3}
+  EnergyStrech: {fileID: 8300000, guid: 356730df771559d44a02f06f41be0b17, type: 3}
+  EnergyStart: {fileID: 8300000, guid: 61c575baf3c19b846a1985fd0efa41ac, type: 3}
+  SewerConnected: {fileID: 8300000, guid: df60230ba47d3d94cab003542c6f8c3a, type: 3}
+  SewerStrech: {fileID: 8300000, guid: 96329a5bd591ca64b818f38cb13785be, type: 3}
+  SewerStart: {fileID: 8300000, guid: 6f7b80f1529d15d4aa542c8e31cd057c, type: 3}
+  TransportConnected: {fileID: 8300000, guid: 1e2328f16e645c846a75c54fd8e67ba0, type: 3}
+  TransportStrech: {fileID: 8300000, guid: d9effd5a7ad1c304c80811de614355c0, type: 3}
+  TransportStart: {fileID: 8300000, guid: efb90d2bb2c92014a8f7bd8d3a4ba889, type: 3}
+  AddWellbeing: {fileID: 8300000, guid: 3dfb6413d5a2cf841bec7e4fbfef12f7, type: 3}
+  LostWellbeing: {fileID: 8300000, guid: d80ceec1b11adae49b8a29177fd525c9, type: 3}
+  WellbeingCounter: {fileID: 8300000, guid: d0a7c3c367b71cd49bfd796a7cb59e1c, type: 3}
+  PowerOutage: {fileID: 0}
+  LandmarkBuild: {fileID: 8300000, guid: 94a224a9c5467764ebb9c27d644f007e, type: 3}
+  ExtinguishCardSound: {fileID: 8300000, guid: f95972432ec7c5e4b8a078f8ab962bd7, type: 3}
+  RepairCardSound: {fileID: 8300000, guid: 4c08ad87288bb43429d9b1e36e042e54, type: 3}
+  DamagedCardSound: {fileID: 8300000, guid: 48be320ef9bce2541841998a5a2820fc, type: 3}
+  OnFireCardSound: {fileID: 8300000, guid: dbc3326eb3b70994c92eb4bcc43bafb4, type: 3}
+  DroughtStart: {fileID: 8300000, guid: 752721dae8cc80b4eb14dadcc095f642, type: 3}
+  DroughtSolved: {fileID: 8300000, guid: d1f890def8244924eaebec7fbd9a041e, type: 3}
+  IndustrialRevolutionCreate: {fileID: 8300000, guid: b7c93ed3486389b4ba956835af3c6cc9, type: 3}
+  PositiveEventSpawn: {fileID: 0}
+  NegativeEventSpawn: {fileID: 8300000, guid: f72d2338bf0e67b43be6b6e7341b12f8, type: 3}
+  ColliderRunningSound: {fileID: 8300000, guid: 1f52d68bf241b0f4f88cd24c372dca62, type: 3}
+  AdvisorAppears: {fileID: 8300000, guid: 7f7af988662678947a8d7aa27bbc367a, type: 3}
+  AdvisorWarning: {fileID: 8300000, guid: ee07dd7d838e1ba43ab39c6159210d7b, type: 3}
+  AdvisorTalking: {fileID: 8300000, guid: 457e4c13a5fc61e4da14deb08c4b3563, type: 3}
+  ClearPollution: {fileID: 8300000, guid: 4e5ddb4e7ad59dd4084fc25bf6f14470, type: 3}
+  SpawnPollution: {fileID: 8300000, guid: 5c1a6c93c8c7c7944b88b95e510cf757, type: 3}
+  LandfillOverflow: {fileID: 8300000, guid: bdfcbd427727da14fbe8964f5557df28, type: 3}

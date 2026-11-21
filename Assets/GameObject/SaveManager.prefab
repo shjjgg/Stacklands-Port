@@ -1,0 +1,133 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1709254077376921
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4730242686860875}
+  - component: {fileID: 114724804207875695}
+  m_Layer: 0
+  m_Name: SaveManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4730242686860875
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114724804207875695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -285757688, guid: fff28ad2958f41e0cb020d3a193dcc60, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  CurrentSave:
+    LastPlayedRound:
+      SavedCards: []
+      SavedBoosters: []
+      SavedBoosterBoxes: []
+      SavedBoards: []
+      BoughtBoosterIds: []
+      GivenCards: []
+      CurrentMonth: 0
+      OldCurrentMonth: 0
+      MonthTimer: 0
+      BoardMonths:
+        MainMonth: 0
+        IslandMonth: 0
+        ForestMonth: 0
+        GreedMonth: 0
+        HappinessMonth: 0
+        DeathMonth: 0
+        CitiesMonth: 0
+      QuestsCompleted: 0
+      NewCardsFound: 0
+      CitiesWellbeing: 15
+      CitiesConflictMonth: 0
+      CurrentBoardId: main
+      RunOptions:
+        MoonLength: 1
+        IsPeacefulMode: 0
+        IsGreedEnabled: 0
+        IsHappinessEnabled: 0
+        IsDeathEnabled: 0
+      RunVariables:
+        CrabsKilled: 0
+        PirateBoatsBribed: 0
+        StrangePortalSpawns: 0
+        VisitedIsland: 0
+        VisitedForest: 0
+        VisitedHappiness: 0
+        VisitedGreed: 0
+        VisitedDeath: 0
+        ShamanVisited: 0
+        FinishedDemon: 0
+        FinishedDemonLord: 0
+        FinishedKraken: 0
+        FinishedWickedWitch: 0
+        PreviouseBoard: main
+        LastGoToBoardMonth: 0
+        PirateBoatsSpawned: 0
+        ForestWave: 1
+        IslandMonths: 0
+        DeathMonths: 0
+        LastDemandMonth: 0
+        VillagersHappyMonthCount: 0
+        VillagersUnhappyMonthCount: 0
+        CompletedHappinessSpirit: 0
+        CompletedGreedSpirit: 0
+        CompletedDeathSpirit: 0
+        PreviousDemandEvents: []
+        CanDropItem: 1
+        ActiveDemand:
+          DemandId:
+          MonthStarted: 0
+          Duration: 0
+          BoardId:
+          Completed: 0
+          Successful: 0
+          AmountGiven: 0
+        PlayedCutsceneIds: []
+        SpawnedEventIds: []
+        OpenedFirstTrash: 0
+        HasCitiesBoard: 0
+        BuiltLandmarks: []
+      SaveVersion: 0
+      ExtraKeyValues: []
+      SavedConflicts: []
+    CompletedAchievementIds: []
+    FoundCardIds: []
+    FoundBoosterIds: []
+    NewCardopediaIds: []
+    NewKnowledgeIds: []
+    SeenQuestIds: []
+    ExtraKeyValues: []
+    DisabledMods: []
+    GotIslandIntroPack: 0
+    LastSavedUtcTicks: 0
+    FinishedGreed: 0
+    FinishedDeath: 0
+    FinishedHappiness: 0

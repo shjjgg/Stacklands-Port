@@ -26,7 +26,7 @@ RenderSettings:
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 0
-  m_CustomReflection: {fileID: 0}
+  m_CustomReflection: {fileID: 8900000, guid: 4506f53fb829a8d49ba918eb54ff6c09, type: 3}
   m_Sun: {fileID: 12}
   m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 0}
   m_UseRadianceAmbientProbe: 0
@@ -87,8 +87,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: adb9af0d754bcd94690ba81f53404950, type: 2}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 1a4324dffddfee44bbbac4ba32289b6a, type: 2}
+  m_LightingSettings: {fileID: 850595691, guid: 4f667a3508f8dbb4b95d8712bab09365, type: 2}
 --- !u!196 &14
 NavMeshSettings:
   serializedVersion: 2
@@ -264,7 +264,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4c02238997a13d94b9d7c9d8dfc625c2, type: 2}
+  - {fileID: 2100000, guid: e700eff18a3d0b44eb99293e9d2d75fc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -397,34 +397,34 @@ MonoBehaviour:
   m_Name:
   m_EditorClassIdentifier:
   Boards:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 114118718119338073, guid: 018c055647d3d0d42a91c6a6cd13f409, type: 2}
+  - {fileID: 114664909565914456, guid: 1bf06cc68d43ed647b8cc9a78dc2042b, type: 2}
+  - {fileID: 114274303670636188, guid: 59dd23a778dd54a4b839f56ed08d87f4, type: 2}
+  - {fileID: 114510200083690801, guid: 9ee2c6993e9b9c343b37708ad0812914, type: 2}
+  - {fileID: 114535744792750200, guid: 7ef4177f1e734f843814d3cac583f608, type: 2}
+  - {fileID: 114858067511853781, guid: 1a88415bef5d4ac419d8ddaa15139036, type: 2}
+  - {fileID: 114969939494010357, guid: 67f1934322d3c0d42a0e843f7f3e8187, type: 2}
   ObjectsToInstantiate:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1709254077376921, guid: 394ca60b275342742bdb6c86a927bb95, type: 2}
+  - {fileID: 1709254077376921, guid: 31e9215c8462a034ab608bd4901ac06e, type: 2}
+  - {fileID: 1709254077376921, guid: c261300e1e6df8d47957d6c68b227f9d, type: 2}
+  - {fileID: 1709254077376921, guid: 6cb6a75c65e8cbc4fa07bb441dc53547, type: 2}
+  - {fileID: 1709254077376921, guid: ddeea10f78b0bf04ea53a8f4fd48c34b, type: 2}
+  - {fileID: 1709254077376921, guid: 854cd44425ac9ba4ab75af74db75c579, type: 2}
+  - {fileID: 1709254077376921, guid: e6bdb2c387d57fc4a9a60b15cc86e296, type: 2}
+  - {fileID: 1709254077376921, guid: cc8250099ab2a02498a00f6b9a38cc75, type: 2}
+  - {fileID: 1709254077376921, guid: 5ea9403004c1318459b69a596acda375, type: 2}
+  - {fileID: 1709254077376921, guid: 15fbac67335e7bf4e938cb47bb67714b, type: 2}
+  - {fileID: 1709254077376921, guid: a507967b2ffece7408295d136595ba09, type: 2}
+  - {fileID: 1709254077376921, guid: 51888401f77be2b42b820c3c45649d63, type: 2}
+  - {fileID: 1709254077376921, guid: 45a0b275ced0e504fb8fd24adf3b9606, type: 2}
+  - {fileID: 1709254077376921, guid: 8baeeca532091c54384fb2a0c7f5cd3a, type: 2}
+  - {fileID: 1709254077376921, guid: 837c40858e152be4bb231ac78dd2905c, type: 2}
+  - {fileID: 1709254077376921, guid: cd4ca424e90012c4cb95c0e23ef7a0fb, type: 2}
+  - {fileID: 1709254077376921, guid: 11b4a73be514bf341bf366aa3c525ef8, type: 2}
+  - {fileID: 1709254077376921, guid: 189a43fff3074814888ce75bc3824c15, type: 2}
+  - {fileID: 1709254077376921, guid: fe91c0daff980154ab9bead68e92bd22, type: 2}
+  - {fileID: 1709254077376921, guid: 91d4a458c5c7ae344912ccb4914ea5d7, type: 2}
 --- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -441,15 +441,15 @@ MonoBehaviour:
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
-  m_ActionsAsset: {fileID: 0}
-  m_PointAction: {fileID: 0}
-  m_MoveAction: {fileID: 0}
-  m_SubmitAction: {fileID: 0}
-  m_CancelAction: {fileID: 0}
-  m_LeftClickAction: {fileID: 0}
-  m_MiddleClickAction: {fileID: 0}
-  m_RightClickAction: {fileID: 0}
-  m_ScrollWheelAction: {fileID: 0}
+  m_ActionsAsset: {fileID: 11400000, guid: 15addd851346fb64b9d5ba082d5fe151, type: 2}
+  m_PointAction: {fileID: 11400000, guid: 73df2f3a94bf86440bd538015e8b528b, type: 2}
+  m_MoveAction: {fileID: 11400000, guid: b2e5ac4b5f0bcaa46b3c65f178cbca29, type: 2}
+  m_SubmitAction: {fileID: 11400000, guid: bbace2d1b93332444b36ff287e73cb65, type: 2}
+  m_CancelAction: {fileID: 11400000, guid: 67de30e569b5e69468fbd48005ed96e4, type: 2}
+  m_LeftClickAction: {fileID: 11400000, guid: 2727bc0a1d589d544bedea119bb5dd0a, type: 2}
+  m_MiddleClickAction: {fileID: 11400000, guid: 84f2e06b07b55d841a6016438b5dc037, type: 2}
+  m_RightClickAction: {fileID: 11400000, guid: ff57ce276a9b68846a6fe92c70b262c2, type: 2}
+  m_ScrollWheelAction: {fileID: 11400000, guid: 954902a419dc474429c05dbcb63fe641, type: 2}
   m_TrackedDevicePositionAction: {fileID: 0}
   m_TrackedDeviceOrientationAction: {fileID: 0}
   m_DeselectOnBackgroundClick: 1

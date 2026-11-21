@@ -1,0 +1,274 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1709254077376921
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4730242686860875}
+  - component: {fileID: 114724804207875695}
+  m_Layer: 0
+  m_Name: WorldManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4730242686860875
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.04039979, y: -10.060508, z: 1.5612968}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114724804207875695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1788986181, guid: fff28ad2958f41e0cb020d3a193dcc60, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  CardOverlayOffset: 0.12
+  CollapsedCardOverlayOffset: 0.045
+  CombatOffset: 0.85
+  HorizonalCombatOffset: 0.75
+  CombatMissOffset: 0.3
+  CardOverlayHeightOffset: 0.006
+  ConflictWidthIncrease: 0.1
+  ConflictHeightIncrease: 0.2
+  ConflictArrowLengthDecrease: 0.25
+  CombatYPosition:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.6211349
+      outSlope: 0.6211349
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.47756734
+      value: 0.29663372
+      inSlope: 0.11909968
+      outSlope: 0.11909968
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.1012386
+      outWeight: 0.34024256
+    - serializedVersion: 3
+      time: 0.5
+      value: 0.009998441
+      inSlope: 0.0021003217
+      outSlope: 0.0021003217
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.111116
+      outWeight: 0.2831764
+    - serializedVersion: 3
+      time: 0.60106945
+      value: 0.075978555
+      inSlope: 0.031027988
+      outSlope: 0.031027988
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.26528782
+      outWeight: 0.9815689
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  CombatFlatPositionCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0025922656
+      value: 0.00013202429
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.996933
+    - serializedVersion: 3
+      time: 0.33908904
+      value: 0.22125474
+      inSlope: 2.8991785
+      outSlope: 2.8991785
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5
+      value: 0.99999875
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.0025922
+      value: 0.0044436567
+      inSlope: -0.00018978906
+      outSlope: -0.00018978906
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.7051443
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  CombatKnockbackCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0013465881
+      value: 0
+      inSlope: 7.032152
+      outSlope: 7.032152
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.021987353
+    - serializedVersion: 3
+      time: 0.17567044
+      value: 0.8669801
+      inSlope: -0.13802019
+      outSlope: -0.13802019
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.08360741
+    - serializedVersion: 3
+      time: 0.99731445
+      value: -0.004173279
+      inSlope: -0.11743265
+      outSlope: -0.11743265
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.17905483
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  CombatSpeed: 3
+  AllDraggables: []
+  PhysicsDraggables: []
+  HoveredDraggable: {fileID: 0}
+  DraggingDraggable: {fileID: 0}
+  HoveredInteractable: {fileID: 0}
+  CurrentHoverable: {fileID: 0}
+  AllCards:
+  - {fileID: 0}
+  - {fileID: 0}
+  CardTargets: []
+  AllBoosters: []
+  BoughtBoosterIds: []
+  AllBoosterBoxes: []
+  HitMaterial: {fileID: 2100000, guid: 1b69c3542b460e24089ba7950fd7553e, type: 2}
+  CurrentView: 1
+  Boards: []
+  MonthTimer: 0
+  AnimationTime: 0
+  OldCurrentMonth: 0
+  DebugScreenOpened: 0
+  CardTargetSnapDistance: 0.3
+  CurrentGameState: 1
+  CanUseTransport: 0
+  mouseWorldPosition: {x: 0, y: 0, z: 0}
+  grabOffset: {x: 0, y: 0, z: 0}
+  DebugEndlessMoonEnabled: 0
+  DebugNoFoodEnabled: 0
+  ForestMoonEnabled: 0
+  DebugDontNeedVillagers: 0
+  DebugNoEnergyEnabled: 0
+  RoundExtraKeyValues: []
+  CutsceneBoardView: 0
+  ActiveCurses: []
+  NearbyCardTarget: {fileID: 0}
+  SpeedUp: 1
+  IsShiftDragging: 0
+  GridWidth: 0.75
+  GridHeight: 0.85
+  gridAlpha: 0
+  ShowContinueButton: 0
+  ContinueButtonText:
+  CutsceneText:
+  CutsceneTitle:
+  RemovingCards: 0
+  ConnectConnectors: 0
+  ContinueClicked: 0
+  ContinueButtonIndex: 0
+  InEatingAnimation: 0
+  EndOfMonthSpeedup: 0
+  VillagersStarvedAtEndOfMoon: 0
+  VillagersAngryAtEndOfMoon: 0
+  QuestsCompleted: 0
+  NewCardsFound: 0
+  CurrentRunOptions:
+    MoonLength: 1
+    IsPeacefulMode: 0
+    IsGreedEnabled: 0
+    IsHappinessEnabled: 0
+    IsDeathEnabled: 0
+  CurrentRunVariables:
+    CrabsKilled: 0
+    PirateBoatsBribed: 0
+    StrangePortalSpawns: 0
+    VisitedIsland: 0
+    VisitedForest: 0
+    VisitedHappiness: 0
+    VisitedGreed: 0
+    VisitedDeath: 0
+    ShamanVisited: 0
+    FinishedDemon: 0
+    FinishedDemonLord: 0
+    FinishedKraken: 0
+    FinishedWickedWitch: 0
+    PreviouseBoard: main
+    LastGoToBoardMonth: 0
+    PirateBoatsSpawned: 0
+    ForestWave: 0
+    IslandMonths: 0
+    DeathMonths: 0
+    LastDemandMonth: 0
+    VillagersHappyMonthCount: 0
+    VillagersUnhappyMonthCount: 0
+    CompletedHappinessSpirit: 0
+    CompletedGreedSpirit: 0
+    CompletedDeathSpirit: 0
+    PreviousDemandEvents: []
+    CanDropItem: 1
+    ActiveDemand:
+      DemandId:
+      MonthStarted: 0
+      Duration: 0
+      BoardId:
+      Completed: 0
+      Successful: 0
+      AmountGiven: 0
+    PlayedCutsceneIds: []
+    SpawnedEventIds: []
+    OpenedFirstTrash: 0
+    HasCitiesBoard: 0
+    BuiltLandmarks: []
+  GivenCards: []

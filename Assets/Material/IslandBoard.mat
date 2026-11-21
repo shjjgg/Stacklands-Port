@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: IslandBoard
+  m_Shader: {fileID: 4800000, guid: 20751a4590468da3a9cf7de455a9b4fe, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties:
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+      _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+      _OffsetTex:
+        m_Texture: {fileID: 2800000, guid: c51d263105faac542a73652dee24b64e, type: 3}
+        m_Scale: {x: 0.7706045, y: 1}
+        m_Offset: {x: 0, y: 0}
+      _SdfTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: {}
+    m_Floats:
+      _BumpScale: 1
+      _Contrast: -1.74
+      _Cutoff: 0.5
+      _DetailNormalMapScale: 1
+      _DstBlend: 0
+      _EdgeThickness: 0.02
+      _GlossMapScale: 1
+      _Glossiness: 0
+      _GlossyReflections: 1
+      _IslandDownsize: 1.67
+      _Metallic: 0
+      _Mode: 0
+      _Movement: 0
+      _OcclusionStrength: 1
+      _OutlineWidth: -1.01
+      _Parallax: 0.02
+      _Scaling: -14.89
+      _SmoothnessTextureChannel: 0
+      _SpecularHighlights: 1
+      _SrcBlend: 1
+      _StoneEdgeThickness: 0
+      _TexStrength: 1.34
+      _UVSec: 0
+      _WorldSizeIncrease: 0.15
+      _ZWrite: 1
+    m_Colors:
+      _Color: {r: 0.740566, g: 0.8877707, b: 1, a: 1}
+      _Color2: {r: 0.9803922, g: 0.9607844, b: 0.8745099, a: 1}
+      _EdgeColor: {r: 0, g: 0, b: 0, a: 1}
+      _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+      _FaceColor: {r: 0.9803922, g: 0.9607844, b: 0.8745099, a: 1}
+      _OutlineColor: {r: 0.69166076, g: 0.8265787, b: 0.9339623, a: 1}
+      _Rect: {r: 4.3, g: 0, b: 2.5, a: -0.43}
+      _StoneColor: {r: 0.99215686, g: 0.95149714, b: 0.8125765, a: 1}
+      _StoneEdge: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 1}
+      _StoneRect: {r: 4.3, g: 2.47, b: 0.3, a: -0.499}
+      _StoneRectOffset: {r: 0, g: 0, b: -1.98, a: 0}
+      _WaterColor: {r: 0.7411765, g: 0.8862746, b: 1, a: 1}
+  m_BuildTextureStacks: []

@@ -1,0 +1,246 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1709254077376921
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4730242686860875}
+  - component: {fileID: 114724804207875695}
+  m_Layer: 0
+  m_Name: ColorManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4730242686860875
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.38434684, y: -11.453623, z: 3.2922177}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114724804207875695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 64469150, guid: fff28ad2958f41e0cb020d3a193dcc60, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  ButtonColor: {r: 1, g: 0.97647065, b: 0.89019614, a: 1}
+  BackgroundColor: {r: 1, g: 0.97647065, b: 0.89019614, a: 1}
+  BackgroundColor2: {r: 1, g: 0.9597143, b: 0.81200004, a: 1}
+  TextColor: {r: 0, g: 0, b: 0, a: 1}
+  RedTextColor: {r: 1, g: 0.19607843, b: 0.3137255, a: 1}
+  YellowTextColor: {r: 0.8301887, g: 0.7853114, b: 0.011747932, a: 1}
+  DisabledTextColor: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
+  DisabledButtonTextColor: {r: 0.8666667, g: 0.85882354, b: 0.8235294, a: 1}
+  ButtonTextColor: {r: 0, g: 0, b: 0, a: 1}
+  DisabledColor: {r: 0.89411765, g: 0.8784314, b: 0.8235294, a: 1}
+  HoverButtonColor: {r: 1, g: 0.9579573, b: 0.8066038, a: 1}
+  InactiveBackgroundColor: {r: 0.91372555, g: 0.8745099, b: 0.73333335, a: 1}
+  CombatLineColor: {r: 0.9254902, g: 0.26666668, b: 0.26666668, a: 1}
+  EffectiveCombatLineColor: {r: 0.8207547, g: 0.8207547, b: 0.8207547, a: 1}
+  FloatingTextColorSuccess: {r: 0.58108187, g: 0.8584906, b: 0.28751338, a: 1}
+  FloatingTextColorFailed: {r: 1, g: 0.43137258, b: 0.3803922, a: 1}
+  HighVoltageConnector: {r: 1, g: 0.4297507, b: 0.3820755, a: 1}
+  HighVoltageConnectorActive: {r: 0.735849, g: 0.29944944, b: 0.26032394, a: 1}
+  LowVoltageConnector: {r: 1, g: 1, b: 1, a: 1}
+  LowVoltageConnectorActive: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
+  SewerConnector: {r: 1, g: 1, b: 1, a: 1}
+  SewerConnectorActive: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 1}
+  TransportConnector: {r: 1, g: 1, b: 1, a: 1}
+  TransportConnectorActive: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 1}
+  Default:
+    Color: {r: 1, g: 0.97647065, b: 0.89019614, a: 1}
+    Color2: {r: 0.9811321, g: 0.9235184, b: 0.69882524, a: 1}
+    Icon: {r: 0, g: 0, b: 0, a: 1}
+  Structure:
+    Color: {r: 0.22352941, g: 0.21960784, b: 0.19215687, a: 1}
+    Color2: {r: 0.3647059, g: 0.36078432, b: 0.33333334, a: 1}
+    Icon: {r: 1, g: 1, b: 1, a: 1}
+  Blueprint:
+    Color: {r: 0.39607844, g: 0.49411765, b: 0.73333335, a: 1}
+    Color2: {r: 0.49803922, g: 0.5803922, b: 0.77254903, a: 1}
+    Icon: {r: 1, g: 1, b: 1, a: 1}
+  Location:
+    Color: {r: 0.7294118, g: 0.39215687, b: 0.7411765, a: 1}
+    Color2: {r: 0.8039216, g: 0.5176471, b: 0.8117647, a: 1}
+    Icon: {r: 1, g: 1, b: 1, a: 1}
+  Resource:
+    Color: {r: 0.39215687, g: 0.4392157, b: 0.5137255, a: 1}
+    Color2: {r: 0.6117647, g: 0.6431373, b: 0.6901961, a: 1}
+    Icon: {r: 1, g: 1, b: 1, a: 1}
+  Food:
+    Color: {r: 0.9372549, g: 0.6, b: 0.29803923, a: 1}
+    Color2: {r: 0.9882353, g: 0.67058825, b: 0.3882353, a: 1}
+    Icon: {r: 0, g: 0, b: 0, a: 1}
+  Gold:
+    Color: {r: 1, g: 0.8870907, b: 0.5990566, a: 1}
+    Color2: {r: 0.972549, g: 0.78039217, b: 0.2901961, a: 1}
+    Icon: {r: 0, g: 0, b: 0, a: 1}
+  Mob:
+    Color: {r: 0.58431375, g: 0.40000004, b: 0.24705884, a: 1}
+    Color2: {r: 0.6792453, g: 0.51640075, b: 0.3812745, a: 1}
+    Icon: {r: 0.990566, g: 0.7467415, b: 0.54668033, a: 1}
+  Fish:
+    Color: {r: 0.6917857, g: 0.8867924, b: 0.51450694, a: 1}
+    Color2: {r: 0.4180643, g: 0.5849056, b: 0.26210395, a: 1}
+    Icon: {r: 0, g: 0, b: 0, a: 1}
+  Rumor:
+    Color: {r: 0.39607847, g: 0.49411768, b: 0.73333335, a: 1}
+    Color2: {r: 0.49803925, g: 0.5803922, b: 0.7725491, a: 1}
+    Icon: {r: 1, g: 1, b: 1, a: 1}
+  Corpse:
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    Color2: {r: 0.8207547, g: 0.8207547, b: 0.8207547, a: 1}
+    Icon: {r: 0, g: 0, b: 0, a: 1}
+  AggresiveMob:
+    Color: {r: 0.8745098, g: 0.34901962, b: 0.34901962, a: 1}
+    Color2: {r: 0.9529412, g: 0.47058824, b: 0.47058824, a: 1}
+    Icon: {r: 0, g: 0, b: 0, a: 1}
+  Building:
+    Color: {r: 0.99215686, g: 0.7466775, b: 0.6862745, a: 1}
+    Color2: {r: 1, g: 0.6304427, b: 0.5424528, a: 1}
+    Icon: {r: 0, g: 0, b: 0, a: 1}
+  Equipable:
+    Color: {r: 0.38823533, g: 0.38823533, b: 0.38823533, a: 1}
+    Color2: {r: 0.2627451, g: 0.25490198, b: 0.25490198, a: 1}
+    Icon: {r: 0.9529412, g: 0.9137255, b: 0.83137256, a: 1}
+  Happiness:
+    Color: {r: 0.711506, g: 0.6179246, b: 1, a: 1}
+    Color2: {r: 0.6342754, g: 0.53844786, b: 0.9433962, a: 1}
+    Icon: {r: 1, g: 1, b: 1, a: 1}
+  Unhappiness:
+    Color: {r: 0.8745098, g: 0.34901962, b: 0.34901962, a: 1}
+    Color2: {r: 0.9529412, g: 0.47058824, b: 0.47058824, a: 1}
+    Icon: {r: 0, g: 0, b: 0, a: 1}
+  Curse:
+    Color: {r: 0.8745099, g: 0.34901962, b: 0.34901962, a: 1}
+    Color2: {r: 0.95294124, g: 0.47058827, b: 0.47058827, a: 1}
+    Icon: {r: 0, g: 0, b: 0, a: 1}
+  Spirit:
+    Color: {r: 1, g: 1, b: 1, a: 1}
+    Color2: {r: 0.7533375, g: 0.8465807, b: 0.9339623, a: 1}
+    Icon: {r: 0, g: 0, b: 0, a: 1}
+  Poop:
+    Color: {r: 0.6529459, g: 0.735849, b: 0.45469916, a: 1}
+    Color2: {r: 0.5576889, g: 0.6226415, b: 0.40236738, a: 1}
+    Icon: {r: 0, g: 0, b: 0, a: 1}
+  Ingredient:
+    Color: {r: 0.9528302, g: 0.69435614, b: 0.46293166, a: 1}
+    Color2: {r: 1, g: 0.7627636, b: 0.5518868, a: 1}
+    Icon: {r: 0, g: 0, b: 0, a: 1}
+  Energy:
+    Color: {r: 0.9811321, g: 0.9723784, b: 0.69882524, a: 1}
+    Color2: {r: 0.9150943, g: 0.89002323, b: 0, a: 1}
+    Icon: {r: 0, g: 0, b: 0, a: 1}
+  Disaster:
+    Color: {r: 0.8745099, g: 0.34901962, b: 0.34901962, a: 1}
+    Color2: {r: 0.95294124, g: 0.47058827, b: 0.47058827, a: 1}
+    Icon: {r: 0, g: 0, b: 0, a: 1}
+  Event:
+    Color: {r: 0.6901961, g: 0.8862746, b: 0.5137255, a: 1}
+    Color2: {r: 0.41960788, g: 0.58431375, b: 0.2627451, a: 1}
+    Icon: {r: 0, g: 0, b: 0, a: 1}
+  Landmark:
+    Color: {r: 0.38823533, g: 0.38823533, b: 0.38823533, a: 1}
+    Color2: {r: 0.2627451, g: 0.25490198, b: 0.25490198, a: 1}
+    Icon: {r: 0.9529412, g: 0.9137255, b: 0.83137256, a: 1}
+  EnergyProducer:
+    Color: {r: 0.7294118, g: 0.39215687, b: 0.7411765, a: 1}
+    Color2: {r: 0.8039216, g: 0.5176471, b: 0.8117647, a: 1}
+    Icon: {r: 1, g: 1, b: 1, a: 1}
+  Weather:
+    Color: {r: 0.70980394, g: 0.61960787, b: 1, a: 1}
+    Color2: {r: 0.63529414, g: 0.5372549, b: 0.9450981, a: 1}
+    Icon: {r: 1, g: 1, b: 1, a: 1}
+  EnergyCards:
+    Color: {r: 0.56737274, g: 0.6509075, b: 0.9622642, a: 1}
+    Color2: {r: 0.39409044, g: 0.4544117, b: 0.6792453, a: 1}
+    Icon: {r: 1, g: 1, b: 1, a: 1}
+  SewerCards:
+    Color: {r: 0.654902, g: 0.7372549, b: 0.454902, a: 1}
+    Color2: {r: 0.5568628, g: 0.62352943, b: 0.4039216, a: 1}
+    Icon: {r: 0, g: 0, b: 0, a: 1}
+  TransportCards:
+    Color: {r: 0.2509804, g: 0.2784314, b: 0.32156864, a: 1}
+    Color2: {r: 0.20392157, g: 0.22352941, b: 0.25490198, a: 1}
+    Icon: {r: 1, g: 0.85882354, b: 0.38039216, a: 1}
+  TransportMainCards:
+    Color: {r: 0.4784314, g: 0.5529412, b: 0.59607846, a: 1}
+    Color2: {r: 0.38431376, g: 0.454902, b: 0.4901961, a: 1}
+    Icon: {r: 0, g: 0, b: 0, a: 1}
+  CalamityCards:
+    Color: {r: 0.8745099, g: 0.34901962, b: 0.34901962, a: 1}
+    Color2: {r: 0.95294124, g: 0.47058827, b: 0.47058827, a: 1}
+    Icon: {r: 0, g: 0, b: 0, a: 1}
+  StatusEffect_Poison_A: {r: 0.69803923, g: 0.28627452, b: 0.5411765, a: 1}
+  StatusEffect_Poison_B: {r: 0.24705882, g: 0.06666667, b: 0.21568628, a: 1}
+  StatusEffect_Drunk_A: {r: 0.69803923, g: 0.5137255, b: 0.2901961, a: 1}
+  StatusEffect_Drunk_B: {r: 0.504, g: 0.36912674, b: 0.20940842, a: 1}
+  StatusEffect_Spoiling_A: {r: 0.69803923, g: 0.28627452, b: 0.5411765, a: 1}
+  StatusEffect_Spoiling_B: {r: 0.24705884, g: 0.06666667, b: 0.21568629, a: 1}
+  StatusEffect_Stunned_A: {r: 1, g: 0.8666667, b: 0.08235294, a: 1}
+  StatusEffect_Stunned_B: {r: 0.70980394, g: 0.5329716, b: 0.06274511, a: 1}
+  StatusEffect_WellFed_A: {r: 0, g: 0.54901963, b: 0.20784314, a: 1}
+  StatusEffect_WellFed_B: {r: 0, g: 0.41960785, b: 0.15294118, a: 1}
+  StatusEffect_Frenzy_A: {r: 1, g: 0.3338987, b: 0, a: 1}
+  StatusEffect_Frenzy_B: {r: 0.5377358, g: 0, b: 0, a: 1}
+  StatusEffect_Invulnerable_A: {r: 0, g: 0.43330216, b: 1, a: 1}
+  StatusEffect_Invulnerable_B: {r: 0, g: 0.2577307, b: 0.5660378, a: 1}
+  StatusEffect_Bleeding_A: {r: 1, g: 0, b: 0, a: 1}
+  StatusEffect_Bleeding_B: {r: 0.5943396, g: 0, b: 0, a: 1}
+  StatusEffect_Demand_A: {r: 0.9622642, g: 0.7261036, b: 0.13163051, a: 1}
+  StatusEffect_Demand_B: {r: 0.9716981, g: 0.91877735, b: 0.7837753, a: 1}
+  StatusEffect_Sick_A: {r: 0.69803923, g: 0.28627452, b: 0.5411765, a: 1}
+  StatusEffect_Sick_B: {r: 0.24705884, g: 0.06666667, b: 0.21568629, a: 1}
+  StatusEffect_Anxious_A: {r: 1, g: 0, b: 0, a: 1}
+  StatusEffect_Anxious_B: {r: 0.59607846, g: 0, b: 0, a: 1}
+  StatusEffect_No_Energy_A: {r: 1, g: 0.6117647, b: 0, a: 1}
+  StatusEffect_No_Energy_B: {r: 0.766, g: 0.46861178, b: 0, a: 1}
+  StatusEffect_No_Workers_A: {r: 1, g: 0.8915094, b: 0.8915094, a: 1}
+  StatusEffect_No_Workers_B: {r: 0.8980393, g: 0.5568628, b: 0.4784314, a: 1}
+  StatusEffect_Homeless_A: {r: 0.9607844, g: 0.7254902, b: 0.13333334, a: 1}
+  StatusEffect_Homeless_B: {r: 0.9725491, g: 0.9176471, b: 0.7843138, a: 1}
+  StatusEffect_Max_On_Board_A: {r: 1, g: 0, b: 0, a: 1}
+  StatusEffect_Max_On_Board_B: {r: 0.59607846, g: 0, b: 0, a: 1}
+  StatusEffect_No_Educated_Workers_A: {r: 1, g: 0.89019614, b: 0.89019614, a: 1}
+  StatusEffect_No_Educated_Workers_B: {r: 0.8980393, g: 0.5568628, b: 0.4784314, a: 1}
+  StatusEffect_Dissolving_A: {r: 0, g: 0.54901963, b: 0.20784315, a: 1}
+  StatusEffect_Dissolving_B: {r: 0, g: 0.41960788, b: 0.15294118, a: 1}
+  StatusEffect_Radar_A: {r: 1, g: 0, b: 0, a: 1}
+  StatusEffect_Radar_B: {r: 0.59607846, g: 0, b: 0, a: 1}
+  StatusEffect_Damaged_A: {r: 1, g: 0.86666673, b: 0.08235294, a: 1}
+  StatusEffect_Damaged_B: {r: 0.70980394, g: 0.53333336, b: 0.0627451, a: 1}
+  StatusEffect_On_Fire_A: {r: 1, g: 0.59672236, b: 0, a: 1}
+  StatusEffect_On_Fire_B: {r: 0.59607846, g: 0.34381756, b: 0, a: 1}
+  StatusEffect_Space_A: {r: 0.99215686, g: 0.74509805, b: 0.6862745, a: 1}
+  StatusEffect_Space_B: {r: 0.8980392, g: 0.5568628, b: 0.47843137, a: 1}
+  StatusEffect_Card_Off_A: {r: 1, g: 0, b: 0, a: 1}
+  StatusEffect_Card_Off_B: {r: 0.007843138, g: 0.007843138, b: 0.007843138, a: 1}
+  StatusEffect_Depleted_A: {r: 0.33917767, g: 0.5021813, b: 0.6981132, a: 1}
+  StatusEffect_Depleted_B: {r: 0.22921859, g: 0.34422264, b: 0.4811321, a: 1}
+  StatusEffect_Energy_View_A: {r: 0.67058825, g: 0.7254902, b: 0.7568628, a: 1}
+  StatusEffect_Energy_View_B: {r: 0.54901963, g: 0.6156863, b: 0.6509804, a: 1}
+  StatusEffect_Drought_A: {r: 1, g: 0.59607846, b: 0, a: 1}
+  StatusEffect_Drought_B: {r: 0.59607846, g: 0.34509805, b: 0, a: 1}
+  StatusEffect_No_Sewer_A: {r: 0, g: 0.54901963, b: 0.20784315, a: 1}
+  StatusEffect_No_Sewer_B: {r: 0, g: 0.199, b: 0.07253271, a: 1}

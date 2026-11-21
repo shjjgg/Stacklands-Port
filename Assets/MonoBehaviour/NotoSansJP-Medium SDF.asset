@@ -1,0 +1,135 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -667331979, guid: 67dfb1fdfb2b407222eda8e23ac8b724, type: 3}
+  m_Name: NotoSansJP-Medium SDF
+  m_EditorClassIdentifier:
+  hashCode: 1018648302
+  material: {fileID: 2100000, guid: 1b5c7b42860a3aa46b327d42041325f0, type: 2}
+  materialHashCode: -2117912690
+  m_Version: 1.1.0
+  m_SourceFontFileGUID: 4d35aba87489af54987c3b149f20bc32
+  m_SourceFontFile: {fileID: 12800000, guid: c6d37d2c8f9a586449a6b188323cc437, type: 3}
+  m_AtlasPopulationMode: 1
+  m_FaceInfo:
+    m_FaceIndex: 0
+    m_FamilyName: Noto Sans JP
+    m_StyleName: Medium
+    m_PointSize: 106
+    m_Scale: 1
+    m_UnitsPerEM: 0
+    m_LineHeight: 153.488
+    m_AscentLine: 122.96001
+    m_CapLine: 78
+    m_MeanLine: 58
+    m_Baseline: 0
+    m_DescentLine: -30.528002
+    m_SuperscriptOffset: 122.96001
+    m_SuperscriptSize: 0.5
+    m_SubscriptOffset: -30.528002
+    m_SubscriptSize: 0.5
+    m_UnderlineOffset: -15.900001
+    m_UnderlineThickness: 5.3
+    m_StrikethroughOffset: 23.2
+    m_StrikethroughThickness: 5.3
+    m_TabWidth: 24
+  m_GlyphTable: []
+  m_CharacterTable: []
+  m_AtlasTextures:
+  - {fileID: 2800000, guid: 94cbdee54901c6243a99efc815766f68, type: 3}
+  m_AtlasTextureIndex: 0
+  m_IsMultiAtlasTexturesEnabled: 0
+  m_ClearDynamicDataOnBuild: 1
+  m_UsedGlyphRects: []
+  m_FreeGlyphRects:
+  - m_X: 0
+    m_Y: 0
+    m_Width: 4095
+    m_Height: 4095
+  m_fontInfo:
+    Name:
+    PointSize: 0
+    Scale: 0
+    CharacterCount: 0
+    LineHeight: 0
+    Baseline: 0
+    Ascender: 0
+    CapHeight: 0
+    Descender: 0
+    CenterLine: 0
+    SuperscriptOffset: 0
+    SubscriptOffset: 0
+    SubSize: 0
+    Underline: 0
+    UnderlineThickness: 0
+    strikethrough: 0
+    strikethroughThickness: 0
+    TabWidth: 0
+    Padding: 0
+    AtlasWidth: 0
+    AtlasHeight: 0
+  atlas: {fileID: 0}
+  m_AtlasWidth: 4096
+  m_AtlasHeight: 4096
+  m_AtlasPadding: 5
+  m_AtlasRenderMode: 4165
+  m_glyphInfoList: []
+  m_KerningTable:
+    kerningPairs: []
+  m_FontFeatureTable:
+    m_GlyphPairAdjustmentRecords: []
+  fallbackFontAssets: []
+  m_FallbackFontAssetTable: []
+  m_CreationSettings:
+    sourceFontFileName:
+    sourceFontFileGUID: 4d35aba87489af54987c3b149f20bc32
+    pointSizeSamplingMode: 1
+    pointSize: 106
+    padding: 5
+    packingMode: 0
+    atlasWidth: 4096
+    atlasHeight: 4096
+    characterSetSelectionMode: 8
+    characterSequence: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz0123456789,.[]()?!<>*& \r\n{\"}dçñê繁體中文简体日本語한국어動物を５匹飼育できるぞ家畜の柵医者いらずリンゴが生って木だ樹揺さぶモフと可愛しも危険クマベーか採れ簡単な食べ美味そう茂み摘むメ知識：骨集まスケルトにんホネ丈夫建材レガ短時間石加工房調理。暖く心地よキャプァイアパ、ポ歯応え良野菜ニジ噂は謎テム眠下墓探索す誰恐竜子孫言たどこ？ワミディュシ焼減肉亡骸死～！ウラボ人類真友達事何数倍遅けねヌサ気付タ土向他作業若干上級設備農場火起打静漂森配林つッ古代定番ツダ園小ズ大や神秘的金聖杯随分姿勢悪ブ天回りコ薄所貴重素鉄延棒鉱掘床精製鍵一ヤ必要赤ちゃ無制限入手伐村図渡市民兵搾ェあ山岳ろ用安ノ書解読住寂師匠驚オお好ギ青々持草原厚板臭チ尽蔵ピョ飛び跳造頑見壊せ岩叩カド枚増納屋着バ方法壌先槍満点部料早竈剣士礼拝遺殿「交換」旅商宝箱勤勉開拓倉庫怖資源成卵温め栽培築残犬錬基礎軍戻発購売却鑑/現在_（含）多ぎ処月齢終わセ削除当獲得攻撃速度エ新ロ完了続遊グ全員餓与ゲ収ヒ率ぼ長普通音楽始進捗失平和敵出像秒選択儀式奇妙-切未討世界珍自謙虚論道組織秩序英求軒個退治目振魚水槽黄色ナ主穫航注意酔ぱ酒透明液容器瓶海船堂賊隠…洞窟酸ビヘ毒剤効能炭じ欠片取変茹げ香ば然綿毛花最化形態使蒸留流電線維合布捕罠簗釣名脅威漁竿泳君仲積運光非常腐ハ植替行島盗激怒緑置優乱葉喋鳥様空喜逃散乗前ぬ細束漕帆砂利品絶種貝殻貨ざょ泉糖甘鮮玉寿司ゅ触強伝訓練印指査ふ羊堆肥割洋滅へ搬張報酬貰参彼女少次列飲歌検領浜辺賄賂侵療闇鍋力技望座礁戦壮計画段際仕二十歳受刻外放足腹ペザ届ゼ感謝停止掴有＆待機押国韓移高値癒守近寄薪征斧ヴ思吹込矢顔銃ぽ違杖・弓鎖壁鱗暗黒染病魔ソ魅惑踊噛猫熱根性男ぜ質写映嫌巨才導胸頭突負盾革卒老婆輪呪術武朝星覚蚊殺忍似便筒王冠命超低鍛冶特別釘刺正確相裏系装粉砕闘落防御後復讐果再挑追詳準不議ご来私倒稼哀程敗北認同脱第勝表示被対接%血狂昇鋼皮膚毎飢字雑側連登更今改善験暴面右学贈灯台保管引貼煮補充捨廃棄盤活修殖屠休暇送願井戸叶初嬉買滞研究"
+    referencedFontAssetGUID: e8a47544948668743b325001b876c903
+    referencedTextAssetGUID: c3099cb6b6a1e094bbf45ace273e5010
+    fontStyle: 0
+    fontStyleModifier: 0
+    renderMode: 4165
+    includeFontFeatures: 0
+  m_FontWeightTable:
+  - regularTypeface: {fileID: 0}
+    italicTypeface: {fileID: 0}
+  - regularTypeface: {fileID: 0}
+    italicTypeface: {fileID: 0}
+  - regularTypeface: {fileID: 0}
+    italicTypeface: {fileID: 0}
+  - regularTypeface: {fileID: 0}
+    italicTypeface: {fileID: 0}
+  - regularTypeface: {fileID: 0}
+    italicTypeface: {fileID: 0}
+  - regularTypeface: {fileID: 0}
+    italicTypeface: {fileID: 0}
+  - regularTypeface: {fileID: 0}
+    italicTypeface: {fileID: 0}
+  - regularTypeface: {fileID: 0}
+    italicTypeface: {fileID: 0}
+  - regularTypeface: {fileID: 0}
+    italicTypeface: {fileID: 0}
+  - regularTypeface: {fileID: 0}
+    italicTypeface: {fileID: 0}
+  fontWeights: []
+  normalStyle: 0
+  normalSpacingOffset: 0
+  boldStyle: 0.75
+  boldSpacing: 7
+  italicStyle: 35
+  tabSize: 10

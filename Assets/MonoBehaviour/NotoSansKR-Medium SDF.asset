@@ -1,0 +1,135 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -667331979, guid: 67dfb1fdfb2b407222eda8e23ac8b724, type: 3}
+  m_Name: NotoSansKR-Medium SDF
+  m_EditorClassIdentifier:
+  hashCode: 1710806509
+  material: {fileID: 2100000, guid: 6a9b9bf6166035040ac59a6b03339079, type: 2}
+  materialHashCode: 906543661
+  m_Version: 1.1.0
+  m_SourceFontFileGUID: 5ae86e96a08b89a45b85c359b1bb4429
+  m_SourceFontFile: {fileID: 12800000, guid: f351b9bf2d6b7284985863f2fdd963fe, type: 3}
+  m_AtlasPopulationMode: 1
+  m_FaceInfo:
+    m_FaceIndex: 0
+    m_FamilyName: Noto Sans KR
+    m_StyleName: Medium
+    m_PointSize: 106
+    m_Scale: 1
+    m_UnitsPerEM: 0
+    m_LineHeight: 153.488
+    m_AscentLine: 122.96001
+    m_CapLine: 78
+    m_MeanLine: 58
+    m_Baseline: 0
+    m_DescentLine: -30.528002
+    m_SuperscriptOffset: 122.96001
+    m_SuperscriptSize: 0.5
+    m_SubscriptOffset: -30.528002
+    m_SubscriptSize: 0.5
+    m_UnderlineOffset: -15.900001
+    m_UnderlineThickness: 5.3
+    m_StrikethroughOffset: 23.2
+    m_StrikethroughThickness: 5.3
+    m_TabWidth: 24
+  m_GlyphTable: []
+  m_CharacterTable: []
+  m_AtlasTextures:
+  - {fileID: 2800000, guid: 9697941c5299eb343b519fb0c87622e4, type: 3}
+  m_AtlasTextureIndex: 0
+  m_IsMultiAtlasTexturesEnabled: 0
+  m_ClearDynamicDataOnBuild: 1
+  m_UsedGlyphRects: []
+  m_FreeGlyphRects:
+  - m_X: 0
+    m_Y: 0
+    m_Width: 4095
+    m_Height: 4095
+  m_fontInfo:
+    Name:
+    PointSize: 0
+    Scale: 0
+    CharacterCount: 0
+    LineHeight: 0
+    Baseline: 0
+    Ascender: 0
+    CapHeight: 0
+    Descender: 0
+    CenterLine: 0
+    SuperscriptOffset: 0
+    SubscriptOffset: 0
+    SubSize: 0
+    Underline: 0
+    UnderlineThickness: 0
+    strikethrough: 0
+    strikethroughThickness: 0
+    TabWidth: 0
+    Padding: 0
+    AtlasWidth: 0
+    AtlasHeight: 0
+  atlas: {fileID: 0}
+  m_AtlasWidth: 4096
+  m_AtlasHeight: 4096
+  m_AtlasPadding: 5
+  m_AtlasRenderMode: 4165
+  m_glyphInfoList: []
+  m_KerningTable:
+    kerningPairs: []
+  m_FontFeatureTable:
+    m_GlyphPairAdjustmentRecords: []
+  fallbackFontAssets: []
+  m_FallbackFontAssetTable: []
+  m_CreationSettings:
+    sourceFontFileName:
+    sourceFontFileGUID: 5ae86e96a08b89a45b85c359b1bb4429
+    pointSizeSamplingMode: 1
+    pointSize: 106
+    padding: 5
+    packingMode: 0
+    atlasWidth: 4096
+    atlasHeight: 4096
+    characterSetSelectionMode: 8
+    characterSequence: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz0123456789,.[]()?!<>*& \r\n{\"}dçñê繁體中文简体日本語한국어마리의동물보유가능축우건강하게만들줌사과달린나무채취중부드럽지위험함곰딸기에서열매발견맛있는려실:스켈레톤은다수이것으로구성되음뼈튼자재벽돌빠르석를변환공장식을요할때용따뜻고아늑해임모닥불삭야당근신비소문묘탐룡후손추정믿힘닭미디엄익힌죽람시체머최종악인류친든느림개생먹없살넬라균니었도계란치색른작업량배급농피데싯괴숲포크프타옛날터내오통일샐러단순원쥐큰버전거대황금술잔쁜세블와코숙분좋곳집빛질철광상까쇠존낼필목받벌여주민병암얻선료밀쉐끝뾰족언덕산품섯담긴책학습직래된페핀랑워믈렛혀양파활외평판안냄새남똥운탄화덩먼저감굴푹토끼반바교제카증헛간련트렌슬점액태끈적명방법막창푸짐튜흔히볼더브봉검예티팩면립행잠겨루져척몹설뭇알짓훈셰본군뒤메뉴확팔못백/현_입너많않번합항겠클릭총격속퀘완했째진끌놓롭두굶짝옵션옮회플길짧-록쉬규영던멋네끄켜됨초택쌓털났글패널런잘셨였궁심박출논혜'획득섭처탈관노므조럼투빨숨깁큼뱀독쓰넛칼각애꿈퇴높그릴연솜왜짜떠온뭉울빈섬같써덫잡낚꾼역편호귀흙첨올북빼앗켄둥콤등맨말았싶숭쁘앵냥난밧줄젓돛갈껍폐범움며샘탕풀밥틀촉센옴표찾참삼침굽깨뭔웠캡육경됩앞빕찰력뇌키럭킬망께떨즐혈흐름햇맞팠충덜폴컨셉밍팀롤냅누눌탭멈춥접렇낸줍약극몸껴차및싸퉁톱협특별팡찌춤훨씬깜찍복갑옷곤뚫딱쏘둠욱엘훌륭밑걸엔렸냐붙넣헬멧령듯팽벤흉둔씌뿔놔닉졸떤빗락깃뻔쟁싫닌땅녹쪽곡괭률왕엉골억김녀퍼벨셋준왔결뜨챙쳤밖졌떻럴놈똘찔렀얼웨첫죠%효흡절랜덤잃툼케템희향착삶겁콘탑꿀돈잖"
+    referencedFontAssetGUID: 782ef44cebc3d934f8eea09c82cae79f
+    referencedTextAssetGUID: cf81f9981cde66c4a9741e61b99218b7
+    fontStyle: 0
+    fontStyleModifier: 0
+    renderMode: 4165
+    includeFontFeatures: 0
+  m_FontWeightTable:
+  - regularTypeface: {fileID: 0}
+    italicTypeface: {fileID: 0}
+  - regularTypeface: {fileID: 0}
+    italicTypeface: {fileID: 0}
+  - regularTypeface: {fileID: 0}
+    italicTypeface: {fileID: 0}
+  - regularTypeface: {fileID: 0}
+    italicTypeface: {fileID: 0}
+  - regularTypeface: {fileID: 0}
+    italicTypeface: {fileID: 0}
+  - regularTypeface: {fileID: 0}
+    italicTypeface: {fileID: 0}
+  - regularTypeface: {fileID: 0}
+    italicTypeface: {fileID: 0}
+  - regularTypeface: {fileID: 0}
+    italicTypeface: {fileID: 0}
+  - regularTypeface: {fileID: 0}
+    italicTypeface: {fileID: 0}
+  - regularTypeface: {fileID: 0}
+    italicTypeface: {fileID: 0}
+  fontWeights: []
+  normalStyle: 0
+  normalSpacingOffset: 0
+  boldStyle: 0.75
+  boldSpacing: 7
+  italicStyle: 35
+  tabSize: 10

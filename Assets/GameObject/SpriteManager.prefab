@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1709254077376921
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4730242686860875}
+  - component: {fileID: 114724804207875695}
+  m_Layer: 0
+  m_Name: SpriteManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4730242686860875
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114724804207875695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 835948947, guid: fff28ad2958f41e0cb020d3a193dcc60, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  HealthIcon: {fileID: 21300000, guid: d64a471a74e6f10419aeaede5ca07234, type: 2}
+  FoodIcon: {fileID: 21300000, guid: 9e06444794dd9714faec4f639fe27684, type: 2}
+  PollutionIcon: {fileID: 21300000, guid: e5087ea758839854b9ab6fccf870a72b, type: 2}
+  EmptyTexture: {fileID: 21300000, guid: 214c4b368cd85194b95d0aefc275ad49, type: 2}
+  Speed1: {fileID: 21300000, guid: fcd3fd9c8a37c684a9fe793ea53ecd2f, type: 2}
+  Speed10: {fileID: 21300000, guid: 241ccf9bcb2e66041b0e9ba8ff9607af, type: 2}
+  Speed0: {fileID: 21300000, guid: f02ba27e0fb2d40478d64dd068466873, type: 2}
+  IdeaIcon: {fileID: 21300000, guid: 22571241dd914b0419b05f891e1b6600, type: 2}
+  IslandIdeaIcon: {fileID: 21300000, guid: 98da612753c94204395fc26714404ad8, type: 2}
+  SpiritIdeaIcon: {fileID: 21300000, guid: c3591edb544b784429278e9bb3c1995a, type: 2}
+  CitiesIdeaIcon: {fileID: 21300000, guid: 976e991920bdc3344b740333838866b7, type: 2}
+  CursorDefault: {fileID: 2800000, guid: 19176f9fc6b084a42a29b1c58ea1aa87, type: 3}
+  CursorCanDrag: {fileID: 2800000, guid: b3123e65c657b844fa719befb70e2df7, type: 3}
+  CursorDragging: {fileID: 2800000, guid: 3a6e22b56217c3f479ce357763ab9734, type: 3}
+  PoisonEffect: {fileID: 21300000, guid: c0991d3f02fa6644284ccc3f4236b39e, type: 2}
+  DrunkEffect: {fileID: 21300000, guid: a328cbe01d18b6d4aa8f3deb3ce5df97, type: 2}
+  StunnedEffect: {fileID: 21300000, guid: 22c32ae5f3b9d69438dd2d5c0d590fb2, type: 2}
+  WellFedEffect: {fileID: 21300000, guid: 70f35b36c6a6abd49816c2a885874f67, type: 2}
+  SpoilingEffect: {fileID: 21300000, guid: 6a061f6a68726ff4aa78d233abeb6b25, type: 2}
+  BleedingEffect: {fileID: 21300000, guid: 307449a933c524a4fa03878dcac02131, type: 2}
+  FrenzyEffect: {fileID: 21300000, guid: a54afd5ceda103f488f1f9755e0f12a3, type: 2}
+  InvulnerableEffect: {fileID: 21300000, guid: 71f005b0eb4ce414f80fc27ed5aaa5ea, type: 2}
+  DemandEffect: {fileID: 21300000, guid: e202120c69eeca64997937942499ba4a, type: 2}
+  SickEffect: {fileID: 21300000, guid: a4534239b8b775347a4fc0c01af1d969, type: 2}
+  AnxiousEffect: {fileID: 21300000, guid: c4f9d487cb67928478420ef104371d06, type: 2}
+  NoEnergyEffect: {fileID: 21300000, guid: 68ef4dc6fa372ba41999c380b8d52654, type: 2}
+  NoWorkersEffect: {fileID: 21300000, guid: 8a6b96a642cf24143869f807670c8ea4, type: 2}
+  HomelessEffect: {fileID: 21300000, guid: f3b08a8beb6ba1444bfcf4c21b47dd47, type: 2}
+  MaxReachedEffect: {fileID: 21300000, guid: 93034e7afbd20fc4b91caa5febfbcf4e, type: 2}
+  NoEducatedWorkersEffect: {fileID: 21300000, guid: 8a6b96a642cf24143869f807670c8ea4, type: 2}
+  DissolvingEffect: {fileID: 21300000, guid: 63fa749860908b843b27bb2e48489991, type: 2}
+  RadarEffect: {fileID: 21300000, guid: eeab9950566d3aa449abff6e9f2bcdc0, type: 2}
+  DamagedEffect: {fileID: 21300000, guid: 22c32ae5f3b9d69438dd2d5c0d590fb2, type: 2}
+  OnFireEffect: {fileID: 21300000, guid: 83603593e249d6c4195bd3483ddc9599, type: 2}
+  EmptyEffect: {fileID: 21300000, guid: 4d4b997ee64030d499197dc43fc8d199, type: 2}
+  CardOffEffect: {fileID: 21300000, guid: 774b4536699c6e54ca8f3f76647366d5, type: 2}
+  DepletedEffect: {fileID: 21300000, guid: b166d94f37393f84c912a25433ac6ccd, type: 2}
+  HousingSpaceEffect: {fileID: 21300000, guid: 087f1651cd8939e42b441da1e0210553, type: 2}
+  DroughtEffect: {fileID: 21300000, guid: b166d94f37393f84c912a25433ac6ccd, type: 2}
+  NoSewerEffect: {fileID: 21300000, guid: 5fcb94a161fe16c4cba15498036d4e91, type: 2}
+  CoinIcon: {fileID: 21300000, guid: fb67ad30fcebcc64b9b9aa2e5e27ca24, type: 2}
+  ShellIcon: {fileID: 21300000, guid: 279d163a6397c304e8c862c3c6153378, type: 2}
+  DollarIcon: {fileID: 21300000, guid: 7c7f256b95a5e5f4f83234f134dbf603, type: 2}
+  MagicFightIcon: {fileID: 21300000, guid: 9bc4ff7f7ffc98b4b90d6904d7bdbe1b, type: 2}
+  MeleeFightIcon: {fileID: 21300000, guid: a774334b8fd30744d92f7446473a83e8, type: 2}
+  RangedFightIcon: {fileID: 21300000, guid: 8920a521174310f47b4bccbca703c313, type: 2}
+  AirFightIcon: {fileID: 21300000, guid: a774334b8fd30744d92f7446473a83e8, type: 2}
+  FootFightIcon: {fileID: 21300000, guid: a774334b8fd30744d92f7446473a83e8, type: 2}
+  ArmourFightIcon: {fileID: 21300000, guid: a774334b8fd30744d92f7446473a83e8, type: 2}
+  HeadIconFilled: {fileID: 0}
+  TorsoIconFilled: {fileID: 0}
+  HandIconFilled: {fileID: 0}
+  ChestIconSecondary: {fileID: 21300000, guid: 4caf0388887888146884b41786c1aee2, type: 2}
+  MagnetIconSecondary: {fileID: 21300000, guid: 35d1dffedb451d0489addeb063f7fefe, type: 2}
+  TopIcon: {fileID: 21300000, guid: f0c5d48472ea5ac4eb5ceb6a10fff428, type: 2}
+  BottomIcon: {fileID: 21300000, guid: 9749bd09a726e374f9655b4d7cb88d0a, type: 2}
+  LeftIcon: {fileID: 21300000, guid: b94e3b59dfba93d4cb2a7360f2931e30, type: 2}
+  RightIcon: {fileID: 21300000, guid: 704d0aff00c15764090049fd017189aa, type: 2}
+  HighVoltageSprite: {fileID: 21300000, guid: e6a37214c5cd5b64ba745c670ba3ab9a, type: 2}
+  LowVoltageSprite: {fileID: 21300000, guid: 79ba971070534bc45adc1b65d9914d8c, type: 2}
+  SewerSprite: {fileID: 21300000, guid: 24d66e1d377a93546a0ea66bb3a71a75, type: 2}
+  TransportSprite: {fileID: 21300000, guid: aa9d6b95f5e1d344bb6eb2d4e6b8ca83, type: 2}

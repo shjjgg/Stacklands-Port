@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1709254077376921
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4730242686860875}
+  - component: {fileID: 114724804207875695}
+  m_Layer: 0
+  m_Name: PrefabManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4730242686860875
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114724804207875695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 115673686, guid: fff28ad2958f41e0cb020d3a193dcc60, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  BoosterpackPrefab: {fileID: 114589667821646929, guid: 354c29b2ae766ce408184d5ff356d376, type: 2}
+  GameCardPrefab: {fileID: 114900271049623953, guid: 61b402110fa14574bb541f26016b2840, type: 2}
+  HitTextPrefab: {fileID: 114884547391421755, guid: 26d51abbb8032d841a15c9ac72dc5b1e, type: 2}
+  SmokeParticlePrefab: {fileID: 1709254077376921, guid: 8860ada560cf60c49a7d9b4e92d57c0b, type: 2}
+  ElectricityMinusParticlePrefab: {fileID: 1709254077376921, guid: e35e1f7167079074ab4a8bbc5bd4f729, type: 2}
+  WellbeingPlusParticlePrefab: {fileID: 1709254077376921, guid: be2219608f96e254cbe8b0c5f1091547, type: 2}
+  SpiritBackgroundPlanePrefab: {fileID: 1709254077376921, guid: 4bb72855540dd4d4a9195905d8c60e26, type: 2}
+  FloatingTextPrefab: {fileID: 1709254077376921, guid: b0e8bb95b7d525244b4f3afd3666df2a, type: 2}
+  SellBoxPrefab: {fileID: 114709867586078768, guid: 39a472b4fddfc764a9d90ed75e303efd, type: 2}
+  BoosterBoxPrefab: {fileID: 114025901758691103, guid: 29dc593deee2f29448fde5c38f22f2c9, type: 2}
+  StatusBarPrefab: {fileID: 114618682377417806, guid: 6f73a044b0340cb4586f61217880c6d7, type: 2}
+  StatusEffectElementPrefab: {fileID: 114703437598541787, guid: 49bc76c2ac72b6445bffe2b055ea6bd9, type: 2}
+  BulletProjectilePrefab: {fileID: 114618682377417806, guid: b6d884f5623b6134592ef6ad48c90635, type: 2}
+  RangedProjectilePrefab: {fileID: 114618682377417806, guid: 27f9eb45dc07a9a43b73340dbd4dc981, type: 2}
+  MagicProjectilePrefab: {fileID: 114618682377417806, guid: 09a5bc5059750524fa5318b2d6978f8b, type: 2}
+  ButtonPrefab: {fileID: 114099118695303065, guid: 55416ef8e6217eb4287435beffc13fdd, type: 2}
+  CutsceneButtonPrefab: {fileID: 114099118695303065, guid: da54365188edcf3449e7f4551e5c4871, type: 2}
+  DebugButtonPrefab: {fileID: 114099118695303065, guid: 7d65b26b7d2e00d47af45bf25f6d42e2, type: 2}
+  AchievementElementPrefab: {fileID: 114061268324235159, guid: fcfd6abdff0279e4599460b95c274fb6, type: 2}
+  EmptyAchievementElementPrefab: {fileID: 114587765826080250, guid: 1a08578b2325a1746b1be507187dd5e6, type: 2}
+  AchievementElementLabelPrefab: {fileID: 1709254077376921, guid: 0b97955ae88c60d4c8dff27b6dd7c9ef, type: 2}
+  NotificationElementPrefab: {fileID: 114099118695303065, guid: 4c0bebf9afd7967449f10ae9e532dc53, type: 2}
+  NormalLabelPrefab: {fileID: 224724804207875695, guid: 41e16a2e247a5e640b80ead2f751dff2, type: 2}
+  IdeaElementPrefab: {fileID: 114884547391421755, guid: 5272e6cc1d2155f47ae92538c48e16b3, type: 2}
+  RebindElementPrefab: {fileID: 114061268324235159, guid: d49d4de3fd1aceb49848e4ec1b386fa2, type: 2}
+  WellbeingLinePrefab: {fileID: 114724804207875695, guid: 9ab6672688633944daa76b478ae23be4, type: 2}
+  NormalHitText: {fileID: 114884547391421755, guid: 26d51abbb8032d841a15c9ac72dc5b1e, type: 2}
+  MissHitText: {fileID: 114884547391421755, guid: 8246260356682e344bac089c02011258, type: 2}
+  BlockHitText: {fileID: 114884547391421755, guid: a2386ef52c789d24c9ce91d61df89a64, type: 2}
+  CritHitText: {fileID: 114099118695303065, guid: e7e741f80e0c7b64dbcbaac7052516f6, type: 2}
+  HealHitText: {fileID: 114884547391421755, guid: 929bf53cd44af194ea7577ff83056568, type: 2}
+  BleedHitText: {fileID: 114884547391421755, guid: da53f989cc7cdc54eb78d5e6b10c86a4, type: 2}
+  PoisonHitText: {fileID: 114884547391421755, guid: 5cdda35fc53e4b94ebfde8d8bd326a4f, type: 2}
+  SickHitText: {fileID: 114884547391421755, guid: 3e88c89ea08021e418cf79425d9960d4, type: 2}
+  IsVeryEffectiveText: {fileID: 114618682377417806, guid: 893fcaeeb79c9df4e8cf0fa6703a554a, type: 2}
