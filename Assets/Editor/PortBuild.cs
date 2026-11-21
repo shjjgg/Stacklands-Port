@@ -473,8 +473,15 @@ public static class PortBuild
     {
         get
         {
+            // GameCI 只把白名单变量透传进容器, 所以基线同时支持命令行参数 -maxWarnings N。
+            var argv = Environment.GetCommandLineArgs();
+            for (int i = 0; i + 1 < argv.Length; i++)
+            {
+                if (argv[i] == "-maxWarnings" && int.TryParse(argv[i + 1], out var n) && n >= 0)
+                    return n;
+            }
             var raw = Env("STRICT_MAX_WARNINGS", "0");
-            return int.TryParse(raw, out var n) && n >= 0 ? n : 0;
+            return int.TryParse(raw, out var m) && m >= 0 ? m : 0;
         }
     }
 
