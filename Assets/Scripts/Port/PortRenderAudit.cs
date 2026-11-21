@@ -74,7 +74,8 @@ namespace StacklandsPort
                 var weight = t.GetField("weight", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
                 PortLog.Write(Tag + "volume " + mb.name + " global=" + (isGlobal != null ? isGlobal.GetValue(mb) : "?") +
                               " weight=" + (weight != null ? weight.GetValue(mb) : "?") +
-                              " profile=" + (profile == null ? "null" : profile.name));
+                              " profile=" + (profile == null ? "null"
+                                  : (profile is UnityEngine.Object ? ((UnityEngine.Object)profile).name : profile.ToString()));
                 if (profile == null) continue;
                 var settingsField = profile.GetType().GetField("settings", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
                 var settings = settingsField != null ? settingsField.GetValue(profile) as IList : null;
