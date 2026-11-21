@@ -356,6 +356,9 @@ jobs:
           needs.static-analysis.outputs.license_ready == 'true' ) )
     steps:
       - uses: actions/checkout@v4
+        with:
+          # 版本号 = 原版 1.5.0 + 本仓库提交数, 浅克隆拿不到真实次数
+          fetch-depth: 0
 
       # 用 GameCI 官方 action 构建(用户规定的构建方式):
       #   game-ci/unity-builder@v4 负责 激活 + 导入 + -executeMethod + 产物收集
