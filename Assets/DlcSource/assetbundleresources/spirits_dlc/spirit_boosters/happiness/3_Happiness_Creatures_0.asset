@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca9e3c58dddbb10aada65d9b6b994473, type: 3}
+  m_Name: 3_Happiness_Creatures
+  m_EditorClassIdentifier:
+  BoosterId: happiness_creatures
+  NameTerm: pack_happiness_creatures_text
+  nameOverride:
+  MinAchievementCount: 9
+  IsIntroPack: 0
+  Cost: 10
+  Icon: {fileID: 21300000, guid: a693ca95ccc2d8946bdd050e1ae89a3c, type: 2}
+  BoosterLocation: 3
+  CardBags:
+  - CardBagType: 2
+    CardsInPack: 1
+    ExpectedValue: 3
+    Chances: []
+    SetPackCards: []
+    SetCardBag: 1
+    UseFallbackBag: 0
+    EnemyCardBag: 0
+    StrengthLevel: 16
+    FallbackBag: 0
+    EnemiesIncluded: rat, goblin, slime, goblin_archer
+  - CardBagType: 2
+    CardsInPack: 1
+    ExpectedValue: 0
+    Chances: []
+    SetPackCards: []
+    SetCardBag: 35
+    UseFallbackBag: 0
+    EnemyCardBag: 0
+    StrengthLevel: 0
+    FallbackBag: 0
+    EnemiesIncluded:
+  - CardBagType: 0
+    CardsInPack: 1
+    ExpectedValue: 3.6666667
+    Chances:
+    - Id: animal_pen
+      Chance: 1
+      PercentageChance: 0.33333334
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: warehouse
+      Chance: 1
+      PercentageChance: 0.33333334
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: resource_chest
+      Chance: 1
+      PercentageChance: 0.33333334
+      HasMaxCount: 1
+      MaxCountToGive: 3
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    SetPackCards: []
+    SetCardBag: 0
+    UseFallbackBag: 0
+    EnemyCardBag: 0
+    StrengthLevel: 0
+    FallbackBag: 0
+    EnemiesIncluded:
+  BoosterAdditions: []
+  ExpectedValue: 6.666667
+  references:
+    version: 2
+    RefIds: []

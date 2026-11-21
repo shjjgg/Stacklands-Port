@@ -1,0 +1,125 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca9e3c58dddbb10aada65d9b6b994473, type: 3}
+  m_Name: 6_Cities_Industry
+  m_EditorClassIdentifier:
+  BoosterId: cities_industry
+  NameTerm: pack_cities_industry_text
+  nameOverride:
+  MinAchievementCount: 32
+  IsIntroPack: 0
+  Cost: 140
+  Icon: {fileID: 21300000, guid: 446632de12f555743a30fbb2e3e835f3, type: 2}
+  BoosterLocation: 6
+  CardBags:
+  - CardBagType: 2
+    CardsInPack: 2
+    ExpectedValue: 0.9999999
+    Chances: []
+    SetPackCards:
+    - ore_deposit
+    - tree_plantation
+    - worker
+    - worker
+    - farm_land
+    SetCardBag: 76
+    UseFallbackBag: 1
+    EnemyCardBag: 0
+    StrengthLevel: 0
+    FallbackBag: 64
+    EnemiesIncluded: blueprint_wind_turbine, blueprint_automation_factory, blueprint_basic_smelter, blueprint_dynamo, blueprint_storage_facility
+  - CardBagType: 0
+    CardsInPack: 2
+    ExpectedValue: 1.6666667
+    Chances:
+    - Id: electric_motor
+      Chance: 10
+      PercentageChance: 0.16666667
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: spy
+      Chance: 2
+      PercentageChance: 0.033333335
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: copper_bar
+      Chance: 20
+      PercentageChance: 0.33333334
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: cement
+      Chance: 20
+      PercentageChance: 0.33333334
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: storage_container
+      Chance: 4
+      PercentageChance: 0.06666667
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: cities_dog
+      Chance: 2
+      PercentageChance: 0.033333335
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: cities_cat
+      Chance: 2
+      PercentageChance: 0.033333335
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    SetPackCards: []
+    SetCardBag: 0
+    UseFallbackBag: 0
+    EnemyCardBag: 0
+    StrengthLevel: 0
+    FallbackBag: 0
+    EnemiesIncluded:
+  BoosterAdditions: []
+  ExpectedValue: 5.333333
+  references:
+    version: 2
+    RefIds: []

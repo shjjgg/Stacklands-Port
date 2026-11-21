@@ -1,0 +1,140 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca9e3c58dddbb10aada65d9b6b994473, type: 3}
+  m_Name: 1_Greed_Basic
+  m_EditorClassIdentifier:
+  BoosterId: greed_basic1
+  NameTerm: pack_greed_basic1_text
+  nameOverride:
+  MinAchievementCount: 1
+  IsIntroPack: 0
+  Cost: 3
+  Icon: {fileID: 21300000, guid: 2a4edd6f7e189af409d6fda76d9cc140, type: 2}
+  BoosterLocation: 4
+  CardBags:
+  - CardBagType: 0
+    CardsInPack: 2
+    ExpectedValue: 2.4807992
+    Chances:
+    - Id: grape_vine
+      Chance: 4
+      PercentageChance: 0.2857143
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: soil
+      Chance: 2
+      PercentageChance: 0.14285715
+      HasMaxCount: 1
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: tree
+      Chance: 3
+      PercentageChance: 0.21428572
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: rock
+      Chance: 3
+      PercentageChance: 0.21428572
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: grape
+      Chance: 1
+      PercentageChance: 0.071428575
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: wheat
+      Chance: 1
+      PercentageChance: 0.071428575
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    SetPackCards: []
+    SetCardBag: 16
+    UseFallbackBag: 0
+    EnemyCardBag: 0
+    StrengthLevel: 0
+    FallbackBag: 0
+    EnemiesIncluded: grape_vine, soil, stone, wood, spring
+  - CardBagType: 0
+    CardsInPack: 1
+    ExpectedValue: 1.2
+    Chances:
+    - Id: wood
+      Chance: 2
+      PercentageChance: 0.4
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: stone
+      Chance: 2
+      PercentageChance: 0.4
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: stick
+      Chance: 1
+      PercentageChance: 0.2
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    SetPackCards: []
+    SetCardBag: 0
+    UseFallbackBag: 0
+    EnemyCardBag: 0
+    StrengthLevel: 0
+    FallbackBag: 0
+    EnemiesIncluded: wood, stone, tree, rock
+  BoosterAdditions: []
+  ExpectedValue: 6.161598
+  references:
+    version: 2
+    RefIds: []

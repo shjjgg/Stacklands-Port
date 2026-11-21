@@ -1,6 +1,6 @@
 using System;
 using System.IO;
-using System.Collections;
+using System.IO.Compression;
 using System.Reflection;
 using HarmonyLib;
 using UnityEngine;
@@ -25,9 +25,7 @@ namespace StacklandsPort
             try
             {
                 PortLog.Marker("Run");
-                var runner = new GameObject("[PortDlc]");
-                UnityEngine.Object.DontDestroyOnLoad(runner);
-                runner.AddComponent<Runner>().StartCoroutine(PrepareFiles());
+                PrepareFiles();
                 ApplyPatch();
             }
             catch (Exception e)
@@ -36,48 +34,43 @@ namespace StacklandsPort
             }
         }
 
-        internal sealed class Runner : MonoBehaviour { }
-
         /// <summary>
-        /// Android 的 StreamingAssets 在 APK 里(jar), File 读不到, 必须用 UnityWebRequest 取字节再落地。
+        /// Android 上 StreamingAssets 在 APK(zip) 里, File/UnityWebRequest 都不如直接读 zip 稳:
+        /// Application.dataPath 就是 base.apk 路径, 用 ZipArchive 同步取出两个 DLC 包。
         /// </summary>
-        static IEnumerator PrepareFiles()
+        static void PrepareFiles()
         {
             Directory.CreateDirectory(Dlcdir);
-            foreach (var name in new[] { "cities_dlc", "spirits_dlc" })
+            string apk = Application.dataPath;
+            try
             {
-                string url = Application.streamingAssetsPath + "/dlc/" + name;
-                string to = Path.Combine(Dlcdir, name);
-                long localLen = File.Exists(to) ? new FileInfo(to).Length : -1;
-
-                var req = UnityEngine.Networking.UnityWebRequest.Get(url);
-                yield return req.SendWebRequest();
-                if (req.result != UnityEngine.Networking.UnityWebRequest.Result.Success)
+                using (var zip = ZipFile.OpenRead(apk))
                 {
-                    PortLog.Write(Tag + "read " + name + " failed: " + req.error + " url=" + url);
-                    continue;
+                    foreach (var name in new[] { "cities_dlc", "spirits_dlc" })
+                    {
+                        var entry = zip.GetEntry("assets/dlc/" + name);
+                        if (entry == null)
+                        {
+                            PortLog.Write(Tag + "APK 内缺 assets/dlc/" + name);
+                            continue;
+                        }
+                        string to = Path.Combine(Dlcdir, name);
+                        long local = File.Exists(to) ? new FileInfo(to).Length : -1;
+                        if (local == entry.Length)
+                        {
+                            PortLog.Write(Tag + "already ready " + name + " " + local);
+                            continue;
+                        }
+                        using (var src = entry.Open())
+                        using (var dst = File.Create(to))
+                            src.CopyTo(dst);
+                        PortLog.Write(Tag + "extracted " + name + " " + new FileInfo(to).Length + "B -> " + Dlcdir);
+                    }
                 }
-
-                var bytes = req.downloadHandler.data;
-                if (bytes == null || bytes.Length == 0)
-                {
-                    PortLog.Write(Tag + "read " + name + " empty");
-                    continue;
-                }
-                if (bytes.Length == localLen)
-                {
-                    PortLog.Write(Tag + "already ready " + name + " " + bytes.Length);
-                    continue;
-                }
-                try
-                {
-                    File.WriteAllBytes(to, bytes);
-                    PortLog.Write(Tag + "wrote " + name + " " + bytes.Length + " -> " + Dlcdir);
-                }
-                catch (Exception e)
-                {
-                    PortLog.Write(Tag + "write " + name + " failed: " + e.Message);
-                }
+            }
+            catch (Exception e)
+            {
+                PortLog.Write(Tag + "APK 解包失败 " + apk + " : " + e);
             }
         }
 
@@ -97,6 +90,22 @@ namespace StacklandsPort
             var harmony = new Harmony("stacklands.port.dlc");
             harmony.Patch(target, prefix);
             PortLog.Write(Tag + "Harmony patch 已挂到 RuntimeSokBundle.Load");
+
+            // 原版用 SteamApps.BIsDlcInstalled 判断是否装 DLC; Android 没有 Steam → 永远 false。
+            // 这里改成「本地有包即视为已安装」, 与 A 方案一致。
+            var wm = asm.GetType("WorldManager");
+            if (wm != null)
+            {
+                var installed = new HarmonyMethod(typeof(PortDlc).GetMethod("InstalledPrefix", BindingFlags.Static | BindingFlags.NonPublic));
+                foreach (var m in new[] { "SpiritDLCInstalled", "CitiesDLCInstalled" })
+                {
+                    var mi = wm.GetMethod(m, BindingFlags.Instance | BindingFlags.NonPublic);
+                    if (mi == null) { PortLog.Write(Tag + "没找到 " + m); continue; }
+                    harmony.Patch(mi, installed);
+                    PortLog.Write(Tag + "Harmony patch 已挂到 WorldManager." + m);
+                }
+            }
+            else PortLog.Write(Tag + "WorldManager 类型没找到");
         }
 
         static Assembly FindGameScripts()
@@ -135,6 +144,13 @@ namespace StacklandsPort
             if (field != null) field.SetValue(__instance, bundle);
             __result = true;
             PortLog.Write(Tag + "OK id=" + id + " path=" + path + " assets=" + bundle.GetAllAssetNames().Length);
+            return false;
+        }
+
+        // ReSharper disable once UnusedMember.Local
+        static bool InstalledPrefix(ref bool __result)
+        {
+            __result = true;
             return false;
         }
 

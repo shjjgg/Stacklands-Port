@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1709254077376921
+GameObject:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Component:
+  - component: {fileID: 4730242686860875}
+  - component: {fileID: 114724804207875695}
+  m_Layer: 0
+  m_Name: Structure_ParticleCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4730242686860875
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -0, z: -0}
+--- !u!114 &114724804207875695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65dbcecc4f86f320e23e3b70b5ba9bd7, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  Id: particle_collider
+  CustomName:
+  NameTerm: card_particle_collider_name
+  DescriptionTerm: card_particle_collider_description
+  PickupSoundGroup: 2
+  PickupSound: {fileID: 0}
+  UniqueId:
+  ParentUniqueId:
+  EquipmentHolderUniqueId:
+  WorkerHolderUniqueId:
+  WorkerIndex: -1
+  Value: 1
+  Icon: {fileID: 21300000, guid: 854b17ad14c297a4f9e3223c91763baa, type: 2}
+  MyGameCard: {fileID: 0}
+  IsFoil: 0
+  IsShiny: 0
+  MyCardType: 0
+  IsBuilding: 1
+  IsCookedFood: 0
+  HideFromCardopedia: 0
+  CreationMonth: 0
+  CardUpdateType: 6
+  ExpectedValue: 0
+  HasUniquePalette: 0
+  MyPalette:
+    Color: {r: 0, g: 0, b: 0, a: 0}
+    Color2: {r: 0, g: 0, b: 0, a: 0}
+    Icon: {r: 0, g: 0, b: 0, a: 0}
+  LeftoverExtraData: []
+  CitiesValue: 200
+  WorkerAmount: 5
+  EducatedWorkers: 1
+  OutputDir: {x: 0, y: 0, z: 0}
+  RequirementHolders:
+  - rid: 6745392377641566208
+  IsDamaged: 0
+  DamageType: 0
+  IsOn: 1
+  EnergyConnectors:
+  - EnergyConnectionType: 0
+    EnergyConnectionStrength: 3
+    EnergyConnectionAmount: 3
+  PoopTimer: 0
+  ColliderRunning: 0
+  CutsceneQueued: 0
+  ColliderRunningSounds: {fileID: 0}
+  ColliderDoneSounds: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: 6745392377641566208
+      type: {class: RequirementHolder, ns:, asm: GameScripts}
+      data:
+        CardRequirements:
+        - rid: 6745392377641566209
+        PositiveResults: []
+        NegativeResults:
+        - rid: 6745392377641566210
+    - rid: 6745392377641566209
+      type: {class: CardRequirement_HasEnergy, ns:, asm: GameScripts}
+      data: {}
+    - rid: 6745392377641566210
+      type: {class: CardRequirementResult_AddWellbeing, ns:, asm: GameScripts}
+      data:
+        Amount: -3
+        IsNegative: 1

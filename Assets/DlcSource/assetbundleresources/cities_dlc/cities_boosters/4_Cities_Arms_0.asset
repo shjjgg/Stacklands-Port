@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca9e3c58dddbb10aada65d9b6b994473, type: 3}
+  m_Name: 4_Cities_Arms
+  m_EditorClassIdentifier:
+  BoosterId: cities_arms
+  NameTerm: pack_cities_arms_text
+  nameOverride:
+  MinAchievementCount: 20
+  IsIntroPack: 0
+  Cost: 80
+  Icon: {fileID: 21300000, guid: 566c30e55d0918a4687855f94636c95d, type: 2}
+  BoosterLocation: 6
+  CardBags:
+  - CardBagType: 2
+    CardsInPack: 1
+    ExpectedValue: 1
+    Chances: []
+    SetPackCards:
+    - ore_deposit
+    - tree_plantation
+    - worker
+    - worker
+    - farm_land
+    SetCardBag: 75
+    UseFallbackBag: 1
+    EnemyCardBag: 0
+    StrengthLevel: 0
+    FallbackBag: 74
+    EnemiesIncluded: blueprint_basic_smelter, blueprint_electric_motor, blueprint_barrack, blueprint_copper_mine, blueprint_cities_iron_mine, blueprint_fancy_apartment, blueprint_cities_gold_mine, blueprint_radar_station
+  - CardBagType: 1
+    CardsInPack: 3
+    ExpectedValue: 6
+    Chances: []
+    SetPackCards:
+    - lumber_deposit
+    - water_deposit
+    - gravel_deposit
+    SetCardBag: 0
+    UseFallbackBag: 0
+    EnemyCardBag: 0
+    StrengthLevel: 0
+    FallbackBag: 0
+    EnemiesIncluded:
+  BoosterAdditions: []
+  ExpectedValue: 19
+  references:
+    version: 2
+    RefIds: []

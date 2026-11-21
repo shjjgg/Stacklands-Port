@@ -88,6 +88,12 @@ public static class PortBuild
         // ---- 门 3.5: 内容自愈 (TMP 图集缺失 → 运行期 NRE 刷屏) ----
         Debug.Log(StacklandsPort.EditorTools.PortFontFix.FixAll(false));
 
+        // ---- 门 3.6: DLC 重打包 (PC 包的 DXT5 贴图 Android 不可用, 必须用 Android 目标重打) ----
+        if (!PortDlcBundle.BuildAll(false))
+        {
+            Debug.LogError("[PortBuild] DLC 重打包失败, 本次包的 DLC 不可用");
+        }
+
         // ---- 门 4: 构建 ----
         Directory.CreateDirectory(Path.GetDirectoryName(outputPath) ?? "builds/android");
 

@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca9e3c58dddbb10aada65d9b6b994473, type: 3}
+  m_Name: 5_Cities_Oil
+  m_EditorClassIdentifier:
+  BoosterId: cities_oil
+  NameTerm: pack_cities_oil_text
+  nameOverride:
+  MinAchievementCount: 26
+  IsIntroPack: 0
+  Cost: 100
+  Icon: {fileID: 21300000, guid: d50b28ba12943234da84a387f4dd670d, type: 2}
+  BoosterLocation: 6
+  CardBags:
+  - CardBagType: 2
+    CardsInPack: 2
+    ExpectedValue: 1
+    Chances: []
+    SetPackCards:
+    - ore_deposit
+    - tree_plantation
+    - worker
+    - worker
+    - farm_land
+    SetCardBag: 66
+    UseFallbackBag: 1
+    EnemyCardBag: 0
+    StrengthLevel: 0
+    FallbackBag: 68
+    EnemiesIncluded: blueprint_silicon, blueprint_plastic, blueprint_chip_factory, blueprint_plastic_factory, blueprint_oil_power_plant, blueprint_oil_rig, blueprint_industrial_smelter, blueprint_advanced_factory_parts, blueprint_pent_house, blueprint_conveyor, blueprint_academy, blueprint_research_center, blueprint_chip_factory, blueprint_conveyor
+  - CardBagType: 0
+    CardsInPack: 2
+    ExpectedValue: 2.3805003
+    Chances:
+    - Id: iron_bar
+      Chance: 20
+      PercentageChance: 0.32786885
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: trash
+      Chance: 20
+      PercentageChance: 0.32786885
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: oil
+      Chance: 10
+      PercentageChance: 0.16393442
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: factory_parts
+      Chance: 5
+      PercentageChance: 0.08196721
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: wind_turbine
+      Chance: 3
+      PercentageChance: 0.04918033
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: fossil
+      Chance: 3
+      PercentageChance: 0.04918033
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    SetPackCards: []
+    SetCardBag: 0
+    UseFallbackBag: 0
+    EnemyCardBag: 0
+    StrengthLevel: 0
+    FallbackBag: 0
+    EnemiesIncluded:
+  BoosterAdditions: []
+  ExpectedValue: 6.7610006
+  references:
+    version: 2
+    RefIds: []

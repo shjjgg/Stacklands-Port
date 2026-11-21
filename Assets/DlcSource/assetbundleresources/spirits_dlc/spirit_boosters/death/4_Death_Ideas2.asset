@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca9e3c58dddbb10aada65d9b6b994473, type: 3}
+  m_Name: 4_Death_Ideas2
+  m_EditorClassIdentifier:
+  BoosterId: death_ideas_2
+  NameTerm: pack_death_ideas_2_text
+  nameOverride:
+  MinAchievementCount: 10
+  IsIntroPack: 0
+  Cost: 10
+  Icon: {fileID: 21300000, guid: 15fd6d5c018706f40a284bd7b301bca4, type: 2}
+  BoosterLocation: 5
+  CardBags:
+  - CardBagType: 2
+    CardsInPack: 1
+    ExpectedValue: 1
+    Chances: []
+    SetPackCards: []
+    SetCardBag: 47
+    UseFallbackBag: 0
+    EnemyCardBag: 0
+    StrengthLevel: 0
+    FallbackBag: 0
+    EnemiesIncluded:
+  - CardBagType: 2
+    CardsInPack: 1
+    ExpectedValue: 2.2743282
+    Chances: []
+    SetPackCards:
+    - wheat
+    SetCardBag: 44
+    UseFallbackBag: 0
+    EnemyCardBag: 0
+    StrengthLevel: 0
+    FallbackBag: 0
+    EnemiesIncluded:
+  - CardBagType: 2
+    CardsInPack: 1
+    ExpectedValue: 4
+    Chances: []
+    SetPackCards: []
+    SetCardBag: 48
+    UseFallbackBag: 0
+    EnemyCardBag: 0
+    StrengthLevel: 0
+    FallbackBag: 0
+    EnemiesIncluded:
+  BoosterAdditions: []
+  ExpectedValue: 7.274328
+  references:
+    version: 2
+    RefIds: []

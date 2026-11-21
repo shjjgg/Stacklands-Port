@@ -481,6 +481,24 @@
       "doc": "https://docs.unity3d.com/2022.3/Documentation/ScriptReference/TextCore.GlyphMetrics.html",
       "status": "verified",
       "kind": "type"
+    },
+    {
+      "symbol": "AssetDatabase.LoadAllAssetsAtPath",
+      "doc": "AssetDatabase.html",
+      "status": "verified",
+      "note": "ScriptableObject[] LoadAllAssetsAtPath(string assetPath): 取 Plugins/GameScripts.dll 里的 MonoScript"
+    },
+    {
+      "symbol": "AssetDatabase.TryGetGUIDAndLocalFileIdentifier",
+      "doc": "AssetDatabase.html",
+      "status": "verified",
+      "note": "bool TryGetGUIDAndLocalFileIdentifier(Object obj, out string guid, out long localId): 取脚本在 DLL 里的 fileID"
+    },
+    {
+      "symbol": "BuildPipeline.BuildAssetBundles",
+      "doc": "BuildPipeline.html",
+      "status": "verified",
+      "note": "BuildAssetBundles(string outputPath, AssetBundleBuild[] builds, BuildAssetBundleOptions, BuildTarget): 用 Android 目标重打 DLC 包(ASTC 贴图)"
     }
   ]
 }

@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca9e3c58dddbb10aada65d9b6b994473, type: 3}
+  m_Name: 4_Happiness_Ideas2
+  m_EditorClassIdentifier:
+  BoosterId: happiness_ideas_2
+  NameTerm: pack_happiness_ideas2_text
+  nameOverride:
+  MinAchievementCount: 10
+  IsIntroPack: 0
+  Cost: 12
+  Icon: {fileID: 21300000, guid: d8a89a1302ded654e80f6e3eebbf5d55, type: 2}
+  BoosterLocation: 3
+  CardBags:
+  - CardBagType: 2
+    CardsInPack: 1
+    ExpectedValue: 1
+    Chances: []
+    SetPackCards: []
+    SetCardBag: 33
+    UseFallbackBag: 0
+    EnemyCardBag: 0
+    StrengthLevel: 0
+    FallbackBag: 0
+    EnemiesIncluded:
+  - CardBagType: 2
+    CardsInPack: 2
+    ExpectedValue: 1.9916668
+    Chances: []
+    SetPackCards: []
+    SetCardBag: 34
+    UseFallbackBag: 0
+    EnemyCardBag: 0
+    StrengthLevel: 0
+    FallbackBag: 0
+    EnemiesIncluded:
+  - CardBagType: 2
+    CardsInPack: 1
+    ExpectedValue: 1.6
+    Chances: []
+    SetPackCards: []
+    SetCardBag: 5
+    UseFallbackBag: 0
+    EnemyCardBag: 0
+    StrengthLevel: 0
+    FallbackBag: 0
+    EnemiesIncluded:
+  BoosterAdditions: []
+  ExpectedValue: 6.5833335
+  references:
+    version: 2
+    RefIds: []

@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94f1adfca156f96aa447ea67427392fa, type: 3}
+  m_Name: Cities_Ideas_Smeltables
+  m_EditorClassIdentifier:
+  SetCardBagType: 73
+  Chances:
+  - CardId: blueprint_landfill
+    Chance: 1000
+  - CardId: blueprint_industrial_smelter
+    Chance: 1000
+  - CardId: blueprint_metal_scraps
+    Chance: 500
+  - CardId: blueprint_energy_combiner
+    Chance: 200
+  - CardId: blueprint_junction
+    Chance: 100
+  - CardId: blueprint_steam_generator
+    Chance: 100
+  - CardId: blueprint_fancy_apartment
+    Chance: 1
+  - CardId: blueprint_cinema
+    Chance: 1
+  - CardId: blueprint_villager_statue
+    Chance: 1
+  - CardId: blueprint_bread_2000
+    Chance: 1
+  - CardId: blueprint_filtered_junction
+    Chance: 1
+  Filter:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class:, ns:, asm:}
+      data: {}

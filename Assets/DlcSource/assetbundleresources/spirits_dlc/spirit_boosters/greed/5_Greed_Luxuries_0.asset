@@ -1,0 +1,131 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca9e3c58dddbb10aada65d9b6b994473, type: 3}
+  m_Name: 5_Greed_Luxuries
+  m_EditorClassIdentifier:
+  BoosterId: greed_luxuries
+  NameTerm: pack_greed_luxuries_text
+  nameOverride:
+  MinAchievementCount: 12
+  IsIntroPack: 0
+  Cost: 15
+  Icon: {fileID: 21300000, guid: af9eeed905eaf5f40a93d01830ff4064, type: 2}
+  BoosterLocation: 4
+  CardBags:
+  - CardBagType: 2
+    CardsInPack: 1
+    ExpectedValue: 1
+    Chances:
+    - Id: berrybush
+      Chance: 1
+      PercentageChance: 0.14285715
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: soil
+      Chance: 1
+      PercentageChance: 0.14285715
+      HasMaxCount: 1
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: gold_deposit
+      Chance: 1
+      PercentageChance: 0.14285715
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: cotton
+      Chance: 1
+      PercentageChance: 0.14285715
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: rabbit
+      Chance: 1
+      PercentageChance: 0.14285715
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: wheat
+      Chance: 1
+      PercentageChance: 0.14285715
+      HasMaxCount: 0
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    - Id: spring
+      Chance: 1
+      PercentageChance: 0.14285715
+      HasMaxCount: 1
+      MaxCountToGive: 1
+      HasPrerequisiteCard: 0
+      PrerequisiteCardId:
+      IsEnemy: 0
+      EnemyBag: 0
+      Strength: 0
+    SetPackCards: []
+    SetCardBag: 40
+    UseFallbackBag: 1
+    EnemyCardBag: 0
+    StrengthLevel: 0
+    FallbackBag: 51
+    EnemiesIncluded:
+  - CardBagType: 2
+    CardsInPack: 1
+    ExpectedValue: 1
+    Chances: []
+    SetPackCards: []
+    SetCardBag: 43
+    UseFallbackBag: 1
+    EnemyCardBag: 0
+    StrengthLevel: 0
+    FallbackBag: 50
+    EnemiesIncluded:
+  - CardBagType: 2
+    CardsInPack: 1
+    ExpectedValue: 3.1538463
+    Chances: []
+    SetPackCards: []
+    SetCardBag: 51
+    UseFallbackBag: 0
+    EnemyCardBag: 0
+    StrengthLevel: 0
+    FallbackBag: 0
+    EnemiesIncluded:
+  BoosterAdditions: []
+  ExpectedValue: 5.1538463
+  references:
+    version: 2
+    RefIds: []

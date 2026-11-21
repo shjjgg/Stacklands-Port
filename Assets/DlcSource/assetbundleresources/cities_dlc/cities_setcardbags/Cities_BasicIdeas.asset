@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94f1adfca156f96aa447ea67427392fa, type: 3}
+  m_Name: Cities_BasicIdeas
+  m_EditorClassIdentifier:
+  SetCardBagType: 61
+  Chances:
+  - CardId: blueprint_cement
+    Chance: 1000
+  - CardId: blueprint_shack
+    Chance: 1000
+  - CardId: blueprint_farmland
+    Chance: 100
+  - CardId: rumor_add_worker
+    Chance: 20
+  - CardId: blueprint_factory_parts
+    Chance: 20
+  - CardId: blueprint_treadmill
+    Chance: 2
+  - CardId: automatic_resources
+    Chance: 2
+  - CardId: blueprint_park
+    Chance: 1
+  Filter:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class:, ns:, asm:}
+      data: {}

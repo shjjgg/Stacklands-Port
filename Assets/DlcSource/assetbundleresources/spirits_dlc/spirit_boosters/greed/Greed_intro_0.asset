@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca9e3c58dddbb10aada65d9b6b994473, type: 3}
+  m_Name: Greed_intro
+  m_EditorClassIdentifier:
+  BoosterId: greed_intro
+  NameTerm: pack_greed_intro_text
+  nameOverride:
+  MinAchievementCount: 0
+  IsIntroPack: 1
+  Cost: 0
+  Icon: {fileID: 21300000, guid: 3828f4d555136ec498583fc5038a2a77, type: 2}
+  BoosterLocation: 4
+  CardBags:
+  - CardBagType: 1
+    CardsInPack: 7
+    ExpectedValue: 0.7386139
+    Chances: []
+    SetPackCards:
+    - grape_vine
+    - villager
+    - rock
+    - royal
+    - gold
+    - greed_curse
+    - greed_spirit
+    SetCardBag: 30
+    UseFallbackBag: 0
+    EnemyCardBag: 0
+    StrengthLevel: 0
+    FallbackBag: 0
+    EnemiesIncluded:
+  BoosterAdditions: []
+  ExpectedValue: 5.170297
+  references:
+    version: 2
+    RefIds: []
