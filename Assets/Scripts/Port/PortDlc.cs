@@ -1,23 +1,31 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Reflection;
-using HarmonyLib;
 using UnityEngine;
 
 namespace StacklandsPort
 {
     /// <summary>
-    /// DLC 修复(A 方案): RuntimeSokBundle.Load 在 Android 上会拼出一个空路径(按 platform 分支),
-    /// 必然失败。这里用 Harmony 前缀把「加载」改成从可写目录读取, 其余状态写回原对象的
-    /// myAssetBundle 字段, 让 LoadAssets() 继续按原逻辑走。
-    /// 同时把 StreamingAssets/dlc 下的包复制到 persistentDataPath/dlc(只复制一次/大小变化时再复制)。
+    /// DLC 修复(A 方案, v0.30 起不再使用 Harmony):
+    /// 原版 RuntimeSokBundle.Load 在 Android 上按 platform 分支拼出空路径, 必然失败;
+    /// 原版 DLC 是否安装又只看 Steam。Harmony detour 在 IL2CPP 上会触发栈溢出(v0.23/v0.28 崩溃),
+    /// 所以改成「零 patch」的数据注入: 自己把两个 DLC bundle 加载进来, 直接写进
+    /// WorldManager.GameDataLoader 的公开列表, 再重跑一次它的 InitializeLoadedData。
+    /// 运行时不需要改动任何原版方法的机器码。
     /// </summary>
     public static class PortDlc
     {
         const string Tag = "[PortDlc] ";
         internal static string Dlcdir => Path.Combine(Application.persistentDataPath, "dlc");
-        static string _lastError = "";
+
+        static readonly List<AssetBundle> _keepAlive = new List<AssetBundle>();
+        static bool _prepared;
+        static bool _injected;
+        static bool _prepareTried;
+        static bool _loggedMissingLoader;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         static void Boot()
@@ -25,9 +33,10 @@ namespace StacklandsPort
             try
             {
                 PortLog.Marker("Run");
-                // v0.29 排查: 完全停用 Harmony (不再 patch RuntimeSokBundle.Load / WorldManager.*),
-                // 用来确认栈溢出是否由 Harmony detour 引起。DLC 逻辑保留在此, 定位后再开。
-                PortLog.Write(Tag + "v0.29 Harmony 全部停用(排查栈溢出)");
+                PortLog.Write(Tag + "v0.30 DLC 走数据注入(无 Harmony)");
+                var go = new GameObject("[PortDlc]");
+                UnityEngine.Object.DontDestroyOnLoad(go);
+                go.AddComponent<Runner>();
             }
             catch (Exception e)
             {
@@ -35,9 +44,44 @@ namespace StacklandsPort
             }
         }
 
+        internal sealed class Runner : MonoBehaviour
+        {
+            IEnumerator Start()
+            {
+                // 等 WorldManager 起来(它会在 Awake 里 new GameDataLoader)
+                for (int i = 0; i < 600; i++)
+                {
+                    if (!_prepareTried)
+                    {
+                        _prepareTried = true;
+                        try { PrepareFiles(); _prepared = true; }
+                        catch (Exception e) { PortLog.Write(Tag + "PrepareFiles 失败: " + e); }
+                    }
+
+                    if (_injected) yield break;
+
+                    WorldManager wm = null;
+                    try { wm = WorldManager.instance; } catch { }
+                    if (wm != null && wm.GameDataLoader != null)
+                    {
+                        bool ok = false;
+                        try { ok = Inject(wm); }
+                        catch (Exception e) { PortLog.Write(Tag + "注入失败: " + e); }
+                        if (ok) { _injected = true; yield break; }
+                    }
+                    else if (!_loggedMissingLoader)
+                    {
+                        _loggedMissingLoader = true;
+                        PortLog.Write(Tag + "还没拿到 WorldManager/GameDataLoader, 继续等");
+                    }
+                    yield return null;
+                }
+                PortLog.Write(Tag + "超时未注入 DLC");
+            }
+        }
+
         /// <summary>
-        /// Android 上 StreamingAssets 在 APK(zip) 里, File/UnityWebRequest 都不如直接读 zip 稳:
-        /// Application.dataPath 就是 base.apk 路径, 用 ZipArchive 同步取出两个 DLC 包。
+        /// Android 上 StreamingAssets 在 APK(zip) 里, 用 ZipArchive 直接取出两个 DLC 包。
         /// </summary>
         static void PrepareFiles()
         {
@@ -75,102 +119,86 @@ namespace StacklandsPort
             }
         }
 
-        static void ApplyPatch()
+        static bool Inject(WorldManager wm)
         {
-            var asm = FindGameScripts();
-            if (asm == null) { PortLog.Write(Tag + "GameScripts 程序集没找到, DLC 不处理"); return; }
-
-            var type = asm.GetType("RuntimeSokBundle");
-            if (type == null) { PortLog.Write(Tag + "RuntimeSokBundle 类型没找到"); return; }
-
-            var target = type.GetMethod("Load", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance,
-                null, new[] { typeof(string) }, null);
-            if (target == null) { PortLog.Write(Tag + "Load(string) 方法没找到"); return; }
-
-            var prefix = new HarmonyMethod(typeof(PortDlc).GetMethod("Prefix", BindingFlags.Static | BindingFlags.NonPublic));
-            var harmony = new Harmony("stacklands.port.dlc");
-            harmony.Patch(target, prefix);
-            PortLog.Write(Tag + "Harmony patch 已挂到 RuntimeSokBundle.Load");
-
-            // 原版用 SteamApps.BIsDlcInstalled 判断是否装 DLC; Android 没有 Steam → 永远 false。
-            // 这里改成「本地有包即视为已安装」, 与 A 方案一致。
-            var wm = asm.GetType("WorldManager");
-            if (wm != null)
+            var loader = wm.GameDataLoader;
+            if (loader == null) return false;
+            if (loader.SpiritDlcLoaded && loader.CitiesDlcLoaded)
             {
-                var installed = new HarmonyMethod(typeof(PortDlc).GetMethod("InstalledPrefix", BindingFlags.Static | BindingFlags.NonPublic));
-                foreach (var m in new[] { "SpiritDLCInstalled", "CitiesDLCInstalled" })
-                {
-                    var mi = wm.GetMethod(m, BindingFlags.Instance | BindingFlags.NonPublic);
-                    if (mi == null) { PortLog.Write(Tag + "没找到 " + m); continue; }
-                    harmony.Patch(mi, installed);
-                    PortLog.Write(Tag + "Harmony patch 已挂到 WorldManager." + m);
-                }
+                PortLog.Write(Tag + "原版已自行加载 DLC, 不需要注入");
+                return true;
             }
-            else PortLog.Write(Tag + "WorldManager 类型没找到");
-        }
-
-        static Assembly FindGameScripts()
-        {
-            foreach (var a in AppDomain.CurrentDomain.GetAssemblies())
+            if (!_prepared)
             {
-                if (a.GetName().Name == "GameScripts") return a;
-            }
-            return null;
-        }
-
-        // ReSharper disable once UnusedMember.Local
-        static bool Prefix(object __instance, string __0, ref bool __result)
-        {
-            string id = __0;
-            string path = Resolve(id);
-            AssetBundle bundle = null;
-            try
-            {
-                if (path != null) bundle = AssetBundle.LoadFromFile(path);
-            }
-            catch (Exception e)
-            {
-                _lastError = e.Message;
-                PortLog.Write(Tag + "LoadFromFile 抛错 id=" + id + " path=" + path + " err=" + e.Message);
-            }
-
-            if (bundle == null)
-            {
-                __result = false;
-                PortLog.Write(Tag + "FAILED id=" + id + " path=" + path + " err=" + (_lastError.Length > 0 ? _lastError : "null"));
+                PortLog.Write(Tag + "bundle 还没准备好");
                 return false;
             }
 
-            var field = __instance.GetType().GetField("myAssetBundle", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
-            if (field != null) field.SetValue(__instance, bundle);
-            __result = true;
-            PortLog.Write(Tag + "OK id=" + id + " path=" + path + " assets=" + bundle.GetAllAssetNames().Length);
-            return false;
-        }
-
-        // ReSharper disable once UnusedMember.Local
-        // v0.25 排查: DLC 数据一装就栈溢出崩溃(tombstone: stack overflow, 三函数互递归),
-        // 先关掉 DLC 加载保住可玩性, 定位后再打开。
-        static bool InstalledPrefix(ref bool __result)
-        {
-            __result = false;
-            return false;
-        }
-
-        static string Resolve(string id)
-        {
-            if (string.IsNullOrEmpty(id)) return null;
-            var key = Path.GetFileNameWithoutExtension(id).ToLowerInvariant();
-            if (!Directory.Exists(Dlcdir)) return null;
-
-            foreach (var f in Directory.GetFiles(Dlcdir))
+            int spiritsCards = LoadInto(loader, "spirits_dlc", CardUpdateType.Spirit);
+            int citiesCards = LoadInto(loader, "cities_dlc", CardUpdateType.Cities);
+            if (spiritsCards < 0 && citiesCards < 0)
             {
-                var n = Path.GetFileName(f).ToLowerInvariant();
-                if (n == key || n.Contains(key) || key.Contains(n))
-                    return f;
+                PortLog.Write(Tag + "两个 DLC 包都没加载成功, 本次不注入");
+                return false;
             }
-            PortLog.Write(Tag + "没有匹配的 bundle 文件, id=" + id + " dir=" + Dlcdir);
-            return null;
+
+            if (spiritsCards >= 0)
+            {
+                loader.SpiritDlcLoaded = true;
+                PortLog.Write(Tag + "SpiritDlcLoaded=true cards=" + spiritsCards);
+            }
+            if (citiesCards >= 0)
+            {
+                loader.CitiesDlcLoaded = true;
+                PortLog.Write(Tag + "CitiesDlcLoaded=true cards=" + citiesCards);
+            }
+
+            try
+            {
+                var mi = typeof(GameDataLoader).GetMethod("InitializeLoadedData",
+                    BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+                if (mi == null) PortLog.Write(Tag + "InitializeLoadedData 没找到, 只做列表追加");
+                else { mi.Invoke(loader, null); PortLog.Write(Tag + "InitializeLoadedData 重跑完成"); }
+            }
+            catch (Exception e)
+            {
+                PortLog.Write(Tag + "InitializeLoadedData 重跑失败: " + e);
+            }
+            return true;
+        }
+
+        static int LoadInto(GameDataLoader loader, string name, CardUpdateType type)
+        {
+            string path = Path.Combine(Dlcdir, name);
+            if (!File.Exists(path))
+            {
+                PortLog.Write(Tag + "缺 bundle " + path);
+                return -1;
+            }
+            AssetBundle bundle = null;
+            try { bundle = AssetBundle.LoadFromFile(path); }
+            catch (Exception e) { PortLog.Write(Tag + "LoadFromFile 抛错 " + name + " : " + e); }
+            if (bundle == null)
+            {
+                PortLog.Write(Tag + "bundle 打不开 " + path);
+                return -1;
+            }
+            _keepAlive.Add(bundle);
+
+            var gos = bundle.LoadAllAssets<GameObject>();
+            int cards = 0;
+            for (int i = 0; i < gos.Length; i++)
+            {
+                var cd = gos[i] != null ? gos[i].GetComponent<CardData>() : null;
+                if (cd == null) continue;
+                cd.CardUpdateType = type;
+                loader.CardDataPrefabs.Add(cd);
+                cards++;
+            }
+            loader.SetCardBags.AddRange(bundle.LoadAllAssets<SetCardBagData>());
+            loader.BoosterpackDatas.AddRange(bundle.LoadAllAssets<BoosterpackData>());
+            PortLog.Write(Tag + "loaded " + name + " go=" + gos.Length + " cards=" + cards);
+            return cards;
         }
     }
 }

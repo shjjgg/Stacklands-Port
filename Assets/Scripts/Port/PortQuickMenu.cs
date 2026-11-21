@@ -32,6 +32,7 @@ namespace StacklandsPort
             {
                 if (_built)
                 {
+                    TryAssignChineseFont();
                     // 主菜单没有 GameScreen, 按钮应当隐藏(原版也没有这个按钮)
                     if (Time.realtimeSinceStartup >= _nextCheck)
                     {
@@ -92,18 +93,20 @@ namespace StacklandsPort
                 lrt.offsetMax = new Vector2(-6f, -4f);
 
                 var txt = labelGo.AddComponent<TMPro.TextMeshProUGUI>();
-                var font = FindSceneFont();
+                var font = FindAnySceneFont();
                 if (font != null) txt.font = font;
                 txt.text = "设置";
                 txt.fontSize = 44f;
                 txt.color = new Color(0.10f, 0.09f, 0.07f, 1f);
                 txt.alignment = TMPro.TextAlignmentOptions.Center;
                 txt.raycastTarget = false;
+                _label = txt;
+                _fontFrames = 0;
 
                 PortLog.Marker("quickmenu built paper=" + (paper != null));
             }
 
-            static TMPro.TMP_FontAsset FindSceneFont()
+            static TMPro.TMP_FontAsset FindAnySceneFont()
             {
                 var texts = UnityEngine.Object.FindObjectsOfType<TMPro.TMP_Text>(true);
                 for (int i = 0; i < texts.Length; i++)
@@ -111,6 +114,30 @@ namespace StacklandsPort
                     if (texts[i] != null && texts[i].font != null) return texts[i].font;
                 }
                 return null;
+            }
+
+            TMPro.TMP_Text _label;
+            int _fontFrames;
+
+            /// <summary>
+            /// 建按钮时游戏 UI 可能还没把世界字体挂上, 拿到的是 LiberationSans SDF(无中文) → 显示 □。
+            /// 所以建完后连续几帧找自带『设』字的字体再赋值。
+            /// </summary>
+            void TryAssignChineseFont()
+            {
+                if (_label == null || _label.font != null && _label.font.HasCharacter('设')) return;
+                if (_fontFrames++ > 240) return;
+                var texts = UnityEngine.Object.FindObjectsOfType<TMPro.TMP_Text>(true);
+                for (int i = 0; i < texts.Length; i++)
+                {
+                    var f = texts[i] != null ? texts[i].font : null;
+                    if (f != null && f.HasCharacter('设') && f.HasCharacter('置'))
+                    {
+                        _label.font = f;
+                        PortLog.Write("[PortQuickMenu] 使用字体 " + f.name);
+                        return;
+                    }
+                }
             }
 
             void OnClick()
@@ -152,24 +179,43 @@ namespace StacklandsPort
             {
                 yield return null;
                 yield return null;
+                var clicked = TryClickOptions();
+                if (!clicked)
+                {
+                    // 有的版本暂停面板要一帧动画后才可点, 再等一帧
+                    yield return new WaitForSecondsRealtime(0.2f);
+                    clicked = TryClickOptions();
+                }
+                if (clicked) PortLog.Marker("quickmenu opened options screen");
+                else PortLog.Write("[PortQuickMenu] 暂停面板里的 Options 按钮没找到: " + DumpButtonNames());
+            }
+
+            static bool TryClickOptions()
+            {
                 var buttons = UnityEngine.Object.FindObjectsOfType<Button>(true);
                 for (int i = 0; i < buttons.Length; i++)
                 {
                     var b = buttons[i];
-                    if (b == null || b.gameObject.name != "Options") continue;
-                    if (b == _btn) continue;
-                    var t = b.transform.parent;
-                    bool inPause = false;
-                    for (int d = 0; d < 4 && t != null; d++, t = t.parent)
-                    {
-                        if (t.name == "PauseScreen") { inPause = true; break; }
-                    }
-                    if (!inPause || !b.gameObject.activeInHierarchy) continue;
+                    if (b == null || !b.gameObject.activeInHierarchy) continue;
+                    var n = b.gameObject.name;
+                    if (n != "Options" && n != "OptionsButton" && !n.StartsWith("Options ")) continue;
                     b.onClick.Invoke();
-                    PortLog.Marker("quickmenu opened options screen");
-                    yield break;
+                    return true;
                 }
-                PortLog.Write("[PortQuickMenu] 暂停面板里的 Options 按钮没找到");
+                return false;
+            }
+
+            static string DumpButtonNames()
+            {
+                var sb = new System.Text.StringBuilder();
+                var buttons = UnityEngine.Object.FindObjectsOfType<Button>(true);
+                for (int i = 0; i < buttons.Length && i < 40; i++)
+                {
+                    if (buttons[i] == null) continue;
+                    sb.Append(buttons[i].gameObject.name)
+                      .Append(buttons[i].gameObject.activeInHierarchy ? "(on) " : "(off) ");
+                }
+                return sb.ToString();
             }
         }
     }
