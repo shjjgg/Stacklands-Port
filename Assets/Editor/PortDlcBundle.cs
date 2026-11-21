@@ -27,6 +27,16 @@ public static class PortDlcBundle
 
     static readonly string[] BundleFolders = { "cities_dlc", "spirits_dlc" };
 
+    [MenuItem("Stacklands/DLC/只做脚本重映射")]
+    public static void RemapOnlyMenu()
+    {
+        var r = RemapAllScripts();
+        var ids = LoadDllScriptIds();
+        foreach (var k in new[] { "CardData", "SetCardBagData", "BoosterpackData" })
+            if (ids.TryGetValue(k, out var v)) Debug.Log($"[PortDlc] {k} -> guid={v.Guid} localId={v.LocalId}");
+        Debug.Log($"[PortDlc] remap count={r.count} missing={r.missing.Count}");
+    }
+
     [MenuItem("Stacklands/DLC/重建 DLC 包")]
     public static void BuildAllMenu() { BuildAll(true); }
 

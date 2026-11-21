@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94f1adfca156f96aa447ea67427392fa, type: 3}
+  m_Script: {fileID: -599522810, guid: fff28ad2958f41e0cb020d3a193dcc60, type: 3}
   m_Name: Cities_BasicResources
   m_EditorClassIdentifier:
   SetCardBagType: 60

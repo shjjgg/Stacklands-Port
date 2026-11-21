@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1709254077376921}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77466629a43748fb327aaa246d794e85, type: 3}
+  m_Script: {fileID: -13773184, guid: fff28ad2958f41e0cb020d3a193dcc60, type: 3}
   m_Name:
   m_EditorClassIdentifier:
   Id: poop_slime

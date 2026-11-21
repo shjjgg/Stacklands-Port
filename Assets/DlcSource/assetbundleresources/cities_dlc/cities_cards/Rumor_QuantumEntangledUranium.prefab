@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1709254077376921}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f57a078e81b9ca784fcc640076c8b201, type: 3}
+  m_Script: {fileID: -182217388, guid: fff28ad2958f41e0cb020d3a193dcc60, type: 3}
   m_Name:
   m_EditorClassIdentifier:
   Id: rumor_quantum_entangled_uranium

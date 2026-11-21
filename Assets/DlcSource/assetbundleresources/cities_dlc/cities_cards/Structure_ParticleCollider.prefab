@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1709254077376921}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65dbcecc4f86f320e23e3b70b5ba9bd7, type: 3}
+  m_Script: {fileID: 1056066600, guid: fff28ad2958f41e0cb020d3a193dcc60, type: 3}
   m_Name:
   m_EditorClassIdentifier:
   Id: particle_collider

@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1709254077376921}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7416d634dde5b24b36d4e2aa541f53f8, type: 3}
+  m_Script: {fileID: -1107803010, guid: fff28ad2958f41e0cb020d3a193dcc60, type: 3}
   m_Name:
   m_EditorClassIdentifier:
   Id: tomato_plant
