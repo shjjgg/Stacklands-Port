@@ -76,10 +76,14 @@ namespace StacklandsPort
                     sb.AppendLine($"MR act={mr.gameObject.activeInHierarchy} path={Path(mr.transform)} mat={(m == null ? "NULL" : m.name)} shader={(m == null || m.shader == null ? "NULL" : m.shader.name)} bounds={mr.bounds.size.x:F2}x{mr.bounds.size.y:F2} at={mr.bounds.center.x:F1},{mr.bounds.center.y:F1}");
                 }
                 var srs = UnityEngine.Object.FindObjectsOfType<SpriteRenderer>(true);
+                // 先把卡牌/棋盘上的精灵列出来(卡面翻转问题就靠这段)
                 int sc = 0;
                 foreach (var sr in srs)
                 {
-                    if (sr == null || sc++ > 80) break;
+                    if (sr == null || sc > 60) break;
+                    var pp = Path(sr.transform);
+                    if (pp.IndexOf("Card", StringComparison.OrdinalIgnoreCase) < 0 && pp.IndexOf("Boards/", StringComparison.OrdinalIgnoreCase) < 0) continue;
+                    sc++;
                     sb.AppendLine($"SR act={sr.gameObject.activeInHierarchy} path={Path(sr.transform)} sprite={(sr.sprite == null ? "NULL" : sr.sprite.name)} mat={(sr.sharedMaterial == null ? "NULL" : sr.sharedMaterial.name)} col={sr.color.r:F2},{sr.color.g:F2},{sr.color.b:F2},{sr.color.a:F2} ls={sr.transform.localScale.x:F2},{sr.transform.localScale.y:F2} rot={sr.transform.localEulerAngles.z:F0}");
                 }
                 sb.AppendLine("---- ui dump end ----");

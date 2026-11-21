@@ -16,6 +16,7 @@ namespace StacklandsPort
     public static class PortIconSprites
     {
         static TMP_SpriteAsset _asset;
+        static FieldInfo _hashField;
 
         internal sealed class Runner : MonoBehaviour
         {
@@ -86,6 +87,7 @@ namespace StacklandsPort
             for (int i = 0; i < empty.Length; i++) empty[i] = clear;
             atlas.SetPixels32(empty);
 
+            _hashField = typeof(TMP_SpriteCharacter).GetField("m_HashCode", BindingFlags.Instance | BindingFlags.NonPublic);
             var chars = new List<TMP_SpriteCharacter>();
             var glyphs = new List<TMP_SpriteGlyph>();
 
@@ -121,6 +123,9 @@ namespace StacklandsPort
                 var glyph = new TMP_SpriteGlyph((uint)i, metrics, rect, 1f, 0, sp);
                 var ch = new TMP_SpriteCharacter(0u, glyph);
                 ch.name = sp.name;
+                // TMP 解析 <sprite name="..."> 用的是字符表里的 hashCode, 只设 name 不够
+                if (_hashField != null)
+                    _hashField.SetValue(ch, TMP_TextUtilities.GetSimpleHashCode(sp.name));
                 glyphs.Add(glyph);
                 chars.Add(ch);
             }
