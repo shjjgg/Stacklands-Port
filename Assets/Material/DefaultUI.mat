@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: DefaultUI
-  m_Shader: {fileID: 4800000, guid: 68f94230ef57fbd49985a190bb7ea1dd, type: 3}
+  m_Shader: {fileID: 4800000, guid: d2b3c4d5e6f708192a3b4c5d6e7f8091, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []

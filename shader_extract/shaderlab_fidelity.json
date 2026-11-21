@@ -648,5 +648,8 @@
     }
   ],
   "fails": [],
-  "warns": []
+  "warns": [
+    "多出未被台账记录的 shader: Shapes/Rect Port",
+    "多出未被台账记录的 shader: UI/Default Port"
+  ]
 }
