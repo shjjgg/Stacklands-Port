@@ -85,6 +85,9 @@ public static class PortBuild
             ScanShaderMessages();
         }
 
+        // ---- 门 3.5: 内容自愈 (TMP 图集缺失 → 运行期 NRE 刷屏) ----
+        Debug.Log(StacklandsPort.EditorTools.PortFontFix.FixAll(false));
+
         // ---- 门 4: 构建 ----
         Directory.CreateDirectory(Path.GetDirectoryName(outputPath) ?? "builds/android");
 
