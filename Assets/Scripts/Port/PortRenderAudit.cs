@@ -3,7 +3,6 @@
 // 目的: 用户反馈"没有原版味道/渲染问题", 但离线无法判断到底哪一层没生效。
 // 这里在首个游戏画面出现后, 把"实际在用的 shader/材质/后处理/相机参数/卡牌 sprite"
 // 全部打到 PortLog, 用事实定位, 而不是继续凭截图猜。
-#if !UNITY_EDITOR
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -72,10 +71,11 @@ namespace StacklandsPort
                 var profile = profField != null ? profField.GetValue(mb) : null;
                 var isGlobal = t.GetField("isGlobal", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
                 var weight = t.GetField("weight", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+                string profName = profile == null
+                    ? "null"
+                    : (profile is UnityEngine.Object ? ((UnityEngine.Object)profile).name : profile.ToString());
                 PortLog.Write(Tag + "volume " + mb.name + " global=" + (isGlobal != null ? isGlobal.GetValue(mb) : "?") +
-                              " weight=" + (weight != null ? weight.GetValue(mb) : "?") +
-                              " profile=" + (profile == null ? "null"
-                                  : (profile is UnityEngine.Object ? ((UnityEngine.Object)profile).name : profile.ToString()));
+                              " weight=" + (weight != null ? weight.GetValue(mb) : "?") + " profile=" + profName);
                 if (profile == null) continue;
                 var settingsField = profile.GetType().GetField("settings", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
                 var settings = settingsField != null ? settingsField.GetValue(profile) as IList : null;
@@ -132,4 +132,3 @@ namespace StacklandsPort
         }
     }
 }
-#endif
