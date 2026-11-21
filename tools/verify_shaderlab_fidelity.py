@@ -193,7 +193,15 @@ def collect_keywords(text: str) -> tuple[set[str], bool]:
         rest = m.group(1)
         # multi_compile_fwdbase 等不带名字的宏, 展开成已知集合
         if not rest.strip():
-            out.add("_")
+            if "multi_compile_fwdbase" in line:
+                out.update({"SHADOWS_SCREEN", "SHADOWS_DEPTH", "SHADOWS_CUBE",
+                            "SHADOWS_SHADOWMASK"})
+            if "multi_compile_fwdadd_fullshadows" in line:
+                out.update({"SHADOWS_SCREEN", "SHADOWS_DEPTH"})
+            if "multi_compile_shadowcaster" in line:
+                out.update({"SHADOWS_DEPTH", "SHADOWS_CUBE"})
+            else:
+                out.add("_")
             if "instancing" in line:
                 instancing = True
             continue
