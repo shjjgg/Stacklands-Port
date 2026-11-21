@@ -10,9 +10,13 @@ using UnityEngine;
 /// </summary>
 public static class TextureImportPolicy
 {
-    // Android 压缩格式: 有 alpha 用 ASTC 6x6, 无 alpha 用 ASTC 8x8
-    private const TextureImporterFormat AstcAlpha = TextureImporterFormat.ASTC_6x6;
-    private const TextureImporterFormat AstcOpaque = TextureImporterFormat.ASTC_8x8;
+    // 准无损分级(用户确认口径):
+    //   <=512  : RGBA32 完全不压, 小图省不出多少内存, 优先零损失
+    //   <=1024 : ASTC 4x4 (8bpp, 视觉无损), 只保 1024 不缩尺寸
+    //   >1024  : ASTC 6x6, 避免单张 2048 占 4MB 级显存
+    private const TextureImporterFormat LosslessFmt = TextureImporterFormat.RGBA32;
+    private const TextureImporterFormat Astc4 = TextureImporterFormat.ASTC_4x4;
+    private const TextureImporterFormat Astc6 = TextureImporterFormat.ASTC_6x6;
 
     [MenuItem("Stacklands/纹理导入策略/应用")]
     public static void Apply()
@@ -36,19 +40,23 @@ public static class TextureImportPolicy
 
                 int w, h;
                 ti.GetSourceTextureWidthAndHeight(out w, out h);
-                bool big = Mathf.Max(w, h) > 512;
+                int m = Mathf.Max(w, h);
+                bool lossless = m <= 512;
+                var fmt = lossless ? LosslessFmt : (m <= 1024 ? Astc4 : Astc6);
 
-                // 通用: 不读 CPU 内存, 关掉 mipmap(2D 正交相机用不到)
+                // 通用: 不读 CPU 内存, 关掉 mipmap(2D 正交相机用不到), 上限不低于原尺寸(不缩分辨率)
                 ti.isReadable = false;
                 ti.mipmapEnabled = false;
-                ti.maxTextureSize = big ? 2048 : 1024;   // 卡面最大 1024 足够 1080p 屏
-                ti.textureCompression = TextureImporterCompression.CompressedHQ;
+                ti.maxTextureSize = 2048;
+                ti.textureCompression = lossless
+                    ? TextureImporterCompression.Uncompressed
+                    : TextureImporterCompression.CompressedHQ;
                 ti.crunchedCompression = false;
 
                 var ps = ti.GetPlatformTextureSettings("Android");
                 ps.overridden = true;
-                ps.maxTextureSize = big ? 2048 : 1024;
-                ps.format = ti.DoesSourceTextureHaveAlpha() ? AstcAlpha : AstcOpaque;
+                ps.maxTextureSize = 2048;
+                ps.format = fmt;
                 ps.compressionQuality = 100;
                 ti.SetPlatformTextureSettings(ps);
 
