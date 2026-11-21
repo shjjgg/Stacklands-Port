@@ -25,8 +25,7 @@ namespace StacklandsPort
             try
             {
                 PortLog.Marker("Run");
-                PrepareFiles();
-                ApplyPatch();
+                ApplyPatch();   // 暂不做文件解包(见 InstalledPrefix 注释)
             }
             catch (Exception e)
             {
@@ -148,9 +147,11 @@ namespace StacklandsPort
         }
 
         // ReSharper disable once UnusedMember.Local
+        // v0.25 排查: DLC 数据一装就栈溢出崩溃(tombstone: stack overflow, 三函数互递归),
+        // 先关掉 DLC 加载保住可玩性, 定位后再打开。
         static bool InstalledPrefix(ref bool __result)
         {
-            __result = true;
+            __result = false;
             return false;
         }
 
