@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using System;
 using System.IO;
 using System.Linq;
@@ -80,10 +81,7 @@ namespace Port.Editor
             SetSmaa(res, area, search);
             var smaa = new[] { area, search };
 
-            if (Application.isBatchMode && !File.Exists(OutAsset))
-                AssetDatabase.CreateAsset(res, OutAsset);
-            else
-                AssetDatabase.CreateAsset(res, OutAsset);
+            AssetDatabase.CreateAsset(res, OutAsset);
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
 
@@ -203,3 +201,4 @@ namespace Port.Editor
         }
     }
 }
+#endif
