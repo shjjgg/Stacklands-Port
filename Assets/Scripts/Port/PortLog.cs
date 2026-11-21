@@ -21,6 +21,7 @@ namespace StacklandsPort
         static StreamWriter _w;
         static string _path;
         static bool _ready;
+        static Runner _runner;
 
         public static string PathOnDevice => _path;
 
@@ -49,14 +50,27 @@ namespace StacklandsPort
                 Write($"screen={Screen.width}x{Screen.height} dpi={Screen.dpi}");
                 Write($"persistent={Application.persistentDataPath}");
 
-                var go = new GameObject("[PortLog]");
-                UnityEngine.Object.DontDestroyOnLoad(go);
-                go.AddComponent<Runner>();
+                EnsureRunner();
             }
             catch (Exception e)
             {
                 Debug.LogError("[PortLog] 初始化失败: " + e);
             }
+        }
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+        static void EnsureRunnerAfterLoad()
+        {
+            EnsureRunner();
+        }
+
+        static void EnsureRunner()
+        {
+            if (_runner != null) return;
+            var go = new GameObject("[PortLog]");
+            UnityEngine.Object.DontDestroyOnLoad(go);
+            _runner = go.AddComponent<Runner>();
+            Marker("runner created scene=" + SceneManager.GetActiveScene().name);
         }
 
         static void OnLog(string message, string stack, LogType type)
