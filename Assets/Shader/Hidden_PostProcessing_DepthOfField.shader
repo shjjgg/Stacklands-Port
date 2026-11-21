@@ -1,4 +1,4 @@
-Shader "Hidden/PostProcessing/DepthOfField" {
+Shader "PortDummy/Hidden/PostProcessing/DepthOfField" {
 	Properties {
 	}
 	//DummyShaderTextExporter

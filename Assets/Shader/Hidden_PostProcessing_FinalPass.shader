@@ -1,4 +1,4 @@
-Shader "Hidden/PostProcessing/FinalPass" {
+Shader "PortDummy/Hidden/PostProcessing/FinalPass" {
 	Properties {
 	}
 	//DummyShaderTextExporter

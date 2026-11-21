@@ -1,4 +1,4 @@
-Shader "Hidden/PostProcessing/Debug/Vectorscope" {
+Shader "PortDummy/Hidden/PostProcessing/Debug/Vectorscope" {
 	Properties {
 	}
 	//DummyShaderTextExporter

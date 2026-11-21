@@ -1,4 +1,4 @@
-Shader "Hidden/PostProcessing/Lut2DBaker" {
+Shader "PortDummy/Hidden/PostProcessing/Lut2DBaker" {
 	Properties {
 	}
 	//DummyShaderTextExporter

@@ -1,4 +1,4 @@
-Shader "Hidden/PostProcessing/Bloom" {
+Shader "PortDummy/Hidden/PostProcessing/Bloom" {
 	Properties {
 	}
 	//DummyShaderTextExporter

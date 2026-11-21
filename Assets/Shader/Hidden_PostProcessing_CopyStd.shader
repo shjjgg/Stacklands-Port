@@ -1,4 +1,4 @@
-Shader "Hidden/PostProcessing/CopyStd" {
+Shader "PortDummy/Hidden/PostProcessing/CopyStd" {
 	Properties {
 		_MainTex ("", 2D) = "white" {}
 	}

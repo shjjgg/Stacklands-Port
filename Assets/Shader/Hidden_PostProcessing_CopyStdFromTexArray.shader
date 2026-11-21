@@ -1,4 +1,4 @@
-Shader "Hidden/PostProcessing/CopyStdFromTexArray" {
+Shader "PortDummy/Hidden/PostProcessing/CopyStdFromTexArray" {
 	Properties {
 		_MainTex ("", 2DArray) = "white" {}
 	}

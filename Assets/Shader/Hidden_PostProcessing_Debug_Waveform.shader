@@ -1,4 +1,4 @@
-Shader "Hidden/PostProcessing/Debug/Waveform" {
+Shader "PortDummy/Hidden/PostProcessing/Debug/Waveform" {
 	Properties {
 	}
 	//DummyShaderTextExporter

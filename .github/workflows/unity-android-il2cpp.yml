@@ -382,6 +382,10 @@ jobs:
           restore-keys: |
             unity-library-
 
+      # 版本号规则(用户指定): 原版 PC 的 1.5.0 + 本仓库修改次数, 每次构建前自动写入
+      - name: 校准版本号 (原版版本号 + 修改次数)
+        run: python3 tools/bump_version.py
+
       - name: Build Android (GameCI unity-builder)
         id: build
         # Unity 打包成功后收尾阶段会因 debugger-agent 监听失败返回 4, 包本身是好的。

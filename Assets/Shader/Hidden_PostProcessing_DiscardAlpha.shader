@@ -1,4 +1,4 @@
-Shader "Hidden/PostProcessing/DiscardAlpha" {
+Shader "PortDummy/Hidden/PostProcessing/DiscardAlpha" {
 	Properties {
 	}
 	//DummyShaderTextExporter

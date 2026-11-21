@@ -1,4 +1,4 @@
-Shader "Hidden/PostProcessing/Debug/Histogram" {
+Shader "PortDummy/Hidden/PostProcessing/Debug/Histogram" {
 	Properties {
 	}
 	//DummyShaderTextExporter
