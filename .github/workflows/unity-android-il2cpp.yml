@@ -416,7 +416,7 @@ jobs:
           allowDirtyBuild: true
           versioning: None
           androidExportType: androidPackage
-          androidSymbolType: debugging
+          androidSymbolType: none
           androidTargetSdkVersion: ${{ env.TARGET_SDK }}
           androidMinSdkVersion: ${{ env.MIN_SDK }}
           androidKeystoreName: ${{ secrets.KEYSTORE_NAME }}
