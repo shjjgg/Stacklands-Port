@@ -1,22 +1,30 @@
 #!/usr/bin/env python3
-"""把 bundleVersion 设成「原版版本号 + 移植修改次数」。
-原版 PC 的 bundleVersion = 1.5.0.21(从 globalgamemanagers 里读出来的),
-修改次数 = 本仓库的 commit 数, 所以最终形如 1.5.0.108。
+"""版本号 = 原版版本号(1.5.0) + 移植修改次数。
+PC 原版 bundleVersion = 1.5.0.21(读自 globalgamemanagers), 这里取前三段作基座。
+「修改次数」用现有 ProjectSettings 里的第四段自增 —— CI 是浅克隆, git commit count 不可靠,
+所以不依赖 git, 每次构建 +1。
 用法: python3 tools/bump_version.py [--dry]
 """
-import re, subprocess, sys, pathlib
+import re, sys, pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-ORIGINAL = "1.5.0"          # 原版 1.5.0.21 取前三段
+BASE = "1.5.0"
+P = ROOT / "ProjectSettings" / "ProjectSettings.asset"
 
 def main():
-    rev = subprocess.check_output(["git", "-C", str(ROOT), "rev-list", "--count", "HEAD"]).decode().strip()
-    version = f"{ORIGINAL}.{rev}"
-    p = ROOT / "ProjectSettings" / "ProjectSettings.asset"
-    s = p.read_text(encoding="utf-8")
-    new = re.sub(r"bundleVersion: [0-9.]+", "bundleVersion: " + version, s, count=1)
+    s = P.read_text(encoding="utf-8")
+    m = re.search(r"bundleVersion: ([0-9.]+)", s)
+    if not m:
+        print("ERROR 找不到 bundleVersion", file=sys.stderr)
+        return 1
+
+    cur = m.group(1).split(".")
+    rev = int(cur[3]) + 1 if len(cur) > 3 and cur[3].isdigit() else 1
+    version = f"{BASE}.{rev}"
+
     if "--dry" not in sys.argv:
-        p.write_text(new, encoding="utf-8")
+        s = s[:m.start(1)] + version + s[m.end(1):]
+        P.write_text(s, encoding="utf-8")
     print(version)
     return 0
 
