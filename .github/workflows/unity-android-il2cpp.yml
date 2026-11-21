@@ -435,7 +435,8 @@ jobs:
       - name: 清理启动图标单色层并重签
         run: |
           python3 -m pip install --quiet pillow
-          sudo chmod -R u+w builds/android || true
+          sudo chown -R "$(id -u):$(id -g)" builds || true
+          sudo chmod -R a+rwX builds || true
           apk=$(ls builds/android/*.apk 2>/dev/null | head -1)
           if [ -z "$apk" ]; then echo "::error::没有 APK 可处理"; exit 1; fi
           python3 tools/patch_launcher_icon.py "$apk"
