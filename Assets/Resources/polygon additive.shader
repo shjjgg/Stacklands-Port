@@ -15,14 +15,18 @@ Shader "Shapes/Polygon Additive" {
 	//PortShapeFallback: 原始 Shapes shader 在 AssetRipper 导出后只剩顶点变换 + return float4(1,1,1,1),
 	//这里用同一 GUID 重建一个「按顶点色/材质色填充 + 透明混合」的基础实现, 保证 Shader.Find 拿到可用材质。
 	SubShader {
-		Tags { "Queue"="Transparent" "RenderType"="Transparent" "IgnoreProjector"="True" "PreviewType"="Plane" }
+		Tags { "Queue"="Transparent" "RenderType"="Transparent" "IgnoreProjector"="true" "DisableBatching"="true" }
 		Cull Off
-		ZWrite Off
 		ZTest [_ZTest]
-		Blend SrcAlpha OneMinusSrcAlpha
+		ZWrite Off
+		Blend One One
 		Stencil {
 			Ref [_StencilID]
 			Comp [_StencilComp]
+			Pass [_StencilOpPass]
+			ReadMask [_StencilReadMask]
+			WriteMask [_StencilWriteMask]
+		}
 			Pass [_StencilOpPass]
 			ReadMask [_StencilReadMask]
 			WriteMask [_StencilWriteMask]
