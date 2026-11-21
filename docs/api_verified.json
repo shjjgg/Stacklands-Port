@@ -352,6 +352,61 @@
       "doc": "BuildPlayerOptions.html",
       "status": "verified",
       "kind": "member"
+    },
+    {
+      "symbol": "AssetDatabase.Refresh",
+      "doc": "AssetDatabase.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "AssetDatabase.StartAssetEditing",
+      "doc": "AssetDatabase.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "AssetDatabase.StopAssetEditing",
+      "doc": "AssetDatabase.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "TextureImporter.GetSourceTextureWidthAndHeight",
+      "doc": "TextureImporter.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "TextureImporter.DoesSourceTextureHaveAlpha",
+      "doc": "TextureImporter.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "TextureImporter.GetPlatformTextureSettings",
+      "doc": "TextureImporter.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "TextureImporter.SetPlatformTextureSettings",
+      "doc": "TextureImporter.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "TextureImporter.SaveAndReimport",
+      "doc": "TextureImporter.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "TextureImporterFormat",
+      "doc": "TextureImporterFormat.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "TextureImporterCompression",
+      "doc": "TextureImporterCompression.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "AssetImporter.GetAtPath",
+      "doc": "AssetImporter.html",
+      "status": "verified"
     }
   ]
 }
