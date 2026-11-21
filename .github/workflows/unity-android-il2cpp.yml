@@ -456,6 +456,13 @@ jobs:
             --expect-bundle "${BUNDLE_IDENTIFIER}" \
             --json-out out/verify_apk.json
 
+      # ---- 严格审计 B2: APK 资产自检(DLC bundle 贴图格式/脚本绑定/卡牌数, 关键 shader 是否在包内) ----
+      - name: APK 资产自检 (DLC bundle / 贴图格式 / 脚本绑定)
+        run: |
+          art=$(find "${BUILD_PATH}" -maxdepth 2 -type f -name "*.apk" | head -1)
+          python3 -m pip install --quiet UnityPy
+          python3 tools/verify_apk_assets.py "$art" --strict
+
       # ---- 严格审计 C: Release 不允许用 Android 调试证书 ----
       - name: Reject debug keystore on release
         # 仅显式 Release 构建才卡证书; push 触发时 inputs 为空, 不能按"非 Debug 即 Release"推定。
