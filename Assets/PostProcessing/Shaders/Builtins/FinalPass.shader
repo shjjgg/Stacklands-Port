@@ -134,7 +134,7 @@ Shader "Hidden/PostProcessing/FinalPass"
                 #pragma only_renderers gles
 
                 #pragma multi_compile __ STEREO_INSTANCING_ENABLED STEREO_DOUBLEWIDE_TARGET
-                #pragma target es3.0
+                #pragma target 3.0
 
             ENDHLSL
         }
