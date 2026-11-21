@@ -10,8 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4730242686860875}
   - component: {fileID: 114724804207875695}
-  - component: {fileID: 2100000116}
-  - component: {fileID: 2100000117}
   m_Layer: 0
   m_Name: PrefabManager
   m_TagString: Untagged
@@ -81,30 +79,3 @@ MonoBehaviour:
   PoisonHitText: {fileID: 114884547391421755, guid: 5cdda35fc53e4b94ebfde8d8bd326a4f, type: 2}
   SickHitText: {fileID: 114884547391421755, guid: 3e88c89ea08021e418cf79425d9960d4, type: 2}
   IsVeryEffectiveText: {fileID: 114618682377417806, guid: 893fcaeeb79c9df4e8cf0fa6703a554a, type: 2}
---- !u!114 &2100000116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1709254077376921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tagName: PrefabManager
-
---- !u!114 &2100000117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1709254077376921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d2e3f405b6c7d8e9f0a1b2c3d4e5f6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tagName: PrefabManager

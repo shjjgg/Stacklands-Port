@@ -21,6 +21,8 @@ namespace StacklandsPort
             SceneManager.sceneLoaded += (s, m) =>
             {
                 if (_done || s.name.IndexOf("SampleScene", StringComparison.OrdinalIgnoreCase) < 0) return;
+                // 默认关闭: 只有用户手动在 files 目录放一个空文件 "null_audit" 时才跑(约 3 万行日志)
+                if (!System.IO.File.Exists(System.IO.Path.Combine(Application.persistentDataPath, "null_audit"))) return;
                 _done = true;
                 // 等管理器实例化完成
                 var runner = new GameObject("[NullAudit]");
