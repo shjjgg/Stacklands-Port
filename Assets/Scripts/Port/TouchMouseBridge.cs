@@ -47,7 +47,7 @@ public class TouchMouseBridge : MonoBehaviour
         var touches = ts.touches;
         int active = 0;
         Vector2 sum = Vector2.zero;
-        for (int i = 0; i < touches.Length; i++)
+        for (int i = 0; i < touches.Count; i++)
         {
             if (touches[i].isInProgress)
             {
@@ -85,7 +85,7 @@ public class TouchMouseBridge : MonoBehaviour
         {
             Vector2 pos = Vector2.zero;
             bool began = false, ended = false;
-            for (int i = 0; i < touches.Length; i++)
+            for (int i = 0; i < touches.Count; i++)
             {
                 var t = touches[i];
                 if (t.isInProgress)
