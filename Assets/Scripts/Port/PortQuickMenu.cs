@@ -25,10 +25,23 @@ namespace StacklandsPort
         {
             Button _btn;
             bool _built;
+            GameObject _root;
+            float _nextCheck;
 
             void Update()
             {
-                if (_built) return;
+                if (_built)
+                {
+                    // 主菜单没有 GameScreen, 按钮应当隐藏(原版也没有这个按钮)
+                    if (Time.realtimeSinceStartup >= _nextCheck)
+                    {
+                        _nextCheck = Time.realtimeSinceStartup + 1f;
+                        var gs = GameObject.Find("GameScreen");
+                        bool inGame = gs != null && gs.activeInHierarchy;
+                        if (_root != null && _root.activeSelf != inGame) _root.SetActive(inGame);
+                    }
+                    return;
+                }
                 if (SceneManager.GetActiveScene().name != "SampleScene") return;
                 if (Time.realtimeSinceStartup < 2f) return;
                 _built = true;
@@ -39,6 +52,7 @@ namespace StacklandsPort
             void Build()
             {
                 var root = new GameObject("PortQuickMenuCanvas");
+                _root = root;
                 root.transform.SetParent(transform, false);
                 var canvas = root.AddComponent<Canvas>();
                 canvas.renderMode = RenderMode.ScreenSpaceOverlay;
@@ -58,19 +72,12 @@ namespace StacklandsPort
                 rt.sizeDelta = new Vector2(150f, 110f);
                 rt.anchoredPosition = new Vector2(-30f, -320f);
 
+                // 原版暂停面板里的按钮就是「纸色矩形 + 文字」, 没有贴图; 这里照抄同一做法
                 var img = btnGo.AddComponent<Image>();
-                var paper = Resources.Load<Sprite>("Icons/sketchy_box_2");
-                if (paper != null)
-                {
-                    img.sprite = paper;
-                    img.type = Image.Type.Sliced;
-                    img.color = new Color(1f, 0.98f, 0.90f, 0.97f);
-                }
-                else
-                {
-                    img.color = new Color(1f, 0.98f, 0.90f, 0.97f);
-                }
+                img.sprite = null;
+                img.color = new Color(1f, 0.98f, 0.91f, 1f);
                 img.raycastTarget = true;
+                var paper = (Sprite)null;
 
                 _btn = btnGo.AddComponent<Button>();
                 _btn.targetGraphic = img;

@@ -131,6 +131,49 @@ namespace StacklandsPort.EditorTools
                 Debug.LogWarning("[PortIcons] 无法写 TMP Settings 默认精灵资产, 将在运行时兜底");
             }
 
+            // ---- 每个图标再单独生成一个同名 TMP 精灵资产 ----
+            // 游戏里的标签是 <sprite="goldicon" name="goldicon" tint>, TMP 会按
+            // Resources/Sprite Assets/<sprite 名> 去 Load 一个 TMP_SpriteAsset, 找不到就整段当纯文本输出。
+            const string SpriteAssetDir = "Assets/Resources/Sprite Assets";
+            Directory.CreateDirectory(SpriteAssetDir);
+            int perName = 0;
+            foreach (var sp in sprites)
+            {
+                string path = SpriteAssetDir + "/" + sp.name + ".asset";
+                if (File.Exists(path)) AssetDatabase.DeleteAsset(path);
+
+                Texture2D src = LoadPixels(sp, out Rect rect);
+                int w = Mathf.Max(1, (int)rect.width), h = Mathf.Max(1, (int)rect.height);
+
+                var m = new Material(templateAsset != null && templateAsset.material != null
+                    ? templateAsset.material.shader : Shader.Find("TextMeshPro/Sprite"));
+                m.name = sp.name + "Mat";
+                m.SetTexture("_MainTex", sp.texture);
+                var matPath = SpriteAssetDir + "/" + sp.name + "Mat.mat";
+                if (File.Exists(matPath)) AssetDatabase.DeleteAsset(matPath);
+                AssetDatabase.CreateAsset(m, matPath);
+
+                var single = ScriptableObject.CreateInstance<TMP_SpriteAsset>();
+                single.name = sp.name;
+                single.material = AssetDatabase.LoadAssetAtPath<Material>(matPath);
+
+                var glyph = new TMP_SpriteGlyph(0u, new GlyphMetrics(w, h, 0, h, w),
+                    new GlyphRect((int)rect.x, (int)rect.y, w, h), 1f, 0, sp);
+                var ch = new TMP_SpriteCharacter(0xE000u, glyph);
+                ch.name = sp.name;
+                var hashField = typeof(TMP_SpriteCharacter).GetField("m_HashCode", BindingFlags.Instance | BindingFlags.NonPublic);
+                if (hashField != null) hashField.SetValue(ch, TMP_TextUtilities.GetSimpleHashCode(sp.name));
+
+                SetPrivate(single, "m_SpriteCharacterTable", new List<TMP_SpriteCharacter> { ch });
+                SetPrivate(single, "m_SpriteGlyphTable", new List<TMP_SpriteGlyph> { glyph });
+                SetPrivate(single, "m_Version", "1.1.0");
+                single.UpdateLookupTables();
+
+                AssetDatabase.CreateAsset(single, path);
+                UnityEngine.Object.DestroyImmediate(src);
+                perName++;
+            }
+
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
 
@@ -142,7 +185,7 @@ namespace StacklandsPort.EditorTools
             {
                 if (saved.GetSpriteIndexFromName(n) >= 0) ok++;
             }
-            Debug.Log("[PortIcons] 生成完成: 精灵 " + chars.Count + " 个, 图集 " + size + "x" + size + ", 抽查 " + ok + "/" + names.Count);
+            Debug.Log("[PortIcons] 生成完成: 精灵 " + chars.Count + "/按名 " + perName + " 个, 图集 " + size + "x" + size + ", 抽查 " + ok + "/" + names.Count);
             if (ok < names.Count) throw new Exception("[PortIcons] 精灵查表失败, 哈希/名字未生效");
         }
 
