@@ -44,6 +44,7 @@ namespace StacklandsPort.EditorTools
 
             var glyphs = new List<TMP_SpriteGlyph>();
             var chars = new List<TMP_SpriteCharacter>();
+            var cells = new Dictionary<string, RectInt>();
             int idx = 0;
             foreach (var sp in sprites)
             {
@@ -66,6 +67,7 @@ namespace StacklandsPort.EditorTools
                 }
                 UnityEngine.Object.DestroyImmediate(src);
 
+                cells[sp.name] = new RectInt(x0 + Pad, y0 + Pad, w, h);
                 var gr = new GlyphRect(x0 + Pad, y0 + Pad, w, h);
                 var gm = new GlyphMetrics(w, h, 0, h, w);
                 var glyph = new TMP_SpriteGlyph((uint)idx, gm, gr, 1f, 0, sp);
@@ -108,6 +110,7 @@ namespace StacklandsPort.EditorTools
             var sa = ScriptableObject.CreateInstance<TMP_SpriteAsset>();
             sa.name = "PortIcons";
             sa.material = AssetDatabase.LoadAssetAtPath<Material>(MatPath);
+            sa.spriteSheet = atlas;
 
             SetPrivate(sa, "m_SpriteCharacterTable", chars);
             SetPrivate(sa, "m_SpriteGlyphTable", glyphs);
@@ -142,23 +145,17 @@ namespace StacklandsPort.EditorTools
                 string path = SpriteAssetDir + "/" + sp.name + ".asset";
                 if (File.Exists(path)) AssetDatabase.DeleteAsset(path);
 
-                Texture2D src = LoadPixels(sp, out Rect rect);
-                int w = Mathf.Max(1, (int)rect.width), h = Mathf.Max(1, (int)rect.height);
-
-                var m = new Material(templateAsset != null && templateAsset.material != null
-                    ? templateAsset.material.shader : Shader.Find("TextMeshPro/Sprite"));
-                m.name = sp.name + "Mat";
-                m.SetTexture("_MainTex", sp.texture);
-                var matPath = SpriteAssetDir + "/" + sp.name + "Mat.mat";
-                if (File.Exists(matPath)) AssetDatabase.DeleteAsset(matPath);
-                AssetDatabase.CreateAsset(m, matPath);
+                if (!cells.TryGetValue(sp.name, out RectInt cell)) continue;
+                int w = cell.width, h = cell.height;
 
                 var single = ScriptableObject.CreateInstance<TMP_SpriteAsset>();
                 single.name = sp.name;
-                single.material = AssetDatabase.LoadAssetAtPath<Material>(matPath);
+                single.material = AssetDatabase.LoadAssetAtPath<Material>(MatPath);
+                single.spriteSheet = atlas;
 
+                // 同一个图集/材质 + 图集内的矩形; 不挂 Sprite 引用, 避免 TMP 去取另一张贴图
                 var glyph = new TMP_SpriteGlyph(0u, new GlyphMetrics(w, h, 0, h, w),
-                    new GlyphRect((int)rect.x, (int)rect.y, w, h), 1f, 0, sp);
+                    new GlyphRect(cell.x, cell.y, w, h), 1f, 0);
                 var ch = new TMP_SpriteCharacter(0xE000u, glyph);
                 ch.name = sp.name;
                 var hashField = typeof(TMP_SpriteCharacter).GetField("m_HashCode", BindingFlags.Instance | BindingFlags.NonPublic);
@@ -170,7 +167,6 @@ namespace StacklandsPort.EditorTools
                 single.UpdateLookupTables();
 
                 AssetDatabase.CreateAsset(single, path);
-                UnityEngine.Object.DestroyImmediate(src);
                 perName++;
             }
 

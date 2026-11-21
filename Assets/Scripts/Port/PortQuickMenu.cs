@@ -70,7 +70,7 @@ namespace StacklandsPort
                 rt.anchorMax = new Vector2(1f, 0.5f);
                 rt.pivot = new Vector2(1f, 0.5f);
                 rt.sizeDelta = new Vector2(150f, 110f);
-                rt.anchoredPosition = new Vector2(-30f, -320f);
+                rt.anchoredPosition = new Vector2(-30f, -110f);
 
                 // 原版暂停面板里的按钮就是「纸色矩形 + 文字」, 没有贴图; 这里照抄同一做法
                 var img = btnGo.AddComponent<Image>();

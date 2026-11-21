@@ -45,8 +45,9 @@ namespace StacklandsPort
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         static void Boot()
         {
-            try { Build(); }
-            catch (Exception e) { PortLog.Write("[PortIcons] 构建失败: " + e); }
+            // 图标精灵表已在编辑器阶段生成为资产(Assets/Resources/Sprite Assets/<name>.asset),
+            // 运行时不再另建图集, 避免两套精灵表互相覆盖。
+            PortLog.Marker("PortIcons 运行时注入已停用(改用构建期资产)");
         }
 
         static void Build()
