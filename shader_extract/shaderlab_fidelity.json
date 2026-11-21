@@ -1,6 +1,377 @@
 {
   "rows": [
     {
+      "shader": "Custom/ArrowSdfShader",
+      "sub": 0,
+      "pass": 0,
+      "ok": true,
+      "pass_programs": 15
+    },
+    {
+      "shader": "Custom/ArrowSdfShader",
+      "sub": 0,
+      "pass": 1,
+      "ok": true,
+      "pass_programs": 15
+    },
+    {
+      "shader": "Custom/ArrowSdfShader",
+      "sub": null,
+      "pass": null,
+      "ok": true,
+      "pass_programs": 15,
+      "keywords": 25
+    },
+    {
+      "shader": "Custom/BoosterShader",
+      "sub": 0,
+      "pass": 0,
+      "ok": true,
+      "pass_programs": 34
+    },
+    {
+      "shader": "Custom/BoosterShader",
+      "sub": 0,
+      "pass": 1,
+      "ok": true,
+      "pass_programs": 34
+    },
+    {
+      "shader": "Custom/BoosterShader",
+      "sub": 0,
+      "pass": 2,
+      "ok": true,
+      "pass_programs": 34
+    },
+    {
+      "shader": "Custom/BoosterShader",
+      "sub": 0,
+      "pass": 3,
+      "ok": true,
+      "pass_programs": 34
+    },
+    {
+      "shader": "Custom/BoosterShader",
+      "sub": null,
+      "pass": null,
+      "ok": true,
+      "pass_programs": 34,
+      "keywords": 25
+    },
+    {
+      "shader": "Custom/BoosterShaderTop",
+      "sub": 0,
+      "pass": 0,
+      "ok": true,
+      "pass_programs": 34
+    },
+    {
+      "shader": "Custom/BoosterShaderTop",
+      "sub": 0,
+      "pass": 1,
+      "ok": true,
+      "pass_programs": 34
+    },
+    {
+      "shader": "Custom/BoosterShaderTop",
+      "sub": 0,
+      "pass": 2,
+      "ok": true,
+      "pass_programs": 34
+    },
+    {
+      "shader": "Custom/BoosterShaderTop",
+      "sub": 0,
+      "pass": 3,
+      "ok": true,
+      "pass_programs": 34
+    },
+    {
+      "shader": "Custom/BoosterShaderTop",
+      "sub": null,
+      "pass": null,
+      "ok": true,
+      "pass_programs": 34,
+      "keywords": 25
+    },
+    {
+      "shader": "Custom/CardBackShader",
+      "sub": 0,
+      "pass": 0,
+      "ok": true,
+      "pass_programs": 66
+    },
+    {
+      "shader": "Custom/CardBackShader",
+      "sub": 0,
+      "pass": 1,
+      "ok": true,
+      "pass_programs": 66
+    },
+    {
+      "shader": "Custom/CardBackShader",
+      "sub": 0,
+      "pass": 2,
+      "ok": true,
+      "pass_programs": 66
+    },
+    {
+      "shader": "Custom/CardBackShader",
+      "sub": null,
+      "pass": null,
+      "ok": true,
+      "pass_programs": 66,
+      "keywords": 26
+    },
+    {
+      "shader": "Custom/CardShaderTest",
+      "sub": 0,
+      "pass": 0,
+      "ok": true,
+      "pass_programs": 58
+    },
+    {
+      "shader": "Custom/CardShaderTest",
+      "sub": 0,
+      "pass": 1,
+      "ok": true,
+      "pass_programs": 58
+    },
+    {
+      "shader": "Custom/CardShaderTest",
+      "sub": 0,
+      "pass": 2,
+      "ok": true,
+      "pass_programs": 58
+    },
+    {
+      "shader": "Custom/CardShaderTest",
+      "sub": 0,
+      "pass": 3,
+      "ok": true,
+      "pass_programs": 58
+    },
+    {
+      "shader": "Custom/CardShaderTest",
+      "sub": null,
+      "pass": null,
+      "ok": true,
+      "pass_programs": 58,
+      "keywords": 25
+    },
+    {
+      "shader": "Custom/ConflictOutlineSdfShader",
+      "sub": 0,
+      "pass": 0,
+      "ok": true,
+      "pass_programs": 15
+    },
+    {
+      "shader": "Custom/ConflictOutlineSdfShader",
+      "sub": 0,
+      "pass": 1,
+      "ok": true,
+      "pass_programs": 15
+    },
+    {
+      "shader": "Custom/ConflictOutlineSdfShader",
+      "sub": null,
+      "pass": null,
+      "ok": true,
+      "pass_programs": 15,
+      "keywords": 25
+    },
+    {
+      "shader": "Custom/ConveyorArrowShader",
+      "sub": 0,
+      "pass": 0,
+      "ok": true,
+      "pass_programs": 15
+    },
+    {
+      "shader": "Custom/ConveyorArrowShader",
+      "sub": 0,
+      "pass": 1,
+      "ok": true,
+      "pass_programs": 15
+    },
+    {
+      "shader": "Custom/ConveyorArrowShader",
+      "sub": null,
+      "pass": null,
+      "ok": true,
+      "pass_programs": 15,
+      "keywords": 25
+    },
+    {
+      "shader": "Custom/EnergyCableShader",
+      "sub": 0,
+      "pass": 0,
+      "ok": true,
+      "pass_programs": 15
+    },
+    {
+      "shader": "Custom/EnergyCableShader",
+      "sub": 0,
+      "pass": 1,
+      "ok": true,
+      "pass_programs": 15
+    },
+    {
+      "shader": "Custom/EnergyCableShader",
+      "sub": null,
+      "pass": null,
+      "ok": true,
+      "pass_programs": 15,
+      "keywords": 25
+    },
+    {
+      "shader": "Custom/FloorShader",
+      "sub": 0,
+      "pass": 0,
+      "ok": true,
+      "pass_programs": 22
+    },
+    {
+      "shader": "Custom/FloorShader",
+      "sub": 0,
+      "pass": 1,
+      "ok": true,
+      "pass_programs": 22
+    },
+    {
+      "shader": "Custom/FloorShader",
+      "sub": null,
+      "pass": null,
+      "ok": true,
+      "pass_programs": 22,
+      "keywords": 25
+    },
+    {
+      "shader": "Custom/FloorShaderForest",
+      "sub": 0,
+      "pass": 0,
+      "ok": true,
+      "pass_programs": 22
+    },
+    {
+      "shader": "Custom/FloorShaderForest",
+      "sub": 0,
+      "pass": 1,
+      "ok": true,
+      "pass_programs": 22
+    },
+    {
+      "shader": "Custom/FloorShaderForest",
+      "sub": null,
+      "pass": null,
+      "ok": true,
+      "pass_programs": 22,
+      "keywords": 25
+    },
+    {
+      "shader": "Custom/FloorShaderIsland",
+      "sub": 0,
+      "pass": 0,
+      "ok": true,
+      "pass_programs": 22
+    },
+    {
+      "shader": "Custom/FloorShaderIsland",
+      "sub": 0,
+      "pass": 1,
+      "ok": true,
+      "pass_programs": 22
+    },
+    {
+      "shader": "Custom/FloorShaderIsland",
+      "sub": null,
+      "pass": null,
+      "ok": true,
+      "pass_programs": 22,
+      "keywords": 25
+    },
+    {
+      "shader": "Custom/GenericCardShader",
+      "sub": 0,
+      "pass": 0,
+      "ok": true,
+      "pass_programs": 58
+    },
+    {
+      "shader": "Custom/GenericCardShader",
+      "sub": 0,
+      "pass": 1,
+      "ok": true,
+      "pass_programs": 58
+    },
+    {
+      "shader": "Custom/GenericCardShader",
+      "sub": 0,
+      "pass": 2,
+      "ok": true,
+      "pass_programs": 58
+    },
+    {
+      "shader": "Custom/GenericCardShader",
+      "sub": 0,
+      "pass": 3,
+      "ok": true,
+      "pass_programs": 58
+    },
+    {
+      "shader": "Custom/GenericCardShader",
+      "sub": null,
+      "pass": null,
+      "ok": true,
+      "pass_programs": 58,
+      "keywords": 25
+    },
+    {
+      "shader": "Custom/GridShader",
+      "sub": 0,
+      "pass": 0,
+      "ok": true,
+      "pass_programs": 15
+    },
+    {
+      "shader": "Custom/GridShader",
+      "sub": 0,
+      "pass": 1,
+      "ok": true,
+      "pass_programs": 15
+    },
+    {
+      "shader": "Custom/GridShader",
+      "sub": null,
+      "pass": null,
+      "ok": true,
+      "pass_programs": 15,
+      "keywords": 26
+    },
+    {
+      "shader": "Custom/SewerPipeShader",
+      "sub": 0,
+      "pass": 0,
+      "ok": true,
+      "pass_programs": 15
+    },
+    {
+      "shader": "Custom/SewerPipeShader",
+      "sub": 0,
+      "pass": 1,
+      "ok": true,
+      "pass_programs": 15
+    },
+    {
+      "shader": "Custom/SewerPipeShader",
+      "sub": null,
+      "pass": null,
+      "ok": true,
+      "pass_programs": 15,
+      "keywords": 25
+    },
+    {
       "shader": "Custom/SpiritImageEffect",
       "sub": 0,
       "pass": 0,
@@ -29,6 +400,101 @@
       "ok": true,
       "pass_programs": 2,
       "keywords": 4
+    },
+    {
+      "shader": "Custom/StatusBar",
+      "sub": 0,
+      "pass": 0,
+      "ok": true,
+      "pass_programs": 34
+    },
+    {
+      "shader": "Custom/StatusBar",
+      "sub": 0,
+      "pass": 1,
+      "ok": true,
+      "pass_programs": 34
+    },
+    {
+      "shader": "Custom/StatusBar",
+      "sub": 0,
+      "pass": 2,
+      "ok": true,
+      "pass_programs": 34
+    },
+    {
+      "shader": "Custom/StatusBar",
+      "sub": 0,
+      "pass": 3,
+      "ok": true,
+      "pass_programs": 34
+    },
+    {
+      "shader": "Custom/StatusBar",
+      "sub": null,
+      "pass": null,
+      "ok": true,
+      "pass_programs": 34,
+      "keywords": 25
+    },
+    {
+      "shader": "Custom/SuperSampled Texture",
+      "sub": 0,
+      "pass": 0,
+      "ok": true,
+      "pass_programs": 4
+    },
+    {
+      "shader": "Custom/SuperSampled Texture",
+      "sub": null,
+      "pass": null,
+      "ok": true,
+      "pass_programs": 4,
+      "keywords": 5
+    },
+    {
+      "shader": "Custom/TransportArrowMainlandShader",
+      "sub": 0,
+      "pass": 0,
+      "ok": true,
+      "pass_programs": 15
+    },
+    {
+      "shader": "Custom/TransportArrowMainlandShader",
+      "sub": 0,
+      "pass": 1,
+      "ok": true,
+      "pass_programs": 15
+    },
+    {
+      "shader": "Custom/TransportArrowMainlandShader",
+      "sub": null,
+      "pass": null,
+      "ok": true,
+      "pass_programs": 15,
+      "keywords": 25
+    },
+    {
+      "shader": "Custom/TransportArrowShader",
+      "sub": 0,
+      "pass": 0,
+      "ok": true,
+      "pass_programs": 15
+    },
+    {
+      "shader": "Custom/TransportArrowShader",
+      "sub": 0,
+      "pass": 1,
+      "ok": true,
+      "pass_programs": 15
+    },
+    {
+      "shader": "Custom/TransportArrowShader",
+      "sub": null,
+      "pass": null,
+      "ok": true,
+      "pass_programs": 15,
+      "keywords": 25
     },
     {
       "shader": "Postprocess/SokpopIntro",
@@ -106,6 +572,21 @@
       "keywords": 5
     },
     {
+      "shader": "Transition/Cities",
+      "sub": 0,
+      "pass": 0,
+      "ok": true,
+      "pass_programs": 2
+    },
+    {
+      "shader": "Transition/Cities",
+      "sub": null,
+      "pass": null,
+      "ok": true,
+      "pass_programs": 2,
+      "keywords": 5
+    },
+    {
       "shader": "Transition/Default",
       "sub": 0,
       "pass": 0,
@@ -149,29 +630,23 @@
       "ok": true,
       "pass_programs": 2,
       "keywords": 4
+    },
+    {
+      "shader": "Unlit/CardopediaBackgroundShader",
+      "sub": 0,
+      "pass": 0,
+      "ok": true,
+      "pass_programs": 2
+    },
+    {
+      "shader": "Unlit/CardopediaBackgroundShader",
+      "sub": null,
+      "pass": null,
+      "ok": true,
+      "pass_programs": 2,
+      "keywords": 8
     }
   ],
-  "fails": [
-    "缺 shader 文件: Custom/ArrowSdfShader",
-    "缺 shader 文件: Custom/StatusBar",
-    "缺 shader 文件: Custom/SewerPipeShader",
-    "缺 shader 文件: Custom/CardBackShader",
-    "缺 shader 文件: Custom/ConveyorArrowShader",
-    "缺 shader 文件: Custom/ConflictOutlineSdfShader",
-    "缺 shader 文件: Custom/GenericCardShader",
-    "缺 shader 文件: Custom/CardShaderTest",
-    "缺 shader 文件: Custom/TransportArrowShader",
-    "缺 shader 文件: Custom/BoosterShaderTop",
-    "缺 shader 文件: Custom/GridShader",
-    "缺 shader 文件: Custom/EnergyCableShader",
-    "缺 shader 文件: Custom/FloorShaderForest",
-    "缺 shader 文件: Custom/SuperSampled Texture",
-    "缺 shader 文件: Unlit/CardopediaBackgroundShader",
-    "缺 shader 文件: Custom/TransportArrowMainlandShader",
-    "缺 shader 文件: Custom/FloorShader",
-    "缺 shader 文件: Custom/FloorShaderIsland",
-    "缺 shader 文件: Custom/BoosterShader",
-    "缺 shader 文件: Transition/Cities"
-  ],
+  "fails": [],
   "warns": []
 }

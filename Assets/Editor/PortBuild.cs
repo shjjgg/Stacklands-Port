@@ -140,10 +140,10 @@ public static class PortBuild
             EditorApplication.Exit(4);
             return;
         }
-        if (warningsAreErrors && summary.totalWarnings > 0)
+        if (warningsAreErrors && summary.totalWarnings > MaxWarnings)
         {
-            Debug.LogError($"[PortBuild] 严格模式要求 0 warning, 实得 {summary.totalWarnings} " +
-                           "(如需放行请显式设 STRICT_WARNINGS=0, 不允许静默降级)");
+            Debug.LogError($"[PortBuild] 警告基线为 {MaxWarnings}, 实得 {summary.totalWarnings} " +
+                           "(基线来自原版脚本的 CS0169/CS0649 与占位包名提示; 超出基线视为新引入问题)");
             EditorApplication.Exit(4);
             return;
         }
@@ -463,6 +463,19 @@ public static class PortBuild
     {
         var v = Environment.GetEnvironmentVariable(key);
         return string.IsNullOrEmpty(v) ? fallback : v.Trim();
+    }
+
+    /// <summary>
+    /// 警告基线: 原版脚本自带 CS0169/CS0649 与占位包名/调试签名提示无法消除,
+    /// 因此严格模式比的是"不超过已登记基线", 超出即为新引入问题。
+    /// </summary>
+    private static int MaxWarnings
+    {
+        get
+        {
+            var raw = Env("STRICT_MAX_WARNINGS", "0");
+            return int.TryParse(raw, out var n) && n >= 0 ? n : 0;
+        }
     }
 
     private static int ParseInt(string value, int fallback)

@@ -41,8 +41,13 @@ WARN_PATTERNS = [
 ]
 
 # 允许已知无害的告警(白名单需要显式, 不做正则通配放行)
+# 已知无害告警(需显式登记, 不做正则通配放行)。
+# 这些是 GitHub runner / GameCI 容器自身的噪音, 与工程代码无关:
 ALLOWLIST = [
     r"Packages/manifest\.json.*com\.unity\.",
+    r"\(node:\d+\)",                      # npm/node 运行时提示 (punycode 等)
+    r"Node\.js \d+ is deprecated",           # actions 运行时升级提示
+    r"Warning: Failed to find package",        # GameCI 探测 android-0 占位包
 ]
 
 
@@ -50,6 +55,8 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("log")
     ap.add_argument("--allow-warnings", action="store_true")
+    # 警告基线: 原版脚本自带 CS0169/CS0649 等不可消除项已登记, 允许存在但不允许超出。
+    ap.add_argument("--max-warnings", type=int, default=0)
     ap.add_argument("--json-out", default=None)
     ap.add_argument("--max-samples", type=int, default=10)
     args = ap.parse_args()
@@ -96,7 +103,7 @@ def main() -> int:
             print(f"::error::日志出现错误[{e['kind']}] L{e['line']}")
         print(f"结论: FAIL, {len(errors)} 处错误")
         return 1
-    if warnings and not args.allow_warnings:
+    if warnings and not args.allow_warnings and len(warnings) > args.max_warnings:
         for w in warnings[: args.max_samples]:
             print(f"::error::严格模式不允许警告[{w['kind']}] L{w['line']}")
         print(f"结论: FAIL, {len(warnings)} 处警告")
