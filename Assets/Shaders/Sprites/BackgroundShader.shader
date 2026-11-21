@@ -11,6 +11,7 @@ Shader "Sprites/BackgroundShader"
     }
     SubShader
     {
+        Tags { "Queue"="Transparent" "RenderType"="Transparent" }
         Pass
         {
             Cull Off

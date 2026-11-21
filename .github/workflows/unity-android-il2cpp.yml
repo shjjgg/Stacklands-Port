@@ -386,6 +386,11 @@ jobs:
       - name: 校准版本号 (原版版本号 + 修改次数)
         run: python3 tools/bump_version.py
 
+      # Shader 渲染状态严格门: 移植 ShaderLab 的 Cull/ZTest/ZWrite/Blend/ColorMask/Stencil/Queue
+      # 必须与原版序列化的 pass 状态逐项一致, 不一致直接判死(不许再靠"看着差不多")。
+      - name: Shader 状态严格门 (原版 pass_state 对照)
+        run: python3 tools/verify_shader_state.py --strict --md shader_extract/state_diff.md
+
       - name: Build Android (GameCI unity-builder)
         id: build
         # Unity 打包成功后收尾阶段会因 debugger-agent 监听失败返回 4, 包本身是好的。

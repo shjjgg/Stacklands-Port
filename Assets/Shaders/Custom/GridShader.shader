@@ -12,7 +12,7 @@ Shader "Custom/GridShader"
     }
     SubShader
     {
-        Tags { "Queue"="Transparent" "RenderType"="Transparent" }
+        Tags { "Queue"="Transparent" "RenderType"="Opaque" }
 
         Pass
         {

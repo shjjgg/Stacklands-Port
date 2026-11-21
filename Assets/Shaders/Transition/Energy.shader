@@ -20,6 +20,7 @@ Shader "Transition/Energy"
     }
     SubShader
     {
+        Tags { "Queue"="Transparent" }
         Pass
         {
             Cull Off

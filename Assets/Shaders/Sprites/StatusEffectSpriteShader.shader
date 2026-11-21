@@ -15,6 +15,7 @@ Shader "Sprites/StatusEffectSpriteShader"
     }
     SubShader
     {
+        Tags { "Queue"="Transparent" "RenderType"="Transparent" }
         Pass
         {
             Cull Off

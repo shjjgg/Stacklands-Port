@@ -10,7 +10,7 @@ Shader "Unlit/CardopediaBackgroundShader"
     }
     SubShader
     {
-        Tags { "Queue"="Transparent" "RenderType"="Transparent" "IgnoreProjector"="True" }
+        Tags { "Queue"="Transparent" "RenderType"="Opaque" "IgnoreProjector"="True" }
 
         Pass
         {

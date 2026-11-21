@@ -17,6 +17,7 @@ Shader "Transition/Spirit"
     }
     SubShader
     {
+        Tags { "Queue"="Transparent" }
         Pass
         {
             Cull Off

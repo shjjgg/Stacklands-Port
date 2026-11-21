@@ -12,6 +12,7 @@ Shader "Sprites/CombatCircleSpriteShader2"
     }
     SubShader
     {
+        Tags { "Queue"="Transparent" "RenderType"="Transparent" }
         Pass
         {
             Cull Off
