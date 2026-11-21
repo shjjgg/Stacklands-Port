@@ -110,6 +110,15 @@ namespace StacklandsPort
             {
                 _frame++;
                 if (_frame == 1) Marker("first Update frame");
+                // 启动前 2 秒逐帧记录场景根对象, 用于确认 Bootstrapper 把管理器实例化到哪一步
+                if (_frame == 1 || _frame == 10 || _frame == 30 || _frame == 60 || _frame == 120)
+                {
+                    var sc = SceneManager.GetActiveScene();
+                    var roots = sc.GetRootGameObjects();
+                    var names = new System.Text.StringBuilder();
+                    for (int i = 0; i < roots.Length && i < 12; i++) names.Append(roots[i].name).Append('|');
+                    Marker($"roots f={_frame} scene={sc.name} n={roots.Length} {names}");
+                }
                 _t += Time.unscaledDeltaTime;
                 // 启动前 20 秒每秒打一次内存面包屑, 用于判断是不是 OOM/长时间卡在加载
                 if (_t >= 1f)

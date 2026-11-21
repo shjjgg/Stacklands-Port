@@ -367,6 +367,16 @@ jobs:
             *) echo "形态: 可能是 base64/其它" | head -c 60; echo ;;
           esac
 
+      # Library 缓存: CI 每次从零导入 400+ 张 ASTC 贴图 + 219 个 shader 是主要耗时,
+      # 用 Assets/Packages/ProjectSettings 的哈希做 key, 命中即跳过导入与压缩。
+      - name: Cache Unity Library
+        uses: actions/cache@v4
+        with:
+          path: Library
+          key: unity-library-${{ hashFiles('Assets/**/*.meta', 'Assets/**/*.cs', 'Assets/**/*.shader', 'Assets/**/*.png', 'Packages/packages-lock.json', 'ProjectSettings/**') }}
+          restore-keys: |
+            unity-library-
+
       - name: Build Android (GameCI unity-builder)
         id: build
         # Unity 打包成功后收尾阶段会因 debugger-agent 监听失败返回 4, 包本身是好的。

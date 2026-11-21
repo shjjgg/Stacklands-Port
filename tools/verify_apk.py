@@ -17,6 +17,8 @@ import argparse
 import json
 import sys
 import zipfile
+import os
+import re
 from pathlib import Path
 
 FAILS: list[str] = []
@@ -87,6 +89,19 @@ def main() -> int:
     prefix = "base/" if aab else ""
     infos = {i.filename: i for i in zf.infolist()}
 
+    def has_v2_signature(p: str) -> bool:
+        """APK Signature Scheme v2/v3 只在二元区写签名块, zip 里没有 META-INF 条目。"""
+        try:
+            size = os.path.getsize(p)
+            with open(p, "rb") as f:
+                head = f.read(2 * 1024 * 1024)
+                f.seek(max(0, size - 8 * 1024 * 1024))
+                tail = f.read()
+            # 签名块紧贴中央目录之前, 位于文件尾部
+            return b"APK Sig Block 42" in tail or b"APK Sig Block 42" in head
+        except OSError:
+            return False
+
     def size_of(name: str) -> int:
         i = infos.get(name)
         return i.file_size if i else -1
@@ -125,7 +140,10 @@ def main() -> int:
         ok(f"ABI 集合 = {lib_dirs or ['(none)']} (仅 arm64-v8a)")
 
     # 3. global-metadata.dat (IL2CPP 灵魂)
-    gm = prefix + "assets/bin/Data/global-metadata.dat"
+    # Unity IL2CPP 实际把元数据放在 Managed/Metadata/ 下, 旧脚本假设的路径不对
+    gm_candidates = [prefix + "assets/bin/Data/global-metadata.dat",
+                     prefix + "assets/bin/Data/Managed/Metadata/global-metadata.dat"]
+    gm = next((c for c in gm_candidates if size_of(c) > 0), gm_candidates[-1])
     gm_size = size_of(gm)
     if gm_size > 100 * 1024:
         ok(f"global-metadata.dat 存在 ({gm_size / 1024 / 1024:.1f} MB)")
@@ -151,7 +169,11 @@ def main() -> int:
 
     # 6. 场景/资源 blob
     data_prefix = prefix + "assets/bin/Data/"
-    blobs = [n for n in names if n.startswith(data_prefix) and n.endswith(".assets")]
+    # Unity 会把大 blob 切成 .splitN, 只匹配 ".assets" 会误判为 0
+    blob_re = re.compile(r"\.assets(?:$|\.split\d+$)")
+    blob_bases = {re.sub(r"\.split\d+$", "", n) for n in names
+                  if n.startswith(data_prefix) and blob_re.search(n)}
+    blobs = sorted(blob_bases)
     ggm = [n for n in names if n.startswith(data_prefix) and Path(n).name in
            ("globalgamemanagers", "globalgamemanagers.assets")]
     if len(blobs) >= 2:
@@ -181,8 +203,11 @@ def main() -> int:
 
     # 9. 签名文件
     sig = [n for n in names if n.startswith("META-INF/") and n.upper().endswith((".RSA", ".DSA", ".EC"))]
+    v2 = has_v2_signature(str(path))
     if sig:
         ok(f"签名块 {sig[0]}")
+    elif v2:
+        ok("APK Signature Scheme v2/v3 签名块存在")
     elif not aab:
         fail("APK 未签名(无 META-INF/*.RSA|DSA|EC)")
     else:
