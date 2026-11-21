@@ -240,6 +240,7 @@ def report(args, disk_mb: float, uncompressed_mb: float, entries: int = 0) -> in
         "failures": FAILS,
     }
     if args.json_out:
+        Path(args.json_out).parent.mkdir(parents=True, exist_ok=True)
         Path(args.json_out).write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
 
     if FAILS:
