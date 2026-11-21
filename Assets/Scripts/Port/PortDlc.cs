@@ -25,7 +25,9 @@ namespace StacklandsPort
             try
             {
                 PortLog.Marker("Run");
-                ApplyPatch();   // 暂不做文件解包(见 InstalledPrefix 注释)
+                // v0.29 排查: 完全停用 Harmony (不再 patch RuntimeSokBundle.Load / WorldManager.*),
+                // 用来确认栈溢出是否由 Harmony detour 引起。DLC 逻辑保留在此, 定位后再开。
+                PortLog.Write(Tag + "v0.29 Harmony 全部停用(排查栈溢出)");
             }
             catch (Exception e)
             {
