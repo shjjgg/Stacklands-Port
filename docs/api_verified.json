@@ -422,6 +422,65 @@
       "symbol": "UIOrientation.PortraitUpsideDown",
       "doc": "UIOrientation.html",
       "status": "verified"
+    },
+    {
+      "symbol": "AssetDatabase.GetAssetPath",
+      "doc": "AssetDatabase.GetAssetPath.html",
+      "status": "verified",
+      "note": "Object → 资产路径, 只读取"
+    },
+    {
+      "symbol": "AssetDatabase.ImportAsset",
+      "doc": "AssetDatabase.ImportAsset.html",
+      "status": "verified",
+      "note": "强制重导入 PNG 后取 Texture2D"
+    },
+    {
+      "symbol": "EditorUtility.SetDirty",
+      "doc": "EditorUtility.SetDirty.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "TMP_Settings",
+      "doc": "https://docs.unity3d.com/Packages/com.unity.textmeshpro@3.0/api/TMPro.TMP_Settings.html",
+      "status": "verified",
+      "kind": "type",
+      "note": "第三方 dll, 反射写 m_defaultSpriteAsset"
+    },
+    {
+      "symbol": "TMP_SpriteAsset",
+      "doc": "https://docs.unity3d.com/Packages/com.unity.textmeshpro@3.0/api/TMPro.TMP_SpriteAsset.html",
+      "status": "verified",
+      "kind": "type"
+    },
+    {
+      "symbol": "TMP_SpriteCharacter",
+      "doc": "https://docs.unity3d.com/Packages/com.unity.textmeshpro@3.0/api/TMPro.TMP_SpriteCharacter.html",
+      "status": "verified",
+      "kind": "type"
+    },
+    {
+      "symbol": "TMP_SpriteGlyph",
+      "doc": "https://docs.unity3d.com/Packages/com.unity.textmeshpro@3.0/api/TMPro.TMP_SpriteGlyph.html",
+      "status": "verified",
+      "kind": "type"
+    },
+    {
+      "symbol": "TMP_TextUtilities.GetSimpleHashCode",
+      "doc": "https://docs.unity3d.com/Packages/com.unity.textmeshpro@3.0/api/TMPro.TMP_TextUtilities.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "GlyphRect",
+      "doc": "https://docs.unity3d.com/2022.3/Documentation/ScriptReference/TextCore.GlyphRect.html",
+      "status": "verified",
+      "kind": "type"
+    },
+    {
+      "symbol": "GlyphMetrics",
+      "doc": "https://docs.unity3d.com/2022.3/Documentation/ScriptReference/TextCore.GlyphMetrics.html",
+      "status": "verified",
+      "kind": "type"
     }
   ]
 }
