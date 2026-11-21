@@ -3,8 +3,30 @@
   "baseline": "2022.3.4f1",
   "entries": [
     {
+      "symbol": "AndroidArchitecture.ARM64",
+      "doc": "AndroidArchitecture.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "AndroidSdkVersions",
+      "doc": "AndroidSdkVersions.html",
+      "status": "verified",
+      "note": "离散枚举, 需 Enum.IsDefined 校验; 含 26-36",
+      "kind": "type"
+    },
+    {
       "symbol": "Application.unityVersion",
       "doc": "Application.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "AssetDatabase.CreateAsset",
+      "doc": "AssetDatabase.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "AssetDatabase.DeleteAsset",
+      "doc": "AssetDatabase.html",
       "status": "verified"
     },
     {
@@ -23,16 +45,29 @@
       "status": "verified"
     },
     {
-      "symbol": "AndroidArchitecture.ARM64",
-      "doc": "AndroidArchitecture.html",
+      "symbol": "AssetDatabase.Refresh",
+      "doc": "AssetDatabase.html",
       "status": "verified"
     },
     {
-      "symbol": "AndroidSdkVersions",
-      "doc": "AndroidSdkVersions.html",
-      "status": "verified",
-      "note": "离散枚举, 需 Enum.IsDefined 校验; 含 26-36",
-      "kind": "type"
+      "symbol": "AssetDatabase.SaveAssets",
+      "doc": "AssetDatabase.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "AssetDatabase.StartAssetEditing",
+      "doc": "AssetDatabase.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "AssetDatabase.StopAssetEditing",
+      "doc": "AssetDatabase.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "AssetImporter.GetAtPath",
+      "doc": "AssetImporter.html",
+      "status": "verified"
     },
     {
       "symbol": "BuildOptions.CleanBuildCache",
@@ -62,8 +97,80 @@
       "note": "BuildPlayerOptions 重载, 返回 BuildReport"
     },
     {
+      "symbol": "BuildPlayerOptions.locationPathName",
+      "doc": "BuildPlayerOptions.html",
+      "status": "verified",
+      "kind": "member"
+    },
+    {
+      "symbol": "BuildPlayerOptions.options",
+      "doc": "BuildPlayerOptions.html",
+      "status": "verified",
+      "kind": "member"
+    },
+    {
+      "symbol": "BuildPlayerOptions.scenes",
+      "doc": "BuildPlayerOptions.html",
+      "status": "verified",
+      "kind": "member"
+    },
+    {
+      "symbol": "BuildPlayerOptions.target",
+      "doc": "BuildPlayerOptions.html",
+      "status": "verified",
+      "kind": "member"
+    },
+    {
+      "symbol": "BuildReport.summary",
+      "doc": "Build.Reporting.BuildReport.html",
+      "status": "verified",
+      "kind": "member"
+    },
+    {
       "symbol": "BuildResult.Succeeded",
       "doc": "Build.Reporting.BuildResult.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "BuildSummary.outputPath",
+      "doc": "Build.Reporting.BuildSummary.html",
+      "status": "verified",
+      "kind": "member"
+    },
+    {
+      "symbol": "BuildSummary.result",
+      "doc": "Build.Reporting.BuildSummary.html",
+      "status": "verified",
+      "kind": "member"
+    },
+    {
+      "symbol": "BuildSummary.totalErrors",
+      "doc": "Build.Reporting.BuildSummary.html",
+      "status": "verified",
+      "kind": "member"
+    },
+    {
+      "symbol": "BuildSummary.totalSize",
+      "doc": "Build.Reporting.BuildSummary.html",
+      "status": "verified",
+      "kind": "member",
+      "note": "ulong; 无 totalSizeBytes"
+    },
+    {
+      "symbol": "BuildSummary.totalTime",
+      "doc": "Build.Reporting.BuildSummary.html",
+      "status": "verified",
+      "kind": "member"
+    },
+    {
+      "symbol": "BuildSummary.totalWarnings",
+      "doc": "Build.Reporting.BuildSummary.html",
+      "status": "verified",
+      "kind": "member"
+    },
+    {
+      "symbol": "ColorSpace.Linear",
+      "doc": "ColorSpace.html",
       "status": "verified"
     },
     {
@@ -74,11 +181,6 @@
     {
       "symbol": "EditorBuildSettings.scenes",
       "doc": "EditorBuildSettings.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "ColorSpace.Linear",
-      "doc": "ColorSpace.html",
       "status": "verified"
     },
     {
@@ -108,8 +210,192 @@
       "status": "verified"
     },
     {
+      "symbol": "PlayerSettings.Android.bundleVersionCode",
+      "doc": "PlayerSettings.Android.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "PlayerSettings.Android.forceInternetPermission",
+      "doc": "PlayerSettings.Android.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "PlayerSettings.Android.keyaliasName",
+      "doc": "PlayerSettings.Android.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "PlayerSettings.Android.keyaliasPass",
+      "doc": "PlayerSettings.Android.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "PlayerSettings.Android.keystoreName",
+      "doc": "PlayerSettings.Android.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "PlayerSettings.Android.keystorePass",
+      "doc": "PlayerSettings.Android.html",
+      "status": "verified",
+      "note": "是 keystorePass 不是 keystorePassword(曾错)"
+    },
+    {
+      "symbol": "PlayerSettings.Android.minSdkVersion",
+      "doc": "PlayerSettings.Android.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "PlayerSettings.Android.targetArchitectures",
+      "doc": "PlayerSettings.Android.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "PlayerSettings.Android.targetSdkVersion",
+      "doc": "PlayerSettings.Android.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "PlayerSettings.Android.useCustomKeystore",
+      "doc": "PlayerSettings.Android.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "PlayerSettings.GetGraphicsAPIs",
+      "doc": "PlayerSettings.GetGraphicsAPIs.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "PlayerSettings.GetScriptingBackend",
+      "doc": "PlayerSettings.GetScriptingBackend.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "PlayerSettings.SetGraphicsAPIs",
+      "doc": "PlayerSettings.SetGraphicsAPIs.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "PlayerSettings.SetIl2CppCompilerConfiguration",
+      "doc": "PlayerSettings.SetIl2CppCompilerConfiguration.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "PlayerSettings.SetManagedStrippingLevel",
+      "doc": "PlayerSettings.SetManagedStrippingLevel.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "PlayerSettings.SetMobileMTRendering",
+      "doc": "PlayerSettings.SetMobileMTRendering.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "PlayerSettings.SetScriptingBackend",
+      "doc": "PlayerSettings.SetScriptingBackend.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "PlayerSettings.SetUseDefaultGraphicsAPIs",
+      "doc": "PlayerSettings.SetUseDefaultGraphicsAPIs.html",
+      "status": "verified",
+      "note": "必须先关默认开关, 否则 SetGraphicsAPIs 被忽略"
+    },
+    {
+      "symbol": "PlayerSettings.SplashScreen.show",
+      "doc": "PlayerSettings.SplashScreen.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "PlayerSettings.SplashScreen.showUnityLogo",
+      "doc": "PlayerSettings.SplashScreen.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "PlayerSettings.applicationIdentifier",
+      "doc": "PlayerSettings.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "PlayerSettings.bundleVersion",
+      "doc": "PlayerSettings.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "PlayerSettings.colorSpace",
+      "doc": "PlayerSettings.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "PlayerSettings.companyName",
+      "doc": "PlayerSettings.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "PlayerSettings.defaultInterfaceOrientation",
+      "doc": "PlayerSettings.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "PlayerSettings.productName",
+      "doc": "PlayerSettings.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "PlayerSettings.stripEngineCode",
+      "doc": "PlayerSettings.html",
+      "status": "verified",
+      "note": "本作须 false(反射/Harmony)"
+    },
+    {
       "symbol": "ScriptingImplementation.IL2CPP",
       "doc": "ScriptingImplementation.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "ShaderUtil.GetShaderMessageCount",
+      "doc": "ShaderUtil.GetShaderMessageCount.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "ShaderUtil.GetShaderMessages",
+      "doc": "ShaderUtil.GetShaderMessages.html",
+      "status": "verified",
+      "note": "返回 ShaderMessage[](UnityEditor), 仅取 .message"
+    },
+    {
+      "symbol": "TextureImporter.DoesSourceTextureHaveAlpha",
+      "doc": "TextureImporter.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "TextureImporter.GetPlatformTextureSettings",
+      "doc": "TextureImporter.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "TextureImporter.GetSourceTextureWidthAndHeight",
+      "doc": "TextureImporter.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "TextureImporter.SaveAndReimport",
+      "doc": "TextureImporter.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "TextureImporter.SetPlatformTextureSettings",
+      "doc": "TextureImporter.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "TextureImporterCompression",
+      "doc": "TextureImporterCompression.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "TextureImporterFormat",
+      "doc": "TextureImporterFormat.html",
       "status": "verified"
     },
     {
@@ -135,277 +421,6 @@
     {
       "symbol": "UIOrientation.PortraitUpsideDown",
       "doc": "UIOrientation.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "PlayerSettings.applicationIdentifier",
-      "doc": "PlayerSettings.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "PlayerSettings.bundleVersion",
-      "doc": "PlayerSettings.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "PlayerSettings.companyName",
-      "doc": "PlayerSettings.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "PlayerSettings.productName",
-      "doc": "PlayerSettings.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "PlayerSettings.colorSpace",
-      "doc": "PlayerSettings.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "PlayerSettings.defaultInterfaceOrientation",
-      "doc": "PlayerSettings.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "PlayerSettings.stripEngineCode",
-      "doc": "PlayerSettings.html",
-      "status": "verified",
-      "note": "本作须 false(反射/Harmony)"
-    },
-    {
-      "symbol": "PlayerSettings.SetMobileMTRendering",
-      "doc": "PlayerSettings.SetMobileMTRendering.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "PlayerSettings.SetScriptingBackend",
-      "doc": "PlayerSettings.SetScriptingBackend.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "PlayerSettings.GetScriptingBackend",
-      "doc": "PlayerSettings.GetScriptingBackend.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "PlayerSettings.SetManagedStrippingLevel",
-      "doc": "PlayerSettings.SetManagedStrippingLevel.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "PlayerSettings.SetIl2CppCompilerConfiguration",
-      "doc": "PlayerSettings.SetIl2CppCompilerConfiguration.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "PlayerSettings.SetUseDefaultGraphicsAPIs",
-      "doc": "PlayerSettings.SetUseDefaultGraphicsAPIs.html",
-      "status": "verified",
-      "note": "必须先关默认开关, 否则 SetGraphicsAPIs 被忽略"
-    },
-    {
-      "symbol": "PlayerSettings.SetGraphicsAPIs",
-      "doc": "PlayerSettings.SetGraphicsAPIs.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "PlayerSettings.GetGraphicsAPIs",
-      "doc": "PlayerSettings.GetGraphicsAPIs.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "PlayerSettings.Android.bundleVersionCode",
-      "doc": "PlayerSettings.Android.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "PlayerSettings.Android.targetArchitectures",
-      "doc": "PlayerSettings.Android.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "PlayerSettings.Android.minSdkVersion",
-      "doc": "PlayerSettings.Android.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "PlayerSettings.Android.targetSdkVersion",
-      "doc": "PlayerSettings.Android.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "PlayerSettings.Android.forceInternetPermission",
-      "doc": "PlayerSettings.Android.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "PlayerSettings.Android.useCustomKeystore",
-      "doc": "PlayerSettings.Android.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "PlayerSettings.Android.keystoreName",
-      "doc": "PlayerSettings.Android.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "PlayerSettings.Android.keystorePass",
-      "doc": "PlayerSettings.Android.html",
-      "status": "verified",
-      "note": "是 keystorePass 不是 keystorePassword(曾错)"
-    },
-    {
-      "symbol": "PlayerSettings.Android.keyaliasName",
-      "doc": "PlayerSettings.Android.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "PlayerSettings.Android.keyaliasPass",
-      "doc": "PlayerSettings.Android.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "PlayerSettings.SplashScreen.show",
-      "doc": "PlayerSettings.SplashScreen.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "PlayerSettings.SplashScreen.showUnityLogo",
-      "doc": "PlayerSettings.SplashScreen.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "ShaderUtil.GetShaderMessageCount",
-      "doc": "ShaderUtil.GetShaderMessageCount.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "ShaderUtil.GetShaderMessages",
-      "doc": "ShaderUtil.GetShaderMessages.html",
-      "status": "verified",
-      "note": "返回 ShaderMessage[](UnityEditor), 仅取 .message"
-    },
-    {
-      "symbol": "BuildSummary.totalSize",
-      "doc": "Build.Reporting.BuildSummary.html",
-      "status": "verified",
-      "kind": "member",
-      "note": "ulong; 无 totalSizeBytes"
-    },
-    {
-      "symbol": "BuildSummary.totalErrors",
-      "doc": "Build.Reporting.BuildSummary.html",
-      "status": "verified",
-      "kind": "member"
-    },
-    {
-      "symbol": "BuildSummary.totalWarnings",
-      "doc": "Build.Reporting.BuildSummary.html",
-      "status": "verified",
-      "kind": "member"
-    },
-    {
-      "symbol": "BuildSummary.outputPath",
-      "doc": "Build.Reporting.BuildSummary.html",
-      "status": "verified",
-      "kind": "member"
-    },
-    {
-      "symbol": "BuildSummary.result",
-      "doc": "Build.Reporting.BuildSummary.html",
-      "status": "verified",
-      "kind": "member"
-    },
-    {
-      "symbol": "BuildSummary.totalTime",
-      "doc": "Build.Reporting.BuildSummary.html",
-      "status": "verified",
-      "kind": "member"
-    },
-    {
-      "symbol": "BuildReport.summary",
-      "doc": "Build.Reporting.BuildReport.html",
-      "status": "verified",
-      "kind": "member"
-    },
-    {
-      "symbol": "BuildPlayerOptions.scenes",
-      "doc": "BuildPlayerOptions.html",
-      "status": "verified",
-      "kind": "member"
-    },
-    {
-      "symbol": "BuildPlayerOptions.locationPathName",
-      "doc": "BuildPlayerOptions.html",
-      "status": "verified",
-      "kind": "member"
-    },
-    {
-      "symbol": "BuildPlayerOptions.target",
-      "doc": "BuildPlayerOptions.html",
-      "status": "verified",
-      "kind": "member"
-    },
-    {
-      "symbol": "BuildPlayerOptions.options",
-      "doc": "BuildPlayerOptions.html",
-      "status": "verified",
-      "kind": "member"
-    },
-    {
-      "symbol": "AssetDatabase.Refresh",
-      "doc": "AssetDatabase.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "AssetDatabase.StartAssetEditing",
-      "doc": "AssetDatabase.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "AssetDatabase.StopAssetEditing",
-      "doc": "AssetDatabase.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "TextureImporter.GetSourceTextureWidthAndHeight",
-      "doc": "TextureImporter.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "TextureImporter.DoesSourceTextureHaveAlpha",
-      "doc": "TextureImporter.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "TextureImporter.GetPlatformTextureSettings",
-      "doc": "TextureImporter.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "TextureImporter.SetPlatformTextureSettings",
-      "doc": "TextureImporter.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "TextureImporter.SaveAndReimport",
-      "doc": "TextureImporter.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "TextureImporterFormat",
-      "doc": "TextureImporterFormat.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "TextureImporterCompression",
-      "doc": "TextureImporterCompression.html",
-      "status": "verified"
-    },
-    {
-      "symbol": "AssetImporter.GetAtPath",
-      "doc": "AssetImporter.html",
       "status": "verified"
     }
   ]
