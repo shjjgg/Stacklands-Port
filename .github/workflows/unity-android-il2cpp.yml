@@ -431,6 +431,14 @@ jobs:
             --json-out out/log_audit.json \
             $( [ "${STRICT_WARNINGS}" = "1" ] && echo "--max-warnings ${LOG_WARNINGS_BASELINE}" || echo --allow-warnings )
 
+      # ---- 图标收尾: 去掉 Unity 自动加在 Android 13 主题图标上的单色方块 logo ----
+      - name: 清理启动图标单色层并重签
+        run: |
+          python3 -m pip install --quiet pillow
+          apk=$(ls builds/android/*.apk 2>/dev/null | head -1)
+          if [ -z "$apk" ]; then echo "::error::没有 APK 可处理"; exit 1; fi
+          python3 tools/patch_launcher_icon.py "$apk"
+
       # ---- 严格审计 B: 产物结构 (IL2CPP 单 ABI / 元数据 / 无 Mono残留) ----
       - name: Strict artifact audit
         run: |
