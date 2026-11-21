@@ -523,14 +523,30 @@ public static class PortBuild
         }
     }
 
+    /// <summary>
+    /// 版本号规则(用户指定): 原版 PC 版本号 + 修改次数, 由 tools/bump_version.py 写进 ProjectSettings。
+    /// 环境变量 BUILD_VERSION 仍然优先, 便于临时覆盖。
+    /// </summary>
     private static string GetBuildVersion()
     {
-        return Env("BUILD_VERSION", "0.1.0");
+        var env = Environment.GetEnvironmentVariable("BUILD_VERSION");
+        if (!string.IsNullOrEmpty(env)) return env;
+        return PlayerSettings.bundleVersion;   // 形如 1.5.0.108
     }
 
+    /// <summary>bundleVersionCode 由版本号推导, 保证每次安装都是递增的。</summary>
     private static int GetBundleVersionCode()
     {
-        return ParseInt(Env("BUNDLE_VERSION_CODE", "1"), 1);
+        var env = Environment.GetEnvironmentVariable("BUNDLE_VERSION_CODE");
+        if (!string.IsNullOrEmpty(env)) return ParseInt(env, 1);
+
+        var ver = GetBuildVersion();
+        var parts = ver.Split('.');
+        int major = parts.Length > 0 ? ParseInt(parts[0], 1) : 1;
+        int minor = parts.Length > 1 ? ParseInt(parts[1], 5) : 5;
+        int patch = parts.Length > 2 ? ParseInt(parts[2], 0) : 0;
+        int rev = parts.Length > 3 ? ParseInt(parts[3], 0) : 0;
+        return major * 10000 + minor * 100 + patch + rev;
     }
 
     private static string GetOutputPath()
