@@ -50,6 +50,14 @@ namespace StacklandsPort
                     Walk(c.transform, sb, ref lines);
                 }
                 // 额外: 把所有带 <sprite 标记的文本单独列出来(说明精灵表没生效)
+                sb.AppendLine("---- legacy Text with log-like content ----");
+                var legacyTexts = UnityEngine.Object.FindObjectsOfType<Text>(true);
+                foreach (var t in legacyTexts)
+                {
+                    if (t == null || t.text == null) continue;
+                    if (t.text.IndexOf("SteamAPI", StringComparison.OrdinalIgnoreCase) < 0 && t.text.IndexOf("Exception", StringComparison.OrdinalIgnoreCase) < 0) continue;
+                    sb.AppendLine($"LOGLEGACY active={t.gameObject.activeInHierarchy} path={Path(t.transform)} text={Trim(t.text, 90)}");
+                }
                 sb.AppendLine("---- texts with unresolved sprite tags ----");
                 var texts = UnityEngine.Object.FindObjectsOfType<TMP_Text>(true);
                 foreach (var t in texts)
@@ -57,6 +65,22 @@ namespace StacklandsPort
                     if (t == null || t.text == null) continue;
                     if (t.text.IndexOf("<sprite", StringComparison.OrdinalIgnoreCase) < 0) continue;
                     sb.AppendLine($"BROKENTAG active={t.gameObject.activeInHierarchy} path={Path(t.transform)} text={Trim(t.text, 120)}");
+                }
+                sb.AppendLine("---- world renderers ----");
+                var mrs = UnityEngine.Object.FindObjectsOfType<MeshRenderer>(true);
+                int mc = 0;
+                foreach (var mr in mrs)
+                {
+                    if (mr == null || mc++ > 120) break;
+                    var m = mr.sharedMaterial;
+                    sb.AppendLine($"MR act={mr.gameObject.activeInHierarchy} path={Path(mr.transform)} mat={(m == null ? "NULL" : m.name)} shader={(m == null || m.shader == null ? "NULL" : m.shader.name)} bounds={mr.bounds.size.x:F2}x{mr.bounds.size.y:F2} at={mr.bounds.center.x:F1},{mr.bounds.center.y:F1}");
+                }
+                var srs = UnityEngine.Object.FindObjectsOfType<SpriteRenderer>(true);
+                int sc = 0;
+                foreach (var sr in srs)
+                {
+                    if (sr == null || sc++ > 80) break;
+                    sb.AppendLine($"SR act={sr.gameObject.activeInHierarchy} path={Path(sr.transform)} sprite={(sr.sprite == null ? "NULL" : sr.sprite.name)} mat={(sr.sharedMaterial == null ? "NULL" : sr.sharedMaterial.name)} col={sr.color.r:F2},{sr.color.g:F2},{sr.color.b:F2},{sr.color.a:F2}");
                 }
                 sb.AppendLine("---- ui dump end ----");
                 PortLog.Write(sb.ToString());
@@ -72,8 +96,15 @@ namespace StacklandsPort
                 string txt = "";
                 var tmp = t.GetComponent<TMP_Text>();
                 if (tmp != null && !string.IsNullOrEmpty(tmp.text)) txt = " text=" + Trim(tmp.text, 40);
+                if (tmp == null)
+                {
+                    var legacy = t.GetComponent<Text>();
+                    if (legacy != null && !string.IsNullOrEmpty(legacy.text)) txt = " ltext=" + Trim(legacy.text, 60);
+                }
                 var img = t.GetComponent<Image>();
-                if (img != null) txt += $" img={(img.sprite == null ? "NULL" : img.sprite.name)} col={img.color.r:F2},{img.color.g:F2},{img.color.b:F2},{img.color.a:F2}";
+                if (img != null) txt += $" img={(img.sprite == null ? "NULL" : img.sprite.name)} col={img.color.r:F2},{img.color.g:F2},{img.color.b:F2},{img.color.a:F2} mat={(img.material == null || img.material.shader == null ? "NULL" : img.material.shader.name)}";
+                var sr = t.GetComponent<SpriteRenderer>();
+                if (sr != null) txt += $" sr={(sr.sprite == null ? "NULL" : sr.sprite.name)} col={sr.color.r:F2},{sr.color.g:F2},{sr.color.b:F2},{sr.color.a:F2}";
                 if (lines++ < 400)
                     sb.AppendLine($"{new string(' ', Mathf.Min(depth, 12))}{t.name} act={t.gameObject.activeSelf} {rect}{txt}");
                 if (depth > 1 && t.childCount > 40) return;
