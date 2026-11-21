@@ -40,6 +40,7 @@ public static class PortBuild
         "Assets/Scenes/SampleScene.unity",
     };
 
+    // 按用户口径: Vulkan 优先, GLES3 次选。
     private static readonly GraphicsDeviceType[] TargetGraphicsAPIs =
     {
         GraphicsDeviceType.Vulkan,

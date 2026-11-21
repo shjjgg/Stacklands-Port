@@ -395,7 +395,7 @@ jobs:
           customParameters: >-
             -buildPath builds/android
             -strictBuild
-            -maxWarnings ${STRICT_MAX_WARNINGS}
+            -maxWarnings ${{ env.STRICT_MAX_WARNINGS }}
       # ---- 严格审计 A: 日志 (Unity 退出码 0 不代表内容没错) ----
       - name: Strict log audit
         run: |
