@@ -49,14 +49,14 @@ MonoBehaviour:
   NameTerm: card_human_poop_name
   DescriptionTerm: card_human_poop_description
   PickupSoundGroup: 2
-  PickupSound: {fileID: 8300000, guid: f79f4aaeceb8d7544b15433aaeb36965, type: 3}
+  PickupSound: {fileID: 8300000, guid: 354d99a0fb730ff4bb950a539cd9c136, type: 3}
   UniqueId:
   ParentUniqueId:
   EquipmentHolderUniqueId:
   WorkerHolderUniqueId:
   WorkerIndex: -1
   Value: 1
-  Icon: {fileID: 21300000, guid: b385d09a2f92d05408561daee40d273e, type: 2}
+  Icon: {fileID: 21300000, guid: a476954c4ed816a4d876ee88043be02c, type: 2}
   MyGameCard: {fileID: 0}
   IsFoil: 0
   IsShiny: 0
@@ -83,7 +83,7 @@ MonoBehaviour:
   IsOn: 1
   EnergyConnectors: []
   SickChance: 10
-  PoopSound: {fileID: 8300000, guid: c4a7194e8c7b90541bdab8c698e804e7, type: 3}
+  PoopSound: {fileID: 8300000, guid: 8dfb686b0a870a646b3b2ed6f1597263, type: 3}
   references:
     version: 2
     RefIds: []

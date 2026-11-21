@@ -49,14 +49,14 @@ MonoBehaviour:
   NameTerm: card_old_villager_name
   DescriptionTerm: card_old_villager_description
   PickupSoundGroup: 3
-  PickupSound: {fileID: 8300000, guid: cbb59f0c2c55d14498502d03b388dc7e, type: 3}
+  PickupSound: {fileID: 8300000, guid: 8fd04948429f3e544863c5f8340652ca, type: 3}
   UniqueId:
   ParentUniqueId:
   EquipmentHolderUniqueId:
   WorkerHolderUniqueId:
   WorkerIndex: -1
   Value: -1
-  Icon: {fileID: 21300000, guid: 4141a2175e197e84d9f567738824aa2d, type: 2}
+  Icon: {fileID: 21300000, guid: 05691da6105ec8343b40e7babad32e9f, type: 2}
   MyGameCard: {fileID: 0}
   IsFoil: 0
   IsShiny: 0

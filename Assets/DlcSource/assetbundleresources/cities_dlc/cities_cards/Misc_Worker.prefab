@@ -49,14 +49,14 @@ MonoBehaviour:
   NameTerm: card_worker_name
   DescriptionTerm: card_worker_description
   PickupSoundGroup: 3
-  PickupSound: {fileID: 8300000, guid: 5f13a52de8f8e2f49b00948017e9ed15, type: 3}
+  PickupSound: {fileID: 8300000, guid: 7793080ea096eaf4da1dfe6da6b2789e, type: 3}
   UniqueId:
   ParentUniqueId:
   EquipmentHolderUniqueId:
   WorkerHolderUniqueId:
   WorkerIndex: -1
   Value: -1
-  Icon: {fileID: 21300000, guid: 0e81b900d068b0b44b48e68678242e69, type: 2}
+  Icon: {fileID: 21300000, guid: 29bc941cb22d08b4498186fd60ea7040, type: 2}
   MyGameCard: {fileID: 0}
   IsFoil: 0
   IsShiny: 0

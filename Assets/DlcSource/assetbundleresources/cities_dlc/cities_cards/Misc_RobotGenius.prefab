@@ -49,14 +49,14 @@ MonoBehaviour:
   NameTerm: card_robot_genius_name
   DescriptionTerm: card_robot_genius_description
   PickupSoundGroup: 3
-  PickupSound: {fileID: 8300000, guid: 9027af665de9124479faad31dcee883d, type: 3}
+  PickupSound: {fileID: 8300000, guid: 748c90f506f22bb4d8f43647632d1144, type: 3}
   UniqueId:
   ParentUniqueId:
   EquipmentHolderUniqueId:
   WorkerHolderUniqueId:
   WorkerIndex: -1
   Value: 1
-  Icon: {fileID: 21300000, guid: b2cba4acd9b04474bb621930141f4b6a, type: 2}
+  Icon: {fileID: 21300000, guid: 76a276e42f3b789458e12b31337259d5, type: 2}
   MyGameCard: {fileID: 0}
   IsFoil: 0
   IsShiny: 0

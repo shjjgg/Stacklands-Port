@@ -49,14 +49,14 @@ MonoBehaviour:
   NameTerm: card_altar_name
   DescriptionTerm: card_altar_description
   PickupSoundGroup: 2
-  PickupSound: {fileID: 8300000, guid: eca59af84228f1747ba1453ba92b5afb, type: 3}
+  PickupSound: {fileID: 8300000, guid: 8d5d4f163a3f98d46991a313463a5efd, type: 3}
   UniqueId:
   ParentUniqueId:
   EquipmentHolderUniqueId:
   WorkerHolderUniqueId:
   WorkerIndex: -1
   Value: 3
-  Icon: {fileID: 21300000, guid: 424575622da3a044eb14e15162d022e2, type: 2}
+  Icon: {fileID: 21300000, guid: b95034844a7cd8142b6bff7b583bfa6e, type: 2}
   MyGameCard: {fileID: 0}
   IsFoil: 0
   IsShiny: 0
@@ -83,7 +83,7 @@ MonoBehaviour:
   IsOn: 1
   EnergyConnectors: []
   inCutscene: 0
-  AltarActive: {fileID: 8300000, guid: d9d83e4ce5c1a614394423b36e626a61, type: 3}
+  AltarActive: {fileID: 8300000, guid: 04a0c9531cfd1d141b001992aaca3b55, type: 3}
   references:
     version: 2
     RefIds: []

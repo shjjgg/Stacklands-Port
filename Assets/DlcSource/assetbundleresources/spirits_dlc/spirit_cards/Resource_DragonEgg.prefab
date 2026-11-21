@@ -56,7 +56,7 @@ MonoBehaviour:
   WorkerHolderUniqueId:
   WorkerIndex: -1
   Value: -1
-  Icon: {fileID: 21300000, guid: 05e2e460b7284a04cb4930e5182b82b2, type: 2}
+  Icon: {fileID: 21300000, guid: ba953b89213b4994ebcd10ee60d7fd81, type: 2}
   MyGameCard: {fileID: 0}
   IsFoil: 0
   IsShiny: 1
@@ -83,11 +83,11 @@ MonoBehaviour:
   IsOn: 1
   EnergyConnectors: []
   CrackedState: 0
-  NormalIcon: {fileID: 21300000, guid: 05e2e460b7284a04cb4930e5182b82b2, type: 2}
-  CrackedIcon: {fileID: 21300000, guid: 3c853700d47d3c6498846e9fb06743e6, type: 2}
-  CrackedIcon_2: {fileID: 21300000, guid: 410ac9e20693d854e9eb7c2c86e01d56, type: 2}
-  CrackedSound: {fileID: 8300000, guid: ccb4fc02e954a304c9697c6543a1d26f, type: 3}
-  CrackedSound2: {fileID: 8300000, guid: b9910bbcc808fe94a964e33a2d34bffd, type: 3}
+  NormalIcon: {fileID: 21300000, guid: ba953b89213b4994ebcd10ee60d7fd81, type: 2}
+  CrackedIcon: {fileID: 21300000, guid: 371dccbd39946b644b82bc773e780a65, type: 2}
+  CrackedIcon_2: {fileID: 21300000, guid: e3ef4f19167cb414c8bc18faed95c48e, type: 2}
+  CrackedSound: {fileID: 8300000, guid: 8717728c7f7e956498cb46593f001b5a, type: 3}
+  CrackedSound2: {fileID: 8300000, guid: ddb20e38eb3acf844b14f5c022180635, type: 3}
   references:
     version: 2
     RefIds: []

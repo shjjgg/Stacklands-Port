@@ -56,7 +56,7 @@ MonoBehaviour:
   WorkerHolderUniqueId:
   WorkerIndex: -1
   Value: 1
-  Icon: {fileID: 21300000, guid: e26d07e7a63b8924fb045df3264563e0, type: 2}
+  Icon: {fileID: 21300000, guid: 3d37a7bcf2fdc5043a7ee86f94e82f01, type: 2}
   MyGameCard: {fileID: 0}
   IsFoil: 0
   IsShiny: 0
@@ -87,7 +87,7 @@ MonoBehaviour:
     EnergyConnectionAmount: 3
   ResourceCount: 0
   HeldCardId:
-  SpecialIcon: {fileID: 21300000, guid: a4389785aa7f8f2499b5ad085942a3df, type: 2}
+  SpecialIcon: {fileID: 21300000, guid: 265871cf0621b494f9266634dd01132d, type: 2}
   ChestTermOverride: card_storage_container_name_override
   ChestDescriptionLong: card_storage_container_description_long
   MaxResourceCount: 200

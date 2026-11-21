@@ -49,14 +49,14 @@ MonoBehaviour:
   NameTerm: card_shaman_name
   DescriptionTerm: card_shaman_description
   PickupSoundGroup: 3
-  PickupSound: {fileID: 8300000, guid: d42222cab0440d4408de732d508baf19, type: 3}
+  PickupSound: {fileID: 8300000, guid: 9d989069c6977014ab9e82639aa73407, type: 3}
   UniqueId:
   ParentUniqueId:
   EquipmentHolderUniqueId:
   WorkerHolderUniqueId:
   WorkerIndex: -1
   Value: -1
-  Icon: {fileID: 21300000, guid: a91c755b56e900c4db844df48ef0c62b, type: 2}
+  Icon: {fileID: 21300000, guid: 98e7143aada249849804435ba16f0cf7, type: 2}
   MyGameCard: {fileID: 0}
   IsFoil: 0
   IsShiny: 0
@@ -82,7 +82,7 @@ MonoBehaviour:
   DamageType: 0
   IsOn: 1
   EnergyConnectors: []
-  GiveIdea: {fileID: 8300000, guid: c6912db707726384887f3d91140c345b, type: 3}
+  GiveIdea: {fileID: 8300000, guid: f08bda174da34d64a96c04e79b389d7b, type: 3}
   TalkTime: 20
   references:
     version: 2

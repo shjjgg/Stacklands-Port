@@ -18,7 +18,7 @@ MonoBehaviour:
   MinAchievementCount: 5
   IsIntroPack: 0
   Cost: 4
-  Icon: {fileID: 21300000, guid: 2ba99261ef054e94eac9c0a45f7776b8, type: 2}
+  Icon: {fileID: 21300000, guid: 5100ca8233ad3a5428dee73dc41668dd, type: 2}
   BoosterLocation: 3
   CardBags:
   - CardBagType: 2

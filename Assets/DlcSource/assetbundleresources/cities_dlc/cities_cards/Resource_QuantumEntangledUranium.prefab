@@ -49,14 +49,14 @@ MonoBehaviour:
   NameTerm: card_quantum_entangled_uranium_name
   DescriptionTerm: card_quantum_entangled_uranium_description
   PickupSoundGroup: 3
-  PickupSound: {fileID: 8300000, guid: 402de511e6aeb5d419dadc2d1f4b3afb, type: 3}
+  PickupSound: {fileID: 8300000, guid: 6e13121900224db4188ee4b0a4ac8800, type: 3}
   UniqueId:
   ParentUniqueId:
   EquipmentHolderUniqueId:
   WorkerHolderUniqueId:
   WorkerIndex: -1
   Value: 1
-  Icon: {fileID: 21300000, guid: 0fab82f7447de3446a9d9da4ffb1e35b, type: 2}
+  Icon: {fileID: 21300000, guid: d97c13bb28001d0419c288af34dff1c1, type: 2}
   MyGameCard: {fileID: 0}
   IsFoil: 0
   IsShiny: 1

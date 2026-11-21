@@ -49,14 +49,14 @@ MonoBehaviour:
   NameTerm: card_old_dog_name
   DescriptionTerm: card_old_dog_description
   PickupSoundGroup: 3
-  PickupSound: {fileID: 8300000, guid: ea40023f65a1f614eb582fe1f5461f9e, type: 3}
+  PickupSound: {fileID: 8300000, guid: 7761ba1eacd56aa4e88f215d37e27075, type: 3}
   UniqueId:
   ParentUniqueId:
   EquipmentHolderUniqueId:
   WorkerHolderUniqueId:
   WorkerIndex: -1
   Value: -1
-  Icon: {fileID: 21300000, guid: b202c65e86bd73147b24b09db269d141, type: 2}
+  Icon: {fileID: 21300000, guid: 369afdb990904ef4ca293d92d735d01b, type: 2}
   MyGameCard: {fileID: 0}
   IsFoil: 0
   IsShiny: 0

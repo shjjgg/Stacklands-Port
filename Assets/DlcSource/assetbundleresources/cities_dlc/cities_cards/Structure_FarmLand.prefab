@@ -56,7 +56,7 @@ MonoBehaviour:
   WorkerHolderUniqueId:
   WorkerIndex: -1
   Value: 1
-  Icon: {fileID: 21300000, guid: b0d43b703e727b840b0fb8ea07a9820b, type: 2}
+  Icon: {fileID: 21300000, guid: 5a0680b0db881704eae36913d2924df7, type: 2}
   MyGameCard: {fileID: 0}
   IsFoil: 0
   IsShiny: 0
@@ -92,9 +92,9 @@ MonoBehaviour:
   IsDepleted: 0
   DepletedTime: 30
   HarvestTime: 60
-  WateringSound: {fileID: 8300000, guid: 89b7bd37c1ed62b48974c876e81baa9e, type: 3}
-  DepletedIcon: {fileID: 21300000, guid: 7d3c260e5114a3849bd884d4b8afefd8, type: 2}
-  NormalIcon: {fileID: 21300000, guid: b0d43b703e727b840b0fb8ea07a9820b, type: 2}
+  WateringSound: {fileID: 8300000, guid: 1f134965924356a41b6c1383486f8e04, type: 3}
+  DepletedIcon: {fileID: 21300000, guid: 65786f95c945c27449804b470e433f5c, type: 2}
+  NormalIcon: {fileID: 21300000, guid: 5a0680b0db881704eae36913d2924df7, type: 2}
   references:
     version: 2
     RefIds: []

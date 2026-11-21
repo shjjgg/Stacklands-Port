@@ -49,14 +49,14 @@ MonoBehaviour:
   NameTerm: card_hundred_dollar_name
   DescriptionTerm: card_hundred_dollar_description
   PickupSoundGroup: 3
-  PickupSound: {fileID: 8300000, guid: ff71a95e91378a34fa176681ec6e879d, type: 3}
+  PickupSound: {fileID: 8300000, guid: b97a20f39d0fca444bb7ca2e9e1e50c3, type: 3}
   UniqueId:
   ParentUniqueId:
   EquipmentHolderUniqueId:
   WorkerHolderUniqueId:
   WorkerIndex: -1
   Value: -1
-  Icon: {fileID: 21300000, guid: 9d1f564bfc44da341aa0e7490bc50bde, type: 2}
+  Icon: {fileID: 21300000, guid: 0ecd7ad410e409943b0f38e405050803, type: 2}
   MyGameCard: {fileID: 0}
   IsFoil: 0
   IsShiny: 0

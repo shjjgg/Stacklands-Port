@@ -49,14 +49,14 @@ MonoBehaviour:
   NameTerm: card_ten_dollar_name
   DescriptionTerm: card_ten_dollar_description
   PickupSoundGroup: 3
-  PickupSound: {fileID: 8300000, guid: 83655548e4016324297ba1848fbfb461, type: 3}
+  PickupSound: {fileID: 8300000, guid: a5b3fed0983076f4fb26e9b46253e2b0, type: 3}
   UniqueId:
   ParentUniqueId:
   EquipmentHolderUniqueId:
   WorkerHolderUniqueId:
   WorkerIndex: -1
   Value: -1
-  Icon: {fileID: 21300000, guid: 245a3fd66da2d0f45abee4691431dbee, type: 2}
+  Icon: {fileID: 21300000, guid: 85b6ff8bd42ea53489ffb4b8364e17ef, type: 2}
   MyGameCard: {fileID: 0}
   IsFoil: 0
   IsShiny: 0

@@ -56,7 +56,7 @@ MonoBehaviour:
   WorkerHolderUniqueId:
   WorkerIndex: -1
   Value: 3
-  Icon: {fileID: 21300000, guid: b959eafc628c3a74fb916724ae9923d3, type: 2}
+  Icon: {fileID: 21300000, guid: 00a01191f984a124a888e104863c1bdc, type: 2}
   MyGameCard: {fileID: 0}
   IsFoil: 0
   IsShiny: 0
@@ -86,7 +86,7 @@ MonoBehaviour:
   EquipableType: 1
   AttackSounds: []
   AttackType: 0
-  blueprint: {fileID: 114724804207875695, guid: 1849c3e3e629beb4688f2035bf63a5a6, type: 2}
+  blueprint: {fileID: 114724804207875695, guid: a1712c3630eab67408d0a172b5c5f5c0, type: 2}
   MyStats:
     MaxHealth: 15
     AttackSpeed: 3.5

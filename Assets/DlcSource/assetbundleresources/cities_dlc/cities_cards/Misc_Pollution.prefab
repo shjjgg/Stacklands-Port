@@ -49,14 +49,14 @@ MonoBehaviour:
   NameTerm: card_pollution_name
   DescriptionTerm: card_pollution_description
   PickupSoundGroup: 3
-  PickupSound: {fileID: 8300000, guid: 813c9a0c06e5c764cb963c7aef1d2dce, type: 3}
+  PickupSound: {fileID: 8300000, guid: 14bb654241af00f4fb995a7d7a8f7ea6, type: 3}
   UniqueId:
   ParentUniqueId:
   EquipmentHolderUniqueId:
   WorkerHolderUniqueId:
   WorkerIndex: -1
   Value: -1
-  Icon: {fileID: 21300000, guid: 7f99076099faed74db41cd6d134bfe08, type: 2}
+  Icon: {fileID: 21300000, guid: d767d7b474de19d4a95962c95a78a617, type: 2}
   MyGameCard: {fileID: 0}
   IsFoil: 0
   IsShiny: 0

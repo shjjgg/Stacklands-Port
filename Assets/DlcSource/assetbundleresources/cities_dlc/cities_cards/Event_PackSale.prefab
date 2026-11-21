@@ -56,7 +56,7 @@ MonoBehaviour:
   WorkerHolderUniqueId:
   WorkerIndex: -1
   Value: -1
-  Icon: {fileID: 21300000, guid: a42f7dbc121f9f74bacceb62bf592e99, type: 2}
+  Icon: {fileID: 21300000, guid: a1018004c1c7efe47af54c515d45629c, type: 2}
   MyGameCard: {fileID: 0}
   IsFoil: 0
   IsShiny: 0
@@ -89,7 +89,7 @@ MonoBehaviour:
   ShouldStartEvent: 0
   EventType: 4
   EventIsActive: 0
-  EventStartOverride: {fileID: 8300000, guid: c1023dbbba3913444a19b2e26a69bf26, type: 3}
+  EventStartOverride: {fileID: 8300000, guid: 2162648ec2da325499fdb72a6378e71c, type: 3}
   references:
     version: 2
     RefIds: []

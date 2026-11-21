@@ -56,7 +56,7 @@ MonoBehaviour:
   WorkerHolderUniqueId:
   WorkerIndex: -1
   Value: 1
-  Icon: {fileID: 21300000, guid: fc6ac84533dc67349a195e0a7cf1a48a, type: 2}
+  Icon: {fileID: 21300000, guid: e4399ae3e622c5a48bb1ec52fc317e81, type: 2}
   MyGameCard: {fileID: 0}
   IsFoil: 0
   IsShiny: 0

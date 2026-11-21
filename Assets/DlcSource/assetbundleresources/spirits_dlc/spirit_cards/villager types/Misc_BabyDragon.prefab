@@ -49,14 +49,14 @@ MonoBehaviour:
   NameTerm: card_baby_dragon_name
   DescriptionTerm: card_baby_dragon_description
   PickupSoundGroup: 3
-  PickupSound: {fileID: 8300000, guid: 17e8d88ea9b4eb544bbf9b9736d18135, type: 3}
+  PickupSound: {fileID: 8300000, guid: bf1cef533c54ad44eb0a36d73bd4ec65, type: 3}
   UniqueId:
   ParentUniqueId:
   EquipmentHolderUniqueId:
   WorkerHolderUniqueId:
   WorkerIndex: -1
   Value: -1
-  Icon: {fileID: 21300000, guid: 9a1f546beffd02b4487a110351b28320, type: 2}
+  Icon: {fileID: 21300000, guid: 3229097b464188149bbcc82f049ab480, type: 2}
   MyGameCard: {fileID: 0}
   IsFoil: 0
   IsShiny: 0

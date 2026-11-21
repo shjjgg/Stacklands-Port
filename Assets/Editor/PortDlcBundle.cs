@@ -65,7 +65,7 @@ public static class PortDlcBundle
 
             if (builds.Count > 0)
             {
-                var options = BuildAssetBundleOptions.ChunkBasedCompression;
+                var options = BuildAssetBundleOptions.None;
                 var manifest = BuildPipeline.BuildAssetBundles(OutDir, builds.ToArray(), options, BuildTarget.Android);
                 if (manifest == null) { Debug.LogError("[PortDlc] BuildAssetBundles 返回 null"); return false; }
 

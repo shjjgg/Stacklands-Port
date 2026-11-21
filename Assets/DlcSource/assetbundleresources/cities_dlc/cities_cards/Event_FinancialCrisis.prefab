@@ -49,14 +49,14 @@ MonoBehaviour:
   NameTerm: card_financial_crisis_name
   DescriptionTerm: card_financial_crisis_description
   PickupSoundGroup: 3
-  PickupSound: {fileID: 8300000, guid: b502f8bc0e339ad4e9279098aa7f553d, type: 3}
+  PickupSound: {fileID: 8300000, guid: 140348652df5f8f4aaec58bce1d6931b, type: 3}
   UniqueId:
   ParentUniqueId:
   EquipmentHolderUniqueId:
   WorkerHolderUniqueId:
   WorkerIndex: -1
   Value: -1
-  Icon: {fileID: 21300000, guid: f65d56d9b2ff2fa43916bb6c04c27353, type: 2}
+  Icon: {fileID: 21300000, guid: 9f476a5aa38c0294ea6c02c003f1ca01, type: 2}
   MyGameCard: {fileID: 0}
   IsFoil: 0
   IsShiny: 0
@@ -89,7 +89,7 @@ MonoBehaviour:
   ShouldStartEvent: 0
   EventType: 1
   EventIsActive: 0
-  EventStartOverride: {fileID: 8300000, guid: 981aa7de6ebc7b541aeb5d88fbaf07b4, type: 3}
+  EventStartOverride: {fileID: 8300000, guid: dccdc388224f6c74ab4a2dd117165f1c, type: 3}
   references:
     version: 2
     RefIds: []

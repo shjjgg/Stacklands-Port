@@ -49,14 +49,14 @@ MonoBehaviour:
   NameTerm: card_happiness_curse_name
   DescriptionTerm: card_happiness_curse_description
   PickupSoundGroup: 3
-  PickupSound: {fileID: 8300000, guid: 4dd2783699bb33d49a96eb59f198408a, type: 3}
+  PickupSound: {fileID: 8300000, guid: 47ebba277f4a3be48adc7d27371ecc8a, type: 3}
   UniqueId:
   ParentUniqueId:
   EquipmentHolderUniqueId:
   WorkerHolderUniqueId:
   WorkerIndex: -1
   Value: -1
-  Icon: {fileID: 21300000, guid: 4fb006ef771765047b601797f07fde15, type: 2}
+  Icon: {fileID: 21300000, guid: 9609582cfea4c984f8eb452a8b890162, type: 2}
   MyGameCard: {fileID: 0}
   IsFoil: 0
   IsShiny: 0

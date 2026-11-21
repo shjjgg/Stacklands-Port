@@ -56,7 +56,7 @@ MonoBehaviour:
   WorkerHolderUniqueId:
   WorkerIndex: -1
   Value: -1
-  Icon: {fileID: 21300000, guid: 1ecf20de84d871b4f8cda684987b8b13, type: 2}
+  Icon: {fileID: 21300000, guid: e846e9118bdcb7e48a614e9c52f5ab3d, type: 2}
   MyGameCard: {fileID: 0}
   IsFoil: 0
   IsShiny: 0
@@ -82,7 +82,7 @@ MonoBehaviour:
   DamageType: 0
   IsOn: 1
   EnergyConnectors: []
-  CreateSound: {fileID: 8300000, guid: 86dd25f6c048eb34fa15a3165b025433, type: 3}
+  CreateSound: {fileID: 8300000, guid: 78fba887414cc31469d5db7cbeeb676e, type: 3}
   MaxCapacity: 15
   references:
     version: 2
