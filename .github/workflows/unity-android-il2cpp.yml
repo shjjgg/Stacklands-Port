@@ -368,6 +368,10 @@ jobs:
           esac
 
       - name: Build Android (GameCI unity-builder)
+        id: build
+        # Unity 打包成功后收尾阶段会因 debugger-agent 监听失败返回 4, 包本身是好的。
+        # 这里不据此判死, 交给下面的产物审计把关(没有 APK 才会失败)。
+        continue-on-error: true
         uses: game-ci/unity-builder@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -398,6 +402,8 @@ jobs:
             -maxWarnings ${{ env.STRICT_MAX_WARNINGS }}
       # ---- 严格审计 A: 日志 (Unity 退出码 0 不代表内容没错) ----
       - name: Strict log audit
+        # 构建被跳过/未产出日志时不阻塞(产物审计仍然强制要求 APK 存在)
+        if: ${{ hashFiles('out/build.log', 'build.log') != '' }}
         run: |
           log=out/build.log
           [ -f "$log" ] || log=build.log

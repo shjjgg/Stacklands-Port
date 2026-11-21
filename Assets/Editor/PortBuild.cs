@@ -79,10 +79,6 @@ public static class PortBuild
         ApplyPlayerSettings(isDevelopment);
 
         // ---- 门 3: 设置回读 + Shader 全量检查 (写进去 ≠ 生效) ----
-        // 打包成功: 显式 Exit(0)。Unity 收尾阶段的 debugger-agent 监听失败会返回 4,
-        // 导致 CI 把"包已经打出来"误判为失败。
-        Debug.Log("[PortBuild] 构建成功, 显式退出 0");
-        EditorApplication.Exit(0);
         if (strict)
         {
             VerifyAppliedSettings();
