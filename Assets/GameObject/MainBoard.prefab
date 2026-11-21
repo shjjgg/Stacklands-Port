@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 33147432533205591}
   - component: {fileID: 23842794799092993}
   - component: {fileID: 114118718119338073}
+  - component: {fileID: 2100000100}
+  - component: {fileID: 2100000101}
   m_Layer: 0
   m_Name: MainBoard
   m_TagString: Untagged
@@ -86670,3 +86672,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2100000100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagName: MainBoard
+
+--- !u!114 &2100000101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d2e3f405b6c7d8e9f0a1b2c3d4e5f6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagName: MainBoard

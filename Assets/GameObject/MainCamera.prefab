@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 114044625135789424}
   - component: {fileID: 114589667821646929}
   - component: {fileID: 114372920208702427}
+  - component: {fileID: 2100000102}
+  - component: {fileID: 2100000103}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -530,3 +532,30 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &2100000102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagName: MainCamera
+
+--- !u!114 &2100000103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d2e3f405b6c7d8e9f0a1b2c3d4e5f6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagName: MainCamera

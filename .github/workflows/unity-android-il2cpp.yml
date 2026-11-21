@@ -43,6 +43,11 @@ env:
   LOG_WARNINGS_BASELINE: "30"
   STRICT_MIN_CUSTOM_SHADERS: "20"
 
+
+concurrency:
+  group: unity-android-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   static-analysis:
     name: 静态分析与台账提取

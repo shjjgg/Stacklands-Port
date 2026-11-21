@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4730242686860875}
   - component: {fileID: 114724804207875695}
+  - component: {fileID: 2100000068}
+  - component: {fileID: 2100000069}
   m_Layer: 0
   m_Name: FontManager
   m_TagString: Untagged
@@ -53,3 +55,30 @@ MonoBehaviour:
   KoreanFontAsset: {fileID: 11400000, guid: 81a61a5bb68f984499c217d97a98f4d6, type: 2}
   WorldFontMaterial: {fileID: 2100000, guid: 17265766d373f844e8cfdd94354226c1, type: 2}
   WorldFontShader: {fileID: 4800000, guid: b02a6f2502ad0dc418f8d5ece43327e8, type: 3}
+--- !u!114 &2100000068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagName: FontManager
+
+--- !u!114 &2100000069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d2e3f405b6c7d8e9f0a1b2c3d4e5f6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagName: FontManager

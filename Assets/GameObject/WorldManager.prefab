@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4730242686860875}
   - component: {fileID: 114724804207875695}
+  - component: {fileID: 2100000158}
+  - component: {fileID: 2100000159}
   m_Layer: 0
   m_Name: WorldManager
   m_TagString: Untagged
@@ -272,3 +274,30 @@ MonoBehaviour:
     HasCitiesBoard: 0
     BuiltLandmarks: []
   GivenCards: []
+--- !u!114 &2100000158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagName: WorldManager
+
+--- !u!114 &2100000159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d2e3f405b6c7d8e9f0a1b2c3d4e5f6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagName: WorldManager

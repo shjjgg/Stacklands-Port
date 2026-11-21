@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4730242686860875}
   - component: {fileID: 114724804207875695}
+  - component: {fileID: 2100000002}
+  - component: {fileID: 2100000003}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -186,3 +188,30 @@ MonoBehaviour:
   ClearPollution: {fileID: 8300000, guid: 4e5ddb4e7ad59dd4084fc25bf6f14470, type: 3}
   SpawnPollution: {fileID: 8300000, guid: 5c1a6c93c8c7c7944b88b95e510cf757, type: 3}
   LandfillOverflow: {fileID: 8300000, guid: bdfcbd427727da14fbe8964f5557df28, type: 3}
+--- !u!114 &2100000002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c1d2e3f4a5b6c7d8e9f0a1b2c3d4e5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagName: AudioManager
+
+--- !u!114 &2100000003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709254077376921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d2e3f405b6c7d8e9f0a1b2c3d4e5f6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagName: AudioManager
