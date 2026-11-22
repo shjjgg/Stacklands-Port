@@ -32,7 +32,12 @@ namespace StacklandsPort
             {
                 if (_built)
                 {
-                    TryAssignChineseFont();
+                    // v0.36: FindObjectsOfType<TMP_Text> 很贵, 之前每帧跑; 改成 0.2s 一次, 找到字体立刻停
+                    if (Time.realtimeSinceStartup >= _nextFontCheck)
+                    {
+                        _nextFontCheck = Time.realtimeSinceStartup + 0.2f;
+                        TryAssignChineseFont();
+                    }
                     // 主菜单没有 GameScreen, 按钮应当隐藏(原版也没有这个按钮)
                     if (Time.realtimeSinceStartup >= _nextCheck)
                     {
@@ -61,7 +66,7 @@ namespace StacklandsPort
                 var scaler = root.AddComponent<CanvasScaler>();
                 scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
                 scaler.referenceResolution = new Vector2(1920f, 1080f);
-                scaler.matchWidthOrHeight = 0f;
+                scaler.matchWidthOrHeight = 1f;   // v0.36: 按高度匹配, 20:9 等长屏上按钮尺寸与原设计一致
                 root.AddComponent<GraphicRaycaster>();
 
                 var btnGo = new GameObject("PortSettingsButton");
@@ -118,6 +123,7 @@ namespace StacklandsPort
 
             TMPro.TMP_Text _label;
             int _fontFrames;
+            float _nextFontCheck;
 
             /// <summary>
             /// 建按钮时游戏 UI 可能还没把世界字体挂上, 拿到的是 LiberationSans SDF(无中文) → 显示 □。
@@ -125,7 +131,7 @@ namespace StacklandsPort
             /// </summary>
             void TryAssignChineseFont()
             {
-                if (_label == null || _label.font != null && _label.font.HasCharacter('设')) return;
+                if (_label == null || (_label.font != null && _label.font.HasCharacter('设'))) return;
                 if (_fontFrames++ > 240) return;
                 var texts = UnityEngine.Object.FindObjectsOfType<TMPro.TMP_Text>(true);
                 for (int i = 0; i < texts.Length; i++)

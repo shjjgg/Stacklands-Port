@@ -75,7 +75,8 @@ public static class PortDlcBundle
 
             if (builds.Count > 0)
             {
-                var options = BuildAssetBundleOptions.None;
+                // v0.36: 分块压缩(LZ4) 替代默认 LZMA, 加载时不必整包解压, 内存峰值和首帧卡顿都更低
+                var options = BuildAssetBundleOptions.ChunkBasedCompression;
                 var manifest = BuildPipeline.BuildAssetBundles(OutDir, builds.ToArray(), options, BuildTarget.Android);
                 if (manifest == null) { Debug.LogError("[PortDlc] BuildAssetBundles 返回 null"); return false; }
 

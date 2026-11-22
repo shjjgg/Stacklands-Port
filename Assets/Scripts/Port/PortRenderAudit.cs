@@ -31,6 +31,9 @@ namespace StacklandsPort
             {
                 yield return new WaitForSeconds(6f);
                 Section("menu");
+                // v0.36: 开局那次 dump 要遍历 3000+ renderer 并反射读材质, 默认不再自动跑,
+                // 需要时在 persistentDataPath 放一个空文件 render_audit_full 即可打开。
+                if (!System.IO.File.Exists(System.IO.Path.Combine(Application.persistentDataPath, "render_audit_full"))) yield break;
                 yield return new WaitForSeconds(19f);
                 Section("in-game");
             }
