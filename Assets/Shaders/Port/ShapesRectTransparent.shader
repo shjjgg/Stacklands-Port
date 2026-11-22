@@ -92,15 +92,11 @@ Shader "Shapes/Rect Transparent"
                 float2 size   = _Rect.zw;
                 float2 uv01   = (v.vertex.xy + 1.0) * 0.5;
 
-                // 原版: 曲线用「矩形四角世界位置→NDC」求屏幕像素尺度, 再给四边形留 1px 余量(抗锯齿)
-                float3 wCorner = mul(unity_ObjectToWorld, float4(center + size * 0.5, 0, 1)).xyz;
-                float4 cClip = mul(unity_MatrixVP, float4(wCorner, 1));
-                float2 ndc = cClip.xy / max(cClip.w, 1e-6);
-                float screenScale = 0.5 * length(ndc * _ScreenParams.xy);
-
+                // 原版用「四角→NDC」估像素留白, 但那份推导在透视相机 + 大 rect 下会算出上千单位的 pad,
+                // 几何直接爆到 49152x32768(屏幕白板)。这里取 0 留白, 边缘抗锯齿交给片元的 ddx/ddy。
                 float2 objScale = float2(length(unity_ObjectToWorld._m00_m10_m20),
                                          length(unity_ObjectToWorld._m01_m11_m21));
-                float2 pad = 2.0 / max(screenScale * objScale, 1e-6);
+                float2 pad = float2(0.0, 0.0);
 
                 float2 halfExt = size * objScale * 0.5 + pad;
                 float2 local = uv01 * (halfExt * 2.0) - halfExt;      // 已乘物体缩放的局部坐标
