@@ -100,12 +100,11 @@ Shader "Custom/FloorShader"
                 float aa = abs(ddy(inside)) + abs(ddx(inside));
                 float cov = saturate((inside - 0.5) / max(aa, 1e-6) + 0.5);
 
-                // 石板色/边缘色
-                float3 stone = lerp(_StoneEdge.rgb, _StoneColor.rgb, saturate(inside2));
-                float3 edge  = _EdgeColor.rgb;
-                float  edgeMask = (1.0 - saturate(inside2)) ;
-                float3 albedo = lerp(stone, edge * saturate(off.rgb * 1.6), edgeMask * 0.6);
-                albedo *= lerp(_Color.rgb, _Color2.rgb, saturate(dOut));
+                // 棋盘底色: 原版整片是 _Color 的薄荷绿, 石板/边缘只在格线上留一点点痕。
+                // 之前把 _StoneEdge(灰 0.39) 当主色, 结果整块地板被压成 0.2 亮度(实测截图 39,54,43 vs 原版 193,226,198)。
+                float3 albedo = _Color.rgb;
+                float  edgeMask = (1.0 - saturate(inside2));
+                albedo = lerp(albedo, _EdgeColor.rgb, edgeMask * 0.06);
 
                 float4 mainTex = tex2D(_MainTex, i.uv);
                 albedo *= lerp(float3(1,1,1), mainTex.rgb, 0.25);

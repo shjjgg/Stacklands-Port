@@ -102,11 +102,10 @@ Shader "Custom/FloorShaderForest"
                 float cov = saturate((inside - 0.5) / max(aa, 1e-6) + 0.5);
 
                 // 石板色/边缘色
-                float3 stone = lerp(_StoneEdge.rgb, _StoneColor.rgb, saturate(inside2));
                 float3 edge  = _EdgeColor.rgb;
                 float  edgeMask = (1.0 - saturate(inside2)) ;
-                float3 albedo = lerp(stone, edge * saturate(off.rgb * 1.6), edgeMask * 0.8);
-                albedo *= lerp(_Color.rgb, _Color2.rgb, saturate(dOut));
+                float3 albedo = _Color.rgb;
+                albedo = lerp(albedo, _EdgeColor.rgb, edgeMask * 0.06);
 
                 float4 mainTex = tex2D(_MainTex, i.uv);
                 albedo *= lerp(float3(1,1,1), mainTex.rgb, 0.25);
