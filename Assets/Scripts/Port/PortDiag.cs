@@ -48,6 +48,12 @@ namespace StacklandsPort
                 LogBackgroundTints();
                 LogBoardMaterials();
                 DumpScreenUiSprites();
+                try
+                {
+                    var bf = System.IO.Path.Combine(Application.persistentDataPath, "bench_on");
+                    if (System.IO.File.Exists(bf)) PortShaderBench.Run();
+                }
+                catch { }
                 PortLog.Write("[PortDiag] gfx=" + SystemInfo.graphicsDeviceType +
                               " colorSpace=" + QualitySettings.activeColorSpace +
                               " screen=" + Screen.width + "x" + Screen.height +
@@ -248,6 +254,11 @@ namespace StacklandsPort
                 }
                 if (GUI.Button(new Rect(6 + (bw + 10) * 2 + bw * 0.7f + 14 + bw + 10, h + 14, bw * 0.6f, bh), "隐藏", btn))
                     Hide();
+                if (GUI.Button(new Rect(6, h + 14 + bh + 8, bw * 2f, bh), "靶场(shader 逐一出图)", btn))
+                {
+                    PortShaderBench.Run();
+                    _hideAt = Time.unscaledTime + 120f;
+                }
             }
         }
     }
