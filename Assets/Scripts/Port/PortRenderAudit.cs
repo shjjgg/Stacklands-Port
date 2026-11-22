@@ -47,6 +47,7 @@ namespace StacklandsPort
             Safe("shaders", DumpShaders);
             Safe("sprites", DumpSprites);
             Safe("bad-materials", DumpBadMaterials);
+            Safe("cardart", DumpCardArt);
         }
 
         static void Safe(string name, Action a)
@@ -168,6 +169,50 @@ namespace StacklandsPort
                 if (sample.Count >= 10) break;
             }
             PortLog.Write(Tag + "sprite sample: " + string.Join(" || ", sample));
+        }
+
+        /// <summary>
+        /// v0.37: 卡面美术层专查 —— 卡牌字(村民/岩石)是 TMP, 图案是 CardIcon 上的 SpriteRenderer,
+        /// 图案倒立只可能来自 sprite 的 rect/pivot/flip 或精灵网格 UV, 与 Shapes 卡框无关。
+        /// 这里直接打印 sprite.uv 前 4 个角与渲染器网格的 UV 范围, 一次日志就能定位。
+        /// </summary>
+        static void DumpCardArt()
+        {
+            int n = 0;
+            foreach (var sr in UnityEngine.Object.FindObjectsOfType<SpriteRenderer>())
+            {
+                if (sr == null || sr.sprite == null) continue;
+                if (sr.gameObject.name != "CardIcon") continue;
+                var sp = sr.sprite;
+                var uv = sp.uv;
+                var mesh = sr.GetComponent<MeshFilter>() != null ? sr.GetComponent<MeshFilter>().sharedMesh : null;
+                string meshUv = "no-mesh";
+                if (mesh != null)
+                {
+                    var uvs = mesh.uv;
+                    if (uvs != null && uvs.Length > 0)
+                    {
+                        float minY = 9f, maxY = -9f, minX = 9f, maxX = -9f;
+                        for (int i = 0; i < uvs.Length; i++)
+                        {
+                            minX = Mathf.Min(minX, uvs[i].x); maxX = Mathf.Max(maxX, uvs[i].x);
+                            minY = Mathf.Min(minY, uvs[i].y); maxY = Mathf.Max(maxY, uvs[i].y);
+                        }
+                        meshUv = $"uv.x=[{minX:F3},{maxX:F3}] uv.y=[{minY:F3},{maxY:F3}] verts={uvs.Length}";
+                    }
+                }
+                var tr = sr.transform;
+                PortLog.Write(Tag + "cardart " + sr.name + " sprite=" + sp.name +
+                              " tex=" + (sp.texture != null ? sp.texture.name : "null") +
+                              " rect=" + sp.rect + " pivot=" + sp.pivot +
+                              " uv0=" + (uv != null && uv.Length > 0 ? uv[0].ToString("F3") : "?") +
+                              " uv3=" + (uv != null && uv.Length > 3 ? uv[3].ToString("F3") : "?") +
+                              " flipXY=" + sr.flipX + "/" + sr.flipY +
+                              " lossyScale=" + tr.lossyScale + " rotZ=" + tr.eulerAngles.z.ToString("F1") +
+                              " meshUV=" + meshUv);
+                if (++n >= 4) break;
+            }
+            PortLog.Write(Tag + "cardart sampled=" + n);
         }
 
         static void DumpBadMaterials()
