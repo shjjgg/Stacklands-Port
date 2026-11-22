@@ -80,22 +80,22 @@ Shader "Custom/CardShaderTest"
                 float2 uv = i.uv;
                 float3 viewDir = normalize(UnityWorldSpaceViewDir(i.worldPos));
 
-                // ---- 卡底 ----
-                float3 albedo = tex2D(_MainTex, uv).rgb * _Color.rgb;
-
-                // ---- 图标 (含副图标) ----
-                // 卡面美术贴图是「白色实心剪影 + 黑手绘描边」的遮罩图(实测不透明区 RGB 均值 173~188 灰,
-                // 2~3 成是暗描边, 中心像素 255,255,255,255)。原版=白填充透出卡底色、线条用调色板 Icon 色,
-                // 所以这里按亮度取反算遮罩, 不能用 icon.a 直接铺白。
-                // 原版 DXBC 里图标采样带缩放(cb0[12].z 决定 1.75/2.0, 围绕 uv 0.5 放大), 这里做成可调参数 _IconZoom,
-                // 默认 1.0 保持现状; HUD 可切 1.75/2.0 做 A/B。
-                float2 iconUv = uv;
-                iconUv = (iconUv - 0.5) * _IconZoom + 0.5;
+                // ---- 直译自 glsl_exact/Custom__CardShaderTest__42_PS.glsl ----
+                //   _182 = t0.x       卡底纹理只取 R(single-channel 遮罩)
+                //   _300 = 1 - t0.x   _312 = lerp(_Color, _Color2, _300)
+                //   _188 = t1.x       图标纹理也只取 R
+                //   _321 = 1 - t1.x   图标 albedo = lerp(_Color, _Color2, _321)
+                //   门控: 图标 alpha × UV 在 [0,1] 内(_255/_256); 原本是 lerp(_315, colorA, _199)
+                // 这就是原版"白填充→卡底色、黑描边→_Color2"的由来, 不是把 icon.rgb 直接铺上去。
+                float2 iconUv = (uv - 0.5) * _IconZoom + 0.5;
                 if (_FlipIcon > 0.5) iconUv = float2(iconUv.x, 1.0 - iconUv.y);
+                float4 cardTex = tex2D(_MainTex, uv);
                 float4 icon = tex2D(_IconTex, iconUv);
-                float iconLum = dot(icon.rgb, float3(0.299, 0.587, 0.114));
-                float iconMask = saturate((0.55 - iconLum) / 0.22) * icon.a;
-                albedo = lerp(albedo, _IconColor.rgb, iconMask);
+                float3 paper = lerp(_Color.rgb, _Color2.rgb, saturate(1.0 - cardTex.r));
+                float3 ink = lerp(_Color.rgb, _Color2.rgb, saturate(1.0 - icon.r));
+                float inside = step(0.0, iconUv.x) * step(iconUv.x, 1.0) * step(0.0, iconUv.y) * step(iconUv.y, 1.0);
+                float3 albedo = lerp(paper, ink, saturate(icon.a * inside));
+
                 if (_HasSecondaryIcon > 0.5)
                 {
                     float4 sec = tex2D(_SecondaryTex, uv);

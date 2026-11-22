@@ -58,7 +58,6 @@ namespace StacklandsPort
                 if (Time.unscaledTime < _next) return;
                 _next = Time.unscaledTime + 2f;
                 Refresh();
-                if (Time.unscaledTime > _nextLum) { _nextLum = Time.unscaledTime + 8f; _lum = MeasureLum(); Refresh(); }
 
                 try
                 {
@@ -112,28 +111,6 @@ namespace StacklandsPort
                 }
             }
 
-            static string MeasureLum()
-            {
-                Texture2D t = null;
-                try
-                {
-                    t = ScreenCapture.CaptureScreenshotAsTexture();
-                    var px = t.GetPixels32();
-                    int stride = 8;
-                    double sum = 0; int n = 0;
-                    for (int y = 0; y < t.height; y += stride)
-                        for (int x = 0; x < t.width; x += stride)
-                        {
-                            var c = px[y * t.width + x];
-                            sum += 0.299 * c.r + 0.587 * c.g + 0.114 * c.b;
-                            n++;
-                        }
-                    return n > 0 ? (sum / n / 255.0).ToString("F3") : "?";
-                }
-                catch { return "?"; }
-                finally { if (t != null) Object.Destroy(t); }
-            }
-
             static void Refresh()
             {
                 _lines.Clear();
@@ -160,7 +137,6 @@ namespace StacklandsPort
                     _lines.Add("vol " + v.name + " w=" + v.weight.ToString("F2") + " " + prof);
                 }
 
-                _lines.Add("screenLum=" + _lum + "  (0~1, 越小越暗)");
                 _lines.Add("cardart shader=" + (PortCardArtFix.ShaderFound ? "ok" : "missing") +
                            " matched=" + PortCardArtFix.Matched + " swapped=" + PortCardArtFix.Swapped +
                            " flip=" + PortCardArtFix.FlipFixed);

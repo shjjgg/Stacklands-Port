@@ -82,6 +82,25 @@ namespace StacklandsPort
             PortLog.Write(Tag + "SetZoom " + z + " cardFrontMats=" + _cardFronts.Count);
         }
 
+        public static void DumpCardMaterials()
+        {
+            var seen = new HashSet<string>();
+            foreach (var r in Object.FindObjectsOfType<MeshRenderer>())
+            {
+                if (r == null || r.sharedMaterial == null) continue;
+                var m = r.sharedMaterial;
+                var sh = m.shader;
+                string key = (sh != null ? sh.name : "null") + " | " + m.name;
+                if (!seen.Contains(key) && seen.Count < 12)
+                {
+                    seen.Add(key);
+                    PortLog.Write(Tag + "meshmat " + key + " renderer=" + r.name +
+                                  " supported=" + (sh != null && sh.isSupported));
+                }
+            }
+            PortLog.Write(Tag + "meshmat distinct=" + seen.Count);
+        }
+
         public static void Scan()
         {
             CollectFronts();
@@ -94,6 +113,7 @@ namespace StacklandsPort
             IEnumerator Start()
             {
                 yield return new WaitForSecondsRealtime(8f);
+                DumpCardMaterials();
                 for (int i = 0; i < 3; i++)
                 {
                     Scan();
