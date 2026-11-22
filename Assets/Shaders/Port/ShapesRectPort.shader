@@ -1,15 +1,25 @@
-// 替代 AssetRipper 导出的 Dummy Shader (原版 Shapes "Rect Opaque*" 只有编译后的 DXBC,
-// 直接导出会退化成"整块实心四边形", 卡片/盒子框会糊成一整片白块)。
-// 本 shader 用 SDF 还原 Shapes 矩形的语义: 圆角 + 描边环(BORDERED) + AA,
-// 尺寸从物体矩阵的世界缩放推出(Shapes 的 rect 网格是 [-1,1] 单位四边形),
-// 圆角/描边宽度优先取 Shapes 通过 MaterialPropertyBlock 下发的 _CornerRadii/_Thickness。
+// Shapes/Rect Opaque — 依据原版 DXBC 机器码重建 (Shapes__Rect_Opaque__08..15_PS / 00..07_VS)
+// 片元数学逐指令对齐:
+//   q = abs(p) - size*0.5 ; sdf = length(max(q,0)) + min(max(q.x,q.y),0)
+//   aa = max(length(float2(ddx(sdf), ddy(sdf)), 1e-5))
+//   cov = 1 - saturate(sdf/aa + 0.5) ; if (cov*alpha < 0.000061) discard
+// 颜色 = lerp(_Color, _ColorEnd, t), t 由 _FillType 决定(径向/线性/纯色)
+// 圆角走 CORNER_RADIUS(逐角 _CornerRadii.x/y/z/w), 描边环走 BORDERED(_Thickness)
 Shader "Shapes/Rect Opaque"
 {
     Properties
     {
         _Color ("Color", Color) = (1,1,1,1)
-        _Thickness ("Thickness", Float) = 0.022
+        _ColorEnd ("Color End", Color) = (1,1,1,1)
+        _Rect ("Rect", Vector) = (0,0,1,1)
+        _ScaleMode ("Scale Mode", Float) = 0
+        _Alignment ("Alignment", Vector) = (0,0,0,0)
+        _FillType ("Fill Type", Float) = -1
+        _FillSpace ("Fill Space", Float) = 0
+        _FillStart ("Fill Start", Vector) = (0,0,0,0)
+        _FillEnd ("Fill End", Vector) = (0,0,1,0)
         _CornerRadii ("Corner Radii", Vector) = (0,0,0,0)
+        _Thickness ("Thickness", Float) = 0
         _AA ("AA", Float) = 0.6
         [Enum(UnityEngine.Rendering.CompareFunction)] _ZTest ("ZTest", Float) = 4
         [Enum(UnityEngine.Rendering.StencilOp)] _StencilOpPass ("Stencil Op", Float) = 0
@@ -29,25 +39,16 @@ Shader "Shapes/Rect Opaque"
         ZWrite On
         AlphaToMask On
         Stencil {
-        	Ref [_StencilID]
-        	Comp [_StencilComp]
-        	Pass [_StencilOpPass]
-        	ReadMask [_StencilReadMask]
-        	WriteMask [_StencilWriteMask]
+            Ref [_StencilID]
+            Comp [_StencilComp]
+            Pass [_StencilOpPass]
+            ReadMask [_StencilReadMask]
+            WriteMask [_StencilWriteMask]
         }
 
         Pass
         {
-            ZTest [_ZTest]
             Offset [_ZOffsetFactor], [_ZOffsetUnits]
-            Stencil
-            {
-                Ref [_StencilID]
-                Comp [_StencilComp]
-                Pass [_StencilOpPass]
-                ReadMask [_StencilReadMask]
-                WriteMask [_StencilWriteMask]
-            }
 
             HLSLPROGRAM
             #pragma vertex vert
@@ -58,9 +59,18 @@ Shader "Shapes/Rect Opaque"
             #include "UnityCG.cginc"
 
             float4 _Color;
-            float _Thickness;
+            float4 _ColorEnd;
+            float4 _Rect;
+            float _ScaleMode;
+            float4 _Alignment;
+            float _FillType;
+            float _FillSpace;
+            float4 _FillStart;
+            float4 _FillEnd;
             float4 _CornerRadii;
+            float _Thickness;
             float _AA;
+            float4 _ScreenParams;
 
             struct appdata
             {
@@ -70,22 +80,44 @@ Shader "Shapes/Rect Opaque"
             struct v2f
             {
                 float4 pos : SV_POSITION;
-                float2 p   : TEXCOORD0;   // 物体空间位置(单位: 世界单位, 已乘半尺寸)
+                float3 fill : TEXCOORD0;   // 原版 o1.xyz: 填充参考点(世界或局部)
+                float4 p    : TEXCOORD1;   // xy = 矩形局部坐标, zw = 象限符号(逐角圆角选索引)
+                float4 r    : TEXCOORD2;   // zw = 矩形全尺寸(与 p 同单位)
             };
 
             v2f vert (appdata v)
             {
                 v2f o;
-                o.pos = UnityObjectToClipPos(v.vertex);
-                // 网格是 [-1,1] 的四边形, 世界半尺寸 = 物体矩阵两个轴的长度
-                float2 halfSize = float2(
-                    length(float2(unity_ObjectToWorld._m00, unity_ObjectToWorld._m10)),
-                    length(float2(unity_ObjectToWorld._m01, unity_ObjectToWorld._m11)));
-                o.p = v.vertex.xy * halfSize;
+                float2 center = _Rect.xy;
+                float2 size   = _Rect.zw;
+                float2 uv01   = (v.vertex.xy + 1.0) * 0.5;
+
+                // 原版: 曲线用「矩形四角世界位置→NDC」求屏幕像素尺度, 再给四边形留 1px 余量(抗锯齿)
+                float3 wCorner = mul(unity_ObjectToWorld, float4(center + size * 0.5, 0, 1)).xyz;
+                float4 cClip = mul(unity_MatrixVP, float4(wCorner, 1));
+                float2 ndc = cClip.xy / max(cClip.w, 1e-6);
+                float screenScale = 0.5 * length(ndc * _ScreenParams.xy);
+
+                float2 objScale = float2(length(unity_ObjectToWorld._m00_m10_m20),
+                                         length(unity_ObjectToWorld._m01_m11_m21));
+                float2 pad = 2.0 / max(screenScale * objScale, 1e-6);
+
+                float2 halfExt = size * objScale * 0.5 + pad;
+                float2 local = uv01 * (halfExt * 2.0) - halfExt;      // 已乘物体缩放的局部坐标
+
+                float3 wp = mul(unity_ObjectToWorld, float4(local / max(objScale, 1e-6), 0, 1)).xyz;
+                o.pos = mul(unity_MatrixVP, float4(wp, 1.0));
+
+                o.p = float4(local, sign(local));                     // zw: 象限符号
+                o.r = float4(0, 0, abs(size * objScale));
+
+                // 填充参考: _FillType==-1 传 0(纯色); 否则传 参考点→_FillStart 的向量
+                float3 refPos = _FillSpace > 0.5 ? wp : float3(local, 0);
+                o.fill = _FillType < -0.5 ? float3(0, 0, 0) : refPos - _FillStart.xyz;
                 return o;
             }
 
-            float sdRoundRect(float2 p, float2 h, float r)
+            float sdRect(float2 p, float2 h, float r)
             {
                 float2 q = abs(p) - h + r;
                 return length(max(q, 0.0)) + min(max(q.x, q.y), 0.0) - r;
@@ -93,33 +125,53 @@ Shader "Shapes/Rect Opaque"
 
             fixed4 frag (v2f i) : SV_Target
             {
-                float2 h = float2(
-                    length(float2(unity_ObjectToWorld._m00, unity_ObjectToWorld._m10)),
-                    length(float2(unity_ObjectToWorld._m01, unity_ObjectToWorld._m11)));
+                float2 size = i.r.zw;
+                float2 p = i.p.xy;
+                float2 h = size * 0.5;
 
-                // 世界半尺寸在片元里再用一次, 保证 SDF 与顶点位置一致(方便非等比缩放)
-                // 由于 v2f 只传了位置, 这里用屏幕导数近似出 AA 宽度
+                // ---- 原版 08_PS 第 7~21 行: SDF + 屏幕导数抗锯齿 ----
                 float r = 0.0;
                 #ifdef CORNER_RADIUS
-                    r = max(max(_CornerRadii.x, _CornerRadii.y), max(_CornerRadii.z, _CornerRadii.w));
-                    r = min(r, min(h.x, h.y));
+                    // 12_PS: 用局部坐标符号选角, 半径按 size 一半截断
+                    float rr = 0.0;
+                    rr = i.p.z > 0.0 ? (i.p.w > 0.0 ? _CornerRadii.z : _CornerRadii.w)
+                                     : (i.p.w > 0.0 ? _CornerRadii.x : _CornerRadii.y);
+                    r = min(min(size.x, size.y) * 0.5, rr);
                 #endif
 
-                float d = sdRoundRect(i.p, h, r);
-                float aa = max(fwidth(d) * _AA, 1e-5);
+                float d = sdRect(p, h, r);
 
-                float outer = smoothstep(aa, -aa, d);
                 #ifdef BORDERED
                     float t = max(_Thickness, 0.0);
-                    float inner = smoothstep(aa, -aa, d + t);
-                    float a = saturate(outer - inner);
-                #else
-                    float a = outer;
+                    float band = abs(d + t * 0.5) - abs(t) * 0.5;   // 10_PS 第 17~18 行
+                    d = band;
                 #endif
 
-                fixed4 c = _Color;
-                c.a *= a;
-                return c;
+                float aa = max(length(float2(ddx(d), ddy(d))), 1e-5);
+                float cov = 1.0 - saturate(d / aa + 0.5);
+
+                // ---- 取色 (08_PS 第 22~43 行) ----
+                float ft = saturate(_FillType);
+                float3 col = _Color.rgb;
+                float alpha = _Color.a;
+                if (_FillType > -0.5)
+                {
+                    float g = 0.0;
+                    if (ft < 0.5)
+                        g = saturate(i.fill.x);                                  // 径向: 沿轴比例
+                    else
+                        g = saturate(length(i.fill) / max(length(_FillEnd.xyz - _FillStart.xyz), 1e-5));
+                    float4 mixedCol = lerp(_Color, _ColorEnd, g);
+                    col = mixedCol.rgb;
+                    alpha = mixedCol.a;
+                }
+
+                // ---- 输出 (08_PS 第 44~47 行: 预乘 + 0.000061 偏置后 cutout) ----
+                fixed4 outc;
+                outc.rgb = col;
+                outc.a = cov * alpha;
+                if (cov * alpha - 0.000061 < 0.0) discard;
+                return outc;
             }
             ENDHLSL
         }
