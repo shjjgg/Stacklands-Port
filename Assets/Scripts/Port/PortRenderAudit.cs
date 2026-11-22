@@ -205,8 +205,8 @@ namespace StacklandsPort
                 PortLog.Write(Tag + "cardart " + sr.name + " sprite=" + sp.name +
                               " tex=" + (sp.texture != null ? sp.texture.name : "null") +
                               " rect=" + sp.rect + " pivot=" + sp.pivot +
-                              " uv0=" + (uv != null && uv.Length > 0 ? uv[0].ToString("F3") : "?") +
-                              " uv3=" + (uv != null && uv.Length > 3 ? uv[3].ToString("F3") : "?") +
+                              " texSize=" + (sp.texture != null ? sp.texture.width + "x" + sp.texture.height : "?") +
+                              " uv=" + (uv != null ? string.Join(";", System.Array.ConvertAll(uv, v => v.ToString("F3"))) : "?") +
                               " flipXY=" + sr.flipX + "/" + sr.flipY +
                               " lossyScale=" + tr.lossyScale + " rotZ=" + tr.eulerAngles.z.ToString("F1") +
                               " meshUV=" + meshUv);
