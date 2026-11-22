@@ -31,10 +31,10 @@ namespace StacklandsPort
             {
                 yield return new WaitForSeconds(6f);
                 Section("menu");
-                // v0.36: 开局那次 dump 要遍历 3000+ renderer 并反射读材质, 默认不再自动跑,
-                // 需要时在 persistentDataPath 放一个空文件 render_audit_full 即可打开。
-                if (!System.IO.File.Exists(System.IO.Path.Combine(Application.persistentDataPath, "render_audit_full"))) yield break;
                 yield return new WaitForSeconds(19f);
+                // v0.38: 开局只跑卡面那 4 行(很轻), 全量 dump 仍按需开关
+                try { DumpCardArt(); } catch (System.Exception e) { PortLog.Write(Tag + "cardart 失败: " + e.Message); }
+                if (!System.IO.File.Exists(System.IO.Path.Combine(Application.persistentDataPath, "render_audit_full"))) yield break;
                 Section("in-game");
             }
         }

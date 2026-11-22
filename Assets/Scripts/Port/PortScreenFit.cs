@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace StacklandsPort
 {
@@ -58,13 +59,36 @@ namespace StacklandsPort
                 float fov = _baseFov;
                 if (aspect < DesignAspect)
                 {
-                    // 纵向不变、横向要装下设计宽度的做法: 按比例放大纵向 FOV
+                    // 比 16:9 窄(4:3 / 16:10): 放大纵向 FOV, 原版可见宽度不被裁
                     float tanHalf = Mathf.Tan(Mathf.Deg2Rad * _baseFov * 0.5f) * (DesignAspect / aspect);
                     fov = Mathf.Rad2Deg * 2f * Mathf.Atan(tanHalf);
                 }
+                else if (aspect > DesignAspect)
+                {
+                    // 比 16:9 宽(20:9 长屏): 原版两侧会多出一大片空草地、棋盘显小。
+                    // 折中放大一半的差距(最多 15%), 让棋盘更"占满"屏幕又不明显裁切上下。
+                    float zoom = Mathf.Min(1f + (aspect / DesignAspect - 1f) * 0.5f, 1.15f);
+                    float tanHalf = Mathf.Tan(Mathf.Deg2Rad * _baseFov * 0.5f) / zoom;
+                    fov = Mathf.Rad2Deg * 2f * Mathf.Atan(tanHalf);
+                }
+                // UI: 游戏内所有 ScreenSpace 画布改成「按高度匹配」, 20:9 上 HUD 不再被放大 25%
+                int scalers = 0;
+                foreach (var sc in Resources.FindObjectsOfTypeAll<CanvasScaler>())
+                {
+                    if (sc == null || sc.gameObject == null) continue;
+                    var c = sc.GetComponent<Canvas>();
+                    if (c == null || (c.renderMode != RenderMode.ScreenSpaceOverlay &&
+                                      c.renderMode != RenderMode.ScreenSpaceCamera)) continue;
+                    if (sc.gameObject.name == "PortQuickMenuCanvas") continue;
+                    if (sc.screenMatchMode == CanvasScaler.ScreenMatchMode.MatchWidthOrHeight &&
+                        Mathf.Abs(sc.matchWidthOrHeight - 1f) < 0.01f) { scalers++; continue; }
+                    sc.screenMatchMode = CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
+                    sc.matchWidthOrHeight = 1f;
+                    scalers++;
+                }
                 cam.fieldOfView = Mathf.Clamp(fov, 20f, 120f);
                 PortLog.Write(Tag + "cam fov " + _baseFov.ToString("F1") + " -> " + cam.fieldOfView.ToString("F1")
-                    + " aspect=" + aspect.ToString("F3") + " " + _w + "x" + _h);
+                    + " aspect=" + aspect.ToString("F3") + " " + _w + "x" + _h + " uiScalers=" + scalers);
             }
 
             void ApplySafeArea()

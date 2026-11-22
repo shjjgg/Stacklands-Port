@@ -155,6 +155,10 @@ namespace StacklandsPort
 
             try
             {
+                // v0.38: 之前直接重跑 InitializeLoadedData 会把「已经在字典里的基础卡」再注册一遍,
+                // 刷出 2202 条 Duplicate card id 并且字典里出现两份(性能/查找都受害)。
+                // 先把名字带 card 的字典清空, 让这次重跑从零重建(基础卡只从列表来一次)。
+                ClearCardContainers(loader);
                 var mi = typeof(GameDataLoader).GetMethod("InitializeLoadedData",
                     BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
                 if (mi == null) PortLog.Write(Tag + "InitializeLoadedData 没找到, 只做列表追加");
@@ -191,6 +195,37 @@ namespace StacklandsPort
             }
             catch { }
             return cd.gameObject.name;
+        }
+
+
+        /// <summary>
+        /// 只清名字里含 card 的字典/集合, 不确定的容器一律不动。
+        /// </summary>
+        static void ClearCardContainers(GameDataLoader loader)
+        {
+            try
+            {
+                var t = loader.GetType();
+                var flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
+                foreach (var f in t.GetFields(flags))
+                {
+                    if (!f.Name.ToLowerInvariant().Contains("card")) continue;
+                    object v = null;
+                    try { v = f.GetValue(loader); } catch { continue; }
+                    if (v is System.Collections.IDictionary dict)
+                    {
+                        int before = dict.Count;
+                        dict.Clear();
+                        PortLog.Write(Tag + "cleared dict " + f.Name + " (" + before + " -> 0)");
+                    }
+                    else if (v is System.Collections.IList list && f.Name.ToLowerInvariant().Contains("prefab"))
+                    {
+                        // prefab 列表不清: 里面是我们刚追加的 DLC 卡 + 基础卡, 清掉就没卡了
+                        continue;
+                    }
+                }
+            }
+            catch (Exception e) { PortLog.Write(Tag + "清容器失败: " + e.Message); }
         }
 
         static int LoadInto(GameDataLoader loader, string name, CardUpdateType type)
