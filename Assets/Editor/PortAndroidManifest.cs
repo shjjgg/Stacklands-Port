@@ -1,5 +1,7 @@
+#if UNITY_EDITOR
 #if UNITY_ANDROID
 using System.IO;
+using UnityEngine;
 using UnityEditor.Android;
 
 namespace StacklandsPort.Editor
@@ -31,11 +33,12 @@ namespace StacklandsPort.Editor
                 if (at < 0) return;
                 text = text.Substring(0, at) + "    " + Permission + "\n    " + text.Substring(at);
                 File.WriteAllText(file, text);
-                UnityEngine.Debug.Log("[PortAndroidManifest] VIBRATE 权限已注入 " + file);
+                Debug.Log("[PortAndroidManifest] VIBRATE 权限已注入 " + file);
                 return;
             }
-            UnityEngine.Debug.LogWarning("[PortAndroidManifest] 没找到 AndroidManifest.xml, 震动可能无效");
+            Debug.LogWarning("[PortAndroidManifest] 没找到 AndroidManifest.xml, 震动可能无效");
         }
     }
 }
+#endif
 #endif
