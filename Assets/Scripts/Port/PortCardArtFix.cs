@@ -71,6 +71,17 @@ namespace StacklandsPort
             PortLog.Write(Tag + "SetFlip " + on + " cardFrontMats=" + _cardFronts.Count);
         }
 
+        public static float Zoom = 1f;
+
+        public static void SetZoom(float z)
+        {
+            Zoom = z;
+            CollectFronts();
+            foreach (var m in _cardFronts.Values)
+                if (m.HasProperty("_IconZoom")) m.SetFloat("_IconZoom", z);
+            PortLog.Write(Tag + "SetZoom " + z + " cardFrontMats=" + _cardFronts.Count);
+        }
+
         public static void Scan()
         {
             CollectFronts();

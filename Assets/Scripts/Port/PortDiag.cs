@@ -226,7 +226,15 @@ namespace StacklandsPort
                     PortCardArtFix.SetFlip(!PortCardArtFix.FlipOn);
                     _hideAt = Time.unscaledTime + 120f;
                 }
-                if (GUI.Button(new Rect(6 + (bw + 10) * 2 + bw * 0.7f + 10, h + 14, bw * 0.5f, bh), "隐藏", btn))
+                if (GUI.Button(new Rect(6 + (bw + 10) * 2 + bw * 0.7f + 14, h + 14, bw, bh),
+                               "图标缩放 " + PortCardArtFix.Zoom.ToString("F2"), btn))
+                {
+                    float z = PortCardArtFix.Zoom;
+                    z = (z < 1.4f) ? 1.75f : (z < 1.9f ? 2f : 1f);
+                    PortCardArtFix.SetZoom(z);
+                    _hideAt = Time.unscaledTime + 120f;
+                }
+                if (GUI.Button(new Rect(6 + (bw + 10) * 2 + bw * 0.7f + 14 + bw + 10, h + 14, bw * 0.6f, bh), "隐藏", btn))
                     Hide();
             }
         }

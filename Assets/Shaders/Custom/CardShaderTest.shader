@@ -20,6 +20,7 @@ Shader "Custom/CardShaderTest"
         _MainTex ("Albedo", 2D) = "white" {}
         _IconTex ("Icon", 2D) = "white" {}
         _FlipIcon ("Flip Icon V", Float) = 0
+        _IconZoom ("Icon Zoom", Float) = 1.0
         _SecondaryTex ("Secondary", 2D) = "white" {}
         _RainbowTex ("Rainbow", 2D) = "white" {}
         _DamagedTex ("Damaged", 2D) = "white" {}
@@ -53,6 +54,7 @@ Shader "Custom/CardShaderTest"
             float _HasSecondaryIcon; float _HasOutputDir;
             sampler2D _MainTex; sampler2D _IconTex; sampler2D _SecondaryTex;
             float _FlipIcon;
+            float _IconZoom;
             sampler2D _RainbowTex; sampler2D _DamagedTex;
             float _Glossiness; float _Metallic; float _SparkleIntensity;
             float4 _BorderColor; float4 _DamagedBorderColor;
@@ -85,7 +87,11 @@ Shader "Custom/CardShaderTest"
                 // 卡面美术贴图是「白色实心剪影 + 黑手绘描边」的遮罩图(实测不透明区 RGB 均值 173~188 灰,
                 // 2~3 成是暗描边, 中心像素 255,255,255,255)。原版=白填充透出卡底色、线条用调色板 Icon 色,
                 // 所以这里按亮度取反算遮罩, 不能用 icon.a 直接铺白。
-                float2 iconUv = (_FlipIcon > 0.5) ? float2(uv.x, 1.0 - uv.y) : uv;
+                // 原版 DXBC 里图标采样带缩放(cb0[12].z 决定 1.75/2.0, 围绕 uv 0.5 放大), 这里做成可调参数 _IconZoom,
+                // 默认 1.0 保持现状; HUD 可切 1.75/2.0 做 A/B。
+                float2 iconUv = uv;
+                iconUv = (iconUv - 0.5) * _IconZoom + 0.5;
+                if (_FlipIcon > 0.5) iconUv = float2(iconUv.x, 1.0 - iconUv.y);
                 float4 icon = tex2D(_IconTex, iconUv);
                 float iconLum = dot(icon.rgb, float3(0.299, 0.587, 0.114));
                 float iconMask = saturate((0.55 - iconLum) / 0.22) * icon.a;
