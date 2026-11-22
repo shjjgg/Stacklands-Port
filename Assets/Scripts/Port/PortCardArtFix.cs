@@ -71,7 +71,7 @@ namespace StacklandsPort
             PortLog.Write(Tag + "SetFlip " + on + " cardFrontMats=" + _cardFronts.Count);
         }
 
-        public static float Zoom = 1f;
+        public static float Zoom = 1.75f;
 
         public static void SetZoom(float z)
         {
@@ -99,6 +99,23 @@ namespace StacklandsPort
                 }
             }
             PortLog.Write(Tag + "meshmat distinct=" + seen.Count);
+
+            // Sprite 侧: 卡面图标用的是哪个物件、材质、是否启用
+            var seen2 = new HashSet<string>();
+            foreach (var sr in Object.FindObjectsOfType<SpriteRenderer>())
+            {
+                if (sr == null) continue;
+                string shn = (sr.sharedMaterial != null && sr.sharedMaterial.shader != null) ? sr.sharedMaterial.shader.name : "null";
+                string sn = sr.sprite != null ? sr.sprite.name : "-";
+                string key = sr.gameObject.name + " | " + shn + " | " + sn;
+                if (seen2.Contains(key) || seen2.Count >= 16) continue;
+                seen2.Add(key);
+                PortLog.Write(Tag + "spritemat " + key + " enabled=" + sr.enabled +
+                              " active=" + sr.gameObject.activeInHierarchy +
+                              " color=" + ColorUtility.ToHtmlStringRGB(sr.color) +
+                              " flipY=" + sr.flipY);
+            }
+            PortLog.Write(Tag + "spritemat distinct=" + seen2.Count);
         }
 
         public static void Scan()

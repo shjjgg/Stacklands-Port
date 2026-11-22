@@ -150,6 +150,11 @@ namespace StacklandsPort
 
             void OnGUI()
             {
+                try { DrawHud(); } catch (System.Exception e) { PortLog.Write("[PortDiag] HUD 异常: " + e.Message); _hidden = true; }
+            }
+
+            void DrawHud()
+            {
                 if (_hidden) return;
                 if (_hideAt == 0f) _hideAt = Time.unscaledTime + 120f;
                 if (Time.unscaledTime > _hideAt) return;
@@ -206,7 +211,7 @@ namespace StacklandsPort
                                "图标缩放 " + PortCardArtFix.Zoom.ToString("F2"), btn))
                 {
                     float z = PortCardArtFix.Zoom;
-                    z = (z < 1.4f) ? 1.75f : (z < 1.9f ? 2f : 1f);
+                    z = (z < 1.9f) ? 2f : (z < 2.1f ? 2.25f : 1.75f);
                     PortCardArtFix.SetZoom(z);
                     _hideAt = Time.unscaledTime + 120f;
                 }

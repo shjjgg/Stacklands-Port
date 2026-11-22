@@ -17,10 +17,11 @@ Shader "Custom/CardShaderTest"
         _BigShineStrength ("Big Shine Strength", Float) = 1
         _HasSecondaryIcon ("Has Secondary Icon", Float) = 0
         _HasOutputDir ("Has Output Dir", Float) = 0
+        _IsChest ("Is Chest", Float) = 0
         _MainTex ("Albedo", 2D) = "white" {}
         _IconTex ("Icon", 2D) = "white" {}
-        _FlipIcon ("Flip Icon V", Float) = 0
-        _IconZoom ("Icon Zoom", Float) = 1.0
+        _FlipIcon ("Flip Icon X", Float) = 0
+        _IconZoom ("Icon Zoom", Float) = 1.75
         _SecondaryTex ("Secondary", 2D) = "white" {}
         _RainbowTex ("Rainbow", 2D) = "white" {}
         _DamagedTex ("Damaged", 2D) = "white" {}
@@ -51,7 +52,7 @@ Shader "Custom/CardShaderTest"
             float4 _Color; float4 _Color2;
             float _Foil; float _Damaged; float4 _IconColor;
             float _ShineStrength; float _BigShineStrength;
-            float _HasSecondaryIcon; float _HasOutputDir;
+            float _HasSecondaryIcon; float _HasOutputDir; float _IsChest;
             sampler2D _MainTex; sampler2D _IconTex; sampler2D _SecondaryTex;
             float _FlipIcon;
             float _IconZoom;
@@ -77,56 +78,93 @@ Shader "Custom/CardShaderTest"
 
             float4 frag(v2f i) : SV_Target
             {
+                // ---- 直译自 glsl_exact/Custom__CardShaderTest__42_PS.glsl ----
+                // 几何(原版 _145.._175):
+                //   _161 = (1-uv.x) - 0.5        → iconUv.x = (0.5-uv.x)*zoom + 0.5   (X 恒镜像)
+                //   _162 = (1-uv.y) - pivot      → iconUv.y = (1-uv.y-pivot)*zoom + pivot
+                //   pivot: 双标志 0.55 / 单标志 0.5 / 无标志 0.45;  zoom: 有标志 2.0 / 无标志 1.75
+                // 颜色(原版 _182.._333):
+                //   卡底 _300 = 1 - t0.x*inside → paper = lerp(_Color,_Color2,_300); _MainTex 运行时恒白 ⇒ paper = _Color
+                //   光晕 _277.._299: |iconUv-0.5| 半径 0.4004 的软环 → _Color2
+                //   图标 _321 = 1 - t1.x*inside → ink = lerp(_Color, _IconColor, _321)
+                //   albedo = lerp(光晕, ink, t1.a*inside)  ← 原版 _315/_331 的 lerp 结构
                 float2 uv = i.uv;
                 float3 viewDir = normalize(UnityWorldSpaceViewDir(i.worldPos));
 
-                // ---- 直译自 glsl_exact/Custom__CardShaderTest__42_PS.glsl ----
-                //   _182 = t0.x       卡底纹理只取 R(single-channel 遮罩)
-                //   _300 = 1 - t0.x   _312 = lerp(_Color, _Color2, _300)
-                //   _188 = t1.x       图标纹理也只取 R
-                //   _321 = 1 - t1.x   图标 albedo = lerp(_Color, _Color2, _321)
-                //   门控: 图标 alpha × UV 在 [0,1] 内(_255/_256); 原本是 lerp(_315, colorA, _199)
-                // 这就是原版"白填充→卡底色、黑描边→_Color2"的由来, 不是把 icon.rgb 直接铺上去。
-                float2 iconUv = (uv - 0.5) * _IconZoom + 0.5;
-                if (_FlipIcon > 0.5) iconUv = float2(iconUv.x, 1.0 - iconUv.y);
-                float4 cardTex = tex2D(_MainTex, uv);
-                float4 icon = tex2D(_IconTex, iconUv);
-                float3 paper = lerp(_Color.rgb, _Color2.rgb, saturate(1.0 - cardTex.r));
-                float3 ink = lerp(_Color.rgb, _Color2.rgb, saturate(1.0 - icon.r));
-                float inside = step(0.0, iconUv.x) * step(iconUv.x, 1.0) * step(0.0, iconUv.y) * step(iconUv.y, 1.0);
-                float3 albedo = lerp(paper, ink, saturate(icon.a * inside));
+                // ==== 逐指令对齐 glsl_exact/Custom__CardShaderTest__42_PS.glsl ====
+                // 1) 采样抖动 _120.._134: uv 加 ±0.5% 噪声偏移(卡面纹理的"手绘颗粒")
+                float j1 = frac(sin(round(uv.y * 150.0)) * 43758.546875) * 0.005;
+                float jx = uv.x + j1;
+                float j2 = frac(sin(round(jx * 150.0)) * 43758.546875) * 0.005;
+                float jy = uv.y + j2;
+                // 解析抗锯齿梯度 _143/_144
+                float gradX = max(abs(ddx(jx)) + abs(ddy(jx)), 1e-5);
 
+                // 2) 图标 UV _145.._175: X 恒镜像, Y 用 pivot(0.45/0.5/0.55), zoom 1.75/2.0
+                float flagA = (_HasSecondaryIcon > 0.5) ? 1.0 : 0.0;
+                float flagB = (_IsChest > 0.5) ? 1.0 : 0.0;
+                float pivot = (flagA > 0.5 && flagB > 0.5) ? 0.55 : ((flagA > 0.5 || flagB > 0.5) ? 0.5 : 0.45);
+                float zoom = max(_IconZoom, (flagA > 0.5 || flagB > 0.5) ? 2.0 : 1.75);
+                float2 iconUv = float2((1.0 - jx - 0.5) * zoom + 0.5,
+                                       (1.0 - jy - pivot) * zoom + pivot);
+                if (_FlipIcon > 0.5) iconUv.x = 1.0 - iconUv.x;
+                float inside = step(0.0, iconUv.x) * step(iconUv.x, 1.0) * step(0.0, iconUv.y) * step(iconUv.y, 1.0);
+
+                // 3) 卡底: _300 = 1 - t0.x*inside → paper = lerp(_Color,_Color2,_300)
+                //    运行时 _MainTex 恒为默认白(全工程无 SetTexture("_MainTex")), 故该式等价于 paper = _Color
+                float3 paper = _Color.rgb;
+
+                // 4) 环状光晕 _277.._299: 图标空间半径 0.4004 的软环, 混到 _Color2
+                float2 ringP = iconUv - 0.5;
+                float ringD = (flagA > 0.5) ? max(abs(ringP.y), abs(ringP.x)) : length(ringP);
+                float ringMask = 1.0 - saturate((ringD - 0.400390625) / gradX);
+                float3 halo = lerp(_Color.rgb, _Color2.rgb, saturate(ringMask));
+
+                // 5) 图标色 _321.._333: ink = lerp(_Color, _IconColor, 1 - t1.x*inside)
+                float4 icon = tex2D(_IconTex, clamp(iconUv, 0.0, 1.0));
+                float inkAmt = saturate(1.0 - icon.r * inside);
+                float3 inkCol = lerp(_Color.rgb, _IconColor.rgb, inkAmt);
+                float artA = saturate(icon.a) * inside;
+                float3 albedo = lerp(halo, inkCol, artA);
+
+                // 6) 副图标(_HasSecondaryIcon): 同算式, 叠在主图标之上
                 if (_HasSecondaryIcon > 0.5)
                 {
-                    float4 sec = tex2D(_SecondaryTex, uv);
-                    albedo = lerp(albedo, sec.rgb * _Color2.rgb, sec.a);
+                    float4 sec = tex2D(_SecondaryTex, clamp(iconUv, 0.0, 1.0));
+                    float3 secInk = lerp(_Color.rgb, _IconColor.rgb, saturate(1.0 - sec.r * inside));
+                    albedo = lerp(albedo, secInk, saturate(sec.a * inside));
                 }
 
-                // ---- 闪膜: sin/cos 扭曲 (±0.02, 5/10/30 倍频同 asm) ----
-                float wobA = uv.x + uv.y - viewDir.x * 5.0;
-                float wobB = uv.y * 2.0 - viewDir.z * 5.0;
-                float2 rw = float2(wobA + sin(wobB * 10.0) * 0.02, wobB + cos((wobA + sin(wobB * 10.0) * 0.02) * 30.0) * 0.02);
-                float4 rainbow = tex2D(_RainbowTex, rw);
-                albedo += rainbow.rgb * _Color2.rgb * (0.35 + _Foil) * _SparkleIntensity;
+                // 7) 闪膜(_Foil 门控): sin/cos 扭曲 ±0.02, 5/10/30 倍频同 asm
+                if (_Foil > 0.5)
+                {
+                    float wobA = jx + jy - viewDir.x * 5.0;
+                    float wobB = jy * 2.0 - viewDir.z * 5.0;
+                    float rwX = wobA + sin(wobB * 10.0) * 0.02;
+                    float2 rw = float2(rwX, wobB + cos(rwX * 30.0) * 0.02);
+                    float4 rainbow = tex2D(_RainbowTex, rw);
+                    albedo += rainbow.rgb * _Color2.rgb * _SparkleIntensity * 0.5;
+                    float dShine = abs(frac(jx - jy) - 0.5);
+                    float shine = saturate(1.0 - dShine * 12.0) * _ShineStrength * 0.25;
+                    float bigShine = saturate(1.0 - dShine * 4.0) * _BigShineStrength * 0.12;
+                    albedo += (shine + bigShine) * _Color2.rgb;
+                }
 
-                // ---- 高光条: 对角 uv 上的窄带 ----
-                float dShine = abs(frac(uv.x - uv.y) - 0.5);
-                float shine = saturate(1.0 - dShine * 12.0) * _ShineStrength * 0.25;
-                float bigShine = saturate(1.0 - dShine * 4.0) * _BigShineStrength * 0.12;
-                albedo += (shine + bigShine) * _Color2.rgb;
-
-                // ---- 破损覆盖 ----
+                // 8) 破损 _442.._447: 破损贴图 alpha>=0.5 处压暗到 0.6 倍
                 if (_Damaged > 0.5)
                 {
-                    float4 dmg = tex2D(_DamagedTex, uv);
-                    albedo = lerp(albedo, dmg.rgb * _DamagedBorderColor.rgb, dmg.a * _Damaged);
+                    float dm = (tex2D(_DamagedTex, float2(jx, jy)).a >= 0.5) ? 1.0 : 0.0;
+                    albedo *= (1.0 - 0.4 * dm);
                 }
 
-                // ---- 边框: uv 距边 < 1/24 视为边框 ----
+                // 9) 卡框: 距边 < 1/40 视为边框(_BorderColor)
                 float2 ed = min(uv, 1.0 - uv);
-                float edge = saturate(1.0 - min(ed.x, ed.y) * 24.0);
+                float edge = saturate(1.0 - min(ed.x, ed.y) * 40.0);
                 float4 borderCol = (_Damaged > 0.5) ? _DamagedBorderColor : _BorderColor;
                 albedo = lerp(albedo, borderCol.rgb, edge);
+
+                // 10) 金属度压暗 _458 = 0.96*(1-_Metallic)
+                albedo *= 0.96 * (1.0 - _Metallic);
 
                 float4 col = SokpopShadeBase(albedo, _Glossiness, _Metallic, normalize(i.worldNormal), i.worldPos);
                 col.rgb *= i.color.rgb;
