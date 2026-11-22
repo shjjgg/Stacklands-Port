@@ -47,6 +47,7 @@ namespace StacklandsPort
                 PostFxOn = CountEnabled(layers) > 0;
                 LogBackgroundTints();
                 LogBoardMaterials();
+                DumpScreenUiSprites();
                 PortLog.Write("[PortDiag] gfx=" + SystemInfo.graphicsDeviceType +
                               " colorSpace=" + QualitySettings.activeColorSpace +
                               " screen=" + Screen.width + "x" + Screen.height +
@@ -84,6 +85,36 @@ namespace StacklandsPort
                                   " tex=" + (sr.sprite != null && sr.sprite.texture != null ? sr.sprite.texture.name : "-"));
                 }
                 PortLog.Write("[PortDiag] bg 取样条数=" + n);
+            }
+
+            /// 屏幕右上角 HUD 图标 / 右下角按钮图标的取证: 名字、贴图、sprite.rect、缩放、颜色、shader。
+            /// 目的是判断 UI 小图标的"图案显示不对"是 sprite rect(图集子区域) 取错, 还是缩放/PPU 错。
+            static void DumpScreenUiSprites()
+            {
+                int n = 0;
+                foreach (var sr in Object.FindObjectsOfType<SpriteRenderer>())
+                {
+                    if (sr == null || sr.sprite == null) continue;
+                    var cam = Camera.main;
+                    if (cam == null) break;
+                    Vector3 vp = cam.WorldToViewportPoint(sr.transform.position);
+                    bool topRight = vp.y > 0.80f && vp.x > 0.60f;
+                    bool botRight = vp.y < 0.25f && vp.x > 0.80f;
+                    if (!topRight && !botRight) continue;
+                    if (n++ >= 24) break;
+                    var rc = sr.sprite.rect;
+                    var tex = sr.sprite.texture;
+                    var mat = sr.sharedMaterial;
+                    PortLog.Write("[PortDiag] ui " + (topRight ? "TR" : "BR") + " obj=" + sr.gameObject.name +
+                                  " sprite=" + sr.sprite.name +
+                                  " rect=(" + rc.x + "," + rc.y + "," + rc.width + "x" + rc.height + ")" +
+                                  " tex=" + (tex != null ? tex.name + " " + tex.width + "x" + tex.height : "-") +
+                                  " scale=" + sr.transform.lossyScale +
+                                  " sort=" + sr.sortingOrder +
+                                  " color=" + sr.color +
+                                  " shader=" + (mat != null && mat.shader != null ? mat.shader.name : "-"));
+                }
+                PortLog.Write("[PortDiag] ui 取样条数=" + n);
             }
 
             static void LogBoardMaterials()

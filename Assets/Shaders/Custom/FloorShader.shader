@@ -85,26 +85,23 @@ Shader "Custom/FloorShader"
 
                 float4 off = tex2D(_OffsetTex, uvp);
 
-                // 3D 盒 SDF(uvx, uvy, uvz) -> 石板与边缘环
-                float3 b = float3(_Rect.x + _EdgeThickness, _Rect.y, _Rect.z + _EdgeThickness * 0.58);
-                float3 t3 = float3(i.uv.x * 1.5, i.uv.y * 1.5, 0.0);
-                float3 d3 = abs(t3) - b;
-                float dOut = length(max(d3, 0.0)) - _Rect.w;
-                float inside = 1.0 - dOut;
+                // 石板/格线: 原版 SDF 在 **世界空间 XZ**(TEXCOORD1.xz - 棋盘中心), 半径由 _Rect 给出:
+                //   half=(_Rect.x, _Rect.z), 圆角 r=|_Rect.w|, 世界单位下 dist<0 为板内。
+                // 之前用 uv*1.5 当坐标, 而 _Rect.x=4.3, 永远 dist<0 ⇒ 边界环永远不出现, 这就是"卡牌场没有边框"。
+                float3 wc3 = mul(unity_ObjectToWorld, float4(0,0,0,1)).xyz;
+                float2 pw  = i.worldPos.xz - wc3.xz;
+                float2 halfExt = float2(_Rect.x, _Rect.z);
+                float  rr  = clamp(abs(_Rect.w), 0.0, min(halfExt.x, halfExt.y) - 0.01);
+                float2 q   = abs(pw) - (halfExt - rr);
+                float  dist = length(max(q, 0.0)) + min(max(q.x, q.y), 0.0) - rr;
+                float  aa   = max(abs(ddx(dist)) + abs(ddy(dist)), 1e-5);
+                float  insideMask = saturate(0.5 - dist / aa);
+                float  tIn  = max(-dist, 0.0);
+                float  bw   = max(_EdgeThickness * 1.5, 0.02);
+                float  border = insideMask * saturate(1.0 - tIn / bw);
 
-                float3 b2 = b + 0.03;
-                float3 d3b = abs(t3) - b2;
-                float dOut2 = length(max(d3b, 0.0)) - (_Rect.w + 0.03);
-                float inside2 = 1.0 - dOut2;
-
-                float aa = abs(ddy(inside)) + abs(ddx(inside));
-                float cov = saturate((inside - 0.5) / max(aa, 1e-6) + 0.5);
-
-                // 棋盘底色: 原版整片是 _Color 的薄荷绿, 石板/边缘只在格线上留一点点痕。
-                // 之前把 _StoneEdge(灰 0.39) 当主色, 结果整块地板被压成 0.2 亮度(实测截图 39,54,43 vs 原版 193,226,198)。
                 float3 albedo = _Color.rgb;
-                float  edgeMask = (1.0 - saturate(inside2));
-                albedo = lerp(albedo, _EdgeColor.rgb, edgeMask * 0.06);
+                albedo = lerp(albedo, _EdgeColor.rgb, border);
 
                 float4 mainTex = tex2D(_MainTex, i.uv);
                 albedo *= lerp(float3(1,1,1), mainTex.rgb, 0.25);

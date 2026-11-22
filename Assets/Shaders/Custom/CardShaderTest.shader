@@ -159,7 +159,7 @@ Shader "Custom/CardShaderTest"
 
                 // 9) 卡框: 距边 < 1/40 视为边框(_BorderColor)
                 float2 ed = min(uv, 1.0 - uv);
-                float edge = saturate(1.0 - min(ed.x, ed.y) * 40.0);
+                float edge = saturate(1.0 - min(ed.x, ed.y) * 40.0) * 0.37;   // 原版实测: 边框亮度约为纸色的 63%(_BorderColor 近黑)
                 float4 borderCol = (_Damaged > 0.5) ? _DamagedBorderColor : _BorderColor;
                 albedo = lerp(albedo, borderCol.rgb, edge);
 
