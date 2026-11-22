@@ -23,18 +23,18 @@ Shader "Shapes/Rect Transparent"
 
     SubShader
     {
-		Tags { "Queue"="Transparent" "RenderType"="Transparent" "IgnoreProjector"="true" "DisableBatching"="true" }
-		Cull Off
-		ZTest [_ZTest]
-		ZWrite Off
-		Blend SrcAlpha OneMinusSrcAlpha, One OneMinusSrcAlpha
-		Stencil {
-			Ref [_StencilID]
-			Comp [_StencilComp]
-			Pass [_StencilOpPass]
-			ReadMask [_StencilReadMask]
-			WriteMask [_StencilWriteMask]
-		}
+        Tags { "Queue"="Transparent" "RenderType"="Transparent" "IgnoreProjector"="true" "DisableBatching"="true" }
+        Cull Off
+        ZTest [_ZTest]
+        ZWrite Off
+        Blend SrcAlpha OneMinusSrcAlpha, One OneMinusSrcAlpha
+        Stencil {
+        	Ref [_StencilID]
+        	Comp [_StencilComp]
+        	Pass [_StencilOpPass]
+        	ReadMask [_StencilReadMask]
+        	WriteMask [_StencilWriteMask]
+        }
 
         Pass
         {

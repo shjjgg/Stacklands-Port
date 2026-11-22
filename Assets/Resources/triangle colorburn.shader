@@ -27,10 +27,6 @@ Shader "Shapes/Triangle ColorBurn" {
 			ReadMask [_StencilReadMask]
 			WriteMask [_StencilWriteMask]
 		}
-			Pass [_StencilOpPass]
-			ReadMask [_StencilReadMask]
-			WriteMask [_StencilWriteMask]
-		}
 		Pass {
 			HLSLPROGRAM
 			#pragma vertex vert

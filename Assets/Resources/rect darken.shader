@@ -28,10 +28,6 @@ Shader "Shapes/Rect Darken" {
 			ReadMask [_StencilReadMask]
 			WriteMask [_StencilWriteMask]
 		}
-			Pass [_StencilOpPass]
-			ReadMask [_StencilReadMask]
-			WriteMask [_StencilWriteMask]
-		}
 		Pass {
 			HLSLPROGRAM
 			#pragma vertex vert

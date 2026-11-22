@@ -20,14 +20,10 @@ Shader "Shapes/Rect Subtractive" {
 		ZTest [_ZTest]
 		ZWrite Off
 		Blend One One
-		BlendOp ReverseSubtract
+		BlendOp RevSub
 		Stencil {
 			Ref [_StencilID]
 			Comp [_StencilComp]
-			Pass [_StencilOpPass]
-			ReadMask [_StencilReadMask]
-			WriteMask [_StencilWriteMask]
-		}
 			Pass [_StencilOpPass]
 			ReadMask [_StencilReadMask]
 			WriteMask [_StencilWriteMask]
