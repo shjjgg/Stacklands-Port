@@ -12,9 +12,10 @@ namespace StacklandsPort
     ///    检查 sprite 的 UV 象限与 rect 是否自洽: 正常时四边形"底边" uv.y ≈ rect.y/texH,
     ///    "顶边" uv.y ≈ (rect.y+rect.h)/texH; 若反过来, 直接把 renderer.flipY 打开抵消。
     ///
-    /// 2) 黑白颠倒: 原版卡面贴图是「反相存法」(白填充 + 黑描边), PC 版由卡面 shader 反相后
-    ///    才显示成「白描边 + 暗填充」。移植里用的是内置 Sprites/Default, 于是直接显示了反相图。
-    ///    这里给 CardIcon 换 Port/CardArtInvert(只反相 RGB, 保留 alpha), 其它 sprite 不受影响。
+    /// 2) 卡面美术: 贴图本身是「白色实心剪影 + 黑描边」的遮罩图(实测不透明区均值 173~188 灰,
+    ///    2~3 成是暗描边), 内置 Sprites/Default 直接采样就画成了一坨白块。
+    ///    原版是「白描边 + 卡底色透出」, 所以给 CardIcon 换 Port/CardArtOutline(按亮度取反算遮罩,
+    ///    白填充透明、黑描边转白), 其它 sprite 不受影响。
     /// </summary>
     public static class PortCardArtFix
     {
@@ -84,9 +85,9 @@ namespace StacklandsPort
 
                     if (_invertMat == null)
                     {
-                        var sh = Shader.Find("Port/CardArtInvert");
+                        var sh = Shader.Find("Port/CardArtOutline");
                         if (sh != null) _invertMat = new Material(sh);
-                        else if (!_loggedInvert) { _loggedInvert = true; PortLog.Write(Tag + "找不到 Port/CardArtInvert"); }
+                        else if (!_loggedInvert) { _loggedInvert = true; PortLog.Write(Tag + "找不到 Port/CardArtOutline"); }
                     }
                     if (_invertMat != null && sr.sharedMaterial != _invertMat)
                     {
