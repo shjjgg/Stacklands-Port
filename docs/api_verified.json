@@ -499,6 +499,16 @@
       "doc": "BuildPipeline.html",
       "status": "verified",
       "note": "BuildAssetBundles(string outputPath, AssetBundleBuild[] builds, BuildAssetBundleOptions, BuildTarget): 用 Android 目标重打 DLC 包(ASTC 贴图)"
+    },
+    {
+      "symbol": "PlayerSettings.SetIconsForTargetGroup",
+      "doc": "PlayerSettings.SetIconsForTargetGroup.html",
+      "status": "verified"
+    },
+    {
+      "symbol": "PlayerSettings.GetIconsForTargetGroup",
+      "doc": "PlayerSettings.GetIconsForTargetGroup.html",
+      "status": "verified"
     }
   ]
 }

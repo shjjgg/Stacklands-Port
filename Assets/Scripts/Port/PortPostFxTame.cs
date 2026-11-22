@@ -6,15 +6,20 @@ using UnityEngine.Rendering.PostProcessing;
 namespace StacklandsPort
 {
     /// <summary>
-    /// 后处理亮度治理 (v0.40)。
-    /// 现场: 原版画面是亮薄荷绿, 移植版整体压暗一大截, 而日志里 FocusVolume weight=1 一直在生效
-    /// (EnergyVolume/SpiritVolume 都是 0)。这套 PostProcess 资源是 AssetRipper 导出的空壳 + 我们重建的,
-    /// ColorGrading / Vignette 很容易把画面整体压暗。
-    /// 默认关掉 PostProcessLayer, 恢复原版亮度与对比; 想再开时在 files 目录放一个空文件 postfx_on。
+    /// 后处理亮度治理 (v0.42)。
+    ///
+    /// 现场取证(真机日志 14:47:53 vs 14:48:05):
+    ///   v0.41 的关闭动作发生在 "PostProcessLayer 数量=0" 的时刻 —— 相机与 Volume 还没实例化,
+    ///   等它 12 秒后出现时 (RenderAudit: PostProcessLayer enabled=True, FocusVolume weight=1) 已经没人管了,
+    ///   所以亮度一点没变。焦点体积里挂的是 Vignette, 一直 weight=1 生效。
+    ///
+    /// 修法: 起 60 秒, 每 0.5 秒扫一次, 逮到就关, 直到不再出现新的已启用层。
+    /// 想保留后处理: 在 files 目录放空文件 postfx_on。
     /// </summary>
     public static class PortPostFxTame
     {
         const string Tag = "[PortPostFxTame] ";
+        public static bool DisableAll = true;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         static void Boot()
@@ -28,31 +33,47 @@ namespace StacklandsPort
         {
             IEnumerator Start()
             {
-                yield return new WaitForSecondsRealtime(3f);
-                LogVolumes();
-                bool wanted = File.Exists(Path.Combine(Application.persistentDataPath, "postfx_on"));
-                var layers = Object.FindObjectsOfType<PostProcessLayer>();
-                PortLog.Write(Tag + "PostProcessLayer 数量=" + layers.Length + " keepPostFx=" + wanted);
-                if (wanted) yield break;
-                for (int i = 0; i < layers.Length; i++)
+                bool wanted = false;
+                try { wanted = File.Exists(Path.Combine(Application.persistentDataPath, "postfx_on")); } catch { }
+                DisableAll = !wanted;
+                PortLog.Write(Tag + "keepPostFx=" + wanted);
+
+                // 60 秒内持续盯: 相机/体积是异步实例化的, 只在启动时扫一次会全部漏掉。
+                for (int i = 0; i < 120; i++)
                 {
-                    if (layers[i] == null || !layers[i].enabled) continue;
-                    layers[i].enabled = false;
-                    PortLog.Write(Tag + "已关闭 PostProcessLayer@" + layers[i].name);
+                    if (DisableAll) Kill();
+                    if (i % 4 == 0) LogVolumes();
+                    yield return new WaitForSecondsRealtime(0.5f);
+                }
+                PortLog.Write(Tag + "盯梢结束, 最后状态 enabled=" + CountEnabled());
+            }
+
+            static int CountEnabled()
+            {
+                int n = 0;
+                foreach (var l in Object.FindObjectsOfType<PostProcessLayer>())
+                    if (l != null && l.enabled) n++;
+                return n;
+            }
+
+            static void Kill()
+            {
+                foreach (var l in Object.FindObjectsOfType<PostProcessLayer>())
+                {
+                    if (l == null || !l.enabled) continue;
+                    l.enabled = false;
+                    PortLog.Write(Tag + "关闭 PostProcessLayer@" + l.name + " (相机 " + (l.GetComponent<Camera>() != null ? l.GetComponent<Camera>().name : "?") + ")");
                 }
             }
 
             static void LogVolumes()
             {
-                var vols = Object.FindObjectsOfType<PostProcessVolume>();
-                for (int i = 0; i < vols.Length; i++)
+                foreach (var v in Object.FindObjectsOfType<PostProcessVolume>())
                 {
-                    var v = vols[i];
                     if (v == null) continue;
                     string prof = "null";
-                    try { prof = v.sharedProfile != null ? v.sharedProfile.name : (v.profile != null ? v.profile.name : "null"); }
-                    catch { }
-                    PortLog.Write(Tag + "volume " + v.name + " global=" + v.isGlobal + " weight=" + v.weight + " profile=" + prof);
+                    try { if (v.sharedProfile != null) prof = v.sharedProfile.name; } catch { }
+                    PortLog.Write(Tag + "volume " + v.name + " weight=" + v.weight + " " + prof);
                 }
             }
         }

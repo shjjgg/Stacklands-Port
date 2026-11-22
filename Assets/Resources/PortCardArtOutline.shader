@@ -1,23 +1,26 @@
-// 卡面美术「白描边」shader (v0.41)
+// 卡面美术 shader (v0.42) —— 描边 + 卡底色 + 互补墨色
 //
-// 现场取证(逐像素统计, 不是猜):
-//   Assets/Texture2D/Bush/Tree/Rock.png 都是 1024×1024, alpha 覆盖 3~4 成,
-//   不透明区 RGB 均值 ≈ 173~188 灰, 其中 22%~28% 是暗像素(描边), 其余是不透明的白填充。
-//   即贴图本身是「白色实心剪影 + 黑色手绘描边」, 是给卡面 shader 当遮罩用的,
-//   不是可以直接贴到卡上的成品图。
+// 实测事实(逐像素统计 Assets/Texture2D/*.png):
+//   卡面贴图是 1024×1024 的「白色实心剪影 + 黑手绘描边」遮罩图:
+//   中心像素 (255,255,255,255) 不透明白填充, 外沿 alpha=0,
+//   不透明区 RGB 均值 173~188 灰, 其中 22%~28% 是暗像素(描边)。
 //
-// 原版的呈现是「白描边 + 卡底色透出来」。所以这里按亮度取反算遮罩:
-//   白填充(亮) -> alpha 0, 露出卡框底色; 黑描边(暗) -> alpha 1, 画成白色描边。
-// 只给 GameCard/CardIcon 换材质, 树/草/UI 等其它 sprite 完全不受影响。
+// 原版呈现(对照 PC 实录截图):
+//   深色卡(浆果灌木/岩石) → 白色描边 + 卡底色填充;
+//   浅色卡(村民/木材/硬币) → 深色描边 + 卡底色填充。
+//   即线条颜色 = 卡底色的互补色(1 - 卡底色), 白填充一律透明。
+//
+// 这里: mask = 1 - 亮度(白填充→0, 黑描边→1), 线条颜色由 _InkColor 给,
+// _InkColor 由 C# 从卡框(Shapes Rect)的 MaterialPropertyBlock 读出卡底色后取反。
 Shader "Port/CardArtOutline"
 {
     Properties
     {
         _MainTex ("Sprite Texture", 2D) = "white" {}
         _Color ("Tint", Color) = (1,1,1,1)
-        _StrokeColor ("Stroke Color", Color) = (1,1,1,1)
-        _Dark ("Dark Threshold (lum)", Range(0.0, 1.0)) = 0.62
-        _Soft ("Softness", Range(0.0, 0.5)) = 0.18
+        _InkColor ("Ink Color", Color) = (1,1,1,1)
+        _Dark ("Dark Threshold (lum)", Range(0.0, 1.0)) = 0.55
+        _Soft ("Softness", Range(0.0, 0.5)) = 0.22
     }
     SubShader
     {
@@ -34,7 +37,7 @@ Shader "Port/CardArtOutline"
 
             sampler2D _MainTex;
             float4 _Color;
-            float4 _StrokeColor;
+            float4 _InkColor;
             float _Dark;
             float _Soft;
 
@@ -54,12 +57,10 @@ Shader "Port/CardArtOutline"
             {
                 float4 c = tex2D(_MainTex, i.uv);
                 float lum = dot(c.rgb, float3(0.299, 0.587, 0.114));
-                // 暗 -> 1, 亮 -> 0; 用软阈值保住抗锯齿边缘
+                // 黑描边 → mask 1, 白填充 → mask 0; 软阈值保住抗锯齿
                 float mask = saturate((_Dark - lum) / max(_Soft, 1e-4));
-                // 贴图自身的剪影 alpha 参与, 让轮廓外沿保留 AA
                 float a = mask * c.a * i.color.a;
-                float3 rgb = _StrokeColor.rgb * i.color.rgb;
-                return float4(rgb, a);
+                return float4(_InkColor.rgb * i.color.rgb, a);
             }
             ENDCG
         }

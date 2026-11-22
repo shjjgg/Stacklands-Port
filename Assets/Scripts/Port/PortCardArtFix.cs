@@ -5,22 +5,37 @@ using UnityEngine;
 namespace StacklandsPort
 {
     /// <summary>
-    /// 卡面美术层的两个定点修正 (v0.40):
+    /// 卡面美术层修正 (v0.42)。
     ///
-    /// 1) 图案倒立: 卡面美术是 GameCard/CardIcon 上的 SpriteRenderer(内置 Sprites/Default),
-    ///    卡框(Shapes Rect)与卡名(TMP)都正常, 只有精灵图上下镜像。
-    ///    检查 sprite 的 UV 象限与 rect 是否自洽: 正常时四边形"底边" uv.y ≈ rect.y/texH,
-    ///    "顶边" uv.y ≈ (rect.y+rect.h)/texH; 若反过来, 直接把 renderer.flipY 打开抵消。
+    /// 实测事实(逐像素统计, 不是猜):
+    ///   Assets/Texture2D/Bush/Tree/Rock/Villager.png 都是 1024×1024 「白色实心剪影 + 黑手绘描边」遮罩图:
+    ///   中心 (255,255,255,255) 不透明白填充, 外沿 alpha=0, 不透明区 RGB 均值 173~188 灰, 22%~28% 是暗描边。
     ///
-    /// 2) 卡面美术: 贴图本身是「白色实心剪影 + 黑描边」的遮罩图(实测不透明区均值 173~188 灰,
-    ///    2~3 成是暗描边), 内置 Sprites/Default 直接采样就画成了一坨白块。
-    ///    原版是「白描边 + 卡底色透出」, 所以给 CardIcon 换 Port/CardArtOutline(按亮度取反算遮罩,
-    ///    白填充透明、黑描边转白), 其它 sprite 不受影响。
+    /// 原版呈现(对照 PC 实录): 白填充区域直接露出卡底色, 眼睛只看得见线条; 线条颜色 = 卡底色的互补色
+    /// (深色卡→白线, 浅色卡→深线)。移植里降级成内置 Sprites/Default 直接采样, 白剪影整块糊在卡上。
+    ///
+    /// 修法:
+    ///   1) 卡面精灵改用 Resources/PortCardArtOutline。
+    ///      注意: 只靠 Shader.Find 取的自研 shader 不会进构建(会被裁), 必须 Resources.Load。
+    ///   2) 从卡框(Shapes Rect)的 MaterialPropertyBlock 读卡底色, 取反后作为 _InkColor 写进精灵的 MPB。
+    ///   3) 图案上下翻: UV/rect 自洽(日志 flipped=False), 说明翻转来自贴图取向差异, 由 FlipOn 统一处理。
+    ///
+    /// 判定不靠物件名: 祖先里有 GameCard 的 SpriteRenderer。
     /// </summary>
     public static class PortCardArtFix
     {
         const string Tag = "[PortCardArtFix] ";
-        static Material _invertMat;
+
+        public static bool ShaderFound;
+        public static int Matched;
+        public static int Swapped;
+        public static int FlipFixed;
+        public static bool Enabled = true;
+        public static bool FlipOn = true;
+        public static Material OutlineMat;
+
+        static readonly Dictionary<int, bool> _done = new Dictionary<int, bool>();
+        static readonly HashSet<string> _logged = new HashSet<string>();
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         static void Boot()
@@ -30,78 +45,135 @@ namespace StacklandsPort
             go.AddComponent<Runner>();
         }
 
+        static Transform CardRoot(Transform t)
+        {
+            int depth = 0;
+            while (t != null && depth++ < 8)
+            {
+                if (t.name.StartsWith("GameCard")) return t;
+                t = t.parent;
+            }
+            return null;
+        }
+
+        /// <summary>卡底色: 取 GameCard 下 Shapes 渲染器上的 _Color(卡框填色)。</summary>
+        static bool TryCardColor(SpriteRenderer sr, out Color color)
+        {
+            color = Color.white;
+            var root = CardRoot(sr.transform);
+            if (root == null) return false;
+            foreach (var r in root.GetComponentsInChildren<Renderer>(true))
+            {
+                if (r is SpriteRenderer || r.sharedMaterial == null) continue;
+                var sh = r.sharedMaterial.shader;
+                if (sh == null || !sh.name.StartsWith("Shapes")) continue;
+
+                var mbp = new MaterialPropertyBlock();
+                r.GetPropertyBlock(mbp);
+                if (!mbp.isEmpty)
+                {
+                    color = mbp.GetColor("_Color");
+                    return true;
+                }
+                if (r.sharedMaterial.HasProperty("_Color"))
+                {
+                    color = r.sharedMaterial.GetColor("_Color");
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static void SetEnabled(bool on)
+        {
+            Enabled = on;
+            Apply();
+            PortLog.Write(Tag + "SetEnabled " + on);
+        }
+
+        public static void SetFlip(bool on)
+        {
+            FlipOn = on;
+            var all = Object.FindObjectsOfType<SpriteRenderer>();
+            foreach (var sr in all)
+            {
+                if (sr == null || sr.sprite == null || CardRoot(sr.transform) == null) continue;
+                sr.flipY = on;
+            }
+            PortLog.Write(Tag + "SetFlip " + on);
+        }
+
+        static void Apply()
+        {
+            var all = Object.FindObjectsOfType<SpriteRenderer>();
+            foreach (var sr in all)
+            {
+                if (sr == null || sr.sprite == null || CardRoot(sr.transform) == null) continue;
+                var target = sr.sprite.texture;
+                if (Enabled && OutlineMat != null)
+                {
+                    sr.sharedMaterial = OutlineMat;
+                    Color paper;
+                    bool ok = TryCardColor(sr, out paper);
+                    Color ink = ok ? new Color(1f - paper.r, 1f - paper.g, 1f - paper.b, 1f) : Color.white;
+                    var mbp = new MaterialPropertyBlock();
+                    sr.GetPropertyBlock(mbp);
+                    mbp.SetColor("_InkColor", ink);
+                    sr.SetPropertyBlock(mbp);
+                    if (!_logged.Contains(sr.gameObject.name) && _logged.Count < 6)
+                    {
+                        _logged.Add(sr.gameObject.name);
+                        PortLog.Write(Tag + "ink " + sr.gameObject.name + " paper=" + paper + " ok=" + ok + " ink=" + ink);
+                    }
+                }
+                else
+                {
+                    var sh = Shader.Find("Sprites/Default");
+                    if (sh != null) sr.sharedMaterial = new Material(sh) { mainTexture = target };
+                }
+                sr.flipY = FlipOn;
+            }
+        }
+
         internal sealed class Runner : MonoBehaviour
         {
-            readonly HashSet<int> _checked = new HashSet<int>();
-            bool _loggedInvert;
-
             IEnumerator Start()
             {
-                yield return new WaitForSecondsRealtime(8f);   // 等第一局棋盘把卡生成出来
-                for (int i = 0; i < 8; i++)
+                yield return new WaitForSecondsRealtime(4f);
+                Scan();
+                for (int i = 0; i < 40; i++)
                 {
-                    Scan(i == 7);
-                    yield return new WaitForSecondsRealtime(2f);
+                    if (Enabled) Apply();
+                    yield return new WaitForSecondsRealtime(1.5f);
                 }
             }
+        }
 
-            void Scan(bool verbose)
+        public static void Scan()
+        {
+            if (!Enabled) return;
+            if (OutlineMat == null)
             {
-                int sampled = 0, flippedFixed = 0, matSwapped = 0;
-                foreach (var sr in Object.FindObjectsOfType<SpriteRenderer>())
+                var sh = Resources.Load<Shader>("PortCardArtOutline");
+                if (sh == null) sh = Shader.Find("Port/CardArtOutline");
+                if (sh != null)
                 {
-                    if (sr == null || sr.sprite == null) continue;
-                    if (sr.gameObject.name != "CardIcon") continue;
-                    int id = sr.GetInstanceID();
-                    if (_checked.Contains(id)) continue;
-
-                    var sp = sr.sprite;
-                    var uv = sp.uv;
-                    var tex = sp.texture;
-                    if (uv == null || uv.Length < 4 || tex == null) { _checked.Add(id); continue; }
-
-                    float texH = tex.height;
-                    float yBottom = sp.rect.y / texH;
-                    float yTop = (sp.rect.y + sp.rect.height) / texH;
-                    float uvMin = float.MaxValue, uvMax = float.MinValue;
-                    for (int k = 0; k < uv.Length; k++)
-                    {
-                        uvMin = Mathf.Min(uvMin, uv[k].y);
-                        uvMax = Mathf.Max(uvMax, uv[k].y);
-                    }
-                    bool flipped = Mathf.Abs(uvMin - yTop) < 0.003f && Mathf.Abs(uvMax - yBottom) < 0.003f;
-
-                    if (verbose || flipped)
-                        PortLog.Write(Tag + "check " + sp.name + " tex=" + tex.name + " " + tex.width + "x" + tex.height +
-                                      " rect=" + sp.rect + " uvY=[" + uvMin.ToString("F3") + "," + uvMax.ToString("F3") + "]" +
-                                      " expect=[" + yBottom.ToString("F3") + "," + yTop.ToString("F3") + "]" +
-                                      " flipped=" + flipped + " flipY=" + sr.flipY);
-
-                    if (flipped)
-                    {
-                        sr.flipY = !sr.flipY;
-                        flippedFixed++;
-                    }
-
-                    if (_invertMat == null)
-                    {
-                        var sh = Shader.Find("Port/CardArtOutline");
-                        if (sh != null) _invertMat = new Material(sh);
-                        else if (!_loggedInvert) { _loggedInvert = true; PortLog.Write(Tag + "找不到 Port/CardArtOutline"); }
-                    }
-                    if (_invertMat != null && sr.sharedMaterial != _invertMat)
-                    {
-                        sr.sharedMaterial = _invertMat;
-                        matSwapped++;
-                    }
-
-                    _checked.Add(id);
-                    sampled++;
+                    OutlineMat = new Material(sh);
+                    ShaderFound = true;
+                    PortLog.Write(Tag + "shader 就位: " + sh.name + " supported=" + sh.isSupported);
                 }
-                if (sampled > 0 || verbose)
-                    PortLog.Write(Tag + "scan sampled=" + sampled + " flippedFixed=" + flippedFixed +
-                                  " matSwapped=" + matSwapped + " checked=" + _checked.Count);
+                else
+                {
+                    PortLog.Write(Tag + "ERROR 取不到 Port/CardArtOutline (Resources 未打进包?)");
+                    return;
+                }
             }
+            Apply();
+            Matched = 0;
+            foreach (var sr in Object.FindObjectsOfType<SpriteRenderer>())
+                if (sr != null && sr.sprite != null && CardRoot(sr.transform) != null) Matched++;
+            PortLog.Write(Tag + "scan cardRenderers=" + Matched + " mat=" + (OutlineMat != null ? OutlineMat.shader.name : "null") +
+                          " flip=" + FlipOn + " supported=" + (OutlineMat != null && OutlineMat.shader.isSupported));
         }
     }
 }

@@ -287,6 +287,7 @@ public static class PortBuild
         PlayerSettings.applicationIdentifier = bundleId;
         PlayerSettings.bundleVersion = GetBuildVersion();
         PlayerSettings.Android.bundleVersionCode = GetBundleVersionCode();
+        ApplyAndroidIcons();
 
         // 颜色空间 / 多线程渲染 (对齐原版: Linear, MT 开启)
         PlayerSettings.colorSpace = ColorSpace.Linear;
@@ -330,6 +331,22 @@ public static class PortBuild
 
         // 签名 (Release): 由 CI 环境变量注入; 未配置时走 Unity 调试签名, 只允许内部冒烟。
         _keystoreApplied = ApplyKeystoreIfConfigured();
+    }
+
+    // 应用图标: 原版图标 AppIcon.png(黄底黑色小人)。不设的话 Unity 会用默认 Unity logo。
+    private static void ApplyAndroidIcons()
+    {
+        const string IconPath = "Assets/Texture2D/AppIcon.png";
+        var tex = AssetDatabase.LoadAssetAtPath<Texture2D>(IconPath);
+        if (tex == null)
+        {
+            Debug.LogWarning("[PortBuild] 找不到应用图标 " + IconPath + ", 会退化成 Unity 默认图标");
+            return;
+        }
+        PlayerSettings.SetIconsForTargetGroup(BuildTargetGroup.Android, new[] { tex });
+        var read = PlayerSettings.GetIconsForTargetGroup(BuildTargetGroup.Android);
+        Debug.Log("[PortBuild] Android 图标 = " + IconPath + " " + tex.width + "x" + tex.height +
+                  " (回读 " + read.Length + " 项)");
     }
 
     // ---- 门 3: 回读校验 ----
