@@ -18,6 +18,8 @@ namespace StacklandsPort
         static bool _hidden;
         static float _hideAt;
         static readonly List<string> _lines = new List<string>();
+        static string _lum = "?";
+        static float _nextLum;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         static void Boot()
@@ -44,6 +46,7 @@ namespace StacklandsPort
                 var layers = Object.FindObjectsOfType<PostProcessLayer>();
                 PostFxOn = CountEnabled(layers) > 0;
                 LogBackgroundTints();
+                LogBoardMaterials();
                 PortLog.Write("[PortDiag] gfx=" + SystemInfo.graphicsDeviceType +
                               " colorSpace=" + QualitySettings.activeColorSpace +
                               " screen=" + Screen.width + "x" + Screen.height +
@@ -55,6 +58,7 @@ namespace StacklandsPort
                 if (Time.unscaledTime < _next) return;
                 _next = Time.unscaledTime + 2f;
                 Refresh();
+                if (Time.unscaledTime > _nextLum) { _nextLum = Time.unscaledTime + 8f; _lum = MeasureLum(); Refresh(); }
 
                 try
                 {
@@ -83,6 +87,53 @@ namespace StacklandsPort
                 PortLog.Write("[PortDiag] bg 取样条数=" + n);
             }
 
+            static void LogBoardMaterials()
+            {
+                var names = new[] { "Custom/FloorShader", "Custom/FloorShaderIsland", "Custom/FloorShaderForest", "Custom/GridShader", "Custom/CardShaderTest" };
+                foreach (var r in Object.FindObjectsOfType<Renderer>())
+                {
+                    if (r == null || r.sharedMaterial == null || r.sharedMaterial.shader == null) continue;
+                    string sn = r.sharedMaterial.shader.name;
+                    bool hit = false;
+                    foreach (var n in names) if (sn == n) { hit = true; break; }
+                    if (!hit) continue;
+                    var m = r.sharedMaterial;
+                    var mbp = new MaterialPropertyBlock();
+                    r.GetPropertyBlock(mbp);
+                    string props = "";
+                    foreach (var pn in new[] { "_Color", "_Color2", "_StoneColor", "_StoneEdge", "_EdgeColor", "_IconColor" })
+                    {
+                        if (!m.HasProperty(pn)) continue;
+                        Color c = m.GetColor(pn);
+                        if (!mbp.isEmpty) { try { c = mbp.GetColor(pn); } catch { } }
+                        props += " " + pn + "=" + ColorUtility.ToHtmlStringRGB(c);
+                    }
+                    PortLog.Write("[PortDiag] mat " + sn + " renderer=" + r.name + props);
+                }
+            }
+
+            static string MeasureLum()
+            {
+                Texture2D t = null;
+                try
+                {
+                    t = ScreenCapture.CaptureScreenshotAsTexture();
+                    var px = t.GetPixels32();
+                    int stride = 8;
+                    double sum = 0; int n = 0;
+                    for (int y = 0; y < t.height; y += stride)
+                        for (int x = 0; x < t.width; x += stride)
+                        {
+                            var c = px[y * t.width + x];
+                            sum += 0.299 * c.r + 0.587 * c.g + 0.114 * c.b;
+                            n++;
+                        }
+                    return n > 0 ? (sum / n / 255.0).ToString("F3") : "?";
+                }
+                catch { return "?"; }
+                finally { if (t != null) Object.Destroy(t); }
+            }
+
             static void Refresh()
             {
                 _lines.Clear();
@@ -109,6 +160,7 @@ namespace StacklandsPort
                     _lines.Add("vol " + v.name + " w=" + v.weight.ToString("F2") + " " + prof);
                 }
 
+                _lines.Add("screenLum=" + _lum + "  (0~1, 越小越暗)");
                 _lines.Add("cardart shader=" + (PortCardArtFix.ShaderFound ? "ok" : "missing") +
                            " matched=" + PortCardArtFix.Matched + " swapped=" + PortCardArtFix.Swapped +
                            " flip=" + PortCardArtFix.FlipFixed);
@@ -155,10 +207,17 @@ namespace StacklandsPort
                     PortLog.Write("[PortDiag] postfx -> " + PostFxOn);
                     _hideAt = Time.unscaledTime + 120f;
                 }
-                if (GUI.Button(new Rect(6 + bw + 10, h + 14, bw, bh),
-                               PortCardArtFix.Enabled ? "卡面 描边" : "卡面 原样", btn))
+                if (GUI.Button(new Rect(6 + bw + 10, h + 14, bw, bh), "背景 tint↺", btn))
                 {
-                    PortCardArtFix.SetEnabled(!PortCardArtFix.Enabled);
+                    int n = 0;
+                    foreach (var sr in Object.FindObjectsOfType<SpriteRenderer>())
+                    {
+                        if (sr == null || sr.sharedMaterial == null || sr.sharedMaterial.shader == null) continue;
+                        if (sr.sharedMaterial.shader.name != "Sprites/BackgroundShader") continue;
+                        sr.color = Color.white;
+                        n++;
+                    }
+                    PortLog.Write("[PortDiag] 背景 tint 复位 n=" + n);
                     _hideAt = Time.unscaledTime + 120f;
                 }
                 if (GUI.Button(new Rect(6 + (bw + 10) * 2, h + 14, bw * 0.7f, bh),

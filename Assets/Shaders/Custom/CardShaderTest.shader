@@ -19,6 +19,7 @@ Shader "Custom/CardShaderTest"
         _HasOutputDir ("Has Output Dir", Float) = 0
         _MainTex ("Albedo", 2D) = "white" {}
         _IconTex ("Icon", 2D) = "white" {}
+        _FlipIcon ("Flip Icon V", Float) = 0
         _SecondaryTex ("Secondary", 2D) = "white" {}
         _RainbowTex ("Rainbow", 2D) = "white" {}
         _DamagedTex ("Damaged", 2D) = "white" {}
@@ -51,6 +52,7 @@ Shader "Custom/CardShaderTest"
             float _ShineStrength; float _BigShineStrength;
             float _HasSecondaryIcon; float _HasOutputDir;
             sampler2D _MainTex; sampler2D _IconTex; sampler2D _SecondaryTex;
+            float _FlipIcon;
             sampler2D _RainbowTex; sampler2D _DamagedTex;
             float _Glossiness; float _Metallic; float _SparkleIntensity;
             float4 _BorderColor; float4 _DamagedBorderColor;
@@ -80,8 +82,14 @@ Shader "Custom/CardShaderTest"
                 float3 albedo = tex2D(_MainTex, uv).rgb * _Color.rgb;
 
                 // ---- 图标 (含副图标) ----
-                float4 icon = tex2D(_IconTex, uv);
-                albedo = lerp(albedo, icon.rgb * _IconColor.rgb, icon.a * step(0.5, 1.0 - _HasOutputDir * 0.0));
+                // 卡面美术贴图是「白色实心剪影 + 黑手绘描边」的遮罩图(实测不透明区 RGB 均值 173~188 灰,
+                // 2~3 成是暗描边, 中心像素 255,255,255,255)。原版=白填充透出卡底色、线条用调色板 Icon 色,
+                // 所以这里按亮度取反算遮罩, 不能用 icon.a 直接铺白。
+                float2 iconUv = (_FlipIcon > 0.5) ? float2(uv.x, 1.0 - uv.y) : uv;
+                float4 icon = tex2D(_IconTex, iconUv);
+                float iconLum = dot(icon.rgb, float3(0.299, 0.587, 0.114));
+                float iconMask = saturate((0.55 - iconLum) / 0.22) * icon.a;
+                albedo = lerp(albedo, _IconColor.rgb, iconMask);
                 if (_HasSecondaryIcon > 0.5)
                 {
                     float4 sec = tex2D(_SecondaryTex, uv);
