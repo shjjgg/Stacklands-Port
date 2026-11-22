@@ -186,18 +186,27 @@ namespace StacklandsPort
             _keepAlive.Add(bundle);
 
             var gos = bundle.LoadAllAssets<GameObject>();
-            int cards = 0;
+            int cards = 0, skipped = 0;
+            var existing = new HashSet<string>();
+            for (int i = 0; i < loader.CardDataPrefabs.Count; i++)
+            {
+                var c = loader.CardDataPrefabs[i];
+                if (c != null) existing.Add(c.gameObject.name);
+            }
             for (int i = 0; i < gos.Length; i++)
             {
                 var cd = gos[i] != null ? gos[i].GetComponent<CardData>() : null;
                 if (cd == null) continue;
+                // v0.34: 原版 GameDataLoader 里已有同名卡(存档/基础包/重复注入)时不再插第二份,
+                // 否则会刷 "Duplicate card id" 并让同一 id 出现两个 prefab。
+                if (!existing.Add(cd.gameObject.name)) { skipped++; continue; }
                 cd.CardUpdateType = type;
                 loader.CardDataPrefabs.Add(cd);
                 cards++;
             }
             loader.SetCardBags.AddRange(bundle.LoadAllAssets<SetCardBagData>());
             loader.BoosterpackDatas.AddRange(bundle.LoadAllAssets<BoosterpackData>());
-            PortLog.Write(Tag + "loaded " + name + " go=" + gos.Length + " cards=" + cards);
+            PortLog.Write(Tag + "loaded " + name + " go=" + gos.Length + " cards=" + cards + " skipped_dup=" + skipped);
             return cards;
         }
     }

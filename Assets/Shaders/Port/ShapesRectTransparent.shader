@@ -70,7 +70,6 @@ Shader "Shapes/Rect Transparent"
             float4 _CornerRadii;
             float _Thickness;
             float _AA;
-            float4 _ScreenParams;
 
             struct appdata
             {
