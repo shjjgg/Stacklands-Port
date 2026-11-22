@@ -167,6 +167,32 @@ namespace StacklandsPort
             return true;
         }
 
+
+        static readonly string[] IdCandidates = { "CardId", "cardId", "Id", "id" };
+
+        /// <summary>
+        /// v0.35: 反编译出的 CardData 桩没有 CardId 属性(运行时才有), 用反射取 id;
+        /// 取不到就退回 prefab 名, 至少不会重复插入同名卡。
+        /// </summary>
+        static string CardIdOf(CardData cd)
+        {
+            try
+            {
+                var t = cd.GetType();
+                for (int i = 0; i < IdCandidates.Length; i++)
+                {
+                    var pi = t.GetProperty(IdCandidates[i],
+                        BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+                    if (pi != null && pi.GetValue(cd, null) is string sp && !string.IsNullOrEmpty(sp)) return sp;
+                    var fi = t.GetField(IdCandidates[i],
+                        BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+                    if (fi != null && fi.GetValue(cd) is string sf && !string.IsNullOrEmpty(sf)) return sf;
+                }
+            }
+            catch { }
+            return cd.gameObject.name;
+        }
+
         static int LoadInto(GameDataLoader loader, string name, CardUpdateType type)
         {
             string path = Path.Combine(Dlcdir, name);
@@ -191,7 +217,7 @@ namespace StacklandsPort
             for (int i = 0; i < loader.CardDataPrefabs.Count; i++)
             {
                 var c = loader.CardDataPrefabs[i];
-                if (c != null) existing.Add(c.gameObject.name);
+                if (c != null) existing.Add(CardIdOf(c));
             }
             for (int i = 0; i < gos.Length; i++)
             {
@@ -199,7 +225,8 @@ namespace StacklandsPort
                 if (cd == null) continue;
                 // v0.34: 原版 GameDataLoader 里已有同名卡(存档/基础包/重复注入)时不再插第二份,
                 // 否则会刷 "Duplicate card id" 并让同一 id 出现两个 prefab。
-                if (!existing.Add(cd.gameObject.name)) { skipped++; continue; }
+                // 同一个 CardId 会有 Blueprint_X / Structure_X 两个不同 prefab 名, 必须按 id 去重
+                if (!existing.Add(CardIdOf(cd))) { skipped++; continue; }
                 cd.CardUpdateType = type;
                 loader.CardDataPrefabs.Add(cd);
                 cards++;
