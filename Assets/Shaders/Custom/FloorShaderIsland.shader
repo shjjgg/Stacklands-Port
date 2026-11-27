@@ -84,51 +84,73 @@ Shader "Custom/FloorShaderIsland"
 
             float4 frag(v2f i) : SV_Target
             {
-                // ---- 与 FloorShader 一致的噪声位移 uv (对应 _140.._155) ----
-                float2 p = i.uv;
-                float n1 = Hash01(p.y * 600.0);
-                float py = p.y + n1 * 0.005;
-                float n2 = Hash01(py * 300.0);
-                float px = p.x + n2 * 0.005;
+                // ============ 按 Custom__FloorShaderIsland__08_PS 逐条直译 ============
+                // 世界空间 XZ (L147/L148), 原点取物体位移
+                float3 oc  = mul(unity_ObjectToWorld, float4(0,0,0,1)).xyz;
+                float2 pW  = i.worldPos.xz - oc.xz;
+                float2 p   = i.uv;
+                float  h1  = Hash01(p.y * 600.0);                    // L149
+                float  py  = p.y + h1 * 0.005;                       // L152
+                float  h2  = Hash01(py * 300.0);                     // L154
+                float  px  = p.x + h2 * 0.005;                       // L156
 
-                // ---- 石板 SDF (对应 _160.._190) ----
-                float3 halfB = float3(_Rect.x + _EdgeThickness, _Rect.y, _Rect.z + _EdgeThickness * 0.58);
-                float3 t3 = float3(px, i.uv.y, 0.0);
-                float dOut  = SdBox(t3, halfB, _Rect.w);
-                float dOut2 = SdBox(t3, halfB + 0.03, _Rect.w + 0.03);
-                float inside  = 1.0 - dOut;
-                float inside2 = 1.0 - dOut2;
+                // L145/L146: 半尺寸 = _Rect.xz + 尺寸偏移(_0.58 是原版常数)
+                float2 halfB = float2(_Rect.x + _IslandDownsize, _Rect.z + _IslandDownsize * 0.58);
+                float2 q0    = max(abs(pW) - halfB, 0.0);
+                float  d0    = length(q0) - _Rect.w;                 // L164
+                float  s0    = 1.0 - d0;                             // L174
+                float2 q1    = max(abs(pW) - (halfB + 0.03), 0.0);
+                float  d1    = length(q1) - (_Rect.w + 0.03);        // L173/L188
+                float  s1    = 1.0 - d1;                             // L190
 
-                // ---- SdfTex 海浪位移 (时间相位 fma(cb1.m.x,0.2,uv) ) ----
-                float2 waveUv = float2(px * 0.1 + _Time.y * 0.2, py * 0.1 + _Time.y * 0.2);
-                float4 wave = tex2D(_SdfTex, waveUv);
-                float3 wp = float3(px + (wave.x * 2.0 - 1.0) * 0.1, i.uv.y, py + (wave.y * 2.0 - 1.0) * 0.1);
+                // L183: 海浪位移纹理, uv = 世界*0.1 + 时间*0.2
+                float4 wave = tex2D(_SdfTex, float2(px + _Time.y * 0.2, py + _Time.y * 0.2));
+                // L187/L188: |世界 + (tex*2-1)*0.1|
+                float  wx   = abs(pW.x + (wave.y * 2.0 - 1.0) * 0.1);
+                float  wz   = abs(pW.y + (wave.x * 2.0 - 1.0) * 0.1);
 
-                // ---- 三层: 水面 / 岛面 / 描边环 (对应 _220.._295) ----
-                float dWater = SdBox(wp, float3(halfB.x + 1.0, halfB.y, halfB.z + 1.0), 0.5);
-                float isWater = step(dWater, 0.3) * _IslandDownsize;
-                float dFace  = SdBox(wp, float3(halfB.x + 0.7, halfB.y, halfB.z + 0.7), 0.5);
-                float isFace = step(dFace, 0.5) * _IslandDownsize;
+                // 三层向外扩张的 SDF: 水面(外圈) / 白线 / 岛面
+                float a1 = length(max(float2(wx - halfB.x - 1.0, wz - halfB.y - 1.0), 0.0));
+                float b1 = step(a1, 0.8);                            // L194/L195: (len-0.5)<=0.3
+                float a2 = length(max(float2(wx - halfB.x - 0.7, wz - halfB.y - 0.7), 0.0));
+                float b2 = step(a2, 1.0);                            // L205
+                float a3 = length(max(float2(wx - halfB.x - 0.6, wz - halfB.y - 0.6), 0.0));
+                float b3 = step(a3, 1.0);                            // L217
 
-                // 外描边环 (半径 _OutlineWidth)
-                float dOutline = SdBox(wp, float3(halfB.x + 0.6, halfB.y, halfB.z + 0.6), 0.5);
+                float3 c = lerp(float3(1,1,1), _WaterColor.rgb, b1);  // L196~L199 (_m20)
+                c = lerp(c, float3(1,1,1), b2);                       // L206~L211
+                c = lerp(c, _FaceColor.rgb, b3);                       // L218~L223 (_m7)
+                float outside = step(1.0 - s1, 0.5);                   // L225 (_289)
+                c = lerp(c, float3(1,1,1), outside);                   // L229~L231
 
-                float3 albedo = _WaterColor.rgb * isWater;
-                albedo = lerp(albedo, _OutlineColor.rgb, saturate(step(dOutline, _OutlineWidth * 0.5) * (1.0 - isFace)));
-                albedo = lerp(albedo, _FaceColor.rgb, saturate(isFace));
+                float aa0  = max(abs(ddx(s0)) + abs(ddy(s0)), 1e-5);   // L232/L300
+                float mid0 = 0.5 - aa0 * 0.5;                          // L234
+                float k0   = saturate((s0 - mid0) / aa0);               // L237/L238
+                c = lerp(c, _FaceColor.rgb, k0);                        // L239~L244
 
-                // 石板与边缘色并入岛面 (同 Floor 的 lerp 权重)
-                float aa = abs(ddy(inside)) + abs(ddx(inside));
-                float cov = saturate((inside - 0.5) / max(aa, 1e-6) + 0.5);
-                float3 stone = lerp(_StoneEdge.rgb, _StoneColor.rgb, saturate(inside2));
-                albedo = lerp(albedo, stone, saturate(isFace) * cov * 0.85);
-                albedo *= lerp(_Color.rgb, _Color2.rgb, saturate(dOut));
+                // ---- L245~L249: 板缝, 线在 halfZ-0.9, 带 0.89/0.91 ----
+                float seamT  = halfB.y - 0.9;
+                float inPl   = step(0.5, s0);                          // L248 (_321)
+                float m322   = inPl * step(seamT, pW.y);
+                c = lerp(c, _EdgeColor.rgb, m322);                     // L250~L255 (_m11)
+                float aaX    = max(abs(ddx(pW.x)) + abs(ddy(pW.x)), 1e-5);  // L256
+                float sb1    = saturate((pW.y - (seamT - 0.01)) / aaX);    // L257/L259
+                float sb2    = saturate((pW.y - (seamT + 0.01)) / aaX);    // L258/L260
+                float sBand  = inPl * sb1 * (1.0 - sb2);                    // L261~L263
+                c *= (1.0 - sBand);                                        // L264~L266
+
+                // ---- L267~L281: 内圈环, 半径 0.5 - _m17.x (=_EdgeThickness) ----
+                float ringIn = 0.5 - _EdgeThickness;                   // L267 (_356)
+                float ringLo = ringIn - aa0 * 0.5;                      // L268
+                float rr1    = saturate((s0 - ringLo) / aa0)
+                             * saturate(((1.0 - s0) - ringLo) / aa0);   // L271/L274/L275
+                c = lerp(c, _OutlineColor.rgb, rr1);                    // L276~L281 (_m9)
+
+                if (all(c == float3(1.0, 0.0, 0.0))) discard;           // L282~L285 demote
+
+                // L318~L327: 原版是 c*(vcol + _Color2) 的加法项, 3D 贴图路径关闭时 _Color2 为 0
+                float3 albedo = c * i.color.rgb;
                 albedo *= lerp(float3(1,1,1), tex2D(_MainTex, i.uv).rgb, 0.25);
-
-                float4 col = SokpopShadeBase(albedo, _Glossiness, _Metallic, normalize(i.worldNormal), i.worldPos);
-                col.a = 1.0;
-                return col;
-            }
             ENDCG
         }
 
