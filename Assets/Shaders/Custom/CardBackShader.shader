@@ -54,7 +54,6 @@ Shader "Custom/CardBackShader"
                 bool   cbOut  = (cbUv.x < 0.13677685) || (cbUv.x > 0.86322314) || (cbUv.y < 0.05) || (cbUv.y > 0.95);
                 float3 albedo = cbOut ? float3(0, 0, 0) : cbTex;
                 float4 col = SokpopShadeBase(albedo, _Glossiness, _Metallic, normalize(i.worldNormal), i.worldPos);
-                col.rgb *= i.color.rgb;
                 col.a = 1.0;
                 return col;
             }
@@ -101,7 +100,6 @@ Shader "Custom/CardBackShader"
                 bool   cbOut  = (cbUv.x < 0.13677685) || (cbUv.x > 0.86322314) || (cbUv.y < 0.05) || (cbUv.y > 0.95);
                 float3 albedo = cbOut ? float3(0, 0, 0) : cbTex;
                 float4 col = SokpopShadeAdd(albedo, _Glossiness, _Metallic, normalize(i.worldNormal), i.worldPos);
-                col.rgb *= i.color.rgb;
                 col.a = 0.0;
                 return col;
             }

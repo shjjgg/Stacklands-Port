@@ -122,7 +122,6 @@ Shader "Custom/BoosterShaderTop"
             {
                 float3 albedo = BoosterAlbedo(i.uv, i.worldPos);
                 float4 col = SokpopShadeBase(albedo, _Glossiness, _Metallic, normalize(i.worldNormal), i.worldPos);
-                col.rgb *= i.color.rgb;
                 col.a = 1.0;
                 return col;
             }
@@ -167,7 +166,6 @@ Shader "Custom/BoosterShaderTop"
             {
                 float3 albedo = tex2D(_MainTex, i.uv).rgb * _Color.rgb;
                 float4 col = SokpopShadeAdd(albedo, _Glossiness, _Metallic, normalize(i.worldNormal), i.worldPos);
-                col.rgb *= i.color.rgb;
                 col.a = 0.0;
                 return col;
             }

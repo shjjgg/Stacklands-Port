@@ -70,7 +70,6 @@ Shader "Custom/StatusBar"
                 albedo = lerp(albedo, _PauseColor.rgb, saturate(_Pause) * stripe * 0.35);
 
                 float4 col = SokpopShadeBase(albedo * mask, _Glossiness, _Metallic, normalize(i.worldNormal), i.worldPos);
-                col.rgb *= i.color.rgb;
                 col.a = 1.0;
                 return col;
             }
@@ -115,7 +114,6 @@ Shader "Custom/StatusBar"
             {
                 float3 albedo = _Color.rgb * tex2D(_MainTex, i.uv).a;
                 float4 col = SokpopShadeAdd(albedo, _Glossiness, _Metallic, normalize(i.worldNormal), i.worldPos);
-                col.rgb *= i.color.rgb;
                 col.a = 0.0;
                 return col;
             }

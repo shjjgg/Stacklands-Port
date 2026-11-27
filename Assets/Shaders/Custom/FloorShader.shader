@@ -112,7 +112,6 @@ Shader "Custom/FloorShader"
                 albedo *= lerp(float3(1,1,1), mainTex.rgb, 0.25);
 
                 float4 col = SokpopShadeBase(albedo, _Glossiness, _Metallic, normalize(i.worldNormal), i.worldPos);
-                col.rgb *= i.color.rgb;
                 col.a = 1.0;
                 return col;
             }
@@ -168,7 +167,6 @@ Shader "Custom/FloorShader"
                 albedo *= _Color.rgb;
                 albedo *= tex2D(_MainTex, i.uv).rgb;
                 float4 col = SokpopShadeAdd(albedo, _Glossiness, _Metallic, normalize(i.worldNormal), i.worldPos);
-                col.rgb *= i.color.rgb;
                 col.a = 0.0;
                 return col;
             }

@@ -337,16 +337,56 @@ public static class PortBuild
     private static void ApplyAndroidIcons()
     {
         const string IconPath = "Assets/Texture2D/AppIcon.png";
+        const string FgPath = "Assets/Texture2D/AppIconFg.png";   // 自适应前景(透明底, 仅墨线图形)
+        const string BgPath = "Assets/Texture2D/AppIconBg.png";   // 自适应背景(不透明白底)
         var tex = AssetDatabase.LoadAssetAtPath<Texture2D>(IconPath);
         if (tex == null)
         {
             Debug.LogWarning("[PortBuild] 找不到应用图标 " + IconPath + ", 会退化成 Unity 默认图标");
             return;
         }
+
+        // 传统图标(API<26 与部分启动器)
         PlayerSettings.SetIconsForTargetGroup(BuildTargetGroup.Android, new[] { tex });
+        TrySetIcons(BuildTargetGroup.Android, IconKind.Application, tex, "Application");
+        TrySetIcons(BuildTargetGroup.Android, IconKind.Round, tex, "Round");
+
+        // 自适应图标(API26+): 前景必须是"透明底图形", 背景必须"不透明"。
+        // 之前只给了 Application 一项, 前景槽空着 → Android 8+ 拿 Unity 默认立方体当前景, 叠在
+        // 我们的米色圆底上, 就是用户看到的"app 图标上又出现 Unity 图标"。
+        var fg = AssetDatabase.LoadAssetAtPath<Texture2D>(FgPath);
+        var bg = AssetDatabase.LoadAssetAtPath<Texture2D>(BgPath);
+        if (fg == null || bg == null)
+        {
+            Debug.LogWarning("[PortBuild] 缺自适应图标分层 " + FgPath + " / " + BgPath +
+                             "; 自适应前景会退回 Unity 默认图标");
+        }
+        else
+        {
+            TrySetIcons(BuildTargetGroup.Android, IconKind.Foreground, fg, "Foreground(自适应前景)");
+            TrySetIcons(BuildTargetGroup.Android, IconKind.Background, bg, "Background(自适应背景)");
+        }
+
         var read = PlayerSettings.GetIconsForTargetGroup(BuildTargetGroup.Android);
         Debug.Log("[PortBuild] Android 图标 = " + IconPath + " " + tex.width + "x" + tex.height +
+                  " 前景=" + (fg != null ? fg.width + "x" + fg.height : "缺") +
+                  " 背景=" + (bg != null ? bg.width + "x" + bg.height : "缺") +
                   " (回读 " + read.Length + " 项)");
+    }
+
+    private static void TrySetIcons(BuildTargetGroup group, IconKind kind, Texture2D tex, string label)
+    {
+        try
+        {
+            PlayerSettings.SetIconsForTargetGroup(group, new[] { tex }, kind);
+            var got = PlayerSettings.GetIconsForTargetGroup(group, kind);
+            Debug.Log("[PortBuild] 图标槽 " + label + " -> " + tex.name +
+                      " (回读 " + (got != null ? got.Length : 0) + " 项)");
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning("[PortBuild] 图标槽 " + label + " 设置失败: " + e.Message);
+        }
     }
 
     // ---- 门 3: 回读校验 ----
