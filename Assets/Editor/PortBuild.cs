@@ -348,8 +348,8 @@ public static class PortBuild
 
         // 传统图标(API<26 与部分启动器)
         PlayerSettings.SetIconsForTargetGroup(BuildTargetGroup.Android, new[] { tex });
-        TrySetIcons(BuildTargetGroup.Android, IconKind.Application, tex, "Application");
-        TrySetIcons(BuildTargetGroup.Android, IconKind.Round, tex, "Round");
+        TrySetIconsByName(BuildTargetGroup.Android, tex, new[] { "Application" });
+        TrySetIconsByName(BuildTargetGroup.Android, tex, new[] { "Round", "RoundIcon" });
 
         // 自适应图标(API26+): 前景必须是"透明底图形", 背景必须"不透明"。
         // 之前只给了 Application 一项, 前景槽空着 → Android 8+ 拿 Unity 默认立方体当前景, 叠在
@@ -363,9 +363,12 @@ public static class PortBuild
         }
         else
         {
-            TrySetIcons(BuildTargetGroup.Android, IconKind.Foreground, fg, "Foreground(自适应前景)");
-            TrySetIcons(BuildTargetGroup.Android, IconKind.Background, bg, "Background(自适应背景)");
+            // 不同 Unity 版本的 IconKind 命名不一样(本机 2022.3 没有 Round/Foreground/Background 字面量),
+            // 这里用反射按名字找, 并把真实可用名打出来, 便于后续固化。
+            TrySetIconsByName(BuildTargetGroup.Android, fg, new[] { "Foreground", "AdaptiveForeground", "Adaptive" });
+            TrySetIconsByName(BuildTargetGroup.Android, bg, new[] { "Background", "AdaptiveBackground" });
         }
+        LogIconKinds();
 
         var read = PlayerSettings.GetIconsForTargetGroup(BuildTargetGroup.Android);
         Debug.Log("[PortBuild] Android 图标 = " + IconPath + " " + tex.width + "x" + tex.height +
@@ -374,19 +377,39 @@ public static class PortBuild
                   " (回读 " + read.Length + " 项)");
     }
 
-    private static void TrySetIcons(BuildTargetGroup group, IconKind kind, Texture2D tex, string label)
+    // 反射版本: 不依赖编译期的枚举字面量
+    private static bool TrySetIconsByName(BuildTargetGroup group, Texture2D tex, string[] kindNames)
     {
-        try
+        foreach (var n in kindNames)
         {
-            PlayerSettings.SetIconsForTargetGroup(group, new[] { tex }, kind);
-            var got = PlayerSettings.GetIconsForTargetGroup(group, kind);
-            Debug.Log("[PortBuild] 图标槽 " + label + " -> " + tex.name +
-                      " (回读 " + (got != null ? got.Length : 0) + " 项)");
+            try
+            {
+                var fi = typeof(PlayerSettings).Assembly.GetType("UnityEditor.IconKind");
+                if (fi == null) { Debug.LogWarning("[PortBuild] 找不到 IconKind 类型"); return false; }
+                object kind;
+                try { kind = System.Enum.Parse(fi, n, true); }
+                catch { continue; }
+                var m = typeof(PlayerSettings).GetMethod("SetIconsForTargetGroup",
+                    new[] { typeof(BuildTargetGroup), typeof(Texture2D[]), fi });
+                if (m == null) { Debug.LogWarning("[PortBuild] 没有 SetIconsForTargetGroup(g,t,k) 重载"); return false; }
+                m.Invoke(null, new object[] { group, new[] { tex }, kind });
+                Debug.Log("[PortBuild] 图标槽 " + n + " <- " + tex.name);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Debug.LogWarning("[PortBuild] 图标槽 " + n + " 失败: " + e.Message);
+            }
         }
-        catch (Exception e)
-        {
-            Debug.LogWarning("[PortBuild] 图标槽 " + label + " 设置失败: " + e.Message);
-        }
+        return false;
+    }
+
+    private static void LogIconKinds()
+    {
+        var t = typeof(PlayerSettings).Assembly.GetType("UnityEditor.IconKind");
+        if (t == null) { Debug.LogWarning("[PortBuild] IconKind 类型不存在"); return; }
+        var names = System.Enum.GetNames(t);
+        Debug.Log("[PortBuild] IconKind 可用值 = " + string.Join(",", names));
     }
 
     // ---- 门 3: 回读校验 ----
