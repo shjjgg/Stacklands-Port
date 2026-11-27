@@ -39,6 +39,24 @@ namespace StacklandsPort
             "Custom/ArrowSdfShader",
             "Custom/ConflictOutlineSdfShader",
             "Standard",
+            // v0.55: 补齐全部 33 支(原来只覆盖 17 支), 让"一一测试"闭合
+            "Custom/ConveyorArrowShader",
+            "Custom/EnergyCableShader",
+            "Custom/SewerPipeShader",
+            "Custom/TransportArrowShader",
+            "Custom/TransportArrowMainlandShader",
+            "Custom/StatusBar",
+            "Custom/SpiritImageEffect",
+            "Custom/SpiritTransitionEffect",
+            "Custom/SuperSampled Texture",
+            "Postprocess/SokpopIntro",
+            "Transition/Cities",
+            "Transition/Default",
+            "Transition/Energy",
+            "Transition/Spirit",
+            "Unlit/CardopediaBackgroundShader",
+            "Shapes/Rect Transparent",
+            "UI/Default Port",
         };
 
         public static bool Running { get; private set; }
