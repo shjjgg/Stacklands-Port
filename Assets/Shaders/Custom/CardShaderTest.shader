@@ -110,8 +110,20 @@ Shader "Custom/CardShaderTest"
                 if (_FlipIcon > 0.5) iconUv.x = 1.0 - iconUv.x;
                 float inside = step(0.0, iconUv.x) * step(iconUv.x, 1.0) * step(0.0, iconUv.y) * step(iconUv.y, 1.0);
 
-                // 3) 卡底: _300 = 1 - t0.x*inside → paper = lerp(_Color,_Color2,_300)
-                //    运行时 _MainTex 恒为默认白(全工程无 SetTexture("_MainTex")), 故该式等价于 paper = _Color
+                // 3) 卡底: 42_PS 的 _366/_367 内框算式(逐指令直译, 常数照抄)
+                //    _366 = clamp((u-0.11677685)/aaU,0,1)*clamp((0.88322314-u)/aaU,0,1)
+                //           *clamp((v-0.03)/aaV,0,1)*clamp((0.97-v)/aaV,0,1)
+                //    _367 = (1 - clamp((v-0.19)/aaV,0,1)*(1-clamp((v-0.21)/aaV,0,1))) * _366
+                //    albedo = _m9 + _367*(face - _m9)  →  框外与顶部横带用框色(_BorderColor), 框内用纸色(_Color)
+                float aaU = max(abs(ddx(jx)), 1e-5);
+                float aaV = max(abs(ddy(jy)), 1e-5);
+                float inner = saturate((jx - 0.1167768537998199) / aaU) *
+                              saturate((0.8832231760025024 - jx) / aaU) *
+                              saturate((jy - 0.0299999993294477) / aaV) *
+                              saturate((0.9700000286102295 - jy) / aaV);
+                float band = saturate((jy - 0.19) / aaV) * (1.0 - saturate((jy - 0.21) / aaV));
+                float k367 = inner * (1.0 - band);
+                // 纸色基准仍是 _Color(运行时 _MainTex 恒白), 框色在最后统一压上去, 与 42_PS 的 _418 同序
                 float3 paper = _Color.rgb;
 
                 // 4) 环状光晕 _277.._299: 图标空间半径 0.4004 的软环, 混到 _Color2
@@ -134,6 +146,8 @@ Shader "Custom/CardShaderTest"
                     float3 secInk = lerp(_Color.rgb, _IconColor.rgb, saturate(1.0 - sec.r * inside));
                     albedo = lerp(albedo, secInk, saturate(sec.a * inside));
                 }
+                // 4.5) 42_PS 的 _418: albedo = _m9 + _367*(albedo - _m9) —— 框外/顶部横带压成框色
+                albedo = lerp(_BorderColor.rgb, albedo, k367);
 
                 // 7) 闪膜(_Foil 门控): sin/cos 扭曲 ±0.02, 5/10/30 倍频同 asm
                 if (_Foil > 0.5)
