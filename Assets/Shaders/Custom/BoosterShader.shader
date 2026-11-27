@@ -68,9 +68,7 @@ Shader "Custom/BoosterShader"
 
             float Hash01(float x) { return frac(sin(round(x)) * 43758.546875); }
 
-            float3 BoosterAlbedo(float2 uv)
-            {
-                // 逐指令还原 Custom__BoosterShader__08_PS.glsl L178~L322
+            // 逐指令还原 Custom__BoosterShader__08_PS.glsl L178~L322
             //   L202~205 卡包 uv 重映射: ((u-0.5)*1.75+0.5, (v-0.4)*1.75+0.4)
             //   L217~232 区域掩码: inRect=(u<=1)*(u>=0)*(v>=0)*(v<=1); masked=a*inRect  ← 只保留区域内
             //   L233~250 视野相关彩虹扭曲: (u+v)-Vz*5, (2v)-Vx*5, sin(10x)*0.02, cos(30y)*0.02 → _RainbowTex

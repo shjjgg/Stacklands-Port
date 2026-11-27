@@ -46,10 +46,10 @@ Shader "Custom/CardBackShader"
             float4 frag(v2f i) : SV_Target
             {
                 // 逐指令: Custom__CardBackShader__23_PS.glsl L236/L241
-                //   L236 对角斜纹 _225 = min(round(fract((u+v)*10.0))+0.8, 1.0) 调制贴图(0.8/1.0 交替, 共 10 条)
+                //   L236 对角斜纹 _225 = min(round(frac((u+v)*10.0))+0.8, 1.0) 调制贴图(0.8/1.0 交替, 共 10 条)
                 //   L241 内缩边框 _237 = (u<0.13677685 || u>0.86322314 || v<0.05 || v>0.95) → albedo 置 0
                 float2 cbUv = i.uv;
-                float  cbBand = min(floor(fract((cbUv.x + cbUv.y) * 10.0) + 0.5) + 0.8, 1.0);
+                float  cbBand = min(floor(frac((cbUv.x + cbUv.y) * 10.0) + 0.5) + 0.8, 1.0);
                 float3 cbTex  = tex2D(_MainTex, cbUv).rgb * _Color.rgb * cbBand;
                 bool   cbOut  = (cbUv.x < 0.13677685) || (cbUv.x > 0.86322314) || (cbUv.y < 0.05) || (cbUv.y > 0.95);
                 float3 albedo = cbOut ? float3(0, 0, 0) : cbTex;
@@ -96,7 +96,7 @@ Shader "Custom/CardBackShader"
             float4 frag(v2f i) : SV_Target
             {
                 float2 cbUv = i.uv;
-                float  cbBand = min(floor(fract((cbUv.x + cbUv.y) * 10.0) + 0.5) + 0.8, 1.0);
+                float  cbBand = min(floor(frac((cbUv.x + cbUv.y) * 10.0) + 0.5) + 0.8, 1.0);
                 float3 cbTex  = tex2D(_MainTex, cbUv).rgb * _Color.rgb * cbBand;
                 bool   cbOut  = (cbUv.x < 0.13677685) || (cbUv.x > 0.86322314) || (cbUv.y < 0.05) || (cbUv.y > 0.95);
                 float3 albedo = cbOut ? float3(0, 0, 0) : cbTex;
