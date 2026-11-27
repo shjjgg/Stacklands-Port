@@ -47,6 +47,7 @@ namespace StacklandsPort
                 PostFxOn = CountEnabled(layers) > 0;
                 LogBackgroundTints();
                 LogBoardMaterials();
+                LogColorPipeline();
                 DumpScreenUiSprites();
                 try
                 {
@@ -121,6 +122,40 @@ namespace StacklandsPort
                                   " shader=" + (mat != null && mat.shader != null ? mat.shader.name : "-"));
                 }
                 PortLog.Write("[PortDiag] ui 取样条数=" + n);
+            }
+
+
+            // 一次性的色彩管线取证: 环境光/主光/阴影/全局参数/色彩空间。用来定量定位"整屏偏灰偏暗"。
+            static void LogColorPipeline()
+            {
+                PortLog.Write("[ColorPipe] colorSpace=" + QualitySettings.activeColorSpace +
+                              " ambientMode=" + RenderSettings.ambientMode +
+                              " ambientLight=" + ColorUtility.ToHtmlStringRGB(RenderSettings.ambientLight) +
+                              " ambientIntensity=" + RenderSettings.ambientIntensity.ToString("F2") +
+                              " skybox=" + (RenderSettings.skybox == null ? "null" : RenderSettings.skybox.name));
+                PortLog.Write("[ColorPipe] shadows=" + QualitySettings.shadows +
+                              " shadowDistance=" + QualitySettings.shadowDistance.ToString("F1") +
+                              " shadowCascades=" + QualitySettings.shadowCascades);
+                foreach (var l in Object.FindObjectsOfType<Light>())
+                {
+                    if (l == null) continue;
+                    PortLog.Write("[ColorPipe] light " + l.name + " type=" + l.type + " on=" + l.enabled +
+                                  " intensity=" + l.intensity.ToString("F3") +
+                                  " color=" + ColorUtility.ToHtmlStringRGB(l.color) +
+                                  " shadows=" + l.shadows + " strength=" + l.shadowStrength.ToString("F2") +
+                                  " dir=" + l.transform.forward.ToString("F3"));
+                }
+                PortLog.Write("[ColorPipe] globals _WorldSizeIncrease=" + Shader.GetGlobalFloat("_WorldSizeIncrease").ToString("F3") +
+                              " _WorldSizeIncreaseNormalized=" + Shader.GetGlobalFloat("_WorldSizeIncreaseNormalized").ToString("F3") +
+                              " _GridWidth=" + Shader.GetGlobalFloat("_GridWidth").ToString("F3") +
+                              " _GridHeight=" + Shader.GetGlobalFloat("_GridHeight").ToString("F3") +
+                              " _GridAlpha=" + Shader.GetGlobalFloat("_GridAlpha").ToString("F3") +
+                              " _AnimationTime=" + Shader.GetGlobalFloat("_AnimationTime").ToString("F3"));
+                var cam = Camera.main;
+                if (cam != null)
+                    PortLog.Write("[ColorPipe] cam " + cam.name + " hdr=" + cam.allowHDR + " msaa=" + cam.allowMSAA +
+                                  " clearFlags=" + cam.clearFlags + " bg=" + ColorUtility.ToHtmlStringRGB(cam.backgroundColor) +
+                                  " renderPath=" + cam.actualRenderingPath);
             }
 
             static void LogBoardMaterials()

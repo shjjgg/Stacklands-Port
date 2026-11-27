@@ -37,6 +37,7 @@ Shader "Custom/FloorShaderForest"
             #pragma multi_compile __ STEREO_INSTANCING_ON UNITY_SINGLE_PASS_STEREO STEREO_MULTIVIEW_ON STEREO_CUBEMAP_RENDER_ON INSTANCING_ON
             #pragma multi_compile __ FOG_LINEAR FOG_EXP FOG_EXP2 DIRECTIONAL LIGHTPROBE_SH DYNAMICLIGHTMAP_ON LIGHTMAP_ON LIGHTMAP_SHADOW_MIXING DIRLIGHTMAP_COMBINED VERTEXLIGHT_ON POINT SPOT POINT_COOKIE DIRECTIONAL_COOKIE EDITOR_VISUALIZATION SHADOWS_SHADOWMASK SHADOWS_SCREEN SHADOWS_DEPTH SHADOWS_CUBE UNITY_HDR_ON
 
+            float _WorldSizeIncrease;
             float4 _Color;
             float4 _Color2;
             sampler2D _OffsetTex;
@@ -91,7 +92,11 @@ Shader "Custom/FloorShaderForest"
                 // 之前用 uv*1.5 当坐标, 而 _Rect.x=4.3, 永远 dist<0 ⇒ 边界环永远不出现, 这就是"卡牌场没有边框"。
                 float3 wc3 = mul(unity_ObjectToWorld, float4(0,0,0,1)).xyz;
                 float2 pw  = i.worldPos.xz - wc3.xz;
-                float2 halfExt = float2(_Rect.x, _Rect.z);
+                // 原版 08_PS L120/L123: 半尺寸随世界的 _WorldSizeIncrease 一起长
+                //   halfX = _Rect.x + _WorldSizeIncrease
+                //   halfZ = _Rect.z + _WorldSizeIncrease * 0.58   ← 0.57999998 是原版常量
+                float  wsi     = _WorldSizeIncrease;
+                float2 halfExt = float2(_Rect.x + wsi, _Rect.z + wsi * 0.58);
                 float  rr  = clamp(abs(_Rect.w), 0.0, min(halfExt.x, halfExt.y) - 0.01);
                 float2 q   = abs(pw) - (halfExt - rr);
                 float  dist = length(max(q, 0.0)) + min(max(q.x, q.y), 0.0) - rr;
