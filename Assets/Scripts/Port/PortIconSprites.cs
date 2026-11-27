@@ -45,9 +45,11 @@ namespace StacklandsPort
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         static void Boot()
         {
-            // 图标精灵表已在编辑器阶段生成为资产(Assets/Resources/Sprite Assets/<name>.asset),
-            // 运行时不再另建图集, 避免两套精灵表互相覆盖。
-            PortLog.Marker("PortIcons 运行时注入已停用(改用构建期资产)");
+            // v0.53: 原来的注释说"改用构建期资产", 但工程里根本没有那份资产 ——
+            // Resources/Sprite Assets 下只有 Unity 自带的 Default Sprite Asset,
+            // 而 Canvas.prefab 里 178 个 TMP 文本的 m_spriteAsset 全是 fileID: 0。
+            // 结果所有 <sprite="goldicon"> 都成了黑方块(右上角计数/价格)。这里恢复运行期打图集。
+            Build();
         }
 
         static void Build()

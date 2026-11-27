@@ -73,7 +73,13 @@ namespace StacklandsPort
                 {
                     if (mr == null || mc++ > 120) break;
                     var m = mr.sharedMaterial;
-                    sb.AppendLine($"MR act={mr.gameObject.activeInHierarchy} path={Path(mr.transform)} mat={(m == null ? "NULL" : m.name)} shader={(m == null || m.shader == null ? "NULL" : m.shader.name)} bounds={mr.bounds.size.x:F2}x{mr.bounds.size.y:F2} at={mr.bounds.center.x:F1},{mr.bounds.center.y:F1}");
+                    string extra = "";
+                    if (m != null && m.HasProperty("_Rect"))
+                    {
+                        var r = m.GetVector("_Rect");
+                        extra = $" _Rect=({r.x:F1},{r.y:F1},{r.z:F1},{r.w:F1})";
+                    }
+                    sb.AppendLine($"MR act={mr.gameObject.activeInHierarchy} path={Path(mr.transform)} mat={(m == null ? "NULL" : m.name)} shader={(m == null || m.shader == null ? "NULL" : m.shader.name)} bounds={mr.bounds.size.x:F2}x{mr.bounds.size.y:F2} at={mr.bounds.center.x:F1},{mr.bounds.center.y:F1}{extra}");
                 }
                 var srs = UnityEngine.Object.FindObjectsOfType<SpriteRenderer>(true);
                 // 先把卡牌/棋盘上的精灵列出来(卡面翻转问题就靠这段)

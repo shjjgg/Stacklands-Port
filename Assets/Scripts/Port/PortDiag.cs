@@ -294,6 +294,13 @@ namespace StacklandsPort
                     PortShaderBench.Run();
                     _hideAt = Time.unscaledTime + 120f;
                 }
+                // 原版自带的 DebugScreen(7 个页签: General/Card/Shortcut/Effect/Saves/Preset/Cutscenes)
+                // 发行包里只能 F1+K+O 打开, 手机没有键盘, 这里挂一个按钮走同一个开关。
+                if (GUI.Button(new Rect(6 + bw * 2f + 10, h + 14 + bh + 8, bw * 1.6f, bh), "原版调试(F1)", btn))
+                {
+                    PortDebugAccess.Toggle("HUD 按钮");
+                    _hideAt = Time.unscaledTime + 120f;
+                }
             }
         }
     }
