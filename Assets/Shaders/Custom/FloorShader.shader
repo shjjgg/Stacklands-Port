@@ -126,9 +126,9 @@ Shader "Custom/FloorShader"
                 float  m259 = inStone * step(seamT, wz);    // L197
                 albedo = lerp(albedo, _EdgeColor.rgb, m259);           // L201~L203 (_m12)
                 float  aaX  = max(abs(ddx(wx)) + abs(ddy(wx)), 1e-5);  // L204/L275
-                float  n1   = saturate((wz - (seamT - 0.01)) / aaX);   // L205/L278 (0.91 带)
-                float  n2   = saturate((wz - (seamT + 0.01)) / aaX);   // L206/L279 (0.89 带)
-                float  band = inStone * n1 * (1.0 - n2);               // L210/L211/L284
+                float  b1   = saturate((wz - (seamT - 0.01)) / aaX);   // L205/L278 (0.91 带)
+                float  b2   = saturate((wz - (seamT + 0.01)) / aaX);   // L206/L279 (0.89 带)
+                float  band = inStone * b1 * (1.0 - b2);               // L210/L211/L284
                 albedo *= (1.0 - band);                                // L212~L214: 压到黑
 
                 // ---- L215~L229: 内圈环 (_m18.x 无名槽 → 用 _EdgeThickness 顶替) ----
