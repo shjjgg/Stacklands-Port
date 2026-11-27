@@ -152,6 +152,11 @@ Shader "Custom/FloorShaderIsland"
                 // L318~L327: 原版是 c*(vcol + _Color2) 的加法项, 3D 贴图路径关闭时 _Color2 为 0
                 float3 albedo = c * i.color.rgb;
                 albedo *= lerp(float3(1,1,1), tex2D(_MainTex, i.uv).rgb, 0.25);
+
+                float4 col = SokpopShadeBase(albedo, _Glossiness, _Metallic, normalize(i.worldNormal), i.worldPos);
+                col.a = 1.0;
+                return col;
+            }
             ENDCG
         }
 
