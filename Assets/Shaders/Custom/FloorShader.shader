@@ -97,16 +97,47 @@ Shader "Custom/FloorShader"
                 float  wsi     = _WorldSizeIncrease;
                 float2 halfExt = float2(_Rect.x + wsi, _Rect.z + wsi * 0.58);
                 float  rr  = clamp(abs(_Rect.w), 0.0, min(halfExt.x, halfExt.y) - 0.01);
-                float2 q   = abs(pw) - (halfExt - rr);
-                float  dist = length(max(q, 0.0)) + min(max(q.x, q.y), 0.0) - rr;
-                float  aa   = max(abs(ddx(dist)) + abs(ddy(dist)), 1e-5);
-                float  insideMask = saturate(0.5 - dist / aa);
-                float  tIn  = max(-dist, 0.0);
-                float  bw   = max(_EdgeThickness * 1.5, 0.02);
-                float  border = insideMask * saturate(1.0 - tIn / bw);
+                // ---- 按 08_PS L152~L229 逐条直译(石板 SDF / 双层膨胀 / 贴图混合) ----
+                // 原版用三分量 max(|x|-halfX, |y|-_Rect.y, |z|-halfZ), 地板 y 恒为 0 且 _Rect.y=0
+                // 故退化成 2D: q = max(|pw|-halfExt, 0), dist = length(q) + _Rect.w   (L184)
+                float2 q   = max(abs(pw) - halfExt, 0.0);
+                float  d2  = length(q) + _Rect.w;          // L184: length(...) - cb0._m16.w
+                float  s185 = 1.0 - d2;                    // L185
+                // L161~L200: 第二层 SDF, 三个轴与圆角统一 +0.03 膨胀
+                float2 qb  = max(abs(pw) - (halfExt + 0.03), 0.0);
+                float  dB  = length(qb) + (_Rect.w + 0.03);
+                float  s200 = 1.0 - dB;
+                float  inOuter = step(0.5, s200);           // L176/L212: (1-s200)<=0.5 ⇒ 内侧
+                // L177~L182: _212 选色 —— 外侧 _m6, 内侧白(交给贴图乘)
+                float3 stoneBase = lerp(_StoneColor.rgb, float3(1,1,1), inOuter);
+                // L183~L189: 解析 AA
+                float  aa185 = max(abs(ddx(s185)) + abs(ddy(s185)), 1e-5);
+                float  mid185 = 0.5 - aa185 * 0.5;         // L231
+                float  k237 = saturate((s185 - mid185) / aa185);  // L236/L237
+                // L190~L192: 贴图混入, _StoneEdge 当作贴图强度色
+                float3 texc = saturate(tex2D(_OffsetTex, float2(px, py) * 1.5).rgb);
+                float3 albedo = lerp(stoneBase, _StoneEdge.rgb * texc, k237);
 
-                float3 albedo = _Color.rgb;
-                albedo = lerp(albedo, _EdgeColor.rgb, border);
+                // ---- L193~L214: 板缝 (_123-0.9 线 + 0.89/0.91 带解析 AA) ----
+                float  inStone = step(0.5, s185);          // L196: _258
+                float  wz = pw.y;                          // L173: _207 ≈ worldZ(+0.002 抖动)
+                float  wx = pw.x;                          // L174: _208 ≈ worldX
+                float  seamT = halfExt.y - 0.9;            // L193: _123 - 0.9
+                float  m259 = inStone * step(seamT, wz);    // L197
+                albedo = lerp(albedo, _EdgeColor.rgb, m259);           // L201~L203 (_m12)
+                float  aaX  = max(abs(ddx(wx)) + abs(ddy(wx)), 1e-5);  // L204/L275
+                float  n1   = saturate((wz - (seamT - 0.01)) / aaX);   // L205/L278 (0.91 带)
+                float  n2   = saturate((wz - (seamT + 0.01)) / aaX);   // L206/L279 (0.89 带)
+                float  band = inStone * n1 * (1.0 - n2);               // L210/L211/L284
+                albedo *= (1.0 - band);                                // L212~L214: 压到黑
+
+                // ---- L215~L229: 内圈环 (_m18.x 无名槽 → 用 _EdgeThickness 顶替) ----
+                float  ringIn = 0.5 - _EdgeThickness;      // L215: _293
+                float  ringLo = ringIn - aa185 * 0.5;      // L216
+                float  m298 = (s185 - ringLo) / aa185;      // L219
+                float  m302 = ((1.0 - s185) - ringLo) / aa185;  // L222
+                float  ring = saturate(m298) * saturate(m302);  // L223
+                albedo = lerp(albedo, _EdgeColor.rgb, ring);   // L227~L229 (_m10)
 
                 float4 mainTex = tex2D(_MainTex, i.uv);
                 albedo *= lerp(float3(1,1,1), mainTex.rgb, 0.25);
