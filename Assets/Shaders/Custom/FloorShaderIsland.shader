@@ -33,6 +33,7 @@ Shader "Custom/FloorShaderIsland"
             Tags { "LightMode"="FORWARDBASE" }
             ZTest LEqual
             ZWrite On
+            Blend One Zero
 
             CGPROGRAM
             #pragma vertex vert
