@@ -182,6 +182,23 @@ Shader "Custom/CardShaderTest"
                 {
                     float dm = (tex2D(_DamagedTex, float2(jx, jy)).a >= 0.5) ? 1.0 : 0.0;
                     albedo *= (1.0 - 0.4 * dm);
+
+                    // v0.82: 原版 16_PS L300~L319 还有一段「破损裁边」, 我们一直没搬:
+                    //   _436 = y*10 ; _442 = sin(_436)* (|frac(_436)*2-1| - 0.5)
+                    //   _210 = x*10 ; _448 = sin(_210)* (|frac(_210)*2-1| - 0.5)
+                    //   _449 = x + 0.02*_442 ; _450 = y + 0.02*_448
+                    //   再取 0.08977685..0.91022313 / 0.003..0.997 的「内缩 10% 抖动方框」
+                    //   fma(_464, clamp(_460), -0.1) < 0 → demote(即 discard)
+                    // 也就是破损卡的边缘是被啃掉一圈的(撕裂边), 不是只压暗。这里照搬同一条判据。
+                    float tA = jy * 10.0;
+                    float sA = sin(tA) * (abs(frac(tA) * 2.0 - 1.0) - 0.5);
+                    float tB = jx * 10.0;
+                    float sB = sin(tB) * (abs(frac(tB) * 2.0 - 1.0) - 0.5);
+                    float uxA = jx + sA * 0.02;
+                    float uyA = jy + sB * 0.02;
+                    float mxA = saturate((uxA - 0.0897768512) / aaU) * saturate((0.9102231264 - uxA) / aaU);
+                    float myA = saturate((uyA - 0.003) / aaV) * saturate((0.9969999790 - uyA) / aaV);
+                    if (mxA * myA - 0.1 < 0.0) discard;
                 }
 
                 // v0.78 删除两处无证据的自造:
