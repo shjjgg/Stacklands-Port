@@ -155,8 +155,12 @@ Shader "Custom/CardShaderTest"
                 // v0.63: 暂缓 —— _BorderColor 近黑(边框实测约纸色 63%), 而我们还没有证据能确定
                 // 42_PS 里的 _m9 到底是纸色还是框色。绑错方向的后果是整张卡被压成深色(截图可见),
                 // 比"没有内框"严重得多。等靶场探针给出 _m9 的真实属性再启用这一行。
-                // albedo = lerp(_BorderColor.rgb, albedo, k367);
-                albedo = albedo;
+                // 原版 16_PS L333-336: albedo = fma(_435, art - cb0._m10.xyz, cb0._m10.xyz)
+                //   _435 = 内框(0.1167/0.8832 × 0.03/0.97) 且不在顶部横带(0.19/0.21) 的掩码;
+                //   cb0._m10 是掩码外露出的卡面底色 = 纸色(_Color, CardFront.mat=(0.7736,0.6430,0.1861))。
+                //   此前用 _BorderColor(0,0,0) 会整卡变黑, 故 v0.63 注释掉; 现按原版槽位语义改为 _Color。
+                //   这一行缺失时, 插画 alpha 铺满整张卡 → 岩石卡整面蓝灰、浆果卡整面橙。
+                albedo = lerp(_Color.rgb, albedo, saturate(k367));
 
                 // 7) 闪膜(_Foil 门控): sin/cos 扭曲 ±0.02, 5/10/30 倍频同 asm
                 if (_Foil > 0.5)

@@ -15,7 +15,7 @@ Custom/GridShader,Assets/Shaders/Custom/GridShader.shader,28,03,3,0,0,2,0,0,9,23
 Custom/SewerPipeShader,Assets/Shaders/Custom/SewerPipeShader.shader,16,03,1,0,2,4,0,0,8,17,5,0.294,缺采样+常量漂移
 Custom/SpiritImageEffect,Assets/Shaders/Custom/SpiritImageEffect.shader,0,00,0,1,0,0,0,0,0,0,0,1.0,多采样
 Custom/SpiritTransitionEffect,Assets/Shaders/Custom/SpiritTransitionEffect.shader,0,00,0,4,0,0,0,0,0,0,0,1.0,多采样
-Custom/StatusBar,Assets/Shaders/Custom/StatusBar.shader,14,08,3,2,6,0,0,0,9,29,4,0.138,缺导数AA+常量漂移
+Custom/StatusBar,Assets/Shaders/Custom/StatusBar.shader,14,08,3,1,6,6,0,0,9,29,12,0.414,缺采样+常量漂移
 Custom/SuperSampled_Texture,Assets/Shaders/Custom/SuperSampled Texture.shader,5,02,1,0,0,0,0,0,3,0,0,1.0,缺采样
 Custom/TransportArrowMainlandShader,Assets/Shaders/Custom/TransportArrowMainlandShader.shader,18,03,1,0,2,8,0,0,12,19,5,0.263,缺采样+常量漂移
 Custom/TransportArrowShader,Assets/Shaders/Custom/TransportArrowShader.shader,18,03,1,0,2,4,0,0,11,21,5,0.238,缺采样+常量漂移
