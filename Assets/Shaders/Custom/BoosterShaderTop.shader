@@ -2,7 +2,7 @@
 // 差异: 新增 _Foil(封膜强度), 彩虹膜权重 = _SparkleIntensity*(0.35+_Foil)。
 // 卡包正面: 贴图 uv 重映射 (x-0.5)*1.75+0.5 / (y-0.4)*1.75+0.4 (对应 _202.._205),
 // 双层 hash 抖动(150 倍频, 幅度 0.005) 用于反光位移, _RainbowTex 按 sin/cos 扭曲(±0.02, 5/10/30 倍频),
-// 贴图 R 通道是填充/描边掩码: albedo=lerp(_Color,_IconColor,1-R*inRect), 圆点固定 r=0.400390625,
+// v0.77 定案: 正面 = lerp(_Color,_Color2,圆点) + 0.5×图标, 再乘内框掩码; 不再用 _IconColor/_MainTex。
 // 边框为 0.11677685/0.88322314 × 0.03/0.97 硬裁切(L303~317)。光照走 Unity Standard BRDF。
 // 注: DEFERRED pass 仅为与原版 pass 拓扑对齐(本项目 2D 正交相机只用 forward 路径)。
 Shader "Custom/BoosterShaderTop"
@@ -92,33 +92,31 @@ Shader "Custom/BoosterShaderTop"
                 float aaU = max(abs(ddx(ux)) + abs(ddy(ux)), 1e-5);
                 float aaV = max(abs(ddx(uy)) + abs(ddy(uy)), 1e-5);
 
-                float2 packUv = float2((uv.x - 0.5) * 1.75 + 0.5, (uv.y - 0.4) * 1.75 + 0.4);
-                float  inX = step(0.0, packUv.x) * step(packUv.x, 1.0);
-                float  inRect = step(0.0, packUv.y) * inX * step(packUv.y, 1.0);
+                // v0.77: Top 版没有「t0 alpha 填充」那一项(Top 08_PS 里 _232 是视线分量, 不是 alpha),
+                // 所以这里不再采样 _MainTex, 也不再算 inRect/masked —— 底层 BoosterShader 才需要它们。
 
-                float4 pack = tex2D(_MainTex, packUv);
-                float  masked = pack.a * inRect;                 // L232
-
-                // 视野方向(世界空间)
-                float3 Vw = normalize(worldPos - _WorldSpaceCameraPos);
-                float  rA = (uv.y + uv.x) - Vw.z * 5.0;          // L241/L246
-                float  rB = (uv.y + uv.y) - Vw.x * 5.0;          // L242
-                float  rU = rA + sin(rB * 10.0) * 0.02;
-                float  rV = rB + cos(rU * 30.0) * 0.02;
-                // v0.68: 原版这里采的是 t1 —— 属性顺序是 _MainTex(t0) / _IconTex(t1) / _RainbowTex(t2),
-                // 所以扭曲采样该用 _IconTex(卡包内容图标), 不是 _RainbowTex。
-                // 证据: spec 属性表顺序 + Boosterpack.cs L115 propBlock.SetTexture("_IconTex", PackData.Icon.texture)。
-                // 端口此前声明了 _IconTex 却从未采样(审计 0 次), 卡包内容因此永远拿不到图。
-                float4 rain = tex2D(_IconTex, float2(rU, rV) * _IconUV.xy + _IconUV.zw);
+                // v0.77 采样位置:
+                //   原版 t1 是一张「卡包图标」独立贴图, 用它算出的 uv = (u+v)-Vz*5 ± 0.02 会横向重复 5 次,
+                //   在原版里就是卡面上那排重复的小图案。我们的 t1 是 sprite 所在的贴图(1024x1024, 图标只占中间一块),
+                //   直接照搬那个大位移会采到大片透明区 —— 而导出 PNG 在透明区仍留着白色 RGB,
+                //   ×0.5 后整面被抬成灰白(真机的「灰面板」), 深色描边反而成了剪影。
+                //   这里两件事: ①只在 sprite 矩形内按 0..1 取一次图标  ②把透明区的 RGB 归零(原版 DXT5 透明区为黑)
+                float4 rain = tex2D(_IconTex, saturate(uv) * _IconUV.xy + _IconUV.zw);
+                rain.rgb *= rain.a;
 
                 // 圆点
                 float2 cp = float2((uv.x - 0.5) * 1.75, (uv.y - 0.4) * 1.75 - 0.1);
                 float  circle = 1.0 - saturate((length(cp) - 0.400390625) / aaU);
 
-                float3 glow = lerp(_Color.rgb, _Color2.rgb, circle);          // L279~284
-                float  inkT = 1.0 - pack.r * inRect;                          // L285
-                float3 ink  = lerp(_Color.rgb, _IconColor.rgb, inkT);         // L291~299
-                float3 albedo = glow + masked * (ink - glow) + rain.rgb * 0.5; // L318~320
+                // v0.77: 正面(Top)的算式与底层 BoosterShader 不同, 原版 Top 08_PS:
+                //   _222 = _213 * cb0._m6            (t0 权重 × 底色; 卡包 _MainTex 为 null ⇒ 权重≈1)
+                //   _261 = 圆点掩码(r=0.400390625, 中心 (0.5,0.35))
+                //   _291 = 0.5*t1.rgb + fma(_261, cb0._m8 - _222, _222)
+                //   即「底色 → _Color2」按圆点混合, 再加 0.5×插画; 全程不碰 _IconColor/_m11。
+                // 我们之前把底层 shader 的 _m6→_m11(_IconColor=白) 那一段也搬进来, 于是整面被涂成白灰,
+                // 只剩插画的深色描边 → 真机上就是「灰面板+深色剪影」。Booster2.mat 实测 _Color2=(0,0,0)。
+                float3 glow = lerp(_Color.rgb, _Color2.rgb, circle);          // _222/_291
+                float3 albedo = glow + rain.rgb * 0.5;                        // _291~_296
 
                 float frame = saturate((ux - 0.11677685) / aaU) * saturate((0.88322314 - ux) / aaU)
                             * saturate((uy - 0.03)       / aaV) * saturate((0.97 - uy)        / aaV);
