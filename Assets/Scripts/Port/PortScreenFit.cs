@@ -91,22 +91,80 @@ namespace StacklandsPort
                     + " aspect=" + aspect.ToString("F3") + " " + _w + "x" + _h + " uiScalers=" + scalers);
             }
 
+            Vector4 _lastSafe;
+            bool _safeLogged;
+            int _safeCanvases;
+
+            /// <summary>
+            /// 刘海/挖孔避让 (v0.70): 构建期已关掉「渲染到安全区外」(androidRenderOutsideSafeArea=0),
+            /// 窗口本身就不再压到挖孔; 个别 ROM 不按安全区缩窗口时, 这里再把满屏画布收进 Screen.safeArea。
+            /// 满屏画布=anchors(0,0)-(1,1)+零偏移, 只动这种, 避免动到原版自算位置的子面板。
+            /// </summary>
             void ApplySafeArea()
             {
                 try
                 {
-                    var canvas = GameObject.Find("PortQuickMenuCanvas");
-                    if (canvas == null) return;
-                    var root = canvas.GetComponent<RectTransform>();
-                    if (root == null) return;
-                    var sa = Screen.safeArea;
                     if (Screen.width <= 0 || Screen.height <= 0) return;
-                    root.anchorMin = new Vector2(sa.xMin / Screen.width, sa.yMin / Screen.height);
-                    root.anchorMax = new Vector2(sa.xMax / Screen.width, sa.yMax / Screen.height);
-                    root.offsetMin = Vector2.zero;
-                    root.offsetMax = Vector2.zero;
+                    var sa = Screen.safeArea;
+                    float sx = Screen.width, sy = Screen.height;
+                    var cur = new Vector4(sa.xMin / sx, sa.yMin / sy, sa.xMax / sx, sa.yMax / sy);
+                    bool inset = cur.x > 0.001f || cur.y > 0.001f || cur.z < 0.999f || cur.w < 0.999f;
+
+                    if (!_safeLogged || cur != _lastSafe)
+                    {
+                        _lastSafe = cur;
+                        _safeLogged = true;
+                        PortLog.Write(Tag + "safeArea " + Mathf.RoundToInt(sa.xMin) + "," + Mathf.RoundToInt(sa.yMin)
+                            + " " + Mathf.RoundToInt(sa.width) + "x" + Mathf.RoundToInt(sa.height)
+                            + " / screen " + (int)sx + "x" + (int)sy + (inset ? " -> 已内收" : " -> 满屏, 无需内收"));
+                    }
+                    if (!inset) return;   // 窗口已经是安全区, 画布保持满屏, 避免二次内收
+
+                    int done = 0;
+                    foreach (var canvas in Resources.FindObjectsOfTypeAll<Canvas>())
+                    {
+                        if (canvas == null || canvas.gameObject == null) continue;
+                        if (canvas.renderMode != RenderMode.ScreenSpaceOverlay &&
+                            canvas.renderMode != RenderMode.ScreenSpaceCamera) continue;
+                        if (canvas.name == "PortQuickMenuCanvas") continue;
+                        if (canvas.transform.parent != null) continue;      // 只处理顶级画布
+                        var root = canvas.GetComponent<RectTransform>();
+                        if (root == null) continue;
+                        if (!IsFullScreenRect(root)) continue;
+                        root.anchorMin = new Vector2(cur.x, cur.y);
+                        root.anchorMax = new Vector2(cur.z, cur.w);
+                        root.offsetMin = Vector2.zero;
+                        root.offsetMax = Vector2.zero;
+                        done++;
+                    }
+                    var qm = GameObject.Find("PortQuickMenuCanvas");
+                    if (qm != null)
+                    {
+                        var qr = qm.GetComponent<RectTransform>();
+                        if (qr != null)
+                        {
+                            qr.anchorMin = new Vector2(cur.x, cur.y);
+                            qr.anchorMax = new Vector2(cur.z, cur.w);
+                            qr.offsetMin = Vector2.zero;
+                            qr.offsetMax = Vector2.zero;
+                            done++;
+                        }
+                    }
+                    if (done != _safeCanvases)
+                    {
+                        _safeCanvases = done;
+                        PortLog.Write(Tag + "safeArea 内收画布 " + done + " 个");
+                    }
                 }
-                catch { }
+                catch (System.Exception e) { PortLog.Write(Tag + "safeArea 失败 " + e.GetType().Name); }
+            }
+
+            static bool IsFullScreenRect(RectTransform rt)
+            {
+                if (rt.anchorMin.x > 0.01f || rt.anchorMin.y > 0.01f) return false;
+                if (rt.anchorMax.x < 0.99f || rt.anchorMax.y < 0.99f) return false;
+                return Mathf.Abs(rt.offsetMin.x) < 2f && Mathf.Abs(rt.offsetMin.y) < 2f
+                    && Mathf.Abs(rt.offsetMax.x) < 2f && Mathf.Abs(rt.offsetMax.y) < 2f;
             }
         }
     }
