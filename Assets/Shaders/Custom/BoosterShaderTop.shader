@@ -102,7 +102,11 @@ Shader "Custom/BoosterShaderTop"
                 float  rB = (uv.y + uv.y) - Vw.x * 5.0;          // L242
                 float  rU = rA + sin(rB * 10.0) * 0.02;
                 float  rV = rB + cos(rU * 30.0) * 0.02;
-                float4 rain = tex2D(_RainbowTex, float2(rU, rV));
+                // v0.68: 原版这里采的是 t1 —— 属性顺序是 _MainTex(t0) / _IconTex(t1) / _RainbowTex(t2),
+                // 所以扭曲采样该用 _IconTex(卡包内容图标), 不是 _RainbowTex。
+                // 证据: spec 属性表顺序 + Boosterpack.cs L115 propBlock.SetTexture("_IconTex", PackData.Icon.texture)。
+                // 端口此前声明了 _IconTex 却从未采样(审计 0 次), 卡包内容因此永远拿不到图。
+                float4 rain = tex2D(_IconTex, float2(rU, rV));
 
                 // 圆点
                 float2 cp = float2((uv.x - 0.5) * 1.75, (uv.y - 0.4) * 1.75 - 0.1);

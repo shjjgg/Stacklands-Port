@@ -87,10 +87,20 @@ def main():
         if not cands:
             missing.append(group + '/' + nm); continue
 
-        # 变体聚合: 采样/导数/discard 取所有变体的最大值(端口必须覆盖最复杂那支)
+        # v0.68: 端口头注释里写了"依据 XX__NN_PS"的, 就只跟那一支比。
+        # 之前按变体并集统计, 把同一 shader 十几个变体的采样加起来, 会把"端口实现了 08"误判成"缺 6 次采样"。
+        decl = None
+        try:
+            head = open(cands[0], encoding='utf-8', errors='ignore').read(400)
+            m2 = re.search(r'__([0-9][0-9])_', head)
+            if m2: decl = m2.group(1)
+        except Exception: pass
+
+        # 变体聚合: 无声明时退回最大值
         ops_all, imms, cb = [], set(), {}
         n_sample = n_deriv = n_disc = 0
         for asm in files:
+            if decl and not asm.endswith('__' + decl + '_PS.txt'): continue
             ops, im_, c = read_asm(asm)
             ops_all += ops
             imms |= im_
@@ -118,7 +128,7 @@ def main():
         if rate < 0.6 and len(imms) >= 8: verdict = '常量漂移' if verdict == 'ok' else verdict + '+常量漂移'
 
         rows.append(dict(shader=group + '/' + nm, port=os.path.relpath(port_path, ROOT),
-                         instr=instr, variants=len(files), orig_sample=n_sample, port_sample=p_sample,
+                         instr=instr, variant=decl or ('union%d' % len(files)), orig_sample=n_sample, port_sample=p_sample,
                          orig_deriv=n_deriv, port_deriv=p_deriv, orig_discard=n_disc, port_discard=p_disc,
                          cb_slots=slots, imm=len(imms), imm_hit=hit, imm_rate=round(rate, 3), verdict=verdict))
 
