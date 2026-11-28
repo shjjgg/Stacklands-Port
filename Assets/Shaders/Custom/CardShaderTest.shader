@@ -170,11 +170,12 @@ Shader "Custom/CardShaderTest"
                     float rwX = wobA + sin(wobB * 10.0) * 0.02;
                     float2 rw = float2(rwX, wobB + cos(rwX * 30.0) * 0.02);
                     float4 rainbow = tex2D(_RainbowTex, rw);
-                    albedo += rainbow.rgb * _Color2.rgb * _SparkleIntensity * 0.5;
-                    float dShine = abs(frac(jx - jy) - 0.5);
-                    float shine = saturate(1.0 - dShine * 12.0) * _ShineStrength * 0.25;
-                    float bigShine = saturate(1.0 - dShine * 4.0) * _BigShineStrength * 0.12;
-                    albedo += (shine + bigShine) * _Color2.rgb;
+                    // v0.83: 原版 16_PS L322~L325: 闪膜只有一句「贴图加法」——
+                    //   _483 = _399 + t2.rgb * cb0._m18.x   (t2 就是这张波纹图, _m18.x 是强度)
+                    // 我们之前写的是 rainbow*_Color2*_SparkleIntensity*0.5 再叠两道
+                    // 「|frac(u-v)-0.5| 距离」的宽幅高光(_ShineStrength*0.25 / *0.12) —— 那两道纯属自造,
+                    // 会让整张闪卡平白多一层亮度。这里改成原版那一句加法。
+                    albedo += rainbow.rgb * _SparkleIntensity;
                 }
 
                 // 8) 破损 _442.._447: 破损贴图 alpha>=0.5 处压暗到 0.6 倍
