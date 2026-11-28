@@ -177,6 +177,18 @@ namespace StacklandsPort
             asset.UpdateLookupTables();
 
             _asset = asset;
+
+            // v0.64: 关键 —— 诊断显示启动时 texts=0, 也就是 HUD 文本是在我们之后创建的。
+            // 新创建的 TMP_Text 只有在 TMP_Settings 的默认 SpriteAsset 上有这份图集时才会解析 <sprite>,
+            // 否则永远是方块。把它设成默认, 后建的所有文本就自带。
+            try
+            {
+                var f = typeof(TMPro.TMP_Settings).GetField("s_defaultSpriteAsset",
+                    BindingFlags.Static | BindingFlags.NonPublic);
+                if (f != null) f.SetValue(null, asset);
+                else PortLog.Write("[PortIcons] 找不到 TMP_Settings.s_defaultSpriteAsset(反射失败)");
+            }
+            catch (System.Exception e) { PortLog.Write("[PortIcons] 设默认 SpriteAsset 失败 " + e.Message); }
             int applied = ApplyToAll(asset);
             int tagTexts = Diagnostic(asset);
             PortLog.Write($"[PortIcons] ok: {chars.Count} 图标, 图集 {w}x{h}, 挂到 {applied} 个文本, 含 sprite 标签 {tagTexts}");
@@ -220,6 +232,10 @@ namespace StacklandsPort
                 if (t == null) continue;
                 if (t.spriteAsset != asset) t.spriteAsset = asset;
                 t.SetAllDirty();
+                // TMP 对已解析过的字符串会缓存标签结果, 只 SetAllDirty 不一定重解析;
+                // 手工回写一次 text 强制走一遍解析。
+                var raw = t.text;
+                if (!string.IsNullOrEmpty(raw)) t.text = raw;
                 t.ForceMeshUpdate();
                 n++;
             }

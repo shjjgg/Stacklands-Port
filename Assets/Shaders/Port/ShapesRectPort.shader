@@ -97,14 +97,17 @@ Shader "Shapes/Rect Opaque"
                                          length(unity_ObjectToWorld._m01_m11_m21));
                 float2 pad = float2(0.0, 0.0);
 
-                float2 halfExt = size * objScale * 0.5 + pad;
+                // v0.64: 原来是 size*objScale*0.5, 而这个 prefab 的 objScale 高达 16384~32768,
+                // 于是每个盒子几何都炸到 49152x32768 —— 就是卡包那一片灰板的来源。
+                // _Rect.zw 本身就是矩形尺寸(世界单位), 不再乘缩放; 另加 100 单位硬上限防炸。
+                float2 halfExt = min(size, float2(100.0, 100.0)) * 0.5 + pad;
                 float2 local = uv01 * (halfExt * 2.0) - halfExt;      // 已乘物体缩放的局部坐标
 
                 float3 wp = mul(unity_ObjectToWorld, float4(local / max(objScale, 1e-6), 0, 1)).xyz;
                 o.pos = mul(unity_MatrixVP, float4(wp, 1.0));
 
                 o.p = float4(local, sign(local));                     // zw: 象限符号
-                o.r = float4(0, 0, abs(size * objScale));
+                o.r = float4(0, 0, abs(min(size, float2(100.0, 100.0))));
 
                 // 填充参考: _FillType==-1 传 0(纯色); 否则传 参考点→_FillStart 的向量
                 float3 refPos = _FillSpace > 0.5 ? wp : float3(local, 0);
