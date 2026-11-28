@@ -178,6 +178,17 @@ namespace StacklandsPort
                 try { Directory.CreateDirectory(dir); } catch { }
                 Save(Path.Combine(dir, "bench_sheet.png"), shot);
 
+                // v0.59: 参数探针 —— 用"注入哨兵值看画面变不变"的方式, 把每支 shader 的
+                // 材质属性逐个验证: 变 = 这个属性是活的输入; 不变 = 死属性或未接。
+                // 这是"槽位无名"问题的实证解法, 不再靠猜 _m6/_m8/_m12 是谁。
+                try
+                {
+                    if (File.Exists(Path.Combine(Application.persistentDataPath, "files/probe_on")))
+                        ProbeAll(dir, mats, mesh, cols, cell, rows);
+                }
+                catch (Exception e) { PortLog.Write(Tag + "探针失败: " + e.Message); }
+
+
                 for (int k = 0; k < Names.Length; k++)
                 {
                     int ix = k % cols, iy = k / cols;
@@ -224,6 +235,88 @@ namespace StacklandsPort
             try { png = tex.EncodeToPNG(); }
             catch (Exception e) { PortLog.Write(Tag + "EncodeToPNG 失败: " + e.Message); return; }
             File.WriteAllBytes(path, png);
+        }
+
+        // 逐属性注入哨兵: Color/Vector -> (1,0,1,1), Float -> 3.0, 记录目标格 mean 变化
+        static void ProbeAll(string dir, List<Material> mats, Mesh mesh, int cols, int cell, int rows)
+        {
+            var rt = new RenderTexture(cell, cell, 0, RenderTextureFormat.ARGB32, RenderTextureReadWrite.sRGB);
+            rt.Create();
+            var tex = new Texture2D(cell, cell, TextureFormat.RGBA32, false, false);
+            var cam = new GameObject("probeCam").AddComponent<Camera>();
+            cam.orthographic = true;
+            cam.orthographicSize = 0.5f;
+            cam.aspect = 1f;
+            cam.cullingMask = 1 << 30;
+            cam.clearFlags = CameraClearFlags.SolidColor;
+            cam.backgroundColor = new Color(0.5f, 0.5f, 0.5f, 1f);
+            cam.targetTexture = rt;
+            cam.transform.position = new Vector3(0, 0, -6f);
+
+            var sb = new System.Text.StringBuilder();
+            sb.AppendLine("shader,property,kind,default,sentinel,mean_before,mean_after,delta,live");
+            int total = 0, live = 0;
+
+            for (int k = 0; k < mats.Count; k++)
+            {
+                var m = mats[k];
+                if (m == null) continue;
+                if (_root == null || k >= _root.transform.childCount) continue;
+                var go = _root.transform.GetChild(k).gameObject;
+                int ix = k % cols, iy = k / cols;
+                cam.transform.position = new Vector3(ix + 0.5f, -(iy + 0.5f), -6f);
+
+                float before = MeanOf(cam, rt, tex);
+
+                var fnames = new List<string>(m.GetPropertyNames(MaterialPropertyType.Float));
+                var vnames = new List<string>(m.GetPropertyNames(MaterialPropertyType.Vector));
+                foreach (var pn in fnames)
+                {
+                    if (pn.EndsWith("_ST")) continue;
+                    float old = m.GetFloat(pn);
+                    m.SetFloat(pn, 3f);
+                    float after = MeanOf(cam, rt, tex);
+                    m.SetFloat(pn, old);
+                    bool lv = Mathf.Abs(after - before) > 1.5f;
+                    total++; if (lv) live++;
+                    sb.AppendLine(Names[k] + "," + pn + ",float," + old.ToString("F3") + ",3.0," +
+                                  before.ToString("F1") + "," + after.ToString("F1") + "," +
+                                  (after - before).ToString("F1") + "," + (lv ? 1 : 0));
+                }
+                foreach (var pn in vnames)
+                {
+                    if (pn.EndsWith("_ST")) continue;
+                    Vector4 old = m.GetVector(pn);
+                    m.SetVector(pn, new Vector4(1f, 0f, 1f, 1f));
+                    float after = MeanOf(cam, rt, tex);
+                    m.SetVector(pn, old);
+                    bool lv = Mathf.Abs(after - before) > 1.5f;
+                    total++; if (lv) live++;
+                    sb.AppendLine(Names[k] + "," + pn + ",vector,(" + old.x.ToString("F2") + " " + old.y.ToString("F2") +
+                                  " " + old.z.ToString("F2") + " " + old.w.ToString("F2") + "),magenta," +
+                                  before.ToString("F1") + "," + after.ToString("F1") + "," +
+                                  (after - before).ToString("F1") + "," + (lv ? 1 : 0));
+                }
+                PortLog.Write(Tag + "[Probe] " + Names[k] + " 属性扫描完成");
+            }
+
+            try { File.WriteAllText(Path.Combine(dir, "probe.csv"), sb.ToString()); } catch { }
+            PortLog.Write(Tag + "[Probe] 汇总 属性=" + total + " 有效=" + live + " -> " + Path.Combine(dir, "probe.csv"));
+
+            UnityEngine.Object.Destroy(cam.gameObject);
+            rt.Release();
+        }
+
+        static float MeanOf(Camera cam, RenderTexture rt, Texture2D tex)
+        {
+            cam.Render();
+            RenderTexture.active = rt;
+            tex.ReadPixels(new Rect(0, 0, rt.width, rt.height), 0, 0, false);
+            tex.Apply(false, false);
+            var px = tex.GetPixels32();
+            float s = 0f;
+            for (int i = 0; i < px.Length; i++) s += (px[i].r + px[i].g + px[i].b) / 3f;
+            return s / Mathf.Max(1, px.Length) / 255f * 100f;
         }
 
         static Mesh BuildQuad()
