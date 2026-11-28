@@ -15,6 +15,9 @@ Shader "Custom/BoosterShaderTop"
         _IconColor ("Icon Color", Color) = (1,1,1,1)
         _MainTex ("Albedo", 2D) = "white" {}
         _IconTex ("Icon", 2D) = "white" {}
+        // v0.71: 图标在 PC 上是独立贴图, 安卓包里是 Sprite 图集的子矩形。
+        // 直接按 0..1 采样会采到整张图集(肉眼=整面 0.5 灰 + 角落一个小图), 这里补 UV 矩形。
+        _IconUV ("Icon UV xy=scale zw=offset", Vector) = (1,1,0,0)
         _RainbowTex ("Rainbow", 2D) = "white" {}
         _Glossiness ("Smoothness", Range(0.0,1.0)) = 0.5
         _Metallic ("Metallic", Range(0.0,1.0)) = 0.0
@@ -42,7 +45,7 @@ Shader "Custom/BoosterShaderTop"
             #pragma multi_compile __ FOG_LINEAR FOG_EXP FOG_EXP2 DIRECTIONAL LIGHTPROBE_SH DYNAMICLIGHTMAP_ON LIGHTMAP_ON LIGHTMAP_SHADOW_MIXING DIRLIGHTMAP_COMBINED VERTEXLIGHT_ON POINT SPOT POINT_COOKIE DIRECTIONAL_COOKIE EDITOR_VISUALIZATION SHADOWS_SHADOWMASK SHADOWS_SCREEN SHADOWS_DEPTH SHADOWS_CUBE UNITY_HDR_ON
 
             float4 _Color; float4 _Color2; float _Foil; float4 _IconColor;
-            sampler2D _MainTex; sampler2D _IconTex; sampler2D _RainbowTex;
+            sampler2D _MainTex; float4 _IconUV; sampler2D _IconTex; sampler2D _RainbowTex;
             float _Glossiness; float _Metallic; float _SparkleIntensity;
             float4 _SmallCirclePosition; float _SmallCircleSize; float4 _BorderColor;
 
@@ -106,7 +109,7 @@ Shader "Custom/BoosterShaderTop"
                 // 所以扭曲采样该用 _IconTex(卡包内容图标), 不是 _RainbowTex。
                 // 证据: spec 属性表顺序 + Boosterpack.cs L115 propBlock.SetTexture("_IconTex", PackData.Icon.texture)。
                 // 端口此前声明了 _IconTex 却从未采样(审计 0 次), 卡包内容因此永远拿不到图。
-                float4 rain = tex2D(_IconTex, float2(rU, rV));
+                float4 rain = tex2D(_IconTex, float2(rU, rV) * _IconUV.xy + _IconUV.zw);
 
                 // 圆点
                 float2 cp = float2((uv.x - 0.5) * 1.75, (uv.y - 0.4) * 1.75 - 0.1);
