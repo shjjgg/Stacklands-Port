@@ -91,6 +91,29 @@ public class PortGearFix : MonoBehaviour
             }
         }
 
+        // 1.5) 去掉按钮自己的米色纸底 —— 只把 alpha 归零, 不 disable:
+        //      Image 是 Button 的 raycast 目标, 关掉它按钮就点不动了(透明但仍可点才是正解)。
+        var own = best.GetComponent<UnityEngine.UI.Image>();
+        if (own != null)
+        {
+            var c = own.color; c.a = 0f; own.color = c;
+            hidden++;
+        }
+        // 父级若还有一层同尺寸纸底, 一并归零
+        var parent = best.transform.parent;
+        if (parent != null)
+        {
+            var pi = parent.GetComponent<UnityEngine.UI.Image>();
+            if (pi != null)
+            {
+                float pa = Mathf.Abs(((RectTransform)parent).rect.width * ((RectTransform)parent).rect.height);
+                if (pa <= panelArea * 2.2f)
+                {
+                    var pc = pi.color; pc.a = 0f; pi.color = pc;
+                }
+            }
+        }
+
         // 2) 叠齿轮
         var go = new GameObject("PortGearIcon");
         go.transform.SetParent(best.transform, false);

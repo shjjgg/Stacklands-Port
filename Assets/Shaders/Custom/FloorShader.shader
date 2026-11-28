@@ -116,7 +116,11 @@ Shader "Custom/FloorShader"
                 float  k237 = saturate((s185 - mid185) / aa185);  // L236/L237
                 // L190~L192: 贴图混入, _StoneEdge 当作贴图强度色
                 float3 texc = saturate(tex2D(_OffsetTex, float2(px, py) * 1.5).rgb);
-                float3 albedo = lerp(stoneBase, _StoneEdge.rgb * texc, k237);
+                // v0.63: 之前把 _m8 绑成了 _StoneEdge(灰 0.396), 且 _OffsetTex 在材质里没贴图,
+                // 于是整块场地被乘成深灰 —— 就是"一大坨黑"的直接原因。
+                // MainBoard 的 _Color 是薄荷绿(0.604,0.757,0.612), 才是板面该有的色;
+                // _StoneColor 留在外圈当填充。这一处换回 _Color 后板面即恢复原版绿。
+                float3 albedo = lerp(stoneBase, _Color.rgb * texc, k237);
 
                 // ---- L193~L214: 板缝 (_123-0.9 线 + 0.89/0.91 带解析 AA) ----
                 float  inStone = step(0.5, s185);          // L196: _258
