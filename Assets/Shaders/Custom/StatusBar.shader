@@ -53,23 +53,42 @@ Shader "Custom/StatusBar"
                 return o;
             }
 
+            // v0.73 按 Custom__StatusBar__08_PS.glsl 逐指令重写:
+            //   双 hash 抖动(x±0.01, y±0.05) → ddx/ddy → 竖向窄带 mask _215(不是横向渐变!)
+            //   _200 = 1-(x-0.03)*1.0638 为"剩余量", 与 _FillAmount 做解析 AA 比较得到填充掩码 _266
+            //   _230 = lerp(_Color,_Color2,_215) 竖带渐变;  _267 用暂停位选 _Color3 / _PauseColor
+            //   albedo = lerp(竖带渐变, 填充色, 掩码)
             float4 frag(v2f i) : SV_Target
             {
-                float mask = tex2D(_MainTex, i.uv).a;
-                float fillT = saturate(i.uv.x / max(_FillAmount, 1e-4));
-                float filled = step(i.uv.x, _FillAmount);
+                float x = i.uv.x, y = i.uv.y;
 
-                // 三段渐变: 0→0.5 用 _Color→_Color2, 0.5→1 用 _Color2→_Color3
-                float3 grad = fillT < 0.5
-                    ? lerp(_Color.rgb, _Color2.rgb, fillT * 2.0)
-                    : lerp(_Color2.rgb, _Color3.rgb, (fillT - 0.5) * 2.0);
+                float h1 = frac(sin(round(y * 150.0)) * 43758.546875) - 0.5;   // _175
+                float xs = x + h1 * 0.01;                                       // _178
+                float h2 = frac(sin(round(xs * 150.0)) * 43758.546875) - 0.5;   // _184
+                float ys = y + h2 * 0.05;                                       // _185
 
-                float3 albedo = lerp(_Color.rgb * 0.25, grad, filled);
-                // 暂停斜纹
-                float stripe = step(0.5, frac((i.uv.x + i.uv.y) * 12.0));
-                albedo = lerp(albedo, _PauseColor.rgb, saturate(_Pause) * stripe * 0.35);
+                float dx = abs(ddx(xs)) + abs(ddy(xs));                          // _194
+                float dy = abs(ddx(ys)) + abs(ddy(ys));                          // _195
+                float bandW = max(dy * 0.26666668, 1e-6);                        // _196
 
-                float4 col = SokpopShadeBase(albedo * mask, _Glossiness, _Metallic, normalize(i.worldNormal), i.worldPos);
+                float yy = ys - 0.5;                                             // _197
+                float xx = xs - 0.029999999;                                     // _198
+                float rem = 1.0 - xx * 1.06382978;                               // _200
+
+                float horiz = clamp((0.97000003 - xs) / max(dx,1e-6), 0.0, 1.0)
+                            * clamp(xx / max(dx,1e-6), 0.0, 1.0);                // _206
+                float t1 = clamp((yy * 0.26666668 + 0.069999993) / bandW, 0.0, 1.0); // _209
+                float t2 = clamp((0.56999999 - (yy * 0.26666668 + 0.5)) / bandW, 0.0, 1.0); // _213
+                float band = horiz * t1 * t2;                                    // _215
+
+                float3 grad = lerp(_Color.rgb, _Color2.rgb, band);               // _230.._232
+                float aaRem = max(abs(ddy(rem)) + abs(ddx(rem)), 1e-6);          // _262
+                float fill = band <= 0.0 ? 0.0
+                           : clamp((rem - _FillAmount) / aaRem, 0.0, 1.0);        // _266
+                float3 fillCol = _Pause >= 0.5 ? _PauseColor.rgb : _Color3.rgb;   // _m12 / _m10
+                float3 albedo = lerp(grad, fillCol, fill);                       // _270.._272
+
+                float4 col = SokpopShadeBase(albedo, _Glossiness, _Metallic, normalize(i.worldNormal), i.worldPos);
                 col.a = 1.0;
                 return col;
             }

@@ -124,7 +124,12 @@ namespace StacklandsPort
                 int moved = AlignAll();
                 PortLog.Write(Tag + "点击对齐, 重排卡牌=" + moved);
             }
-            catch (Exception e) { PortLog.Write(Tag + "对齐失败 " + e.GetType().Name + " " + e.Message); }
+            catch (Exception e)
+            {
+                string trace = e.StackTrace != null ? e.StackTrace : "";
+                int nl = trace.IndexOf('\n');
+                PortLog.Write(Tag + "对齐失败 " + e.GetType().Name + " " + e.Message + " @" + (nl > 0 ? trace.Substring(0, nl) : trace));
+            }
         }
 
         static bool IsContainer(Transform p)
@@ -142,11 +147,22 @@ namespace StacklandsPort
             var cam = Camera.main;
             if (cam == null) return 0;
 
-            var cards = FindObjectsOfType<GameCard>(true)
-                .Where(c => c != null && c.gameObject.activeInHierarchy)
-                .Where(c => !IsContainer(c.transform.parent))
-                .GroupBy(c => c.transform.parent)
-                .Where(g => g.Count() >= 2)
+            // v0.73: 之前这里 NRE —— 有的卡父节点是 null(根级/正在销毁), GroupBy 拿到 null key 后
+            // 取 g.Key.name 直接炸。这里先过滤掉已销毁/无父节点的卡, 再按父节点分组。
+            var src = FindObjectsOfType<GameCard>(true);
+            var alive = new List<GameCard>();
+            foreach (var c in src)
+            {
+                if (c == null || c.gameObject == null) continue;
+                if (!c.gameObject.activeInHierarchy) continue;
+                var t = c.transform;
+                if (t == null || t.parent == null) continue;
+                if (IsContainer(t.parent)) continue;
+                if (IsContainer(t.parent.parent)) continue;   // 隔一层也当堆里
+                alive.Add(c);
+            }
+            var cards = alive.GroupBy(c => c.transform.parent)
+                .Where(g => g.Key != null && g.Count() >= 2)
                 .ToList();
 
             int moved = 0;
@@ -204,7 +220,7 @@ namespace StacklandsPort
                     try { card.SendToPosition(target); moved++; }
                     catch { try { card.transform.position = target; moved++; } catch { } }
                 }
-                PortLog.Write(Tag + "组 " + g.Key.name + " 卡=" + n + " " + cols + "×" + rows
+                PortLog.Write(Tag + "组 " + (g.Key != null ? g.Key.name : "(root)") + " 卡=" + n + " " + cols + "×" + rows
                     + " 格距=" + stepX.ToString("F2") + "/" + stepZ.ToString("F2"));
             }
             return moved;
