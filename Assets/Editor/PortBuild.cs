@@ -32,7 +32,7 @@ public static class PortBuild
     // 移植包使用独立包名, 不冒充官方包; 可由 BUNDLE_IDENTIFIER 覆盖。
     private const string DefaultBundleIdentifier = "com.sokpop.stacklands.port";
     private const int DefaultMinSdkVersion = 26;
-    private const string PortVersionName = "0.68";
+    private const string PortVersionName = "0.69";
 
     // 原版场景: Assets/SokpopIntro/IntroScene.unity → Assets/Scenes/SampleScene.unity
     private static readonly string[] RequiredScenes =

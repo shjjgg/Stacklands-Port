@@ -68,7 +68,9 @@ namespace StacklandsPort.EditorTools
                 UnityEngine.Object.DestroyImmediate(src);
 
                 cells[sp.name] = new RectInt(x0 + Pad, y0 + Pad, w, h);
-                var gr = new GlyphRect(x0 + Pad, y0 + Pad, w, h);
+                // v0.69: TMP 的 GlyphRect 以「左上」为原点, 我们写像素是从下往上,
+                // 之前没翻 Y —— 采样到的就是相邻格子/空白区, 画出来是白块或黑块。
+                var gr = new GlyphRect(x0 + Pad, size - (y0 + Pad + h), w, h);
                 var gm = new GlyphMetrics(w, h, 0, h, w);
                 var glyph = new TMP_SpriteGlyph((uint)idx, gm, gr, 1f, 0, sp);
                 var ch = new TMP_SpriteCharacter(0xE000u + (uint)idx, glyph);
@@ -155,7 +157,7 @@ namespace StacklandsPort.EditorTools
 
                 // 同一个图集/材质 + 图集内的矩形; 不挂 Sprite 引用, 避免 TMP 去取另一张贴图
                 var glyph = new TMP_SpriteGlyph(0u, new GlyphMetrics(w, h, 0, h, w),
-                    new GlyphRect(cell.x, cell.y, w, h), 1f, 0);
+                    new GlyphRect(cell.x, size - (cell.y + h), w, h), 1f, 0);   // v0.69: 同样翻 Y
                 var ch = new TMP_SpriteCharacter(0xE000u, glyph);
                 ch.name = sp.name;
                 var hashField = typeof(TMP_SpriteCharacter).GetField("m_HashCode", BindingFlags.Instance | BindingFlags.NonPublic);
