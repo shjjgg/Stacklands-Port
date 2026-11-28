@@ -198,15 +198,16 @@ namespace StacklandsPort
             // v0.81: v0.78 日志 `待排=0 卡总数=5` —— 5 张卡分成了 5 个单卡组, 每组 <2 被丢掉。
             // 这套游戏的卡各有各的 Stack 父物体(甚至根级), 按父节点分组永远凑不出 2 张。
             // 直接把场上所有自由卡当成一组做网格排版(卡包里/叠卡上的已经在上面过滤掉了)。
-            var cards = new List<IGrouping<Transform, GameCard>>();
-            if (alive.Count >= 2)
-                cards.Add(alive.GroupBy(c => c.transform.root).First());
+            // v0.85: v0.84 日志 `待排=1 卡总数=5` —— GroupBy(root) 之后只取了 .First(), 等于只排 1 张卡。
+            // 这套游戏里每张自由卡的 root 各不相同(有的直接是根级), 所以不存在"共同父节点"可分组。
+            // 直接把场上全部自由卡作为一组排版。
+            var cards = new List<List<GameCard>>();
+            if (alive.Count >= 2) cards.Add(alive);
 
             int moved = 0;
             PortLog.Write(Tag + "分组 待排=" + cards.Count + " 卡总数=" + alive.Count);
-            foreach (var g in cards)
+            foreach (var list in cards)
             {
-                var list = g.ToList();
                 // 视线方向: 屏幕"上"对应世界的哪个水平方向
                 Vector3 center = list.Aggregate(Vector3.zero, (a, c) => a + c.transform.position) / list.Count;
                 var vx = Vector3.ProjectOnPlane(cam.transform.right, Vector3.up).normalized;
@@ -274,7 +275,7 @@ namespace StacklandsPort
                         }
                     }
                 }
-                PortLog.Write(Tag + "组 " + (g.Key != null ? g.Key.name : "(root)") + " 卡=" + n + " " + cols + "×" + rows
+                PortLog.Write(Tag + "组 (全场) 卡=" + n + " " + cols + "×" + rows
                     + " 格距=" + stepX.ToString("F2") + "/" + stepZ.ToString("F2"));
             }
             return moved;
