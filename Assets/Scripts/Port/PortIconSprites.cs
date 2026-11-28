@@ -16,6 +16,7 @@ namespace StacklandsPort
     public static class PortIconSprites
     {
         static TMP_SpriteAsset _asset;
+        static FieldInfo _nameLookup;
         static FieldInfo _hashField;
 
         internal sealed class Runner : MonoBehaviour
@@ -251,7 +252,16 @@ namespace StacklandsPort
                     if (q1 > 0 && q2 > q1)
                     {
                         var nm = txt.Substring(q1 + 1, q2 - q1 - 1);
-                        if (asset.GetSpriteCharacterFromName(nm) != null) resolved++;
+                        // TMP_SpriteAsset 没有公开的 GetSpriteCharacterFromName(编译报 CS1061),
+                        // 只能反射读它内部的 m_NameLookup: Dictionary<int, TMP_SpriteCharacter>
+                        if (_nameLookup == null)
+                            _nameLookup = typeof(TMP_SpriteAsset).GetField("m_NameLookup",
+                                BindingFlags.Instance | BindingFlags.NonPublic);
+                        if (_nameLookup != null)
+                        {
+                            var dict = _nameLookup.GetValue(asset) as System.Collections.IDictionary;
+                            if (dict != null && dict.Contains(TMP_TextUtilities.GetSimpleHashCode(nm))) resolved++;
+                        }
                     }
                 }
                 PortLog.Write("[PortIcons] 诊断 texts=" + texts + " usingAsset=" + usingIt +
