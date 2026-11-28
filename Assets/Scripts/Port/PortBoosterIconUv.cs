@@ -87,10 +87,22 @@ namespace StacklandsPort
                     var tex = sp.texture;
                     if (tex == null) { NoteSkip(bp, "sprite无贴图"); continue; }
 
-                    Rect r = sp.packed ? sp.textureRect : sp.rect;
-                    if (r.width <= 0f || r.height <= 0f) continue;
-                    var uv = new Vector4(r.width / tex.width, r.height / tex.height,
+                    // v0.84: PC 原版是直接按 0..1 采这张精灵自己的贴图(见 16_PS/08_PS 的 _259/_204),
+                    // 并不做 sprite 裁切。只有真正被打进图集(packed=true)时才需要换算矩形,
+                    // 否则会把独立贴图放大到矩形里 → 图标偏大/偏移。日志里 packed=False 全是独立图, 走 0..1。
+                    Vector4 uv;
+                    if (sp.packed)
+                    {
+                        Rect r = sp.textureRect;
+                        if (r.width <= 0f || r.height <= 0f) continue;
+                        uv = new Vector4(r.width / tex.width, r.height / tex.height,
                                          r.x / tex.width, r.y / tex.height);
+                    }
+                    else
+                    {
+                        uv = new Vector4(1f, 1f, 0f, 0f);
+                    }
+
 
                     var m = bp.PackRenderer;
                     int n = m.sharedMaterials != null ? m.sharedMaterials.Length : 1;
