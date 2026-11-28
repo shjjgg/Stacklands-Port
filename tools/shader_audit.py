@@ -111,7 +111,18 @@ def main():
 
         port_path = cands[0]
         body, nums = read_port(port_path)
-        p_sample = len(re.findall(r'\b(tex2D|tex3D|SAMPLE_TEXTURE2D)\s*\(', body))
+        # v0.76: 把 #include 的公共光照 helper(SokpopLit.cginc: cube 反射 + 3D 噪声)算进采样总数。
+        # 之前只统计 .shader 文件本体, 于是凡是用 SokpopShadeBase/Add 的都误报"缺采样"(StatusBar 1/3 就是假警报)。
+        body_full = body
+        for inc in re.findall(r'#include\s+"([^"]+)"', body):
+            inc_path = os.path.normpath(os.path.join(os.path.dirname(port_path), inc))
+            if os.path.exists(inc_path):
+                body_full += "\n" + open(inc_path, errors='ignore').read()
+                for inc2 in re.findall(r'#include\s+"([^"]+)"', body_full):
+                    p2 = os.path.normpath(os.path.join(os.path.dirname(inc_path), inc2))
+                    if os.path.exists(p2):
+                        body_full += "\n" + open(p2, errors='ignore').read()
+        p_sample = len(re.findall(r'\b(tex2D|tex3D|texCUBE|tex2Dlod|texCUBElod|SAMPLE_TEXTURE2D)\s*\(', body_full))
         p_deriv = len(re.findall(r'\b(ddx|ddy)\s*\(', body))
         p_disc = len(re.findall(r'\b(discard|clip)\b', body))
 

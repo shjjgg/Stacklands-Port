@@ -32,7 +32,7 @@ public static class PortBuild
     // 移植包使用独立包名, 不冒充官方包; 可由 BUNDLE_IDENTIFIER 覆盖。
     private const string DefaultBundleIdentifier = "com.sokpop.stacklands.port";
     private const int DefaultMinSdkVersion = 26;
-    private const string PortVersionName = "0.75";
+    private const string PortVersionName = "0.76";
 
     // 原版场景: Assets/SokpopIntro/IntroScene.unity → Assets/Scenes/SampleScene.unity
     private static readonly string[] RequiredScenes =
@@ -88,6 +88,19 @@ public static class PortBuild
 
         // ---- 门 3.5: 内容自愈 (TMP 图集缺失 → 运行期 NRE 刷屏) ----
         Debug.Log(StacklandsPort.EditorTools.PortFontFix.FixAll(false));
+
+        // ---- 门 3.55: 右上角资源图标 TMP 精灵表 (构建期生成) ----
+        // v0.76: 之前 PortIconAsset.Build() 从来没被调用过 —— 仓库里的 Resources/Sprite Assets/*.asset
+        // 还是 v0.18/v0.19 手工生成的旧件(字形矩形指向 960x960 合成图集的错格), 所以 v0.69~v0.75
+        // 所有"构建期修图标"的改动实际一次都没生效, 真机才会一直黑方块。这里显式接进构建流水线。
+        try
+        {
+            StacklandsPort.EditorTools.PortIconAsset.Build();
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("[PortBuild] 图标精灵表生成失败: " + e.Message);
+        }
 
         // ---- 门 3.6: DLC 重打包 (PC 包的 DXT5 贴图 Android 不可用, 必须用 Android 目标重打) ----
         if (!PortDlcBundle.BuildAll(false))

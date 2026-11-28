@@ -147,13 +147,14 @@ namespace StacklandsPort.EditorTools
                 string path = SpriteAssetDir + "/" + sp.name + ".asset";
                 if (File.Exists(path)) AssetDatabase.DeleteAsset(path);
 
-                if (!cells.TryGetValue(sp.name, out RectInt cell)) continue;
-                int w = cell.width, h = cell.height;
+                if (!cells.ContainsKey(sp.name)) continue;
 
-                // v0.74: 逐名资产改用"精灵自己的贴图 + 自己的材质", 字形矩形就是它在贴图里的真实矩形。
-                // 之前这里复用了拼出来的 960x960 图集, 只要图集里该格是错的, 图标就跟着错。
-                var stex = sp.texture;
-                Rect src = sp.packed ? sp.textureRect : sp.rect;
+                // v0.76: 逐名资产直接拿精灵自己的整张贴图, 字形矩形 = 整张(0,0,w,h)。
+                // 之前按 sp.rect/textureRect 裁, 只要 rect 与贴图坐标系不一致就整格错位(真机上表现为黑方块);
+                // 图标源 png 本身带透明边距, 用整张 = 零裁切零坐标假设, 不可能错位, 只是图标略小(原版也有边距)。
+                var stex = sp.texture as Texture2D;
+                if (stex == null) continue;
+                Rect src = new Rect(0f, 0f, stex.width, stex.height);
                 var tmpl = AssetDatabase.LoadAssetAtPath<TMP_SpriteAsset>("Assets/Resources/sprite assets/Default Sprite Asset.asset");
                 var sh = (tmpl != null && tmpl.material != null) ? tmpl.material.shader : Shader.Find("TextMeshPro/Sprite");
                 var imat = new Material(sh != null ? sh : Shader.Find("TextMeshPro/Sprite"));
@@ -166,12 +167,12 @@ namespace StacklandsPort.EditorTools
                 single.material = AssetDatabase.LoadAssetAtPath<Material>(MatPath.Replace("PortIconsMat", sp.name + "Mat"));
                 single.spriteSheet = stex;
 
-                // TMP 字形矩形以贴图左上为原点, 而 sprite 的 rect 是左下原点 → 翻 Y
-                int gy = Mathf.RoundToInt(stex.height - (src.y + src.height));
+                // 整张 = 全矩形, 无需翻 Y / 无坐标系假设
+                int gy = 0;
                 var glyph = new TMP_SpriteGlyph(0u,
                     new GlyphMetrics(src.width, src.height, 0, src.height, src.width),
                     new GlyphRect(Mathf.RoundToInt(src.x), gy, Mathf.RoundToInt(src.width), Mathf.RoundToInt(src.height)),
-                    1f, 0);   // v0.69: 同样翻 Y
+                    1f, 0);
                 var ch = new TMP_SpriteCharacter(0xE000u, glyph);
                 ch.name = sp.name;
                 var hashField = typeof(TMP_SpriteCharacter).GetField("m_HashCode", BindingFlags.Instance | BindingFlags.NonPublic);

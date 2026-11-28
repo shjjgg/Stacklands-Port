@@ -166,6 +166,7 @@ namespace StacklandsPort
                 .ToList();
 
             int moved = 0;
+            PortLog.Write(Tag + "分组 待排=" + cards.Count + " 卡总数=" + alive.Count);
             foreach (var g in cards)
             {
                 var list = g.ToList();
@@ -193,13 +194,18 @@ namespace StacklandsPort
                                       - cam.WorldToScreenPoint(center).y) * 0.6f;
                 if (rowPx < 2f) rowPx = 2f;
 
-                // 按屏幕位置排序: 先上后下, 先左后右
+                // 排序键先算好(行号 = 屏幕 y 按 rowPx 分桶), 避免比较函数本身不自洽导致 Sort 抛异常
+                var keys = new Dictionary<GameCard, Vector2>();
+                foreach (var c in list)
+                {
+                    var sp2 = cam.WorldToScreenPoint(c.transform.position);
+                    keys[c] = new Vector2(Mathf.Round(-sp2.y / rowPx), sp2.x);
+                }
                 list.Sort((a, b) =>
                 {
-                    var sa = cam.WorldToScreenPoint(a.transform.position);
-                    var sb = cam.WorldToScreenPoint(b.transform.position);
-                    if (Mathf.Abs(sb.y - sa.y) > rowPx) return sb.y.CompareTo(sa.y);
-                    return sa.x.CompareTo(sb.x);
+                    var ka = keys[a]; var kb = keys[b];
+                    if (ka.x != kb.x) return ka.x.CompareTo(kb.x);
+                    return ka.y.CompareTo(kb.y);
                 });
 
                 int n = list.Count;
@@ -208,6 +214,10 @@ namespace StacklandsPort
                 int rows = Mathf.CeilToInt(n / (float)cols);
                 float stepX = cw * 1.12f, stepZ = ch * 1.12f;
 
+                // 落位高度用这批卡现有 y 的中位数: 硬编码 0 在岛屿/森林等抬高场地上会把卡压进地里
+                var ys = list.Select(c => c.transform.position.y).OrderBy(v => v).ToList();
+                float baseY = ys[ys.Count / 2];
+
                 for (int i = 0; i < n; i++)
                 {
                     int r = i / cols, c2 = i % cols;
@@ -215,10 +225,17 @@ namespace StacklandsPort
                     float ox = (c2 - (inRow - 1) * 0.5f) * stepX;
                     float oz = ((rows - 1) * 0.5f - r) * stepZ;
                     var target = center + vx * ox + vz * oz;
-                    target.y = 0f;
+                    target.y = baseY;
                     var card = list[i];
                     try { card.SendToPosition(target); moved++; }
-                    catch { try { card.transform.position = target; moved++; } catch { } }
+                    catch (Exception e1)
+                    {
+                        try { card.transform.position = target; moved++; }
+                        catch (Exception e2)
+                        {
+                            PortLog.Write(Tag + "单卡落位失败 " + card.name + " " + e1.GetType().Name + "/" + e2.GetType().Name);
+                        }
+                    }
                 }
                 PortLog.Write(Tag + "组 " + (g.Key != null ? g.Key.name : "(root)") + " 卡=" + n + " " + cols + "×" + rows
                     + " 格距=" + stepX.ToString("F2") + "/" + stepZ.ToString("F2"));
