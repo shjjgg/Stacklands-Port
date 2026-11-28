@@ -20,6 +20,7 @@ public class PortDebugAccess : MonoBehaviour
     int _taps;
     float _firstTap;
     bool _autoChecked;
+    bool _inputBroken;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     static void Boot()
@@ -43,8 +44,14 @@ public class PortDebugAccess : MonoBehaviour
             catch { }
         }
 
+        // v0.58: 工程切到了 Input System package, 旧版 UnityEngine.Input 一碰就抛
+        // InvalidOperationException, 每帧一条把日志刷爆(实测一次会话 525 条)。
+        // 这里只在第一次探测, 抛异常就永久关掉这条路, 改用 HUD 按钮 + files/debug_on。
+        if (_inputBroken) return;
         bool began = false;
         Vector2 p = Vector2.zero;
+        try
+        {
         if (Input.touchCount > 0)
         {
             for (int i = 0; i < Input.touchCount; i++)
@@ -56,6 +63,14 @@ public class PortDebugAccess : MonoBehaviour
         else if (Input.GetMouseButtonDown(0))
         {
             began = true; p = Input.mousePosition;
+        }
+        }
+        catch (System.Exception e)
+        {
+            _inputBroken = true;
+            PortLog.Write("[DebugAccess] 旧版 Input 不可用(" + e.GetType().Name +
+                          "), 已关闭角落三连击, 请用 HUD 的『原版调试(F1)』按钮");
+            return;
         }
         if (!began) return;
         if (p.x > Screen.width * 0.12f || p.y > Screen.height * 0.12f) { _taps = 0; return; }

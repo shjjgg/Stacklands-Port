@@ -26,9 +26,9 @@ namespace StacklandsPort
             void Update()
             {
                 _alive += Time.unscaledDeltaTime;
-                if (_alive > 60f) { Destroy(gameObject); return; }
+                if (_alive > 300f) { Destroy(gameObject); return; }
                 _t += Time.unscaledDeltaTime;
-                if (_t < 3f) return;
+                if (_t < 1f) return;
                 _t = 0f;
                 if (_asset != null) ApplyToAll(_asset);
             }
@@ -124,7 +124,9 @@ namespace StacklandsPort
                 var metrics = new GlyphMetrics(pw, ph, 0f, ph, pw);
                 var rect = new GlyphRect(px, py, pw, ph);
                 var glyph = new TMP_SpriteGlyph((uint)i, metrics, rect, 1f, 0, sp);
-                var ch = new TMP_SpriteCharacter(0u, glyph);
+                // v0.58: 之前 19 个字符的 unicode 全是 0, TMP 内部的 unicode→字符 映射全撞在一起,
+                // 名字查得到、渲染出来却还是方块。改用私用区 E000+i, 与原版 SpriteAsset 一致。
+                var ch = new TMP_SpriteCharacter((uint)(0xE000 + i), glyph);
                 ch.name = sp.name;
                 // TMP 解析 <sprite name="..."> 用的是字符表里的 hashCode, 只设 name 不够
                 if (_hashField != null)
@@ -146,7 +148,13 @@ namespace StacklandsPort
                 var sh = Shader.Find("TextMeshPro/Sprite");
                 mat = new Material(sh != null ? sh : Shader.Find("UI/Default"));
             }
+            if (mat.shader == null || mat.shader.name == "Hidden/InternalErrorShader")
+            {
+                var ui = Shader.Find("UI/Default");
+                if (ui != null) mat = new Material(ui);
+            }
             mat.SetTexture("_MainTex", atlas);
+            PortLog.Write("[PortIcons] 材质着色器=" + (mat.shader != null ? mat.shader.name : "null"));
 
             var asset = ScriptableObject.CreateInstance<TMP_SpriteAsset>();
             asset.name = "Stacklands Icons";
@@ -169,7 +177,8 @@ namespace StacklandsPort
 
             _asset = asset;
             int applied = ApplyToAll(asset);
-            PortLog.Write($"[PortIcons] ok: {chars.Count} 图标, 图集 {w}x{h}, 挂到 {applied} 个文本");
+            int tagTexts = Diagnostic(asset);
+            PortLog.Write($"[PortIcons] ok: {chars.Count} 图标, 图集 {w}x{h}, 挂到 {applied} 个文本, 含 sprite 标签 {tagTexts}");
 
             // 游戏里会持续克隆新文本(增强包价格、任务条), 克隆体不会继承 spriteAsset, 前 60 秒反复补挂
             var go = new GameObject("[PortIcons]");
@@ -208,11 +217,51 @@ namespace StacklandsPort
             {
                 var t = texts[i];
                 if (t == null) continue;
-                t.spriteAsset = asset;
+                if (t.spriteAsset != asset) t.spriteAsset = asset;
                 t.SetAllDirty();
+                t.ForceMeshUpdate();
                 n++;
             }
             return n;
+        }
+
+        // v0.58: 一次性诊断 —— 到底有多少文本带 <sprite 标签、首条能不能按名字解析出来。
+        // 真机日志里"挂到 0 个文本"说明时机太早(HUD 在 GameScreen 加载之后才建),
+        // 这条日志能直接区分"没挂上"和"挂上了但查不到字符"。
+        static int Diagnostic(TMP_SpriteAsset asset)
+        {
+            int tag = 0, resolved = 0, texts = 0, usingIt = 0;
+            string first = "";
+            try
+            {
+                var arr = UnityEngine.Object.FindObjectsOfType<TMP_Text>(true);
+                texts = arr != null ? arr.Length : 0;
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    var t = arr[i];
+                    if (t == null) continue;
+                    if (t.spriteAsset == asset) usingIt++;
+                    var txt = t.text;
+                    if (txt == null) continue;
+                    int at = txt.IndexOf("<sprite=", System.StringComparison.Ordinal);
+                    if (at < 0) continue;
+                    tag++;
+                    if (first.Length == 0) first = t.name + " | " + txt;
+                    int q1 = txt.IndexOf('"', at), q2 = txt.IndexOf('"', q1 + 1);
+                    if (q1 > 0 && q2 > q1)
+                    {
+                        var nm = txt.Substring(q1 + 1, q2 - q1 - 1);
+                        if (asset.GetSpriteCharacterFromName(nm) != null) resolved++;
+                    }
+                }
+                PortLog.Write("[PortIcons] 诊断 texts=" + texts + " usingAsset=" + usingIt +
+                              " 含标签=" + tag + " 可解析=" + resolved + " 首条=" + first);
+            }
+            catch (System.Exception e)
+            {
+                PortLog.Write("[PortIcons] 诊断异常 " + e.GetType().Name + " " + e.Message);
+            }
+            return tag;
         }
     }
 }

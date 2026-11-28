@@ -32,6 +32,7 @@ public static class PortBuild
     // 移植包使用独立包名, 不冒充官方包; 可由 BUNDLE_IDENTIFIER 覆盖。
     private const string DefaultBundleIdentifier = "com.sokpop.stacklands.port";
     private const int DefaultMinSdkVersion = 26;
+    private const string PortVersionName = "0.58";
 
     // 原版场景: Assets/SokpopIntro/IntroScene.unity → Assets/Scenes/SampleScene.unity
     private static readonly string[] RequiredScenes =
@@ -114,6 +115,7 @@ public static class PortBuild
 
         Debug.Log($"[PortBuild] target=Android backend=IL2CPP arch=ARM64 " +
                   $"bundle={PlayerSettings.applicationIdentifier} ver={PlayerSettings.bundleVersion}" +
+                  $" code={PlayerSettings.Android.bundleVersionCode}" +
                   $"({PlayerSettings.Android.bundleVersionCode}) " +
                   $"minSdk={PlayerSettings.Android.minSdkVersion} " +
                   $"targetSdk={PlayerSettings.Android.targetSdkVersion} " +
@@ -615,9 +617,11 @@ public static class PortBuild
     /// </summary>
     private static string GetBuildVersion()
     {
-        var env = Environment.GetEnvironmentVariable("BUILD_VERSION");
+        // v0.58: 显示用版本号只认移植版本, 不再把 git 提交计数(1.5.0.174 这种)当版本名,
+        // 那个数字每推一次就跳, 装到手机上完全看不出是第几版移植。
+        var env = Environment.GetEnvironmentVariable("PORT_VERSION_NAME");
         if (!string.IsNullOrEmpty(env)) return env;
-        return PlayerSettings.bundleVersion;   // 形如 1.5.0.108
+        return PortVersionName;   // 形如 0.58
     }
 
     /// <summary>bundleVersionCode 由版本号推导, 保证每次安装都是递增的。</summary>
@@ -626,7 +630,9 @@ public static class PortBuild
         var env = Environment.GetEnvironmentVariable("BUNDLE_VERSION_CODE");
         if (!string.IsNullOrEmpty(env)) return ParseInt(env, 1);
 
-        var ver = GetBuildVersion();
+        // 单调递增仍用 git 提交计数(BUILD_VERSION=1.5.0.<n>), 只是不再显示成版本名
+        var ver = Environment.GetEnvironmentVariable("BUILD_VERSION");
+        if (string.IsNullOrEmpty(ver)) ver = PlayerSettings.bundleVersion;
         var parts = ver.Split('.');
         int major = parts.Length > 0 ? ParseInt(parts[0], 1) : 1;
         int minor = parts.Length > 1 ? ParseInt(parts[1], 5) : 5;
