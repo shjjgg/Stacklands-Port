@@ -32,6 +32,14 @@ namespace StacklandsPort
             readonly MaterialPropertyBlock _pb = new MaterialPropertyBlock();
             int _applied;
             float _lastLog;
+            readonly HashSet<int> _skipped = new HashSet<int>();
+
+            // 每个卡包实例只记一次跳过原因, 免得日志刷屏
+            void NoteSkip(Boosterpack bp, string why)
+            {
+                int id = bp.GetInstanceID();
+                if (_skipped.Add(id)) PortLog.Write(Tag + "跳过 " + bp.name + " 因 " + why);
+            }
 
             IEnumerator Start()
             {
@@ -44,19 +52,40 @@ namespace StacklandsPort
 
             void Apply()
             {
-                Boosterpack[] packs;
-                try { packs = Resources.FindObjectsOfTypeAll<Boosterpack>(); }
-                catch { return; }
-                if (packs == null || packs.Length == 0) return;
+                // v0.80: v0.78 日志一直是 `在场上卡包=0`, 说明 Resources.FindObjectsOfTypeAll 这条路
+                // 在运行期拿不到我们看到的那个卡包(它只装在 WorldManager 的存活列表里, 有些实例的
+                // PackData/PackRenderer 在 Awake 前是空的)。改为先用游戏自己的权威列表 AllBoosters,
+                // 再退回 Resources 全量扫描; 并逐实例记一次跳过原因, 下次日志直接能定位。
+                var packs = new List<Boosterpack>();
+                try
+                {
+                    var wm = WorldManager.instance;
+                    if (wm != null && wm.AllBoosters != null)
+                        foreach (var b in wm.AllBoosters) if (b != null) packs.Add(b);
+                }
+                catch { }
+                try
+                {
+                    var all = Resources.FindObjectsOfTypeAll<Boosterpack>();
+                    if (all != null)
+                        foreach (var b in all) if (b != null && !packs.Contains(b)) packs.Add(b);
+                }
+                catch { }
+                if (packs.Count == 0) return;
 
                 int done = 0;
                 foreach (var bp in packs)
                 {
-                    if (bp == null || bp.PackRenderer == null || bp.PackData == null) continue;
+                    if (bp == null) continue;
+                    if (bp.PackRenderer == null || bp.PackData == null)
+                    {
+                        NoteSkip(bp, bp.PackRenderer == null ? "无Renderer" : "无PackData");
+                        continue;
+                    }
                     var sp = bp.PackData.Icon;
-                    if (sp == null) continue;
+                    if (sp == null) { NoteSkip(bp, "PackData.Icon=null(" + bp.PackData.BoosterId + ")"); continue; }
                     var tex = sp.texture;
-                    if (tex == null) continue;
+                    if (tex == null) { NoteSkip(bp, "sprite无贴图"); continue; }
 
                     Rect r = sp.packed ? sp.textureRect : sp.rect;
                     if (r.width <= 0f || r.height <= 0f) continue;

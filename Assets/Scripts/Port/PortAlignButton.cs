@@ -49,6 +49,29 @@ namespace StacklandsPort
             if (!_built) PortLog.Write(Tag + "未找到设置按钮(几何匹配失败)");
         }
 
+        // v0.80: 键盘 E 也能触发对齐(旧版 Input 在本作里不可用, 走新版 InputSystem)
+        void Update()
+        {
+            try
+            {
+                var kb = UnityEngine.InputSystem.Keyboard.current;
+                if (kb == null || !kb.eKey.wasPressedThisFrame) return;
+                // 正在输入框里打字时不要抢键
+                var es = UnityEngine.EventSystems.EventSystem.current;
+                if (es != null && es.currentSelectedGameObject != null)
+                {
+                    var sel = es.currentSelectedGameObject.GetComponent<TMPro.TMP_InputField>();
+                    if (sel != null && sel.isFocused) return;
+                }
+                int moved = AlignAll();
+                PortLog.Write(Tag + "键盘 E 触发, 重排卡牌=" + moved);
+            }
+            catch (Exception e)
+            {
+                PortLog.Write(Tag + "键盘 E 失败 " + e.GetType().Name + " " + e.Message);
+            }
+        }
+
         // ---------- 建按钮 ----------
         bool TryBuild()
         {
@@ -137,8 +160,7 @@ namespace StacklandsPort
             if (p == null) return false;
             if (p.GetComponent<GameCard>() != null) return true;      // 卡叠在卡上, 别拆堆
             if (p.GetComponent<Boosterpack>() != null) return true;
-            var n = p.name;
-            if (n.IndexOf("Stack", StringComparison.OrdinalIgnoreCase) >= 0) return true;
+            // v0.80: 不再按 "Stack" 名字判断 —— 单卡也挂在 Stack 下, 那样会把所有卡都过滤掉。
             return false;
         }
 
@@ -149,6 +171,11 @@ namespace StacklandsPort
 
             // v0.73: 之前这里 NRE —— 有的卡父节点是 null(根级/正在销毁), GroupBy 拿到 null key 后
             // 取 g.Key.name 直接炸。这里先过滤掉已销毁/无父节点的卡, 再按父节点分组。
+            // v0.80: v0.78 日志 `分组 待排=0 卡总数=0` 说明这层过滤把所有卡都丢了。
+            // 原因: 这套游戏里**每张卡都挂在名为 "Stack..." 的父物体下**(单卡也是一个 Stack),
+            // 而 v0.73 的 IsContainer() 把名字里带 "Stack" 的一律当"卡堆容器"跳过 → 一张都剩不下。
+            // 改为只认定「真的叠在卡/卡包上」的卡需要跳过, 分组键用 transform.root(同一张桌面的根),
+            // 这样单卡也会被收进同一个组里参与排版。
             var src = FindObjectsOfType<GameCard>(true);
             var alive = new List<GameCard>();
             foreach (var c in src)
@@ -156,12 +183,19 @@ namespace StacklandsPort
                 if (c == null || c.gameObject == null) continue;
                 if (!c.gameObject.activeInHierarchy) continue;
                 var t = c.transform;
-                if (t == null || t.parent == null) continue;
-                if (IsContainer(t.parent)) continue;
-                if (IsContainer(t.parent.parent)) continue;   // 隔一层也当堆里
+                if (t == null) continue;
+                var p = t.parent;
+                bool stacked = false;
+                // 往上最多走两层: 卡叠卡(Stack 下还有一张卡) / 卡包上的预览卡
+                for (int up = 0; up < 2 && p != null; up++)
+                {
+                    if (p.GetComponent<GameCard>() != null || p.GetComponent<Boosterpack>() != null) { stacked = true; break; }
+                    p = p.parent;
+                }
+                if (stacked) continue;
                 alive.Add(c);
             }
-            var cards = alive.GroupBy(c => c.transform.parent)
+            var cards = alive.GroupBy(c => c.transform.root)
                 .Where(g => g.Key != null && g.Count() >= 2)
                 .ToList();
 
