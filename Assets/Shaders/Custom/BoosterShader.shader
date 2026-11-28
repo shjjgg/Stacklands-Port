@@ -107,7 +107,11 @@ Shader "Custom/BoosterShader"
                 // 所以扭曲采样该用 _IconTex(卡包内容图标), 不是 _RainbowTex。
                 // 证据: spec 属性表顺序 + Boosterpack.cs L115 propBlock.SetTexture("_IconTex", PackData.Icon.texture)。
                 // 端口此前声明了 _IconTex 却从未采样(审计 0 次), 卡包内容因此永远拿不到图。
-                float4 rain = tex2D(_IconTex, float2(rU, rV) * _IconUV.xy + _IconUV.zw);
+                // v0.78: 与正面同一处修正 —— 我们的 t1 是 sprite 所在贴图(图标只占中间矩形),
+                // 照搬 (u+v)-Vz*5 的大位移会采到大片透明区, 而导出 PNG 透明区留着白色 RGB, ×0.5 抬亮整面。
+                // 改为只在 sprite 矩形内按 0..1 采一次, 并把透明区 RGB 归零(原版 DXT5 透明区为黑)。
+                float4 rain = tex2D(_IconTex, saturate(uv) * _IconUV.xy + _IconUV.zw);
+                rain.rgb *= rain.a;
 
                 // 圆点
                 float2 cp = float2((uv.x - 0.5) * 1.75, (uv.y - 0.4) * 1.75 - 0.1);

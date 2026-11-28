@@ -184,14 +184,12 @@ Shader "Custom/CardShaderTest"
                     albedo *= (1.0 - 0.4 * dm);
                 }
 
-                // 9) 卡框: 距边 < 1/40 视为边框(_BorderColor)
-                float2 ed = min(uv, 1.0 - uv);
-                float edge = saturate(1.0 - min(ed.x, ed.y) * 40.0) * 0.37;   // 原版实测: 边框亮度约为纸色的 63%(_BorderColor 近黑)
-                float4 borderCol = (_Damaged > 0.5) ? _DamagedBorderColor : _BorderColor;
-                albedo = lerp(albedo, borderCol.rgb, edge);
-
-                // 10) 金属度压暗 _458 = 0.96*(1-_Metallic)
-                albedo *= 0.96 * (1.0 - _Metallic);
+                // v0.78 删除两处无证据的自造:
+                //  ① 9) "距边 1/40 涂 _BorderColor" —— 16_PS 全文没有这种 uv 边距算法, 边框完全由 _435 内框掩码
+                //     外的 cb0._m10(_Color 纸色) 给出; 这段是我早期"原版实测"猜的, 只会把卡边缘压黑。
+                //  ② 10) albedo *= 0.96*(1-_Metallic) —— 原版这一项是 DiffuseAndSpecularFromMetallic 的内联展开
+                //     (_820 = 0.96*(1-Metallic), 乘在 diffColor 上), 而 BRDF1_Unity_PBS 内部已经做了同一步,
+                //     我们再加一遍等于把纸色连乘两次 → 暗卡(岩石/木材)偏深、村民卡偏灰的直接来源之一。
 
                 float4 col = SokpopShadeBase(albedo, _Glossiness, _Metallic, normalize(i.worldNormal), i.worldPos);
                 col.a = 1.0;
