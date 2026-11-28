@@ -46,6 +46,7 @@ namespace StacklandsPort
 
         static FrameTiming[] _ft = new FrameTiming[1];
         static bool _ftOn = true;
+        static bool _probeDone, _probeOn; static float _probeEnd, _dtBefore;
 
         public static void Mark(string what) { _ev = what; _evAt = Time.unscaledTime; }
 
@@ -68,7 +69,9 @@ namespace StacklandsPort
                 _t += Time.unscaledDeltaTime;
                 if (_t < _delay) return;
                 _done = true;
-                PortLog.Write(Tag + "采样开始(" + (int)_delay + "s 起, 时长 " + (int)_len + "s)");
+                PortLog.Write(Tag + "采样开始(" + (int)_delay + "s 起, 时长 " + (int)_len + "s)"
+                + " 分辨率=" + Screen.width + "x" + Screen.height + " 目标帧率=" + Application.targetFrameRate
+                + " vSync=" + QualitySettings.vSyncCount + " 图形API=" + SystemInfo.graphicsDeviceType);
                 StartRun();
             }
 
@@ -135,7 +138,40 @@ namespace StacklandsPort
             ScanCards(now);
             TraceTick(now);
 
+            // v0.67: 该设备 p50=83ms(12fps), 但 FrameTiming 拿不到 gpu 时间, 无法判断是 CPU 还是 GPU 卡。
+            // 做法: 采样中途把渲染缓冲缩到一半跑 4 秒 —— GPU 瓶颈时帧时明显下降, CPU 瓶颈时几乎不变。
+            if (!_probeDone && s.t > 10f)
+            {
+                _probeDone = true;
+                try
+                {
+                    _dtBefore = AvgDt(_buf.Count - 60, 60);
+                    ScalableBufferManager.ResizeBuffers(0.5f, 0.5f);
+                    _probeEnd = s.t + 4f;
+                    _probeOn = true;
+                    PortLog.Write(Tag + "半分辨率试验开始(之前均值 " + (_dtBefore * 1000f).ToString("0.0") + "ms)");
+                }
+                catch (Exception e) { PortLog.Write(Tag + "半分辨率试验失败 " + e.Message); }
+            }
+            if (_probeOn && s.t > _probeEnd)
+            {
+                _probeOn = false;
+                try { ScalableBufferManager.ResizeBuffers(1f, 1f); } catch { }
+                float after = AvgDt(_buf.Count - 60, 60);
+                PortLog.Write(Tag + "半分辨率试验结束: 之前 " + (_dtBefore * 1000f).ToString("0.0") + "ms -> 半分辨率 "
+                    + (after * 1000f).ToString("0.0") + "ms (降 " + ((1f - after / Mathf.Max(_dtBefore, 1e-4f)) * 100f).ToString("0") + "%)");
+            }
+
             if (s.t >= _len) Finish("window");
+        }
+
+        static float AvgDt(int end, int n)
+        {
+            if (end > _buf.Count) end = _buf.Count;
+            int from = Mathf.Max(0, end - n);
+            float sum = 0f; int c = 0;
+            for (int i = from; i < end; i++) { sum += _buf[i].dt; c++; }
+            return c > 0 ? sum / c : 0f;
         }
 
         static void ScanCards(float now)
@@ -255,16 +291,32 @@ namespace StacklandsPort
             WriteBoth("perf.csv", csv.ToString());
         }
 
+        // v0.67: 只写 app 私有目录。/storage/emulated/0/Download 在 Android 10+ 需 MediaStore 或
+        // 存储权限, 我们没申请, 实测报 "Access to the path ... is denied"。
+        // 每条路径独立 try, 并回读确认字节数, 写失败也要在日志里点名。
         static void WriteBoth(string name, string text)
         {
-            try
+            string[] dirs = new string[]
             {
-                string a = Path.Combine(Application.persistentDataPath, "bench");
-                if (!Directory.Exists(a)) Directory.CreateDirectory(a);
-                File.WriteAllText(Path.Combine(a, name), text, Encoding.UTF8);
-                File.WriteAllText(Path.Combine(DownloadDir, name), text, Encoding.UTF8);
+                Application.persistentDataPath,
+                Path.Combine(Application.persistentDataPath, "bench"),
+                Application.temporaryCachePath
+            };
+            int wrote = 0;
+            for (int i = 0; i < dirs.Length; i++)
+            {
+                string full = Path.Combine(dirs[i], name);
+                try
+                {
+                    if (!Directory.Exists(dirs[i])) Directory.CreateDirectory(dirs[i]);
+                    File.WriteAllText(full, text, Encoding.UTF8);
+                    long len = new FileInfo(full).Length;
+                    if (len > 0) { wrote++; if (wrote == 1) PortLog.Write(Tag + "已写 " + full + " " + len + "B"); }
+                    else PortLog.Write(Tag + "写入为空 " + full);
+                }
+                catch (Exception e) { PortLog.Write(Tag + "写失败 " + full + " : " + e.Message); }
             }
-            catch (Exception e) { PortLog.Write(Tag + "写 " + name + " 失败 " + e.Message); }
+            if (wrote == 0) PortLog.Write(Tag + "!! " + name + " 一个路径都没写成功");
         }
     }
 }

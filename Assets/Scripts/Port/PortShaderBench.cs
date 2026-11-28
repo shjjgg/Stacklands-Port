@@ -81,7 +81,15 @@ namespace StacklandsPort
                 _t += Time.unscaledDeltaTime;
                 if (_t < 25f) return;
                 _done = true;
-                PortLog.Write(Tag + "自动靶场触发(25s)");
+                // v0.66 实测: 靶场一次要 ~4 秒主线程(33 个 RT + 探针), 在 perf 里就是 t=22 那个 4023ms。
+                // 它是诊断工具, 不该默认拖累每一次游玩。改成默认不跑, 需要时放 files/bench_on。
+                var flag = System.IO.Path.Combine(Application.persistentDataPath, "bench_on");
+                if (!System.IO.File.Exists(flag))
+                {
+                    PortLog.Write(Tag + "自动靶场已停用(需要时放 files/bench_on 或点 HUD『靶场』)");
+                    return;
+                }
+                PortLog.Write(Tag + "发现 bench_on, 触发靶场");
                 Run();
             }
         }

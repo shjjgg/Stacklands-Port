@@ -243,11 +243,14 @@ namespace StacklandsPort
                     if (load != null) { load.Invoke(null, null); inst = instP != null ? instP.GetValue(null) : null; }
                 }
                 var f = t.GetField("m_defaultSpriteAsset", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
-                var def = Resources.Load<TMP_SpriteAsset>("Sprite Assets/Default Sprite Asset");
+                var def = Resources.Load<TMP_SpriteAsset>("PortIcons");   // v0.67: 19 个图标的合体资产
                 if (inst != null && f != null && def != null)
                 {
                     f.SetValue(inst, def);
-                    PortLog.Write("[PortIcons] 已把默认 SpriteAsset 设为构建期 Default Sprite Asset");
+                    int cn = 0; try { cn = def.spriteCharacterTable != null ? def.spriteCharacterTable.Count : 0; } catch { }
+                    var dtex = def.material != null ? def.material.mainTexture : null;
+                    PortLog.Write("[PortIcons] 默认 SpriteAsset = 构建期 PortIcons (char=" + cn + " tex="
+                        + (dtex != null ? dtex.width + "x" + dtex.height : "null") + ")");
                 }
                 else
                 {
@@ -261,18 +264,44 @@ namespace StacklandsPort
             go.AddComponent<Observ>();
         }
 
-        // v0.66: 只观察, 不覆盖。20s / 40s 各报一次, 看 TMP 自己解析出了什么。
+        // v0.67: 12s / 20s / 30s 分别「补挂 + 观察」一次。
+        // 依据 v0.66 日志: 含标签文本=28 有 spriteAsset=0 —— TMP 根本没给文本分配 spriteAsset,
+        // 说明只设默认资产不够, 必须显式把合体资产塞到每个带标签的文本上。
         internal sealed class Observ : MonoBehaviour
         {
             float _t; int _n;
             void Update()
             {
                 _t += Time.unscaledDeltaTime;
-                if (_n >= 2) return;
-                if (_t < 20f) return;
+                if (_n >= 3) return;
+                if (_t < 12f) return;
                 _t = 0f; _n++;
+                try { Attach(); } catch (System.Exception e) { PortLog.Write("[PortIcons] Attach 异常 " + e.Message); }
                 try { Inspect(); } catch (System.Exception e) { PortLog.Write("[PortIcons] Inspect 异常 " + e.Message); }
-                if (_n >= 2) { try { DumpBooster(); } catch (System.Exception e) { PortLog.Write("[PortIcons] Dump 异常 " + e.Message); } }
+                if (_n == 3) { try { DumpBooster(); } catch (System.Exception e) { PortLog.Write("[PortIcons] Dump 异常 " + e.Message); } }
+            }
+
+            static TMP_SpriteAsset _combined;
+
+            static void Attach()
+            {
+                if (_combined == null) _combined = Resources.Load<TMP_SpriteAsset>("PortIcons");
+                if (_combined == null) { PortLog.Write("[PortIcons] Resources/PortIcons 缺失, 无法补挂"); return; }
+                var arr = UnityEngine.Object.FindObjectsOfType<TMP_Text>(true);
+                int changed = 0, tagged = 0;
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    var t = arr[i];
+                    if (t == null || t.text == null) continue;
+                    if (t.text.IndexOf("<sprite", StringComparison.Ordinal) < 0) continue;
+                    tagged++;
+                    if (t.spriteAsset != _combined) { t.spriteAsset = _combined; changed++; }
+                    var raw = t.text;
+                    t.text = raw;             // 强制重解析
+                    t.SetAllDirty();
+                    t.ForceMeshUpdate();
+                }
+                PortLog.Write("[PortIcons] 补挂 带标签=" + tagged + " 本次改动=" + changed + " 总文本=" + arr.Length);
             }
 
             static void Inspect()
