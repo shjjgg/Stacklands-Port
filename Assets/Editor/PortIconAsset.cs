@@ -38,7 +38,12 @@ namespace StacklandsPort.EditorTools
             if (sprites.Length == 0) throw new Exception("[PortIcons] 没找到图标精灵: " + IconDir);
 
             const int Cell = 192, Cols = 4, Rows = 5, Pad = 2;
-            int size = Cell * Math.Max(Cols, Rows);
+            // v0.86: 图集必须做成 2 的幂。原来 192*5=960 是 NPOT, 打包到 Android 时 Unity 默认
+            // npotScale=ToNearest 会把它缩成 1024, 而字形矩形还在 960 的格子上算 → 手机上一次
+            // `[PortIcons] 默认 SpriteAsset = ... tex=1024x1024` 就是这么来的, 图标整个错格。
+            // 改成 1024×1024 画布(仍用 192 的格子, 只是右侧/下方留空), 尺寸与矩形从此对得上。
+            const int Size = 1024;
+            int size = Size;
             var px = new Color32[size * size];
             for (int i = 0; i < px.Length; i++) px[i] = new Color32(255, 255, 255, 0);
 
