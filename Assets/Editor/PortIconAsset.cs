@@ -150,14 +150,28 @@ namespace StacklandsPort.EditorTools
                 if (!cells.TryGetValue(sp.name, out RectInt cell)) continue;
                 int w = cell.width, h = cell.height;
 
+                // v0.74: 逐名资产改用"精灵自己的贴图 + 自己的材质", 字形矩形就是它在贴图里的真实矩形。
+                // 之前这里复用了拼出来的 960x960 图集, 只要图集里该格是错的, 图标就跟着错。
+                var stex = sp.texture;
+                Rect src = sp.packed ? sp.textureRect : sp.rect;
+                var tmpl = AssetDatabase.LoadAssetAtPath<TMP_SpriteAsset>("Assets/Resources/sprite assets/Default Sprite Asset.asset");
+                var sh = (tmpl != null && tmpl.material != null) ? tmpl.material.shader : Shader.Find("TextMeshPro/Sprite");
+                var imat = new Material(sh != null ? sh : Shader.Find("TextMeshPro/Sprite"));
+                imat.name = sp.name + "Mat";
+                imat.SetTexture("_MainTex", stex);
+                AssetDatabase.CreateAsset(imat, MatPath.Replace("PortIconsMat", sp.name + "Mat"));
+
                 var single = ScriptableObject.CreateInstance<TMP_SpriteAsset>();
                 single.name = sp.name;
-                single.material = AssetDatabase.LoadAssetAtPath<Material>(MatPath);
-                single.spriteSheet = atlas;
+                single.material = AssetDatabase.LoadAssetAtPath<Material>(MatPath.Replace("PortIconsMat", sp.name + "Mat"));
+                single.spriteSheet = stex;
 
-                // 同一个图集/材质 + 图集内的矩形; 不挂 Sprite 引用, 避免 TMP 去取另一张贴图
-                var glyph = new TMP_SpriteGlyph(0u, new GlyphMetrics(w, h, 0, h, w),
-                    new GlyphRect(cell.x, size - (cell.y + h), w, h), 1f, 0);   // v0.69: 同样翻 Y
+                // TMP 字形矩形以贴图左上为原点, 而 sprite 的 rect 是左下原点 → 翻 Y
+                int gy = Mathf.RoundToInt(stex.height - (src.y + src.height));
+                var glyph = new TMP_SpriteGlyph(0u,
+                    new GlyphMetrics(src.width, src.height, 0, src.height, src.width),
+                    new GlyphRect(Mathf.RoundToInt(src.x), gy, Mathf.RoundToInt(src.width), Mathf.RoundToInt(src.height)),
+                    1f, 0);   // v0.69: 同样翻 Y
                 var ch = new TMP_SpriteCharacter(0xE000u, glyph);
                 ch.name = sp.name;
                 var hashField = typeof(TMP_SpriteCharacter).GetField("m_HashCode", BindingFlags.Instance | BindingFlags.NonPublic);
@@ -197,7 +211,11 @@ namespace StacklandsPort.EditorTools
         /// <summary>从 PNG 原文件解码并按精灵矩形裁切, 不要求贴图可读。</summary>
         static Texture2D LoadPixels(Sprite sp, out Rect rect)
         {
-            rect = sp.rect;
+            // v0.74: 精灵若被打进图集, sp.rect 是"原图里的矩形", 直接按它裁会切错位置 ——
+            // 这正是 PortIconsAtlas.png 里只剩一堆碎片/边角料的原因。打包过的必须用 textureRect。
+            rect = sp.packed ? sp.textureRect : sp.rect;
+            if (sp.packingRotation != SpritePackingRotation.None)
+                Debug.LogWarning("[PortIcons] " + sp.name + " 带旋转打包 " + sp.packingRotation + ", 裁切可能不准");
             string path = AssetDatabase.GetAssetPath(sp.texture);
             var tex = new Texture2D(2, 2, TextureFormat.RGBA32, false);
             if (!string.IsNullOrEmpty(path) && File.Exists(path))

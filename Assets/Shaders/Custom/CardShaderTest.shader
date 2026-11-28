@@ -20,6 +20,10 @@ Shader "Custom/CardShaderTest"
         _IsChest ("Is Chest", Float) = 0
         _MainTex ("Albedo", 2D) = "white" {}
         _IconTex ("Icon", 2D) = "white" {}
+        // v0.74: 图标/卡面插画在安卓包里可能位于图集, 只采 0..1 会采到整张图集(整卡被插画糊住)。
+        // 这里补一个 UV 矩形(scale/offset), 由运行时按 IconRenderer.sprite 的真实矩形注入;
+        // 独立贴图时恒为 (1,1,0,0), 行为与原版完全一致。
+        _IconUV ("Icon UV xy=scale zw=offset", Vector) = (1,1,0,0)
         _FlipIcon ("Flip Icon X", Float) = 0
         _IconZoom ("Icon Zoom", Float) = 1.75
         _SecondaryTex ("Secondary", 2D) = "white" {}
@@ -55,7 +59,7 @@ Shader "Custom/CardShaderTest"
             float _HasSecondaryIcon; float _HasOutputDir; float _IsChest;
             sampler2D _MainTex; sampler2D _IconTex; sampler2D _SecondaryTex;
             float _FlipIcon;
-            float _IconZoom;
+            float _IconZoom; float4 _IconUV;
             sampler2D _RainbowTex; sampler2D _DamagedTex;
             float _Glossiness; float _Metallic; float _SparkleIntensity;
             float4 _BorderColor; float4 _DamagedBorderColor;
@@ -133,7 +137,8 @@ Shader "Custom/CardShaderTest"
                 float3 halo = lerp(_Color.rgb, _Color2.rgb, saturate(ringMask));
 
                 // 5) 图标色 _321.._333: ink = lerp(_Color, _IconColor, 1 - t1.x*inside)
-                float4 icon = tex2D(_IconTex, clamp(iconUv, 0.0, 1.0));
+                float2 artUv = clamp(iconUv, 0.0, 1.0) * _IconUV.xy + _IconUV.zw;
+                float4 icon = tex2D(_IconTex, artUv);
                 float inkAmt = saturate(1.0 - icon.r * inside);
                 float3 inkCol = lerp(_Color.rgb, _IconColor.rgb, inkAmt);
                 float artA = saturate(icon.a) * inside;
@@ -142,7 +147,7 @@ Shader "Custom/CardShaderTest"
                 // 6) 副图标(_HasSecondaryIcon): 同算式, 叠在主图标之上
                 if (_HasSecondaryIcon > 0.5)
                 {
-                    float4 sec = tex2D(_SecondaryTex, clamp(iconUv, 0.0, 1.0));
+                    float4 sec = tex2D(_SecondaryTex, artUv);
                     float3 secInk = lerp(_Color.rgb, _IconColor.rgb, saturate(1.0 - sec.r * inside));
                     albedo = lerp(albedo, secInk, saturate(sec.a * inside));
                 }
