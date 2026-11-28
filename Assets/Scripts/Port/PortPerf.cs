@@ -28,7 +28,7 @@ namespace StacklandsPort
         static readonly List<S> _buf = new List<S>(4096);
         static bool _on;
         static float _winStart;
-        static float _delay = 8f, _len = 40f;
+        static float _delay = 5f, _len = 25f;   // v0.66: 缩短窗口, 保证用户还没退游戏就能落盘
         static float _lastT;
         static string _ev; static float _evAt = -99f;
 
@@ -60,6 +60,7 @@ namespace StacklandsPort
         sealed class Auto : MonoBehaviour
         {
             float _t; bool _done;
+
             void Update()
             {
                 PortPerf.Tick();
@@ -70,6 +71,12 @@ namespace StacklandsPort
                 PortLog.Write(Tag + "采样开始(" + (int)_delay + "s 起, 时长 " + (int)_len + "s)");
                 StartRun();
             }
+
+            // v0.66: 上一版就是这样丢的 —— 采样窗口 40s, 用户 34s 就退出, Finish 永远没被调用,
+            // perf.csv 一个字节都没写。现在退到后台/退出都强制落盘(写已采到的部分)。
+            void OnApplicationPause(bool paused) { if (paused) PortPerf.Finish("pause"); }
+            void OnApplicationQuit() { PortPerf.Finish("quit"); }
+            void OnApplicationFocus(bool f) { if (!f) PortPerf.Finish("focus"); }
         }
 
         public static void StartRun()
@@ -128,7 +135,7 @@ namespace StacklandsPort
             ScanCards(now);
             TraceTick(now);
 
-            if (s.t >= _len) Finish();
+            if (s.t >= _len) Finish("window");
         }
 
         static void ScanCards(float now)
@@ -197,9 +204,11 @@ namespace StacklandsPort
             _trace = null; _traceId = -1;
         }
 
-        static void Finish()
+        public static void Finish(string why)
         {
+            if (!_on) return;
             _on = false;
+            PortLog.Write(Tag + "采样结束(" + why + ") 已采 " + _buf.Count + " 帧");
             if (_traceId >= 0) FlushTrace();
             try { WriteReport(); }
             catch (Exception e) { PortLog.Write(Tag + "报表失败 " + e.GetType().Name + " " + e.Message); }

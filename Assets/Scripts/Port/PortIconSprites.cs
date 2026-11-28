@@ -59,8 +59,16 @@ namespace StacklandsPort
             Build();
         }
 
+        // v0.66: 换路线 —— 不再运行时用 Graphics.Blit + ReadPixels 自己打图集。
+        // 理由: 构建期已经生成了 Resources/Sprite Assets/<icon 名>.asset, 而 TMP 解析
+        // <sprite="goldicon"> 时就是按这个名字 Resources.Load, 这条路径是原版机制。
+        // 我们在运行期把每个文本的 spriteAsset 换成自己 Blit 出来的图集, 只会在 Vulkan 上
+        // 回读为空 -> 黑方块。所以先停用, 只做取证。
+        public static bool RuntimeAtlas = false;
+
         static void Build()
         {
+            if (!RuntimeAtlas) { UseBuiltAssets(); return; }
             var ordered = new List<Sprite>();
             var all = Resources.LoadAll<Sprite>("Icons");
             if (all == null || all.Length == 0)
@@ -203,6 +211,126 @@ namespace StacklandsPort
             var go = new GameObject("[PortIcons]");
             UnityEngine.Object.DontDestroyOnLoad(go);
             go.AddComponent<Runner>();
+        }
+
+        // v0.66 取证: 构建期资产到底在不在包里、里面有没有字形、贴图有没有打包进来。
+        static void UseBuiltAssets()
+        {
+            PortLog.Write("[PortIcons] 运行时不打图集(改用构建期 Resources/Sprite Assets/<name>)");
+            int ok = 0, missing = 0, noTex = 0;
+            for (int i = 0; i < Names.Length; i++)
+            {
+                var a = Resources.Load<TMP_SpriteAsset>("Sprite Assets/" + Names[i]);
+                if (a == null) { missing++; if (missing <= 3) PortLog.Write("[PortIcons] 缺构建期资产: " + Names[i]); continue; }
+                int cnum = 0;
+                try { var tb = a.spriteCharacterTable; cnum = tb != null ? tb.Count : 0; } catch { }
+                var tex = a.material != null ? a.material.mainTexture : null;
+                if (tex == null) { noTex++; if (noTex <= 3) PortLog.Write("[PortIcons] 资产 " + Names[i] + " 的材质无贴图"); }
+                ok++;
+                if (i < 3) PortLog.Write("[PortIcons] " + Names[i] + " char=" + cnum + " tex=" + (tex != null ? tex.width + "x" + tex.height : "null"));
+            }
+            PortLog.Write("[PortIcons] 构建期资产: 可用 " + ok + " / 缺 " + missing + " / 无贴图 " + noTex);
+
+            // 默认图集(实例字段 m_defaultSpriteAsset, 不是静态字段)
+            try
+            {
+                var t = typeof(TMPro.TMP_Settings);
+                var instP = t.GetProperty("instance", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
+                object inst = instP != null ? instP.GetValue(null) : null;
+                if (inst == null)
+                {
+                    var load = t.GetMethod("LoadDefaultSettings", BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic);
+                    if (load != null) { load.Invoke(null, null); inst = instP != null ? instP.GetValue(null) : null; }
+                }
+                var f = t.GetField("m_defaultSpriteAsset", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+                var def = Resources.Load<TMP_SpriteAsset>("Sprite Assets/Default Sprite Asset");
+                if (inst != null && f != null && def != null)
+                {
+                    f.SetValue(inst, def);
+                    PortLog.Write("[PortIcons] 已把默认 SpriteAsset 设为构建期 Default Sprite Asset");
+                }
+                else
+                {
+                    PortLog.Write("[PortIcons] 默认 SpriteAsset 未设置 inst=" + (inst != null) + " field=" + (f != null) + " def=" + (def != null));
+                }
+            }
+            catch (System.Exception e) { PortLog.Write("[PortIcons] 设默认 SpriteAsset 异常 " + e.Message); }
+
+            var go = new GameObject("[PortIcons]");
+            UnityEngine.Object.DontDestroyOnLoad(go);
+            go.AddComponent<Observ>();
+        }
+
+        // v0.66: 只观察, 不覆盖。20s / 40s 各报一次, 看 TMP 自己解析出了什么。
+        internal sealed class Observ : MonoBehaviour
+        {
+            float _t; int _n;
+            void Update()
+            {
+                _t += Time.unscaledDeltaTime;
+                if (_n >= 2) return;
+                if (_t < 20f) return;
+                _t = 0f; _n++;
+                try { Inspect(); } catch (System.Exception e) { PortLog.Write("[PortIcons] Inspect 异常 " + e.Message); }
+                if (_n >= 2) { try { DumpBooster(); } catch (System.Exception e) { PortLog.Write("[PortIcons] Dump 异常 " + e.Message); } }
+            }
+
+            static void Inspect()
+            {
+                var arr = UnityEngine.Object.FindObjectsOfType<TMP_Text>(true);
+                int tag = 0, hasAsset = 0, resolved = 0;
+                string sample = "";
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    var t = arr[i];
+                    if (t == null || t.text == null) continue;
+                    if (t.text.IndexOf("<sprite", StringComparison.Ordinal) < 0) continue;
+                    tag++;
+                    if (t.spriteAsset != null) hasAsset++;
+                    if (resolved < 3 && t.textInfo != null && t.textInfo.characterCount > 0)
+                    {
+                        resolved++;
+                        if (sample.Length == 0) sample = t.text.Replace("\n", " ");
+                    }
+                }
+                var firstNamed = "";
+                for (int i = 0; i < arr.Length && firstNamed.Length == 0; i++)
+                {
+                    var t = arr[i];
+                    if (t != null && t.text != null && t.text.IndexOf("<sprite", StringComparison.Ordinal) >= 0 && t.spriteAsset != null)
+                        firstNamed = t.spriteAsset.name;
+                }
+                PortLog.Write("[PortIcons] 观察 含标签文本=" + tag + " 有 spriteAsset=" + hasAsset + " 已出字形=" + resolved
+                    + " 首个资产名=" + firstNamed + " 样本=" + sample);
+            }
+        }
+
+        // v0.66 取证: 卡包正面那四个灰格子到底是谁画的 —— 打印所有 Booster 材质的真实绑定。
+        static void DumpBooster()
+        {
+            var mrs = UnityEngine.Object.FindObjectsOfType<MeshRenderer>(true);
+            int n = 0;
+            for (int i = 0; i < mrs.Length; i++)
+            {
+                var mr = mrs[i];
+                if (mr == null) continue;
+                var mat = mr.sharedMaterial;
+                if (mat == null || mat.name.IndexOf("Booster", StringComparison.OrdinalIgnoreCase) < 0) continue;
+                var tex = mat.HasProperty("_MainTex") ? mat.GetTexture("_MainTex") : null;
+                var c = mat.HasProperty("_Color") ? mat.GetColor("_Color") : Color.black;
+                var c2 = mat.HasProperty("_Color2") ? mat.GetColor("_Color2") : Color.black;
+                var ic = mat.HasProperty("_IconColor") ? mat.GetColor("_IconColor") : Color.black;
+                var r = mat.HasProperty("_Rect") ? mat.GetVector("_Rect") : Vector4.zero;
+                PortLog.Write("[Booster] " + mr.transform.name + " mat=" + mat.name + " shader=" + (mat.shader != null ? mat.shader.name : "null")
+                    + " size=" + (mr.GetComponent<MeshFilter>() != null && mr.GetComponent<MeshFilter>().sharedMesh != null
+                        ? mr.GetComponent<MeshFilter>().sharedMesh.name : "-")
+                    + " tex=" + (tex != null ? tex.name + " " + tex.width + "x" + tex.height : "null")
+                    + " _Color=" + c.ToString("0.000") + " _Color2=" + c2.ToString("0.000") + " _Icon=" + ic.ToString("0.000")
+                    + " _Rect=" + r.x.ToString("0.0") + "," + r.y.ToString("0.0") + "," + r.z.ToString("0.0") + "," + r.w.ToString("0.0"));
+                n++;
+                if (n >= 12) break;
+            }
+            PortLog.Write("[Booster] 命中 " + n + " 个 Booster 材质渲染器");
         }
 
         static bool BlitTo(Texture2D atlas, Sprite sp, int dx, int dy, int pw, int ph)
