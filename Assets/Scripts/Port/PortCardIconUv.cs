@@ -55,9 +55,9 @@ namespace StacklandsPort
                 // v0.84: 与卡包同一条口径 —— PC 原版按 0..1 采精灵自己的贴图, 不做 sprite 裁切;
                 // 只有真的被打进图集(packed=true)才需要矩形换算, 否则图标会被放大/偏移。
                 Vector4 uv;
+                Rect r = sr.sprite.packed ? sr.sprite.textureRect : sr.sprite.rect;   // 仅用于日志
                 if (sr.sprite.packed)
                 {
-                    Rect r = sr.sprite.textureRect;
                     if (r.width <= 0f || r.height <= 0f) continue;
                     uv = new Vector4(r.width / tex.width, r.height / tex.height,
                                      r.x / tex.width, r.y / tex.height);
