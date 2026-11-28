@@ -195,9 +195,12 @@ namespace StacklandsPort
                 if (stacked) continue;
                 alive.Add(c);
             }
-            var cards = alive.GroupBy(c => c.transform.root)
-                .Where(g => g.Key != null && g.Count() >= 2)
-                .ToList();
+            // v0.81: v0.78 日志 `待排=0 卡总数=5` —— 5 张卡分成了 5 个单卡组, 每组 <2 被丢掉。
+            // 这套游戏的卡各有各的 Stack 父物体(甚至根级), 按父节点分组永远凑不出 2 张。
+            // 直接把场上所有自由卡当成一组做网格排版(卡包里/叠卡上的已经在上面过滤掉了)。
+            var cards = new List<IGrouping<Transform, GameCard>>();
+            if (alive.Count >= 2)
+                cards.Add(alive.GroupBy(c => c.transform.root).First());
 
             int moved = 0;
             PortLog.Write(Tag + "分组 待排=" + cards.Count + " 卡总数=" + alive.Count);

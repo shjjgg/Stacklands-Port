@@ -99,6 +99,7 @@ namespace StacklandsPort
                         m.GetPropertyBlock(_pb, i);
                         _pb.SetTexture("_IconTex", tex);
                         _pb.SetVector("_IconUV", uv);
+                        _pb.SetFloat("_HasIcon", 1f);     // v0.81: shader 里 0.5×图标 这一项靠它开关
                         m.SetPropertyBlock(_pb, i);
                     }
                     done++;

@@ -16,6 +16,7 @@ Shader "Custom/BoosterShader"
         // v0.71: 图标在 PC 上是独立贴图, 安卓包里是 Sprite 图集的子矩形。
         // 直接按 0..1 采样会采到整张图集(肉眼=整面 0.5 灰 + 角落一个小图), 这里补 UV 矩形。
         _IconUV ("Icon UV xy=scale zw=offset", Vector) = (1,1,0,0)
+        _HasIcon ("Has Icon", Float) = 0
         _RainbowTex ("Rainbow", 2D) = "white" {}
         _Glossiness ("Smoothness", Range(0.0,1.0)) = 0.5
         _Metallic ("Metallic", Range(0.0,1.0)) = 0.0
@@ -43,7 +44,7 @@ Shader "Custom/BoosterShader"
             #pragma multi_compile __ FOG_LINEAR FOG_EXP FOG_EXP2 DIRECTIONAL LIGHTPROBE_SH DYNAMICLIGHTMAP_ON LIGHTMAP_ON LIGHTMAP_SHADOW_MIXING DIRLIGHTMAP_COMBINED VERTEXLIGHT_ON POINT SPOT POINT_COOKIE DIRECTIONAL_COOKIE EDITOR_VISUALIZATION SHADOWS_SHADOWMASK SHADOWS_SCREEN SHADOWS_DEPTH SHADOWS_CUBE UNITY_HDR_ON
 
             float4 _Color; float4 _Color2; float4 _IconColor;
-            sampler2D _MainTex; float4 _IconUV; sampler2D _IconTex; sampler2D _RainbowTex;
+            sampler2D _MainTex; float4 _IconUV; float _HasIcon; sampler2D _IconTex; sampler2D _RainbowTex;
             float _Glossiness; float _Metallic; float _SparkleIntensity;
             float4 _SmallCirclePosition; float _SmallCircleSize; float4 _BorderColor;
 
@@ -111,7 +112,7 @@ Shader "Custom/BoosterShader"
                 // 照搬 (u+v)-Vz*5 的大位移会采到大片透明区, 而导出 PNG 透明区留着白色 RGB, ×0.5 抬亮整面。
                 // 改为只在 sprite 矩形内按 0..1 采一次, 并把透明区 RGB 归零(原版 DXT5 透明区为黑)。
                 float4 rain = tex2D(_IconTex, saturate(uv) * _IconUV.xy + _IconUV.zw);
-                rain.rgb *= rain.a;
+                rain.rgb *= rain.a * _HasIcon;
 
                 // 圆点
                 float2 cp = float2((uv.x - 0.5) * 1.75, (uv.y - 0.4) * 1.75 - 0.1);
