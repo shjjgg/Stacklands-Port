@@ -22,16 +22,22 @@ namespace StacklandsPort
         internal sealed class Runner : MonoBehaviour
         {
             float _t;
-            float _alive;
+            int _idle;      // 连续多少次"无事可做"
+            int _hands;     // 已实际改动过的文本累计
 
+            // v0.64: 之前是每 1 秒对全场景 TMP 文本做 ForceMeshUpdate、连跑 300 秒 ——
+            // 这本身就是主线程峰值(动画卡顿的嫌疑源之一)。改成: 只在确有未挂图集的文本时才动,
+            // 连续 30 次无事可做就自己退场。
             void Update()
             {
-                _alive += Time.unscaledDeltaTime;
-                if (_alive > 300f) { Destroy(gameObject); return; }
                 _t += Time.unscaledDeltaTime;
-                if (_t < 1f) return;
+                if (_t < 1.5f) return;
                 _t = 0f;
-                if (_asset != null) ApplyToAll(_asset);
+                if (_asset == null) return;
+
+                int done = ApplyToAll(_asset);
+                if (done <= 0) { if (++_idle >= 30) Destroy(gameObject); }
+                else { _idle = 0; _hands += done; }
             }
         }
 
@@ -230,8 +236,13 @@ namespace StacklandsPort
             {
                 var t = texts[i];
                 if (t == null) continue;
+                bool need = t.spriteAsset != asset;
+                if (!need)
+                {
+                    // 已挂了图集, 只处理"带 <sprite 标签但还没解析成功"的文本, 其余一律跳过
+                    if (t.text == null || t.text.IndexOf("<sprite", StringComparison.Ordinal) < 0) continue;
+                }
                 if (t.spriteAsset != asset) t.spriteAsset = asset;
-                t.SetAllDirty();
                 // TMP 对已解析过的字符串会缓存标签结果, 只 SetAllDirty 不一定重解析;
                 // 手工回写一次 text 强制走一遍解析。
                 var raw = t.text;
