@@ -147,7 +147,11 @@ Shader "Custom/CardShaderTest"
                     albedo = lerp(albedo, secInk, saturate(sec.a * inside));
                 }
                 // 4.5) 42_PS 的 _418: albedo = _m9 + _367*(albedo - _m9) —— 框外/顶部横带压成框色
-                albedo = lerp(_BorderColor.rgb, albedo, k367);
+                // v0.63: 暂缓 —— _BorderColor 近黑(边框实测约纸色 63%), 而我们还没有证据能确定
+                // 42_PS 里的 _m9 到底是纸色还是框色。绑错方向的后果是整张卡被压成深色(截图可见),
+                // 比"没有内框"严重得多。等靶场探针给出 _m9 的真实属性再启用这一行。
+                // albedo = lerp(_BorderColor.rgb, albedo, k367);
+                albedo = albedo;
 
                 // 7) 闪膜(_Foil 门控): sin/cos 扭曲 ±0.02, 5/10/30 倍频同 asm
                 if (_Foil > 0.5)
