@@ -61,6 +61,31 @@ namespace StacklandsPort
 
         public static bool Running { get; private set; }
 
+        // v0.61: 进游戏 25 秒后自动跑一次(等 HUD/卡牌都建完), 不再要求放 bench_on/probe_on 文件。
+        // 用户只需要: 装包 -> 进游戏 -> 等半分钟 -> 发日志。
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
+        static void AutoBoot()
+        {
+            var go = new GameObject("[BenchAuto]");
+            UnityEngine.Object.DontDestroyOnLoad(go);
+            go.AddComponent<AutoRunner>();
+        }
+
+        sealed class AutoRunner : MonoBehaviour
+        {
+            float _t;
+            bool _done;
+            void Update()
+            {
+                if (_done) return;
+                _t += Time.unscaledDeltaTime;
+                if (_t < 25f) return;
+                _done = true;
+                PortLog.Write(Tag + "自动靶场触发(25s)");
+                Run();
+            }
+        }
+
         public static void Run()
         {
             if (Running) return;
@@ -183,8 +208,9 @@ namespace StacklandsPort
                 // 这是"槽位无名"问题的实证解法, 不再靠猜 _m6/_m8/_m12 是谁。
                 try
                 {
-                    if (File.Exists(Path.Combine(Application.persistentDataPath, "files/probe_on")))
-                        ProbeAll(dir, mats, mesh, cols, cell, rows);
+                    // v0.61: 不再依赖 files/probe_on 这种手工占位文件(用户建了个空 csv, 什么也没发生)
+                    // 只要靶场跑起来, 探针就跟着跑; 结果同时落到 persistentDataPath 和 Download。
+                    ProbeAll(dir, mats, mesh, cols, cell, rows);
                 }
                 catch (Exception e) { PortLog.Write(Tag + "探针失败: " + e.Message); }
 
@@ -301,7 +327,29 @@ namespace StacklandsPort
             }
 
             try { File.WriteAllText(Path.Combine(dir, "probe.csv"), sb.ToString()); } catch { }
-            PortLog.Write(Tag + "[Probe] 汇总 属性=" + total + " 有效=" + live + " -> " + Path.Combine(dir, "probe.csv"));
+
+            // 复制到 Download: Android 10 的 Android/data 部分文件管理器进不去, Download 一定进得去
+            string pub = "/storage/emulated/0/Download/probe.csv";
+            try { File.WriteAllText(pub, sb.ToString()); }
+            catch (Exception e) { PortLog.Write(Tag + "[Probe] 复制到 Download 失败: " + e.Message); }
+
+            PortLog.Write(Tag + "[Probe] 汇总 属性=" + total + " 有效=" + live +
+                          " csv=" + Path.Combine(dir, "probe.csv") + " 副本=" + pub);
+
+            // 关键结论直接进日志, 用户只发日志也能推进
+            int shown = 0;
+            for (int i = 0; i < sb.Length && shown < 60; )
+            {
+                int nl = sb.ToString().IndexOf('\n', i);
+                if (nl < 0) break;
+                var line = sb.ToString().Substring(i, nl - i);
+                i = nl + 1;
+                if (line.EndsWith(",1"))          // 只打"有效"的属性
+                {
+                    PortLog.Write(Tag + "[Probe] LIVE " + line);
+                    shown++;
+                }
+            }
 
             UnityEngine.Object.Destroy(cam.gameObject);
             rt.Release();
