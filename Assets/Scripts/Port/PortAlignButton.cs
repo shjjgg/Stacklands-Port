@@ -50,12 +50,38 @@ namespace StacklandsPort
         }
 
         // v0.80: 键盘 E 也能触发对齐(旧版 Input 在本作里不可用, 走新版 InputSystem)
+        float lastKeyLog = -999f;
+
         void Update()
         {
             try
             {
-                var kb = UnityEngine.InputSystem.Keyboard.current;
-                if (kb == null || !kb.eKey.wasPressedThisFrame) return;
+                // v0.85: v0.84 真机日志里从未出现过 "键盘 E 触发" —— Keyboard.current 很可能为 null(设备无实体键盘/InputSystem 未激活)。
+                // 这里双路取键 + 每 30s 打一次状态, 下次日志能直接判断是哪条路失效。
+                bool pressed = false;
+                try
+                {
+                    var kb = UnityEngine.InputSystem.Keyboard.current;
+                    if (kb != null && kb.eKey.wasPressedThisFrame) pressed = true;
+                    if (kb == null && Time.unscaledTime - lastKeyLog > 30f)
+                    {
+                        lastKeyLog = Time.unscaledTime;
+                        PortLog.Write(Tag + "键盘 E: Keyboard.current=null(InputSystem 无活动键盘)");
+                    }
+                }
+                catch (Exception ke)
+                {
+                    if (Time.unscaledTime - lastKeyLog > 30f)
+                    {
+                        lastKeyLog = Time.unscaledTime;
+                        PortLog.Write(Tag + "键盘 E: InputSystem 异常 " + ke.GetType().Name);
+                    }
+                }
+                if (!pressed)
+                {
+                    try { if (Input.GetKeyDown(KeyCode.E)) pressed = true; } catch { }
+                }
+                if (!pressed) return;
                 // 正在输入框里打字时不要抢键
                 var es = UnityEngine.EventSystems.EventSystem.current;
                 if (es != null && es.currentSelectedGameObject != null)
