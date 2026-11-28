@@ -344,7 +344,10 @@ namespace StacklandsPort
                 var mr = mrs[i];
                 if (mr == null) continue;
                 var mat = mr.sharedMaterial;
-                if (mat == null || mat.name.IndexOf("Booster", StringComparison.OrdinalIgnoreCase) < 0) continue;
+                if (mat == null) continue;
+                bool isBooster = mat.name.IndexOf("Booster", StringComparison.OrdinalIgnoreCase) >= 0;
+                bool isCard = mat.name.IndexOf("CardFront", StringComparison.OrdinalIgnoreCase) >= 0;
+                if (!isBooster && !isCard) continue;
                 var tex = mat.HasProperty("_MainTex") ? mat.GetTexture("_MainTex") : null;
                 var c = mat.HasProperty("_Color") ? mat.GetColor("_Color") : Color.black;
                 var c2 = mat.HasProperty("_Color2") ? mat.GetColor("_Color2") : Color.black;
@@ -355,7 +358,12 @@ namespace StacklandsPort
                         ? mr.GetComponent<MeshFilter>().sharedMesh.name : "-")
                     + " tex=" + (tex != null ? tex.name + " " + tex.width + "x" + tex.height : "null")
                     + " _Color=" + c.ToString("0.000") + " _Color2=" + c2.ToString("0.000") + " _Icon=" + ic.ToString("0.000")
-                    + " _Rect=" + r.x.ToString("0.0") + "," + r.y.ToString("0.0") + "," + r.z.ToString("0.0") + "," + r.w.ToString("0.0"));
+                    + " _Rect=" + r.x.ToString("0.0") + "," + r.y.ToString("0.0") + "," + r.z.ToString("0.0") + "," + r.w.ToString("0.0")
+                    + " _IconTex=" + (mat.HasProperty("_IconTex") && mat.GetTexture("_IconTex") != null
+                        ? mat.GetTexture("_IconTex").name + " " + mat.GetTexture("_IconTex").width + "x" + mat.GetTexture("_IconTex").height
+                        : "null")
+                    + " _Damaged=" + (mat.HasProperty("_Damaged") ? mat.GetFloat("_Damaged").ToString("0.0") : "-")
+                    + " _Foil=" + (mat.HasProperty("_Foil") ? mat.GetFloat("_Foil").ToString("0.0") : "-"));
                 n++;
                 if (n >= 12) break;
             }
